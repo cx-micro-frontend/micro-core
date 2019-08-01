@@ -1,0 +1,9 @@
+/build/
+/config/
+/dist/
+/NS_system/
+/main/
+/node_modules/
+/mock/
+/*.js
+/test/unit/coverage/
