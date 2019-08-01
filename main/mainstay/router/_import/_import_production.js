@@ -1,4 +1,4 @@
-const modules = require('@ROOT/config/injection').modules;
+const modules = require('@ROOT/config/injection/index').modules;
 
 module.exports = (childPath, fatherPath) => {
   console.log(childPath, fatherPath);
