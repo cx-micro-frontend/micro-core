@@ -1,4 +1,4 @@
-const injection = require('@ROOT/config/injection');
+const injection = require('@ROOT/config/injection/index.js');
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`);//获取组件的方法
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
