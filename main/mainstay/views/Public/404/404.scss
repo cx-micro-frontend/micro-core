@@ -1,0 +1,30 @@
+.pic-404 {
+  position: relative;
+  width: 100%;
+  top: 20%;
+  overflow: hidden;
+  text-align: center;
+  .error-text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 25px 0 25px;
+    color: rgba(127, 65, 65, 1);
+  }
+  .error-btn {
+    width: 180px;
+  }
+
+  &.sso-404 {
+    img {
+      width: 140px;
+      height: 123px;
+    }
+    .error-text {
+      font-size: 14px;
+      color: #b7bbc2;
+      font-weight: 500;
+      margin-left: -15px;
+    }
+  }
+}

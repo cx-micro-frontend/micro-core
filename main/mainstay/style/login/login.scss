@@ -1,0 +1,83 @@
+//登录页 - login style
+.front {
+  .login-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("../../assets/img/login/bg.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+  }
+
+  /*头部*/
+  .login-header {
+    height: 78px;
+  }
+
+  /*尾部*/
+  .login-footer {
+    height: 49px;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .sign-in-box {
+    background: #ffffff;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    /*width: 52%;*/
+    /*height: 60%;*/
+    /*min-height: 400px;*/
+    width: 1000px;
+    height: 560px;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+
+    //左边
+    .sign-in-left {
+      width: 44%;
+      height: 100%;
+      background: url("../../assets/img/login/loginBoxLeft.png") 0 0 no-repeat;
+      background-size: 100% 100%;
+    }
+
+    //右边
+    .sign-in-right {
+      flex: 1;
+
+      //标题
+      .sign-in-title {
+        font-size: 32px;
+        color: #333333;
+        letter-spacing: 0;
+        text-align: center;
+        padding: 30px 0;
+      }
+
+      //登录输入部分
+      .sign-in-main {
+        width: 70%;
+        max-width: 400px;
+        margin: auto;
+
+        //表单部分
+        .ns-form-item {
+          margin-bottom: 16px !important;
+        }
+
+        //按钮
+        .ns-button {
+          font-size: 14px;
+          font-weight: 500;
+          height: 44px;
+        }
+      }
+    }
+  }
+}

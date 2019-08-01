@@ -1,0 +1,40 @@
+@mixin buttonCss {
+  width: 62px;
+  height: 32px;
+  padding: 8px;
+}
+
+.ns-container .tree #house_tree .el-dialog__wrapper {
+  .el-dialog {
+    width: 900px !important;
+  }
+  .el-form-item__label {
+    float: left;
+  }
+  .el-dialog__body {
+    overflow: auto;
+  }
+  .el-button {
+    //      @include buttonCss;
+  }
+  .el-input--small .el-input__inner {
+  }
+  .el-textarea__inner {
+    width: 565px;
+  }
+  .span-text {
+    display: block;
+  }
+  .inputWidthLage {
+    .el-input,
+    .span-text {
+      width: 565px;
+    }
+  }
+  .el-input {
+    width: 200px;
+  }
+  .el-range-editor {
+    width: 565px !important;
+  }
+}

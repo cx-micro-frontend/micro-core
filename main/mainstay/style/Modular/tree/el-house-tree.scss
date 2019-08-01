@@ -1,0 +1,10 @@
+.el-house-tree-wrapper {
+  width: 260px;
+  max-height: 447px;
+  // background: red;
+  overflow: auto;
+}
+
+.el-house-tree-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
