@@ -1,7 +1,7 @@
 
-#  O2O-阳光城 （  O2O-sunshineCity  )
+#  micro-core
 
-> frontend for O2O-sunshineCity
+> core project for micro frontend
 
 ## Build Setup
 
