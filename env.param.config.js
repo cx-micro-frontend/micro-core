@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const injection = require('./config/injection');
+const injection = require('./config/injection/index');
 
 module.exports = {
   dev: {
