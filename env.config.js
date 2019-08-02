@@ -16,7 +16,6 @@ const dev_env = {
   BASE_API: '"http://192.168.1.20/api"',
   // BASE_API: '"http://192.168.1.78/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
-
 };
 
 /**
@@ -26,7 +25,7 @@ const dev_env = {
 const mock_cloud_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"mock"',
-  BASE_API: '"https://www.easy-mock.com/mock/5d240fe12102c0666393d2b7/gaocangxiong/"',//mock
+  BASE_API: '"https://www.easy-mock.com/mock/5d240fe12102c0666393d2b7/gaocangxiong/"', //mock
 };
 
 /**
@@ -56,7 +55,6 @@ const test_env = {
   ENV_CONFIG: '"test"',
   BASE_API: '"http://192.168.1.210/api"',
 };
-
 
 /**
  * push module
