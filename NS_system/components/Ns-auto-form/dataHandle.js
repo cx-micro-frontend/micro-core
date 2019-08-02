@@ -88,7 +88,7 @@ const LoadingData = _t => {
   vm.loading = true;
   vm.$store.dispatch('setRequestFormId', vm.autoFormID);
   if (vm.isLocal) {
-    if (isEmpty(vm.localData)) {
+    if (!isEmpty(vm.localData)) {
       dp.local(vm.localData, localdata => {
         vm.formData = localdata;
       });
