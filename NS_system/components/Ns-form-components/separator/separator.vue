@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import {invert} from '@NEAP/mainstay/utils/base';
+  import {invert} from '../../../utils/index';
 
   export default {
     name: 'ns-separator',
