@@ -186,7 +186,7 @@ export const strContainPlace = (str, substr, place) => {
   } else {
     formatError('string');
   }
-}
+};
 
 
 /**
