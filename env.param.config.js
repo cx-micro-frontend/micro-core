@@ -30,7 +30,7 @@ module.exports = {
 
     JSBabelInclude: ['main', 'mock', 'NS_system', 'node_modules/neap-test1'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       // '@NEAP': path.resolve('./node_modules/@NEAP4')
       '@NEAP': path.resolve('main'),
       '@ROOT': path.resolve(''),
@@ -48,6 +48,6 @@ module.exports = {
   },
 
   prod_injection: {
-    modules: injection.modules
-  }
+    modules: injection.modules,
+  },
 };
