@@ -1,5 +1,5 @@
 <template>
-  <el-form-item
+  <ns-form-item
     :class="[
       'ns-muster-item',
       { 'limit-label': parseInt(labelWidthConvert) < 13 },
@@ -473,7 +473,7 @@
       :height="height"
     >
     </ns-manage-range>
-  </el-form-item>
+  </ns-form-item>
 </template>
 <script>
   import * as store from '../../../utils/nsQuery/nsStore';
