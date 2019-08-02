@@ -77,7 +77,7 @@
   </ns-muster-item>
 </template>
 <script>
-import {judgeType} from '@NEAP/mainstay/utils/base';
+import {judgeType,delsubstr} from '@NEAP/mainstay/utils/base';
 import keyRefer from '../keyRefer';
 import DP from './DP';
 
@@ -153,7 +153,7 @@ export default {
           itemFunc.forEach((event, i) => {
             //if the father-string contains the specific string at the beginning
             if (event.includes(type + '-', 0)) {
-              const fnname = ns.base.delsubstr(event, type + '-');
+              const fnname = delsubstr(event, type + '-');
               //if have property 'function-name'
               if (this.autoForm.hasOwnProperty(fnname)) {
                 this.autoForm[fnname](params); //call the ns-Query method to run
