@@ -1,4 +1,4 @@
-import {listColumnService} from '../../../../service/System/TableFetch/table-fetch';
+// import {listColumnService} from '../../../../service/System/TableFetch/table-fetch';
 
 
 /**
@@ -25,12 +25,12 @@ const Table = {
     },
 
     generateTableHead({commit}, query) {
-      return listColumnService(query).then(res => {
-        const head = res.resultData.columns || [];
-        console.log('请求到的表头数据：');
-        console.log(head);
-        commit('SET_TABLE_HEAD', head);
-      });
+      // return listColumnService(query).then(res => {
+      //   const head = res.resultData.columns || [];
+      //   console.log('请求到的表头数据：');
+      //   console.log(head);
+      //   commit('SET_TABLE_HEAD', head);
+      // });
     },
   },
 };
