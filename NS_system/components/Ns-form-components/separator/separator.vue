@@ -14,7 +14,7 @@
         <span
           :style="{ padding: '0 ' + pd + 'px', 'font-size': fs + 'px' }"
           ref="ns-separator-tit"
-          >{{ label }}</span
+        >{{ label }}</span
         >
       </label>
       <label v-if="type !== 'more'" class="separator-tit">
@@ -22,7 +22,7 @@
         <span
           :style="{ padding: '0 ' + pd + 'px', 'font-size': fs + 'px' }"
           ref="ns-separator-tit"
-          >{{ label }}</span
+        >{{ label }}</span
         >
       </label>
       <div
@@ -46,87 +46,82 @@
 </template>
 
 <script>
-export default {
-  name: 'ns-separator',
-  data() {
-    return {
-      sh: 0,
-      Switch: this.onOff.sw,
-      lableWidth: 111, //in normal model , lable-width
-      lableWidth_simple: 111, //in simple model , lable-width
-      pd: 8, //default font-padding
-      fs: 16, //default icon-fontsize
-      is: 26, //default icon-size (width)
-    };
-  },
-  props: {
-    type: { type: String, default: 'simple' }, // simple / more / custom ( you can add icon )
-    label: { type: String, default: '详细信息' },
-    width: { type: [Number, String], default: '100%' },
-    height: { type: [Number, String], default: '32px' },
-    icon: { type: String, default: null },
-    onOff: {
-      type: [Object, Boolean],
-      default: function() {
-        return {
-          sw: false,
-        };
+  import {invert} from '@NEAP/mainstay/utils/base';
+
+  export default {
+    name: 'ns-separator',
+    data() {
+      return {
+        sh: 0,
+        Switch: this.onOff.sw,
+        lableWidth: 111, //in normal model , lable-width
+        lableWidth_simple: 111, //in simple model , lable-width
+        pd: 8, //default font-padding
+        fs: 16, //default icon-fontsize
+        is: 26, //default icon-size (width)
+      };
+    },
+    props: {
+      type: {type: String, default: 'simple'}, // simple / more / custom ( you can add icon )
+      label: {type: String, default: '详细信息'},
+      width: {type: [Number, String], default: '100%'},
+      height: {type: [Number, String], default: '32px'},
+      icon: {type: String, default: null},
+      onOff: {
+        type: [Object, Boolean],
+        default: function () {
+          return {
+            sw: false,
+          };
+        },
       },
     },
-  },
-  created() {
-    this.lableWidth = this.count(this.is + 5);
-    this.lableWidth_simple = this.count(5);
-  },
-  computed: {
-    separator_width() {
-      return this.autoForm.convertUnits(this.width, 'width');
+    created() {
+      this.lableWidth = this.count(this.is + 5);
+      this.lableWidth_simple = this.count(5);
     },
-    separator_height() {
-      this.sh = this.autoForm.convertUnits(this.height, 'height');
-      return this.sh;
+    computed: {
+      separator_width() {
+        return this.autoForm.convertUnits(this.width, 'width');
+      },
+      separator_height() {
+        this.sh = this.autoForm.convertUnits(this.height, 'height');
+        return this.sh;
+      },
+      separator_mt() {
+        return parseInt(this.sh) / 2 + 'px';
+      },
     },
-    separator_mt() {
-      return parseInt(this.sh) / 2 + 'px';
+    methods: {
+      count(x) {
+        return this.label.length * this.fs + this.pd * 2 + x;
+      },
+      click(val) {
+        this.Switch = invert(this.Switch);
+        this.$emit('click', val);
+      },
     },
-  },
-  methods: {
-    count(x) {
-      return this.label.length * this.fs + this.pd * 2 + x;
-    },
-    click(val) {
-      this.Switch = invert(this.Switch);
-      this.$emit('click', val);
-    },
-
-    invert(val){
-      if (typeof val === 'undefined') {
-        return;
-      }
-      return !val;
-    }
-  },
-};
+  };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-$bc: rgb(220, 220, 220);
-.ns-separator {
-  color: black;
-  .ns-separator-content {
-    height: inherit;
-    label.separator-tit-more {
-      cursor: pointer;
+  $bc: rgb(220, 220, 220);
+  .ns-separator {
+    color: black;
+    .ns-separator-content {
+      height: inherit;
+      label.separator-tit-more {
+        cursor: pointer;
+      }
+      .line {
+        height: 1px;
+        border-bottom: 1px solid $bc;
+      }
     }
-    .line {
-      height: 1px;
-      border-bottom: 1px solid $bc;
+    &:after {
+      content: '.';
+      height: 0px;
+      clear: both;
+      visibility: hidden;
     }
   }
-  &:after {
-    content: '.';
-    height: 0px;
-    clear: both;
-    visibility: hidden;
-  }
-}
 </style>
