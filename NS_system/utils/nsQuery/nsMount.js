@@ -6,12 +6,11 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2017 Broccoli spring( gcx )
  */
-/*=====================================================================================================================*/
 
 import $store from '../../store/index';
-import { autoForm, autoFormSubmit } from '../../service/Form/auto-form';
+import {autoForm, autoFormSubmit} from '../../service/Form/auto-form';
 import tableHeadMap from '../../ststicdata/table/table-head';
-import {judgeType,isEqual,arrContainObj,checkRange} from '../index'
+import {judgeType, isEqual, arrContainObj, checkRange, invert} from '../index'
 
 /**
  * create params for validate/reset
@@ -28,7 +27,7 @@ function _createParams(formName) {
 }
 
 export default {
-  install: function(Vue, options) {
+  install: function (Vue, options) {
     //autoForm
     Vue.prototype.autoForm = {
       /**
@@ -142,7 +141,7 @@ export default {
        * @param base
        * @returns {*}
        */
-      convertUnits: function(val, type, base) {
+      convertUnits: function (val, type, base) {
         if (val || val === 0) {
           if (judgeType(val) === 'number') {
             return val + 'px';
@@ -172,7 +171,26 @@ export default {
         const data = tableHeadMap;
         return data[name];
       },
-
+      /**
+       * group-witch (show or hide) for auto-form
+       * @param params
+       */
+      groupSwitch: params => {
+        const fieldsRefer = keyRefer.fields; //指代属性集合
+        const initiator = 'separator';
+        const formItem = params.formItem;
+        //judge initiator is 'separator' or not ， because only 'separator' can handle form-items hide or show
+        if (formItem[fieldsRefer['item-type']] !== initiator) return;
+        params.formItemFather.map((item, index) => {
+          /*Exclude the object(initiator) whitch is handle(has clicked) itself by index, and target-groupname equals(is) initiator-groupname*/
+          if (
+            index !== params.index &&
+            item[fieldsRefer['group-name']] === formItem[fieldsRefer['group-name']]
+          ) {
+            item[fieldsRefer['hidden']] = invert(item[fieldsRefer['hidden']]);
+          }
+        });
+      },
     };
   },
 };
