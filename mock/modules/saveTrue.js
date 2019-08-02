@@ -1,11 +1,11 @@
-const data = (req, res)=>{
+const data = (req, res) => {
   req.method = 'GET';
   return res.json({
-    "resultCode": "200",
-    "resultMsg": "操作成功。",
-    "restLog": null,
-    "resultData": true
-  })
+    resultCode: '200',
+    resultMsg: '操作成功。',
+    restLog: null,
+    resultData: true,
+  });
 };
 
 module.exports = {
@@ -26,5 +26,5 @@ module.exports = {
   'POST /system/organization/add-department': data,
   'POST /o2o/noticeManage/save': data,
   'POST /o2o/precinct/checkHouse': data,
-  'POST /o2o/precinct/savePrecinct': data
+  'POST /o2o/precinct/savePrecinct': data,
 };
