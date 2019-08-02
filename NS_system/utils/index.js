@@ -1,3 +1,5 @@
+import ns from "./nsQuery/nsQuery";
+
 /**
  * judge type accurate
  * @param value
@@ -323,4 +325,17 @@ export const logStyle = type => {
  */
 export const formatError = format => {
   throw('the object of the judgment must be a ' + format + ' format ，you better find it');
+};
+
+
+/**
+ * invert
+ * @param val
+ * @returns {boolean}
+ */
+export const invert = val => {
+  if (typeof val === 'undefined') {
+    return;
+  }
+  return !val;
 };
