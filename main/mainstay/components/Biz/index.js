@@ -1,7 +1,5 @@
 import Vue from 'vue';
 
-//table
-import BizTable from './Biz-table/Biz-table';
 
 //tree
 import BizOrganizeTree from './Biz-tree/Biz-organize-tree/Biz-organize-tree';
@@ -17,9 +15,6 @@ import SearchConditions from './Biz-search-conditions/Biz-search-conditions';
 
 import BizRoleButtonArea from './Biz-role-button-area/Biz-role-button-area';
 
-
-//table
-Vue.component('ns-biz-table', BizTable);
 
 //tree
 Vue.component('ns-biz-organize-tree', BizOrganizeTree);
