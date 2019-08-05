@@ -2,17 +2,17 @@
 
 
 set -e
-echo "Enter release version: "
-read VERSION
 
-echo "Releasing $VERSION - are you sure? (y/n)"
+npm version prerelease
+npm info
+npm dist-tag ls
+echo "Releasing - are you sure? (y/n)"
 read -p -n $REPLY
 
 
-echo    # (optional) move to a new line
-
 if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  echo 123123123
-  echo $VERSION
+  then
+    echo Releasing pubish successful ...
+else
+    echo Releasing pubish failed ...
 fi
