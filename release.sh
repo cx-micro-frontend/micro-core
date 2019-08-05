@@ -12,7 +12,7 @@ function handleFlow {
 
     # commit
     git tag "$V"
-    git commit -am "[release] Upgrade to $V"
+    git commit -am "[release] Upgrade to V$V"
 
     # publish
     npm info
@@ -30,8 +30,8 @@ read -p -n $REPLY
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
     echo "Do you want to enter version to releasing publish? (y/n)"
-    read -p -n $REPLY
-     if [[ $REPLY =~ ^[Yy]$ ]]
+    read -p -n $REPLY2
+     if [[ $REPLY2 =~ ^[Yy]$ ]]
      then
         echo "Enter release version: "
         read VERSION
