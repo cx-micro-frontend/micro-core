@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "version": "0.0.17-7",
+  "version": "0.0.18",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -11,7 +11,8 @@
     "build": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
     "compiler": "node ./build/exec-compile.js",
     "clone": "node ./clone/index.js",
-    "release": "./release.sh"
+    "release": "node release/index.js",
+    "latest": "./release/latest.sh"
   },
   "license": "ISC",
   "dependencies": {

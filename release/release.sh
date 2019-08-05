@@ -1,23 +1,38 @@
 #!/usr/bin/env bash
 
+echo '第一个参数是：'
+echo $1
+
+dataline=$(cat package.json)
+
+echo $dataline
+
+cat grep -Po 'version[" :]+\K[^"]+' package.json
+
+
 function handleFlow {
 
-    #build
+    #build and commit
     if [ "$mode" = "custom" ]
        then
         npm version $V --no-git-tag-version
+        git tag "V-$V"
+        git commit -am "[release] Upgrade to V-$V"
        else
         npm version prerelease --no-git-tag-version
+        echo 2222222
+        echo "$V"
+        echo "%s"
+#        git tag "$V"
+#        git commit -am "[release] Upgrade to %s"
+
     fi
 
-    # commit
-    git tag "$V"
-    git commit -am "[release] Upgrade to V$V"
 
-    # publish
-    npm info
-    npm publish --tag beta
-    echo Releasing pubish successful ...
+#    # publish
+#    npm info
+#    npm publish --tag beta
+#    echo Releasing pubish successful ...
 }
 
 
