@@ -11,7 +11,7 @@ read -p -n $REPLY
 
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    npm publish --tag -beta
+    npm publish --tag beta
     echo Releasing pubish successful ...
 else
     echo Releasing pubish failed ...
