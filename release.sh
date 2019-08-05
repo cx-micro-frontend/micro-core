@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
-
 set -e
 
-npm version prerelease
-npm info
-echo "Releasing pubish - are you sure? (y/n)"
+echo "commit and releasing pubish - are you sure? (y/n)"
 read -p -n $REPLY
-
 
 if [[ $REPLY =~ ^[Yy]$ ]]
   then
+
+    # commit
+    git tag "v-%s"
+    git commit -am "[release] Upgrade to %s"
+
+    # publish
+    npm version prerelease
+    npm info
     npm publish --tag beta
     echo Releasing pubish successful ...
 else
