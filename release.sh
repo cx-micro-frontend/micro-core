@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-
-
-
 function handleFlow {
 
     #build
