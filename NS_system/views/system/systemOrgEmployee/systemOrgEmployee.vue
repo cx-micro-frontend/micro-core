@@ -27,11 +27,11 @@
         </div>
         <!--grid module-->
         <ns-biz-table ref="biz-table" :loadState="loadState" :data="tableData"
-                   :searchConditions="Mix_searchConditions"
-                   :showSummary="false"
-                   @reload="getTableData"
-                   @table-action="tableAction"
-                   @selection-change="selectionChange"
+                      :searchConditions="Mix_searchConditions"
+                      :showSummary="false"
+                      @reload="getTableData"
+                      @table-action="tableAction"
+                      @selection-change="selectionChange"
         ></ns-biz-table>
         <employee-form
           :funcId="Mix_funcId"
@@ -68,18 +68,18 @@
 </template>
 <script>
   import Mixin from "@NEAP/mainstay/mixins";
-  import { tableDataFetch } from '../../../service/Common/table-fetch';
-  import { gridDataDelete, gridDataOperate } from '../../../service/System/systemOrgEmployee';
+  import {tableDataFetch} from '../../../service/Common/table-fetch';
+  import {gridDataDelete, gridDataOperate} from '../../../service/System/systemOrgEmployee';
   import employeeStaticData from './employeeStaticData';
   import pickerOptionsMap from '../../../ststicdata/pickerOptionsMap';
   import employeeForm from './components/infoDialog.vue';
-  import { downloadExcel } from '../../../service/Common/download';
+  import {downloadExcel} from '../../../service/Common/download';
 
   export default {
     name: 'employeeList',
     pageType: 'basic',
     mixins: [Mixin],
-    components: { employeeForm },
+    components: {employeeForm},
     data() {
       return {
         //========== 表格 grid =========
@@ -97,7 +97,7 @@
         //========== dialog auto form  =========
         // dialogVisible: {visible: false},//dialog switch
         dialogVisible: {
-          employeeFormVisible: { visible: false },
+          employeeFormVisible: {visible: false},
         },
         dialogTit: '', //dialog title
         submitType: 'add', //判断当前表单的类型（add / edit）
@@ -111,7 +111,7 @@
             userBirthday: pickerOptionsMap['date-point'].birthday,
           },
           resourcefieldBindingfnList: {
-            userState: function(params) {
+            userState: function (params) {
               if (params.type === 'change' && params.type !== 'visibleChange') {
                 const webVm = store.vm.get('employeeList');
                 if (params.formData.modelData[params.modelKey] === '0') {
@@ -155,7 +155,7 @@
         if (command.code === 'actionAddUserBtn') {
           this.isAdd = true; //新增开关
           if (!this.treeNodeInfo.organizationId || this.treeNodeInfo.organizationId === 0) {
-            this.$message({ message: '请先选择组织', type: 'warning' });
+            this.$message({message: '请先选择组织', type: 'warning'});
           } else {
             this.dialogTit = '新增员工';
             this.selectedGridNodeObj.type = 'add';
