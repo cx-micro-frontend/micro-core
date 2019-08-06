@@ -39,7 +39,7 @@ else {
 
   npm_version();
 
-  const AUTOVERSION =  path.resolve("package.json").version;
+  const AUTOVERSION =  require(path.resolve("package.json")).version;
 
   //run commit && publish
   shell.exec(`${releasepath} ${AUTOVERSION}`);
