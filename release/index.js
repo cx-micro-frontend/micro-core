@@ -48,6 +48,7 @@ const prescript = config.tools.publish.prescript || [];
 if (prescript && prescript.length) {
   signale.start(`run custom pre script before publish...\n`);
   prescript.forEach(script => {
+    signale.pending(`current script: ${script} \n`);
     shell.exec(`${script}`);
   })
 }
