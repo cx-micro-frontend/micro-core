@@ -3,6 +3,7 @@ const shell = require('shelljs');
 const signale = require('signale');
 const readlineSync = require('readline-sync');
 const minimist = require('minimist');
+const config = require(path.resolve('env.param.config'));
 const releasepath = path.resolve(__dirname, './release.sh');
 
 
@@ -40,6 +41,17 @@ const MODE = options.version_mode;
 shell.exec('clear');
 const startMsg = `${MODE} mode is start to pubish....\n`;
 signale.start(startMsg);
+
+//run pre script
+const prescript = config.tools.publish.prescript || [];
+
+if (prescript && prescript.length) {
+  signale.start(`run custom pre script before publish...\n`);
+  prescript.forEach(script => {
+    shell.exec(`${script}`);
+  })
+}
+
 
 switch (MODE) {
   //npm 发布预发布版

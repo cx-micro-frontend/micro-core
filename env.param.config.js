@@ -50,4 +50,11 @@ module.exports = {
   prod_injection: {
     modules: injection.modules,
   },
+  tools: {
+    publish: {
+      prescript: [
+        'npm run build'
+      ]
+    }
+  }
 };
