@@ -2,12 +2,12 @@
 
 #build and commit
 git tag "V-$1"
-git commit -am "[release] Upgrade to V-$1"
+git commit -am "["$1"] Upgrade to V-$1"
 
 # publish
 #npm info
 npm publish --tag beta
-echo Releasing pubish successful ...
+echo "$1" pubish successful ...
 npm dist-tag ls
 
 
