@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#npm 发布正式版
 set -e
 
 echo "Enter latest version: "
@@ -20,9 +21,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
     git commit -am "[latest] $VERSION"
 
     # publish
-    npm info
     npm publish
     echo Latest pubish successful ...
+    npm info
     npm dist-tag ls
 
 else
