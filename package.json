@@ -1,18 +1,16 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-2",
+  "version": "0.0.23-4",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
   "scripts": {
-    "command": "node_modules\\cx-builder\\lib\\menu.sh developer",
-    "command:mac": "node_modules/cx-builder/lib/menu.sh developer",
-    "clean": "rimraf ./dist/",
+    "command": "node_modules\\cx-builder\\lib\\entry.sh root",
+    "command:mac": "node_modules/cx-builder/lib/entry.sh root",
     "build": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
-    "compiler": "node ./build/exec-compile.js",
     "clone": "node ./clone/index.js",
-    "release": "node release/index.js --version_mode prerelease",
-    "latest": "node release/index.js --version_mode latest"
+    "clean": "rimraf ./dist/",
+    "compiler": "node ./build/exec-compile.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -27,7 +25,6 @@
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.0",
     "ns-form-components": "0.0.61",
-    "readline-sync": "^1.4.10",
     "vue": "2.5.21",
     "vue-router": "^3.0.7",
     "vue-template-compiler": "2.5.21",
@@ -35,7 +32,7 @@
     "xlsx": "^0.11.0"
   },
   "devDependencies": {
-    "cx-builder": "0.0.52",
+    "cx-builder": "0.0.53-3",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
