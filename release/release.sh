@@ -5,8 +5,15 @@ git tag "V-$1"
 git commit -am "["$1"] Upgrade to V-$1"
 
 # publish
+
 #npm info
-npm publish --tag beta
+if [ "$2" = "prerelease" ]
+  then
+    npm publish --tag beta
+else
+    npm publish
+fi
+
 npm dist-tag ls
 
 
