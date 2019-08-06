@@ -37,7 +37,7 @@ const keyInVersion = mode => {
 const options = minimist(process.argv.slice(2));
 const MODE = options.version_mode;
 
-
+shell.exec('clear');
 const startMsg = `${MODE} mode is start to pubish....\n`;
 signale.start(startMsg);
 
