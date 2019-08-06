@@ -53,7 +53,7 @@ module.exports = {
   tools: {
     publish: {
       prescript: [
-        'npm run build'
+        // 'npm run build'
       ]
     }
   }

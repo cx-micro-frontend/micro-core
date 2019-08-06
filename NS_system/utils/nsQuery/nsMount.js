@@ -11,6 +11,7 @@ import $store from '../../store/index';
 import {autoForm, autoFormSubmit} from '../../service/Form/auto-form';
 import tableHeadMap from '../../ststicdata/table/table-head';
 import {judgeType, isEqual, arrContainObj, checkRange, invert} from '../index'
+import keyRefer from '../../components/Ns-auto-form/keyRefer';
 
 /**
  * create params for validate/reset
