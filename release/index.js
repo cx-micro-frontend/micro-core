@@ -1,7 +1,7 @@
 const path = require('path');
 const shell = require('shelljs');
 const signale = require('signale');
-
+const readlineSync = require('readline-sync');
 const releasepath = path.resolve(__dirname, './release.sh');
 
 const startMsg = 'Start to pubish ....\n';
@@ -13,15 +13,13 @@ const npm_version = version => {
 };
 
 
-const readlineSync = require('readline-sync');
 
-//custom releasepath publish
-if (readlineSync.keyInYN('Enter version to releasing publish?')) {
+const keyInVersion = mode =>{
 
-  const VERSION = readlineSync.question('Enter release version: ');
+  const VERSION = readlineSync.question(`Enter ${mode} version: `);
 
   // 'Y' key was pressed.
-  if (readlineSync.keyInYN(`Releasing ${VERSION} - are you sure?`)) {
+  if (readlineSync.keyInYN(`${mode} ${VERSION} - are you sure?`)) {
 
     npm_version(VERSION);
 
@@ -32,6 +30,17 @@ if (readlineSync.keyInYN('Enter version to releasing publish?')) {
   else {
     console.log(' stop to publish ...');
   }
+};
+
+
+
+
+
+//custom releasepath publish
+if (readlineSync.keyInYN('Enter version to releasing publish?')) {
+
+  //entry key version to publish
+  keyInVersion('Releasing');
 
 }
 //auto releasepath publish
