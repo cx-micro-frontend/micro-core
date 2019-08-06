@@ -5,11 +5,6 @@ const readlineSync = require('readline-sync');
 const minimist = require('minimist');
 const releasepath = path.resolve(__dirname, './release.sh');
 
-const startMsg = 'Start to pubish ....\n';
-signale.start(startMsg);
-signale.start(startMsg);
-
-
 
 const npm_version = version => {
   shell.exec(`npm version ${version || 'prerelease'} --no-git-tag-version`);
@@ -33,7 +28,7 @@ const keyInVersion = mode => {
   }
 
   else {
-    console.log(' stop to publish ...');
+    signale.fatal(' Stop to publish ...');
   }
 };
 
@@ -42,7 +37,9 @@ const keyInVersion = mode => {
 const options = minimist(process.argv.slice(2));
 const MODE = options.version_mode;
 
-console.log(MODE);
+
+const startMsg = `${MODE} mode is start to pubish....\n`;
+signale.start(startMsg);
 
 switch (MODE) {
   //npm 发布预发布版
@@ -78,5 +75,5 @@ switch (MODE) {
     break;
 }
 
-
+signale.success(`NPM ${MODE} publish successful...\n`);
 

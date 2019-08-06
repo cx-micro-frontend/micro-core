@@ -7,7 +7,6 @@ git commit -am "["$1"] Upgrade to V-$1"
 # publish
 #npm info
 npm publish --tag beta
-echo "$1" pubish successful ...
 npm dist-tag ls
 
 

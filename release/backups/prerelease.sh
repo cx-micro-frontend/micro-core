@@ -23,7 +23,6 @@ function handleFlow {
 
         npm version prerelease --no-git-tag-version
         AUTOVER=$(jq .version $1)
-        echo 2222222
         echo $AUTOVER
 
         git tag "V-$AUTOVER"
@@ -61,11 +60,5 @@ else
         mode='auto'
         handleFlow
 fi
-
-
-
-
-
-
 
 #cat grep -Po 'version[" :]+\K[^"]+' package.json
