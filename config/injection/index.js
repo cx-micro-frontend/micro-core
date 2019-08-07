@@ -17,7 +17,7 @@ const VarInjection = require(`./version/${prefix}${version}`);
 const _BasicInjection = [
   {
     module: '业务组件',
-    path: 'http://192.168.1.89:3000/gaocangxiong/micro_biz_components.git',
+    path: 'http://192.168.1.47:3000/Framework-frontend/micro_biz_components.git',
     repositorie: 'biz_components',
     isOwner: false,
     gate: true,
