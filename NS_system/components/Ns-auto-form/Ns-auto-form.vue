@@ -284,14 +284,10 @@
        * @param formName      form name
        * @param addValidate 增加校验规则
        */
-      submitForm(formName, addValidate) {
-        const params = {
-          vm: this, //vue
-          formData: this.formData, //formData
-          formName: formName, //form name
-        };
+      submitForm(formName, addValidate=true) {
         //before validate handle
         return new Promise((resolve, reject) => {
+
           this.$refs[formName].validate(valid => {
             //表单提交添加'all-check' 标识到checkList中，开启第一级验证开关（即对所有自定义验证的表单进行验证）。
             this.$store.dispatch('setCustomCheck', 'all-check'); //多张表单 存在bug
@@ -301,15 +297,15 @@
               const query = this.isFreeSubmit ? this.customModelData : this.formData.modelData;
               //submit request
               if (!addValidate) {
-                return reject()
+                return reject();
               }
               autoFormSubmit(this.submitUrl, query).then((res) => {
                 resolve(res)
               }).catch(() => {
-                reject()
+                reject();
               })
             } else {
-              reject()
+              reject();
             }
             // else{
             //   let errDoms =  $('.el-form-item.is-error ');
@@ -362,6 +358,8 @@
         const groupCols = parseInt(formItem[this.fieldsRefer['groupMaxColspan']]);
         return baseColWidth / groupCols;
       },
+
+
       /**
        * button role information ( 按钮权限信息 )
        * @param info            role information (Object)

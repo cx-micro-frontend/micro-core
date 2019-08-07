@@ -26,12 +26,13 @@
         </div>
         <!--grid module-->
         <ns-biz-table ref="biz-table" :loadState="loadState" :data="tableData"
-                   :searchConditions="Mix_searchConditions"
-                   :showSummary="false"
-                   @reload="getTableData"
-                   @table-action="tableAction"
-                   @selection-change="selectionChange"
+                      :searchConditions="Mix_searchConditions"
+                      :showSummary="false"
+                      @reload="getTableData"
+                      @table-action="tableAction"
+                      @selection-change="selectionChange"
         ></ns-biz-table>
+
 
         <!--auto form 新增角色-->
         <ns-biz-slip-dialog
@@ -62,7 +63,7 @@
           </template>
         </ns-biz-slip-dialog>
 
-        <!--dialog - auto form submit infomation-->
+        <!--新增/编辑 授权人-->
         <ns-dialog
           :id="nsDialogName"
           :title="dialogTit"
@@ -95,13 +96,13 @@
 </template>
 <script>
   import Mixin from "@NEAP/mainstay/mixins";
-  import { tableDataFetch } from '../../../service/Common/table-fetch';
-  import { downloadExcel } from '../../../service/Common/download';
-  import { deleteRole } from '../../../service/System/systemRolePermission';
+  import {tableDataFetch} from '../../../service/Common/table-fetch';
+  import {downloadExcel} from '../../../service/Common/download';
+  import {deleteRole} from '../../../service/System/systemRolePermission';
   import * as store from '../../../utils/nsQuery/nsStore';
   import roleStaticData from './roleStaticData';
   import rolePersonStaticData from './rolePersonStaticData';
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
 
 
   export default {
@@ -162,7 +163,7 @@
     methods: {
       /**
        * 表单按钮点击
-       * @param command按钮信息
+       * @param command   按钮信息
        */
       roleButtonCommandForm(command) {
         if (command.code === 'formConfirmBtn') {
@@ -176,13 +177,13 @@
 
       /**
        * auto-form submit  ( 提交按钮事件操作 )
-       * @param formName       button-info
+       * @param
        */
       autoFormSubmit() {
         this.showMessage = true;
         this.nsDialogName = '';
         this.$refs[this.autoFormID].submitForm(this.autoFormID).then(() => {
-          this.$message({ message: '保存成功', type: 'success' });
+          this.$message({message: '保存成功', type: 'success'});
           this.showMessage = false;
           this.$set(this.dialogVisible, 'addRolevisible', false);
           this.$set(this.dialogVisible, 'addPersonToRoleVisible', false);
@@ -251,7 +252,7 @@
       //新增-初始化动态表单
       addRole() {
         if (!this.treeNodeInfo.organizationId || this.treeNodeInfo.organizationId == 0) {
-          this.$message({ message: '请先选择组织', type: 'warning' });
+          this.$message({message: '请先选择组织', type: 'warning'});
         } else {
           this.dialogWidth = '900px';
           this.dialogTit = '新增角色';
@@ -353,7 +354,7 @@
                   {},
                 )
                   .then(() => {
-                    this.$message({ message: '删除成功', type: 'success' });
+                    this.$message({message: '删除成功', type: 'success'});
                     this.getTableData();
                   })
                   .catch(r => {
