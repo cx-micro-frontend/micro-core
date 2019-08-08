@@ -23,14 +23,14 @@
         <!--action-module (search / button)-->
         <div class="action-module">
           <!--search module-->
-          <ns-search-conditions
+          <ns-biz-search-conditions
             :funcId="Mix_funcId"
             :searchConditions="Mix_searchConditions"
             @query="getTableData"
           >
             <!--action - 权限按钮操作区域-->
             <ns-biz-role-button-area :buttonList="roleButtonAction" @command="roleButtonCommand" class="fr"></ns-biz-role-button-area>
-          </ns-search-conditions>
+          </ns-biz-search-conditions>
         </div>
 
         <!--grid module-->
