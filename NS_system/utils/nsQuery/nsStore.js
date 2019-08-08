@@ -6,7 +6,7 @@
  * copyright (c) 2017 Broccoli spring( gcx )
  */
 import $store from '@NEAP/mainstay/store/';
-import {judgeType, isXType} from '../../../main/mainstay/utils/gcxutils.js/index'
+import utils from '../../../main/mainstay/utils'
 
 /*============= bussiness data ===============*/
 //funcId - handle
@@ -135,7 +135,7 @@ export const houseType = {
 export const formController = {
   //set the value of the field under a specific object
   set: function (ID, query) {
-    if (judgeType(query) !== 'object') {
+    if (utils.judgeType(query) !== 'object') {
       throw 'The function of formController - set have two params (ID and query), ID is String format, ' +
       'query should be Object format (not arrary), you better find it';
     }
@@ -147,7 +147,7 @@ export const formController = {
   },
   //get the value of the field under a specific object
   get: function (ID, Key) {
-    if (!isXType('string', ID) || !isXType('string', ID)) {
+    if (!utils.isXType('string', ID) || !utils.isXType('string', ID)) {
       throw 'The function of formController - get have two params (ID and Key), ID and Key is String format, you better find it';
     }
     let getVal = null;
@@ -165,7 +165,7 @@ export const formController = {
   },
   //delete one info
   delete: function (ID) {
-    if (judgeType(ID) !== 'string') {
+    if (utils.judgeType(ID) !== 'string') {
       throw 'The function of formController - delete only one params (ID), ID is String format, you better find it';
     }
     $store.dispatch('setFormController', {
@@ -217,7 +217,7 @@ export const formCounter = {
 export const conditions = {
   //get conditions by ID
   get: ID => {
-    if (judgeType(ID) !== 'string') {
+    if (utils.judgeType(ID) !== 'string') {
       throw "The function of conditions handle - set only one params (ID), ID must exist，it's String format, you better find it";
     }
     $store.dispatch('getConditions', ID);
