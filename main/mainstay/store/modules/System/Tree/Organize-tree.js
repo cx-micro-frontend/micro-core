@@ -5,7 +5,7 @@
  * copyright (c) 2019 Broccoli spring( gcx )
  * @type {{state: {funcId: string}, mutations: {SET_FUNCID: Core.mutations.SET_FUNCID}, actions: {setFuncId({commit: *}, *=): void}}}
  */
-import { treeDataFetch, changeTreeData } from '../../../../service/System/Tree/organize-tree';
+import {treeDataFetch, changeTreeData} from '../../../../service/System/Tree/organize-tree';
 
 import transformKeyFun from '../../../../components/Biz/Biz-tree/utils/transformNode';
 import keyRefer from '../../../../components/Biz/Biz-tree/Biz-organize-tree/keyRefer';
@@ -37,13 +37,13 @@ const OrganizeTree = {
     },
   },
   actions: {
-    getOrganizeTreeData({ commit }, query) {
+    getOrganizeTreeData({commit}, query) {
       return new Promise((resolve, reject) => {
           treeDataFetch(query).then(res => {
             console.log('请求到组织树数据，如下：');
             console.log(res.resultData);
 
-            const storeData = transformKeyFun([res.resultData], keyRefer, { expandedIndex: 1 });//转换树数据
+            const storeData = transformKeyFun([res.resultData], keyRefer, {expandedIndex: 1});//转换树数据
             const initCurrentNode = storeData[0];//default is to take the top-level node as the initialization selected node
 
             commit('SET_ORGANIZE_TREE_DATA', storeData);
@@ -55,11 +55,11 @@ const OrganizeTree = {
       );
     },
 
-    origanizeTreeChange({ commit }, query) {
+    origanizeTreeChange({commit}, query) {
       return new Promise((resolve, reject) => {
           changeTreeData(query).then(res => {
 
-            const storeData = transformKeyFun([res.resultData], keyRefer, { expandedIndex: 1 });//转换树数据
+            const storeData = transformKeyFun([res.resultData], keyRefer, {expandedIndex: 1});//转换树数据
             const initCurrentNode = storeData[0];//default is to take the top-level node as the initialization selected node
 
             commit('SET_ORGANIZE_TREE_DATA', storeData);
@@ -76,19 +76,19 @@ const OrganizeTree = {
     },
 
 
-    setCurrentTreeNode({ commit }, data) {
+    setCurrentTreeNode({commit}, data) {
       commit('SET_CURRENT_TREE_NODE', data);
     },
 
-    setSearchQuery({ commit }, data) {
+    setSearchQuery({commit}, data) {
       commit('SET_SEARCH_QUERY', data);
     },
 
-    asyncOrganizeTreeData({ commit }, data) {
+    asyncOrganizeTreeData({commit}, data) {
       commit('SET_ORGANIZE_TREE_DATA', data);
     },
 
-    emptyOrganizeTreeStore({ commit }, data) {
+    emptyOrganizeTreeStore({commit}, data) {
       commit('EMPTY_ORGANIZE_TREE_STORE', data);
     },
   },

@@ -107,7 +107,7 @@
   import {addOrEditCompany, addOrEditDepartment, groupDialog} from './Biz-organize-dialogs'
   import request from './mixins/request';
   import keyRefer from './keyRefer';
-  import {isEmptyObject} from '../../../../utils';
+  import {isEmptyObject} from '../../../../utils/library/judge';
 
 
   export default {
