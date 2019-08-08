@@ -1,5 +1,4 @@
-import {judgeType} from './judge'
-
+import {judgeType, isXType} from './judge'
 
 
 /**
