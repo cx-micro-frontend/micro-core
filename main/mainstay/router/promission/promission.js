@@ -5,8 +5,8 @@ import {routerAndpageInfo} from "./auxiliary";
 let addRouFlag = false;
 
 export default (to, from, next) => {
-  alert(`${from.path}  ${to.path}`);
-  alert(addRouFlag);
+  // alert(`${from.path}  ${to.path}`);
+  // alert(addRouFlag);
   //get current page infomation data
   const currentPageInfo = $store.state.PageInfo.pageinfoList.find((item) => {
     return item.path === to.path;

@@ -1,5 +1,5 @@
 import { mapGetters } from 'vuex';
-import { getUrlParam } from '../utils/index';
+import { getUrlParam } from '../utils/library/urlhandle';
 
 export default {
   computed: {

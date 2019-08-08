@@ -22,6 +22,7 @@ import RequestHead from './modules/System/Common/RequestHeader';
 
 import entrance from '../../injection/entrance/entrance_core'
 
+import AutoForm from './modules/AutoForm';
 
 Vue.use(Vuex);
 
@@ -47,6 +48,8 @@ const store = new Vuex.Store(
 
         Table,
         RequestHead,
+
+        AutoForm
       },
       getters,
     }

@@ -1,5 +1,5 @@
 import {mapGetters} from 'vuex';
-import {isEmptyObject} from '../../../utils/index';
+import {isEmptyObject} from '../../../utils/library/judge';
 import filterkeyMap from '../../../config/Role-button/filterkey_map';
 import filterListMmap from '../../../config/Role-button/filterList_map';
 

@@ -1,3 +1,7 @@
+import {judgeType} from './judge'
+
+
+
 /**
  * check range (校验特定范围内是否所有表单元素都通过验证)
  * @param range
