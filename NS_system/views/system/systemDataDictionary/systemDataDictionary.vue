@@ -73,7 +73,7 @@
 </template>
 <script>
   import Mixin from "@NEAP/mainstay/mixins";
-  import * as store from '../../../utils/nsQuery/nsStore';
+  import * as store from '@NEAP/mainstay/utils/nsQuery/nsStore';
   import {downloadExcel} from '../../../service/Common/download';
   import {tableDataFetch} from '../../../service/Common/table-fetch';
   import { mapGetters } from 'vuex';

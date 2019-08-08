@@ -99,7 +99,7 @@
   import {tableDataFetch} from '../../../service/Common/table-fetch';
   import {downloadExcel} from '../../../service/Common/download';
   import {deleteRole} from '../../../service/System/systemRolePermission';
-  import * as store from '../../../utils/nsQuery/nsStore';
+  import * as store from '@NEAP/mainstay/utils/nsQuery/nsStore';
   import roleStaticData from './roleStaticData';
   import rolePersonStaticData from './rolePersonStaticData';
   import {mapGetters} from 'vuex';
