@@ -3,9 +3,7 @@
     <div class="ns-container clear">
       <p class="win-tit"><span>▌</span>&nbsp;设计同步</p>
       <div class="action-module handle" :id="pageID + '-search'">
-        <ns-input class="remoteHandle fl" v-model="searchVal" placeholder="请输入搜索内容">
-        </ns-input>
-
+        <ns-input class="remoteHandle fl" v-model="searchVal" placeholder="请输入搜索内容"/>
         <ns-button type="primary" @click="search">查询</ns-button>
         <!--action - 权限按钮操作区域-->
         <ns-biz-role-button-area :buttonList="roleButtonAction" @command="roleButtonCommand" class="fr"></ns-biz-role-button-area>
