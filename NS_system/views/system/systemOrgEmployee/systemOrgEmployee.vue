@@ -71,7 +71,7 @@
   import {tableDataFetch} from '../../../service/Common/table-fetch';
   import {gridDataDelete, gridDataOperate} from '../../../service/System/systemOrgEmployee';
   import employeeStaticData from './employeeStaticData';
-  import pickerOptionsMap from '../../../ststicdata/pickerOptionsMap';
+  import pickerOptionsMap from './pickerOptionsMap';
   import employeeForm from './components/infoDialog.vue';
   import {downloadExcel} from '../../../service/Common/download';
 

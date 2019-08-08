@@ -11,8 +11,7 @@ import '../style/common.scss';
 import '../assets/iconfont/iconfont';
 
 //components
-import '../components/ns-base/index.js';
-import '../components/Biz';
+import '../components/index';
 
 
 //enject UI
