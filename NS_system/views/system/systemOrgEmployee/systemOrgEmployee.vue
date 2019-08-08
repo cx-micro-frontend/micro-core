@@ -111,7 +111,7 @@
             userBirthday: pickerOptionsMap['date-point'].birthday,
           },
           resourcefieldBindingfnList: {
-            userState: function (params) {
+            userState: params => {
               if (params.type === 'change' && params.type !== 'visibleChange') {
                 const webVm = store.vm.get('employeeList');
                 if (params.formData.modelData[params.modelKey] === '0') {
