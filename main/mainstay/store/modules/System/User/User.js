@@ -1,4 +1,4 @@
-import { getToken, setToken, removeToken } from '../../../../utils/auth';
+import { getToken, setToken, removeToken } from '../../../../utils/library/auth';
 import {storageHandle} from '../../../../utils/storage/storage';
 import { oauthlogin, multipleEnterpriseLogin, ssoLogin } from '../../../../service/System/User/login';
 import router from '../../../../router/index';

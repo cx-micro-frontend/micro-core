@@ -1,49 +1,42 @@
-/**
- * judge type accurate
- * @param value
- * @returns {*}
- */
-export const judgeType = value => {
-  const t = Object.prototype.toString.call(value);
-  let map = {
-    '[object Boolean]': 'boolean',
-    '[object Number]': 'number',
-    '[object String]': 'string',
-    '[object Function]': 'function',
-    '[object Array]': 'array',
-    '[object Date]': 'date',
-    '[object RegExp]': 'regExp',
-    '[object Undefined]': 'undefined',
-    '[object Null]': 'null',
-    '[object Object]': 'object',
-  };
-  if (value instanceof Element) {
-    return 'element';
+const libraryFiles = require.context('./library', true, /\.js/);
+
+let modules = {};
+
+libraryFiles.keys().forEach(key => {
+
+  //file modules object
+  const m = libraryFiles(key);
+
+  /**
+   * export not has default => {}
+   * default => method
+   * @type {string}
+   */
+  const methodItem = Object.keys(m).reduce((s, e) => {
+    if (e !== 'default') {
+      if (typeof m[e] === 'function') {
+        modules[e] = m[e];
+        return s
+      }
+      else s[e] = m[e]
+    }
+    return s
+  }, m.default || {});
+
+  if (methodItem && typeof methodItem === 'function') {
+
+    const fileName = key.replace(/(.*\/)*([^.]+).*/ig, "$2");
+
+    if (modules.hasOwnProperty('fileName')) {
+      throw ('entry script modules has the same method')
+    }
+
+    modules[fileName] = methodItem;
   }
-  return map[t];
-};
+});
 
+console.log('控制反转脚本模块');
+console.log(modules);
+console.log('控制反转脚本模块');
 
-/**
- * judge object is empty
- * @param obj
- * @returns {boolean}
- */
-export const isEmptyObject = obj => {
-  if (!obj) return false;
-  return Object.keys(obj).length === 0;
-};
-
-
-/**
- * get param from url
- * @param name
- * @returns {*}
- */
-export const getUrlParam = (name) => {
-  const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-  const r = window.location.search.substr(1).match(reg) || window.location.hash.substring((window.location.hash.search(/\?/)) + 1).match(reg);
-  if (r != null) {
-    return decodeURIComponent(r[2]);
-  }
-};
+export default modules;

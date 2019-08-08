@@ -1,5 +1,5 @@
 import $store from '../../store/index';
-import {logStyle} from '../../utils/log';
+import {logStyle} from '../../utils/library/log';
 
 
 /**

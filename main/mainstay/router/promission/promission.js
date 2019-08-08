@@ -5,7 +5,8 @@ import {routerAndpageInfo} from "./auxiliary";
 let addRouFlag = false;
 
 export default (to, from, next) => {
-
+  alert(`${from.path}  ${to.path}`);
+  alert(addRouFlag);
   //get current page infomation data
   const currentPageInfo = $store.state.PageInfo.pageinfoList.find((item) => {
     return item.path === to.path;
@@ -16,19 +17,21 @@ export default (to, from, next) => {
     //store current funcId from current page info
     $store.dispatch('setFuncId', info.funcId);
 
+    console.log('设置动态路由');
     //handle async router
     $store.dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
       .then(_ => {
 
         const asyncRouterList = $store.state.AsyncRouter.asyncRouterList;
 
-        // console.log('获取异步路由列表：', asyncRouterList);
-        // console.log(`addRouFlag 状态：${addRouFlag}`);
+
+        console.log('获取异步路由列表：', asyncRouterList);
+        console.log(`addRouFlag 状态：${addRouFlag}`);
 
         if (!addRouFlag) {
           if (asyncRouterList && asyncRouterList.length) {
 
-            // console.log('开始  addRoutes ');
+            console.log('开始  addRoutes ');
 
             router.addRoutes(asyncRouterList);
 

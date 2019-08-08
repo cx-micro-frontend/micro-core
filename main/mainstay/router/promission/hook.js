@@ -1,5 +1,5 @@
 import router from "../index";
-import {getToken} from "../../utils/auth";
+import {getToken} from "../../utils/library/auth";
 import {addPageTabs} from "./auxiliary";
 import whiteList from '../whiteList';
 import promissionhandle from './promission';
@@ -12,6 +12,7 @@ router.beforeEach((to, from, next) => {
   // console.log(from);
   if (whiteList.indexOf(to.path) !== -1) {
     console.log('在免登录白名单，直接进入');
+    console.log(to.path);
     next()
   }
   else {

@@ -1,5 +1,5 @@
 /*
- * role group fetch ( 角色与权限 => 获取当前用户的功能菜单按钮 )
+ * role group fetch ( 角色与权限  )
  * created: 2018/1/08.
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )

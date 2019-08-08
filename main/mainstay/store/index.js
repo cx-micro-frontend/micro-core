@@ -14,16 +14,11 @@ import PageTabs from './modules/System/Layout/PageTabs';
 import AsyncRouter from './modules/System/Router/AsyncRouter';
 
 import OrganizeTree from './modules/System/Tree/Organize-tree';
-import HouseTree from './modules/System/Tree/House-tree';
 
 import SearchConditions from './modules/System/Common/SearchConditions';
 import RoleButton from './modules/System/Role/RoleButton';
 import Table from './modules/System/Table/Table';
 import RequestHead from './modules/System/Common/RequestHeader';
-
-
-import Form from './modules/Form';
-
 
 import entrance from '../../injection/entrance/entrance_core'
 
@@ -46,15 +41,12 @@ const store = new Vuex.Store(
 
 
         OrganizeTree,
-        HouseTree,
 
         Search: SearchConditions,
         RoleButton,
 
         Table,
         RequestHead,
-
-        Form
       },
       getters,
     }

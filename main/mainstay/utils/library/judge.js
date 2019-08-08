@@ -1,11 +1,11 @@
-import ns from "./nsQuery/nsQuery";
+import {formatError} from "./log.js";
 
 /**
  * judge type accurate
  * @param value
  * @returns {*}
  */
-export const judgeType = (value) => {
+export const judgeType = value => {
   const t = Object.prototype.toString.call(value);
   let map = {
     '[object Boolean]': 'boolean',
@@ -23,8 +23,7 @@ export const judgeType = (value) => {
     return 'element';
   }
   return map[t];
-}
-
+};
 
 /**
  * judge is a certain type
@@ -56,8 +55,19 @@ export const isXType = (type, value) => {
   } else {
     throw 'The value of the type of judgment must exist and must be a string.';
   }
-}
+};
 
+/**
+ * judge object is empty
+ * @param value
+ * @returns {boolean}
+ */
+export const isEmpty = (value) => {
+  return (
+    (Array.isArray(value) && value.length === 0) ||
+    (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0)
+  );
+};
 
 /**
  * isEqual
@@ -172,108 +182,6 @@ export const arrContainObj = (arr, obj) => {
 };
 
 /**
- * judge string contain another string in definite place
- * @param str
- * @param substr
- * @param place       place number
- * @returns {boolean}
- */
-export const strContainPlace = (str, substr, place) => {
-  if (isXType('string', str) && isXType('string', substr)) {
-    if (judgeType(place) === 'number') {
-      return str.indexOf(substr) === place;
-    }
-  } else {
-    formatError('string');
-  }
-};
-
-
-/**
- * check range (校验特定范围内是否所有表单元素都通过验证)
- * @param range
- * @param target
- * @returns {boolean}
- */
-export const checkRange = (range, target) => {
-  const t = range + ' ' + target;
-  const allError = document.querySelectorAll(t);
-  return !allError.length > 0;
-};
-
-
-/**
- * replace the specified string by something in father string
- * @param str
- * @param substr
- * @param replace
- * @returns {*|string|void|XML}
- */
-export const delsubstr = (str, substr, replace) => {
-  if (isXType('string', str) && isXType('string', substr)) {
-    const reg = new RegExp(substr, 'g');
-    return typeof replace === 'undefined' ? str.replace(reg, '') : str.replace(reg, replace);
-  } else {
-    formatError('string');
-  }
-};
-
-
-/**
- * judge object is empty
- * @param value
- * @returns {boolean}
- */
-export const isEmpty = (value) => {
-  return (
-    (Array.isArray(value) && value.length === 0) ||
-    (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0)
-  );
-};
-
-
-/**
- * deep clone
- * @param data
- * @returns {{}}
- */
-export const deepClone = (data) => {
-  let obj = {};
-  let originQueue = [data];
-  let copyQueue = [obj];
-  let visitQueue = [];
-  let copyVisitQueue = [];
-  while (originQueue.length > 0) {
-    let _data = originQueue.shift();
-    let _obj = copyQueue.shift();
-    visitQueue.push(_data);
-    copyVisitQueue.push(_obj);
-    for (const key in _data) {
-      const _value = _data[key];
-      const type = judgeType(_data[key]);
-      if (type !== 'object') {
-        if (type === 'undefined') {
-          _obj[key] = '';
-        } else {
-          _obj[key] = _value;
-        }
-      } else {
-        let index = visitQueue.indexOf(_value);
-        if (index >= 0) {
-          _obj[key] = copyVisitQueue[index];
-        } else {
-          originQueue.push(_value);
-          _obj[key] = {};
-          copyQueue.push(_obj[key]);
-        }
-      }
-    }
-  }
-  return obj;
-};
-
-
-/**
  * is variable Exitsed
  * @param variableName
  * @returns {boolean}
@@ -291,51 +199,29 @@ export const isExitsVariable = (variableName) => {
   return false;
 };
 
-
 /**
- * log information style
- * @param type
- * @returns {string}
- */
-export const logStyle = type => {
-  const base = 'font-weight:bold;';
-  switch (type) {
-    case 'tit':
-      return 'color:#F56C6C; ' + base;
-    case 'info':
-      return 'color:#409EFF; ' + base;
-    case 'text':
-      return 'color:#303133; ' + base;
-    case 'success':
-      return 'color:#67C23A; ' + base;
-    case 'warning':
-      return 'color:#E6A23C; ' + base;
-    case 'line':
-      return 'color:#DCDFE6; ' + base;
-    case '3DTest':
-      return ' text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:1.4em';
-    default:
-      break;
-  }
-};
-
-/**
- * throw format error
- * @param format
- */
-export const formatError = format => {
-  throw('the object of the judgment must be a ' + format + ' format ，you better find it');
-};
-
-
-/**
- * invert
- * @param val
+ * judge string contain another string in definite place
+ * @param str
+ * @param substr
+ * @param place       place number
  * @returns {boolean}
  */
-export const invert = val => {
-  if (typeof val === 'undefined') {
-    return;
+export const strContainPlace = (str, substr, place) => {
+  if (isXType('string', str) && isXType('string', substr)) {
+    if (judgeType(place) === 'number') {
+      return str.indexOf(substr) === place;
+    }
+  } else {
+    formatError('string');
   }
-  return !val;
+};
+
+/**
+ * judge object is empty
+ * @param obj
+ * @returns {boolean}
+ */
+export const isEmptyObject = obj => {
+  if (!obj) return false;
+  return Object.keys(obj).length === 0;
 };

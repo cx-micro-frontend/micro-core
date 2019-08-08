@@ -14,6 +14,7 @@
         <ns-biz-data-dictionary-tree
           :organizationId="org_nodeId"
           :searchConditions="Mix_searchConditions"
+          showFunction
           @tree-item-click="treeItemClick"
         >
         </ns-biz-data-dictionary-tree>

@@ -69,9 +69,11 @@ export default {
 
     //菜单获取不出来 正常跳转404页面， 单点登录 跳转登录页面
     getMenuAndJump() {
+      alert('getMenuAndJump');
       //get side bar data
       this.$store.dispatch('generateSideBar').then(list => {
-
+        console.log('获取到菜单栏数据');
+        console.log(list);
         this.$router.push({path: list.length > 0 ? this.initPath : '/404'});
       });
     },

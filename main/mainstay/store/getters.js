@@ -32,8 +32,6 @@ const getters = {
 
   //tree
   $store__orgTreeData: state => state.OrganizeTree.$store__orgTreeData,
-  $store__houseTreeData: state => state.HouseTree.$store__houseTreeData,
-
 
   //table
   tableHead: state => state.Table.tableHead,

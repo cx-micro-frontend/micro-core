@@ -3,6 +3,10 @@
  */
 export default [
   '/front',
+
   '/front/login',
-  '/front/login-station'
+  '/front/login-station',
+
+  '/404',
+  '/sso/404'
 ];

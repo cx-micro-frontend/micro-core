@@ -1,4 +1,4 @@
-import {getToken} from "../auth";
+import {getToken} from "../library/auth";
 import config from "./config";
 
 /**

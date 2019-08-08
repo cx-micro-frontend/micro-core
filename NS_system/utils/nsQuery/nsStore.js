@@ -6,7 +6,7 @@
  * copyright (c) 2017 Broccoli spring( gcx )
  */
 import $store from '@NEAP/mainstay/store/';
-import {judgeType, isXType} from '../index'
+import {judgeType, isXType} from '../../../main/mainstay/utils/gcxutils.js/index'
 
 /*============= bussiness data ===============*/
 //funcId - handle

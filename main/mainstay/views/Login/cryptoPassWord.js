@@ -1,4 +1,4 @@
-import {encryptBase64} from '../../utils/crypto';
+import {encryptBase64} from '../../utils/library/crypto';
 
 export default {
   data() {
