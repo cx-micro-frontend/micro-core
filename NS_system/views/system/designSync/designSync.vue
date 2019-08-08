@@ -1,5 +1,5 @@
 <template>
-  <div class="win" :id="pageID" >
+  <div class="win" :id="pageID">
     <div class="ns-container clear">
       <p class="win-tit"><span>▌</span>&nbsp;设计同步</p>
       <div class="action-module handle" :id="pageID + '-search'">
@@ -46,8 +46,8 @@
 </template>
 <script>
   import Mixin from "@NEAP/mainstay/mixins";
-  import ns from '../../../utils/nsQuery/nsQuery';
-  import { designSync_search, designSync_submit } from '../../../service/System/designSync';
+  import utils from '@NEAP/mainstay/utils';
+  import {designSync_search, designSync_submit} from '../../../service/System/designSync';
 
   export default {
     name: 'design-sync',
@@ -80,18 +80,18 @@
             fixed: null,
           },
         ], //table head
-        tableData: [{ organizationName: '' }], //table data
+        tableData: [{organizationName: ''}], //table data
         multipleSelection: [],
       };
     },
     created() {
-      this.search({ orgName: '' });
+      this.search({orgName: ''});
     },
     computed: {},
     methods: {
       //click input icon function
       search() {
-        let query = { orgName: this.searchVal };
+        let query = {orgName: this.searchVal};
         this.tableLoading = true;
         designSync_search(query)
           .then(response => {
@@ -108,13 +108,13 @@
       /**
        * action btn 点击
        */
-      roleButtonCommand: function(command){
+      roleButtonCommand: function (command) {
         if (command.code === 'actionSyncAllBtn') {
           this.selectAll(this.tableData);
         }
         if (command.code === 'actionSyncSelectedBtn') {
           //导出
-         this.selectSome();
+          this.selectSome();
         }
       },
 
@@ -126,14 +126,14 @@
           this.$refs['multipleTable'].toggleRowSelection(row);
         });
         //操作同步
-        const query = { orgName: '', syncType: 20 };
+        const query = {orgName: '', syncType: 20};
         this.uploadData(query);
       },
 
       //select some
       selectSome() {
         if (!this.multipleSelection.length) {
-          return this.$message({ message: '请至少选择一条数据', type: 'error' });
+          return this.$message({message: '请至少选择一条数据', type: 'error'});
         }
         //操作同步
         const orgList = [];
@@ -144,7 +144,7 @@
             userId: item.createUserId,
           });
         });
-        const query = { orgList: orgList, orgName: '', syncType: 10 };
+        const query = {orgList: orgList, orgName: '', syncType: 10};
         this.uploadData(query);
       },
 
@@ -163,7 +163,7 @@
       },
       //judge array contain another Obj
       arrContainObj(arr, str) {
-        return ns.base.arrContainObj(arr, str);
+        return utils.arrContainObj(arr, str);
       },
       //selectionChange (当选择项发生变化时)
       selectionChange(val) {
