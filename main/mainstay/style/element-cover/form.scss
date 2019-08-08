@@ -83,12 +83,13 @@
   color: $--color-text-regular;
   min-width: 88px;
   transition: all 0s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover {
+    color: $--color-primary;
+    border-color: $--color-primary;
+  }
 }
 
-.el-checkbox-button__inner:hover {
-  color: $--color-primary;
-  border-color: $--color-primary;
-}
+
 
 .el-checkbox-button:first-child .el-checkbox-button__inner {
   border-left: 1px solid #979797;
@@ -97,6 +98,19 @@
     border-color: $--color-primary;
   }
 }
+
+.el-checkbox-button.is-checked .el-checkbox-button__inner {
+  color: $--color-text-regular !important;
+  border-color: $--color-primary !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background: url(../../assets/img/other/chioce.png) right bottom no-repeat;
+}
+
+
+
+
+//switch
 
 .el-switch__core:after {
   content: '';
