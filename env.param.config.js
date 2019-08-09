@@ -31,9 +31,10 @@ module.exports = {
     JSBabelInclude: ['main', 'config', 'mock', 'NS_system', 'node_modules/neap-test1'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      // '@NEAP': path.resolve('./node_modules/@NEAP4')
-      '@NEAP': path.resolve('main'),
       '@ROOT': path.resolve(''),
+      '@NEAP': path.resolve('main'),
+      '@COMMUNITY': path.resolve('main/injection/repositories/NS_community'),
+      '@BIZ_COMPONENTS': path.resolve('main/injection/repositories/NS_biz_components'),
     },
     prettier: {
       switch: true,
