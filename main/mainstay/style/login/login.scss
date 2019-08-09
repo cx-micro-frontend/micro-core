@@ -6,23 +6,32 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("../../assets/img/login/bg.png") 0 0 no-repeat;
     background-size: 100% 100%;
     overflow: hidden;
+    //background: url("../../assets/img/login/bg.png") 0 0 no-repeat;
   }
-
-  /*头部*/
+  //头部
   .login-header {
+    position: relative;
     height: 78px;
+    //左上角Logo
+    .login-logo {
+      position: absolute;
+      width: 98px;
+      height: 30px;
+      left: 60px;
+      top: 39px;
+      background-size: 100% 100%;
+      overflow: hidden;
+    }
   }
-
-  /*尾部*/
+  //尾部
   .login-footer {
     height: 49px;
     position: fixed;
     bottom: 0;
   }
-
+  //内容区域
   .sign-in-box {
     background: #ffffff;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
@@ -39,12 +48,26 @@
     transform: translate(-50%, -50%);
     display: flex;
 
+    //标题
+    .sign-in-title {
+      padding: 65px 0 40px 0;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
     //左边
     .sign-in-left {
       width: 44%;
       height: 100%;
-      background: url("../../assets/img/login/loginBoxLeft.png") 0 0 no-repeat;
       background-size: 100% 100%;
+      //background: url("../../assets/img/login/loginBoxLeft.png") 0 0 no-repeat;
+
+      //标题
+      .sign-in-title {
+        color: #2a3f52;
+      }
     }
 
     //右边
@@ -53,11 +76,7 @@
 
       //标题
       .sign-in-title {
-        font-size: 32px;
-        color: #333333;
-        letter-spacing: 0;
-        text-align: center;
-        padding: 30px 0;
+        color: #1D73FF;
       }
 
       //登录输入部分
