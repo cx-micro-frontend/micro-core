@@ -2,8 +2,9 @@
   <ns-layout :class="{'is-hide-frame':isInIframe}">
     <template slot="header">
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
-      <div class="fl">
-        <img src="../assets/img/logo/nwLOGO.png" alt="head-logo">
+      <div class="fl head-logo">
+        <!--<img src="../assets/img/logo/nwLOGO.png" alt="head-logo">-->
+        <img :src="operatorLoginPic"/>
       </div>
 
       <!--业务组 - 自定义头部模块 -->
@@ -41,19 +42,19 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import { bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom } from './index';
+  import {mapGetters} from 'vuex';
+  import {bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom} from './index';
   import transform from './transform';
 
   export default {
     name: 'layout',
     mixins: [transform],
-    components: { bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom },
+    components: {bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom},
     data() {
       return {};
     },
     computed: {
-      ...mapGetters(['userName', 'avatar']),
+      ...mapGetters(['userName', 'avatar', 'operatorLoginPic']),
       key() {
         return this.$route.name !== undefined
           ? this.$route.name + +new Date()
@@ -68,6 +69,16 @@
 </script>
 <style rel="stylesheet/scss" lang="scss">
   #layout {
+    .head-logo {
+      height: 50px;
+      width: 150px;
+      padding: 11px 12px;
+      box-sizing: border-box;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
     //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
     &.is-hide-frame {
       .header-wrapper, .sidebar-wrapper, .ns-page-tabs {
