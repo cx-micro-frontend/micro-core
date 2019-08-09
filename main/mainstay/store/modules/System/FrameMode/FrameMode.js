@@ -7,16 +7,23 @@
  */
 const FrameMode = {
   state: {
+    loginMode: 'normal',
     isInIframe: false,
+
   },
   mutations: {
+    SET_LOGIN_MODE: (state, data) => {
+      state.loginMode = data;
+    },
     SET_FRAME_MODE: (state, data) => {
       state.isInIframe = data;
     },
-
   },
   actions: {
-    setFrameMode({ commit }, data) {
+    setLoginMode({commit}, data) {
+      commit('SET_LOGIN_MODE', data);
+    },
+    setFrameMode({commit}, data) {
       commit('SET_FRAME_MODE', data);
     },
   },
