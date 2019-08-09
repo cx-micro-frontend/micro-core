@@ -10,6 +10,7 @@ router.beforeEach((to, from, next) => {
   // console.log('beforeEach');
   // console.log(to);
   // console.log(from);
+
   if (whiteList.normal.indexOf(to.path) !== -1) {
     console.log('在免登录白名单，直接进入');
     console.log(to.path);
@@ -26,8 +27,6 @@ router.beforeEach((to, from, next) => {
       console.log('无 token ！！！');
 
       next(`/front/login`);
-
-      // next(`/front/login?redirect=${to.path}`)
     }
   }
 });

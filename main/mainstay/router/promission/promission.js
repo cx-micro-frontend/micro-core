@@ -16,8 +16,6 @@ let addRouFlag = false;
  * @param next
  */
 export default (to, from, next) => {
-  // alert(`${from.path}  ${to.path}`);
-  // alert(addRouFlag);
 
   const pageinfoList = $store.state.PageInfo.pageinfoList;
 
@@ -30,6 +28,7 @@ export default (to, from, next) => {
 
     //store current funcId from current page info
     $store.dispatch('setFuncId', info.funcId);
+
     console.log('=============================');
     console.log(`${from.path}  ${to.path}`);
     console.log(`addRouFlag 状态：${addRouFlag}`);
