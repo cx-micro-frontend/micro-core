@@ -12,9 +12,14 @@ export const storageHandle = (type, key, data) => {
 
   existwarning(key);
 
-  const _K = storageFactory(config[key].storagekey);
-  const method = config[key].storageMethod;
+  /*
+   * need key partition ?
+   * => add token by factory handle
+   * => use key
+   */
+  const _K = config[key].partition ? storageFactory(config[key].storagekey) : config[key].storagekey;
 
+  const method = config[key].storageMethod;
 
 
   if (method === 'localStorage') {
@@ -53,11 +58,6 @@ function storageFactory(key) {
   let token = getToken() || '';
   token = token.replace(/\-/g, '_').replace(/\./g, '_');
   const all = `NS_${key}_${token}`;
-
-  // console.log(45454545454545);
-  // console.log(45454545454545)
-  // console.log(token)
-  // console.log(45454545454545)
 
 //eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwianRpIjoiMSIsImlhdCI6MTU2MjkyMTI2NH0.JprDmZqzDf4iaome_pXXF_-fpeN_o5FEV_9J27ROTcM
 
