@@ -5,6 +5,14 @@ export default {
     storagekey: 'user_info',
     storageMethod: 'localStorage',
     storageLife: '',
+    partition: true,
+  },
+  sign_operator_info: {
+    name: '操作员信息（图片+标题)',
+    storagekey: 'operator_info',
+    storageMethod: 'localStorage',
+    storageLife: '',
+    partition: false,
   },
 
   sign_nav: {
@@ -12,6 +20,7 @@ export default {
     storagekey: 'nav',
     storageMethod: 'localStorage',
     storageLife: '',
+    partition: true,
   },
 
   sign_page_info: {
@@ -19,6 +28,7 @@ export default {
     storagekey: 'pi',
     storageMethod: 'localStorage',
     storageLife: '',
+    partition: true,
   },
 
   sign_async_router: {
@@ -26,6 +36,7 @@ export default {
     storagekey: 'async_router',
     storageMethod: 'localStorage',
     storageLife: '',
+    partition: true,
   },
 
   sign_visited_pages: {
@@ -33,6 +44,7 @@ export default {
     storagekey: 'visited_pages',
     storageMethod: 'localStorage',
     storageLife: '',
+    partition: true,
   },
 
 }
