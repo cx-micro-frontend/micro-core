@@ -1,4 +1,4 @@
-import {getUrlParam} from '../../utils';
+import {getUrlParam} from '../../utils/library/urlhandle';
 
 
 export default {
@@ -47,16 +47,22 @@ export default {
       this.$store.dispatch('emptyStorage');//empty
 
       this.$store.dispatch('ssoLogin', query)
-        .then((res) => {
+        .then(info => {
+
           this.initPath = getUrlParam('referRoute');
+          console.log('success');
+
+          //set login mode
+          this.$store.dispatch('setLoginMode', 'sso');
+
           this.getMenuAndJump();
         })
-        //单点登录跳转失败后的回调
-        .catch(() => {
-
+        .catch(_ => {
+          console.log('catch-catch-catch');
           this.$router.push({path: '/sso/404'});
 
           // const referPath = getUrlParam('referPath');
+
           // if (referPath) {
           //   location.href = '//' + referPath;
           // }
