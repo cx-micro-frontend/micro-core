@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-  import { getUrlParam } from '../../utils';
+  import { getUrlParam } from '../../utils/library/urlhandle';
   import authLogin from './authLogin';
 
   export default {
