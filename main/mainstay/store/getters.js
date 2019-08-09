@@ -1,14 +1,20 @@
 const getters = {
-
   //core
   funcId: state => state.Core.funcId,
-
 
   //user
   token: state => state.User.userinfo.token,
   userName: state => state.User.userinfo.userName,
   avatar: state => state.User.userinfo.avatar,
   themeColor: state => state.User.userinfo.themeColor,
+
+  //cover painting operatorInfo
+  operatorDesc: state => state.CoverPainting.operatorInfo.operatorDesc,//登录页左侧标题（sign in box)
+  operatorName: state => state.CoverPainting.operatorInfo.operatorName,//document title / head title
+  operatorLogo: state => state.CoverPainting.operatorInfo.operatorLogo,//登录页图标
+  operatorPicture: state => state.CoverPainting.operatorInfo.operatorPicture,//登录页左侧图片（sign in box)
+  operatorBackgroudPic: state => state.CoverPainting.operatorInfo.operatorBackgroudPic,//登录页大背景图
+  operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic,//布局-head 左侧Logo图片
 
   //layout
   visitedPages: state => state.PageTabs.visitedPages,
