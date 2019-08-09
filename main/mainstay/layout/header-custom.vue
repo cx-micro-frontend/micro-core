@@ -1,22 +1,22 @@
 <template>
   <div class="clear">
     <div class="fl" style="color: #fff;padding-left: 24px;font-size: 16px;">
-      社区o2o管理系统
+      {{operatorName}}
     </div>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: 'header-custom',
     data() {
       return {};
     },
-    created() {
-
+    computed: {
+      ...mapGetters(['operatorName']),
     },
-    computed: {},
-    methods: {},
   };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
