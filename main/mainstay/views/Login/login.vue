@@ -1,49 +1,29 @@
 <!--login-->
 <template>
-  <div class="login-wrap">
-    <div class="login-header"></div>
+  <div class="login-wrap" :style="{'background-image': 'url(' + operatorBackgroudPic + ')'}">
+    <div class="login-header">
+      <div class="login-logo" :style="{'background-image': 'url(' + operatorLogo + ')'}"></div>
+    </div>
     <sign-in-box></sign-in-box>
     <div class="login-footer"></div>
   </div>
 </template>
 <script>
-  // import {getOperatorInfo} from '../../service/User';
+  import {mapGetters} from 'vuex';
   import signInBox from './sign-in-box/sign-in-box';
 
   export default {
-    components: { signInBox },
+    components: {signInBox},
     data() {
       return {
         isDefault: 1,
-        afterRequset: false,
-        operator: {
-          operatorBackgroudPic: '',
-          operatorLoginPic: '',
-          operatorLogo: '',
-          operatorPicture: '',
-          operatorDesc: '',
-        },
       };
     },
-    created() {
-      // this.getInfo();
+    computed: {
+      ...mapGetters(['operatorBackgroudPic', 'operatorLogo']),
     },
-    methods: {
-      // getInfo() {
-      //   getOperatorInfo({isDefault: this.isDefault}).then(res => {
-      //     this.afterRequset = true;
-      //     for (let key in this.operator) {
-      //       if (this.operator.hasOwnProperty(key)) {
-      //         if (key === 'operatorDesc') {
-      //           this.operator[key] = res.resultData[key];
-      //         } else {
-      //           this.operator[key] = 'data:image/jpeg;base64,' + res.resultData[key];
-      //         }
-      //       }
-      //     }
-      //     localStorage.setItem('operatorInfo', JSON.stringify(this.operator));
-      //   })
-      // }
+    created() {
+      this.$store.dispatch('getCoverPainting', {isDefault: this.isDefault});
     },
   };
 </script>
