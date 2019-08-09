@@ -1,7 +1,9 @@
 <template>
   <div class="sign-in-box">
     <!--用户名账号登录窗口-->
-    <div class="sign-in-left"></div>
+    <div class="sign-in-left" :style="{'background-image': 'url(' + operatorPicture + ')'}">
+      <p class="sign-in-title">{{operatorDesc}}</p>
+    </div>
     <div class="sign-in-right">
       <p class="sign-in-title">登录</p>
       <div class="sign-in-main" v-if="!hasMultiEnterprise">
@@ -42,7 +44,6 @@
           </ns-form-item>
         </ns-form>
       </div>
-
       <!--多企业账号，选择登录-->
       <multi-enterprise
         v-if="hasMultiEnterprise"
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
   import {isMultipleEnterprise} from '../../../service/System/User/login';
   import MultiEnterprise from './multi-enterprise';
   import authLogin from '../authLogin';
@@ -79,6 +81,9 @@
         },
         enterprise: [],
       };
+    },
+    computed: {
+      ...mapGetters(['operatorPicture', 'operatorDesc']),
     },
     methods: {
       /**
