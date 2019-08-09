@@ -1,6 +1,6 @@
-import { getToken, setToken, removeToken } from '../../../../utils/library/auth';
+import {getToken, setToken, removeToken} from '../../../../utils/library/auth';
 import {storageHandle} from '../../../../utils/storage/storage';
-import { oauthlogin, multipleEnterpriseLogin, ssoLogin } from '../../../../service/System/User/login';
+import {oauthlogin, multipleEnterpriseLogin, ssoLogin} from '../../../../service/System/User/login';
 import router from '../../../../router/index';
 import $store from '../../../../store/index';
 
@@ -70,7 +70,7 @@ const User = {
 
   actions: {
     //登录
-    oauthlogin({ commit }, query) {
+    oauthlogin({commit}, query) {
       return new Promise((resolve, reject) => {
         oauthlogin(query).then(res => {
           const userinfo = res.resultData || {};
@@ -87,7 +87,7 @@ const User = {
     },
 
     //多户登录
-    multipleEnterpriseLogin({ commit }, query) {
+    multipleEnterpriseLogin({commit}, query) {
       return multipleEnterpriseLogin(query).then(res => {
         const userinfo = res.resultData || {};
 
@@ -97,33 +97,41 @@ const User = {
     },
 
     //单点登录
-    ssoLogin({ commit }, query) {
-      return ssoLogin(query).then(res => {
-        const userinfo = res.resultData || {};
+    ssoLogin({commit}, query) {
+      return new Promise((resolve, reject) => {
+        ssoLogin(query).then(res => {
 
-        commit('SET_TOKEN', userinfo.token);
-        commit('SET_LOGIN_DATA', userinfo);
-      });
+          const userinfo = res.resultData || {};
+
+          commit('SET_TOKEN', userinfo.token);
+          commit('SET_LOGIN_DATA', userinfo);
+
+          resolve(userinfo);
+
+        }).catch(err => {
+            reject(err);
+          }
+        );
+      })
     },
 
-
     //更新用户信息
-    updateLoginData({ commit }, query) {
+    updateLoginData({commit}, query) {
       commit('SET_LOGIN_DATA', query);
     },
 
 
     //清除本地存储信息
-    emptyStorage({ commit }) {
+    emptyStorage({commit}) {
       return commit('EMPTY_STORAGE');
     },
 
     //退出
-    logOut({ commit }) {
+    logOut({commit}) {
 
       $store.dispatch('emptyStorage');
 
-      router.push({ path: '/front/login' });
+      router.push({path: '/front/login'});
     },
 
   },
