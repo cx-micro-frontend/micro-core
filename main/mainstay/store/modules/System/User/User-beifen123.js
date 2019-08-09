@@ -111,6 +111,9 @@ const User = {
     //单点登录
     ssoLogin({ commit }, query) {
       return ssoLogin(query).then(res => {
+
+
+
         const userinfo = res.resultData || {};
 
         commit('SET_TOKEN', userinfo.token);
