@@ -35,8 +35,8 @@ libraryFiles.keys().forEach(key => {
   }
 });
 
-console.log('控制反转脚本模块');
-console.log(modules);
-console.log('控制反转脚本模块');
+// console.log('控制反转脚本模块');
+// console.log(modules);
+// console.log('控制反转脚本模块');
 
 export default modules;
