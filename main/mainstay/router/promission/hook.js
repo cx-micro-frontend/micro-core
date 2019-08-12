@@ -18,6 +18,7 @@ router.beforeEach((to, from, next) => {
   }
   else {
     if (getToken()) {
+
       console.log('有 token ！！！');
 
       promissionhandle(to, from, next);
