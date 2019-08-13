@@ -17,10 +17,10 @@ const navmenu = (req, res) => {
       {
         menuIconcls: 'gailan', //图标
         menuMenuname: '主页', //显示名称
-        menuMenusubname: 'dashboard', //路径符号
+        menuMenusubname: 'overview', //路径符号
         syStatus: '1', //隐藏与否
         syOrderindex: 2, //序号
-        funcId: 'dashboard',
+        funcId: 'overview',
         childMenus: [], //子级菜单
       },
       // {
