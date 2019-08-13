@@ -22,7 +22,6 @@ const AsyncRouter = {
 
     },
 
-
     REMOVE_ASYNC_ROUTER: state => {
       state.asyncRouterList = [];
 
