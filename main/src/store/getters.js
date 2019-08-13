@@ -17,8 +17,10 @@ const getters = {
   operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic,//布局-head 左侧Logo图片
 
   //layout
-  visitedPages: state => state.PageTabs.visitedPages,
+  initRouter: state => state.Sidebar.initRouter,
   sideBarList: state => state.Sidebar.sideBarList,
+  visitedPages: state => state.PageTabs.visitedPages,
+
   currentPageInfo: state => state.PageInfo.currentPageInfo,
 
   //mode
