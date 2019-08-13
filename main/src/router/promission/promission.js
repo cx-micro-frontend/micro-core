@@ -37,7 +37,8 @@ export default (to, from, next) => {
 
 
     if (!addRouFlag) {
-      console.log('设置动态路由');
+      // console.log('设置动态路由');
+
       //handle async router
       $store.dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
         .then(_ => {
