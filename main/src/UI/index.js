@@ -16,7 +16,7 @@ import '../components/index';
 
 //enject UI
 import '../../../NS_system/UI/index';
-import '../../injection/entrance/entrance_ui'
+import '../../../injection/entrance/entrance_ui'
 
 Vue.use(ElementUI);
 

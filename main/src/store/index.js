@@ -27,7 +27,7 @@ import AsyncRouter from './modules/System/Router/AsyncRouter';
 import OrganizeTree from './modules/System/Tree/Organize-tree';
 
 
-import entrance from '../../injection/entrance/entrance_core'
+import entrance from '../../../injection/entrance/entrance_core'
 
 import AutoForm from './modules/AutoForm';
 

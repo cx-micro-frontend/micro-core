@@ -32,9 +32,9 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
-      '@NEAP': path.resolve('main'),
-      '@COMMUNITY': path.resolve('main/injection/repositories/NS_community'),
-      '@BIZ_COMPONENTS': path.resolve('main/injection/repositories/NS_biz_components'),
+      '@NEAP': path.resolve('main/src'),
+      '@COMMUNITY': path.resolve('injection/repositories/NS_community'),
+      '@BIZ_COMPONENTS': path.resolve('injection/repositories/NS_biz_components'),
     },
     prettier: {
       switch: true,

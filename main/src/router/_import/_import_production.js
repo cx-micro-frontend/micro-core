@@ -16,7 +16,7 @@ module.exports = (childPath, fatherPath) => {
   else {
     // console.log('引入 外部  模块路由')
     // console.log(`../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`)
-    return () => import( `../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`);
+    return () => import( `../../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`);
   }
 
 };
