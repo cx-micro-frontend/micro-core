@@ -46,7 +46,7 @@
         console.log(index, item);
         // const router = item.menuMenusubname;
         // //目前暂时所有模块页面都要以及菜单下，点击跳转路由
-        // if (router === "dashboard") return;
+        // if (router === "overview") return;
         // this.$router.push(item.menuMenusubname)
       },
 
