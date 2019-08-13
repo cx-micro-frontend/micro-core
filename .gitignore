@@ -1,12 +1,12 @@
 ##############################
 ## Folders                  ##
 ##############################
-node_modules/
-dist/
-main/injection/
-/static/
-/lib/
 .idea/
+node_modules/
+/static/
+/dist/
+/lib/
+/injection/
 
 
 ##############################
