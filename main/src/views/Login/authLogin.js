@@ -1,12 +1,16 @@
+import {mapGetters} from 'vuex';
 import {getUrlParam} from '../../utils/library/urlhandle';
 
 
 export default {
   data() {
     return {
-      initPath: '/dashboard',
+      initPath: '/overview',
       submitLoading: false,
     };
+  },
+  computed: {
+    ...mapGetters(['initRouter']),
   },
   methods: {
     //登录
@@ -79,6 +83,10 @@ export default {
       this.$store.dispatch('generateSideBar').then(list => {
         console.log('获取到菜单栏数据');
         console.log(list);
+        console.log(this.initRouter);
+
+        this.initPath = this.initRouter;
+
         this.$router.push({path: list.length > 0 ? this.initPath : '/404'});
       });
     },
