@@ -1,4 +1,5 @@
 import {
+  getPrecincts,
   treeDataFetch,
   treeDataFetchDetail,
   treeChildrenDataFetch,
@@ -9,11 +10,20 @@ import keyRefer from '../keyRefer';
 export default {
  methods: {
    /**
+    * 获取所有项目
+    */
+   getPrecincts(){
+     return getPrecincts().then((res)=>{
+       this.precinctList = res.resultData || [];
+       this.precinctList.length > 0  && (this.precinctModel = this.precinctList[0].precinctId);
+     });
+   },
+
+   /**
     * 获取树数据
     * @param isFirst
     */
    getTreeData(isFirst = false) {
-
      this.treeloading = true;//loading
 
      //first request : change searchConditions
@@ -26,11 +36,11 @@ export default {
            type: 'text',
          },
        ];
-       this.searchConditions.houseId = 0;
+       this.searchConditions.houseId = this.precinctModel || '';
      }
 
 
-     treeDataFetch({ houseId: 0 }).then((res)=>{
+     treeDataFetch({ houseId: '114325' }).then((res)=>{
        this.treeData = transformKeyFun([res.resultData], keyRefer, { lazy: true, expandedIndex: 1});
        //设定默认选中项
        this.treeModel = {};

@@ -15,6 +15,14 @@
       @clear="houseTreeChange"
     ></el-autocomplete>
 
+    <!--树选择-->
+    <div class="select-container">
+      <ns-select
+        :clearable="false"
+        :options="precinctList" v-model="precinctModel" :keyRefer="keyRefer" @change="changeProject"
+      ></ns-select>
+    </div>
+
     <!--树主体-->
     <ns-tree
       class="tree-container fl"
@@ -181,6 +189,14 @@
         treeData: [],
         treeloading: false,
         treeModel: [],
+        //选中项目
+        precinctList: [],
+
+        keyRefer: {
+          'label': 'precinctName',
+          'value': 'precinctId'
+        },
+        precinctModel: '',
 
         searchQuery: '',//搜索
         searchTip: '搜索数据中...',
@@ -233,6 +249,10 @@
         this.searchConditions.pageNum = 1;
         this.historyTreeModel = node;
         this.$emit('tree-item-click', node);
+      },
+
+      changeProject(){
+        this.getTreeData(true);
       },
 
       /**
@@ -322,7 +342,9 @@
     },
 
     created() {
-      this.getTreeData(true);
+      this.getPrecincts().then(()=>{
+        this.getTreeData(true);
+      });
     }
   };
 </script>

@@ -97,3 +97,12 @@ export function getSearchData(query) {
   });
 }
 
+export function getPrecincts(query) {
+  //树数据-模糊查询后树数据变化
+  dataFilter(query);
+  return fetch({
+    url: 'owner/owner-rest/get-precincts',
+    method: 'get',
+    params: query,
+  });
+}

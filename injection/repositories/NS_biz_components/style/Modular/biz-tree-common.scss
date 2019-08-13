@@ -19,6 +19,16 @@ $tree__base--gap: 12px;
     margin-top: -($tree__base--gap + 32px);
   }
 
+  .select-container{
+    display: flex;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    .ns-select{
+      flex: 1;
+      margin-right: 4px;
+    }
+  }
+
   //树主体内容
   .tree-container {
     width: 100%;
