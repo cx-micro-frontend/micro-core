@@ -23,13 +23,13 @@ export default [
   {
     path: '',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'dashboard',
+    redirect: '/overview',
+    name: 'overview',
     children: [
       {
-        path: 'dashboard',
-        component: () => import('../../views/dashboard/dashboard'),
-        meta: {auth: true, key: 'dashboard'},
+        path: 'overview',
+        component: () => import('../../views/Overview/Overview'),
+        meta: {auth: true, key: 'overview'},
         name: '主页',
       },
     ],
