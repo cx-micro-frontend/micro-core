@@ -95,11 +95,11 @@
   </div>
 </template>
 <script>
-  import Mixin from "@NEAP/mainstay/mixins";
+  import Mixin from "@NEAP/mixins";
   import {tableDataFetch} from '../../../service/Common/table-fetch';
   import {downloadExcel} from '../../../service/Common/download';
   import {deleteRole} from '../../../service/System/systemRolePermission';
-  import * as store from '@NEAP/mainstay/utils/nsQuery/nsStore';
+  import * as store from '@NEAP/utils/nsQuery/nsStore';
   import roleStaticData from './roleStaticData';
   import rolePersonStaticData from './rolePersonStaticData';
   import {mapGetters} from 'vuex';

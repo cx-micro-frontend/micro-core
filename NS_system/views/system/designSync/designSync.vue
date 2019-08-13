@@ -43,8 +43,8 @@
   </div>
 </template>
 <script>
-  import Mixin from "@NEAP/mainstay/mixins";
-  import utils from '@NEAP/mainstay/utils';
+  import Mixin from "@NEAP/mixins";
+  import utils from '@NEAP/utils';
   import {designSync_search, designSync_submit} from '../../../service/System/designSync';
 
   export default {

@@ -1,5 +1,5 @@
-import { dataFilter } from '@NEAP/mainstay/utils/fetch/fetchDataType';
-import fetch from '@NEAP/mainstay/utils/fetch/fetch';
+import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
+import fetch from '@NEAP/utils/fetch/fetch';
 
 export function gridDataDelete(query) {
   //删除

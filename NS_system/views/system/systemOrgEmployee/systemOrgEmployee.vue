@@ -67,7 +67,7 @@
   </div>
 </template>
 <script>
-  import Mixin from "@NEAP/mainstay/mixins";
+  import Mixin from "@NEAP/mixins";
   import {tableDataFetch} from '../../../service/Common/table-fetch';
   import {gridDataDelete, gridDataOperate} from '../../../service/System/systemOrgEmployee';
   import employeeStaticData from './employeeStaticData';

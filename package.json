@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
     "clone": "node ./clone/index.js",
     "clean": "rimraf ./dist/",
-    "compiler": "node ./build/exec-compile.js",
+    "compiler": "node ./build/e./src/commonxec-compile.js",
     "package": "node ./build/build.js"
   },
   "license": "ISC",

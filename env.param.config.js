@@ -28,7 +28,7 @@ module.exports = {
   base: {
     mockPath: './mock',
 
-    JSBabelInclude: ['main', 'config', 'mock', 'NS_system', 'node_modules/neap-test1'],
+    JSBabelInclude: ['main', 'injection', 'config', 'NS_system', 'node_modules/neap-test1'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
