@@ -10,7 +10,7 @@ module.exports = {
     },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
-    staticPath: './static',
+    staticPath: './main/static',
     port: 8001,
     useEslint: false,
   },
@@ -22,7 +22,7 @@ module.exports = {
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
     templateSPA: './index.html',
-    staticPath: './static',
+    staticPath: './main/static',
     useEslint: false,
   },
   base: {
