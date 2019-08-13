@@ -72,8 +72,12 @@ export const multipleEnterpriseLogin = (query) => {
 /**
  *  单点登录
  * @param query
+ * {
+ *  token:xxxx
+ *  srcSys:saas / v8
+ * }
  */
-export const ssoLogin = (query)=> {
+export const ssoLogin = (query) => {
   dataFilter(query);
   // fetch out
   return fetch({
