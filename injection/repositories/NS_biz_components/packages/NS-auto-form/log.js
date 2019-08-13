@@ -1,5 +1,5 @@
 import utils from '@NEAP/utils';
-import $store from '@NEAP/store/';
+import $store from '@NEAP/store';
 
 class Loginfo {
   /**
