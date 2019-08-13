@@ -8,10 +8,10 @@
     "command": "node_modules\\cx-builder\\lib\\entry.sh root",
     "command:mac": "node_modules/cx-builder/lib/entry.sh root",
     "build": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
+    "build:lib": "node ./build/build.js",
     "clone": "node ./clone/index.js",
     "clean": "rimraf ./dist/",
-    "compiler": "node ./build/e./src/commonxec-compile.js",
-    "package": "node ./build/build.js"
+    "compiler": "node ./build/e./src/commonxec-compile.js"
   },
   "license": "ISC",
   "dependencies": {
