@@ -26,7 +26,7 @@ module.exports = {
     useEslint: false,
   },
   base: {
-    mockPath: './mock',
+    mockPath: './main/mock',
 
     JSBabelInclude: ['main', 'injection', 'config', 'NS_system', 'node_modules/neap-test1'],
     alias: {
@@ -59,7 +59,7 @@ module.exports = {
   tools: {
     publish: {
       prescript: [
-        // 'npm run build'
+        'npm run build:lib'
       ]
     }
   }
