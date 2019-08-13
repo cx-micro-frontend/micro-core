@@ -3,13 +3,13 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import Vue from 'vue';
-import App from './mainstay/App.vue';
+import App from './src/App.vue';
 
-import router from './mainstay/router/index';
-import './mainstay/router/promission/hook';
+import router from './src/router/index';
+import './src/router/promission/hook';
 
-import store from './mainstay/store/index';
-import './mainstay/UI/index';
+import store from './src/store/index';
+import './src/UI/index';
 
 
 

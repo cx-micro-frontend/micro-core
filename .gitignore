@@ -5,6 +5,7 @@ node_modules/
 dist/
 main/injection/
 /static/
+/lib/
 .idea/
 
 

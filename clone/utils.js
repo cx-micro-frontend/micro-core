@@ -10,7 +10,7 @@ const packageJson = require(path.resolve('./package.json'));
  * @returns {{injection: string, entrance: string, core: string, repositorie: string, repositorie_tmp: string}}
  */
 exports.inJectPath = () => {
-  const injection = path.resolve(__dirname, '../main/injection');
+  const injection = path.resolve(__dirname, '../injection');
   return {
 
     root: path.resolve(),//root

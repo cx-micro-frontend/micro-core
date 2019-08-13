@@ -46,6 +46,11 @@ module.exports = {
         '.eslintrc.js',
       ],
     },
+
+    micro: {
+      useMicroFrontend: true,
+      modules: injection.modules,
+    }
   },
 
   prod_injection: {

@@ -20,6 +20,7 @@ const service = axios.create({
   headers: requestHead.state.base,
 });
 
+
 service.interceptors.request.use(
   config => {
     solveGetCache(config);
