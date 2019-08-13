@@ -10,30 +10,69 @@ import {storageHandle} from '../../../../utils/storage/storage';
  * @returns {*}
  * @private
  */
-let _filtersidelist = (list) => {
+let _filtersidelist = list => {
   list.forEach(item => {
     item.hide = item[keyRefer['hide']] === '1';
-    item.childMenus && item.childMenus.forEach(item => {
-      item.hide = item.syStatus === '1';
+    item[keyRefer['childMenus']] && item[keyRefer['childMenus']].forEach(item => {
+      item.hide = item[keyRefer['hide']]  === '1';
     });
   });
   return list;
 };
 
+/**
+ * get init router path
+ * @param list
+ * @returns {string}
+ * @private
+ */
+let _getInitRouter = (list = []) => {
+  let initpath = '';
+
+  function getInitRouter(list) {
+    if (list && list.length) {
+      initpath = initpath + '/' + list[0][keyRefer['menuRouter']];
+      const children = list[0][keyRefer['childMenus']];
+      getInitRouter(children)
+    }
+  }
+
+  getInitRouter(list);
+
+  return initpath;
+
+};
+
+
+/**
+ * deCrypto side bar-information data in storage
+ * @returns {{}}
+ * @private
+ */
+function _deCryptoSideBar() {
+  return JSON.parse(storageHandle('get', 'sign_nav')) || {};
+}
+
+
 const SideBar = {
   state: {
-    sideBarList: JSON.parse(storageHandle('get', 'sign_nav')),
-    firstpath: null,
+    sideBarList: _deCryptoSideBar().sideBar,
+    initRouter: _deCryptoSideBar().initRouter,//默认初始路由地址
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
-      state.sideBarList = data.side;
-      state.firstpath = data.entry;
-      storageHandle('set', 'sign_nav', JSON.stringify(data.side));
+
+      state.sideBarList = data.sideBar;
+      state.initRouter = data.initRouter;
+
+      storageHandle('set', 'sign_nav', JSON.stringify({
+        sideBar: data.sideBar,
+        initRouter: data.initRouter
+      }));
     },
     DEL_SIDEBAR_DATA: (state, data) => {
       state.sideBarList = [];
-      state.firstpath = null;
+      state.initRouter = null;
       storageHandle('remove', 'sign_nav');
     },
   },
@@ -43,14 +82,14 @@ const SideBar = {
         sideBarService().then(res => {
           const list = res.resultData || [];
           let sideBarList = _filtersidelist(list);
+
           commit('SET_SIDEBAR_DATA', {
-            side: sideBarList,
-            entry: '',
+            sideBar: sideBarList,
+            initRouter: _getInitRouter(sideBarList),
           });
 
           //handle page info
           $store.dispatch('setPageInfoList', sideBarList);
-
 
           resolve(list);
         }).catch(err => {
