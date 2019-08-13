@@ -1,6 +1,7 @@
 const injection = require('@ROOT/config/injection/index.js');
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`);//获取组件的方法
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
+import keyRefer from '../../components/NS-biz-sidebar/sidebar-keyRefer';
 
 /**
  * get async routes
@@ -12,7 +13,7 @@ export default sideBarList => {
   let includeModules = [];
 
   const whiteList = [
-    // "dashboard",
+    // "overview",
   ];
 
 
@@ -24,8 +25,7 @@ export default sideBarList => {
     includeModules = injection.modules.filter(item => item.gate).map(item => item.repositorie)
   }
 
-  const addRouterList = sideBarList.filter(item => includeModules.indexOf(item.menuMenusubname) > -1);
-
+  const addRouterList = sideBarList.filter(item => includeModules.indexOf(item[keyRefer['menuRouter']]) > -1);
 
   return filterAsyncRouter(addRouterList);
 }
@@ -34,21 +34,21 @@ export default sideBarList => {
 function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) { //遍历后台传来的路由字符串，转换为组件对象
 
 
-  if (!asyncRouterMap || !asyncRouterMap.length) return;
+  if (!asyncRouterMap || !asyncRouterMap.length) return [];
 
 
   const normalRoute = (childRoute, fatherRoute) => {
 
     const nr = {
-      name: childRoute.menuMenuname,
-      path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute.menuMenusubname}`,
+      name: childRoute[keyRefer['menuLabel']],
+      path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute[keyRefer['menuRouter']]}`,
       component: createComponent(childRoute, fatherRoute),
-      meta: {auth: true, key: childRoute.menuMenusubname, title: childRoute.menuMenuname},
+      meta: {auth: true, key: childRoute[keyRefer['menuRouter']], title: childRoute[keyRefer['menuLabel']]},
     };
 
 
     if (hasChildRoute(childRoute)) {
-      nr.children = filterAsyncRouter(childRoute.childMenus, childRoute);
+      nr.children = filterAsyncRouter(childRoute[keyRefer['childMenus']], childRoute);
     }
     return nr
   };
@@ -61,10 +61,10 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) { //遍历�
       component: Layout,
       children: [
         {
-          name: route.menuMenuname,
-          path: route.menuMenusubname,
+          name: route[keyRefer['menuLabel']],
+          path: route[keyRefer['menuRouter']],
           component: createComponent(route),
-          meta: {auth: true, key: route.menuMenusubname, title: route.menuMenuname},
+          meta: {auth: true, key: route[keyRefer['menuRouter']], title: route[keyRefer['menuLabel']]},
         }
       ]
     };
@@ -102,13 +102,13 @@ function isModuleRoute(route) {
 }
 
 function hasChildRoute(route) {
-  return route.childMenus && route.childMenus.length
+  return route[keyRefer['childMenus']] && route[keyRefer['childMenus']].length
 }
 
 
 function createComponent(childRoute, fatherRoute = null) {
 
-  const childPath = childRoute.menuMenusubname;
+  const childPath = childRoute[keyRefer['menuRouter']];
 
   //root route
   if (isModuleRoute(childRoute)) {
@@ -116,7 +116,7 @@ function createComponent(childRoute, fatherRoute = null) {
     return Layout
   }
   else {
-    const fatherPath = fatherRoute ? `${fatherRoute.menuMenusubname}` : '';
+    const fatherPath = fatherRoute ? `${fatherRoute[keyRefer['menuRouter']]}` : '';
     // console.log('当前模板路径：');
     // const varname = `../../../NS_${fatherPath}views/${fatherPath}/${childPath}/${childPath}.vue`
     // console.log(varname);
