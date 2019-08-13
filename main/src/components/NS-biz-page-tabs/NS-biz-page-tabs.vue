@@ -18,12 +18,11 @@
     data() {
       return {
         limit: 6,
-        initRouter: '/dashboard',//默认初始路由地址（主页路由地址）
       };
     },
     props: {},
     computed: {
-      ...mapGetters(['visitedPages']),
+      ...mapGetters(['visitedPages','initRouter']),
       curPath() {
         return this.$route.path;
       },
