@@ -27,7 +27,7 @@ exports.inJectPath = () => {
 
     repositorie_tmp: `${injection}/repositories/_tmp`,//repositorie tmp
 
-    static: path.resolve(__dirname, '../main/static')//static file
+    static: path.resolve(__dirname, '../lib/static')//static file
 
   }
 };
