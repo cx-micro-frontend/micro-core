@@ -1,6 +1,10 @@
-import {getToken, setToken, removeToken} from '../../../../utils/library/auth';
-import {storageHandle} from '../../../../utils/storage/storage';
-import {oauthlogin, multipleEnterpriseLogin, ssoLogin} from '../../../../service/System/User/login';
+import { getToken, setToken, removeToken } from '../../../../utils/library/auth';
+import { storageHandle } from '../../../../utils/storage/storage';
+import {
+  oauthlogin,
+  multipleEnterpriseLogin,
+  ssoLogin,
+} from '../../../../service/System/User/login';
 import router from '../../../../router/index';
 import $store from '../../../../store/index';
 
@@ -12,7 +16,6 @@ import $store from '../../../../store/index';
 function _deCryptoUserInfo() {
   return JSON.parse(storageHandle('get', 'sign_user_info')) || {};
 }
-
 
 const User = {
   state: {
@@ -30,7 +33,6 @@ const User = {
   mutations: {
     //login and set/store - token info
     SET_LOGIN_DATA: (state, data) => {
-
       //user information by login
       state.userinfo.userId = data.userId;
       state.userinfo.userName = data.userName;
@@ -50,8 +52,7 @@ const User = {
 
     //empty
     EMPTY_STORAGE: (state, data) => {
-
-      console.log('EMPTY_STORAGE-EMPTY_STORAGE-EMPTY_STORAGE')
+      console.log('EMPTY_STORAGE-EMPTY_STORAGE-EMPTY_STORAGE');
 
       $store.dispatch('delAllVisitedPages');
       $store.dispatch('delSideBarData');
@@ -64,30 +65,31 @@ const User = {
       storageHandle('remove', 'sign_user_info');
 
       removeToken();
-
     },
   },
 
   actions: {
     //登录
-    oauthlogin({commit}, query) {
+    oauthlogin({ commit }, query) {
       return new Promise((resolve, reject) => {
-        oauthlogin(query).then(res => {
-          const userinfo = res.resultData || {};
+        oauthlogin(query)
+          .then(res => {
+            const userinfo = res.resultData || {};
 
-          commit('SET_TOKEN', userinfo.token);
+            commit('SET_TOKEN', userinfo.token);
 
-          commit('SET_LOGIN_DATA', userinfo);
+            commit('SET_LOGIN_DATA', userinfo);
 
-          resolve(res.resultData);
-        }).catch(err => {
-          reject(err);
-        });
+            resolve(res.resultData);
+          })
+          .catch(err => {
+            reject(err);
+          });
       });
     },
 
     //多户登录
-    multipleEnterpriseLogin({commit}, query) {
+    multipleEnterpriseLogin({ commit }, query) {
       return multipleEnterpriseLogin(query).then(res => {
         const userinfo = res.resultData || {};
 
@@ -97,43 +99,39 @@ const User = {
     },
 
     //单点登录
-    ssoLogin({commit}, query) {
+    ssoLogin({ commit }, query) {
       return new Promise((resolve, reject) => {
-        ssoLogin(query).then(res => {
+        ssoLogin(query)
+          .then(res => {
+            const userinfo = res.resultData || {};
 
-          const userinfo = res.resultData || {};
+            commit('SET_TOKEN', userinfo.token);
+            commit('SET_LOGIN_DATA', userinfo);
 
-          commit('SET_TOKEN', userinfo.token);
-          commit('SET_LOGIN_DATA', userinfo);
-
-          resolve(userinfo);
-
-        }).catch(err => {
+            resolve(userinfo);
+          })
+          .catch(err => {
             reject(err);
-          }
-        );
-      })
+          });
+      });
     },
 
     //更新用户信息
-    updateLoginData({commit}, query) {
+    updateLoginData({ commit }, query) {
       commit('SET_LOGIN_DATA', query);
     },
 
-
     //清除本地存储信息
-    emptyStorage({commit}) {
+    emptyStorage({ commit }) {
       return commit('EMPTY_STORAGE');
     },
 
     //退出
-    logOut({commit}) {
-
+    logOut({ commit }) {
       $store.dispatch('emptyStorage');
 
-      router.push({path: '/front/login'});
+      router.push({ path: '/front/login' });
     },
-
   },
 };
 
