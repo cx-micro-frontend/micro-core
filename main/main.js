@@ -11,15 +11,12 @@ import './src/router/promission/hook';
 import store from './src/store/index';
 import './src/UI/index';
 
-
-
 Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
   router,
   store,
-  components: {App},
+  components: { App },
   template: '<App/>',
 });
-
