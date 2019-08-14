@@ -4,23 +4,23 @@ const injection = require('./config/injection/index');
 
 module.exports = {
   dev: {
-    entry: {app: './main/main.js'},
+    entry: { app: './main/main.js' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
     port: 8001,
     useEslint: false,
-    prescript: ['npm run clone']
+    prescript: ['npm run clone'],
   },
   prod: {
-    entry: {app: './main/main.js'},
+    entry: { app: './main/main.js' },
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
     templateSPA: './index.html',
     staticPath: './main/static',
     useEslint: false,
-    prescript: ['npm run clone']
+    prescript: ['npm run clone'],
   },
   base: {
     mockPath: './main/mock',
@@ -36,7 +36,7 @@ module.exports = {
     prettier: {
       switch: true,
       files: [
-        'mockdata/**/*.js',
+        'config/**/*.js',
         '.postcssrc.js',
         'env.config.js',
         'env.param.config.js',
@@ -47,7 +47,7 @@ module.exports = {
     micro: {
       useMicroFrontend: true,
       modules: injection.modules,
-    }
+    },
   },
 
   prod_injection: {
@@ -55,7 +55,7 @@ module.exports = {
   },
   tools: {
     publish: {
-      prescript: ['npm run build:lib']
-    }
-  }
+      prescript: ['npm run build:lib'],
+    },
+  },
 };
