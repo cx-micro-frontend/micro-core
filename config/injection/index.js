@@ -31,5 +31,5 @@ const _BasicInjection = [
 ];
 
 module.exports = {
-  modules: [..._BasicInjection, ...VarInjection]
+  modules: [..._BasicInjection, ...VarInjection],
 };
