@@ -31,18 +31,18 @@ const SearchConditions = {
     },
 
     EMPTY_SEARCH_CONDITIONS: (state, ID) => {
-      console.log(ID, 'empty')
-      if(state.conditions[ID]){
-        delete state.conditions[ID]
+      console.log(ID, 'empty');
+      if (state.conditions[ID]) {
+        delete state.conditions[ID];
       }
     },
   },
   actions: {
-    setSearchConditions({commit}, ID) {
+    setSearchConditions({ commit }, ID) {
       commit('SET_SEARCG_CONDITIONS', ID);
     },
-    emptySearchConditions({commit}, ID) {
-      commit('EMPTY_SEARCH_CONDITIONS',ID);
+    emptySearchConditions({ commit }, ID) {
+      commit('EMPTY_SEARCH_CONDITIONS', ID);
     },
   },
 };

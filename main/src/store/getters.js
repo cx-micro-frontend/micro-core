@@ -9,12 +9,12 @@ const getters = {
   themeColor: state => state.User.userinfo.themeColor,
 
   //cover painting operatorInfo
-  operatorDesc: state => state.CoverPainting.operatorInfo.operatorDesc,//登录页左侧标题（sign in box)
-  operatorName: state => state.CoverPainting.operatorInfo.operatorName,//document title / head title
-  operatorLogo: state => state.CoverPainting.operatorInfo.operatorLogo,//登录页图标
-  operatorPicture: state => state.CoverPainting.operatorInfo.operatorPicture,//登录页左侧图片（sign in box)
-  operatorBackgroudPic: state => state.CoverPainting.operatorInfo.operatorBackgroudPic,//登录页大背景图
-  operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic,//布局-head 左侧Logo图片
+  operatorDesc: state => state.CoverPainting.operatorInfo.operatorDesc, //登录页左侧标题（sign in box)
+  operatorName: state => state.CoverPainting.operatorInfo.operatorName, //document title / head title
+  operatorLogo: state => state.CoverPainting.operatorInfo.operatorLogo, //登录页图标
+  operatorPicture: state => state.CoverPainting.operatorInfo.operatorPicture, //登录页左侧图片（sign in box)
+  operatorBackgroudPic: state => state.CoverPainting.operatorInfo.operatorBackgroudPic, //登录页大背景图
+  operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic, //布局-head 左侧Logo图片
 
   //layout
   initRouter: state => state.Sidebar.initRouter,
@@ -43,7 +43,5 @@ const getters = {
 
   //table
   tableHead: state => state.Table.tableHead,
-
-
 };
 export default getters;

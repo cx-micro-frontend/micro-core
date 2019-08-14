@@ -35,7 +35,7 @@ export function downloadExcel(url, parmas) {
   dataFilter(parmas);
   //fetch out
   return fetch({
-    url:  url,
+    url: url,
     method: 'post',
     data: parmas,
     responseType: 'blob',

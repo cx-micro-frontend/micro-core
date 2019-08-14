@@ -30,5 +30,5 @@ export const logStyle = type => {
  * @param format
  */
 export const formatError = format => {
-  throw('the object of the judgment must be a ' + format + ' format ，you better find it');
+  throw 'the object of the judgment must be a ' + format + ' format ，you better find it';
 };

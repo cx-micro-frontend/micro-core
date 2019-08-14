@@ -1,6 +1,5 @@
-import {storageHandle} from "../../../../utils/storage/storage";
-import asyncTransform from "../../../../router/promission/routeconver";
-
+import { storageHandle } from '../../../../utils/storage/storage';
+import asyncTransform from '../../../../router/promission/routeconver';
 
 const AsyncRouter = {
   state: {
@@ -14,12 +13,10 @@ const AsyncRouter = {
      * @constructor
      */
     SET_ASYNC_ROUTER: (state, route) => {
-
       state.asyncRouterList = asyncTransform(route);
 
       //loacal store
       storageHandle('set', 'sign_async_router', JSON.stringify(state.asyncRouterList));
-
     },
 
     REMOVE_ASYNC_ROUTER: state => {
@@ -29,20 +26,19 @@ const AsyncRouter = {
     },
   },
   actions: {
-    setAsyncRouter: ({commit}, route) => {
+    setAsyncRouter: ({ commit }, route) => {
       return new Promise((resolve, reject) => {
         if (route) {
           commit('SET_ASYNC_ROUTER', route);
           resolve();
-        }
-        else {
-          reject()
+        } else {
+          reject();
         }
       });
     },
-    removeAsyncRouter: ({commit}) => {
+    removeAsyncRouter: ({ commit }) => {
       commit('REMOVE_ASYNC_ROUTER');
-    }
+    },
   },
 };
 

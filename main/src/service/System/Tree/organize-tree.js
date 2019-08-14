@@ -1,7 +1,6 @@
 import fetch from '../../../utils/fetch/fetch';
 import { dataFilter } from '../../../utils/fetch/fetchDataType';
 
-
 export function companyAdd(query) {
   //公司-新增
   dataFilter(query);

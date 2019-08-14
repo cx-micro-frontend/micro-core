@@ -13,7 +13,6 @@ const Core = {
     SET_FUNCID: (state, data) => {
       state.funcId = data;
     },
-
   },
   actions: {
     setFuncId({ commit }, data) {

@@ -1,16 +1,15 @@
 import $store from '../../store/index';
-import {logStyle} from '../../utils/library/log';
-
+import { logStyle } from '../../utils/library/log';
 
 /**
  * generate route + funic information in tab-views store
  * @returns {{name, path, meta}}
  * @private
  */
-let _generateRoute = function (matched) {
+let _generateRoute = function(matched) {
   let matchedObj = matched[matched.length - 1];
   // const monitor = _monitor(matchedObj);  // object agents
-  return {name: matchedObj.name, path: matchedObj.path, meta: matchedObj.meta};
+  return { name: matchedObj.name, path: matchedObj.path, meta: matchedObj.meta };
 };
 
 /**
@@ -19,7 +18,6 @@ let _generateRoute = function (matched) {
 export const addPageTabs = matched => {
   $store.dispatch('addVisitedPages', _generateRoute(matched));
 };
-
 
 /**
  * router and page information show in console

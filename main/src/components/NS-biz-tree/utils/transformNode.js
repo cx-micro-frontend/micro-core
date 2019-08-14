@@ -16,8 +16,7 @@ const transformKeyFun = (list = [], keyRefer, config = {}) => {
 
   let refer = Object.assign(addKeyRefer, keyRefer);
 
-
-  list.forEach((item) => {
+  list.forEach(item => {
     //设置树对应的字段
     Object.keys(refer).forEach(key => {
       let hitKey = refer[key];
@@ -26,15 +25,14 @@ const transformKeyFun = (list = [], keyRefer, config = {}) => {
     });
 
     if (
-      (config.expandedIndex > 0 && !(config.lazy && item.isHasChild && item.children.length === 0))
-      || config.expandAllNodes
+      (config.expandedIndex > 0 &&
+        !(config.lazy && item.isHasChild && item.children.length === 0)) ||
+      config.expandAllNodes
     ) {
       vue.set(item, 'expanded', true);
-    }
-    else {
+    } else {
       vue.set(item, 'expanded', false);
     }
-
 
     if (item.children && item.children.length > 0) {
       if (config.expandedIndex > -1) config.expandedIndex--;
@@ -48,6 +46,5 @@ const transformKeyFun = (list = [], keyRefer, config = {}) => {
   });
   return list;
 };
-
 
 export default transformKeyFun;

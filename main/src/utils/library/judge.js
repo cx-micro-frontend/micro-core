@@ -1,4 +1,4 @@
-import {formatError} from "./log.js";
+import { formatError } from './log.js';
 
 /**
  * judge type accurate
@@ -62,7 +62,7 @@ export const isXType = (type, value) => {
  * @param value
  * @returns {boolean}
  */
-export const isEmpty = (value) => {
+export const isEmpty = value => {
   return (
     (Array.isArray(value) && value.length === 0) ||
     (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0)
@@ -148,8 +148,7 @@ export const isEqual = (a, b, aStack, bStack) => {
       if (Object.keys(b).length !== length) return false;
       while (length--) {
         key = keys[length];
-        if (!(b.hasOwnProperty(key) && isEqual(a[key], b[key], aStack, bStack)))
-          return false;
+        if (!(b.hasOwnProperty(key) && isEqual(a[key], b[key], aStack, bStack))) return false;
       }
     }
     aStack.pop();
@@ -159,7 +158,6 @@ export const isEqual = (a, b, aStack, bStack) => {
 
   return _deepEq(a, b, aStack, bStack);
 };
-
 
 /**
  * judge array contain another Obj
@@ -186,7 +184,7 @@ export const arrContainObj = (arr, obj) => {
  * @param variableName
  * @returns {boolean}
  */
-export const isExitsVariable = (variableName) => {
+export const isExitsVariable = variableName => {
   try {
     const type = judgeType(variableName);
     if (type === 'undefined' || type === 'null') {
@@ -194,8 +192,7 @@ export const isExitsVariable = (variableName) => {
     } else {
       return true;
     }
-  } catch (e) {
-  }
+  } catch (e) {}
   return false;
 };
 

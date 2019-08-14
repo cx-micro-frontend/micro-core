@@ -1,4 +1,4 @@
-import {getToken} from "../../../../utils/library/auth";
+import { getToken } from '../../../../utils/library/auth';
 
 const requestHead = {
   state: {
@@ -7,7 +7,7 @@ const requestHead = {
       appClientType: 'pc',
       'Set-Cookie': getToken(),
     },
-  }
+  },
 };
 
 export default requestHead;

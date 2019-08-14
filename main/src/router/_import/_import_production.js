@@ -11,12 +11,13 @@ module.exports = (childPath, fatherPath) => {
   if (isOwner) {
     // console.log('引入 自有  模块路由');
     // console.log(`@ROOT/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`)
-    return () => import( `@ROOT/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`);
-  }
-  else {
+    return () => import(`@ROOT/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`);
+  } else {
     // console.log('引入 外部  模块路由')
     // console.log(`../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`)
-    return () => import( `../../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`);
+    return () =>
+      import(
+        `../../../../injection/repositories/${moduleName}views/${fatherPath}/${childPath}/${childPath}.vue`
+      );
   }
-
 };

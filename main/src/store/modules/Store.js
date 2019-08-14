@@ -13,8 +13,8 @@ const cookieKey = 'StoreKey';
 function _deCryptoCookie() {
   return Cookies.get(cookieName)
     ? JSON.parse(
-      CryptoJS.AES.decrypt(Cookies.get(cookieName), cookieKey).toString(CryptoJS.enc.Utf8),
-    )
+        CryptoJS.AES.decrypt(Cookies.get(cookieName), cookieKey).toString(CryptoJS.enc.Utf8)
+      )
     : {};
 }
 
@@ -123,7 +123,6 @@ const Stroe = {
       }
       return;
     },
-
 
     //2、request params
     REQUESTPARAMS: (state, data) => {

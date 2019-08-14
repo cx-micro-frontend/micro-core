@@ -23,7 +23,6 @@ export function gridDataOperate(query) {
   });
 }
 
-
 /**
  * 员工角色数据-获取
  */
@@ -67,4 +66,3 @@ export function submitFormData(query) {
     data: query,
   });
 }
-

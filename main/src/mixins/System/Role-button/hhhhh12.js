@@ -1,8 +1,6 @@
 const a = {
-  'isActived': {
+  isActived: {
     '0': ['gridStopBtn'],
     '1': ['gridEnableBtn'],
   },
 };
-
-

@@ -1,5 +1,4 @@
-import {judgeType, isXType} from './judge'
-
+import { judgeType, isXType } from './judge';
 
 /**
  * check range (校验特定范围内是否所有表单元素都通过验证)
@@ -12,7 +11,6 @@ export const checkRange = (range, target) => {
   const allError = document.querySelectorAll(t);
   return !allError.length > 0;
 };
-
 
 /**
  * replace the specified string by something in father string
@@ -30,13 +28,12 @@ export const delsubstr = (str, substr, replace) => {
   }
 };
 
-
 /**
  * deep clone
  * @param data
  * @returns {{}}
  */
-export const deepClone = (data) => {
+export const deepClone = data => {
   let obj = {};
   let originQueue = [data];
   let copyQueue = [obj];
@@ -70,7 +67,6 @@ export const deepClone = (data) => {
   }
   return obj;
 };
-
 
 /**
  * invert

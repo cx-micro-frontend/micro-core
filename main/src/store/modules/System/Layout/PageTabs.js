@@ -1,4 +1,4 @@
-import {storageHandle} from '../../../../utils/storage/storage';
+import { storageHandle } from '../../../../utils/storage/storage';
 
 const PageTabs = {
   state: {
@@ -16,7 +16,7 @@ const PageTabs = {
       //if this tabs-view is not existed, push this in list
       if (!exist) {
         state.visitedPages = state.visitedPages.filter(item => item.path !== view.path);
-        state.visitedPages.push({name: view.name, path: view.path, meta: view.meta});
+        state.visitedPages.push({ name: view.name, path: view.path, meta: view.meta });
       }
       storageHandle('set', 'sign_visited_pages', JSON.stringify(state.visitedPages));
     },
@@ -44,13 +44,13 @@ const PageTabs = {
     },
   },
   actions: {
-    addVisitedPages: ({commit}, view) => {
+    addVisitedPages: ({ commit }, view) => {
       commit('ADD_VISITED_VIEWS', view);
     },
-    delVisitedPages: ({commit}, view) => {
+    delVisitedPages: ({ commit }, view) => {
       commit('DEL_VISITED_VIEWS', view);
     },
-    delAllVisitedPages: ({commit}) => {
+    delAllVisitedPages: ({ commit }) => {
       commit('DEL_ALL_VISITED_VIEWS');
     },
   },

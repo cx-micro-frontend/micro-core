@@ -1,4 +1,4 @@
-import {encryptBase64} from '../../utils/library/crypto';
+import { encryptBase64 } from '../../utils/library/crypto';
 
 export default {
   data() {
@@ -12,5 +12,4 @@ export default {
       return encryptBase64(this.loginForm.password, this.cryptoKey);
     },
   },
-
-}
+};

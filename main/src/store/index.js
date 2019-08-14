@@ -12,7 +12,6 @@ import RoleButton from './modules/System/Role/RoleButton';
 import RequestHead from './modules/System/Common/RequestHeader';
 import Table from './modules/System/Table/Table';
 
-
 //User
 import User from './modules/System/User/User';
 
@@ -26,8 +25,7 @@ import AsyncRouter from './modules/System/Router/AsyncRouter';
 //Tree
 import OrganizeTree from './modules/System/Tree/Organize-tree';
 
-
-import entrance from '../../../injection/entrance/entrance_core'
+import entrance from '../../../injection/entrance/entrance_core';
 
 import AutoForm from './modules/AutoForm';
 
@@ -35,35 +33,33 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store(
   Object.assign({}, entrance.model, {
-      modules: {
+    modules: {
+      //core
+      Core,
+      FrameMode,
 
-        //core
-        Core,
-        FrameMode,
+      //common
+      Search: SearchConditions,
+      RoleButton,
+      RequestHead,
+      Table,
 
-        //common
-        Search: SearchConditions,
-        RoleButton,
-        RequestHead,
-        Table,
+      //User
+      User,
 
-        //User
-        User,
+      //Layout
+      CoverPainting,
+      Sidebar,
+      PageInfo,
+      PageTabs,
+      AsyncRouter,
 
-        //Layout
-        CoverPainting,
-        Sidebar,
-        PageInfo,
-        PageTabs,
-        AsyncRouter,
+      //Tree
+      OrganizeTree,
 
-        //Tree
-        OrganizeTree,
-
-        AutoForm
-      },
-      getters,
-    }
-  )
+      AutoForm,
+    },
+    getters,
+  })
 );
 export default store;

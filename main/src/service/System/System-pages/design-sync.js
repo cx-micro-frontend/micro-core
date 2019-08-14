@@ -2,7 +2,6 @@ import fetch from '../../../utils/fetch/fetch';
 import { dataFilter } from '../../../utils/fetch/fetchDataType';
 import qs from 'querystring';
 
-
 /**
  * formSynchro_search
  * @param query

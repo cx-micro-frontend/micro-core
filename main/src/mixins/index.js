@@ -4,9 +4,8 @@ import searchConditions from './System/Search-conditions';
 
 // import table from './system/Table';
 
-import entrance from '../../../injection/entrance/entrance_core'
+import entrance from '../../../injection/entrance/entrance_core';
 
 export default {
-  mixins: [funcId, roleButton, searchConditions,  ...entrance.mixins],
+  mixins: [funcId, roleButton, searchConditions, ...entrance.mixins],
 };
-

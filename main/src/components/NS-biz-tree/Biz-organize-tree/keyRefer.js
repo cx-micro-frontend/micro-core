@@ -7,5 +7,5 @@ export default {
   children: 'childOrganizations',
   isHasChild: 'isHasChild',
   disabled: 'disabled',
-  expanded: 'expanded'
-}
+  expanded: 'expanded',
+};

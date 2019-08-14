@@ -6,17 +6,16 @@
  * copyright (c) 2017 Broccoli spring( gcx )
  */
 import $store from '../../store/index';
-import utils from '../index'
-
+import utils from '../index';
 
 /*============= form handle ===============*/
 // form - controller
 export const formController = {
   //set the value of the field under a specific object
-  set: function (ID, query) {
+  set: function(ID, query) {
     if (utils.judgeType(query) !== 'object') {
       throw 'The function of formController - set have two params (ID and query), ID is String format, ' +
-      'query should be Object format (not arrary), you better find it';
+        'query should be Object format (not arrary), you better find it';
     }
     $store.dispatch('setFormController', {
       type: 'set',
@@ -25,7 +24,7 @@ export const formController = {
     });
   },
   //get the value of the field under a specific object
-  get: function (ID, Key) {
+  get: function(ID, Key) {
     if (!utils.isXType('string', ID) || !utils.isXType('string', ID)) {
       throw 'The function of formController - get have two params (ID and Key), ID and Key is String format, you better find it';
     }
@@ -43,7 +42,7 @@ export const formController = {
     return getVal;
   },
   //delete one info
-  delete: function (ID) {
+  delete: function(ID) {
     if (utils.judgeType(ID) !== 'string') {
       throw 'The function of formController - delete only one params (ID), ID is String format, you better find it';
     }
@@ -53,22 +52,21 @@ export const formController = {
     });
   },
   //empty all
-  empty: function () {
+  empty: function() {
     $store.dispatch('setFormController', {
       type: 'empty',
     });
   },
 };
 
-
 /*============= help ===============*/
 //vue compontents store
 export const vm = {
-  set: function (ID, query) {
-    $store.dispatch('vmhandle', {type: 'set', ID: ID, query: query});
+  set: function(ID, query) {
+    $store.dispatch('vmhandle', { type: 'set', ID: ID, query: query });
   },
   //counter add
-  get: function (ID) {
+  get: function(ID) {
     let getVal = null;
     const vmList = $store.state.Store.vm;
     if (vmList.length > 0) {
@@ -81,12 +79,11 @@ export const vm = {
     return getVal;
   },
   //counter reduce
-  delete: function (ID) {
-    $store.dispatch('vmhandle', {type: 'delete', ID: ID});
+  delete: function(ID) {
+    $store.dispatch('vmhandle', { type: 'delete', ID: ID });
   },
   //return to zero
-  empty: function () {
-    $store.dispatch('vmhandle', {type: 'empty'});
+  empty: function() {
+    $store.dispatch('vmhandle', { type: 'empty' });
   },
 };
-

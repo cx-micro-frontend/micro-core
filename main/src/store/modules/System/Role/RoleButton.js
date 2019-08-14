@@ -1,6 +1,5 @@
 import { roleButtonList } from '../../../../service/System/Role/role-button';
 
-
 const RoleButton = {
   state: {
     roleButtonList: [],
@@ -30,10 +29,9 @@ const RoleButton = {
       state.roleButton.ACTION = td(data).filter(item => item.areaType === 'ACTION');
       state.roleButton.FORM = td(data).filter(item => item.areaType === 'FORM');
       state.roleButton.GRID = data.filter(item => item.areaType === 'GRID');
-
     },
 
-    CLEAR_ROLE_BUTTON_LIST: (state) => {
+    CLEAR_ROLE_BUTTON_LIST: state => {
       state.roleButtonList = [];
       state.roleButton.ACTION = [];
       state.roleButton.FORM = [];
@@ -57,27 +55,25 @@ const RoleButton = {
                   areaType: item.resourcebuttonType, //按钮区域类型
                   index: item.syOrderindex, //排序号
                   btnType: item.resourcebuttonBigiconcls, //按钮类型 （single / dropDown）
-                  disabled: item.resourcebuttonDisabled === '1',//是否禁用
+                  disabled: item.resourcebuttonDisabled === '1', //是否禁用
                   hide: item.resourcebuttonHidden === '1', //是否隐藏
-                  icon: item.resourcebuttonIconcls,//按钮图标
+                  icon: item.resourcebuttonIconcls, //按钮图标
                 };
               });
-            }
-            catch (e) {
+            } catch (e) {
               btnlist = [];
             }
             commit('SET_ROLE_BUTTON_LIST', btnlist);
             resolve(btnlist);
-          }).catch(err => {
+          })
+          .catch(err => {
             btnlist = [];
             commit('SET_ROLE_BUTTON_LIST', btnlist);
             reject(err);
-          },
-        );
+          });
       });
     },
   },
-
 };
 
 export default RoleButton;

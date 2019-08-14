@@ -48,10 +48,10 @@ const AutoForm = {
             }
           });
           if (!isHasAutoFormInfo) {
-            controllerList.push({[ID]: query});
+            controllerList.push({ [ID]: query });
           }
         } else {
-          controllerList.push({[ID]: query});
+          controllerList.push({ [ID]: query });
         }
       }
       if (type === 'delete') {
@@ -72,7 +72,7 @@ const AutoForm = {
       switch (type) {
         case 'register':
           if (counterList.length === 0) {
-            counterList.push({[ID]: data.initNum});
+            counterList.push({ [ID]: data.initNum });
             break;
           } else {
             let sw = false;
@@ -82,7 +82,7 @@ const AutoForm = {
               }
             }
             if (sw) {
-              counterList.push({[ID]: data.initNum});
+              counterList.push({ [ID]: data.initNum });
             }
             break;
           }
@@ -111,7 +111,7 @@ const AutoForm = {
           }
           break;
         default:
-          throw("the auto-from counter methods is error, only 'register', 'add', 'reduce'，and 'empty' methods，find it.");
+          throw "the auto-from counter methods is error, only 'register', 'add', 'reduce'，and 'empty' methods，find it.";
       }
     },
     INITMODELDATASTORE: (state, data) => {
@@ -122,19 +122,19 @@ const AutoForm = {
     },
   },
   actions: {
-    setCustomCheck({commit}, data) {
+    setCustomCheck({ commit }, data) {
       commit('SETCUSTOMCHECK', data);
     },
-    setFormController({commit}, data) {
+    setFormController({ commit }, data) {
       commit('SETFORMCONTROLLER', data);
     },
-    autoFormCounter({commit}, data) {
+    autoFormCounter({ commit }, data) {
       commit('AUTOFORMCOUNTER', data);
     },
-    initModelDataStore({commit}, data) {
+    initModelDataStore({ commit }, data) {
       commit('INITMODELDATASTORE', data);
     },
-    setRequestFormId({commit}, data) {
+    setRequestFormId({ commit }, data) {
       commit('SETREQUESTFORMID', data);
     },
   },

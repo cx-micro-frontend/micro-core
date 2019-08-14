@@ -7,5 +7,4 @@ export default config => {
       _: new Date().getTime(),
     });
   }
-
-}
+};

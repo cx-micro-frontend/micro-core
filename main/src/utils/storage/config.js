@@ -1,5 +1,4 @@
 export default {
-
   sign_user_info: {
     name: '用户信息',
     storagekey: 'user_info',
@@ -46,5 +45,4 @@ export default {
     storageLife: '',
     partition: true,
   },
-
-}
+};

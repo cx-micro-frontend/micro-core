@@ -1,12 +1,12 @@
 import fetch from '../../../utils/fetch/fetch';
 import qs from 'querystring';
-import {dataFilter} from '../../../utils/fetch/fetchDataType';
+import { dataFilter } from '../../../utils/fetch/fetchDataType';
 
 /**
  * get operator info(登录页面图片等信息)
  * @param query
  */
-export const getOperatorInfo = (query) => {
+export const getOperatorInfo = query => {
   // Filter data
   dataFilter(query);
   // fetch out
@@ -16,7 +16,6 @@ export const getOperatorInfo = (query) => {
     params: query,
   });
 };
-
 
 /**
  * login 单户
@@ -29,7 +28,7 @@ export const oauthlogin = query => {
     method: 'post',
     data: query,
     transformRequest: [
-      function (data) {
+      function(data) {
         data = qs.stringify(data);
         return data;
       },
@@ -37,12 +36,11 @@ export const oauthlogin = query => {
   });
 };
 
-
 /**
  * isMultipleEnterprise 检测是否是多企业账号
  * @param query
  */
-export const isMultipleEnterprise = (query) => {
+export const isMultipleEnterprise = query => {
   // Filter data
   dataFilter(query);
   // fetch out
@@ -53,12 +51,11 @@ export const isMultipleEnterprise = (query) => {
   });
 };
 
-
 /**
  *  多户登录
  * @param query
  */
-export const multipleEnterpriseLogin = (query) => {
+export const multipleEnterpriseLogin = query => {
   dataFilter(query);
   // fetch out
   return fetch({
@@ -77,7 +74,7 @@ export const multipleEnterpriseLogin = (query) => {
  *  srcSys:saas / v8
  * }
  */
-export const ssoLogin = (query) => {
+export const ssoLogin = query => {
   dataFilter(query);
   // fetch out
   return fetch({
@@ -87,7 +84,6 @@ export const ssoLogin = (query) => {
     params: query,
   });
 };
-
 
 /**
  * user logout
@@ -103,13 +99,12 @@ export const logout = () => {
 /**
  * user logout
  */
-export const updateThemeColor = (query) => {
+export const updateThemeColor = query => {
   //fetch out
   dataFilter(query);
   return fetch({
     url: '/system/user/update-themeColor',
     method: 'get',
-    params: query
+    params: query,
   });
 };
-

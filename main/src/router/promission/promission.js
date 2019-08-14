@@ -1,7 +1,7 @@
-import router from "../index";
-import $store from "../../store/index";
-import {routerAndpageInfo} from "./auxiliary";
-import whiteList from "../whiteList";
+import router from '../index';
+import $store from '../../store/index';
+import { routerAndpageInfo } from './auxiliary';
+import whiteList from '../whiteList';
 
 let addRouFlag = false;
 
@@ -16,16 +16,15 @@ let addRouFlag = false;
  * @param next
  */
 export default (to, from, next) => {
-
   const pageinfoList = $store.state.PageInfo.pageinfoList;
 
   //get current page infomation data
-  const currentPageInfo = pageinfoList.find((item) => {
-    return item.path === to.path;
-  }) || {};
+  const currentPageInfo =
+    pageinfoList.find(item => {
+      return item.path === to.path;
+    }) || {};
 
   $store.dispatch('setCurrentPage', currentPageInfo).then(info => {
-
     //store current funcId from current page info
     $store.dispatch('setFuncId', info.funcId);
 
@@ -35,19 +34,17 @@ export default (to, from, next) => {
     console.log('获取异步路由列表：', $store.state.AsyncRouter.asyncRouterList);
     console.log(pageinfoList);
 
-
     if (!addRouFlag) {
       // console.log('设置动态路由');
 
       //handle async router
-      $store.dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
+      $store
+        .dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
         .then(_ => {
-
           const asyncRouterList = $store.state.AsyncRouter.asyncRouterList;
           // console.log('获取异步路由列表：', asyncRouterList);
 
           if (asyncRouterList && asyncRouterList.length) {
-
             console.log('开始  addRoutes ');
 
             router.addRoutes(asyncRouterList);
@@ -57,19 +54,15 @@ export default (to, from, next) => {
 
             addRouFlag = true;
 
-            next({...to, replace: true});// hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-
+            next({ ...to, replace: true }); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+          } else {
+            asyncRouterErrorToJump(to, from, next);
           }
-          else {
-            asyncRouterErrorToJump(to, from, next)
-          }
-
         })
         .catch(_ => {
-          asyncRouterErrorToJump(to, from, next)
+          asyncRouterErrorToJump(to, from, next);
         });
-    }
-    else {
+    } else {
       /*
        * 1、after add async router, in error state:
        * (1)、jump path is not in async router list and not in white list
@@ -79,18 +72,19 @@ export default (to, from, next) => {
        * (1)、in sso login => '/sso/404'
        * (2)、in mormal login => '/front/login'
        */
-      if (pageinfoList.some(info => info.path === to.path) || whiteList.auth.indexOf(to.path) !== -1) {
+      if (
+        pageinfoList.some(info => info.path === to.path) ||
+        whiteList.auth.indexOf(to.path) !== -1
+      ) {
         //router and page information show in console
         routerAndpageInfo(to);
         next();
-      }
-      else {
-        asyncRouterErrorToJump(to, from, next)
+      } else {
+        asyncRouterErrorToJump(to, from, next);
       }
     }
   });
-}
-
+};
 
 /**
  * jump when async router is error
@@ -99,8 +93,7 @@ export default (to, from, next) => {
  * @param next
  */
 function asyncRouterErrorToJump(to, from, next) {
-
   const loginMode = $store.state.FrameMode.loginMode;
   console.log('异步路由列表配置项与路由跳转路径不匹配不存在');
-  next({path: loginMode === 'sso' ? '/sso/404' : '/front/login'});
+  next({ path: loginMode === 'sso' ? '/sso/404' : '/front/login' });
 }

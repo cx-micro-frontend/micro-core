@@ -3,4 +3,3 @@ import User from './modules/user';
 // import System from './modules/system';
 
 export default [...Public, ...User];
-

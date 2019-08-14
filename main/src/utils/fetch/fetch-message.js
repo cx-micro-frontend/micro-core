@@ -1,4 +1,4 @@
-import {Message} from 'element-ui'
+import { Message } from 'element-ui';
 
 export const elMessage = (msg, onClose) => {
   Message({
@@ -6,6 +6,6 @@ export const elMessage = (msg, onClose) => {
     message: msg,
     type: 'error',
     duration: 2000,
-    onClose: onClose
-  })
+    onClose: onClose,
+  });
 };

@@ -3,7 +3,6 @@ const libraryFiles = require.context('./library', true, /\.js/);
 let modules = {};
 
 libraryFiles.keys().forEach(key => {
-
   //file modules object
   const m = libraryFiles(key);
 
@@ -16,19 +15,17 @@ libraryFiles.keys().forEach(key => {
     if (e !== 'default') {
       if (typeof m[e] === 'function') {
         modules[e] = m[e];
-        return s
-      }
-      else s[e] = m[e]
+        return s;
+      } else s[e] = m[e];
     }
-    return s
+    return s;
   }, m.default || {});
 
   if (methodItem && typeof methodItem === 'function') {
-
-    const fileName = key.replace(/(.*\/)*([^.]+).*/ig, "$2");
+    const fileName = key.replace(/(.*\/)*([^.]+).*/gi, '$2');
 
     if (modules.hasOwnProperty('fileName')) {
-      throw ('entry script modules has the same method')
+      throw 'entry script modules has the same method';
     }
 
     modules[fileName] = methodItem;

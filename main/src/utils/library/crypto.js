@@ -9,12 +9,12 @@ import CryptoJS from 'crypto-js';
  */
 export const setCrypto = (val, key) => {
   if (!CryptoJS) {
-    throw('CryptoJS is undefined, you need to load it');
+    throw 'CryptoJS is undefined, you need to load it';
   }
   if (typeof val === 'string' && typeof key === 'string') {
     return CryptoJS.AES.encrypt(val, key);
   } else {
-    throw('The data format of encrypted content and key should be string，find it.');
+    throw 'The data format of encrypted content and key should be string，find it.';
   }
 };
 
@@ -26,12 +26,12 @@ export const setCrypto = (val, key) => {
  */
 export const deCrypto = (val, key) => {
   if (!CryptoJS) {
-    throw('CryptoJS is undefined, you need to load it');
+    throw 'CryptoJS is undefined, you need to load it';
   }
   if (typeof key === 'string') {
     return CryptoJS.AES.decrypt(val, key).toString(CryptoJS.enc.Utf8);
   } else {
-    throw('The decrypt-key should be string，find it.');
+    throw 'The decrypt-key should be string，find it.';
   }
 };
 
@@ -57,11 +57,10 @@ export const cryptoCookie = (name, val, key, time) => {
 export const deCryptoCookie = (cookieName, cookieKey) => {
   return Cookies.get(cookieName)
     ? JSON.parse(
-      CryptoJS.AES.decrypt(Cookies.get(cookieName), cookieKey).toString(CryptoJS.enc.Utf8),
-    )
+        CryptoJS.AES.decrypt(Cookies.get(cookieName), cookieKey).toString(CryptoJS.enc.Utf8)
+      )
     : {};
 };
-
 
 /**
  * encrypt by Base64
@@ -71,7 +70,7 @@ export const deCryptoCookie = (cookieName, cookieKey) => {
  */
 export const encryptBase64 = (val, key) => {
   if (!CryptoJS) {
-    throw('CryptoJS is undefined, you need to load it');
+    throw 'CryptoJS is undefined, you need to load it';
   }
   if (typeof val === 'string' && typeof key === 'string') {
     if (key) {
@@ -88,7 +87,7 @@ export const encryptBase64 = (val, key) => {
     });
     return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
   } else {
-    throw('The data format of encrypted content and key should be string，find it.');
+    throw 'The data format of encrypted content and key should be string，find it.';
   }
 };
 
@@ -100,7 +99,7 @@ export const encryptBase64 = (val, key) => {
  */
 export const deCryptoBase64 = (val, key) => {
   if (!CryptoJS) {
-    throw('CryptoJS is undefined, you need to load it');
+    throw 'CryptoJS is undefined, you need to load it';
   }
   if (typeof key === 'string') {
     if (key) {
@@ -119,6 +118,6 @@ export const deCryptoBase64 = (val, key) => {
     const decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
     return decryptedStr.toString();
   } else {
-    throw('The decrypt-key should be string，find it.');
+    throw 'The decrypt-key should be string，find it.';
   }
 };

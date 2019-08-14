@@ -1,6 +1,5 @@
 // import {listColumnService} from '../../../../service/System/TableFetch/table-fetch';
 
-
 /**
  * Store public table head data
  * in our System, we use one path / query to request head data
@@ -17,14 +16,13 @@ const Table = {
     SET_TABLE_HEAD: (state, data) => {
       state.tableHead = data;
     },
-
   },
   actions: {
-    setaTableHead({commit}, data) {
+    setaTableHead({ commit }, data) {
       commit('SET_TABLE_HEAD', data);
     },
 
-    generateTableHead({commit}, query) {
+    generateTableHead({ commit }, query) {
       // return listColumnService(query).then(res => {
       //   const head = res.resultData.columns || [];
       //   console.log('请求到的表头数据：');

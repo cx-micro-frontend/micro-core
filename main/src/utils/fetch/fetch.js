@@ -20,7 +20,6 @@ const service = axios.create({
   headers: requestHead.state.base,
 });
 
-
 service.interceptors.request.use(
   config => {
     solveGetCache(config);
@@ -28,13 +27,11 @@ service.interceptors.request.use(
   },
   error => {
     Promise.reject(error);
-  },
+  }
 );
-
 
 service.interceptors.response.use(
   response => {
-
     const headers = response.headers;
     //distribution according to content-type
     if (headers && flowTypeList.some(item => item === headers['content-type'])) {
@@ -45,11 +42,8 @@ service.interceptors.response.use(
     } else {
       const resData = response.data;
       if (resData && (resData.resultCode === '200' || resData.resultCode === 200)) {
-
         return Promise.resolve(resData);
-
       } else {
-
         elMessage(resData.resultMsg, () => service.redirect(resData.resultMsg));
 
         return Promise.reject(resData);
@@ -57,17 +51,15 @@ service.interceptors.response.use(
     }
   },
   error => {
-
     if (error.resultMsg) {
       elMessage(error.resultMsg, () => service.redirect(error.message));
-    }
-    else if (error.response.data.message === 'GENERAL') {
+    } else if (error.response.data.message === 'GENERAL') {
       elMessage('服务正在重启', () => service.redirect(error.message));
     }
 
     let errorInfo = error.data.error ? error.data.error.message : error.data;
     return Promise.reject(errorInfo);
-  },
+  }
 );
 
 //token error break
