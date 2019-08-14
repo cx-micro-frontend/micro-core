@@ -51,7 +51,7 @@
     "not ie <= 8"
   ],
   "lint-staged": {
-    "main/**/*.{js,json,jsx,less}": [
+    "main/src/**/*.{js,json,jsx,less}": [
       "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
       "git add"
     ],
