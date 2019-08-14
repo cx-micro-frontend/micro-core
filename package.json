@@ -33,7 +33,7 @@
     "xlsx": "^0.11.0"
   },
   "devDependencies": {
-    "cx-builder": "0.0.53-3",
+    "cx-builder": "0.0.53-7",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
@@ -49,5 +49,22 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "lint-staged": {
+    "main/**/*.{js,json,jsx,less}": [
+      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
+      "git add"
+    ],
+    "main/*.{js,jsx}": "eslint --ext .js",
+    "main/*.{less,scss,sass}": "stylelint --syntax less",
+    "config/**/*.{js,json}": [
+      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
