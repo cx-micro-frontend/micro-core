@@ -36,6 +36,8 @@ module.exports = {
     prettier: {
       switch: true,
       files: [
+        'main/src/**/*.js',
+        'main/mock/**/*.js',
         'config/**/*.js',
         '.postcssrc.js',
         'env.config.js',
