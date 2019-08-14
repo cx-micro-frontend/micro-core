@@ -7,5 +7,5 @@ export default {
   children: 'children',
   isHasChild: 'isHasChild',
   disabled: 'disabled',
-  expanded: 'expanded'
-}
+  expanded: 'expanded',
+};
