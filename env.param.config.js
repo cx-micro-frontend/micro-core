@@ -4,31 +4,28 @@ const injection = require('./config/injection/index');
 
 module.exports = {
   dev: {
-    entry: {
-      // app: './node_modules/@NEAP4/main.js',
-      app: './main/main.js',
-    },
+    entry: {app: './main/main.js'},
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
     port: 8001,
     useEslint: false,
+    prescript: ['npm run clone']
   },
   prod: {
-    entry: {
-      app: './main/main.js',
-    },
+    entry: {app: './main/main.js'},
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
     templateSPA: './index.html',
     staticPath: './main/static',
     useEslint: false,
+    prescript: ['npm run clone']
   },
   base: {
     mockPath: './main/mock',
 
-    JSBabelInclude: ['main', 'injection', 'config', 'NS_system', 'node_modules/neap-test1'],
+    JSBabelInclude: ['main', 'injection', 'config', 'node_modules/neap-test1'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
@@ -58,9 +55,7 @@ module.exports = {
   },
   tools: {
     publish: {
-      prescript: [
-        'npm run build:lib'
-      ]
+      prescript: ['npm run build:lib']
     }
   }
 };
