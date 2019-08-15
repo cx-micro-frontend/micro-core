@@ -19,10 +19,10 @@ export default sideBarList => {
   if (process.env.ENV_CONFIG === 'dev') {
     includeModules = [
       ...whiteList,
-      ...injection.modules.filter(item => item.gate).map(item => item.repositorie),
+      ...injection.modules.filter(item => !item.disabled).map(item => item.repositorie),
     ];
   } else {
-    includeModules = injection.modules.filter(item => item.gate).map(item => item.repositorie);
+    includeModules = injection.modules.filter(item => !item.disabled).map(item => item.repositorie);
   }
 
   const addRouterList = sideBarList.filter(
