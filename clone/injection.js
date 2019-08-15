@@ -1,6 +1,10 @@
+/**
+ * clone injection
+ */
+const path = require('path');
 const fs = require('fs');
 const utils = require('./utils');
-
+const controller = require(path.resolve(__dirname, '../config/controller/controller'));
 
 const tips = type => `/* eslint-disable */
 /*
@@ -21,23 +25,26 @@ const tips = type => `/* eslint-disable */
  */
 exports.injection_core_entry = injectList => {
 
-
   /**
    * inject write
    * @param type     store / mixins
    * @returns {*}
    */
   function injectWrite(type) {
-    return injectList.map(module => {
+    return roleInjectList(injectList, type).map(module => {
       const basePath = !module.isOwner ? '../repositories' : '@ROOT';
       const moduleName = utils.moduleRename(module.repositorie, `_${type}`);
       return `import ${moduleName} from '${basePath}/${utils.repositoryName(module)}/${type}/index.js';`;
     });
   }
 
-  const modelAssign = injectList.map(module => `modelTotal = Object.assign(modelTotal, ${utils.moduleRename(module.repositorie, '_store')});`);
 
-  const mixinsMerge = injectList.map(module => `mixinsMerge.push(${utils.moduleRename(module.repositorie, '_mixins')});`);
+  function mixinsMerge() {
+    const content = roleInjectList(injectList, 'mixins').map(module => `${utils.moduleRename(module.repositorie, '_mixins')} `);
+    return `[${content}];`;
+  }
+
+  const modelAssign = roleInjectList(injectList, 'store').map(module => `modelTotal = _deepMerge(modelTotal, ${utils.moduleRename(module.repositorie, '_store')});`);
 
   const content = `${tips('core')}
 //inject store model
@@ -45,12 +52,32 @@ ${injectWrite('store').join('\n')}
 //inject mixins
 ${injectWrite('mixins').join('\n')}
 
+function _deepMerge(obj1, obj2) {
+  let key;
+  for (key in obj2) {
+    if (obj1[key] && obj1[key].toString() === "[object Object]") {
+      _deepMerge(obj1[key], obj2[key])
+    }
+    else {
+      if (obj1.hasOwnProperty(key)) {
+        console.warn(
+          '\\n 对象', obj1,
+          '\\n 对象', obj2,
+          '\\n' + '存在 ' + key + ' 字段重复，将被替换, 请检查...')
+      }
+      obj1[key] = obj2[key];
+    }
+  }
+
+  return obj1;
+}
+
 let modelTotal = {};
-let mixinsMerge = [];
 
 //merge
 ${modelAssign.join('\n')}
-${mixinsMerge.join('\n')}
+
+const mixinsMerge = ${mixinsMerge()}
 
 
 export default {
@@ -70,7 +97,7 @@ export default {
  */
 exports.injection_ui_entry = injectList => {
 
-  const modelImportList = injectList.map(module => {
+  const modelImportList = roleInjectList(injectList, 'ui').map(module => {
 
     const basePath = !module.isOwner ? '../repositories' : '@ROOT';
 
@@ -88,3 +115,20 @@ ${modelImportList.join('\n')}
   //write and create file
   fs.writeFileSync(utils.inJectPath().ui, content);
 };
+
+
+/**
+ * Privilege Control Injection List
+ * @param injectList
+ * @param type
+ * @returns {*}
+ */
+function roleInjectList(injectList, type) {
+  const map = {
+    "store": "useVuex",
+    "mixins": "useMixins",
+    "ui": "useUI",
+  };
+  const k = map[type];
+  return injectList.filter(module => controller[module.repositorie][k])
+}
