@@ -22,6 +22,7 @@ import nsui from 'ns-form-components/lib/ns-ui.min.js';
 import 'ns-form-components/lib/index.css';
 
 import '../utils';
+
 Vue.use(nsui, {
   prefix: 'ns', //stage name
   tie: '-',
