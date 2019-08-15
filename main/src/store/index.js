@@ -27,39 +27,43 @@ import OrganizeTree from './modules/System/Tree/Organize-tree';
 
 import entrance from '../../../injection/entrance/entrance_core';
 
-import AutoForm from './modules/AutoForm';
-
 Vue.use(Vuex);
 
-const store = new Vuex.Store(
-  Object.assign({}, entrance.model, {
-    modules: {
-      //core
-      Core,
-      FrameMode,
+const store = new Vuex.Store({
+  modules: Object.assign({}, entrance.model.modules, {
+    //core
+    Core,
+    FrameMode,
 
-      //common
-      Search: SearchConditions,
-      RoleButton,
-      RequestHead,
-      Table,
+    //common
+    Search: SearchConditions,
+    RoleButton,
+    RequestHead,
+    Table,
 
-      //User
-      User,
+    //User
+    User,
 
-      //Layout
-      CoverPainting,
-      Sidebar,
-      PageInfo,
-      PageTabs,
-      AsyncRouter,
+    //Layout
+    CoverPainting,
+    Sidebar,
+    PageInfo,
+    PageTabs,
+    AsyncRouter,
 
-      //Tree
-      OrganizeTree,
+    //Tree
+    OrganizeTree,
 
-      AutoForm,
-    },
-    getters,
-  })
-);
+    // AutoForm,
+  }),
+  getters: Object.assign({}, entrance.model.getters, getters),
+});
+
+console.log(1737291873971927391);
+console.log(1737291873971927391);
+console.log(entrance.model);
+console.log(store);
+console.log(1737291873971927391);
+console.log(1737291873971927391);
+
 export default store;
