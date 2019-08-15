@@ -15,7 +15,7 @@ exports.cloneRepositories = () => {
   const config = require(path.resolve('env.param.config'));
   const modulesConfig = config.prod_injection.modules || [];
 
-  const injectmodules = modulesConfig.filter(module => !module.isOwner && module.gate);
+  const injectmodules = modulesConfig.filter(module => !module.isOwner && !module.disabled);
 
   injectmodules.forEach(module => {
 
