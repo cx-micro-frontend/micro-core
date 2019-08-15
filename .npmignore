@@ -4,7 +4,7 @@
 
 /node_modules/
 static/
-/config/
+/config/injection/
 /dist/
 /build/
 /main/
