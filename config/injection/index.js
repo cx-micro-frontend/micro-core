@@ -19,14 +19,14 @@ const _BasicInjection = [
     path: 'http://192.168.1.47:3000/Framework-frontend/micro_biz_components.git',
     repositorie: 'biz_components',
     isOwner: false,
-    gate: true,
+    disabled: false,
   },
   {
     module: '系统设置',
     path: 'http://192.168.1.47:3000/Framework-frontend/micro_system.git',
     repositorie: 'system',
     isOwner: false,
-    gate: true,
+    disabled: false,
   },
 ];
 
