@@ -1,5 +1,5 @@
 /**
- * Build npm NS_system
+ * clone index
  */
 const path = require('path');
 const fs = require('fs');
@@ -7,7 +7,7 @@ const shell = require('shelljs');
 const signale = require('signale');
 const utils = require('./utils');
 const config = require(path.resolve('env.param.config'));
-
+const controller = require(path.resolve(__dirname, '../config/controller/controller'));
 
 const clone = require('./clone');
 const injection = require('./injection');
@@ -37,17 +37,20 @@ clone.cloneRepositories();//clone buiness repositories
 const modulesConfig = config.prod_injection.modules;
 
 //get inject list
-const injectList = modulesConfig.filter(item => item.gate);
+//Depending on ( buiness inject config and neap controller config) key( disabled )
+const injectList = modulesConfig.filter(item => controller[item.repositorie] ? !item.disabled && !controller[item.repositorie].disabled : !item.disabled);
 
 
 //inject core
+signale.start('Start injecting state manager ...\n');
 injection.injection_core_entry(injectList);
 
 //inject ui
+signale.start('Start injecting UI entry ...\n');
 injection.injection_ui_entry(injectList);
 
-
 //clone static dir
+signale.start('Start copy static dir ...\n');
 clone.cloneStatic();
 
 
