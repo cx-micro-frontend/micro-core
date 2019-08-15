@@ -35,14 +35,14 @@ export default (to, from, next) => {
     console.log(pageinfoList);
 
     if (!addRouFlag) {
-      // console.log('设置动态路由');
+      console.log('设置动态路由');
 
       //handle async router
       $store
         .dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
         .then(_ => {
           const asyncRouterList = $store.state.AsyncRouter.asyncRouterList;
-          // console.log('获取异步路由列表：', asyncRouterList);
+          console.log('获取异步路由列表：', asyncRouterList);
 
           if (asyncRouterList && asyncRouterList.length) {
             console.log('开始  addRoutes ');
