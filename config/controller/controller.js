@@ -20,6 +20,13 @@ module.exports = {
     useUI: true,
     disabled: false, //整体禁用
   },
+  ['customer']: {
+    name: '客户审核',
+    useVuex: true,
+    useMixins: true,
+    useUI: true,
+    disabled: false, //整体禁用
+  },
   ['owner']: {
     name: '业户',
     useVuex: true,

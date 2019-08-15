@@ -130,5 +130,5 @@ function roleInjectList(injectList, type) {
     "ui": "useUI",
   };
   const k = map[type];
-  return injectList.filter(module => controller[module.repositorie][k])
+  return injectList.filter(module => !controller[module.repositorie] || controller[module.repositorie][k])
 }
