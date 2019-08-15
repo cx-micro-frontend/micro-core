@@ -69,6 +69,23 @@ export const deepClone = data => {
 };
 
 /**
+ * deepMerge
+ * @param obj1
+ * @param obj2
+ * @returns {*}
+ */
+export const deepMerge = (obj1, obj2) => {
+  let key;
+  for (key in obj2) {
+    obj1[key] =
+      obj1[key] && obj1[key].toString() === '[object Object]'
+        ? deepMerge(obj1[key], obj2[key])
+        : (obj1[key] = obj2[key]);
+  }
+  return obj1;
+};
+
+/**
  * invert
  * @param val
  * @returns {boolean}

@@ -41,7 +41,9 @@ service.interceptors.response.use(
       });
     } else {
       const resData = response.data;
-      if (resData && (resData.resultCode === '200' || resData.resultCode === 200)) {
+
+      const resultCodeList = ['200', 200, '0000'];
+      if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
         return Promise.resolve(resData);
       } else {
         elMessage(resData.resultMsg, () => service.redirect(resData.resultMsg));
