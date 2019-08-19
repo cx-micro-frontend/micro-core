@@ -4,7 +4,7 @@ const injection = require('./config/injection/index');
 
 module.exports = {
   dev: {
-    entry: { app: './main/main.js' },
+    entry: {app: './main/main.js'},
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
@@ -13,7 +13,7 @@ module.exports = {
     prescript: ['npm run clone'],
   },
   prod: {
-    entry: { app: './main/main.js' },
+    entry: {app: './main/main.js'},
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
@@ -59,5 +59,17 @@ module.exports = {
     publish: {
       prescript: ['npm run build:lib'],
     },
+    npmUpgradeList: [
+      {
+        module: 'ns-form-components',
+        edition: 'beta',//beta / latest
+        version: null
+      },
+      {
+        module: 'cx-builder',
+        edition: 'latest',//beta / latest
+        version: null
+      }
+    ]
   },
 };
