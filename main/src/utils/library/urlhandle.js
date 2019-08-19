@@ -12,3 +12,12 @@ export const getUrlParam = name => {
     return decodeURIComponent(r[2]);
   }
 };
+
+/**
+ * get base url
+ * config in env.config.js - root path
+ * @returns {any}
+ */
+export const getBaseURL = () => {
+  return process.env.NODE_ENV === 'development' ? process.env.IP_CONFIG : '';
+};
