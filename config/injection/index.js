@@ -21,6 +21,13 @@ const _BasicInjection = [
     isOwner: false,
     disabled: false,
   },
+  {
+    module: '系统设置',
+    path: 'http://192.168.1.47:3000/Framework-frontend/micro_system.git',
+    repositorie: 'system',
+    isOwner: false,
+    disabled: false,
+  },
 ];
 
 module.exports = {
