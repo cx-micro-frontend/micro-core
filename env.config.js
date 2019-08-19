@@ -11,6 +11,7 @@ const merge = require('webpack-merge');
 const dev_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
+  IP_CONFIG: '"http://192.168.1.20"',
   // BASE_API: '"http://192.168.1.75/api"',
   // BASE_API: '"http://192.168.1.20:7777"',
   BASE_API: '"http://192.168.1.20/api"',
