@@ -1,16 +1,19 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-36",
+  "version": "0.0.23-37",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
   "scripts": {
-    "command": "node_modules\\cx-builder\\lib\\entry.sh root",
+    "command": "node_modules\\cx-builder\\lib\\entry.sh root 2 1",
     "command:mac": "node_modules/cx-builder/lib/entry.sh root",
-    "build": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
-    "build:lib": "node ./build/build.js",
     "clone": "node ./clone/index.js",
-    "clean": "rimraf ./dist/",
+    "build:dist": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
+    "build:lib": "node ./build/build.js",
+    "clean:dist": "rimraf ./dist/",
+    "clean:lib": "rimraf ./lib/",
+    "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
+    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
     "compiler": "node ./build/e./src/commonxec-compile.js"
   },
   "license": "ISC",
@@ -25,7 +28,7 @@
     "element-ui": "^2.7.0",
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.0",
-    "ns-form-components": "0.0.63-1",
+    "ns-form-components": "^0.0.63-2",
     "vue": "2.5.21",
     "vue-router": "^3.0.7",
     "vue-template-compiler": "2.5.21",
@@ -33,7 +36,7 @@
     "xlsx": "^0.11.0"
   },
   "devDependencies": {
-    "cx-builder": "0.0.53-7",
+    "cx-builder": "^0.0.53-14",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
