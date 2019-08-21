@@ -1,5 +1,5 @@
-import {mapGetters} from 'vuex';
-import {getUrlParam} from '../../utils/library/urlhandle';
+import { mapGetters } from 'vuex';
+import { getUrlParam } from '../../utils/library/urlhandle';
 
 export default {
   data() {
@@ -50,16 +50,13 @@ export default {
       this.$store
         .dispatch('ssoLogin', query)
         .then(info => {
-          console.log('success');
-
           //set login mode
           this.$store.dispatch('setLoginMode', 'sso');
 
           this.getMenuAndJump();
         })
         .catch(_ => {
-          console.log('catch-catch-catch');
-          this.$router.push({path: '/sso/404'});
+          this.$router.push({ path: '/sso/404' });
 
           // const referPath = getUrlParam('referPath');
 
@@ -79,16 +76,15 @@ export default {
         console.log('获取到菜单栏数据');
         console.log(list);
         console.log(this.initRouter);
+
         const referRoute = getUrlParam('referRoute');
 
-        if (referRoute) {
-          this.initPath = referRoute
-        }
-        else {
-          this.initPath = this.initRouter;
-        }
+        //是否为单点，是否存在referRoute
+        // this.initPath = referRoute || this.initRouter;
 
-        this.$router.push({path: list.length > 0 ? this.initPath : '/404'});
+        this.initPath = referRoute || '/overview';
+
+        this.$router.push({ path: list.length > 0 ? this.initPath : '/404' });
       });
     },
   },
