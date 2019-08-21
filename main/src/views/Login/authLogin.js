@@ -19,7 +19,6 @@ export default {
       this.$store.dispatch('oauthlogin', query).then(
         () => {
           this.submitLoading = false;
-          this.initPath = this.initRouter;
           this.getMenuAndJump();
         },
         error => {
@@ -37,7 +36,6 @@ export default {
       this.$store
         .dispatch('multipleEnterpriseLogin', query)
         .then(res => {
-          this.initPath = this.initRouter;
           this.getMenuAndJump();
         })
         .catch(err => {
@@ -52,7 +50,6 @@ export default {
       this.$store
         .dispatch('ssoLogin', query)
         .then(info => {
-          this.initPath = getUrlParam('referRoute');
           console.log('success');
 
           //set login mode
@@ -82,6 +79,15 @@ export default {
         console.log('获取到菜单栏数据');
         console.log(list);
         console.log(this.initRouter);
+        const referRoute = getUrlParam('referRoute');
+
+        if (referRoute) {
+          this.initPath = referRoute
+        }
+        else {
+          this.initPath = this.initRouter;
+        }
+
         this.$router.push({path: list.length > 0 ? this.initPath : '/404'});
       });
     },

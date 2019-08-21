@@ -12,7 +12,7 @@ export default sideBarList => {
   let includeModules = [];
 
   const whiteList = [
-    // "overview",
+    "overview",
   ];
 
   //需要注入的路由模块
