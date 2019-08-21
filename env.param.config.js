@@ -4,7 +4,7 @@ const injection = require('./config/injection/index');
 
 module.exports = {
   dev: {
-    entry: {app: './main/main.js'},
+    entry: { app: './main/main.js' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
@@ -13,7 +13,7 @@ module.exports = {
     prescript: ['npm run clean:lib', 'npm run clone'],
   },
   prod: {
-    entry: {app: './main/main.js'},
+    entry: { app: './main/main.js' },
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
@@ -25,7 +25,13 @@ module.exports = {
   base: {
     mockPath: './main/mock',
 
-    JSBabelInclude: ['main', 'injection', 'config', 'env.param.config.js', 'node_modules/neap-test1'],
+    JSBabelInclude: [
+      'main',
+      'injection',
+      'config',
+      'env.param.config.js',
+      'node_modules/neap-test1',
+    ],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
@@ -62,14 +68,14 @@ module.exports = {
     npmUpgradeList: [
       {
         module: 'cx-builder',
-        edition: 'latest',//beta / latest
-        version: null
+        edition: 'latest', //beta / latest
+        version: null,
       },
       {
         module: 'ns-form-components',
-        edition: 'beta',//beta / latest
-        version: null
-      }
-    ]
+        edition: 'beta', //beta / latest
+        version: null,
+      },
+    ],
   },
 };
