@@ -53,5 +53,22 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "lint-staged": {
+    "main/src/**/*.{js,json,jsx,less}": [
+      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
+      "git add"
+    ],
+    "main/*.{js,jsx}": "eslint --ext .js",
+    "main/*.{less,scss,sass}": "stylelint --syntax less",
+    "config/**/*.{js,json}": [
+      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
