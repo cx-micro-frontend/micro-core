@@ -1,11 +1,12 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-39",
+  "version": "0.0.23-42",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
   "scripts": {
-    "command": "node_modules\\cx-builder\\lib\\entry.sh root 2 1",
+    "xxx": "./test.sh",
+    "command": "node_modules\\cx-builder\\lib\\entry.sh root",
     "command:mac": "node_modules/cx-builder/lib/entry.sh root",
     "clone": "node ./clone/index.js",
     "build:dist": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
@@ -36,7 +37,7 @@
     "xlsx": "^0.11.0"
   },
   "devDependencies": {
-    "cx-builder": "^0.0.53-14",
+    "cx-builder": "^0.0.53-18",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
@@ -52,22 +53,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "lint-staged": {
-    "main/src/**/*.{js,json,jsx,less}": [
-      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
-      "git add"
-    ],
-    "main/*.{js,jsx}": "eslint --ext .js",
-    "main/*.{less,scss,sass}": "stylelint --syntax less",
-    "config/**/*.{js,json}": [
-      "node node_modules/cx-builder/lib/prettier/lint-prettier.js",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  ]
 }

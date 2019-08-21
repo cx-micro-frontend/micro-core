@@ -10,7 +10,7 @@ module.exports = {
     staticPath: './main/static',
     port: 8001,
     useEslint: false,
-    prescript: ['npm run upgrade', 'npm run clean:lib', 'npm run clone'],
+    prescript: ['npm run clean:lib', 'npm run clone'],
   },
   prod: {
     entry: {app: './main/main.js'},
@@ -20,7 +20,7 @@ module.exports = {
     templateSPA: './index.html',
     staticPath: './main/static',
     useEslint: false,
-    prescript: ['npm run upgrade', 'npm run clean:lib', 'npm run clone'],
+    prescript: ['npm run clean:lib', 'npm run clone'],
   },
   base: {
     mockPath: './main/mock',
@@ -61,13 +61,13 @@ module.exports = {
     },
     npmUpgradeList: [
       {
-        module: 'ns-form-components',
-        edition: 'beta',//beta / latest
+        module: 'cx-builder',
+        edition: 'latest',//beta / latest
         version: null
       },
       {
-        module: 'cx-builder',
-        edition: 'latest',//beta / latest
+        module: 'ns-form-components',
+        edition: 'beta',//beta / latest
         version: null
       }
     ]

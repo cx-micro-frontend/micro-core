@@ -1,5 +1,5 @@
-import { mapGetters } from 'vuex';
-import { getUrlParam } from '../../utils/library/urlhandle';
+import {mapGetters} from 'vuex';
+import {getUrlParam} from '../../utils/library/urlhandle';
 
 export default {
   data() {
@@ -19,7 +19,7 @@ export default {
       this.$store.dispatch('oauthlogin', query).then(
         () => {
           this.submitLoading = false;
-
+          this.initPath = this.initRouter;
           this.getMenuAndJump();
         },
         error => {
@@ -37,6 +37,7 @@ export default {
       this.$store
         .dispatch('multipleEnterpriseLogin', query)
         .then(res => {
+          this.initPath = this.initRouter;
           this.getMenuAndJump();
         })
         .catch(err => {
@@ -61,7 +62,7 @@ export default {
         })
         .catch(_ => {
           console.log('catch-catch-catch');
-          this.$router.push({ path: '/sso/404' });
+          this.$router.push({path: '/sso/404'});
 
           // const referPath = getUrlParam('referPath');
 
@@ -81,10 +82,7 @@ export default {
         console.log('获取到菜单栏数据');
         console.log(list);
         console.log(this.initRouter);
-
-        this.initPath = this.initRouter;
-
-        this.$router.push({ path: list.length > 0 ? this.initPath : '/404' });
+        this.$router.push({path: list.length > 0 ? this.initPath : '/404'});
       });
     },
   },
