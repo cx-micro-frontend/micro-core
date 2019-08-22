@@ -12,6 +12,7 @@ import solveGetCache from './solveGetCache';
 import requestHead from '../../store/modules/System/Common/RequestHeader';
 import { elMessage } from './fetch-message';
 import router from '../../router/index';
+import $store from '../../store';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -22,6 +23,8 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
+    config.headers['funcId'] = $store.state.Core.funcId;
+
     solveGetCache(config);
     return config;
   },
