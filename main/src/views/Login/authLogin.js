@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex';
 import { getUrlParam } from '../../utils/library/urlhandle';
+import errorPathDistribute from '../../router/promission/errorDistribute';
 
 export default {
   data() {
@@ -15,6 +16,7 @@ export default {
     //登录
     authLogin(query) {
       this.$store.dispatch('emptyStorage'); //empty
+      this.$store.dispatch('setLoginMode', 'normal'); //set login mode
 
       this.$store.dispatch('oauthlogin', query).then(
         () => {
@@ -32,6 +34,7 @@ export default {
     //多企业登录
     multipleAuthLogin(query) {
       this.$store.dispatch('emptyStorage'); //empty
+      this.$store.dispatch('setLoginMode', 'normal'); //set login mode
 
       this.$store
         .dispatch('multipleEnterpriseLogin', query)
@@ -46,17 +49,15 @@ export default {
     //单点登录
     ssoLogin(query) {
       this.$store.dispatch('emptyStorage'); //empty
+      this.$store.dispatch('setLoginMode', 'sso'); //set login mode
 
       this.$store
         .dispatch('ssoLogin', query)
         .then(info => {
-          //set login mode
-          this.$store.dispatch('setLoginMode', 'sso');
-
           this.getMenuAndJump();
         })
         .catch(_ => {
-          this.$router.push({ path: '/sso/404' });
+          this.$router.push({ path: errorPathDistribute('error_login') });
 
           // const referPath = getUrlParam('referPath');
 
@@ -84,7 +85,7 @@ export default {
 
         this.initPath = referRoute || '/overview';
 
-        this.$router.push({ path: list.length > 0 ? this.initPath : '/404' });
+        this.$router.push({ path: this.initPath });
       });
     },
   },
