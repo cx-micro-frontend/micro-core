@@ -3,6 +3,7 @@ import { getToken } from '../../utils/library/auth';
 import { addPageTabs } from './auxiliary';
 import whiteList from '../whiteList';
 import promissionhandle from './promission';
+import errorPathDistribute from './errorDistribute';
 
 router.beforeEach((to, from, next) => {
   // console.log('============== 路由状态 ==================');
@@ -13,16 +14,14 @@ router.beforeEach((to, from, next) => {
   if (whiteList.normal.indexOf(to.path) !== -1) {
     console.log('在免登录白名单，直接进入');
     console.log(to.path);
+
     next();
   } else {
     if (getToken()) {
-      console.log('有 token ！！！');
-
       promissionhandle(to, from, next);
     } else {
-      console.log('无 token ！！！');
-
-      next(`/front/login`);
+      //错误路由分发
+      next(errorPathDistribute('error_token'));
     }
   }
 });
