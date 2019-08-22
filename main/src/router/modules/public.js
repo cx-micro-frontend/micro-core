@@ -16,7 +16,23 @@ export default [
   {
     path: '/sso/404',
     name: 'sso-404',
-    component: () => import('../../views/Public/404/sso-404'),
+    component: () => import('../../views/Public/sso/sso-404'),
+    meta: { auth: false },
+  },
+
+  //sso - 用户错误
+  {
+    path: '/sso/usererror',
+    name: 'sso-usererror',
+    component: () => import('../../views/Public/sso/sso-usererror'),
+    meta: { auth: false },
+  },
+
+  //sso - 路由权限错误
+  {
+    path: '/sso/norouterole',
+    name: 'sso-norouterole',
+    component: () => import('../../views/Public/sso/sso-noRouteRole'),
     meta: { auth: false },
   },
 
