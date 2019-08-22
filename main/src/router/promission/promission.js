@@ -2,6 +2,7 @@ import router from '../index';
 import $store from '../../store/index';
 import { routerAndpageInfo } from './auxiliary';
 import whiteList from '../whiteList';
+import errorPathDistribute from './errorDistribute';
 
 let addRouFlag = false;
 
@@ -56,11 +57,13 @@ export default (to, from, next) => {
 
             next({ ...to, replace: true }); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           } else {
-            asyncRouterErrorToJump(to, from, next);
+            //错误路由分发
+            next(errorPathDistribute('error_route_role'));
           }
         })
         .catch(_ => {
-          asyncRouterErrorToJump(to, from, next);
+          //错误路由分发
+          next(errorPathDistribute('error_route_role'));
         });
     } else {
       /*
@@ -68,9 +71,7 @@ export default (to, from, next) => {
        * (1)、jump path is not in async router list and not in white list
        * (2)、other error
        *
-       * 2、in those state，back to special page：
-       * (1)、in sso login => '/sso/404'
-       * (2)、in mormal login => '/front/login'
+       * 2、in those state，back to special page base on error path distribute：
        */
       if (
         pageinfoList.some(info => info.path === to.path) ||
@@ -80,20 +81,9 @@ export default (to, from, next) => {
         routerAndpageInfo(to);
         next();
       } else {
-        asyncRouterErrorToJump(to, from, next);
+        //错误路由分发
+        next(errorPathDistribute('error_route_role'));
       }
     }
   });
 };
-
-/**
- * jump when async router is error
- * @param to
- * @param from
- * @param next
- */
-function asyncRouterErrorToJump(to, from, next) {
-  const loginMode = $store.state.FrameMode.loginMode;
-  console.log('异步路由列表配置项与路由跳转路径不匹配不存在');
-  next({ path: loginMode === 'sso' ? '/sso/404' : '/front/login' });
-}
