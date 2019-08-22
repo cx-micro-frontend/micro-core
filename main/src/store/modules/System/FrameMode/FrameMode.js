@@ -7,7 +7,7 @@
  */
 const FrameMode = {
   state: {
-    loginMode: 'normal',
+    loginMode: 'sso', //目前mode 只直接在路由跳转中做区分
     isInIframe: false,
   },
   mutations: {
