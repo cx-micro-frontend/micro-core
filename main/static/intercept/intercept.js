@@ -21,7 +21,7 @@ var intercept = (function() {
     styleTag.setAttribute('id', mark);
     styleTag.setAttribute('title', mark);
     block.setAttribute('class', cls);
-    img.setAttribute('src', './NS_system/assets/img/browser/warning.png');
+    img.setAttribute('src', './warning.png');
 
     styleTag.innerText =
       '.warning-block img {position: absolute;width: 460px;height: 300px;top: 50%;left: 50%;margin: -150px 0 0 -230px';
