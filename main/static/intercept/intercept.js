@@ -30,11 +30,6 @@ var intercept = (function () {
 
     if (userAgent.indexOf('Trident') > -1) {
       info.browser = 'IE';
-      console.log(12312312312);
-      console.log(12312312312);
-      console.log(userAgent);
-      console.log(12312312312);
-      console.log(12312312312);
       info.ieVer =
         userAgent.indexOf('rv:11.0') > -1
           ? 11
@@ -47,8 +42,10 @@ var intercept = (function () {
 
   intercept.prototype.check = function () {
     var browserInfo = this.getBrowserInfo();
-    alert(browserInfo.browser);
-    alert(browserInfo.ieVer);
+
+    // alert(browserInfo.browser);
+    // alert(browserInfo.ieVer);
+
     switch (browserInfo.browser) {
       case 'IE':
         if (browserInfo.ieVer < 9) {
