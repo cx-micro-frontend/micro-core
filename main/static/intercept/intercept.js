@@ -12,21 +12,14 @@ var intercept = (function() {
    * @private
    */
   function _createWarning(cls) {
-    var styleTag = document.createElement('style');
     var block = document.createElement('div');
     var img = document.createElement('img');
 
-    var mark = 'browser_warning_style';
-
-    styleTag.setAttribute('id', mark);
-    styleTag.setAttribute('title', mark);
     block.setAttribute('class', cls);
-    img.setAttribute('src', './warning.png');
+    img.setAttribute('src', './static/intercept/warning.png');
+    img.style.cssText =
+      'position: absolute;width: 460px;height: 300px;top: 50%;left: 50%;margin: -150px 0 0 -230px';
 
-    styleTag.innerText =
-      '.warning-block img {position: absolute;width: 460px;height: 300px;top: 50%;left: 50%;margin: -150px 0 0 -230px';
-
-    document.head.appendChild(styleTag);
     block.appendChild(img);
     document.body.appendChild(block);
   }
@@ -59,6 +52,7 @@ var intercept = (function() {
         }
         break;
       case 'Chrome':
+        // _createWarning(this.mark);
         break;
       default:
         break;

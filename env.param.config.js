@@ -44,6 +44,7 @@ module.exports = {
       files: [
         'main/src/**/*.js',
         'main/mock/**/*.js',
+        'main/static/**/*.js',
         'config/**/*.js',
         '.postcssrc.js',
         'env.config.js',
