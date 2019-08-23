@@ -16,7 +16,7 @@ var intercept = (function() {
     var block = document.createElement('div');
     var img = document.createElement('img');
 
-    var mark = `browser_warning_style`;
+    var mark = 'browser_warning_style';
 
     styleTag.setAttribute('id', mark);
     styleTag.setAttribute('title', mark);
