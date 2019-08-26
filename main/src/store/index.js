@@ -59,11 +59,4 @@ const store = new Vuex.Store({
   getters: Object.assign({}, entrance.model.getters, getters),
 });
 
-console.log(1737291873971927391);
-console.log(1737291873971927391);
-console.log(entrance.model);
-console.log(store);
-console.log(1737291873971927391);
-console.log(1737291873971927391);
-
 export default store;
