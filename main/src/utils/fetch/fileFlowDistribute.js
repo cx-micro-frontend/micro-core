@@ -25,6 +25,7 @@ export const fileFlowDistribute = (response, callback) => {
  */
 export const flowTypeList = [
   'application/octet-stream;charset=UTF-8',
+  'application/vnd.ms-excel;charset=UTF-8',
   'application/x-msdownload',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8',
 ];

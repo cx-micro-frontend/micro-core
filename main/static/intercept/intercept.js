@@ -2,7 +2,7 @@
  * intercept in IE < 9
  * @type {intercept}
  */
-var intercept = (function () {
+var intercept = (function() {
   function intercept() {
     this.mark = 'warning-block';
   }
@@ -24,7 +24,7 @@ var intercept = (function () {
     document.body.appendChild(block);
   }
 
-  intercept.prototype.getBrowserInfo = function () {
+  intercept.prototype.getBrowserInfo = function() {
     var userAgent = navigator.userAgent;
     var info = {};
 
@@ -40,7 +40,7 @@ var intercept = (function () {
     return info;
   };
 
-  intercept.prototype.check = function () {
+  intercept.prototype.check = function() {
     var browserInfo = this.getBrowserInfo();
 
     // alert(browserInfo.browser);
