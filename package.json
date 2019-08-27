@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-66",
+  "version": "0.0.23-67",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -30,7 +30,7 @@
     "element-ui": "^2.7.0",
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.0",
-    "ns-form-components": "^0.0.63-10",
+    "ns-form-components": "^0.0.63-11",
     "vue": "2.5.21",
     "vue-router": "^3.0.7",
     "vue-template-compiler": "2.5.21",

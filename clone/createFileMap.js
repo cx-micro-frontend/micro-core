@@ -55,8 +55,8 @@ exports.createRouteFiles = () => {
 
   const tips = type => `/* eslint-disable */
 /*
- * ${type} inject by env.param.config config
- * you can load you business ${type === 'core' ? 'model / mixins / others in your file entry' : 'style / components / plugins in your ui entry'}
+ * create route files map by repositories
+ * use to judge what route has component page, if 
  * created: ${utils.sysdate()}.
  * version: ${utils.version()}.
  * author: Broccoli spring( 高仓雄 - gcx )
