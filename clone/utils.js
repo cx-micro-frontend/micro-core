@@ -19,15 +19,19 @@ exports.inJectPath = () => {
 
     entrance: `${injection}/entrance`,//injection entrance dir
 
+    repositorie: `${injection}/repositories`,//repositorie dir
+
+    config: `${injection}/config`,//config dir
+
     core: `${injection}/entrance/entrance_core.js`,//core js-file for injection entrance
 
     ui: `${injection}/entrance/entrance_ui.js`,//core js-file for injection entrance
 
-    repositorie: `${injection}/repositories`,//repositorie dir
-
     repositorie_tmp: `${injection}/repositories/_tmp`,//repositorie tmp
 
-    static: path.resolve(__dirname, '../lib/static')//static file
+    routefiles: `${injection}/config/routefiles.js`,//route files
+
+    static: path.resolve(__dirname, '../lib/static'),//static file
 
   }
 };

@@ -6,13 +6,13 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
-  {
-    module: '业户',
-    path: 'http://192.168.1.89:3000/gaocangxiong/micro_check-house.git',
-    repositorie: 'owner',
-    isOwner: false,
-    disabled: false,
-  },
+  // {
+  //   module: '业户',
+  //   path: 'http://192.168.1.89:3000/gaocangxiong/micro_check-house.git',
+  //   repositorie: 'owner',
+  //   isOwner: false,
+  //   disabled: false,
+  // },
   {
     module: '细部检查',
     path: 'http://192.168.1.89:3000/gaocangxiong/micro_check-house.git',
