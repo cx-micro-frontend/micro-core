@@ -9,8 +9,8 @@ export default {
     '/front/login-station',
     '/404',
     '/sso/404',
-    '/sso/usererror',
-    '/sso/norouterole',
+    '/error',
+    '/sso/error',
   ],
   //需要权限登录的静态路由地址
   auth: ['/overview'],
