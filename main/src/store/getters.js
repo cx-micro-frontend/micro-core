@@ -1,4 +1,11 @@
+import Router from './modules/System/Router/Router';
+
 const getters = {
+  //mode
+  loginMode: state => state.FrameMode.loginMode,
+  isInIframe: state => state.FrameMode.isInIframe,
+  routeErrorSign: state => state.Router.errorSign,
+
   //core
   funcId: state => state.Core.funcId,
 
@@ -22,9 +29,6 @@ const getters = {
   visitedPages: state => state.PageTabs.visitedPages,
 
   currentPageInfo: state => state.PageInfo.currentPageInfo,
-
-  //mode
-  isInIframe: state => state.FrameMode.isInIframe,
 
   //all search conditions (object for all page search conditions)
   searchConditions: state => state.Search.conditions,
