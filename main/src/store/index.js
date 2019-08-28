@@ -20,7 +20,7 @@ import CoverPainting from './modules/System/Layout/CoverPainting';
 import Sidebar from './modules/System/Layout/Sidebar';
 import PageInfo from './modules/System/Common/PageInfo';
 import PageTabs from './modules/System/Layout/PageTabs';
-import AsyncRouter from './modules/System/Router/AsyncRouter';
+import Router from './modules/System/Router/Router';
 
 //Tree
 import OrganizeTree from './modules/System/Tree/Organize-tree';
@@ -49,7 +49,7 @@ const store = new Vuex.Store({
     Sidebar,
     PageInfo,
     PageTabs,
-    AsyncRouter,
+    Router,
 
     //Tree
     OrganizeTree,
