@@ -2,6 +2,7 @@ import router from '../index';
 import $store from '../../store/index';
 import { routerAndpageInfo } from './auxiliary';
 import whiteList from '../whiteList';
+import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
 
 let addRouFlag = false;
@@ -32,7 +33,7 @@ export default (to, from, next) => {
     console.log('=============================');
     console.log(`${from.path}  ${to.path}`);
     console.log(`addRouFlag 状态：${addRouFlag}`);
-    console.log('获取异步路由列表：', $store.state.AsyncRouter.asyncRouterList);
+    console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
     console.log(pageinfoList);
 
     if (!addRouFlag) {
@@ -42,7 +43,7 @@ export default (to, from, next) => {
       $store
         .dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
         .then(_ => {
-          const asyncRouterList = $store.state.AsyncRouter.asyncRouterList;
+          const asyncRouterList = $store.state.Router.asyncRouterList;
           console.log('获取异步路由列表：', asyncRouterList);
 
           if (asyncRouterList && asyncRouterList.length) {
@@ -66,20 +67,27 @@ export default (to, from, next) => {
           next(errorPathDistribute('error_route_role'));
         });
     } else {
+      const isInAuthwhiteList = whiteList.auth.indexOf(to.path) !== -1;
       /*
        * 1、after add async router, in error state:
        * (1)、jump path is not in async router list and not in white list
        * (2)、other error
        *
-       * 2、in those state，back to special page base on error path distribute：
+       * 2、in those state，back to special page base on error path distribute
        */
-      if (
-        pageinfoList.some(info => info.path === to.path) ||
-        whiteList.auth.indexOf(to.path) !== -1
-      ) {
-        //router and page information show in console
-        routerAndpageInfo(to);
-        next();
+      if (pageinfoList.some(info => info.path === to.path) || isInAuthwhiteList) {
+        /*
+         * 1、judge whether the current routing contains the corresponding template page,
+         * If not in route files list or not in in white list, back to special page base on error path distribute
+         */
+        if ((routefiles && routefiles.some(route => route === to.path)) || isInAuthwhiteList) {
+          //router and page information show in console
+          routerAndpageInfo(to);
+          next();
+        } else {
+          //错误路由分发
+          next(errorPathDistribute('error_no_pages'));
+        }
       } else {
         //错误路由分发
         next(errorPathDistribute('error_route_role'));
