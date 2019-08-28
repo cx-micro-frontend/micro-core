@@ -83,6 +83,7 @@ export default (to, from, next) => {
         if ((routefiles && routefiles.some(route => route === to.path)) || isInAuthwhiteList) {
           //router and page information show in console
           routerAndpageInfo(to);
+          $store.dispatch('removeErrorSign'); //remove
           next();
         } else {
           //错误路由分发
