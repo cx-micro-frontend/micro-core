@@ -45,4 +45,12 @@ export default {
     storageLife: '',
     partition: true,
   },
+
+  sign_error_sign: {
+    name: '路由钩子错误跳转标识',
+    storagekey: 'error_sign',
+    storageMethod: 'sessionStorage',
+    storageLife: '',
+    partition: false,
+  },
 };
