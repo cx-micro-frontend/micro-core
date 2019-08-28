@@ -1,10 +1,11 @@
 <template>
-  <div class="pic-404">
+  <div class="error-page page-404">
     <img :src="img_404" alt="404"/>
     <div class="error-text">
       <p>您要访问的页面走丢啦～</p>
     </div>
     <ns-button class="error-btn" type="primary" @click="goBack">点击返回</ns-button>
+    <ns-button class="error-btn" type="primary" @click="goLogin">返回登录</ns-button>
   </div>
 </template>
 
@@ -17,15 +18,17 @@
         img_404,
       };
     },
-
     methods: {
       goBack() {
         history.back();
       },
+      goLogin() {
+        this.$router.push('front/login');
+      }
     },
   };
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "404";
+  @import "../error-page";
 </style>
