@@ -1,7 +1,9 @@
+/**
+ * Create route files map by repositories
+ */
 const path = require('path');
 const fs = require('fs');
 const join = require('path').join;
-const shell = require('shelljs');
 const utils = require('./utils');
 
 const getRouteFiles = () => {
@@ -32,12 +34,23 @@ const getRouteFiles = () => {
         let stat1 = fs.statSync(route1_Path);//一级模块信息
         if (stat1.isDirectory() === true) {
 
+          routeFiles.push({
+            sign: `===== ${firstDir} module routing allowance list =====`
+          });
+
           //循环二级页面目录
           fs.readdirSync(route1_Path).forEach(secondDir => {
             let route2_Path = join(route1_Path, secondDir);//二级模块路径
             let stat2 = fs.statSync(route2_Path);//二级模块信息
             if (stat2.isDirectory() === true) {
-              routeFiles.push(`/${firstDir}/${secondDir}`);//拼接注入数组队列
+
+              /*
+               * 判断该二级模块下是否存在同名.vue文件
+               * 例如： （firstModule => secondModule => secondModule.vue)
+               */
+              if (fs.existsSync(join(route2_Path, `${secondDir}.vue`))) {
+                routeFiles.push(`/${firstDir}/${secondDir}`);//拼接注入数组队列
+              }
             }
           });
         }
@@ -55,8 +68,8 @@ exports.createRouteFiles = () => {
 
   const tips = type => `/* eslint-disable */
 /*
- * create route files map by repositories
- * use to judge what route has component page, if 
+ * Create route files map by repositories
+ * Used to judge whether the current routing contains the corresponding template page, If not, explicit prompts are required.
  * created: ${utils.sysdate()}.
  * version: ${utils.version()}.
  * author: Broccoli spring( 高仓雄 - gcx )
@@ -70,7 +83,16 @@ exports.createRouteFiles = () => {
    * @returns {*}
    */
   function writeRouteFiles() {
-    return getRouteFiles().map(route => `  '${route}',`);
+    return getRouteFiles().map(route => {
+      if (typeof route === 'string') {
+        return `  '${route}',`;
+      }
+      else {
+        return `  
+  //${route.sign}
+  `;
+      }
+    })
   }
 
 
@@ -80,38 +102,6 @@ ${writeRouteFiles().join('\n')}
 ];
 `;
 
-
   //write and create file
   fs.writeFileSync(utils.inJectPath().routefiles, content);
 };
-
-
-//创建 config 在 injection 目录下
-utils.judgeAndMkdir(utils.inJectPath().config);
-
-this.createRouteFiles();
-
-
-// console.log(this.getRouteFiles());
-
-
-// function getJsonFiles(jsonPath){
-//   let jsonFiles = [];
-//   function findJsonFile(path){
-//     let files = fs.readdirSync(path);
-//     files.forEach(function (item, index) {
-//       let fPath = join(path,item);
-//       let stat = fs.statSync(fPath);
-//       if(stat.isDirectory() === true) {
-//         findJsonFile(fPath);
-//       }
-//       if (stat.isFile() === true) {
-//         jsonFiles.push(fPath);
-//       }
-//     });
-//   }
-//   findJsonFile(jsonPath);
-//   console.log(jsonFiles);
-// }
-
-// getJsonFiles(x);
