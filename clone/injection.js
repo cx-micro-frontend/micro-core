@@ -9,7 +9,11 @@ const controller = require(path.resolve(__dirname, '../config/controller/control
 const tips = type => `/* eslint-disable */
 /*
  * ${type} inject by env.param.config config
- * you can load you business ${type === 'core' ? 'model / mixins / others in your file entry' : 'style / components / plugins in your ui entry'}
+ * you can load you business ${
+   type === 'core'
+     ? 'model / mixins / others in your file entry'
+     : 'style / components / plugins in your ui entry'
+ }
  * created: ${utils.sysdate()}.
  * version: ${utils.version()}.
  * author: Broccoli spring( 高仓雄 - gcx )
@@ -18,13 +22,11 @@ const tips = type => `/* eslint-disable */
  */
 `;
 
-
 /**
  * build core entry
  * @param injectList
  */
 exports.injection_core_entry = injectList => {
-
   /**
    * inject write
    * @param type     store / mixins
@@ -34,17 +36,23 @@ exports.injection_core_entry = injectList => {
     return roleInjectList(injectList, type).map(module => {
       const basePath = !module.isOwner ? '../repositories' : '@ROOT';
       const moduleName = utils.moduleRename(module.repositorie, `_${type}`);
-      return `import ${moduleName} from '${basePath}/${utils.repositoryName(module)}/${type}/index.js';`;
+      return `import ${moduleName} from '${basePath}/${utils.repositoryName(
+        module
+      )}/${type}/index.js';`;
     });
   }
 
-
   function mixinsMerge() {
-    const content = roleInjectList(injectList, 'mixins').map(module => `${utils.moduleRename(module.repositorie, '_mixins')} `);
+    const content = roleInjectList(injectList, 'mixins').map(
+      module => `${utils.moduleRename(module.repositorie, '_mixins')} `
+    );
     return `[${content}];`;
   }
 
-  const modelAssign = roleInjectList(injectList, 'store').map(module => `modelTotal = _deepMerge(modelTotal, ${utils.moduleRename(module.repositorie, '_store')});`);
+  const modelAssign = roleInjectList(injectList, 'store').map(
+    module =>
+      `modelTotal = _deepMerge(modelTotal, ${utils.moduleRename(module.repositorie, '_store')});`
+  );
 
   const content = `${tips('core')}
 //inject store model
@@ -90,21 +98,16 @@ export default {
   fs.writeFileSync(utils.inJectPath().core, content);
 };
 
-
 /**
  * build ui entry
  * @param injectList
  */
 exports.injection_ui_entry = injectList => {
-
   const modelImportList = roleInjectList(injectList, 'ui').map(module => {
-
     const basePath = !module.isOwner ? '../repositories' : '@ROOT';
 
-    return `import '${basePath}/${utils.repositoryName(module)}/UI/index.js';`
-
+    return `import '${basePath}/${utils.repositoryName(module)}/UI/index.js';`;
   });
-
 
   const content = `${tips('ui')}
   
@@ -116,7 +119,6 @@ ${modelImportList.join('\n')}
   fs.writeFileSync(utils.inJectPath().ui, content);
 };
 
-
 /**
  * Privilege Control Injection List
  * @param injectList
@@ -125,10 +127,12 @@ ${modelImportList.join('\n')}
  */
 function roleInjectList(injectList, type) {
   const map = {
-    "store": "useVuex",
-    "mixins": "useMixins",
-    "ui": "useUI",
+    store: 'useVuex',
+    mixins: 'useMixins',
+    ui: 'useUI',
   };
   const k = map[type];
-  return injectList.filter(module => !controller[module.repositorie] || controller[module.repositorie][k])
+  return injectList.filter(
+    module => !controller[module.repositorie] || controller[module.repositorie][k]
+  );
 }
