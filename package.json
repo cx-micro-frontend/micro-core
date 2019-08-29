@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-69",
+  "version": "0.0.23-70",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -16,7 +16,7 @@
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
     "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
     "compiler": "node ./build/commonxec-compile.js",
-    "ggg": "node ./clone/createFileMap.js"
+    "ggg": "node ./clone/filesMap.js"
   },
   "license": "ISC",
   "dependencies": {
