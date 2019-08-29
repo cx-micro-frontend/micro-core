@@ -10,6 +10,16 @@ export const setToken = token => {
   return Cookies.set(TokenKey, token);
 };
 
-export const removeToken = () => {
-  return Cookies.remove(TokenKey);
+export const removeToken = (edgetoken = ['token', '__jwt_token_']) => {
+  /*
+   * only remove app-token
+   */
+  if (!edgetoken || edgetoken.length) Cookies.remove(TokenKey);
+
+  /*
+   * remove app-token and other token
+   */
+  [TokenKey, ...edgetoken].forEach(key => {
+    Cookies.remove(key);
+  });
 };

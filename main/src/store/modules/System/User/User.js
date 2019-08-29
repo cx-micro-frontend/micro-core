@@ -61,10 +61,11 @@ const User = {
       $store.dispatch('removeAsyncRouter');
 
       $store.dispatch('emptyOrganizeTreeStore');
+      $store.dispatch('removeErrorSign'); //remove route hook error sign
 
-      storageHandle('remove', 'sign_user_info');
+      storageHandle('remove', 'sign_user_info'); //remove user information
 
-      removeToken();
+      removeToken(); //remove token
     },
   },
 
