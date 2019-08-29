@@ -45,6 +45,7 @@ module.exports = {
         'main/src/**/*.js',
         'main/mock/**/*.js',
         'main/static/intercept/**/*.js',
+        'clone/**/*.js',
         'config/**/*.js',
         '.postcssrc.js',
         'env.config.js',
