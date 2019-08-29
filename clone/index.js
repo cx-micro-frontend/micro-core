@@ -13,13 +13,11 @@ const clone = require('./clone');
 const injection = require('./injection');
 const filesMap = require('./filesMap');
 
-
 /**
  * create dir
  * injection =>{ entrance , repositorie }
  */
 utils.judgeAndMkdir(utils.inJectPath().injection, () => {
-
   fs.mkdirSync(utils.inJectPath().entrance);
 
   fs.mkdirSync(utils.inJectPath().repositorie);
@@ -27,21 +25,21 @@ utils.judgeAndMkdir(utils.inJectPath().injection, () => {
   shell.chmod(777, utils.inJectPath().injection);
 });
 
-
 const startMsg = 'Start injecting for loading business module ....\n';
 signale.start(startMsg);
 
-
-clone.cloneRepositories();//clone buiness repositories
-
+clone.cloneRepositories(); //clone buiness repositories
 
 //modules config by env.param.config file
 const modulesConfig = config.prod_injection.modules;
 
 //get inject list
 //Depending on ( buiness inject config and neap controller config) key( disabled )
-const injectList = modulesConfig.filter(item => controller[item.repositorie] ? !item.disabled && !controller[item.repositorie].disabled : !item.disabled);
-
+const injectList = modulesConfig.filter(item =>
+  controller[item.repositorie]
+    ? !item.disabled && !controller[item.repositorie].disabled
+    : !item.disabled
+);
 
 //inject core
 signale.start('Start injecting state manager ...\n');
@@ -60,7 +58,3 @@ filesMap.createRouteFiles();
 //clone static dir
 signale.start('Start copy static dir ...\n');
 clone.cloneStatic();
-
-
-
-
