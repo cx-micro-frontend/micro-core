@@ -17,6 +17,7 @@ const dev_env = {
   BASE_API: '"http://192.168.1.20/api"',
   // BASE_API: '"http://192.168.1.78/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
+  // BASE_API: '"/api"',
 };
 
 /**
