@@ -11,6 +11,12 @@ module.exports = {
     port: 8001,
     useEslint: false,
     prescript: ['npm run clean:lib', 'npm run clone'],
+    // proxyTable: {
+    //   '/api': {
+    //     target: 'http://192.168.1.20',
+    //     changeOrigin: true
+    //   }
+    // }
   },
   prod: {
     entry: { app: './main/main.js' },
