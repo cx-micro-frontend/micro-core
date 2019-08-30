@@ -1,4 +1,5 @@
 module.exports = [
+  //o2o - community
   {
     module: '阳光城公告',
     path: 'http://192.168.1.89:3000/gaocangxiong/micro_o2o-sunshineCity.git',
@@ -6,6 +7,37 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
+  //o2o - admin
+  {
+    module: '客户审核',
+    path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+    repositorie: 'customer', //o2o-admin
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '客户审核',
+    path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+    repositorie: 'repairMessage', //o2o-admin
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '频道管理',
+    path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+    repositorie: 'message', //o2o-admin
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '系统运维',
+    path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+    repositorie: 'maintenance', //o2o-admin
+    isOwner: false,
+    disabled: false,
+  },
+
+  //checkhouse
   {
     module: '业户',
     path: 'http://192.168.1.89:3000/gaocangxiong/micro_check-house.git',
