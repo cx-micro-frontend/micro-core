@@ -10,11 +10,12 @@ import { storageHandle } from '../../../../utils/storage/storage';
  * @private
  */
 let _filtersidelist = list => {
+  const hidekey = keyRefer['hide'];
   list.forEach(item => {
-    item.hide = item[keyRefer['hide']] === '1';
+    item[hidekey] = item[hidekey] === '1';
     item[keyRefer['childMenus']] &&
       item[keyRefer['childMenus']].forEach(item => {
-        item.hide = item[keyRefer['hide']] === '1';
+        item[hidekey] = item[hidekey] === '1';
       });
   });
   return list;
