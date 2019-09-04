@@ -80,7 +80,7 @@ module.exports = {
         version: null,
       },
       {
-        module: 'ns-form-components',
+        module: 'neap-ui',
         edition: 'beta', //beta / latest
         version: null,
       },
