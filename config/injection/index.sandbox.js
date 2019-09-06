@@ -12,14 +12,14 @@ module.exports = {
     // ===== 基础 ====
     {
       module: '业务组件',
-      path: 'http://47.96.187.51:3000/Architecture/micro_biz_components.git',
+      path: 'http://127.0.0.1:3000/Architecture/micro_biz_components.git',
       repositorie: 'biz_components',
       isOwner: false,
       disabled: false,
     },
     {
       module: '系统设置',
-      path: 'http://47.96.187.51:3000/Architecture/micro_system.git',
+      path: 'http://127.0.0.1:3000/Architecture/micro_system.git',
       repositorie: 'system',
       isOwner: false,
       disabled: false,
