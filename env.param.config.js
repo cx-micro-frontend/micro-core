@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 const injection = require('./config/injection/index');
+const injection_sandbox = require('./config/injection/index.sandbox');
 
 module.exports = {
   dev: {
@@ -27,6 +28,7 @@ module.exports = {
     staticPath: './main/static',
     useEslint: false,
     prescript: ['npm run clean:lib', 'npm run clone'],
+    inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
     mockPath: './main/mock',
@@ -68,6 +70,7 @@ module.exports = {
 
   prod_injection: {
     modules: injection.modules,
+    modules_sandbox: injection_sandbox,
   },
   tools: {
     publish: {
