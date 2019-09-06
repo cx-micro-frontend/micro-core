@@ -6,14 +6,10 @@ const fs = require('fs');
 const join = require('path').join;
 const utils = require('./utils');
 
-//modules config by env.param.config file
-const config = require(path.resolve('env.param.config'));
-const modulesConfig = config.prod_injection.modules || [];
-
 const getRouteFiles = () => {
   let routeFiles = [];
 
-  modulesConfig.forEach(module => {
+  utils.modulesConfig().forEach(module => {
     if (module.disabled) return;
 
     const repositoryName = utils.repositoryName(module);
