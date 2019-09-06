@@ -38,7 +38,7 @@ exports.inJectPath = () => {
 exports.modulesConfig = () => {
   const inSandBox = config.prod.inSandbox;
   const modulesConfig = config.prod_injection.modules || [];
-  const modulesConfig_sandbox = config.prod_injection.modules_sandbox || [];
+  const modulesConfig_sandbox = config.prod_injection.modules_sandbox.modules || [];
 
   return inSandBox ? modulesConfig_sandbox : modulesConfig;
 };
