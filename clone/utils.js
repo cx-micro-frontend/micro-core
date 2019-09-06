@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
 const packageJson = require(path.resolve('./package.json'));
+//modules config by env.param.config file
+const config = require(path.resolve('env.param.config'));
 
 /**
  * inJect path
@@ -31,6 +33,15 @@ exports.inJectPath = () => {
 
     static: path.resolve(__dirname, '../lib/static'), //static file
   };
+};
+
+
+exports.modulesConfig = () => {
+  const inSandBox = config.prod.inSandbox;
+  const modulesConfig = config.prod_injection.modules || [];
+  const modulesConfig_sandbox = config.prod_injection.modules_sandbox || [];
+
+  return inSandBox ? modulesConfig_sandbox : modulesConfig;
 };
 
 exports.version = () => {
