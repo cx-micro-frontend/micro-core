@@ -31,11 +31,13 @@ clone.cloneRepositories(); //clone buiness repositories
 
 //get inject list
 //Depending on ( buiness inject config and neap controller config) key( disabled )
-const injectList = utils.modulesConfig().filter(item =>
-  controller[item.repositorie]
-    ? !item.disabled && !controller[item.repositorie].disabled
-    : !item.disabled
-);
+const injectList = utils
+  .modulesConfig()
+  .filter(item =>
+    controller[item.repositorie]
+      ? !item.disabled && !controller[item.repositorie].disabled
+      : !item.disabled
+  );
 
 //inject core
 signale.start('Start injecting state manager ...\n');
