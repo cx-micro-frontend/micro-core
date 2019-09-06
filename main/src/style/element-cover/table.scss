@@ -35,13 +35,13 @@
       }
 
       //表头排序icon样式更改
-      .caret-wrapper{
+      .caret-wrapper {
         height: 28px;
-        .sort-caret{
-          &.ascending{
+        .sort-caret {
+          &.ascending {
             top: 2px;
           }
-          &.descending{
+          &.descending {
             bottom: 4px;
           }
 
@@ -85,7 +85,7 @@
     z-index: 999;
     background-color: #fff;
     &:before {
-      background-color: transparent;
+      //background-color: transparent;
     }
     .el-table__fixed-body-wrapper {
       .el-table__body {
