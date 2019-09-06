@@ -6,7 +6,6 @@ const fs = require('fs');
 const shell = require('shelljs');
 const signale = require('signale');
 const utils = require('./utils');
-const config = require(path.resolve('env.param.config'));
 const controller = require(path.resolve(__dirname, '../config/controller/controller'));
 
 const clone = require('./clone');
@@ -30,12 +29,9 @@ signale.start(startMsg);
 
 clone.cloneRepositories(); //clone buiness repositories
 
-//modules config by env.param.config file
-const modulesConfig = config.prod_injection.modules;
-
 //get inject list
 //Depending on ( buiness inject config and neap controller config) key( disabled )
-const injectList = modulesConfig.filter(item =>
+const injectList = utils.modulesConfig().filter(item =>
   controller[item.repositorie]
     ? !item.disabled && !controller[item.repositorie].disabled
     : !item.disabled
