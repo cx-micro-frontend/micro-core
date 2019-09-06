@@ -10,11 +10,7 @@ exports.cloneRepositories = () => {
   //require clone shell script
   const shell_clone = path.resolve(__dirname, './clone.sh');
 
-  //modules config by env.param.config file
-  const config = require(path.resolve('env.param.config'));
-  const modulesConfig = config.prod_injection.modules || [];
-
-  const injectmodules = modulesConfig.filter(module => !module.isOwner && !module.disabled);
+  const injectmodules = utils.modulesConfig().filter(module => !module.isOwner && !module.disabled);
 
   injectmodules.forEach(module => {
     fs.mkdirSync(utils.inJectPath().repositorie_tmp);
