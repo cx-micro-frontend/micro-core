@@ -34,9 +34,8 @@ exports.injection_core_entry = injectList => {
    */
   function injectWrite(type) {
     return roleInjectList(injectList, type).map(module => {
-      const basePath = !module.isOwner ? '../repositories' : '@ROOT';
       const moduleName = utils.moduleRename(module.repositorie, `_${type}`);
-      return `import ${moduleName} from '${basePath}/${utils.repositoryName(
+      return `import ${moduleName} from '${getBasePath(module)}/${utils.repositoryName(
         module
       )}/${type}/index.js';`;
     });
@@ -103,11 +102,9 @@ export default {
  * @param injectList
  */
 exports.injection_ui_entry = injectList => {
-  const modelImportList = roleInjectList(injectList, 'ui').map(module => {
-    const basePath = !module.isOwner ? '../repositories' : '@ROOT';
-
-    return `import '${basePath}/${utils.repositoryName(module)}/UI/index.js';`;
-  });
+  const modelImportList = roleInjectList(injectList, 'ui').map(
+    module => `import '${getBasePath(module)}/${utils.repositoryName(module)}/UI/index.js';`
+  );
 
   const content = `${tips('ui')}
   
@@ -135,4 +132,23 @@ function roleInjectList(injectList, type) {
   return injectList.filter(
     module => !controller[module.repositorie] || controller[module.repositorie][k]
   );
+}
+
+/**
+ * get base path to splicing
+ * @param moduleinfo
+ * @returns {string}
+ */
+function getBasePath(moduleinfo) {
+  /*
+   * owner module => root path
+   * is landing to root => root path
+   * other => Relative path - ‘../repositories’
+   */
+  if (moduleinfo.isOwner) {
+    return '@ROOT';
+  } else {
+    if (moduleinfo.landingRoot) return '@ROOT';
+    return '../repositories';
+  }
 }
