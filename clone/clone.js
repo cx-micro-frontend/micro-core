@@ -22,23 +22,30 @@ exports.cloneRepositories = () => {
     const repositoryName = utils.repositoryName(module);
 
     if (fs.existsSync(`${utils.inJectPath().repositorie_tmp}/${repositoryName}`)) {
-      shell.cp(
-        '-R',
-        `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
+      /**
+       * is landing to root path by key - landingRoot
+       * true => root path
+       * 【
+       *    use to load some repositories （system) in root path,
+       *    in this way, we don't to push code to sandbox and clone it back to business module
+       *  】
+       * false / undefined => to injection => repositories path
+       */
 
-        /**
-         * is landing to root path by key - landingRoot
-         * true => root path
-         * 【
-         *    use to load some repositories （system) in root path,
-         *    in this way, we don't to push code to sandbox and clone it back to business module
-         *  】
-         * false / undefined => to injection => repositories path
-         */
-        module.landingRoot
-          ? `${utils.inJectPath().root}/${repositoryName}`
-          : `${utils.inJectPath().repositorie}/${repositoryName}`
-      );
+      if (module.landingRoot) {
+        const targetPath = `${utils.inJectPath().root}/${repositoryName}`;
+        if (fs.existsSync(targetPath)) {
+          shell.rm('-rf', targetPath);
+        }
+
+        shell.cp('-R', `${utils.inJectPath().repositorie_tmp}/${repositoryName}`, targetPath);
+      } else {
+        shell.cp(
+          '-R',
+          `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
+          `${utils.inJectPath().repositorie}/${repositoryName}`
+        );
+      }
     }
     shell.rm('-rf', utils.inJectPath().repositorie_tmp);
   });
