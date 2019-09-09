@@ -16,12 +16,13 @@ const getRouteFiles = () => {
 
     /*
      * The current module :
-     * its own module => in root path
+     * its own module / landing to root => in root path
      * not its own module => in neap => injection => repositories
      */
-    const repositoryPath = module.isOwner
-      ? join(utils.inJectPath().root, `${repositoryName}`)
-      : join(path.resolve(__dirname, '../injection/repositories'), `${repositoryName}`);
+    const repositoryPath =
+      module.isOwner || module.landingRoot
+        ? join(utils.inJectPath().root, `${repositoryName}`)
+        : join(path.resolve(__dirname, '../injection/repositories'), `${repositoryName}`);
 
     // views dir path
     let viewsFilesPath = join(repositoryPath, 'views');
