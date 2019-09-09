@@ -25,7 +25,19 @@ exports.cloneRepositories = () => {
       shell.cp(
         '-R',
         `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
-        `${utils.inJectPath().repositorie}/${repositoryName}`
+
+        /**
+         * is landing to root path by key - landingRoot
+         * true => root path
+         * 【
+         *    use to load some repositories （system) in root path,
+         *    in this way, we don't to push code to sandbox and clone it back to business module
+         *  】
+         * false / undefined => to injection => repositories path
+         */
+        module.landingRoot
+          ? `${utils.inJectPath().root}/${repositoryName}`
+          : `${utils.inJectPath().repositorie}/${repositoryName}`
       );
     }
     shell.rm('-rf', utils.inJectPath().repositorie_tmp);
