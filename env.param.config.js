@@ -5,13 +5,13 @@ const injection_sandbox = require('./config/injection/index.sandbox');
 
 module.exports = {
   dev: {
-    entry: { app: './main/main.js' },
+    entry: { app: './lib/main.js' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
-    staticPath: './main/static',
+    staticPath: './lib/static',
     port: 8001,
     useEslint: false,
-    prescript: ['npm run clean:lib', 'npm run clone'],
+    prescript: ['npm run build:lib', 'npm run clone'],
     // proxyTable: {
     //   '/api': {
     //     target: 'http://192.168.1.20',
@@ -31,7 +31,7 @@ module.exports = {
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
-    mockPath: './main/mock',
+    mockPath: './lib/mock',
 
     JSBabelInclude: [
       'main',
@@ -39,11 +39,12 @@ module.exports = {
       'config',
       'env.param.config.js',
       'node_modules/neap-test1',
+      'lib',
     ],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
-      '@NEAP': path.resolve('main/src'),
+      '@NEAP': path.resolve('lib/src'),
       '@COMMUNITY': path.resolve('injection/repositories/NS_community'),
       '@BIZ_COMPONENTS': path.resolve('injection/repositories/NS_biz_components'),
     },
