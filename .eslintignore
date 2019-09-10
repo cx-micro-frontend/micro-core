@@ -3,6 +3,7 @@
 /dist/
 /NS_system/
 /main/
+/lib/
 /node_modules/
 /mock/
 /*.js
