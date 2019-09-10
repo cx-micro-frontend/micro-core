@@ -3,7 +3,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import Vue from 'vue';
-import App from './src/App';
+import App from './src/App.vue';
 
 import router from './src/router/index';
 import './src/router/promission/hook';
