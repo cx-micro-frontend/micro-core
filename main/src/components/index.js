@@ -1,13 +1,13 @@
 import Vue from 'vue';
 
 //tree
-import BizOrganizeTree from './NS-biz-tree/Biz-organize-tree/Biz-organize-tree';
-import BizDataDictionaryTree from './NS-biz-tree/Biz-data-dictionary-tree/Biz-data-dictionary-tree';
+import BizOrganizeTree from './NS-biz-tree/Biz-organize-tree/Biz-organize-tree.vue';
+import BizDataDictionaryTree from './NS-biz-tree/Biz-data-dictionary-tree/Biz-data-dictionary-tree.vue';
 
 //select-tree
 import BizOrgnizeSelectTree from './NS-biz-select-tree/Biz-organize-select-tree/Biz-organize-select-tree.vue';
 
-import BizRoleButtonArea from './NS-biz-role-button-area/Biz-role-button-area';
+import BizRoleButtonArea from './NS-biz-role-button-area/Biz-role-button-area.vue';
 
 //Navigation
 import dropdown from './NS-biz-Navigation/NS-biz-Navigation.vue';
