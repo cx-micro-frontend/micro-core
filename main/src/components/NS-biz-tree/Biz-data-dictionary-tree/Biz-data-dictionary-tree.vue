@@ -48,7 +48,7 @@
 </template>
 <script>
   import {dicGroupDetailFetch, dicDictionaryFetch, deleteDictionaryFetch, deleteDictionaryGroupFetch,} from '../../../service/System/Tree/dictionary-tree';
-  import TreeDialog from './tree-dialog.vue';
+  import TreeDialog from './tree-dialog';
   import keyRefer from './keyRefer';
   import request from './mixins/request';
 
