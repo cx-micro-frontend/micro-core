@@ -9,21 +9,21 @@ export default [
   {
     path: '/404',
     name: '404',
-    component: () => import('../../views/Public/404/404'),
+    component: () => import('../../views/Public/404/404.vue'),
     meta: { auth: false },
   },
 
   {
     path: '/error',
     name: 'error',
-    component: () => import('../../views/Public/error/error'),
+    component: () => import('../../views/Public/error/error.vue'),
     meta: { auth: false },
   },
 
   {
     path: '/sso/error',
     name: 'sso-error',
-    component: () => import('../../views/Public/error/sso-error'),
+    component: () => import('../../views/Public/error/sso-error.vue'),
     meta: { auth: false },
   },
 
@@ -35,7 +35,7 @@ export default [
     children: [
       {
         path: 'overview',
-        component: () => import('../../views/Overview/Overview'),
+        component: () => import('../../views/Overview/Overview.vue'),
         meta: { auth: true, key: 'overview' },
         name: '主页',
       },
