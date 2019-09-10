@@ -10,13 +10,13 @@ export default [
     children: [
       {
         path: 'login',
-        component: () => import('../../views/Login/login'),
+        component: () => import('../../views/Login/login.vue'),
         name: '登录',
         meta: { auth: false, type: 'Front' },
       },
       {
         path: 'login-station',
-        component: () => import('../../views/Login/loginStation'),
+        component: () => import('../../views/Login/loginStation.vue'),
         name: '登录中转',
         meta: { auth: false, type: 'login-station' },
       },
