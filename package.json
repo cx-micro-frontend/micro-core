@@ -13,8 +13,7 @@
     "build:lib": "node build/copylib.js --color",
     "clean:lib": "rimraf ./lib/",
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
-    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
-    "test": "node ./testtest/test.js"
+    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4"
   },
   "license": "ISC",
   "dependencies": {
