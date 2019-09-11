@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "version": "0.0.23-87",
+  "version": "0.0.23-88",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -10,10 +10,11 @@
     "clone": "node ./clone/index.js",
     "build:dist": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
     "clean:dist": "rimraf ./dist/",
-    "build:lib": "node build/compile.js --color",
+    "build:lib": "node build/copylib.js --color",
     "clean:lib": "rimraf ./lib/",
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
-    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4"
+    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
+    "test": "node ./testtest/test.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -35,13 +36,13 @@
     "xlsx": "^0.11.0"
   },
   "devDependencies": {
-    "cx-builder": "^0.0.53-18",
+    "@vant/compiler": "^1.0.0",
+    "cx-builder": "^0.0.53-20",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.1",
-    "@vant/compiler": "^1.0.0",
     "mockjs": "^1.0.1-beta3"
   },
   "engines": {

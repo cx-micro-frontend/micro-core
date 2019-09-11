@@ -3,8 +3,12 @@
 /dist/
 /NS_system/
 /main/
+/clone/
 /lib/
 /node_modules/
 /mock/
 /*.js
 /test/unit/coverage/
+
+
+/testtest/
