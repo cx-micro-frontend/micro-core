@@ -7,8 +7,7 @@ const os = require('os');
 const shell = require('shelljs');
 const utils = require('./utils');
 
-const osType = os.type();// system type
-
+const osType = os.type(); // system type
 
 exports.cloneRepositories = () => {
   //require clone shell script
@@ -22,13 +21,10 @@ exports.cloneRepositories = () => {
     //windows operating system
     if (osType === 'Windows_NT') {
       console.log(`cloning target:" ${module.module} "\n`);
+      shell.exec(`git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`);
+    } else {
       shell.exec(
-        `git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`,
-      );
-    }
-    else {
-      shell.exec(
-        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
+        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`
       );
     }
 
@@ -56,7 +52,7 @@ exports.cloneRepositories = () => {
         shell.cp(
           '-R',
           `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
-          `${utils.inJectPath().repositorie}/${repositoryName}`,
+          `${utils.inJectPath().repositorie}/${repositoryName}`
         );
       }
     }
