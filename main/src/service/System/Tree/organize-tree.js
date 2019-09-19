@@ -1,8 +1,47 @@
 import fetch from '../../../utils/fetch/fetch';
 import { dataFilter } from '../../../utils/fetch/fetchDataType';
 
+/**
+ * 组织树获取初始数据（按需获取）
+ * @param query
+ */
+export function getOrgTreeData(query) {
+  dataFilter(query);
+  return fetch({
+    url: '/system/organization/get-orgtree-form',
+    method: 'get',
+    data: query,
+  });
+}
+
+/**
+ * 组织树 按需获取子节点数据
+ * @param query
+ */
+export function getOrgTreeChildData(query) {
+  dataFilter(query);
+  return fetch({
+    url: '/system/organization/get-child-organization-form',
+    method: 'get',
+    params: query,
+  });
+}
+
+// /**
+//  * 一次性获取组织树所有数据 -  不按需加载
+//  * @param query
+//  */
+// export function orgTreeDataFetch(query) {
+//   dataFilter(query);
+//   return fetch({
+//     url: '/system/organization/get-organization-tree',
+//     method: 'get',
+//     params: query,
+//   });
+// }
+
+//公司-新增
 export function companyAdd(query) {
-  //公司-新增
   dataFilter(query);
   return fetch({
     url: '/system/organization/add-company',
@@ -11,8 +50,8 @@ export function companyAdd(query) {
   });
 }
 
+//组织-详情
 export function fetchOrgDetail(query) {
-  //组织-详情
   dataFilter(query);
   return fetch({
     url: '/system/organization/detail-organization',
@@ -21,8 +60,8 @@ export function fetchOrgDetail(query) {
   });
 }
 
+//公司-编辑
 export function companyEdit(query) {
-  //公司-编辑
   dataFilter(query);
   return fetch({
     url: '/system/organization/edit-company',
@@ -31,8 +70,8 @@ export function companyEdit(query) {
   });
 }
 
+//公司-删除
 export function companyDelete(query) {
-  //公司-删除
   dataFilter(query);
   return fetch({
     url: '/system/organization/delete-organization',
@@ -41,8 +80,8 @@ export function companyDelete(query) {
   });
 }
 
+//部门-新增
 export function departmentAdd(query) {
-  //部门-新增
   dataFilter(query);
   return fetch({
     url: '/system/organization/add-department',
@@ -51,8 +90,8 @@ export function departmentAdd(query) {
   });
 }
 
+//部门-编辑
 export function departmentEdit(query) {
-  //部门-编辑
   dataFilter(query);
   return fetch({
     url: '/system/organization/edit-department',
@@ -61,8 +100,8 @@ export function departmentEdit(query) {
   });
 }
 
+//部门-删除
 export function departmentDelete(query) {
-  //部门-删除
   dataFilter(query);
   return fetch({
     url: '/system/organization/delete-organization',
@@ -71,18 +110,8 @@ export function departmentDelete(query) {
   });
 }
 
-export function treeDataFetch(query) {
-  //组织树数据-获取
-  dataFilter(query);
-  return fetch({
-    url: '/system/organization/get-organization-tree',
-    method: 'get',
-    params: query,
-  });
-}
-
+//公司-展开
 export function treeCompanyOpen(query) {
-  //公司-展开
   dataFilter(query);
   return fetch({
     url: '/system/organization/get-child-organization',
@@ -91,8 +120,8 @@ export function treeCompanyOpen(query) {
   });
 }
 
+//部门-展开
 export function treeDepartmentOpen(query) {
-  //部门-展开
   dataFilter(query);
   return fetch({
     url: '/system/organization/get-child-organization',
@@ -101,8 +130,8 @@ export function treeDepartmentOpen(query) {
   });
 }
 
+//公司-展开
 export function treeOpen(query) {
-  //公司-展开
   dataFilter(query);
   return fetch({
     url: '/system/organization/get-child-organization',
@@ -111,8 +140,8 @@ export function treeOpen(query) {
   });
 }
 
+//组织树数据-拖拽
 export function treeDrag(query) {
-  //组织树数据-拖拽
   dataFilter(query);
   let datas = {
     organizationId: query.organizationId,
@@ -127,8 +156,8 @@ export function treeDrag(query) {
   });
 }
 
+//树数据-模糊查询
 export function getSearchData(query) {
-  //树数据-模糊查询
   dataFilter(query);
   return fetch({
     url: '/system/organization/organization-tree-search',
@@ -137,8 +166,8 @@ export function getSearchData(query) {
   });
 }
 
+//树数据-模糊查询后树数据变化
 export function changeTreeData(query) {
-  //树数据-模糊查询后树数据变化
   dataFilter(query);
   return fetch({
     url: '/system/organization/organization-tree-search-detail',
@@ -147,8 +176,8 @@ export function changeTreeData(query) {
   });
 }
 
+//模糊查询员工
 export function searchUserFetch(query) {
-  //模糊查询员工
   dataFilter(query);
   return fetch({
     url: `/system/user/list-user-search`,
@@ -157,8 +186,8 @@ export function searchUserFetch(query) {
   });
 }
 
+//集团-编辑
 export function groupEdit(query) {
-  //集团-编辑
   dataFilter(query);
   return fetch({
     url: '/system/organization/edit-group',
@@ -167,8 +196,8 @@ export function groupEdit(query) {
   });
 }
 
+//集团-编辑
 export function getDetail(query) {
-  //集团-编辑
   dataFilter(query);
   return fetch({
     url: '/system/organization/get-all-parent-name',
@@ -177,8 +206,8 @@ export function getDetail(query) {
   });
 }
 
+//自动生成简称与编号
 export function autoMakeMassage(query) {
-  //自动生成简称与编号
   dataFilter(query);
   return fetch({
     url: '/system/organization/generate-Dept-code-or-shotName',
