@@ -1,4 +1,5 @@
-import { getSearchData } from '../../../../service/System/Tree/organize-tree';
+import { getOrgTreeChildData, getSearchData } from '../../../../service/System/Tree/organize-tree';
+import transformKeyFun from '../../utils/transformNode';
 
 export default {
   methods: {
@@ -53,6 +54,25 @@ export default {
     },
 
     /**
+     * 组织树节点 按需加载事件
+     * load childNodes
+     * */
+    loadNode(node) {
+      console.log('loadNode-loadNode-loadNode');
+      console.log(node);
+
+      this.$set(node, 'loading', true); //open loading
+      getOrgTreeChildData({ id: node.id }).then(res => {
+        const childData = transformKeyFun(res.resultData.organizationVos, this.keyRefer, {
+          expandedIndex: res.resultData.level,
+          lazy: true,
+        }); //转换树数据
+        this.$refs['organizeTree'].addNodes(node, childData);
+        this.$set(node, 'loading', false); //close loading
+      });
+    },
+
+    /**
      * Get origanize tree data by search
      * @param item 搜索输入内容
      */
@@ -67,7 +87,6 @@ export default {
 
         //search organize tree data
         this.$store.dispatch('getOrganizeTreeData', this.createRequestQuery()).then(res => {
-          console.log(6666666666666666);
           this.treeData = this.$store__orgTreeData;
           //设定默认选中项
           this.treeModel = this.$store.state.OrganizeTree.$store__currentTreeNode;
