@@ -1,7 +1,6 @@
 const modules = require('@ROOT/config/injection/index').modules;
 
 module.exports = (childPath, fatherPath) => {
-  console.log(childPath, fatherPath);
   const currentModule = modules.filter(m => m.repositorie === fatherPath);
 
   const isOwner = currentModule[0].isOwner;
