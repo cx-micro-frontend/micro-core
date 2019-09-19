@@ -5,10 +5,10 @@ const injection_sandbox = require('./config/injection/index.sandbox');
 
 module.exports = {
   dev: {
-    entry: { app: './lib/main.js' },
+    entry: { app: './main/main.js' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
-    staticPath: './lib/static',
+    staticPath: './main/static',
     port: 8001,
     useEslint: false,
     prescript: ['npm run build:lib', 'npm run clone'],
@@ -31,7 +31,7 @@ module.exports = {
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
-    mockPath: './lib/mock',
+    mockPath: './main/mock',
 
     JSBabelInclude: [
       'main',
@@ -44,7 +44,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
-      '@NEAP': path.resolve('lib/src'),
+      '@NEAP': path.resolve('main/src'),
       '@COMMUNITY': path.resolve('injection/repositories/NS_community'),
       '@BIZ_COMPONENTS': path.resolve('injection/repositories/NS_biz_components'),
     },
