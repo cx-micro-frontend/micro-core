@@ -5,7 +5,7 @@
  * copyright (c) 2019 Broccoli spring( gcx )
  * @type {{state: {funcId: string}, mutations: {SET_FUNCID: Core.mutations.SET_FUNCID}, actions: {setFuncId({commit: *}, *=): void}}}
  */
-import { treeDataFetch, changeTreeData } from '../../../../service/System/Tree/organize-tree';
+import { getOrgTreeData, changeTreeData } from '../../../../service/System/Tree/organize-tree';
 
 import transformKeyFun from '../../../../components/NS-biz-tree/utils/transformNode';
 import keyRefer from '../../../../components/NS-biz-tree/Biz-organize-tree/keyRefer';
@@ -38,11 +38,17 @@ const OrganizeTree = {
   actions: {
     getOrganizeTreeData({ commit }, query) {
       return new Promise((resolve, reject) => {
-        treeDataFetch(query).then(res => {
+        getOrgTreeData(query).then(res => {
           console.log('请求到组织树数据，如下：');
           console.log(res.resultData);
 
-          const storeData = transformKeyFun([res.resultData], keyRefer, { expandedIndex: 1 }); //转换树数据
+          const treeData = res.resultData.organizationVos; //tree data
+          const expandedIndex = res.resultData.level; //expanded level
+
+          const storeData = transformKeyFun(treeData, keyRefer, {
+            expandedIndex: expandedIndex,
+            lazy: true,
+          }); //转换树数据
           const initCurrentNode = storeData[0]; //default is to take the top-level node as the initialization selected node
 
           commit('SET_ORGANIZE_TREE_DATA', storeData);
@@ -56,7 +62,13 @@ const OrganizeTree = {
     origanizeTreeChange({ commit }, query) {
       return new Promise((resolve, reject) => {
         changeTreeData(query).then(res => {
-          const storeData = transformKeyFun([res.resultData], keyRefer, { expandedIndex: 1 }); //转换树数据
+          const treeData = res.resultData.organizationVos; //tree data
+          const expandedIndex = res.resultData.level; //expanded level
+
+          const storeData = transformKeyFun(treeData, keyRefer, {
+            expandedIndex: expandedIndex,
+            lazy: true,
+          }); //转换树数据
           const initCurrentNode = storeData[0]; //default is to take the top-level node as the initialization selected node
 
           commit('SET_ORGANIZE_TREE_DATA', storeData);
