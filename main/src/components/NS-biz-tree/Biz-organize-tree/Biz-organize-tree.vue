@@ -16,15 +16,16 @@
     ></el-autocomplete>
     <!--树主体-->
     <ns-tree
-      class="tree-container fl"
       ref="organizeTree"
+      class="tree-container fl"
       v-loading="treeloading"
       v-model="treeModel"
       :data="treeData"
-      isObjectData
       :draggable="draggable"
-      expandAllNodes
+      :multiple="multiple"
+      isObjectData
       :dropJudge="dropJudge"
+      @loadNode="loadNode"
       @nodeClick="nodeClick"
     >
       <template slot-scope="{node, parent,index}">
@@ -32,18 +33,18 @@
           <div class="title-text">
             {{node.organizationName}}
           </div>
-          <el-dropdown trigger="click" hide-on-click v-if="showFunction">
+          <el-dropdown trigger="click" hide-on-click v-if="!readonly">
              <span @click.stop>
                <ns-icon-svg icon-class="more" class="tree_node_img_more"></ns-icon-svg>
              </span>
             <el-dropdown-menu slot="dropdown" class="tree-more-dropdown">
               <el-dropdown-item @click.native.stop="treeEdit(node, parent)">编辑</el-dropdown-item>
-              <el-dropdown-item v-if="node.isHasChild === false">
+              <el-dropdown-item v-if="!node.isHasChild">
                 <ns-popover placement="top" width="250" trigger="click">
                   <p>{{ node.organizationShortName }}&nbsp;删除后不可恢复，确定继续删除吗？</p>
                   <div class="popover-handle">
                     <ns-button type="primary" size="mini" @click.native="treeDelete(node, parent,index)">确 定</ns-button>
-                    <ns-button size="mini"  @click.native="cancel">取 消</ns-button>
+                    <ns-button size="mini" @click.native="cancel">取 消</ns-button>
                   </div>
                   <div slot="reference">删除</div>
                 </ns-popover>
@@ -74,6 +75,8 @@
         </div>
       </template>
     </ns-tree>
+
+
     <!--新建编辑子公司-->
     <add-or-edit-company
       v-if="dialogVisible.companyVisible.visible"
@@ -99,21 +102,23 @@
       :nodeInfo="groupDialogObj.nodeInfo"
       @query="refreshTreeData"
     />
+
+
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex';
-  import {companyDelete, departmentDelete,} from '../../../service/System/Tree/organize-tree';
-  import {addOrEditCompany, addOrEditDepartment, groupDialog} from './Biz-organize-dialogs'
+  import { mapGetters } from 'vuex';
+  import { companyDelete, departmentDelete } from '../../../service/System/Tree/organize-tree';
+  import { addOrEditCompany, addOrEditDepartment, groupDialog } from './Biz-organize-dialogs';
   import request from './mixins/request';
   import keyRefer from './keyRefer';
-  import {isEmptyObject} from '../../../utils/library/judge';
+  import { isEmptyObject } from '../../../utils/library/judge';
 
 
   export default {
     name: 'origanize-tree',
     mixins: [request],
-    components: {addOrEditCompany, addOrEditDepartment, groupDialog},
+    components: { addOrEditCompany, addOrEditDepartment, groupDialog },
     data() {
       return {
         treeData: [],//origanize tree data use to render
@@ -126,13 +131,13 @@
         //部门节点信息
         departmentOptions: [
           //部门类型
-          {label: '服务中心', value: 0},
-          {label: '职能中心', value: 1},
+          { label: '服务中心', value: 0 },
+          { label: '职能中心', value: 1 },
         ],
         dialogVisible: {
-          groupVisible: {visible: false},
-          companyVisible: {visible: false},
-          departmentVisible: {visible: false},
+          groupVisible: { visible: false },
+          companyVisible: { visible: false },
+          departmentVisible: { visible: false },
         },
         groupDialogObj: {
           nodeInfo: {},
@@ -158,20 +163,19 @@
 
         treeloading: false,
         //树节点对应的字段
-        keyRefer
+        keyRefer,
       };
     },
     props: {
-      funcId: {type: [Number, String]},
+      funcId: { type: [Number, String] },
       searchConditions: {
         type: Object, default() {
           return {};
         },
       },
-      draggable: {type: Boolean, default: false},
-      showFunction: {type: Boolean, default: false,},
-      'show-checkBox': {type: Boolean,},
-      orgTypeFilter: null
+      draggable: { type: Boolean, default: false },//是否支持拖拽
+      readonly: { type: Boolean, default: false },//只读
+      multiple: { type: Boolean },//是否多选
     },
     computed: {
       ...mapGetters(['$store__orgTreeData']),
@@ -181,20 +185,20 @@
         handler(newVal, oldVal) {
           this.treeData = newVal;
         },
-        deep: true
+        deep: true,
       },
       treeData: {
         handler(newVal, oldVal) {
           console.log(newVal);
           // this.$store.dispatch('asyncOrganizeTreeData', newVal);
         },
-        deep: true
+        deep: true,
       },
       treeModel: {
         handler(newVal, oldVal) {
           this.$store.dispatch('setCurrentTreeNode', newVal);
         },
-        deep: true
+        deep: true,
       },
     },
     methods: {
@@ -213,12 +217,18 @@
        * 树节点点击事件
        * @param node  -  节点信息
        */
-      nodeClick: function (node) {
+      nodeClick: function(node) {
         console.log(node);
+
         //同一个节点多次点击则直接跳出
         if (node.organizationId === this.historyTreeModel.organizationId) return;
 
         this.treeModel = node;
+
+        console.log('当前选中的节点如下：');
+        console.log(this.treeModel);
+        console.log('===================');
+
         this.searchConditions.organizationId = node.organizationId;
         this.searchConditions.companyId = node.companyId;
         this.searchConditions.departmentId = node.departmentId;
@@ -323,11 +333,9 @@
 
           console.log('nodeClick-nodeClick-nodeClick');
           this.nodeClick(this.treeModel);
-
-
         }
         else {
-          this.getTreeData(true)
+          this.getTreeData(true);
         }
       },
 
@@ -340,10 +348,9 @@
     beforeDestroy() {
       this.$store.dispatch('asyncOrganizeTreeData', this.treeData);
       this.$store.dispatch('setCurrentTreeNode', this.treeModel);
-    }
+    },
   };
 </script>
-<style></style>
 <style rel="stylesheet/scss" lang="scss">
   @import '../style/biz-tree-common';
 </style>
