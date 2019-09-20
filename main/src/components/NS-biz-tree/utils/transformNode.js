@@ -63,10 +63,13 @@ const transformKeyFun = (
      * 需要考虑该节点是否为按需节点( lazy为true 且 isHasChild为true ) => 增加按需节点的标识（node对象上加 async 字段)
      */
     if (transChildLength(item.children) > 0) {
+      let expandedIndex = -1;
       if (!config.expandAllNodes) {
-        if (config.expandedIndex > -1) config.expandedIndex--;
+        if (config.expandedIndex > -1) {
+          expandedIndex = config.expandedIndex - 1;
+        }
       }
-      transformKeyFun(item.children, keyRefer, config);
+      transformKeyFun(item.children, keyRefer, Object.assign({}, config, { expandedIndex }));
     }
     //树的懒加载
     else if (config.lazy && item.isHasChild) {
