@@ -41,4 +41,11 @@ export default [
       },
     ],
   },
+
+  {
+    path: '/testdemo',
+    name: 'testdemo',
+    component: () => import('../../views/TestDemo/TestDemo.vue'),
+    meta: { auth: false },
+  },
 ];

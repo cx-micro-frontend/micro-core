@@ -11,6 +11,8 @@ export default {
     '/sso/404',
     '/error',
     '/sso/error',
+
+    '/testdemo',
   ],
   //需要权限登录的静态路由地址
   auth: [
