@@ -35,6 +35,16 @@ exports.inJectPath = () => {
   };
 };
 
+
+/**
+ * get inject config for neap
+ * @returns {module.exports.prod_injection|{modules, modules_sandbox, staticInclude}|{}}
+ */
+exports.getInjectConfig = () => {
+  return config.prod_injection || {};
+};
+
+
 /**
  * get modules config list to inject
  * @returns {*}
@@ -48,10 +58,18 @@ exports.modulesConfig = () => {
   }
 };
 
+
 exports.version = () => {
   return process.env.VERSION || packageJson.version;
 };
 
+/**
+ * judge exists:
+ * yes = > remove and create dir
+ * not => create dir
+ * @param path
+ * @param cb
+ */
 exports.judgeAndMkdir = (path, cb = null) => {
   if (fs.existsSync(path)) {
     shell.rm('-rf', path);
