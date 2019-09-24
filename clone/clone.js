@@ -25,7 +25,7 @@ exports.cloneRepositories = () => {
       shell.exec(`git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`);
     } else {
       shell.exec(
-        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
+        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`
       );
     }
 
@@ -53,7 +53,7 @@ exports.cloneRepositories = () => {
         shell.cp(
           '-R',
           `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
-          `${utils.inJectPath().repositorie}/${repositoryName}`,
+          `${utils.inJectPath().repositorie}/${repositoryName}`
         );
       }
     }
@@ -65,7 +65,6 @@ exports.cloneRepositories = () => {
  * copy static
  */
 exports.cloneStatic = () => {
-
   // shell.rm('-rf', `${utils.inJectPath().root}/static`);
 
   const static_inJect = `${utils.inJectPath().static}`; //inJect static path
@@ -78,14 +77,10 @@ exports.cloneStatic = () => {
    */
   utils.judgeAndMkdir(static_root);
 
-
   //judge static dir in neap-injection
   if (fs.existsSync(static_inJect)) {
-
-
     const whitestatic = ['.gitkeep', 'loadBuffer', 'intercept'];
     const staticInclude = utils.getInjectConfig().staticInclude || [];
-
 
     //Locate in the target directory for processing
     const static_inJect_files = fs.readdirSync(static_inJect); //get all files/dirs in inJect static path
@@ -98,6 +93,5 @@ exports.cloneStatic = () => {
         shell.cp('-R', file_Path, static_root);
       }
     });
-
   }
 };
