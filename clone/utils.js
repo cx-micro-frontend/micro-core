@@ -35,7 +35,6 @@ exports.inJectPath = () => {
   };
 };
 
-
 /**
  * get inject config for neap
  * @returns {module.exports.prod_injection|{modules, modules_sandbox, staticInclude}|{}}
@@ -43,7 +42,6 @@ exports.inJectPath = () => {
 exports.getInjectConfig = () => {
   return config.prod_injection || {};
 };
-
 
 /**
  * get modules config list to inject
@@ -57,7 +55,6 @@ exports.modulesConfig = () => {
     return config.prod_injection.modules || [];
   }
 };
-
 
 exports.version = () => {
   return process.env.VERSION || packageJson.version;
