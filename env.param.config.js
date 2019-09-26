@@ -49,8 +49,7 @@ module.exports = {
           chunks: 'initial',
         },
 
-
-        'vue': {
+        vue: {
           name: 'chunk-vue',
           priority: 20,
           test: /[\\/]node_modules[\\/]vue[\\/]/,
@@ -62,13 +61,11 @@ module.exports = {
           test: /[\\/]node_modules[\\/]element-ui[\\/]/,
         },
 
-
         'neap-ui': {
           name: 'chunk-neap-ui',
           priority: 20,
           test: /[\\/]node_modules[\\/]neap-ui[\\/]/,
         },
-
 
         // 'biz-components': {
         //   name: 'chunk-biz-components',
