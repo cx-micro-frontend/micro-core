@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@vant/compiler": "^1.0.0",
-    "cx-builder": "^0.0.53-20",
+    "cx-builder": "^0.0.53-26",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
