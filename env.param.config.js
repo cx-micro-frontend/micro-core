@@ -27,6 +27,58 @@ module.exports = {
     templateSPA: './index.html',
     staticPath: './main/static',
     useEslint: false,
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: 4,
+      cacheGroups: {
+        libs: {
+          name: 'chunk-libs',
+          test: module => {
+            if (module.resource) {
+              const include = [/[\\/]node_modules[\\/]/].every(reg => {
+                return reg.test(module.resource);
+              });
+              const exclude = [/[\\/]node_modules[\\/](vue|element-ui|neap-ui|)/].some(reg => {
+                return reg.test(module.resource);
+              });
+              return include && !exclude;
+            }
+            return false;
+          },
+          priority: -10,
+          chunks: 'initial',
+        },
+
+
+        'vue': {
+          name: 'chunk-vue',
+          priority: 20,
+          test: /[\\/]node_modules[\\/]vue[\\/]/,
+        },
+
+        'element-ui': {
+          name: 'chunk-element-ui',
+          priority: 20,
+          test: /[\\/]node_modules[\\/]element-ui[\\/]/,
+        },
+
+
+        'neap-ui': {
+          name: 'chunk-neap-ui',
+          priority: 20,
+          test: /[\\/]node_modules[\\/]neap-ui[\\/]/,
+        },
+
+
+        // 'biz-components': {
+        //   name: 'chunk-biz-components',
+        //   test: /[\\/]node_modules[\\/]neap-test1[\\/]injection[\\/]repositories[\\/]NS_biz_components[\\/]/,
+        //   priority: 20,
+        // },
+      },
+    },
+    prodCssSourceMap: true,
+    prodJsSourceMap: true,
     prescript: ['npm run clean:lib', 'npm run clone'],
     inSandbox: false, //代码是否在沙盒中打包
   },
