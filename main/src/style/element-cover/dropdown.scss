@@ -17,12 +17,17 @@
   padding: 0 9px;
 }
 
-/*下拉菜单字体*/
+//下拉菜单字体
 .el-dropdown {
   font-size: 14px;
 }
 
-/*下拉菜单内间距*/
+//下拉菜单内间距
 .el-dropdown-menu {
   padding: 10px 0;
+}
+
+//下拉菜单
+.el-dropdown-menu.el-popper {
+  min-width: 100px;
 }

@@ -11,7 +11,7 @@ module.exports = [
   //o2o - community
   {
     module: '阳光城公告',
-    path: 'http://192.168.1.89:3000/gaocangxiong/micro_o2o-sunshineCity.git',
+    path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o-sunshineCity.git',
     repositorie: 'community',
     isOwner: false,
     disabled: false,

@@ -3,6 +3,7 @@ import { storageHandle } from '../../../../utils/storage/storage';
 const PageTabs = {
   state: {
     visitedPages: JSON.parse(storageHandle('get', 'sign_visited_pages')) || [],
+    currentVisitedPageTag: {},
   },
   mutations: {
     /**
@@ -38,17 +39,49 @@ const PageTabs = {
       storageHandle('set', 'sign_visited_pages', JSON.stringify(state.visitedPages));
     },
 
+    /**
+     * delete others visited views
+     * @param state
+     * @param view     all router (whitch is link to) information
+     * @constructor
+     */
+    DEL_OTHERS_VISITED_VIEWS: (state, view) => {
+      state.visitedPages = state.visitedPages.filter(v => v.path === view.path);
+      storageHandle('set', 'sign_visited_pages', JSON.stringify(state.visitedPages));
+    },
+
+    /**
+     * delete all visited views
+     * @param state
+     * @constructor
+     */
     DEL_ALL_VISITED_VIEWS: state => {
       state.visitedPages = [];
       storageHandle('remove', 'sign_visited_pages');
     },
+
+    /**
+     * 设置当前页面tag信息
+     * @param state
+     * @param tag
+     * @constructor
+     */
+    SET_CURRENT_VISITED_PAGE_TAG: (state, tag) => {
+      state.currentVisitedPageTag = tag;
+    },
   },
   actions: {
     addVisitedPages: ({ commit }, view) => {
+      //add
       commit('ADD_VISITED_VIEWS', view);
+      //and set current tag
+      commit('SET_CURRENT_VISITED_PAGE_TAG', view);
     },
     delVisitedPages: ({ commit }, view) => {
       commit('DEL_VISITED_VIEWS', view);
+    },
+    delOthersVisitedPages: ({ commit }, view) => {
+      commit('DEL_OTHERS_VISITED_VIEWS', view);
     },
     delAllVisitedPages: ({ commit }) => {
       commit('DEL_ALL_VISITED_VIEWS');

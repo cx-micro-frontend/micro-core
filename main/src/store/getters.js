@@ -28,6 +28,7 @@ const getters = {
   sideBarList: state => state.Sidebar.sideBarList,
   visitedPages: state => state.PageTabs.visitedPages,
 
+  currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag,
   currentPageInfo: state => state.PageInfo.currentPageInfo,
 
   //all search conditions (object for all page search conditions)

@@ -5,13 +5,24 @@
     :limit="limit"
     :activeRule="activeRule"
     @close-view-tabs="closeViewTabs"
-    @close-all-view-tabs="closeAllViewTabs"
   >
+    <div slot='operate'>
+      <el-dropdown @command="closeCommand">
+        <span class="el-dropdown-link">
+             <ns-icon-svg icon-class="drag" class="operate-slot-icon"></ns-icon-svg>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="closeCurrent">关闭当前</el-dropdown-item>
+          <el-dropdown-item command="closeOthers">关闭其他</el-dropdown-item>
+          <el-dropdown-item command="closeAll">关闭全部</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </ns-page-tabs>
 </template>
 <script>
-  import {addPageTabs} from '../../router/promission/auxiliary';
-  import {mapGetters} from 'vuex';
+  import { addPageTabs } from '../../router/promission/auxiliary';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'biz-page-tabs',
@@ -22,19 +33,42 @@
     },
     props: {},
     computed: {
-      ...mapGetters(['visitedPages','initRouter']),
+      ...mapGetters(['visitedPages', 'currentVisitedPageTag', 'initRouter']),
       curPath() {
         return this.$route.path;
       },
     },
     methods: {
       /**
+       * close command - 下拉菜单关闭操作
+       * @param command
+       */
+      closeCommand(command) {
+        switch (command) {
+          //关闭当前
+          case  'closeCurrent':
+            this.closeViewTabs(this.currentVisitedPageTag);
+            break;
+          //关闭其他(除当前页之外)
+          case  'closeOthers':
+            this.$store.dispatch('delOthersVisitedPages', this.currentVisitedPageTag);
+            break;
+          //关闭全部
+          case  'closeAll':
+            this.closeAllViewTabs();
+            break;
+          default:
+            break;
+        }
+      },
+
+      /**
        * 关闭当前tabs
        * @param view
        */
       closeViewTabs(view) {
-        console.log('关闭单个-ViewTabs');
-        console.log(view);
+        // console.log('关闭单个-ViewTabs');
+        // console.log(view);
 
         this.$store.dispatch('delVisitedPages', view).then(() => {
           /*
@@ -56,17 +90,19 @@
             if (this.curPath === this.initRouter) {
               addPageTabs(this.$route.matched);
             }
-            this.$router.push({path: l > 0 ? this.visitedPages[l - 1].path : this.initRouter});
+            this.$router.push({ path: l > 0 ? this.visitedPages[l - 1].path : this.initRouter });
           }
         });
       },
+
       /**
        * 关闭所有tabs
        * @param views
        */
       closeAllViewTabs(views) {
-        console.log('关闭所有-ViewTabs');
-        console.log(views);
+        // console.log('关闭所有-ViewTabs');
+        // console.log(views);
+
         this.$store.dispatch('delAllVisitedPages').then(() => {
           /*
          * 判断当前页是否为设置初始页：
@@ -79,26 +115,26 @@
           if (this.curPath === this.initRouter) {
             addPageTabs(this.$route.matched);
           }
-          this.$router.push({path: this.initRouter}); //回到主页
+          this.$router.push({ path: this.initRouter }); //回到主页
 
         });
       },
+
       /**
        * 自定义 tabs 的 active 规则
        * @param path   各tabs path 属性
        * @returns {boolean}
        */
       activeRule(path) {
-        // console.log('activeRule');
         return path === this.$route.path;
       },
-
-    },
-    created() {
-
     },
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-
+  .operate-slot {
+    .el-dropdown-link.el-dropdown-selfdefine {
+      padding: 0;
+    }
+  }
 </style>

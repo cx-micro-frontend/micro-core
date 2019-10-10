@@ -1,9 +1,14 @@
 import router from '../index';
+import NProgress from 'nprogress'; // Progress 进度条
+import '../../style/Modular/nprogress/nprogress.scss'; // Progress 进度条样式
+
 import { getToken } from '../../utils/library/auth';
 import { addPageTabs } from './auxiliary';
 import whiteList from '../whiteList';
 import promissionhandle from './promission';
 import errorPathDistribute from './errorDistribute';
+
+NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configuration
 
 router.beforeEach((to, from, next) => {
   // console.log('============== 路由状态 ==================');
@@ -11,10 +16,11 @@ router.beforeEach((to, from, next) => {
   // console.log(to);
   // console.log(from);
 
+  NProgress.start(); // start progress bar
+
   if (whiteList.normal.indexOf(to.path) !== -1) {
     console.log('在免登录白名单，直接进入');
     console.log(to.path);
-
     next();
   } else {
     if (getToken()) {
@@ -48,4 +54,5 @@ router.afterEach((to, from, next) => {
   if (to.meta.auth) {
     addPageTabs(to.matched);
   }
+  NProgress.done(); // finish progress bar
 });
