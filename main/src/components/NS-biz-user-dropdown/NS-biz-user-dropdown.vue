@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import { mapGetters } from 'vuex';
 
   export default {
     name: 'biz-user-dropdown',
@@ -21,8 +21,8 @@
       return {
         abbreviation: true,//头像为简单模式 - 显示用户姓名的最后一个字
         options: [
-          {label: '修改密码', value: 'editPassword'},
-          {label: '退出登录', value: 'logout'},
+          { label: '修改密码', value: 'editPassword' },
+          { label: '退出登录', value: 'logout' },
         ],
       };
     },
@@ -50,6 +50,7 @@
       },
     },
   };
+
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
