@@ -12,6 +12,7 @@ const baseConditions = {
   filterConditions: [], //筛选器记录的条件
   otherConditions: {},
   size: '',
+  showChildren: true, //是否包含子孙节点查询
 };
 
 const SearchConditions = {
