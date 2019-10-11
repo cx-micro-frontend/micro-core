@@ -4,9 +4,11 @@ import {
   oauthlogin,
   multipleEnterpriseLogin,
   ssoLogin,
+  logout,
 } from '../../../../service/System/User/login';
 import router from '../../../../router/index';
 import $store from '../../../../store/index';
+import { iniView } from '../../../../config';
 
 /**
  * deCrypto user-information data in cookie
@@ -127,11 +129,22 @@ const User = {
       return commit('EMPTY_STORAGE');
     },
 
-    //退出
+    /**
+     * 登出
+     * @param commit
+     * @returns {Promise<any>}
+     */
     logOut({ commit }) {
-      $store.dispatch('emptyStorage');
-
-      router.push({ path: '/front/login' });
+      logout()
+        .then(res => {
+          console.log(222222222222);
+          console.log(222222222222);
+          console.log(res);
+          console.log(222222222222);
+          $store.dispatch('emptyStorage');
+          router.push({ path: iniView });
+        })
+        .catch(err => console.log(err));
     },
   },
 };
