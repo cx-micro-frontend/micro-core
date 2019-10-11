@@ -1,4 +1,4 @@
-const iniView = '/front/login';
+import { iniView } from '../../config';
 
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
