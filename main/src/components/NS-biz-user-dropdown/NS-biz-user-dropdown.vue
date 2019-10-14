@@ -1,3 +1,4 @@
+<!--用户下拉菜单-->
 <template>
   <div class="biz-user-dropdown">
     <ns-user-dropdown
@@ -9,21 +10,31 @@
       @click="userDropdownClick"
     >
     </ns-user-dropdown>
+
+    <About :visible="aboutVisible"></About>
   </div>
 </template>
 
 <script>
+
   import { mapGetters } from 'vuex';
+  import About from './About/About';
+
 
   export default {
     name: 'biz-user-dropdown',
+    components: { About },
     data() {
       return {
         abbreviation: true,//头像为简单模式 - 显示用户姓名的最后一个字
         options: [
           { label: '修改密码', value: 'editPassword' },
+          { label: '关于', value: 'about' },
           { label: '退出登录', value: 'logout' },
         ],
+        aboutVisible: {
+          visible: false,
+        },
       };
     },
     computed: {
@@ -31,11 +42,18 @@
     },
     methods: {
       userDropdownClick(value, index) {
-        if (value === 'editPassword') {
-          this.editPassword();
-        }
-        else if (value === 'logout') {
-          this.logout();
+        switch (value) {
+          case  'editPassword':
+            this.editPassword();
+            break;
+          case  'about':
+            this.aboutVisible.visible = true;
+            break;
+          case  'logout':
+            this.logout();
+            break;
+          default:
+            break;
         }
       },
       /**

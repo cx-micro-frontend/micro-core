@@ -92,7 +92,7 @@ export const logout = () => {
   //fetch out
   return fetch({
     url: '/oauth/oauth/logout',
-    method: 'get',
+    method: 'post',
   });
 };
 
@@ -104,7 +104,7 @@ export const updateThemeColor = query => {
   dataFilter(query);
   return fetch({
     url: '/system/user/update-themeColor',
-    method: 'get',
+    method: 'post',
     params: query,
   });
 };
