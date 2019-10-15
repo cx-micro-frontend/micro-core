@@ -24,6 +24,7 @@ const User = {
     userinfo: {
       token: getToken(),
       userId: _deCryptoUserInfo().userId,
+      userAccount: _deCryptoUserInfo().userAccount,
       userName: _deCryptoUserInfo().userName,
       avatar: _deCryptoUserInfo().avatar,
       userType: _deCryptoUserInfo().userType,
@@ -37,6 +38,7 @@ const User = {
     SET_LOGIN_DATA: (state, data) => {
       //user information by login
       state.userinfo.userId = data.userId;
+      state.userinfo.userAccount = data.userAccount;
       state.userinfo.userName = data.userName;
       state.userinfo.avatar = data.avatar; //avatar data mock
       state.userinfo.userType = data.userType;
@@ -137,10 +139,6 @@ const User = {
     logOut({ commit }) {
       logout()
         .then(res => {
-          console.log(222222222222);
-          console.log(222222222222);
-          console.log(res);
-          console.log(222222222222);
           $store.dispatch('emptyStorage');
           router.push({ path: iniView });
         })
