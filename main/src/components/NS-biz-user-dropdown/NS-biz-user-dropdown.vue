@@ -15,7 +15,7 @@
     <About :visible="aboutVisible"></About>
 
     <!--个人设置弹窗-->
-    <personal-setting-dialog :visible.sync="safeSettingVisible"></personal-setting-dialog>
+    <personal-setting-dialog :visible.sync="safeSettingVisible" v-if="safeSettingVisible"></personal-setting-dialog>
   </div>
 </template>
 
