@@ -12,6 +12,8 @@ const getters = {
   //user
   token: state => state.User.userinfo.token,
   userName: state => state.User.userinfo.userName,
+  userAccount: state => state.User.userinfo.userAccount,
+  userId: state => state.User.userinfo.userId,
   avatar: state => state.User.userinfo.avatar,
   themeColor: state => state.User.userinfo.themeColor,
 
