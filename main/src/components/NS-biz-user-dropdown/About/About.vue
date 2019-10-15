@@ -8,7 +8,7 @@
     autoHeight
   >
     <div class="about-logo fl">
-      <img src="../../../assets/img/logo/nwLOGO.png" alt="">
+      <img src="../../../assets/img/logo/logo-blue.png" alt="">
     </div>
     <div class="about-describe fl">
       <p>
@@ -50,7 +50,6 @@
 <style rel="stylesheet/scss" lang="scss">
   #about-dialog {
     .about-logo {
-      background: #0a7af8;
       width: 120px;
       height: 50px;
       margin-right: 30px;
