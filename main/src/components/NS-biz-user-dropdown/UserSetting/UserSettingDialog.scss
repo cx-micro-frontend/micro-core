@@ -1,0 +1,79 @@
+.userSettingDialog {
+  .ns-button.el-button--text {
+    border: none;
+  }
+
+  .el-progress.el-progress--line {
+    .el-progress-bar__outer {
+      border-radius: 0;
+      .el-progress-bar__inner {
+        border-radius: 0;
+      }
+    }
+  }
+
+  //模块区域
+  .module-section {
+    border-top: 1px solid #e1e6eb;
+    padding: 15px 0 5px;
+    font-size: 12px;
+
+    .setting-block {
+      &:not(:last-of-type) {
+        border-bottom: 1px dashed #e1e6eb;
+      }
+    }
+
+    //设置区域内容
+    .setting-block-content {
+      display: flex;
+
+      //左边
+      &:not(.header-line) {
+        align-items: center;
+        padding: 30px;
+        .line-left {
+          width: 100px;
+        }
+      }
+      //右边
+      .line-right {
+
+        flex: 1;
+        &.header-line__value {
+          line-height: 30px;
+          padding-top: 20px;
+        }
+
+        .level__bar {
+          width: 200px;
+          margin-right: 50px;
+        }
+      }
+
+      //操作区域
+      .line-operation {
+        margin-left: 50px;
+      }
+
+      .userAvatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        margin-right: 28px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .checked {
+      color: #090;
+    }
+
+    .unchecked {
+      color: #F90;
+    }
+  }
+}
