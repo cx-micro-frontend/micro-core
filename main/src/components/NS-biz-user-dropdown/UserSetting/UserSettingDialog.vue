@@ -107,7 +107,7 @@
     components: { updateAvatarDialog, modifyPasswordForm },
 
     props: {
-      visible: Boolean,
+      visible: { type: Boolean, default: false },
     },
 
     data() {
@@ -120,13 +120,16 @@
     },
 
     watch: {
-      visible(val) {
-        this.showDialog = val;
+      visible: {
+        handler: function(newVal, oldVal) {
+          this.showDialog = newVal;
+        },
+        immediate: true,
       },
     },
 
     computed: {
-      ...mapGetters(['userAccount']),
+      ...mapGetters(['userId']),
 
       userAvatar: function() {
         return this.userinfo.avatar || require('../../../assets/img/empty/empty-avatar.png');
@@ -142,19 +145,16 @@
       },
     },
 
-    mounted() {
-      this.getUserInfo();//请求获取用户信息
-    },
-
     methods: {
       /**
        * 请求获取用户信息
        */
       getUserInfo() {
-        getUserInfo({ userAccount: this.userAccount }).then((res) => {
+        getUserInfo({ userId: this.userId }).then((res) => {
+          console.log(res.resultData);
           this.userinfo = res.resultData;
-          console.log(this.userinfo.userPassword);
         });
+
       },
 
       updateAvatar(url) {
@@ -187,6 +187,12 @@
         this.$emit('update:visible', false);
       },
     },
+
+    mounted() {
+      this.getUserInfo();//请求获取用户信息
+    },
+
+
   };
 </script>
 
