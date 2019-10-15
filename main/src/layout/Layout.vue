@@ -3,7 +3,6 @@
     <template slot="header">
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
-        <!--<img src="../assets/img/logo/nwLOGO.png" alt="head-logo">-->
         <img :src="operatorLoginPic"/>
       </div>
 
