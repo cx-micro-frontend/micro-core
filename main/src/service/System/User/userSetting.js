@@ -11,7 +11,7 @@ export function getUserInfo(param) {
   dataFilter(param);
   //fetch out
   return fetch({
-    url: '/system/lcinfo/user-info-by-account',
+    url: '/system/lcinfo/user-info',
     method: 'get',
     params: param,
   });
