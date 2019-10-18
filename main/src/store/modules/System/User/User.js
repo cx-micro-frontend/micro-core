@@ -6,9 +6,8 @@ import {
   ssoLogin,
   logout,
 } from '../../../../service/System/User/login';
-import router from '../../../../router/index';
 import $store from '../../../../store/index';
-import { iniView } from '../../../../config';
+import { backLoginPage } from '../../../../utils/behavior';
 
 /**
  * deCrypto user-information data in cookie
@@ -79,6 +78,7 @@ const User = {
       return new Promise((resolve, reject) => {
         oauthlogin(query)
           .then(res => {
+            console.log('44-444-444-4444-444');
             const userinfo = res.resultData || {};
 
             commit('SET_TOKEN', userinfo.token);
@@ -140,7 +140,7 @@ const User = {
       logout()
         .then(res => {
           $store.dispatch('emptyStorage');
-          router.push({ path: iniView });
+          backLoginPage();
         })
         .catch(err => console.log(err));
     },
