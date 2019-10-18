@@ -3,15 +3,15 @@ import qs from 'querystring';
 import { dataFilter } from '../../../utils/fetch/fetchDataType';
 
 /**
- * get operator info(登录页面图片等信息)
+ * isMultipleEnterprise 检测是否是多企业账号
  * @param query
  */
-export const getOperatorInfo = query => {
+export const isMultipleEnterprise = query => {
   // Filter data
   dataFilter(query);
   // fetch out
   return fetch({
-    url: '/soss/operator/get-operatorInfo',
+    url: '/oauth/oauth/query-user-enterprise',
     method: 'get',
     params: query,
   });
@@ -33,21 +33,6 @@ export const oauthlogin = query => {
         return data;
       },
     ],
-  });
-};
-
-/**
- * isMultipleEnterprise 检测是否是多企业账号
- * @param query
- */
-export const isMultipleEnterprise = query => {
-  // Filter data
-  dataFilter(query);
-  // fetch out
-  return fetch({
-    url: '/oauth/oauth/query-user-enterprise',
-    method: 'get',
-    params: query,
   });
 };
 
@@ -93,18 +78,5 @@ export const logout = () => {
   return fetch({
     url: '/oauth/oauth/logout',
     method: 'post',
-  });
-};
-
-/**
- * user logout
- */
-export const updateThemeColor = query => {
-  //fetch out
-  dataFilter(query);
-  return fetch({
-    url: '/system/user/update-themeColor',
-    method: 'post',
-    params: query,
   });
 };
