@@ -42,14 +42,14 @@ export default {
         this.treeModel = this.$store.state.OrganizeTree.$store__currentTreeNode;
 
         // searchConditions state change
-        this.searchConditions.organizationId = res.organizationId;
-        this.searchConditions.companyId = res.companyId;
-        this.searchConditions.departmentId = res.departmentId;
+        this.searchConditions.organizationId = this.treeModel.organizationId;
+        this.searchConditions.companyId = this.treeModel.companyId;
+        this.searchConditions.departmentId = this.treeModel.departmentId;
 
         this.treeloading = false;
 
         // this.$emit('handle-click', null, true);
-        this.$emit('tree-item-click', res);
+        this.$emit('tree-item-click', this.treeModel);
       });
     },
 
