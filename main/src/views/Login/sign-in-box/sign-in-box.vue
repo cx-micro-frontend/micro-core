@@ -6,84 +6,76 @@
     </div>
     <div class="sign-in-right">
       <p class="sign-in-title">登录</p>
-      <div class="sign-in-main" v-if="!hasMultiEnterprise">
-        <ns-form
-          :model="loginForm"
-          ref="loginForm"
-          :rules="rules_login"
-          label-width="0px"
-          class="demo-dynamic"
-          :show-message="false"
-        >
-          <ns-form-item prop="username">
-            <ns-input
-              v-model="loginForm.username"
-              placeholder="用户名或者手机号"
-              width="100%"
-              height="40px"
-            ></ns-input>
-          </ns-form-item>
-          <ns-form-item prop="password" class="pwd" :show-message="false">
-            <!--记住密码-->
-            <ns-input
-              type="password"
-              autocomplete="on"
-              width="100%"
-              height="40px"
-              v-model="loginForm.password"
-              @keyup.native.enter="submitForm('loginForm')"
-              placeholder="登录密码"></ns-input>
-          </ns-form-item>
-          <ns-form-item>
-            <ns-button
-              style="width: 100%;"
-              type="primary"
-              :loading="submitLoading"
-              @click="submitForm('loginForm')">登录
-            </ns-button>
-          </ns-form-item>
-        </ns-form>
-      </div>
-      <!--多企业账号，选择登录-->
-      <multi-enterprise
-        v-if="hasMultiEnterprise"
-        :loginForm="loginForm"
-        :enterprise="enterprise"
-        @back="goPrevStep"
-      ></multi-enterprise>
-    </div>
 
+      <!--登录主体内容部分-->
+      <div class="sign-in-main">
+        <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
+          <ns-form class="loginForm" ref="loginForm" :model="loginForm" :rules="rules_login"
+                   label-width="0px" :show-message="false" v-if="!hasMultiEnterprise">
+
+            <ns-form-item prop="username">
+              <ns-input v-model="loginForm.username" placeholder="用户名或者手机号" width="100%" height="40px"></ns-input>
+            </ns-form-item>
+
+            <ns-form-item prop="password" class="pwd" :show-message="false">
+              <ns-input type="password" autocomplete="on" v-model="loginForm.password" placeholder="登录密码"
+                        width="100%" height="40px" @keyup.native.enter="submitForm('loginForm')">
+              </ns-input>
+            </ns-form-item>
+
+            <ns-form-item>
+              <ns-button type="primary" :loading="submitLoading" @click="submitForm('loginForm')">登录</ns-button>
+            </ns-form-item>
+          </ns-form>
+        </transition>
+
+        <!--多企业账号，选择登录-->
+        <transition name="custom-classes-transition" enter-active-class="animated slideInRight" leave-active-class="animated slideOutRight">
+          <div class="enterprise-block" v-if="hasMultiEnterprise">
+
+            <multiple-enterprise-list :list="enterprise" @select-handle="selectHandle"></multiple-enterprise-list>
+            <ns-button @click="hasMultiEnterprise = false ">返回上一页</ns-button>
+
+          </div>
+        </transition>
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
-  import {isMultipleEnterprise} from '../../../service/System/User/login';
-  import MultiEnterprise from './multi-enterprise';
-  import authLogin from '../authLogin';
-  import cryptoPassWord from '../cryptoPassWord';
+  import { mapGetters } from 'vuex';
+  import authLogin from '../../../mixins/Login/authLogin';
+  import cryptoPassWord from '../../../mixins/Login/cryptoPassWord';
+
+  import multipleEnterpriseList from '../../../components/NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
+  import { jumpToTnitPage } from '../../../utils/behavior';
 
   export default {
     name: 'sign-in-box',
     mixins: [authLogin, cryptoPassWord],
-    components: {MultiEnterprise},
+    components: { multipleEnterpriseList },
     data() {
       return {
+        submitLoading: false,//请求加载状态
+        enterprise: [],//多企业列表
         validateError: '你输入的密码和账户名不匹配,请重新输入',
-        hasMultiEnterprise: false,
         loginForm: {
           username: '',
           password: '',
         },
         rules_login: {
-          username: [{required: true, message: '请输入用户名', trigger: 'change'}],
-          password: [{required: true, message: '请输入密码', trigger: 'change'}],
+          username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
+          password: [{ required: true, message: '请输入密码', trigger: 'change' }],
         },
-        enterprise: [],
       };
     },
     computed: {
       ...mapGetters(['operatorPicture', 'operatorDesc']),
+      cryptoPassWord() {
+        return this.getCryptoBybase64(this.loginForm.password) || '';
+      },
     },
     methods: {
       /**
@@ -91,9 +83,27 @@
        * @param formName
        */
       submitForm(formName) {
-        this.$refs[formName].validate(valid => {
+        this.$refs[formName].validate(async valid => {
           if (valid) {
-            this.checkMultipleEnterprise(); // 检测是否是多企业账号
+            this.submitLoading = true;
+
+            console.log('kaishi');
+
+            // 获取多集团信息 / 检测是否是多企业账号
+            this.enterprise = await this.checkByLogin({
+              userAccount: this.loginForm.username,
+              password: this.cryptoPassWord,
+            });
+
+            //判断是否为多企业，多企业账号跳转到选择企业界面
+            console.log(888888888888888);
+            this.submitLoading = false;
+
+            //非多集团情况下，登陆后直接跳转
+            if( this.enterprise.length === 1){
+              jumpToTnitPage();
+            }
+
           } else {
             this.$message({
               message: this.validateError,
@@ -104,47 +114,47 @@
       },
 
       /**
-       * 检测是否是多企业账号
+       * 选择企业登录
+       * @param item
+       * @param i
+       * @returns {Promise<void>}
        */
-      checkMultipleEnterprise() {
-
-        this.submitLoading = true;
-
-        let registerInfo = {
+      async selectHandle(item, i) {
+        const loginParams = {
           userAccount: this.loginForm.username,
-          password: this.getCryptoBybase64,
+          password: this.cryptoPassWord,
+          enterpriseId: item.enterpriseId,
         };
-
-        //判断是否是多企业账号
-        isMultipleEnterprise(registerInfo)
-          .then(res => {
-            this.enterprise = res.resultData;
-
-            // 多企业账号跳转到选择企业界面
-            if (this.enterprise.length > 1) {
-              this.hasMultiEnterprise = true;
-              this.submitLoading = false;
-            }
-
-            // 不是多企业账号，直接登录
-            else {
-              const loginParams = {
-                username: this.loginForm.username,
-                password: this.getCryptoBybase64,
-              };
-              this.authLogin(loginParams);
-            }
-          })
-          .catch(err => {
-            this.submitLoading = false;
-            console.log('判断是否是多企业账号失败', err);
-          });
-      },
-
-      // 返回上一页
-      goPrevStep() {
-        this.hasMultiEnterprise = !this.hasMultiEnterprise;
+        await this.multipleAuthLogin(loginParams);
+        jumpToTnitPage();
       },
     },
   };
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .sign-in-main {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    .loginForm, .enterprise-block {
+      position: absolute;
+      max-width: 400px;
+      width: 70%;
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+
+    .loginForm {
+      .el-button {
+        margin-top: 15px;
+      }
+    }
+    .el-button {
+      width: 100%;
+    }
+  }
+
+</style>
+
+
