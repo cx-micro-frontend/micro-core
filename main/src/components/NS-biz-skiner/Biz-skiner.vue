@@ -11,7 +11,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { updateThemeColor } from '../../service/System/User/login';
+  import { updateThemeColor } from '../../service/System/Layout/coverPainting';
 
   export default {
     name: 'Biz-skiner',
