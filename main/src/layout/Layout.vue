@@ -13,6 +13,7 @@
 
       <!--右边 - 用户下拉菜单 业务组在插槽内调用组件，传入值，并且调用方法即可  -->
       <div class="fr">
+        <biz-lock-screen></biz-lock-screen>
         <ns-screenfull></ns-screenfull>
         <biz-skiner></biz-skiner>
         <biz-user-dropdown></biz-user-dropdown>
@@ -41,14 +42,14 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
-  import {bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom} from './index';
+  import { mapGetters } from 'vuex';
+  import { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerCustom } from './index';
   import transform from './transform';
 
   export default {
     name: 'layout',
     mixins: [transform],
-    components: {bizSidebar, bizTabsViews, bizSkiner, bizUserDropdown, headerCustom},
+    components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerCustom },
     data() {
       return {};
     },
