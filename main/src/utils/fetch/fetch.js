@@ -11,8 +11,9 @@ import { fileFlowDistribute, flowTypeList } from './fileFlowDistribute';
 import solveGetCache from './solveGetCache';
 import requestHead from '../../store/modules/System/Common/RequestHeader';
 import { elMessage } from './fetch-message';
-import router from '../../router/index';
 import $store from '../../store';
+
+import { backLoginPage } from '../behavior';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -73,7 +74,7 @@ service.redirect = msg => {
     msg &&
     ['登陆已过期', '没有token', 'pre:PermissionFilter'].some(err => msg.indexOf(err) > -1)
   ) {
-    router.push({ path: '/front/login' });
+    backLoginPage();
   }
 };
 
