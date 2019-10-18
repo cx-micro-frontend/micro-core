@@ -1,0 +1,61 @@
+//锁屏组件
+.lockscreen {
+  cursor: pointer;
+  svg.ns-icon-svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: -5px;
+  }
+}
+
+//弹窗
+.lock-screen__dialog {
+  .el-dialog {
+    border-radius: 10px;
+
+    .el-dialog__body {
+      //内容部分
+      .lock-screen__container {
+        text-align: center;
+        //区块
+        .line-block {
+          display: inline-block;
+          margin: 10px 0;
+          //滑动区块
+          &.line-block-transition {
+            position: relative;
+            width: 296px;
+            height: 190px;
+            overflow: hidden;
+            //滑动区块 - 表单 / 多集团列表
+            .login-form-block, .enterprise-block {
+              position: absolute;
+              width: 100%;
+            }
+            .enterprise-title {
+              text-align: left;
+            }
+          }
+        }
+        //头像
+        .user-avatar {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 10px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .lock-screen__tips {
+          a {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
