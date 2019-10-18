@@ -6,145 +6,146 @@ const navmenu = (req, res) => {
     restLog: null,
     resultData: [
       // {
-      //   menuIconcls: 'daohang', //图标
-      //   menuMenuname: '向导',//显示名称
-      //   menuMenusubname: 'guide',//路径符号
-      //   syStatus: '1',//隐藏与否
-      //   syOrderindex: 1,//序号
+      //   menuIconcls: 'daohang',
+      //   menuMenuname: '向导',
+      //   menuMenusubname: 'guide',
+      //   syStatus: '1',
+      //   syOrderindex: 1,
       //   funcId: 'guide',
-      //   childMenus: null,//子级菜单
+      //   childMenus: null,
       // },
-      {
-        menuIconcls: 'gailan', //图标
-        menuMenuname: '主页', //显示名称
-        menuMenusubname: 'overview', //路径符号
-        syStatus: '1', //隐藏与否
-        syOrderindex: 2, //序号
-        funcId: 'overview',
-        childMenus: [], //子级菜单
-      },
       // {
-      //   menuIconcls: 'gailan', //图标
-      //   menuMenuname: '活动中心',//显示名称
-      //   menuMenusubname: 'community',//路径符号
-      //   syStatus: '1',//隐藏与否
-      //   syOrderindex: 3,//序号
+      //   menuIconcls: 'gailan',
+      //   menuMenuname: '主页',
+      //   menuMenusubname: 'overview',
+      //   syStatus: '1',
+      //   syOrderindex: 2,
+      //   funcId: 'overview',
+      //   childMenus: [],
+      // },
+      // {
+      //   menuIconcls: 'gailan',
+      //   menuMenuname: '活动中心',
+      //   menuMenusubname: 'community',
+      //   syStatus: '1',
+      //   syOrderindex: 3,
       //   funcId: 'community',
       //   childMenus: [
       //     {
       //       menuIconcls: '',//图标
-      //       menuMenuname: '小区设置',//显示名称
-      //       menuMenusubname: 'precinctList',//路径符号
-      //       syStatus: '1',//隐藏与否
-      //       syOrderindex: 1,//序号
-      //       funcId: 'o11111111111',//func-ID
-      //       childMenus: null,//子级菜单
+      //       menuMenuname: '小区设置',
+      //       menuMenusubname: 'precinctList',
+      //       syStatus: '1',
+      //       syOrderindex: 1,
+      //       funcId: 'o11111111111',
+      //       childMenus: null,
       //     },
       //     {
       //
       //       menuIconcls: '',//图标
-      //       menuMenuname: '活动管理',//显示名称
-      //       menuMenusubname: 'activityList',//路径符号
-      //       syOrderindex: 2,//序号
-      //       syStatus: '1',//隐藏与否
-      //       funcId: '0222222222222',//func-ID
-      //       childMenus: null,//子级菜单
+      //       menuMenuname: '活动管理',
+      //       menuMenusubname: 'activityList',
+      //       syOrderindex: 2,
+      //       syStatus: '1',
+      //       funcId: '0222222222222',
+      //       childMenus: null,
       //
       //     },
       //     {
       //       menuIconcls: '',//图标
-      //       menuMenuname: '公告中心',//显示名称
-      //       menuMenusubname: 'noticeList',//路径符号
-      //       syOrderindex: 3,//序号
-      //       syStatus: '1',//隐藏与否
-      //       funcId: '033333333333',//func-ID
-      //       childMenus: null,//子级菜单
+      //       menuMenuname: '公告中心',
+      //       menuMenusubname: 'noticeList',
+      //       syOrderindex: 3,
+      //       syStatus: '1',
+      //       funcId: '033333333333',
+      //       childMenus: null,
       //     },
       //   ],
       // },
 
       // {
       //   menuIconcls: "xiaoqu",//图标
-      //   menuMenuname: "小区设置",//显示名称
-      //   menuMenusubname: "precinctList",//路径符号
-      //   syStatus: "1",//隐藏与否
-      //   syOrderindex: 3,//序号
-      //   funcId: "precinctList",//func-ID
-      //   childMenus: [],//子级菜单
+      //   menuMenuname: "小区设置",
+      //   menuMenusubname: "precinctList",
+      //   syStatus: "1",
+      //   syOrderindex: 3,
+      //   funcId: "precinctList",
+      //   childMenus: [],
       // },
       // {
       //
       //   menuIconcls: "huodong",//图标
-      //   menuMenuname: "活动管理",//显示名称
-      //   menuMenusubname: "activityList",//路径符号
-      //   syOrderindex: 4,//序号
-      //   syStatus: "1",//隐藏与否
-      //   funcId: "activityList",//func-ID
-      //   childMenus: [],//子级菜单
+      //   menuMenuname: "活动管理",
+      //   menuMenusubname: "activityList",
+      //   syOrderindex: 4,
+      //   syStatus: "1",
+      //   funcId: "activityList",
+      //   childMenus: [],
       //
       // },
       // {
       //   menuIconcls: "gonggao",//图标
-      //   menuMenuname: "公告中心",//显示名称
-      //   menuMenusubname: "noticeList",//路径符号
-      //   syOrderindex: 5,//序号
-      //   syStatus: "1",//隐藏与否
-      //   funcId: "noticeList",//func-ID
-      //   childMenus: [],//子级菜单
+      //   menuMenuname: "公告中心",
+      //   menuMenusubname: "noticeList",
+      //   syOrderindex: 5,
+      //   syStatus: "1",
+      //   funcId: "noticeList",
+      //   childMenus: [],
       // },
       // {
-      //   menuIconcls: "fangchan", //图标
-      //   menuMenuname: "房产",//显示名称
-      //   menuMenusubname: "housemanage",//路径符号
-      //   syStatus: "1",//隐藏与否
-      //   syOrderindex: 6,//序号
-      //   funcId: 'housemanage',//func-ID
+      //   menuIconcls: "fangchan",
+      //   menuMenuname: "房产",
+      //   menuMenusubname: "housemanage",
+      //   syStatus: "1",
+      //   syOrderindex: 6,
+      //   funcId: 'housemanage',
       // },
 
       {
-        menuIconcls: 'shezhi', //图标
-        menuMenuname: '设置', //显示名称
-        menuMenusubname: 'system', //路径符号
+        menuIconcls: 'shezhi',
+        menuMenuname: '设置',   //显示名称
+        menuMenusubname: 'system',  //路径符号
         syStatus: '1', //隐藏与否
-        syOrderindex: 7, //序号
+        syOrderindex: 7,
         funcId: null, //func-ID
-        //子级菜单
+        syLayer: 2,
+
         childMenus: [
           {
-            menuIconcls: '', //图标
-            menuMenuname: '组织与员工', //显示名称
-            menuMenusubname: 'systemOrgEmployee', //路径符号
-            syStatus: '1', //隐藏与否
-            syOrderindex: 1, //序号
-            funcId: '2DEJjvjOcDM5caR4bce', //func-ID
-            childMenus: null, //子级菜单
+            menuIconcls: '',
+            menuMenuname: '组织与员工',
+            menuMenusubname: 'systemOrgEmployee',
+            syStatus: '1',
+            syOrderindex: 1,
+            funcId: '2DEJjvjOcDM5caR4bce',
+            childMenus: null,
           },
           {
-            menuIconcls: '', //图标
-            menuMenuname: '角色与权限', //显示名称
-            menuMenusubname: 'systemRolePermission', //路径符号
-            syOrderindex: 2, //序号
-            syStatus: '1', //隐藏与否
-            funcId: 'QEPbzP61apaxqC34rp5', //func-ID
-            childMenus: null, //子级菜单
+            menuIconcls: '',
+            menuMenuname: '角色与权限',
+            menuMenusubname: 'systemRolePermission',
+            syOrderindex: 2,
+            syStatus: '1',
+            funcId: 'QEPbzP61apaxqC34rp5',
+            childMenus: null,
           },
           {
-            menuIconcls: '', //图标
-            menuMenuname: '数据字典', //显示名称
-            menuMenusubname: 'systemDataDictionary', //路径符号
-            syOrderindex: 3, //序号
-            syStatus: '1', //隐藏与否
-            funcId: 'cpZKRalyjMljdbsgAC4', //func-ID
-            childMenus: null, //子级菜单
+            menuIconcls: '',
+            menuMenuname: '数据字典',
+            menuMenusubname: 'systemDataDictionary',
+            syOrderindex: 3,
+            syStatus: '1',
+            funcId: 'cpZKRalyjMljdbsgAC4',
+            childMenus: null,
           },
           {
-            menuIconcls: '', //图标
-            menuMenuname: '数据同步', //显示名称
-            menuMenusubname: 'designSync', //路径符号
-            syOrderindex: 4, //序号
-            syStatus: '1', //隐藏与否
-            funcId: 'V7bSlogvocamZ5cK23j', //func-ID
-            childMenus: null, //子级菜单
+            menuIconcls: '',
+            menuMenuname: '数据同步',
+            menuMenusubname: 'designSync',
+            syOrderindex: 4,
+            syStatus: '1',
+            funcId: 'V7bSlogvocamZ5cK23j',
+            childMenus: null,
           },
         ],
       },
