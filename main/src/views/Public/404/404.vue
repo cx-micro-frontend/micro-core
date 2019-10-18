@@ -11,6 +11,7 @@
 
 <script>
   import img_404 from '../../../assets/img/404/404.png';
+  import { backLoginPage } from '../../../utils/behavior';
 
   export default {
     data() {
@@ -23,8 +24,8 @@
         history.back();
       },
       goLogin() {
-        this.$router.push('front/login');
-      }
+        backLoginPage();
+      },
     },
   };
 </script>
