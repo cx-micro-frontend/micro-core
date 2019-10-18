@@ -103,8 +103,8 @@ const navmenu = (req, res) => {
 
       {
         menuIconcls: 'shezhi',
-        menuMenuname: '设置',   //显示名称
-        menuMenusubname: 'system',  //路径符号
+        menuMenuname: '设置', //显示名称
+        menuMenusubname: 'system', //路径符号
         syStatus: '1', //隐藏与否
         syOrderindex: 7,
         funcId: null, //func-ID
