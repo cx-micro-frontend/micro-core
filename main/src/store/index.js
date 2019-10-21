@@ -16,6 +16,7 @@ import Table from './modules/System/Table/Table';
 import User from './modules/System/User/User';
 
 //Layout
+import LockScreen from './modules/System/Layout/LockScreen';
 import CoverPainting from './modules/System/Layout/CoverPainting';
 import Sidebar from './modules/System/Layout/Sidebar';
 import PageInfo from './modules/System/Common/PageInfo';
@@ -45,6 +46,7 @@ const store = new Vuex.Store({
     User,
 
     //Layout
+    LockScreen,
     CoverPainting,
     Sidebar,
     PageInfo,
