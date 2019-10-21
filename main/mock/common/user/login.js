@@ -42,7 +42,7 @@ const queryUserEnterprise = (req, res) => {
         enterpriseName: '@ctitle',
         id: '@increment',
         password: null,
-      })
+      }),
     );
   }
   return res.json({
@@ -75,16 +75,16 @@ const oauthLogin = (req, res) => {
     resultCode: '200',
     resultData: {
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-      loginTime: 1559037265182,
+      loginTime: Mock.Random.now('day', 'yyyy-MM-dd HH:mm:ss SS'),
       maxage: 18000000,
       token:
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODg1NzE3NzExOSIsImp0aSI6IjkyNyIsImlhdCI6MTU1OTAzNzI2NX0.ta1UL4da-kG0lknikwPX1VRucWqf_XNWHRSSAG9BcmA',
+        `sign-${Mock.Random.integer(10, 99)}-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODg1NzE3NzExOSIsImp0aSI6IjkyNyIsImlhdCI6MTU1OTAzNzI2NX0.ta1UL4da-kG0lknikwPX1VRucWqf_XNWHRSSAG9BcmA`,
       userAccount: userAccount,
       userId: Mock.Random.float(1, 100),
-      userName: '高仓雄',
+      userName: `高仓雄-${userAccount}`,
       userPhone: '18768183457',
       userSex: '1',
-      themeColor: '#e70012',
+      themeColor: Mock.Random.rgb(),
     },
     resultMsg: '操作成功。',
   });
