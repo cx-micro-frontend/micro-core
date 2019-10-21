@@ -2,7 +2,7 @@
 <template>
   <span class="lockscreen">
     <ns-icon-svg icon-class="suo"
-                 @click="visible = true"
+                 @click="lockScreen"
     ></ns-icon-svg>
       <ns-dialog
         class="lock-screen__dialog"
@@ -10,13 +10,13 @@
         size="mini"
         auto-height
         width="360px"
-        :visible.sync="visible"
+        :visible.sync="isLocked"
       >
         <div class="lock-screen__container">
           <div class="user-avatar line-block">
             <img :src="userAvatar" alt="">
           </div>
-           <h1>{{userName}}{{userAccount}} </h1>
+           <h1>{{userName}}</h1>
           <div class="line-block line-block-transition">
 
             <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
@@ -53,14 +53,12 @@
 
   import multipleEnterpriseList from '../NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
 
-
   export default {
     name: 'NS-biz-lockscreen',
     mixins: [cryptoPassWord, authLogin],
     components: { multipleEnterpriseList },
     data() {
       return {
-        visible: false,
         enterprise: [],//多企业列表
         passwordForm: {
           password: '',
@@ -73,7 +71,7 @@
       };
     },
     computed: {
-      ...mapGetters(['operatorBackgroudPic', 'operatorLogo', 'avatar', 'userName', 'userAccount']),
+      ...mapGetters(['isLocked', 'operatorBackgroudPic', 'operatorLogo', 'avatar', 'userName', 'userAccount']),
       userAvatar: function() {
         return this.avatar || require('../../assets/img/empty/empty-avatar.png');
       },
@@ -93,8 +91,6 @@
       loginClick(formName) {
         this.$refs[formName].validate(async valid => {
           if (valid) {
-
-            console.log('kaishi');
 
             // 获取多集团信息 / 检测是否是多企业账号
             this.enterprise = await this.checkByLogin({
@@ -137,7 +133,14 @@
         this.$refs['reLoginForm'].resetFields();
         this.hasMultiEnterprise = false;
         this.enterprise = [];
-        this.visible = false;
+        this.$store.dispatch('unLockScreen');
+      },
+
+      /**
+       * 锁屏
+       */
+      lockScreen() {
+        this.$store.dispatch('lockScreen');
       },
     },
   };
