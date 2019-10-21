@@ -2,7 +2,7 @@ import { storageHandle } from '../../../../utils/storage/storage';
 
 const LockScreen = {
   state: {
-    isLocked: JSON.parse(storageHandle('get', 'sign_isLocked')) || 12312,
+    isLocked: JSON.parse(storageHandle('get', 'sign_isLocked')) || false,
   },
   mutations: {
     LOCK_SCREEN: state => {
