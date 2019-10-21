@@ -3,7 +3,7 @@ import { storageHandle } from '../../../../utils/storage/storage';
 const PageTabs = {
   state: {
     visitedPages: JSON.parse(storageHandle('get', 'sign_visited_pages')) || [],
-    currentVisitedPageTag: {},
+    currentVisitedPageTag: {}, //当前访问的page信息
   },
   mutations: {
     /**
