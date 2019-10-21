@@ -42,7 +42,7 @@ const queryUserEnterprise = (req, res) => {
         enterpriseName: '@ctitle',
         id: '@increment',
         password: null,
-      }),
+      })
     );
   }
   return res.json({
@@ -77,8 +77,10 @@ const oauthLogin = (req, res) => {
       avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
       loginTime: Mock.Random.now('day', 'yyyy-MM-dd HH:mm:ss SS'),
       maxage: 18000000,
-      token:
-        `sign-${Mock.Random.integer(10, 99)}-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODg1NzE3NzExOSIsImp0aSI6IjkyNyIsImlhdCI6MTU1OTAzNzI2NX0.ta1UL4da-kG0lknikwPX1VRucWqf_XNWHRSSAG9BcmA`,
+      token: `sign-${Mock.Random.integer(
+        10,
+        99
+      )}-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODg1NzE3NzExOSIsImp0aSI6IjkyNyIsImlhdCI6MTU1OTAzNzI2NX0.ta1UL4da-kG0lknikwPX1VRucWqf_XNWHRSSAG9BcmA`,
       userAccount: userAccount,
       userId: Mock.Random.float(1, 100),
       userName: `高仓雄-${userAccount}`,
