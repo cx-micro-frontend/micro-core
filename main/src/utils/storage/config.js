@@ -53,4 +53,11 @@ export default {
     storageLife: '',
     partition: false,
   },
+  sign_isLocked: {
+    name: '锁屏状态标识',
+    storagekey: 'isLocked',
+    storageMethod: 'localStorage',
+    storageLife: '',
+    partition: true,
+  },
 };
