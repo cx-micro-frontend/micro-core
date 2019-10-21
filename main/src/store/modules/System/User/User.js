@@ -66,6 +66,8 @@ const User = {
       $store.dispatch('emptyOrganizeTreeStore');
       $store.dispatch('removeErrorSign'); //remove route hook error sign
 
+      $store.dispatch('removeLockScreen'); //remove / unlock screen
+
       storageHandle('remove', 'sign_user_info'); //remove user information
 
       removeToken(); //remove token
@@ -78,7 +80,6 @@ const User = {
       return new Promise((resolve, reject) => {
         oauthlogin(query)
           .then(res => {
-            console.log('44-444-444-4444-444');
             const userinfo = res.resultData || {};
 
             commit('SET_TOKEN', userinfo.token);
@@ -139,8 +140,10 @@ const User = {
     logOut({ commit }) {
       logout()
         .then(res => {
-          $store.dispatch('emptyStorage');
-          backLoginPage();
+          if (res) {
+            $store.dispatch('emptyStorage');
+            backLoginPage();
+          }
         })
         .catch(err => console.log(err));
     },
