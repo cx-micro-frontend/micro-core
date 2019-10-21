@@ -26,12 +26,14 @@ const getters = {
   operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic, //布局-head 左侧Logo图片
 
   //layout
-  initRouter: state => state.Sidebar.initRouter,
-  sideBarList: state => state.Sidebar.sideBarList,
-  visitedPages: state => state.PageTabs.visitedPages,
+  isLocked: state => state.LockScreen.isLocked, //锁屏状态
+  initRouter: state => state.Sidebar.initRouter, //菜单栏初始路由
+  sideBarList: state => state.Sidebar.sideBarList, //菜单栏数据
 
-  currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag,
-  currentPageInfo: state => state.PageInfo.currentPageInfo,
+  visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
+  currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag, //当前访问的page信息(处理为tab页所需的格式)
+
+  currentPageInfo: state => state.PageInfo.currentPageInfo, //当前访问的页面信息
 
   //all search conditions (object for all page search conditions)
   searchConditions: state => state.Search.conditions,
