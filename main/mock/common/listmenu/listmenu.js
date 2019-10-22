@@ -149,6 +149,35 @@ const navmenu = (req, res) => {
           },
         ],
       },
+      {
+        menuIconcls: 'shezhi',
+        menuMenuname: '测试示例', //显示名称
+        menuMenusubname: 'testDemo', //路径符号
+        syStatus: '1', //隐藏与否
+        syOrderindex: 8,
+        funcId: null, //func-ID
+        syLayer: 2,
+        childMenus: [
+          {
+            menuIconcls: '',
+            menuMenuname: 'gridDemo1',
+            menuMenusubname: 'gridDemo1',
+            syStatus: '1',
+            syOrderindex: 1,
+            funcId: '2DEJjvjOcDM5caR4bce',
+            childMenus: null,
+          },
+          {
+            menuIconcls: '',
+            menuMenuname: 'gridDemo2',
+            menuMenusubname: 'gridDemo2',
+            syStatus: '1',
+            syOrderindex: 2,
+            funcId: 'QEPbzP61apaxqC34rp5',
+            childMenus: null,
+          },
+        ],
+      },
     ],
   });
 };
