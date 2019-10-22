@@ -9,8 +9,11 @@ import FrameMode from './modules/System/FrameMode/FrameMode';
 //common
 import SearchConditions from './modules/System/Common/SearchConditions';
 import RoleButton from './modules/System/Role/RoleButton';
-import RequestHead from './modules/System/Common/RequestHeader';
 import Table from './modules/System/Table/Table';
+
+//request
+import RequestHead from './modules/System/Request/RequestHeader';
+import CancelToken from './modules/System/Request/CancelToken';
 
 //User
 import User from './modules/System/User/User';
@@ -39,8 +42,12 @@ const store = new Vuex.Store({
     //common
     Search: SearchConditions,
     RoleButton,
-    RequestHead,
+
     Table,
+
+    //request
+    RequestHead,
+    CancelToken,
 
     //User
     User,
