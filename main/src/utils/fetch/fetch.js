@@ -9,7 +9,7 @@
 import axios from 'axios';
 import { fileFlowDistribute, flowTypeList } from './fileFlowDistribute';
 import solveGetCache from './solveGetCache';
-import requestHead from '../../store/modules/System/Common/RequestHeader';
+import requestHead from '../../store/modules/System/Request/RequestHeader';
 import { elMessage } from './fetch-message';
 import $store from '../../store';
 
@@ -25,6 +25,10 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     config.headers['funcId'] = $store.state.Core.funcId;
+
+    config.cancelToken = new axios.CancelToken(function(cancel) {
+      $store.commit('registerCancelToken', { cancelToken: cancel });
+    });
 
     solveGetCache(config);
     return config;
@@ -59,11 +63,13 @@ service.interceptors.response.use(
   error => {
     if (error.resultMsg) {
       elMessage(error.resultMsg, () => service.redirect(error.message));
-    } else if (error.response.data.message === 'GENERAL') {
+    } else if (error.response && error.response.data.message === 'GENERAL') {
       elMessage('服务正在重启', () => service.redirect(error.message));
+    } else if (error.message && error.message.type === 'cancelToken') {
+      console.warn(error.message.resultMsg);
     }
 
-    let errorInfo = error.data.error ? error.data.error.message : error.data;
+    let errorInfo = error.data && error.data.error ? error.data.error.message : error.data;
     return Promise.reject(errorInfo);
   }
 );
