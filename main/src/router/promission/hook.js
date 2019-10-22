@@ -1,6 +1,9 @@
 import router from '../index';
+import $store from '../../store';
+
 import NProgress from 'nprogress'; // Progress 进度条
 import '../../style/Modular/nprogress/nprogress.scss'; // Progress 进度条样式
+NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configuration
 
 import { getToken } from '../../utils/library/auth';
 import { addPageTabs } from './auxiliary';
@@ -8,13 +11,18 @@ import whiteList from '../whiteList';
 import promissionhandle from './promission';
 import errorPathDistribute from './errorDistribute';
 
-NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configuration
-
 router.beforeEach((to, from, next) => {
   // console.log('============== 路由状态 ==================');
   // console.log('beforeEach');
   // console.log(to);
   // console.log(from);
+
+  /*
+   * in switch route state:
+   *    history request did not response back should be intercept destroyed
+   * in this way, avoid excessive request overhead and reduce memory usage
+   */
+  $store.commit('clearCancelToken');
 
   NProgress.start(); // start progress bar
 
