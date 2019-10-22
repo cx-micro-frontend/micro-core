@@ -17,6 +17,8 @@ export default {
   //需要权限登录的静态路由地址
   auth: [
     '/overview',
+    '/testDemo/gridDemo',
+
     // '/system/designSync',
     // '/system/systemDataDictionary',
     // '/system/systemOrgEmployee',
