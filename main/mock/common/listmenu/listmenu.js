@@ -150,9 +150,9 @@ const navmenu = (req, res) => {
         ],
       },
       {
-        menuIconcls: 'shezhi',
+        menuIconcls: 'guide',
         menuMenuname: '测试示例', //显示名称
-        menuMenusubname: 'testDemo', //路径符号
+        menuMenusubname: 'test', //路径符号
         syStatus: '1', //隐藏与否
         syOrderindex: 8,
         funcId: null, //func-ID
@@ -160,7 +160,7 @@ const navmenu = (req, res) => {
         childMenus: [
           {
             menuIconcls: '',
-            menuMenuname: 'gridDemo1',
+            menuMenuname: '表格模板结合1',
             menuMenusubname: 'gridDemo1',
             syStatus: '1',
             syOrderindex: 1,
@@ -169,11 +169,29 @@ const navmenu = (req, res) => {
           },
           {
             menuIconcls: '',
-            menuMenuname: 'gridDemo2',
+            menuMenuname: '表格模板结合2',
             menuMenusubname: 'gridDemo2',
             syStatus: '1',
             syOrderindex: 2,
             funcId: 'QEPbzP61apaxqC34rp5',
+            childMenus: null,
+          },
+          {
+            menuIconcls: '',
+            menuMenuname: '表格1',
+            menuMenusubname: 'grid1',
+            syStatus: '1',
+            syOrderindex: 3,
+            funcId: '2DEJjvjOcDM5caR4bce',
+            childMenus: null,
+          },
+          {
+            menuIconcls: '',
+            menuMenuname: '表格2',
+            menuMenusubname: 'grid2',
+            syStatus: '1',
+            syOrderindex: 4,
+            funcId: '2DEJjvjOcDM5caR4bce',
             childMenus: null,
           },
         ],
