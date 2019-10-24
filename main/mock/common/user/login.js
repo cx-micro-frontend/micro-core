@@ -1,7 +1,6 @@
 const Mock = require('mockjs');
 const utils = require('../../utils/index');
 
-
 /**
  * 用户封面等信息
  * @param req
