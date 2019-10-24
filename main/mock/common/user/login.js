@@ -1,5 +1,6 @@
 const Mock = require('mockjs');
-import { getMockQuery } from '../../utils/index';
+const utils = require('../../utils/index');
+
 
 /**
  * 用户封面等信息
@@ -68,7 +69,7 @@ const oauthLogin = (req, res) => {
   }
   //多集团登录
   else {
-    userAccount = getMockQuery(req.url, 'userAccount');
+    userAccount = utils.getMockQuery(req.url, 'userAccount');
   }
 
   return res.json({
