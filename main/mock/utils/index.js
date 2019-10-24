@@ -4,7 +4,7 @@
  * @param key
  * @returns {null}
  */
-export function getQuery(url, key) {
+const getQuery = (url, key) => {
   let reg = new RegExp('(^|\\?|&)' + key + '=([^&]*)(\\area-linkage|&|$)', 'i');
   if (url) {
     if (reg.test(url)) {
@@ -16,7 +16,7 @@ export function getQuery(url, key) {
     }
   }
   return null;
-}
+};
 
 /**
  * get mock query
@@ -24,7 +24,7 @@ export function getQuery(url, key) {
  * @param key
  * @returns {string}
  */
-export const getMockQuery = (url, key) => {
+exports.getMockQuery = (url, key) => {
   const URL = encodeURI(url);
   const qn = getQuery(URL, key);
   return decodeURI(decodeURI(qn));
