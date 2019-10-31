@@ -89,6 +89,7 @@ module.exports = {
       'env.param.config.js',
       'node_modules/neap-test1',
       'lib',
+      'NS_test',
     ],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
