@@ -3,7 +3,7 @@
     id="add-or-edit-group"
     title="集团编辑"
     :visible.sync="visible.visible"
-    type="autoHeight"
+    autoHeight
     @close="dialogClose"
   >
     <ns-form
