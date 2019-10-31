@@ -54,7 +54,7 @@ service.interceptors.response.use(
       if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
         return Promise.resolve(resData);
       } else {
-        elMessage(resData.resultMsg, () => service.redirect(resData.resultMsg));
+        elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
 
         return Promise.reject(resData);
       }
@@ -62,9 +62,9 @@ service.interceptors.response.use(
   },
   error => {
     if (error.resultMsg) {
-      elMessage(error.resultMsg, () => service.redirect(error.message));
+      elMessage(error.resultMsg, () => service.redirect(error.resultCode, error.message));
     } else if (error.response && error.response.data.message === 'GENERAL') {
-      elMessage('服务正在重启', () => service.redirect(error.message));
+      elMessage('服务正在重启', () => service.redirect(error.resultCode, error.message));
     } else if (error.message && error.message.type === 'cancelToken') {
       console.warn(error.message.resultMsg);
     }
@@ -75,7 +75,11 @@ service.interceptors.response.use(
 );
 
 //token error break
-service.redirect = msg => {
+service.redirect = (code, msg) => {
+  if (['710', '712'].some(c => c === code)) {
+    backLoginPage();
+  }
+
   if (
     msg &&
     ['登陆已过期', '没有token', 'pre:PermissionFilter'].some(err => msg.indexOf(err) > -1)
