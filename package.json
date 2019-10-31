@@ -29,17 +29,19 @@
     "js-cookie": "^2.2.0",
     "neap-ui": "^0.0.1-17",
     "nprogress": "^0.2.0",
-    "vue": "2.5.21",
+    "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vue-template-compiler": "2.5.21",
+    "vue-template-compiler": "2.6.10",
     "vuex": "^2.3.1",
     "vxe-table": "^2.6.0",
+    "vxe-table-plugin-element": "^1.5.3",
     "xe-utils": "^2.2.11",
-    "xlsx": "^0.11.0"
+    "xlsx": "^0.11.0",
+    "yarn": "^1.19.1"
   },
   "devDependencies": {
     "@vant/compiler": "^1.0.0",
-    "cx-builder": "^0.0.53-30",
+    "cx-builder": "^0.0.53-31",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-notify": "^3.2.0",
