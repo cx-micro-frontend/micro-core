@@ -4,7 +4,7 @@
     :title="title"
     :visible.sync="visible.visible"
     size="small"
-    type="autoHeight"
+    autoHeight
     @close="dialogClose"
   >
     <ns-auto-form
