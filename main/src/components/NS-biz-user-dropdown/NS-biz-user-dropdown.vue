@@ -33,7 +33,7 @@
         abbreviation: true,//头像为简单模式 - 显示用户姓名的最后一个字
 
         options: [
-          { label: '个人设置', value: 'personalSetting' },
+          // { label: '个人设置', value: 'personalSetting' },
           { label: '关于', value: 'about' },
           { label: '退出登录', value: 'logout' },
         ],
