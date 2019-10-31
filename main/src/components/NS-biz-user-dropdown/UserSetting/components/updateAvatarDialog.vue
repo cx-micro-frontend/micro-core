@@ -4,7 +4,7 @@
     :visible.sync="showDialog"
     width="650px"
     title="修改头像"
-    :autoHeight="true"
+    autoHeight
     @close="dialogClose"
   >
     <ns-tabs v-model="tabModel">
