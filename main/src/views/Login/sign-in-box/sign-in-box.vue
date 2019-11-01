@@ -6,7 +6,6 @@
     </div>
     <div class="sign-in-right">
       <p class="sign-in-title">登录</p>
-
       <!--登录主体内容部分-->
       <div class="sign-in-main">
         <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
@@ -127,7 +126,7 @@
         };
         await this.multipleAuthLogin(loginParams);
         jumpToTnitPage();
-      },
+      }
     },
   };
 </script>
