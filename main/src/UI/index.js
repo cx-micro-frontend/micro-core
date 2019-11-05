@@ -29,8 +29,3 @@ Vue.use(nsui, {
   log: false, //show log information
   type: 'globle',
 });
-
-// import { message } from './popup/message';
-
-//
-// Vue.prototype.$message = message;
