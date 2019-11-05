@@ -8,7 +8,7 @@ node_modules/
 /lib/
 /injection/
 /NS_system/
-
+/NS_test/
 
 ##############################
 ## files                  ##
