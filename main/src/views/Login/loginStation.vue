@@ -7,7 +7,7 @@
 </template>
 <script>
   import { getUrlParam } from '../../utils/library/urlhandle';
-  import reqUtils from '../../mixins/Login/reqUtils';
+  import authLogin from '../../mixins/Login/authLogin';
 
   export default {
     mixins: [authLogin],

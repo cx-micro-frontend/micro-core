@@ -152,7 +152,7 @@ const navmenu = (req, res) => {
       {
         menuIconcls: 'guide',
         menuMenuname: '测试示例', //显示名称
-        menuMenusubname: 'test', //路径符号
+        menuMenusubname: 'testDemo', //路径符号
         syStatus: '1', //隐藏与否
         syOrderindex: 8,
         funcId: null, //func-ID
