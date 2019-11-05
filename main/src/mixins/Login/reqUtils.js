@@ -1,7 +1,6 @@
 import errorPathDistribute from '../../router/promission/errorDistribute';
 import $store from '../../store/index';
 import $router from '../../router/index';
-import Message from 'neap-ui';
 
 /**
  * 初始化准备操作
@@ -40,7 +39,6 @@ export const authLogin = async query => {
     },
     error => {
       console.log('登录失败', error);
-      Message.error('登录失败。');
     }
   );
 };
@@ -57,9 +55,7 @@ export const multipleAuthLogin = async query => {
     .then(() => {
       console.log(11000111);
     })
-    .catch(err => {
-      Message.error('登录失败。');
-    });
+    .catch(err => {});
 };
 
 /**
