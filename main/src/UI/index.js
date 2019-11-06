@@ -18,7 +18,7 @@ import '../../../injection/entrance/entrance_ui';
 
 Vue.use(ElementUI);
 
-import nsui from 'neap-ui/lib/ns-ui.min.js';
+import nsui from 'neap-ui/lib/ns-ui.js';
 import 'neap-ui/lib/index.css';
 
 import '../utils';
