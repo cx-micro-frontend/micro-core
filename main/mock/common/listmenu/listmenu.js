@@ -101,6 +101,7 @@ const navmenu = (req, res) => {
       //   funcId: 'housemanage',
       // },
 
+      //系统设置
       {
         menuIconcls: 'shezhi',
         menuMenuname: '设置', //显示名称
@@ -109,7 +110,6 @@ const navmenu = (req, res) => {
         syOrderindex: 7,
         funcId: null, //func-ID
         syLayer: 2,
-
         childMenus: [
           {
             menuIconcls: '',
@@ -147,10 +147,20 @@ const navmenu = (req, res) => {
             funcId: 'V7bSlogvocamZ5cK23j',
             childMenus: null,
           },
+          {
+            menuIconcls: '',
+            menuMenuname: '系统主题',
+            menuMenusubname: 'systemTheme',
+            syOrderindex: 5,
+            syStatus: '1',
+            funcId: 'funcId-system-theme',
+            childMenus: null,
+          },
         ],
       },
+      //测试示例
       {
-        menuIconcls: 'guide',
+        menuIconcls: 'shezhi',
         menuMenuname: '测试示例', //显示名称
         menuMenusubname: 'testDemo', //路径符号
         syStatus: '1', //隐藏与否
