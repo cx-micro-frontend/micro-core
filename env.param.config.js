@@ -29,7 +29,7 @@ module.exports = {
     useEslint: false,
     splitChunks: {
       chunks: 'all',
-      maxInitialRequests: 4,
+      maxInitialRequests: 6,
       cacheGroups: {
         libs: {
           name: 'chunk-libs',
@@ -38,9 +38,12 @@ module.exports = {
               const include = [/[\\/]node_modules[\\/]/].every(reg => {
                 return reg.test(module.resource);
               });
-              const exclude = [/[\\/]node_modules[\\/](vue|element-ui|neap-ui|)/].some(reg => {
+              const exclude = [
+                /[\\/]node_modules[\\/](vue|element-ui|neap-ui|vxe-table|neap-test1[\\/]injection[\\/]repositories[\\/]NS_biz_components|)/,
+              ].some(reg => {
                 return reg.test(module.resource);
               });
+
               return include && !exclude;
             }
             return false;
@@ -67,11 +70,17 @@ module.exports = {
           test: /[\\/]node_modules[\\/]neap-ui[\\/]/,
         },
 
-        // 'biz-components': {
-        //   name: 'chunk-biz-components',
-        //   test: /[\\/]node_modules[\\/]neap-test1[\\/]injection[\\/]repositories[\\/]NS_biz_components[\\/]/,
-        //   priority: 20,
-        // },
+        'biz-components': {
+          name: 'chunk-biz-components',
+          test: /[\\/]node_modules[\\/]neap-test1[\\/]injection[\\/]repositories[\\/]NS_biz_components[\\/]/,
+          priority: 20,
+        },
+
+        'vxe-table': {
+          name: 'chunk-vxe-table',
+          priority: 20,
+          test: /[\\/]node_modules[\\/]vxe-table[\\/]/,
+        },
       },
     },
     prodCssSourceMap: true,
