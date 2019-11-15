@@ -5,11 +5,15 @@ import '@babel/polyfill';
 import Vue from 'vue';
 import App from './src/App.vue';
 
+//load  UI / plugins / style / components
+import './src/UI/index';
+
+//load vuex for data store
+import store from './src/store/index';
+
+//load router && page
 import router from './src/router/index';
 import './src/router/promission/hook';
-
-import store from './src/store/index';
-import './src/UI/index';
 
 Vue.config.productionTip = false;
 
