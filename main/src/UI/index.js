@@ -1,10 +1,9 @@
-import Vue from 'vue';
-import ElementUI from 'element-ui';
-
 //style
-import 'cx-theme/dist/cx-theme.min.css';
-import '../style/element-cover/index.scss'; //cover
-import 'vxe-table/lib/index.css';
+import './Element-UI/index'; //load element-ui
+import './XTable/index.js'; //load new table components
+import './NS-UI/index'; //load ns-ui
+
+//load applaction style
 import '../style/public.scss';
 import '../style/common.scss';
 
@@ -17,16 +16,5 @@ import '../components/index';
 //enject UI
 import '../../../injection/entrance/entrance_ui';
 
-Vue.use(ElementUI);
-
-import nsui from 'neap-ui/lib/ns-ui';
-import 'neap-ui/lib/index.css';
-
+//load utils event
 import '../utils';
-
-Vue.use(nsui, {
-  prefix: 'ns', //stage name
-  tie: '-',
-  log: false, //show log information
-  type: 'globle',
-});
