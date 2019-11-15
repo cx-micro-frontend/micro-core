@@ -1,6 +1,6 @@
 //style
-import './Element-UI/index'; //load element-ui
 import './XTable/index.js'; //load new table components
+import './Element-UI/index'; //load element-ui
 import './NS-UI/index'; //load ns-ui
 
 //load applaction style
