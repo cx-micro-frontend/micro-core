@@ -1,3 +1,9 @@
+/*
+ * load new table components plugin
+ * created: 2019/11/13.
+ * author: Broccoli spring( 高仓雄 - gcx )
+ * copyright (c) 2019 Broccoli spring( gcx )
+ */
 import Vue from 'vue';
 
 // import {
