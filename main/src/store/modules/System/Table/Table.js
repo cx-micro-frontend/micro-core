@@ -18,7 +18,7 @@ const Table = {
     },
   },
   actions: {
-    setaTableHead({ commit }, data) {
+    setTableHead({ commit }, data) {
       commit('SET_TABLE_HEAD', data);
     },
 
