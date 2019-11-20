@@ -548,8 +548,10 @@ newsee.prototype = {
             !(
               ns.base.isXType('function', aCtor) &&
               aCtor instanceof aCtor &&
-              (ns.base.isXType('function', bCtor) && bCtor instanceof bCtor) &&
-              ('constructor' in a && 'constructor' in b)
+              ns.base.isXType('function', bCtor) &&
+              bCtor instanceof bCtor &&
+              'constructor' in a &&
+              'constructor' in b
             )
           ) {
             return false;
