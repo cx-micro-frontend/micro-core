@@ -16,13 +16,9 @@ export default {
       console.log(data);
       console.log(this.tableData);
 
-      if (!this.tableData) return;
-      if (isEmptyObject(this.tableData)) return;
-      if (!this.tableData.list) return;
-
+      if (!this.gridBtns || !this.gridBtns.length) return;
       if (this.tableBtnDistribute) {
-        console.log(11111111111111);
-        this.tableBtnDistribute(this.tableData, this.gridBtns);
+        this.tableBtnDistribute(this.gridBtns);
       }
     });
   },
