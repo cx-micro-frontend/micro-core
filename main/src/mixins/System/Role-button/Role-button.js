@@ -1,5 +1,4 @@
 import { mapGetters } from 'vuex';
-import { isEmptyObject } from '../../../utils/library/judge';
 
 export default {
   computed: {
@@ -17,8 +16,8 @@ export default {
       console.log(this.tableData);
 
       if (!this.gridBtns || !this.gridBtns.length) return;
-      if (this.tableBtnDistribute) {
-        this.tableBtnDistribute(this.gridBtns);
+      if (this.tableLoader) {
+        this.tableLoader(this.gridBtns);
       }
     });
   },
