@@ -20,7 +20,10 @@ export default {
       if (isEmptyObject(this.tableData)) return;
       if (!this.tableData.list) return;
 
-      this.tableBtnDistribute(this.tableData, this.gridBtns);
+      if (this.tableBtnDistribute) {
+        console.log(11111111111111);
+        this.tableBtnDistribute(this.tableData, this.gridBtns);
+      }
     });
   },
 };
