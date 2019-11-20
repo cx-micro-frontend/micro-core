@@ -118,8 +118,10 @@ export const isEqual = (a, b, aStack, bStack) => {
         !(
           isXType('function', aCtor) &&
           aCtor instanceof aCtor &&
-          (isXType('function', bCtor) && bCtor instanceof bCtor) &&
-          ('constructor' in a && 'constructor' in b)
+          isXType('function', bCtor) &&
+          bCtor instanceof bCtor &&
+          'constructor' in a &&
+          'constructor' in b
         )
       ) {
         return false;
