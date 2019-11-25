@@ -10,7 +10,7 @@ export function getOperatorInfo(query) {
   dataFilter(query);
   // fetch out
   return fetch({
-    url: '/system/site/get-operatorInfoById',
+    url: 'system/site/get-operatorInfoById', //get-operatorInfoById
     method: 'get',
     params: query,
   });
