@@ -13,7 +13,7 @@
                    label-width="0px" :show-message="false" v-if="!hasMultiEnterprise">
 
             <ns-form-item prop="username">
-              <ns-input v-model="loginForm.username" placeholder="用户名或者手机号" width="100%" height="40px"></ns-input>
+              <ns-input v-model="loginForm.username" placeholder="请输入用户名" width="100%" height="40px"></ns-input>
             </ns-form-item>
 
             <ns-form-item prop="password" class="pwd" :show-message="false">
@@ -99,7 +99,7 @@
             this.submitLoading = false;
 
             //非多集团情况下，登陆后直接跳转
-            if( this.enterprise.length === 1){
+            if (this.enterprise.length === 1) {
               jumpToTnitPage();
             }
 
@@ -126,7 +126,7 @@
         };
         await this.multipleAuthLogin(loginParams);
         jumpToTnitPage();
-      }
+      },
     },
   };
 </script>
