@@ -13,8 +13,10 @@ $--color-white: #fff; //纯白
 
 //---------- base color ----------
 $--color-primary: #0a7af8;
+$--color-primary-link: #409eff;
 $--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 input / select
 $--color-primary-light: #4097f9; //基础主色-浅色
+
 
 //---------- theme color ----------
 $--color-success: #16ca37;
@@ -22,12 +24,10 @@ $--color-warning: #ffae00;
 $--color-danger: #ff5131;
 $--color-info: #0a7af8;
 
-
 //---------- layout - 布局  ----------
 $navL: 50px; //左侧导航栏宽度
 $tabs: 38px; //历史浏览标签卡高度
 $navH: 50px; //顶部导航高度
-
 
 //---- 右侧窗口悬浮显示 上下左右 空隙值 ----
 $win_gapT: 10px;
@@ -54,7 +54,7 @@ body {
 }
 
 a {
-  color: rgba(32, 160, 255, 1);
+  color: $--color-primary-link;
 }
 
 li {
