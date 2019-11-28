@@ -72,7 +72,6 @@
         const current = this.dropDownBtnList.filter(item => item.code === command)[0] || {};
 
 
-
         this.$emit('command', current);
 
       },
@@ -90,6 +89,8 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
+  @import "../../style/public";
+
   .role-button-area {
     vertical-align: middle;
     li.role-button-area__part {
@@ -116,7 +117,7 @@
         }
         svg {
           padding: 0;
-          color: #409eff;
+          color: $--color-primary-link;
         }
       }
 
