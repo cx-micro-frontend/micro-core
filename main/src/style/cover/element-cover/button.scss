@@ -1,5 +1,5 @@
-@import '../public';
-@import '../mixins/mixins';
+@import '../../public';
+@import '../../mixins/mixins';
 
 .el-button--default {
   //background: none;
@@ -22,6 +22,7 @@
 }
 
 .el-button--text {
+  color: $--color-primary-link;
   &:focus {
     color: $--color-primary;
     border: none;
