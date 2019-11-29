@@ -101,7 +101,7 @@ module.exports = {
       'NS_test',
     ],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
       '@NEAP': path.resolve('main/src'),
     },
