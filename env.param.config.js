@@ -83,8 +83,8 @@ module.exports = {
         },
       },
     },
-    prodCssSourceMap: true,
-    prodJsSourceMap: true,
+    prodCssSourceMap: false,
+    prodJsSourceMap: false,
     prescript: ['npm run clean:lib', 'npm run clone'],
     inSandbox: false, //代码是否在沙盒中打包
   },
