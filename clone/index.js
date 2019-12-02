@@ -56,3 +56,7 @@ filesMap.createRouteFiles();
 //clone static dir
 signale.start('Start copy static dir ...\n');
 clone.cloneStatic();
+
+//clone mock dir
+signale.start('Start copy mock dir ...\n');
+clone.cloneMock();
