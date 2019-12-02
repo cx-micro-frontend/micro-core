@@ -2,9 +2,18 @@
 const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
+const signale = require('signale');
 const packageJson = require(path.resolve('./package.json'));
 //modules config by env.param.config file
 const config = require(path.resolve('env.param.config'));
+
+/**
+ * get config ( env.param.config.js )
+ * @returns {any | {}}
+ */
+exports.getConfig = () => {
+  return config || {};
+};
 
 /**
  * inJect path
@@ -32,6 +41,8 @@ exports.inJectPath = () => {
     routefiles: `${injection}/config/routefiles.js`, //route files
 
     static: path.resolve(__dirname, '../lib/static'), //static file
+
+    mock: path.resolve(__dirname, '../lib/mock'), //mock file
   };
 };
 
@@ -56,6 +67,19 @@ exports.modulesConfig = () => {
   }
 };
 
+/**
+ * get config ( env.param.config.js )
+ * @returns {any | {}}
+ */
+exports.getMockPath = () => {
+  try {
+    return config.base.mockPath;
+  } catch (e) {
+    signale.error("No mock local path found in env.param.config.js, replace with './mock' ");
+    return './mock';
+  }
+};
+
 exports.version = () => {
   return process.env.VERSION || packageJson.version;
 };
@@ -73,6 +97,36 @@ exports.judgeAndMkdir = (path, cb = null) => {
   }
 
   fs.mkdirSync(path);
+  if (!cb) return;
+  cb();
+};
+
+/**
+ * judge exists:
+ * not => create dir
+ * @param path
+ * @param cb
+ */
+exports.mkdir = (path, cb = null) => {
+  if (fs.existsSync(path)) {
+    return;
+  } else {
+    fs.mkdirSync(path);
+  }
+  if (!cb) return;
+  cb();
+};
+
+/**
+ * judge exists:
+ * yes = > remove
+ * @param path
+ * @param cb
+ */
+exports.judgeAndRemove = (path, cb = null) => {
+  if (fs.existsSync(path)) {
+    shell.rm('-rf', path);
+  }
   if (!cb) return;
   cb();
 };
