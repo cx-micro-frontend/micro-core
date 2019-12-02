@@ -11,7 +11,8 @@ module.exports = {
     staticPath: './main/static',
     port: 8001,
     useEslint: false,
-    prescript: ['npm run build:lib', 'npm run clone'],
+    // prescript: ['npm run build:lib', 'npm run clone'],
+    prescript: ['npm run clone'],
     // proxyTable: {
     //   '/api': {
     //     target: 'http://192.168.1.20',
@@ -85,7 +86,10 @@ module.exports = {
     },
     prodCssSourceMap: false,
     prodJsSourceMap: false,
-    prescript: ['npm run clean:lib', 'npm run clone'],
+    dropConsole: true, //去除 console
+    dropDebugger: true, //去除 debugger
+    // prescript: ['npm run clean:lib', 'npm run clone'],
+    prescript: ['npm run clone'],
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
@@ -129,6 +133,7 @@ module.exports = {
   prod_injection: {
     modules: injection.modules,
     modules_sandbox: injection_sandbox,
+    staticInclude: [], //配置需要抽取拷贝的静态资源名称
   },
   tools: {
     publish: {
