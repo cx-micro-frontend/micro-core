@@ -45,6 +45,8 @@ env.param.config.js
 npmmenu.md
 yarn.lock
 index.html
+pull.sh
+favicon.ico
 
 # Editor directories and files
 .idea

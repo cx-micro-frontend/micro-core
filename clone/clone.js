@@ -70,15 +70,18 @@ exports.cloneStatic = () => {
   const static_inJect_path = `${utils.inJectPath().static}`; //inJect static path
   const static_target_path = `${utils.inJectPath().root}/static`; //root static path
 
-  /*
-   * judge static in root is exists or not:
-   * not => create dir
-   * 目标目录下没有 static 文件就为其创建一个
+  /**
+   * judge static dir in neap-injection
+   * 判断当前执行环节目录下，母体中是否存在 static 文件，存在，则进行拷贝注入操作，否则无需处理
    */
-  utils.mkdir(static_target_path);
-
-  //judge static dir in neap-injection
   if (fs.existsSync(static_inJect_path)) {
+    /*
+     * judge static in root is exists or not:
+     * not => create dir
+     * 目标目录下没有 static 文件就为其创建一个
+     */
+    utils.mkdir(static_target_path);
+
     const whitestatic = ['.gitkeep', 'loadBuffer', 'intercept'];
 
     const staticInclude = utils.getInjectConfig().staticInclude || [];
@@ -93,11 +96,6 @@ exports.cloneStatic = () => {
      * yes = > remove
      */
     utils.judgeAndMkdir(NEAP_static_target_path);
-
-    console.log(22222222222222);
-    console.log(static_inJect_files);
-    console.log(NEAP_static_target_path);
-    console.log(2222222222222222);
 
     //Loop firest level page directory
     static_inJect_files.forEach(file => {
@@ -133,11 +131,6 @@ exports.cloneMock = () => {
      * yes = > remove
      */
     utils.judgeAndRemove(NEAP_mock_target_path);
-
-    console.log(333333333333333);
-    console.log(mock_inJect_path);
-    console.log(NEAP_mock_target_path);
-    console.log(333333333333333);
 
     shell.cp('-R', mock_inJect_path, NEAP_mock_target_path);
   }
