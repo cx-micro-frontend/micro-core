@@ -9,7 +9,7 @@ static/
 /build/
 /main/
 /injection/
-
+/main/mock/_NEAP_MOCK_DATA/
 
 ##############################
 ## files                  ##
