@@ -1,11 +1,8 @@
-//style
-import './Element-UI/index'; //load element-ui
-import './XTable/index.js'; //load new table components
-import './NS-UI/index'; //load ns-ui
+//依赖
+import './depends';
 
 //load applaction style
-import '../style/public.scss';
-import '../style/common.scss';
+import '../style/index.scss';
 
 //icon
 import '../assets/iconfont/iconfont';
