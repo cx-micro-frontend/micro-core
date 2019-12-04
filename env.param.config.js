@@ -150,8 +150,8 @@ module.exports = {
       prescript: [
         // 'npm run inject',
         'npm run clean:lib',
-        'npm run build:lib',
         'npm run build:injecter',
+        'npm run build:lib',
       ],
     },
     npmUpgradeList: [
