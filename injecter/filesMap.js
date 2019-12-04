@@ -22,7 +22,7 @@ const getRouteFiles = () => {
     const repositoryPath =
       module.isOwner || module.landingRoot
         ? join(utils.inJectPath().root, `${repositoryName}`)
-        : join(path.resolve(__dirname, '../injection/repositories'), `${repositoryName}`);
+        : join(path.resolve(__dirname, '../../injection/repositories'), `${repositoryName}`);
 
     // views dir path
     let viewsFilesPath = join(repositoryPath, 'views');

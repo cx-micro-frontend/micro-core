@@ -1,13 +1,13 @@
 {
   "name": "neap-test1",
-  "version": "0.0.24-44",
+  "version": "0.0.24-45",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
   "scripts": {
     "command": "node_modules\\cx-builder\\lib\\entry.sh root",
     "command:mac": "node_modules/cx-builder/lib/entry.sh root",
-    "clone": "node ./injecter/index.js",
+    "inject": "node ./lib/injecter/index.js",
     "build:dist": "cross-env NODE_ENV=production env_config=prod node node_modules/cx-builder/lib/run/prod/run.prod.js",
     "clean:dist": "rimraf ./dist/",
     "build:injecter": "node build/create-injecter.js --color",

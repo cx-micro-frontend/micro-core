@@ -7,8 +7,8 @@ var gutil = require('gulp-util');
 var notify = require('gulp-notify');
 
 
-var _base_path = '../';
-var _base_dist_path = '../lib/';
+var _base_path = '../injecter/';
+var _base_dist_path = '../lib/injecter/';
 
 var t = 0;       								       //计数开始为0
 var showinfo = function() {
@@ -24,7 +24,7 @@ var showinfo = function() {
 
 //compile injecter
 gulp.task('js-handle-injecter', function() {
-  gulp.src(_base_path + 'injecter/**/*.js')
+  gulp.src(_base_path + '**/*.js')
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['es2015'], // es5检查机制
@@ -35,7 +35,7 @@ gulp.task('js-handle-injecter', function() {
     }))
     .pipe(sourcemaps.write())
     // .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(_base_dist_path + 'injecter/'))
+    .pipe(gulp.dest(_base_dist_path))
     .on('error', function(err) {
       gutil.log(gutil.colors.red('[Error]'), err.toString());
     })

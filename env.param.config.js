@@ -11,8 +11,13 @@ module.exports = {
     staticPath: './main/static',
     port: 8001,
     useEslint: false,
-    // prescript: ['npm run build:lib', 'npm run clone'],
-    prescript: ['npm run clean:lib', 'npm run clone'],
+    prescript: [
+      'npm run clean:lib',
+      'npm run build:lib',
+      'npm run build:injecter',
+      'npm run inject',
+    ],
+    // prescript: ['npm run clean:lib', 'npm run clone'],
     // proxyTable: {
     //   '/api': {
     //     target: 'http://192.168.1.20',
@@ -89,7 +94,12 @@ module.exports = {
     dropConsole: true, //去除 console
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
-    prescript: ['npm run clean:lib', 'npm run clone'],
+    prescript: [
+      'npm run clean:lib',
+      'npm run build:lib',
+      'npm run build:injecter',
+      'npm run inject',
+    ],
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {

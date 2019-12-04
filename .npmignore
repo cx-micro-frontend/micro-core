@@ -8,6 +8,7 @@ static/
 /dist/
 /build/
 /main/
+/injecter/
 /injection/
 /main/mock/_NEAP_MOCK_DATA/
 

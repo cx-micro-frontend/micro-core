@@ -20,7 +20,7 @@ exports.getConfig = () => {
  * @returns {{injection: string, entrance: string, core: string, repositorie: string, repositorie_tmp: string}}
  */
 exports.inJectPath = () => {
-  const injection = path.resolve(__dirname, '../injection');
+  const injection = path.resolve(__dirname, '../../injection');
   return {
     root: path.resolve(), //root
 
