@@ -13,9 +13,9 @@ module.exports = {
     useEslint: false,
     prescript: [
       'npm run clean:lib',
-      'npm run build:lib',
       'npm run build:injecter',
       'npm run inject',
+      'npm run build:lib',
     ],
     // prescript: ['npm run clean:lib', 'npm run clone'],
     // proxyTable: {
@@ -96,9 +96,9 @@ module.exports = {
     // prescript: ['npm run clean:lib', 'npm run clone'],
     prescript: [
       'npm run clean:lib',
-      'npm run build:lib',
       'npm run build:injecter',
       'npm run inject',
+      'npm run build:lib',
     ],
     inSandbox: false, //代码是否在沙盒中打包
   },
@@ -148,7 +148,7 @@ module.exports = {
   tools: {
     publish: {
       prescript: [
-        'npm run clone',
+        // 'npm run inject',
         'npm run clean:lib',
         'npm run build:lib',
         'npm run build:injecter',

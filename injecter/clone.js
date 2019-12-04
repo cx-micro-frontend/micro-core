@@ -117,6 +117,10 @@ exports.cloneMock = () => {
 
   const mock_target_path = utils.getMockPath(); //获取注入路径
 
+  console.log(333333333333)
+  console.log(mock_inJect_path)
+  console.log(mock_target_path)
+  console.log(333333333333)
   /**
    * judge mock dir in neap-injection
    * 判断当前执行环节目录下，母体中是否存在 mock 文件，存在，则进行拷贝注入操作，否则无需处理
