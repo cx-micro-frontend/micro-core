@@ -137,7 +137,12 @@ module.exports = {
   },
   tools: {
     publish: {
-      prescript: ['npm run clone', 'npm run clean:lib', 'npm run build:lib'],
+      prescript: [
+        'npm run clone',
+        'npm run clean:lib',
+        'npm run build:lib',
+        'npm run build:injecter',
+      ],
     },
     npmUpgradeList: [
       {

@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
-const utils = require('../clone/utils');
+const utils = require('../injecter/utils');
 
 shell.rm('-rf', `${utils.inJectPath().root}/lib`);
 

@@ -75,7 +75,7 @@ exports.getMockPath = () => {
   try {
     return config.base.mockPath;
   } catch (e) {
-    signale.error("No mock local path found in env.param.config.js, replace with './mock' ");
+    signale.error('No mock local path found in env.param.config.js, replace with \'./mock\' ');
     return './mock';
   }
 };
@@ -141,27 +141,29 @@ exports.repositoryName = module => {
   return `${namespace}_${module.repositorie}`;
 };
 
-exports.NumbertoLen2String = n => {
-  if (n.toString().length === 1) {
-    return '0' + n.toString();
-  } else {
-    return n;
-  }
-};
 
 exports.sysdate = () => {
   const myDate = new Date();
+
+  const NumbertoLen2String = n => {
+    if (n.toString().length === 1) {
+      return '0' + n.toString();
+    } else {
+      return n;
+    }
+  };
+
   return (
     myDate.getFullYear() +
     '-' +
-    this.NumbertoLen2String(Number(myDate.getMonth()) + Number(1)) +
+    NumbertoLen2String(Number(myDate.getMonth()) + Number(1)) +
     '-' +
-    this.NumbertoLen2String(myDate.getDate()) +
+    NumbertoLen2String(myDate.getDate()) +
     ' ' +
-    this.NumbertoLen2String(myDate.getHours()) +
+    NumbertoLen2String(myDate.getHours()) +
     ':' +
-    this.NumbertoLen2String(myDate.getMinutes()) +
+    NumbertoLen2String(myDate.getMinutes()) +
     ':' +
-    this.NumbertoLen2String(myDate.getSeconds())
+    NumbertoLen2String(myDate.getSeconds())
   );
 };

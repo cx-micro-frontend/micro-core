@@ -16,7 +16,7 @@ var intercept = (function() {
     var img = document.createElement('img');
 
     block.setAttribute('class', cls);
-    img.setAttribute('src', './static/intercept/warning.png');
+    img.setAttribute('src', './static/_NEAP_STATIC/intercept/warning.png');
     img.style.cssText =
       'position: absolute;width: 460px;height: 300px;top: 50%;left: 50%;margin: -150px 0 0 -230px';
 

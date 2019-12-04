@@ -6,7 +6,7 @@ const fs = require('fs');
 const shell = require('shelljs');
 const signale = require('signale');
 const utils = require('./utils');
-const controller = require(path.resolve(__dirname, '../config/controller/controller'));
+const controller = require(path.resolve(__dirname, './controller/controller'));
 
 const clone = require('./clone');
 const injection = require('./injection');

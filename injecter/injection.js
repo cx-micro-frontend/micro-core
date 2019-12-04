@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const utils = require('./utils');
-const controller = require(path.resolve(__dirname, '../config/controller/controller'));
+const controller = require(path.resolve(__dirname, './controller/controller'));
 
 const tips = type => `/* eslint-disable */
 /*
