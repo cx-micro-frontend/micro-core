@@ -40,9 +40,9 @@ exports.inJectPath = () => {
 
     routefiles: `${injection}/config/routefiles.js`, //route files
 
-    static: path.resolve(__dirname, '../lib/static'), //static file
+    static: path.resolve(__dirname, '../static'), //static file
 
-    mock: path.resolve(__dirname, '../lib/mock'), //mock file
+    mock: path.resolve(__dirname, '../mock'), //mock file
   };
 };
 

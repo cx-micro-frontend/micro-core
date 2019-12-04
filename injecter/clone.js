@@ -25,7 +25,7 @@ exports.cloneRepositories = () => {
       shell.exec(`git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`);
     } else {
       shell.exec(
-        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`
+        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
       );
     }
 
@@ -53,7 +53,7 @@ exports.cloneRepositories = () => {
         shell.cp(
           '-R',
           `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
-          `${utils.inJectPath().repositorie}/${repositoryName}`
+          `${utils.inJectPath().repositorie}/${repositoryName}`,
         );
       }
     }
@@ -113,6 +113,7 @@ exports.cloneStatic = () => {
  */
 exports.cloneMock = () => {
   const mock_inJect_path = `${utils.inJectPath().mock}`; //获取待注入的mock路径
+
 
   const mock_target_path = utils.getMockPath(); //获取注入路径
 
