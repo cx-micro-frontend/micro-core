@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
-var rename = require("gulp-rename");
+// var rename = require("gulp-rename");
 var gutil = require('gulp-util');
 var notify = require('gulp-notify');
 
@@ -34,7 +34,7 @@ gulp.task('js-handle-injecter', function() {
       compress: true,
     }))
     .pipe(sourcemaps.write())
-    .pipe(rename({suffix: '.min'}))
+    // .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(_base_dist_path + 'injecter/'))
     .on('error', function(err) {
       gutil.log(gutil.colors.red('[Error]'), err.toString());
