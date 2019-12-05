@@ -4,10 +4,11 @@ import getters from './getters';
 
 //core / mode
 import Core from './modules/System/Common/Core';
-import FrameMode from './modules/System/FrameMode/FrameMode';
+import FrameMode from './modules/System/Frame/FrameMode';
+import FrameInfo from './modules/System/Frame/FrameInfo';
 
 //common
-import SearchConditions from './modules/System/Common/SearchConditions';
+import SearchConditions from './modules/System/Request/SearchConditions';
 import RoleButton from './modules/System/Role/RoleButton';
 import Table from './modules/System/Table/Table';
 
@@ -20,7 +21,7 @@ import User from './modules/System/User/User';
 
 //Layout
 import LockScreen from './modules/System/Layout/LockScreen';
-import CoverPainting from './modules/System/Layout/CoverPainting';
+import CoverPainting from './modules/System/User/CoverPainting';
 import Sidebar from './modules/System/Layout/Sidebar';
 import PageInfo from './modules/System/Common/PageInfo';
 import PageTabs from './modules/System/Layout/PageTabs';
@@ -38,6 +39,7 @@ const store = new Vuex.Store({
     //core
     Core,
     FrameMode,
+    FrameInfo,
 
     //common
     Search: SearchConditions,
@@ -62,8 +64,6 @@ const store = new Vuex.Store({
 
     //Tree
     OrganizeTree,
-
-    // AutoForm,
   }),
   getters: Object.assign({}, entrance.model.getters, getters),
 });
