@@ -1,5 +1,3 @@
-import Router from './modules/System/Router/Router';
-
 const getters = {
   //mode
   loginMode: state => state.FrameMode.loginMode,
