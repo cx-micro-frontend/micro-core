@@ -10,16 +10,18 @@ import { detectOS } from '../../../../utils/library/detectOS';
  */
 const FrameInfo = {
   state: {
+    //浏览器信息
     browserInfo: {
       browser: null,
-      ieVer: null,
+      version: null,
     },
+    //操作系统信息
     OS: '',
   },
   mutations: {
     SET_BROWSER_INFO: (state, data) => {
       state.browserInfo.browser = data.browser;
-      state.browserInfo.ieVer = data.ieVer;
+      state.browserInfo.version = data.version;
     },
     SET_OS_INFO: (state, data) => {
       state.OS = data;
