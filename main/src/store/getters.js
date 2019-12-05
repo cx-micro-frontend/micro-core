@@ -1,8 +1,10 @@
 const getters = {
   //mode
-  loginMode: state => state.FrameMode.loginMode,
+  loginMode: state => state.FrameMode.loginMode, //登录模式（常规 / 单点）
   isInIframe: state => state.FrameMode.isInIframe,
   routeErrorSign: state => state.Router.errorSign,
+  browserInfo: state => state.FrameInfo.browserInfo, //浏览器信息
+  OS: state => state.FrameInfo.OS, //操作系统信息
 
   //core
   funcId: state => state.Core.funcId,
