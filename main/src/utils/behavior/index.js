@@ -1,6 +1,7 @@
 import $router from '../../router/index';
 import { iniView } from '../../config';
 import { getUrlParam } from '../library/urlhandle';
+import $store from '../../store/index';
 
 /**
  * 返回登录首页
@@ -16,9 +17,14 @@ export const jumpToTnitPage = () => {
   const referRoute = getUrlParam('referRoute');
 
   //是否为单点，是否存在referRoute
-  // this.initPath = referRoute || this.initRouter;
+  // this.initPath = referRoute || this.initRouter; initRouter
 
-  const initPath = referRoute || '/overview';
+  const initPath = $store.state.SideBar.initRouter;
 
-  $router.push({ path: initPath });
+  alert(222222222222);
+  alert(initPath);
+
+  const initTargetPath = referRoute || initPath; //登录后的初始路径
+
+  $router.push({ path: initTargetPath });
 };
