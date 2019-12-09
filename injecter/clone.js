@@ -23,9 +23,18 @@ exports.cloneRepositories = () => {
     if (osType === 'Windows_NT') {
       console.log(`cloning target:" ${module.module} "\n`);
       shell.exec(`git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`);
-    } else {
+    }
+    else {
+
+      const branch_name = module.branch || 'master';
+      /**
+       * module.module => 模块名称
+       * branch_name => 分支名称 ( 没有设置则抽取master分支代码 )
+       * module.path => 仓库拷贝地址
+       * repositorie_tmp => 本地复制路径  BRANCH  branch
+       */
       shell.exec(
-        `${shell_clone} ${module.module} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
+        `${shell_clone} ${module.module} ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
       );
     }
 
