@@ -1,5 +1,5 @@
 module.exports = [
-  // //o2o - community
+  ////o2o - community
   // {
   //   module: '阳光城公告',
   //   repositorie: 'community',
