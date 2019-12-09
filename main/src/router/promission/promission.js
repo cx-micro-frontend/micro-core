@@ -41,7 +41,7 @@ export default (to, from, next) => {
 
       //handle async router
       $store
-        .dispatch('setAsyncRouter', $store.state.Sidebar.sideBarList)
+        .dispatch('setAsyncRouter', $store.state.SideBar.sideBarList)
         .then(_ => {
           const asyncRouterList = $store.state.Router.asyncRouterList;
           console.log('获取异步路由列表：', asyncRouterList);
