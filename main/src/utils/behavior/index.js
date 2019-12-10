@@ -21,9 +21,6 @@ export const jumpToTnitPage = () => {
 
   const initPath = $store.state.SideBar.initRouter;
 
-  alert(222222222222);
-  alert(initPath);
-
   const initTargetPath = referRoute || initPath; //登录后的初始路径
 
   $router.push({ path: initTargetPath });
