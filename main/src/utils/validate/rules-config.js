@@ -7,7 +7,7 @@
  */
 /*=====================================================================================================================*/
 import ns from '../../utils/nsQuery/nsQuery';
-import { Message } from 'element-ui';
+// import { Message } from 'element-ui';
 
 export default [
   /*====================== condition detection =======================*/
@@ -376,9 +376,9 @@ let _throwWarmPrompt = (msg, status) => {
     }
     //vailate resault s wrong
     else {
-      ns.base.debounce(() => {
-        Message({ message: msg, type: 'warning', duration: 2 * 1000 }); //throw warm prompt message
-      }, 500)();
+      // ns.base.debounce(() => {
+      //   Message({ message: msg, type: 'warning', duration: 2 * 1000 }); //throw warm prompt message
+      // }, 500)();
     }
   }
 };
