@@ -91,7 +91,7 @@ module.exports = {
     },
     prodCssSourceMap: false,
     prodJsSourceMap: false,
-    dropConsole: true, //去除 console
+    dropConsole: false, //去除 console
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
     prescript: [
