@@ -67,5 +67,5 @@ const navmenu = (req, res) => {
 };
 
 module.exports = {
-  'POST /system/permission/list-menu @priority': navmenu,
+  'POST /system/permission/list-menu': navmenu,
 };
