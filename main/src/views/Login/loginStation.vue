@@ -19,10 +19,28 @@
     },
     methods: {
       loginTo() {
-        let data = {
-          token: getUrlParam('token'),
+
+        /**
+         * ========================================
+         * 以下为单点登录
+         * v10 => saas
+         * v8 => saas
+         * v10 => saml
+         * 切勿随意变动，否则会影响接入
+         * 更改可以增加条件判断，只增不减不改
+         * ========================================
+         */
+          //获取单点token请求登录类型：srcSys:  saas / v8 / saml - 根据所在项目集成决定
+        const _srcSys = getUrlParam('srcSys') || null;
+        const _token = getUrlParam('token');
+
+        //定义入参
+        const query = {
+          token: _token,
+          srcSys: _srcSys,
         };
-        this.ssoLogin(data);
+
+        this.ssoLogin(query);
         // http://localhost:8093/#/front/login-station?referRoute=/community/noticeList&isShowIframe=false&token=Ehm0IzQzxZEcrP4a1wnHVTdXtnvGiqgDgRxYEhp0y9Q%3d&referPath=192.168.1.135%3a89
       },
     },
