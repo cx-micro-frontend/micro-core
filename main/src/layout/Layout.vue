@@ -54,7 +54,7 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userName', 'avatar', 'operatorLoginPic']),
+      ...mapGetters(['userName', 'avatar', 'operatorLoginPic','isInIframe']),
       key() {
         return this.$route.name !== undefined
           ? this.$route.name + +new Date()
