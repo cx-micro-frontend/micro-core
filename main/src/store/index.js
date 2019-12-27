@@ -27,9 +27,6 @@ import PageInfo from './modules/System/Common/PageInfo';
 import PageTabs from './modules/System/Layout/PageTabs';
 import Router from './modules/System/Router/Router';
 
-//Tree
-import OrganizeTree from './modules/System/Tree/Organize-tree';
-
 import entrance from '../../../injection/entrance/entrance_core';
 
 Vue.use(Vuex);
@@ -61,9 +58,6 @@ const store = new Vuex.Store({
     PageInfo,
     PageTabs,
     Router,
-
-    //Tree
-    OrganizeTree,
   }),
   getters: Object.assign({}, entrance.model.getters, getters),
 });

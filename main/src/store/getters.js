@@ -47,9 +47,6 @@ const getters = {
   roleButtonForm: state => state.RoleButton.roleButton.FORM,
   roleButtonGrid: state => state.RoleButton.roleButton.GRID,
 
-  //tree
-  $store__orgTreeData: state => state.OrganizeTree.$store__orgTreeData,
-
   //table
   tableHead: state => state.Table.tableHead,
 };
