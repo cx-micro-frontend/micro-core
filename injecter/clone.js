@@ -19,14 +19,14 @@ exports.cloneRepositories = () => {
   injectmodules.forEach(module => {
     fs.mkdirSync(utils.inJectPath().repositorie_tmp);
 
+    const branch_name = module.branch || 'master';
+
     //windows operating system
     if (osType === 'Windows_NT') {
       console.log(`cloning target:" ${module.module} "\n`);
-      shell.exec(`git clone ${module.path} ${utils.inJectPath().repositorie_tmp}`);
+      shell.exec(`git clone ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`);
     }
     else {
-
-      const branch_name = module.branch || 'master';
       /**
        * module.module => 模块名称
        * branch_name => 分支名称 ( 没有设置则抽取master分支代码 )
