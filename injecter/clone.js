@@ -24,7 +24,7 @@ exports.cloneRepositories = () => {
     //windows operating system
     if (osType === 'Windows_NT') {
       console.log(`cloning target:" ${module.module} "\n`);
-      shell.exec(`git clone ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`);
+      shell.exec(`git clone -b ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`);
     }
     else {
       /**
