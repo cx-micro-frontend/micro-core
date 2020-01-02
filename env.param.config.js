@@ -104,7 +104,6 @@ module.exports = {
   },
   base: {
     mockPath: './main/mock',
-
     JSBabelInclude: [
       'main',
       'injection',
