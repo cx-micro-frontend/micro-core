@@ -54,7 +54,7 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userName', 'avatar', 'operatorLoginPic','isInIframe']),
+      ...mapGetters(['userName', 'avatar', 'operatorLoginPic', 'isInIframe']),
       key() {
         return this.$route.name !== undefined
           ? this.$route.name + +new Date()
@@ -89,6 +89,7 @@
         left: 0;
         bottom: 0;
         right: 0;
+        padding: 0;
         .app-main, .win, .ns-container, .ns-container-right, .ns-container-left {
           height: 100%;
           min-height: 100%;
