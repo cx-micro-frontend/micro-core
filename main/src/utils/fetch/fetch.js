@@ -76,7 +76,7 @@ service.interceptors.response.use(
 
 //token error break
 service.redirect = (code, msg) => {
-  if (['710', '712'].some(c => c === code)) {
+  if (['710', '712', '720'].some(c => c === code)) {
     backLoginPage();
   }
 
