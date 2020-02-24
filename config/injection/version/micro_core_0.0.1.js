@@ -13,7 +13,7 @@ module.exports = [
   // {
   //   module: '客户审核',
   //   repositorie: 'customer', //o2o-admin
-  //   path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+  //   path: 'http://new-see.oicp.io:14725/O2O_frontend/micro_o2o_admin.git',
   //   branch: 'master',
   //   isOwner: false,
   //   disabled: false,
@@ -21,7 +21,7 @@ module.exports = [
   // {
   //   module: '客户审核',
   //   repositorie: 'repairMessage', //o2o-admin
-  //   path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+  //   path: 'http://new-see.oicp.io:14725/O2O_frontend/micro_o2o_admin.git',
   //   branch: 'master',
   //   isOwner: false,
   //   disabled: false,
@@ -29,7 +29,7 @@ module.exports = [
   // {
   //   module: '频道管理',
   //   repositorie: 'message', //o2o-admin
-  //   path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+  //   path: 'http://new-see.oicp.io:14725/O2O_frontend/micro_o2o_admin.git',
   //   branch: 'master',
   //   isOwner: false,
   //   disabled: false,
@@ -37,7 +37,7 @@ module.exports = [
   // {
   //   module: '系统运维',
   //   repositorie: 'maintenance', //o2o-admin
-  //   path: 'http://192.168.1.47:3000/O2O_frontend/micro_o2o_admin.git',
+  //   path: 'http://new-see.oicp.io:14725/O2O_frontend/micro_o2o_admin.git',
   //   branch: 'master',
   //   isOwner: false,
   //   disabled: false,
