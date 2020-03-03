@@ -46,6 +46,7 @@
     },
     methods: {
       register() {
+
         console.log(898989888089);
         console.log(expand);
         console.log(this.components);
