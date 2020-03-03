@@ -3,7 +3,7 @@ import { formatError } from './log.js';
 /**
  * 判断是否存在文件
  * @param path - 查找的路径
- * @param target - 目标（正则)、
+ * @param target - 目标（正则)
  * @returns {*}
  */
 export const hasFile = (path, target) => {
