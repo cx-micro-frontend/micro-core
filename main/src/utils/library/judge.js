@@ -1,6 +1,18 @@
 import { formatError } from './log.js';
 
 /**
+ * 判断是否存在文件
+ * @param path - 查找的路径
+ * @param target - 目标（正则)、
+ * @returns {*}
+ */
+export const hasFile = (path, target) => {
+  const files = require.context(path, true, target);
+
+  return files.keys().some(k === target);
+};
+
+/**
  * judge type accurate
  * @param value
  * @returns {*}
