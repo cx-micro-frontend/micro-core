@@ -47,11 +47,11 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { backLoginPage } from '../../utils/behavior';
-  import cryptoPassWord from '../../mixins/Login/cryptoPassWord';
-  import authLogin from '../../mixins/Login/authLogin';
+  import { backLoginPage } from '../../../utils/behavior/index';
+  import cryptoPassWord from '../../../mixins/Login/cryptoPassWord';
+  import authLogin from '../../../mixins/Login/authLogin';
 
-  import multipleEnterpriseList from '../NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
+  import multipleEnterpriseList from '../../../components/NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
 
   export default {
     name: 'NS-biz-lockscreen',
@@ -73,7 +73,7 @@
     computed: {
       ...mapGetters(['isLocked', 'operatorBackgroudPic', 'operatorLogo', 'avatar', 'userName', 'userAccount']),
       userAvatar: function() {
-        return this.avatar || require('../../assets/img/empty/empty-avatar.png');
+        return this.avatar || require('../../../assets/img/empty/empty-avatar.png');
       },
       cryptoPassWord() {
         return this.getCryptoBybase64(this.passwordForm.password) || '';

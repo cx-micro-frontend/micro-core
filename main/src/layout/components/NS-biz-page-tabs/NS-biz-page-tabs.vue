@@ -21,7 +21,7 @@
   </ns-page-tabs>
 </template>
 <script>
-  import { addPageTabs } from '../../router/promission/auxiliary';
+  import { addPageTabs } from '../../../router/promission/auxiliary';
   import { mapGetters } from 'vuex';
 
   export default {

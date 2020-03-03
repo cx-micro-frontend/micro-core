@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { updatePassword } from '../../../../service/System/User/userSetting';
+  import { updatePassword } from '../../../../../service/System/User/userSetting';
 
   export default {
     name: 'modifyPasswordForm',

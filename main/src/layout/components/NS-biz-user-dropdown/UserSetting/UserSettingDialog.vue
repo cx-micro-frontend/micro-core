@@ -98,8 +98,8 @@
   import updateAvatarDialog from './components/updateAvatarDialog';
   import modifyPasswordForm from './components/modifyPasswordForm';
   import { mapGetters } from 'vuex';
-  import { getSecurityLevel, getSecurityScore } from '../../../utils/library/securitylevel';
-  import { getUserInfo } from '../../../service/System/User/userSetting';
+  import { getSecurityLevel, getSecurityScore } from '../../../../utils/library/securitylevel';
+  import { getUserInfo } from '../../../../service/System/User/userSetting';
 
   export default {
     name: 'userSettingDialog',
@@ -132,7 +132,7 @@
       ...mapGetters(['userId']),
 
       userAvatar: function() {
-        return this.userinfo.avatar || require('../../../assets/img/empty/empty-avatar.png');
+        return this.userinfo.avatar || require('../../../../assets/img/empty/empty-avatar.png');
       },
       //获取生成安全级别分值
       securityScore: function() {
