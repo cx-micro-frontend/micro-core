@@ -28,10 +28,10 @@ const PageInfo = {
         pageInfoList = [];
       } else {
         data.forEach((firstItem, firstIndex) => {
-          if (firstItem[keyRefer['childMenus']] && firstItem[keyRefer['childMenus']].length > 0) {
-            firstItem[keyRefer['childMenus']].forEach((secondItem, secondIndex) => {
+          if (firstItem[keyRefer['children']] && firstItem[keyRefer['children']].length > 0) {
+            firstItem[keyRefer['children']].forEach((secondItem, secondIndex) => {
               pageInfoList.push({
-                name: secondItem[keyRefer['menuLabel']], //router-web name
+                name: secondItem[keyRefer['label']], //router-web name
                 path:
                   '/' +
                   firstItem[keyRefer['menuRouter']] +
@@ -44,7 +44,7 @@ const PageInfo = {
             });
           } else {
             pageInfoList.push({
-              name: firstItem[keyRefer['menuLabel']],
+              name: firstItem[keyRefer['label']],
               path: '/' + firstItem[keyRefer['menuRouter']],
               funcId: firstItem[keyRefer['funcId']] || 'normalFunic',
             });

@@ -9,15 +9,55 @@ import { storageHandle } from '../../../../utils/storage/storage';
  * @returns {*}
  * @private
  */
-let _filtersidelist = list => {
-  const hidekey = keyRefer['hide'];
-  list.forEach(item => {
-    item[hidekey] = item[hidekey] === '1';
-    item[keyRefer['childMenus']] &&
-      item[keyRefer['childMenus']].forEach(item => {
-        item[hidekey] = item[hidekey] === '1';
-      });
-  });
+let _filterMenu = list => {
+  const labelKey = keyRefer['label'];
+  const visibleKey = keyRefer['visible'];
+  const indexKey = keyRefer['menuIndex'];
+  const childrenKey = keyRefer['children'];
+  const isVirtualKey = keyRefer['isVirtual'];
+  const virtualLabelKey = keyRefer['virtualLabel'];
+
+  /**
+   * 节点递归循环处理
+   * 1、显示隐藏字段 => 转换布尔值
+   * 2、新增 - 控制是否为虚拟节点
+   * 3、若当前节点存在虚拟节点的名称的字段值，则在此节点的上面新增一个虚拟节点（用作假的二级节点，不可操作点击)
+   * 显示隐藏字段 => 转换布尔值
+   * @param list
+   */
+  const done = list => {
+    let inserts = [];
+    list.forEach((item, index) => {
+      item[visibleKey] = item[visibleKey] === '0';
+      item[isVirtualKey] = false;
+
+      if (item[virtualLabelKey]) {
+        inserts.push(index);
+      }
+
+      item[indexKey] = index + 1;
+
+      if (index === list.length - 1 && inserts.length) {
+        inserts.forEach((insert, i) => {
+          list.splice(insert + i, 0, {
+            [labelKey]: item[virtualLabelKey],
+            [isVirtualKey]: true,
+            [visibleKey]: false,
+            [indexKey]: 'virtual-' + (insert + i),
+          });
+        });
+      }
+
+      let childNodes = item[childrenKey];
+
+      if (childNodes && childNodes.length > 0) {
+        done(childNodes);
+      }
+    });
+  };
+
+  done(list);
+
   return list;
 };
 
@@ -83,7 +123,15 @@ const SideBar = {
         sideBarService()
           .then(res => {
             const list = res.resultData || [];
-            let sideBarList = _filtersidelist(list);
+
+            let sideBarList = _filterMenu(list);
+
+            console.log(222222222);
+            console.log(222222222);
+            console.log(222222222);
+            console.log(sideBarList);
+            console.log(222222222);
+            console.log(222222222);
 
             commit('SET_SIDEBAR_DATA', {
               sideBar: sideBarList,

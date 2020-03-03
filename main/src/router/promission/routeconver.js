@@ -37,18 +37,18 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 
   const normalRoute = (childRoute, fatherRoute) => {
     const nr = {
-      name: childRoute[keyRefer['menuLabel']],
+      name: childRoute[keyRefer['label']],
       path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute[keyRefer['menuRouter']]}`,
       component: createComponent(childRoute, fatherRoute),
       meta: {
         auth: true,
         key: childRoute[keyRefer['menuRouter']],
-        title: childRoute[keyRefer['menuLabel']],
+        title: childRoute[keyRefer['label']],
       },
     };
 
     if (hasChildRoute(childRoute)) {
-      nr.children = filterAsyncRouter(childRoute[keyRefer['childMenus']], childRoute);
+      nr.children = filterAsyncRouter(childRoute[keyRefer['children']], childRoute);
     }
     return nr;
   };
@@ -59,13 +59,13 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
       component: Layout,
       children: [
         {
-          name: route[keyRefer['menuLabel']],
+          name: route[keyRefer['label']],
           path: route[keyRefer['menuRouter']],
           component: createComponent(route),
           meta: {
             auth: true,
             key: route[keyRefer['menuRouter']],
-            title: route[keyRefer['menuLabel']],
+            title: route[keyRefer['label']],
           },
         },
       ],
@@ -100,7 +100,7 @@ function isModuleRoute(route) {
 }
 
 function hasChildRoute(route) {
-  return route[keyRefer['childMenus']] && route[keyRefer['childMenus']].length;
+  return route[keyRefer['children']] && route[keyRefer['children']].length;
 }
 
 function createComponent(childRoute, fatherRoute = null) {

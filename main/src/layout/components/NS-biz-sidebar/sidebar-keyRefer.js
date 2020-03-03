@@ -6,11 +6,13 @@
  */
 const keyRefer = {
   funcId: 'funcId', //func-ID
-  menuLabel: 'menuMenuname', //显示名称
+  label: 'menuMenuname', //显示名称
+  icon: 'menuIconcls', //图标
+  children: 'childMenus', //子集菜单
+  menuIndex: 'menuIndex', //序号 syOrderindex
+  visible: 'syStatus', //隐藏 syStatus
   menuRouter: 'menuMenusubname', //路径符号
-  menuIcon: 'menuIconcls', //图标
-  menuIndex: 'syOrderindex', //序号
-  childMenus: 'childMenus', //子集菜单
-  hide: 'syStatus', //隐藏与否
+  virtualLabel: 'syPyqc', //虚拟节点的名称 - 暂时存在，后续去除
+  isVirtual: 'isVirtual', //是否虚拟几点 -  暂时存在，后续去除
 };
 export default keyRefer;
