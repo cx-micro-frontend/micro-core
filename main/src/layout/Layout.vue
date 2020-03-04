@@ -34,7 +34,9 @@
     <template slot="app-main">
       <!--changing-over  work bench module-->
       <transition leave-active-class="" enter-active-class="out-in">
-        <router-view :key="key"></router-view>
+        <keep-alive>
+          <router-view :key="key"></router-view>
+        </keep-alive>
       </transition>
     </template>
 
@@ -56,9 +58,7 @@
     computed: {
       ...mapGetters(['userName', 'avatar', 'operatorLoginPic', 'isInIframe']),
       key() {
-        return this.$route.name !== undefined
-          ? this.$route.name + +new Date()
-          : this.$route + +new Date();
+        return this.$route.path;
       },
     },
     created() {
