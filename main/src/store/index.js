@@ -6,6 +6,7 @@ import getters from './getters';
 import Core from './modules/System/Common/Core';
 import FrameMode from './modules/System/Frame/FrameMode';
 import FrameInfo from './modules/System/Frame/FrameInfo';
+import Precinct from './modules/System/Frame/Precinct';
 
 //common
 import SearchConditions from './modules/System/Request/SearchConditions';
@@ -37,6 +38,7 @@ const store = new Vuex.Store({
     Core,
     FrameMode,
     FrameInfo,
+    Precinct,
 
     //common
     Search: SearchConditions,

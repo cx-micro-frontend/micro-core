@@ -9,6 +9,10 @@ const getters = {
   //core
   funcId: state => state.Core.funcId,
 
+  //precinct select
+  precinctId: state => state.Precinct.precinctId,
+  precinctName: state => state.Precinct.precinctName,
+
   //user
   token: state => state.User.userinfo.token,
   userName: state => state.User.userinfo.userName,
