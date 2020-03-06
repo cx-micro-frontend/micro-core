@@ -10,7 +10,7 @@ export function getOperatorInfo(query) {
   dataFilter(query);
   // fetch out
   return fetch({
-    url: 'system/site/get-operatorInfoById', //get-operatorInfoById
+    url: 'soss/operator/get-operatorInfo', //get-operatorInfoById
     method: 'get',
     params: query,
   });
