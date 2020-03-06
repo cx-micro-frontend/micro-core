@@ -9,6 +9,7 @@ const merge = require('webpack-merge');
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const dev_env = {
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
@@ -27,6 +28,7 @@ const dev_env = {
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const mock_cloud_env = {
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"development"',
   ENV_CONFIG: '"mock"',
   BASE_API: '"https://www.easy-mock.com/mock/5d240fe12102c0666393d2b7/gaocangxiong/"', //mock
@@ -37,6 +39,7 @@ const mock_cloud_env = {
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const mock_local_env = {
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"development"',
   ENV_CONFIG: '"mock"',
   BASE_API: '""',
@@ -46,6 +49,7 @@ const mock_local_env = {
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const prod_env = {
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"production"',
   ENV_CONFIG: '"prod"',
   BASE_API: '"/api"',
@@ -55,6 +59,7 @@ const prod_env = {
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const test_env = {
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"testing"',
   ENV_CONFIG: '"test"',
   BASE_API: '"http://192.168.1.210/api"',
