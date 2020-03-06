@@ -13,8 +13,8 @@
 <script>
   import Vue from 'vue';
   import { mapGetters } from 'vuex';
-  import { hasFile } from '../../utils/library/judge';
-  import expand from '@ROOT/config/expand';
+  // import { hasFile } from '../../utils/library/judge';
+  import expand from '../../../expand';
   import ThemePicker from '../../components/ThemePicker/index';
   import { updateThemeColor } from '../../service/System/Layout/coverPainting';
 
