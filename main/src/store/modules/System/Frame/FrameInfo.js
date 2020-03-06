@@ -10,6 +10,7 @@ import { detectOS } from '../../../../utils/library/detectOS';
  */
 const FrameInfo = {
   state: {
+    $PROJECT_NAME: process.env.PROJECT_NAME || 'NEAP',
     //浏览器信息
     browserInfo: {
       browser: null,
