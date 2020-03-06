@@ -1,5 +1,8 @@
+import FrameInfo from './modules/System/Frame/FrameInfo';
+
 const getters = {
   //mode
+  $PROJECT_NAME: state => state.FrameInfo.$PROJECT_NAME, //当前项目名称
   loginMode: state => state.FrameMode.loginMode, //登录模式（常规 / 单点）
   isInIframe: state => state.FrameMode.isInIframe,
   routeErrorSign: state => state.Router.errorSign,
