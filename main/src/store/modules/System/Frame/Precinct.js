@@ -7,17 +7,15 @@
  */
 const Precinct = {
   state: {
-    precinct: {
-      precinctId: '',
-      precinctName: '',
-      organizationId: '',
-    },
+    precinctId: '',
+    precinctName: '',
+    organizationId: '',
   },
   mutations: {
     SET_PRECINCT: (state, data) => {
-      state.precinct.precinctId = data.precinctId;
-      state.precinct.precinctName = data.precinctName;
-      state.precinct.organizationId = data.organizationId;
+      state.precinctId = data.precinctId;
+      state.precinctName = data.precinctName;
+      state.organizationId = data.organizationId;
     },
   },
   actions: {
