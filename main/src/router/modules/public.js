@@ -26,26 +26,4 @@ export default [
     component: () => import('../../views/Public/error/sso-error.vue'),
     meta: { auth: false },
   },
-
-  {
-    path: '',
-    component: Layout,
-    redirect: '/overview',
-    name: 'overview',
-    children: [
-      {
-        path: 'overview',
-        component: () => import('../../views/Overview/Overview.vue'),
-        meta: { auth: true, key: 'overview' },
-        name: '主页',
-      },
-    ],
-  },
-
-  {
-    path: '/testdemo',
-    name: 'testdemo',
-    component: () => import('../../views/TestDemo/TestDemo.vue'),
-    meta: { auth: false },
-  },
 ];
