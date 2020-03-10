@@ -31,8 +31,10 @@ let _filterMenu = list => {
       item[visibleKey] = item[visibleKey] === '0';
       item[isVirtualKey] = false;
 
+      const virtualLabe = item[virtualLabelKey];
+
       if (item[virtualLabelKey]) {
-        inserts.push(index);
+        inserts.push({ index: index, label: virtualLabe });
       }
 
       item[indexKey] = index + 1;
@@ -40,10 +42,10 @@ let _filterMenu = list => {
       if (index === list.length - 1 && inserts.length) {
         inserts.forEach((insert, i) => {
           list.splice(insert + i, 0, {
-            [labelKey]: item[virtualLabelKey],
+            [labelKey]: insert.label,
             [isVirtualKey]: true,
             [visibleKey]: false,
-            [indexKey]: 'virtual-' + (insert + i),
+            [indexKey]: 'virtual-' + (insert.index + i),
           });
         });
       }
@@ -73,7 +75,7 @@ let _getInitRouter = (list = []) => {
   function getInitRouter(list) {
     if (list && list.length) {
       initpath = initpath + '/' + list[0][keyRefer['menuRouter']];
-      const children = list[0][keyRefer['childMenus']];
+      const children = list[0][keyRefer['children']];
       getInitRouter(children);
     }
   }
@@ -94,7 +96,7 @@ function _deCryptoSideBar() {
 
 const SideBar = {
   state: {
-    sideBarList: _deCryptoSideBar().sideBar,
+    sideBarList: _deCryptoSideBar().sideBar || [],
     initRouter: _deCryptoSideBar().initRouter, //默认初始路由地址
   },
   mutations: {
@@ -130,6 +132,7 @@ const SideBar = {
             console.log(222222222);
             console.log(222222222);
             console.log(sideBarList);
+            console.log(_getInitRouter(sideBarList));
             console.log(222222222);
             console.log(222222222);
 
