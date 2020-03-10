@@ -53,6 +53,7 @@ const navmenu = (req, res) => {
             syStatus: '1',
             funcId: 'cpZKRalyjMljdbsgAC4',
             childMenus: null,
+            syPyqc: '分类测试2',
           },
           {
             menuIconcls: '',
