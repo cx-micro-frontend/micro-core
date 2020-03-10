@@ -3,7 +3,7 @@ import expand from '../../../expand';
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 export default [
-  ...expand.customRoute(Layout),
+  ...expand.route.customRoute(Layout),
 
   // {
   //   path: '',
