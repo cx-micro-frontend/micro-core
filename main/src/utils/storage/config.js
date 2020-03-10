@@ -46,6 +46,14 @@ export default {
     partition: true,
   },
 
+  sign_precinct: {
+    name: '项目信息（头部左上角项目切换选择)',
+    storagekey: 'precinct',
+    storageMethod: 'localStorage',
+    storageLife: '',
+    partition: true,
+  },
+
   sign_error_sign: {
     name: '路由钩子错误跳转标识',
     storagekey: 'error_sign',
