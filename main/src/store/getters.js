@@ -1,5 +1,3 @@
-import FrameInfo from './modules/System/Frame/FrameInfo';
-
 const getters = {
   //mode
   $PROJECT_NAME: state => state.FrameInfo.$PROJECT_NAME, //当前项目名称
@@ -13,8 +11,7 @@ const getters = {
   funcId: state => state.Core.funcId,
 
   //precinct select
-  precinctId: state => state.Precinct.precinctId,
-  precinctName: state => state.Precinct.precinctName,
+  precinctInfo: state => state.Precinct,
 
   //user
   token: state => state.User.userinfo.token,
