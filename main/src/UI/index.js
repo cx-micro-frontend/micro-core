@@ -1,4 +1,3 @@
-import expand from '../../expand';
 //依赖
 import './depends';
 
@@ -17,6 +16,7 @@ import '../../../injection/entrance/entrance_ui';
 //load utils event
 import '../utils';
 
+import expand from '../../expand';
 //load custom iconfont
 expand.UI.iconfont();
 //load custom theme style
