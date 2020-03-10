@@ -17,8 +17,6 @@ import './src/router/promission/hook';
 
 Vue.config.productionTip = false;
 
-
-
 new Vue({
   el: '#app',
   router,
