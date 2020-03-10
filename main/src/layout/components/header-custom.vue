@@ -1,3 +1,4 @@
+<!--布局厂字框架 - 头部自定义插槽-->
 <template>
   <div class="clear">
     <div class="fl">
@@ -34,14 +35,14 @@
 
       has_head_slot_expand() {
         try {
-          return Boolean(expand.headslot.name);
+          return Boolean(expand.layout.headslot.name);
         }
         catch (e) {
           return false;
         }
       },
       head_slot_render() {
-        return this.has_head_slot_expand ? expand.headslot : null;
+        return this.has_head_slot_expand ? expand.layout.headslot : null;
       },
     },
     methods: {
