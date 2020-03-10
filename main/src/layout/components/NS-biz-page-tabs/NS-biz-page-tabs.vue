@@ -12,9 +12,11 @@
              <ns-icon-svg icon-class="drag" class="operate-slot-icon"></ns-icon-svg>
         </span>
         <el-dropdown-menu slot="dropdown">
+
           <el-dropdown-item command="closeCurrent">关闭当前</el-dropdown-item>
           <el-dropdown-item command="closeOthers">关闭其他</el-dropdown-item>
           <el-dropdown-item command="closeAll">关闭全部</el-dropdown-item>
+
         </el-dropdown-menu>
       </el-dropdown>
     </div>
