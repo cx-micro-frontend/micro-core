@@ -19,11 +19,11 @@ export const jumpToTnitPage = () => {
   //是否为单点，是否存在referRoute
   // this.initPath = referRoute || this.initRouter; initRouter
 
-  // const initPath = $store.state.SideBar.initRouter;
+  const initPath = $store.state.SideBar.initRouter;
   //
-  // const initTargetPath = referRoute || initPath; //登录后的初始路径
+  const initTargetPath = referRoute || initPath; //登录后的初始路径
 
-  const initTargetPath = referRoute || '/overview';
+  // const initTargetPath = referRoute || '/overview';
 
   $router.push({ path: initTargetPath });
 };
