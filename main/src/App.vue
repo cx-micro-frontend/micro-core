@@ -14,7 +14,7 @@
   };
 </script>
 
-<style>
+<style rel="stylesheet/scss" lang="scss">
 
   #app {
     -webkit-font-smoothing: antialiased;
