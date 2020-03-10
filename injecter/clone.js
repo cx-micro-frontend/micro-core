@@ -58,7 +58,8 @@ exports.cloneRepositories = () => {
         }
 
         shell.cp('-R', `${utils.inJectPath().repositorie_tmp}/${repositoryName}`, targetPath);
-      } else {
+      }
+      else {
         shell.cp(
           '-R',
           `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
@@ -145,3 +146,6 @@ exports.cloneMock = () => {
     shell.cp('-R', mock_inJect_path, NEAP_mock_target_path);
   }
 };
+
+
+
