@@ -1,6 +1,8 @@
 <template>
+
   <ns-layout :class="{'is-hide-frame':isInIframe}">
     <template slot="header">
+
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
         <img :src="operatorLoginPic"/>
@@ -33,11 +35,17 @@
     <!--工作台模块 - 嵌入路由视图即可 -->
     <template slot="app-main">
       <!--changing-over  work bench module-->
+
       <transition leave-active-class="" enter-active-class="out-in">
         <keep-alive>
-          <router-view :key="key"></router-view>
+          <router-view :key="key" v-if="isCache"></router-view>
         </keep-alive>
       </transition>
+
+      <transition leave-active-class="" enter-active-class="out-in">
+        <router-view :key="key" v-if="!isCache"></router-view>
+      </transition>
+
     </template>
 
   </ns-layout>
@@ -47,6 +55,7 @@
   import { mapGetters } from 'vuex';
   import { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerCustom } from './index';
   import transform from './transform';
+  import expand from '../../expand';
 
   export default {
     name: 'layout',
@@ -59,6 +68,9 @@
       ...mapGetters(['userName', 'avatar', 'operatorLoginPic', 'isInIframe']),
       key() {
         return this.$route.path;
+      },
+      isCache() {
+        return expand.route.keepAlive;
       },
     },
     created() {
