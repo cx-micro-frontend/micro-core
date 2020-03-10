@@ -6,16 +6,16 @@ const navmenu = (req, res) => {
     restLog: null,
     resultData: [
       //概览页
-      // {
-      //   menuIconcls: 'gailan',
-      //   menuMenuname: '概览', //显示名称
-      //   menuMenusubname: 'overview', //路径符号
-      //   funcId: 'dashboard', //func-ID
-      //   syLayer: 2,
-      //   syOrderindex: 1,
-      //   syStatus: '1', //隐藏与否
-      //   childMenus: [],
-      // },
+      {
+        menuIconcls: 'gailan',
+        menuMenuname: '概览', //显示名称
+        menuMenusubname: 'overview', //路径符号
+        funcId: 'dashboard', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
       //系统设置
       {
         menuIconcls: 'shezhi',
@@ -34,6 +34,7 @@ const navmenu = (req, res) => {
             syOrderindex: 1,
             funcId: '2DEJjvjOcDM5caR4bce',
             childMenus: null,
+            syPyqc: '分类测试1',
           },
           {
             menuIconcls: '',
