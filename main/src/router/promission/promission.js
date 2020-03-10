@@ -32,6 +32,7 @@ export default (to, from, next) => {
 
     console.log('=============================');
     console.log(`${from.path}  ${to.path}`);
+    console.log('获取到的菜单栏数据：', $store.getters.sideBarList);
     console.log(`addRouFlag 状态：${addRouFlag}`);
     console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
     console.log(pageinfoList);
@@ -41,7 +42,7 @@ export default (to, from, next) => {
 
       //handle async router
       $store
-        .dispatch('setAsyncRouter', $store.state.SideBar.sideBarList)
+        .dispatch('setAsyncRouter', $store.getters.sideBarList)
         .then(_ => {
           const asyncRouterList = $store.state.Router.asyncRouterList;
           console.log('获取异步路由列表：', asyncRouterList);
