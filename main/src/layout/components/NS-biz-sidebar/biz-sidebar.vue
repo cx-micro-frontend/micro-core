@@ -6,6 +6,7 @@
                 :showTimeout="200"
                 :hideTimeout="200"
                 :keyRefer="keyRefer"
+                hasVirtualNode
                 @first-nav-click="firstNavClick"
                 @mouse-enter="mouseEnter">
       <template slot="first-slot" slot-scope="scope">
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex';
+  import { mapGetters } from 'vuex';
   import keyRefer from './sidebar-keyRefer';
 
   export default {
@@ -33,7 +34,7 @@
       };
     },
     computed: {
-      ...mapGetters(['sideBarList'])
+      ...mapGetters(['sideBarList']),
     },
     methods: {
 
@@ -69,11 +70,37 @@
       },
     },
     created() {
-    }
+    },
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
   .ns-biz-sidebar {
     height: 100%;
+    .first-nav.hasVirtualNode {
+      ul.second-nav .right {
+        padding-top: 0 !important;
+        .second-nav-tit {
+          font-size: 16px !important;
+          padding-left: 16px !important;
+          background-color: #eeeeee;
+        }
+        li.second-nav-items {
+          padding-left: 32px;
+          &.is-virtual-node {
+            a.nav-link {
+              color: #222222 !important;
+              text-indent: 8px !important;
+              cursor: auto !important;
+              font-weight: 600;
+            }
+            &:hover {
+              a.nav-link {
+                background-color: transparent !important;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 </style>
