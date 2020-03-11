@@ -5,6 +5,7 @@ const Router = {
   state: {
     asyncRouterList: JSON.parse(storageHandle('get', 'sign_async_router')) || [],
     errorSign: storageHandle('get', 'sign_error_sign') || '',
+    routeKey: new Date().getTime(),
   },
   mutations: {
     /**
@@ -33,6 +34,10 @@ const Router = {
       state.errorSign = '';
       storageHandle('remove', 'sign_error_sign');
     },
+
+    ROUTE_REFRESH: (state, key) => {
+      state.routeKey = key;
+    },
   },
   actions: {
     setAsyncRouter: ({ commit }, route) => {
@@ -45,6 +50,7 @@ const Router = {
         }
       });
     },
+
     removeAsyncRouter: ({ commit }) => {
       commit('REMOVE_ASYNC_ROUTER');
     },
@@ -53,6 +59,9 @@ const Router = {
     },
     removeErrorSign: ({ commit }) => {
       commit('REMOVE_ERROR_SIGN');
+    },
+    routeRefresh: ({ commit }) => {
+      commit('ROUTE_REFRESH', new Date().getTime());
     },
   },
 };
