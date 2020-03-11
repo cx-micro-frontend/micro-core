@@ -34,7 +34,6 @@ $radio-radius: 9px;
     //item-content
     .el-form-item__content {
       @import '../Modular/transfer/role-authorizer';
-      @import '../checkbox/roleFnBtn';
       .ns-radio-group {
         span.el-radio__input {
           span.el-radio__inner {
