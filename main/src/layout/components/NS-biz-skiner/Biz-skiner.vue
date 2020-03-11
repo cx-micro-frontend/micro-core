@@ -22,7 +22,7 @@
       };
     },
     computed: {
-      ...mapGetters(['themeColor']),
+      ...mapGetters(['userinfo']),
     },
     methods: {
       changeTheme() {
@@ -47,8 +47,8 @@
       },
     },
     created() {
-      if (this.themeColor) {
-        this.skinerModel = this.themeColor;
+      if (this.userinfo.themeColor) {
+        this.skinerModel = this.userinfo.themeColor;
       }
     },
   };

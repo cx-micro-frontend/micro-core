@@ -5,7 +5,7 @@
 
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
-        <img :src="operatorLoginPic"/>
+        <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
       <!--业务组 - 自定义头部模块 -->
@@ -65,9 +65,9 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userName', 'avatar', 'operatorLoginPic', 'isInIframe']),
+      ...mapGetters(['userinfo', 'operatorInfo', 'routeKey', 'isInIframe']),
       key() {
-        return this.$route.path;
+        return (this.$route.path !== undefined ? this.$route.path : this.$route) + '-' + this.routeKey;
       },
       isCache() {
         return expand.route.keepAlive;
@@ -76,7 +76,11 @@
     created() {
       console.log(this.isInIframe);
     },
-    methods: {},
+    methods: {
+      click() {
+        this.$store.dispatch('routeRefresh');
+      },
+    },
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">

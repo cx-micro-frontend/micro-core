@@ -26,11 +26,11 @@
           </div>
 
           <div class="line-right header-line__value">
-            <div>登录账号：<span>{{userinfo.userAccount}}</span></div>
+            <div>登录账号：<span>{{userInformation.userAccount}}</span></div>
 
-            <div>登录名称：<span>{{userinfo.userName}}</span></div>
+            <div>登录名称：<span>{{userInformation.userName}}</span></div>
 
-            <!--<div>性别：<span>{{userinfo.userSex}}</span></div>-->
+            <!--<div>性别：<span>{{userInformation.userSex}}</span></div>-->
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@
         showDialog: false,
         showUpdateAvatarDialog: false,//修改头像弹窗开关
         showModifyPassword: false,//修改密码 开关
-        userinfo: {},//用户信息
+        userInformation: {},//用户信息
       };
     },
 
@@ -129,14 +129,14 @@
     },
 
     computed: {
-      ...mapGetters(['userId']),
+      ...mapGetters(['userinfo']),
 
       userAvatar: function() {
-        return this.userinfo.avatar || require('../../../../assets/img/empty/empty-avatar.png');
+        return this.userInformation.avatar || require('../../../../assets/img/empty/empty-avatar.png');
       },
       //获取生成安全级别分值
       securityScore: function() {
-        return getSecurityScore(this.userinfo.userPassword || '');
+        return getSecurityScore(this.userInformation.userPassword || '');
       },
 
       //安全级别 （低，中，高)
@@ -150,15 +150,15 @@
        * 请求获取用户信息
        */
       getUserInfo() {
-        getUserInfo({ userId: this.userId }).then((res) => {
+        getUserInfo({ userId: this.userinfo.userId }).then((res) => {
           console.log(res.resultData);
-          this.userinfo = res.resultData;
+          this.userInformation = res.resultData;
         });
 
       },
 
       updateAvatar(url) {
-        this.userinfo.avatar = url;
+        this.userInformation.avatar = url;
       },
 
       setMobile() {

@@ -16,7 +16,7 @@
           <div class="user-avatar line-block">
             <img :src="userAvatar" alt="">
           </div>
-           <h1>{{userName}}</h1>
+           <h1>{{userinfo.userName}}</h1>
           <div class="line-block line-block-transition">
 
             <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
@@ -71,9 +71,9 @@
       };
     },
     computed: {
-      ...mapGetters(['isLocked', 'operatorBackgroudPic', 'operatorLogo', 'avatar', 'userName', 'userAccount']),
+      ...mapGetters(['userinfo', 'isLocked']),
       userAvatar: function() {
-        return this.avatar || require('../../../assets/img/empty/empty-avatar.png');
+        return this.userinfo.avatar || require('../../../assets/img/empty/empty-avatar.png');
       },
       cryptoPassWord() {
         return this.getCryptoBybase64(this.passwordForm.password) || '';
@@ -94,7 +94,7 @@
 
             // 获取多集团信息 / 检测是否是多企业账号
             this.enterprise = await this.checkByLogin({
-              userAccount: this.userAccount,
+              userAccount: this.userinfo.userAccount,
               password: this.cryptoPassWord,
             });
 
@@ -119,7 +119,7 @@
        */
       async selectHandle(item, i) {
         await this.multipleAuthLogin({
-          userAccount: this.userAccount,
+          userAccount: this.userinfo.userAccount,
           password: this.cryptoPassWord,
           enterpriseId: item.enterpriseId,
         });

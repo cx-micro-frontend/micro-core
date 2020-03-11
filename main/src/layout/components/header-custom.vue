@@ -5,7 +5,7 @@
       <!--外部资源注入-->
       <component :is="this.markName(head_slot_render.name)" v-if="has_head_slot_expand"></component>
       <!--默认显示-->
-      <span v-else>{{operatorName}}</span>
+      <span v-else>{{operatorInfo.operatorName}}</span>
       <!--<theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange"/>-->
     </div>
   </div>
@@ -27,7 +27,7 @@
       return {};
     },
     computed: {
-      ...mapGetters(['operatorName']),
+      ...mapGetters(['operatorInfo']),
 
       // hasFile() {
       //   return hasFile('@ROOT/config/expand', /\config.js/);

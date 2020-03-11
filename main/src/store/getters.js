@@ -13,31 +13,42 @@ const getters = {
   //precinct select
   precinctInfo: state => state.Precinct,
 
-  //user
-  token: state => state.User.userinfo.token,
-  userName: state => state.User.userinfo.userName,
-  userAccount: state => state.User.userinfo.userAccount,
-  userId: state => state.User.userinfo.userId,
-  avatar: state => state.User.userinfo.avatar,
-  themeColor: state => state.User.userinfo.themeColor,
-
-  //cover painting operatorInfo
-  operatorDesc: state => state.CoverPainting.operatorInfo.operatorDesc, //登录页左侧标题（sign in box)
-  operatorName: state => state.CoverPainting.operatorInfo.operatorName, //document title / head title
-  operatorLogo: state => state.CoverPainting.operatorInfo.operatorLogo, //登录页图标
-  operatorPicture: state => state.CoverPainting.operatorInfo.operatorPicture, //登录页左侧图片（sign in box)
-  operatorBackgroudPic: state => state.CoverPainting.operatorInfo.operatorBackgroudPic, //登录页大背景图
-  operatorLoginPic: state => state.CoverPainting.operatorInfo.operatorLoginPic, //布局-head 左侧Logo图片
-
   //layout
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
   initRouter: state => state.SideBar.initRouter, //菜单栏初始路由
   sideBarList: state => state.SideBar.sideBarList, //菜单栏数据
-
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
   currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag, //当前访问的page信息(处理为tab页所需的格式)
-
   currentPageInfo: state => state.PageInfo.currentPageInfo, //当前访问的页面信息
+
+  //route
+  routeKey: state => state.Router.routeKey, //路由key
+
+  /**
+   * 用户信息 - user information
+   * token - 用户token
+   * userId - 用户ID
+   * userAccount - 用户ID
+   * userName - 用户姓名
+   * avatar - 用户头像
+   * userType - 用户类型
+   * userPhone - 用户手机
+   * userSex - 用户性别
+   * themeColor - 用户主题
+   */
+  userinfo: state => state.User.userinfo,
+
+  /**
+   * 租户信息 - 个性化配置 - cover painting operatorInfo
+   * @returns {getters.operatorInfo|(function(*))|CoverPainting.state.operatorInfo|}
+   * operatorDesc - 登录页左侧标题（sign in box)
+   * operatorName - document title / head title
+   * operatorLogo - 登录页图标
+   * operatorPicture - 登录页左侧图片（sign in box)
+   * operatorBackgroudPic - 登录页大背景图
+   * operatorLoginPic - 布局-head 左侧Logo图片
+   */
+  operatorInfo: state => state.CoverPainting.operatorInfo, //登录页左侧标题（sign in box)
 
   //all search conditions (object for all page search conditions)
   searchConditions: state => state.Search.conditions,
