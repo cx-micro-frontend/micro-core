@@ -1,8 +1,8 @@
 <template>
   <div class="sign-in-box">
     <!--用户名账号登录窗口-->
-    <div class="sign-in-left" :style="{'background-image': 'url(' + operatorPicture + ')'}">
-      <p class="sign-in-title">{{operatorDesc}}</p>
+    <div class="sign-in-left" :style="{'background-image': 'url(' + operatorInfo.operatorPicture + ')'}">
+      <p class="sign-in-title">{{operatorInfo.operatorDesc}}</p>
     </div>
     <div class="sign-in-right">
       <p class="sign-in-title">登录</p>
@@ -71,7 +71,7 @@
       };
     },
     computed: {
-      ...mapGetters(['operatorPicture', 'operatorDesc']),
+      ...mapGetters(['operatorInfo']),
       cryptoPassWord() {
         return this.getCryptoBybase64(this.loginForm.password) || '';
       },

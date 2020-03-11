@@ -4,8 +4,8 @@
 
     <ns-user-dropdown
       :options="options"
-      :avator="avatar"
-      :userName="userName"
+      :avator="userinfo.avatar"
+      :userName="userinfo.userName"
       :abbreviation="abbreviation"
       trigger="click"
       @click="userDropdownClick"
@@ -45,7 +45,7 @@
       };
     },
     computed: {
-      ...mapGetters(['userName', 'avatar']),
+      ...mapGetters(['userinfo']),
     },
     methods: {
       userDropdownClick(value, index) {
