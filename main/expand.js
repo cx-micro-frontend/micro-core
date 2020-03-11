@@ -38,12 +38,9 @@ const e = Merge({
     //挂载（依赖/示例下全局工具方法等)
     mount: null,
 
-
   },
   expand);
 
-console.log(898898989899);
-console.log(898898989899);
+console.info('最终处理后的个性依赖注入:');
 console.log(e);
-console.log(898898989899);
 export default e;

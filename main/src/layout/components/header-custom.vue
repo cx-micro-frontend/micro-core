@@ -47,12 +47,6 @@
     },
     methods: {
       register() {
-
-        console.log(898989888089);
-        console.log(expand);
-        console.log(this.components);
-        console.log(898989888089);
-
         if (this.has_head_slot_expand) {
           console.log(this.head_slot_render);
           Vue.component(this.markName(this.head_slot_render.name), this.head_slot_render);
