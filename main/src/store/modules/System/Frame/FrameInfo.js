@@ -2,24 +2,34 @@ import { getBrowserInfo } from '../../../../utils/library/browser';
 import { detectOS } from '../../../../utils/library/detectOS';
 
 /**
- * Project Mode
- * in isInIframe mode - hide side bar and head
+ * frame information 框架系统信息
  * created: 2019/07/08.
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2019 Broccoli spring( gcx )
  */
 const FrameInfo = {
   state: {
+    //当前项目名称
     $PROJECT_NAME: process.env.PROJECT_NAME || 'NEAP',
+    //登录模式（常规 / 单点）（目前mode 只直接在路由跳转中做区分)
+    loginMode: 'normal',
+    //当前系统是否为Iframe嵌入
+    isInIframe: false,
+    //操作系统信息
+    OS: '',
     //浏览器信息
     browserInfo: {
       browser: null,
       version: null,
     },
-    //操作系统信息
-    OS: '',
   },
   mutations: {
+    SET_LOGIN_MODE: (state, data) => {
+      state.loginMode = data;
+    },
+    SET_FRAME_MODE: (state, data) => {
+      state.isInIframe = data;
+    },
     SET_BROWSER_INFO: (state, data) => {
       state.browserInfo.browser = data.browser;
       state.browserInfo.version = data.version;
@@ -29,17 +39,17 @@ const FrameInfo = {
     },
   },
   actions: {
+    setLoginMode({ commit }, data) {
+      commit('SET_LOGIN_MODE', data);
+    },
+    setFrameMode({ commit }, data) {
+      commit('SET_FRAME_MODE', data);
+    },
     setBrowserInfo({ commit }) {
       const info = getBrowserInfo();
-      console.log('setBrowserInfo-setBrowserInfo');
-      console.log(info);
-      console.log('setBrowserInfo-setBrowserInfo');
       commit('SET_BROWSER_INFO', info);
     },
     setOSInfo({ commit }) {
-      console.log('detectOS-detectOS');
-      console.log(detectOS());
-      console.log('detectOS-detectOS');
       commit('SET_OS_INFO', detectOS());
     },
   },

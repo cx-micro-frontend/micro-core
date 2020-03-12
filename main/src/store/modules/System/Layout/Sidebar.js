@@ -128,14 +128,6 @@ const SideBar = {
 
             let sideBarList = _filterMenu(list);
 
-            console.log(222222222);
-            console.log(222222222);
-            console.log(222222222);
-            console.log(sideBarList);
-            console.log(_getInitRouter(sideBarList));
-            console.log(222222222);
-            console.log(222222222);
-
             commit('SET_SIDEBAR_DATA', {
               sideBar: sideBarList,
               initRouter: _getInitRouter(sideBarList),

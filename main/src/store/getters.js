@@ -1,9 +1,8 @@
 const getters = {
-  //mode
+  //frame or mode
   $PROJECT_NAME: state => state.FrameInfo.$PROJECT_NAME, //当前项目名称
-  loginMode: state => state.FrameMode.loginMode, //登录模式（常规 / 单点）
-  isInIframe: state => state.FrameMode.isInIframe,
-  routeErrorSign: state => state.Router.errorSign,
+  loginMode: state => state.FrameInfo.loginMode, //登录模式（常规 / 单点）
+  isInIframe: state => state.FrameInfo.isInIframe, //当前系统是否为Iframe嵌入
   browserInfo: state => state.FrameInfo.browserInfo, //浏览器信息
   OS: state => state.FrameInfo.OS, //操作系统信息
 
@@ -23,6 +22,7 @@ const getters = {
 
   //route
   routeKey: state => state.Router.routeKey, //路由key
+  routeErrorSign: state => state.Router.errorSign, //路由错误标识
 
   /**
    * 用户信息 - user information

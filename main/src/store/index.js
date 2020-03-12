@@ -4,7 +4,6 @@ import getters from './getters';
 
 //core / mode
 import Core from './modules/System/Common/Core';
-import FrameMode from './modules/System/Frame/FrameMode';
 import FrameInfo from './modules/System/Frame/FrameInfo';
 import Precinct from './modules/System/Frame/Precinct';
 
@@ -36,7 +35,6 @@ const store = new Vuex.Store({
   modules: Object.assign({}, entrance.model.modules, {
     //core
     Core,
-    FrameMode,
     FrameInfo,
     Precinct,
 
