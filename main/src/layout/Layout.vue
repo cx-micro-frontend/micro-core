@@ -74,7 +74,7 @@
       },
     },
     created() {
-      console.log(this.isInIframe);
+      // console.log(this.isInIframe);
     },
     methods: {
       click() {

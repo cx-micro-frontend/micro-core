@@ -22,12 +22,9 @@ export default {
      */
     async checkByLogin(query) {
       try {
-        console.log(111111111);
         //判断是否是多企业账号
         const res = await isMultipleEnterprise(query);
         const enterprise = res.resultData;
-
-        console.log(22222222222222222222);
 
         this.hasMultiEnterprise = enterprise.length > 1;
 
@@ -38,13 +35,11 @@ export default {
             password: query.password,
           };
 
-          console.log(333333333333333333);
-
           //直接登录
           await authLogin(newQuery);
-          console.log(5555555555555);
+
           await getMenu();
-          console.log(66666666666666);
+
           return enterprise;
         }
 

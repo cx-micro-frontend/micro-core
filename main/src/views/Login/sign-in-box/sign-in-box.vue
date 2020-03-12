@@ -86,8 +86,6 @@
           if (valid) {
             this.submitLoading = true;
 
-            console.log('kaishi');
-
             // 获取多集团信息 / 检测是否是多企业账号
             this.enterprise = await this.checkByLogin({
               userAccount: this.loginForm.username,
@@ -95,7 +93,6 @@
             });
 
             //判断是否为多企业，多企业账号跳转到选择企业界面
-            console.log(888888888888888);
             this.submitLoading = false;
 
             //非多集团情况下，登陆后直接跳转

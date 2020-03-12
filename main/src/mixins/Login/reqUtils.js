@@ -30,12 +30,10 @@ export const getMenu = async () => {
  * @returns {Promise<void>}
  */
 export const authLogin = async query => {
-  console.log('authLogin-authLogin');
-
   initHandle();
   await $store.dispatch('oauthlogin', query).then(
     () => {
-      console.log(4444444444444);
+      console.log('常规登录成功');
     },
     error => {
       console.log('登录失败', error);
