@@ -7,9 +7,9 @@ import { formatError } from './log.js';
  * @returns {*}
  */
 export const hasFile = (path, target) => {
-  const files = require.context(path, true, target);
-
-  return files.keys().some(k === target);
+  // const files = require.context(path, true, target);
+  //
+  // return files.keys().some(k === target);
 };
 
 /**

@@ -26,7 +26,7 @@ router.beforeEach((to, from, next) => {
 
   NProgress.start(); // start progress bar
 
-  if (whiteList.normal.indexOf(to.path) !== -1) {
+  if (whiteList.noAuth.indexOf(to.path) !== -1) {
     console.log('在免登录白名单，直接进入');
     console.log(to.path);
     next();

@@ -10,20 +10,20 @@ export default [
     path: '/404',
     name: '404',
     component: () => import('../../views/Public/404/404.vue'),
-    meta: { auth: false },
+    meta: { auth: false, key: '404' },
   },
 
   {
     path: '/error',
     name: 'error',
     component: () => import('../../views/Public/error/error.vue'),
-    meta: { auth: false },
+    meta: { auth: false, key: 'error' },
   },
 
   {
     path: '/sso/error',
     name: 'sso-error',
     component: () => import('../../views/Public/error/sso-error.vue'),
-    meta: { auth: false },
+    meta: { auth: false, key: 'sso-error' },
   },
 ];
