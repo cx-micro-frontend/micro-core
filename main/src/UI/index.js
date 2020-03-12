@@ -7,7 +7,9 @@ import './NS-UI/index'; //load ns-ui
 import '../style/index.scss';
 
 //icon
-import '../assets/iconfont/iconfont';
+// import '../assets/iconfont/iconfont';
+import '../assets/iconfont/nav-menu/iconfont';
+import '../assets/iconfont/role-button/iconfont';
 
 //components
 import '../components/index';
