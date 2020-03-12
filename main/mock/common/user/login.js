@@ -93,7 +93,7 @@ const oauthLogin = (req, res) => {
 };
 
 module.exports = {
-  'GET /system/site/get-operatorInfoById': operatorInfo,
+  'GET /soss/operator/get-operatorInfo': operatorInfo,
   'GET /oauth/oauth/query-user-enterprise': queryUserEnterprise,
   'POST /oauth/login': oauthLogin, //用户登录
   'POST /oauth/mutil-enterprise-login': oauthLogin, //多集团登录

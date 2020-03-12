@@ -895,6 +895,6 @@ const dictionaryItem = (req, res) => {
 };
 
 module.exports = {
-  'GET /system/organization/get-orgtree-form': orgtreeForm,
+  'GET /system/organization/get-orgtree-form-standard': orgtreeForm,
   'GET /system/dictionary/get-dictionary-tree': dictionaryItem,
 };
