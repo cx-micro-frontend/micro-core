@@ -4,6 +4,7 @@ const PageTabs = {
   state: {
     visitedPages: JSON.parse(storageHandle('get', 'sign_visited_pages')) || [],
     currentVisitedPageTag: {}, //当前访问的page信息
+    limit: 6,
   },
   mutations: {
     /**

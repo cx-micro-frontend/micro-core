@@ -2,7 +2,7 @@
 <template>
   <ns-page-tabs
     :data="visitedPages"
-    :limit="limit"
+    :limit="tabLimit"
     :activeRule="activeRule"
     @close-view-tabs="closeViewTabs"
   >
@@ -29,15 +29,16 @@
   export default {
     name: 'biz-page-tabs',
     data() {
-      return {
-        limit: 6,
-      };
+      return {};
     },
     props: {},
     computed: {
       ...mapGetters(['visitedPages', 'currentVisitedPageTag', 'initRouter']),
       curPath() {
         return this.$route.path;
+      },
+      tabLimit() {
+        return this.$store.state.PageTabs.limit;
       },
     },
     methods: {

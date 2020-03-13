@@ -7,7 +7,7 @@ import $store from '../../store';
  */
 export default type => {
   //get login mode
-  const loginMode = $store.state.FrameMode.loginMode;
+  const loginMode = $store.state.FrameInfo.loginMode;
 
   $store.dispatch('removeErrorSign'); //remove
 
