@@ -9,7 +9,7 @@
     <div slot='operate'>
       <el-dropdown @command="closeCommand">
         <span class="el-dropdown-link">
-             <ns-icon-svg icon-class="drag" class="operate-slot-icon"></ns-icon-svg>
+             <ns-icon-svg icon-class="biz-drag" class="operate-slot-icon"></ns-icon-svg>
         </span>
         <el-dropdown-menu slot="dropdown">
 
