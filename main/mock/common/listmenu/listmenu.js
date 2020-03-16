@@ -7,7 +7,7 @@ const navmenu = (req, res) => {
     resultData: [
       //概览页
       {
-        menuIconcls: 'gailan',
+        menuIconcls: 'menu-gailan',
         menuMenuname: '概览', //显示名称
         menuMenusubname: 'overview', //路径符号
         funcId: 'dashboard', //func-ID
@@ -18,7 +18,7 @@ const navmenu = (req, res) => {
       },
       //系统设置
       {
-        menuIconcls: 'shezhi',
+        menuIconcls: 'menu-shezhi',
         menuMenuname: '设置', //显示名称
         menuMenusubname: 'system', //路径符号
         syStatus: '1', //隐藏与否

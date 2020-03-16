@@ -9,10 +9,7 @@ let tableDataTemplate = Array.from({ length: 100 }, k => k).map((item, index) =>
     }, //项目名称
     isChecked: {
       picked: { value: 1 },
-      options: [
-        { label: '已审核', value: 1 },
-        { label: '未审核', value: 0 },
-      ],
+      options: [{ label: '已审核', value: 1 }, { label: '未审核', value: 0 }],
     }, //是否审核
     createDate: '@datetime', //成立日期
     ownerName: '@cname', //使用人
@@ -29,10 +26,7 @@ let tableDataTemplate = Array.from({ length: 100 }, k => k).map((item, index) =>
     }, //涉猎领域（多选）
     isLocked: {
       picked: { value: 1 },
-      options: [
-        { label: '是', value: 1 },
-        { label: '否', value: 0 },
-      ],
+      options: [{ label: '是', value: 1 }, { label: '否', value: 0 }],
     }, //是否锁定（单选）
     remark: '', //备注 Mock.Random.county(true)
   });
