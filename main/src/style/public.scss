@@ -17,7 +17,6 @@ $--color-primary-link: #409eff;
 $--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 input / select
 $--color-primary-light: #4097f9; //基础主色-浅色
 
-
 //---------- theme color ----------
 $--color-success: #16ca37;
 $--color-warning: #ffae00;
@@ -35,10 +34,10 @@ $win_gapB: 0px;
 $win_gapL: 10px;
 $win_gapR: 10px;
 //win 内边距
-$win_pt: 0px;
+$win_pt: 10px;
 $win_pb: 0px;
-$win_pl: 0px;
-$win_pr: 0px;
+$win_pl: 10px;
+$win_pr: 10px;
 
 $container-border_color: #e8e8e8; //container 内容模块划分边框线
 
