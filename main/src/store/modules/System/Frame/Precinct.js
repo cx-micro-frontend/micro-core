@@ -6,7 +6,7 @@ import { storageHandle } from '../../../../utils/storage/storage';
  * @private
  */
 function _deCryptoPrecinct() {
-  return JSON.parse(storageHandle('get', 'sign_nav')) || {};
+  return JSON.parse(storageHandle('get', 'sign_precinct')) || {};
 }
 
 /**
