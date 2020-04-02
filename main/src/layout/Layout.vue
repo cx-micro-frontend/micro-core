@@ -37,7 +37,7 @@
       <!--changing-over  work bench module-->
 
       <transition leave-active-class="" enter-active-class="out-in">
-        <keep-alive>
+        <keep-alive :include="cachedViews">
           <router-view :key="key" v-if="isCache"></router-view>
         </keep-alive>
       </transition>
@@ -65,12 +65,24 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userinfo', 'operatorInfo', 'routeKey', 'isInIframe']),
-      key() {
-        return (this.$route.path !== undefined ? this.$route.path : this.$route) + '-' + this.routeKey;
-      },
+      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe']),
+
+      //全局缓存开关
       isCache() {
-        return expand.route.keepAlive;
+        return expand.route.cache;
+      },
+
+      key() {
+        //获取整体路由key值
+        const routeKey = this.NEAP_ROUTER.getRouteKey();
+        return (this.$route.path !== undefined ? this.$route.path : this.$route) + '-' + routeKey;
+      },
+
+
+      cachedViews() {
+        console.log(' ======= 缓存页面- name 队列：====== ');
+        console.log(this.$store.state.Cache.cachedViews);
+        return this.$store.state.Cache.cachedViews;
       },
     },
     created() {
