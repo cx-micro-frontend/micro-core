@@ -17,9 +17,9 @@ export const jumpToTnitPage = () => {
   const referRoute = getUrlParam('referRoute');
 
   //是否为单点，是否存在referRoute
-  // this.initPath = referRoute || this.initRouter; initRouter
+  // this.initPath = referRoute || this.initRoute; initRoute
 
-  const initPath = $store.state.SideBar.initRouter;
+  const initPath = $store.state.SideBar.initRoute.fullpath;
   //
   const initTargetPath = referRoute || initPath; //登录后的初始路径
 
