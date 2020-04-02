@@ -1,4 +1,5 @@
 import { storageHandle } from '../../../../utils/storage/storage';
+import $store from '../../../index';
 
 const PageTabs = {
   state: {
@@ -18,7 +19,7 @@ const PageTabs = {
       //if this tabs-view is not existed, push this in list
       if (!exist) {
         state.visitedPages = state.visitedPages.filter(item => item.path !== view.path);
-        state.visitedPages.push({ name: view.name, path: view.path, meta: view.meta });
+        state.visitedPages.push({ title: view.meta.title, path: view.path, meta: view.meta });
       }
       storageHandle('set', 'sign_visited_pages', JSON.stringify(state.visitedPages));
     },
@@ -78,12 +79,48 @@ const PageTabs = {
       //and set current tag
       commit('SET_CURRENT_VISITED_PAGE_TAG', view);
     },
-    delVisitedPages: ({ commit }, view) => {
+
+    delVisitedPages({ commit }, view) {
       commit('DEL_VISITED_VIEWS', view);
     },
+
+    /**
+     * 新增tab页
+     * @param dispatch
+     * @param view
+     */
+    addVisitedTab({ dispatch }, view) {
+      dispatch('addVisitedPages', view);
+
+      $store.dispatch('Cache/addCachedView', view);
+    },
+
+    /**
+     * 关闭tab页
+     * 1、清除对应 visited pages
+     * 2、清除对应 visited cached pages
+     * @param dispatch
+     * @param state
+     * @param view
+     * @returns {Promise<any>}
+     */
+    delVisitedTab: ({ dispatch, state }, view) => {
+      return new Promise(resolve => {
+        dispatch('delVisitedPages', view);
+
+        $store.dispatch('Cache/delCachedView', view).then(cachedViews => {
+          resolve({
+            visitedPages: state.visitedPages,
+            cachedViews: [...cachedViews],
+          });
+        });
+      });
+    },
+
     delOthersVisitedPages: ({ commit }, view) => {
       commit('DEL_OTHERS_VISITED_VIEWS', view);
     },
+
     delAllVisitedPages: ({ commit }) => {
       commit('DEL_ALL_VISITED_VIEWS');
     },
