@@ -8,6 +8,7 @@
                 :keyRefer="keyRefer"
                 hasVirtualNode
                 @first-nav-click="firstNavClick"
+                @second-nav-click="secondNavClick"
                 @mouse-enter="mouseEnter">
       <template slot="first-slot" slot-scope="scope">
         <ns-icon-svg icon-class="jiantou" v-if="scope.item.menuIndex === 1" style="margin-left: 25px"></ns-icon-svg>
@@ -35,20 +36,61 @@
     },
     computed: {
       ...mapGetters(['sideBarList']),
+      //当前路由信息
+      currentRoute() {
+        return this.$route;
+      },
     },
     methods: {
 
       /**
        * first nav click handle
-       * @param index
-       * @param item
+       * @param firstItem
+       * @param firstIndex
        */
-      firstNavClick(index, item) {
-        console.log(index, item);
-        // const router = item.menuMenusubname;
-        // //目前暂时所有模块页面都要以及菜单下，点击跳转路由
-        // if (router === "overview") return;
-        // this.$router.push(item.menuMenusubname)
+      firstNavClick(firstItem, firstIndex) {
+
+        console.log(firstItem, firstIndex);
+        console.log(this.currentRoute);
+        const currentPath = this.currentRoute.path;
+        const targetPath = `/${firstItem[this.keyRefer.menuRouter]}`;
+        console.log(currentPath);
+        console.log(targetPath);
+        console.log(currentPath === targetPath);
+
+        this.judgeAndJump(currentPath, targetPath);
+
+      },
+
+
+      /**
+       * first nav click handle
+       * @param firstItem
+       * @param secondItem
+       * @param firstaIndex
+       * @param secondIndex
+       */
+      secondNavClick(firstItem, secondItem, firstaIndex, secondIndex) {
+
+        console.log(firstItem, secondItem, firstaIndex, secondIndex);
+        console.log(this.currentRoute);
+
+        const targetPath = '/' + firstItem[this.keyRefer.menuRouter] + '/' + secondItem[this.keyRefer.menuRouter];
+        const currentPath = this.currentRoute.path;
+
+        this.judgeAndJump(currentPath, targetPath);
+
+      },
+
+      /**
+       * judege and router jump
+       */
+      judgeAndJump(currentPath, targetPath) {
+        // 非当前页点击
+        if (currentPath !== targetPath) {
+          //菜单栏 - 跳转目标页面并清除目标页的缓存
+          this.$router.push({ path: targetPath}); //jump
+        }
       },
 
       secondNavSlot(scope) {
