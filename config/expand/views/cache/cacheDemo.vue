@@ -51,11 +51,17 @@
 
       <h1>跳转类目</h1>
       <ns-row>
-        <ns-col :span="3">
+        <ns-col :span="2">
           <div class="grid-content bg-purple-light">
-            <ns-button icon="el-icon-s-promotion" @click="normalJump">不刷新跳转页面</ns-button>
+            <ns-button icon="el-icon-s-promotion" @click="normalJump">常规跳转</ns-button>
           </div>
         </ns-col>
+        <ns-col :span="3">
+          <div class="grid-content bg-purple-light">
+            <ns-button icon="el-icon-s-promotion" @click="noRefreshlJump">不刷新跳转页面</ns-button>
+          </div>
+        </ns-col>
+
         <ns-col :span="4">
           <div class="grid-content bg-purple-light">
             <ns-button icon="el-icon-delete-solid" @click="delTargetCacheJump">跳转页面并清除目标页缓存</ns-button>
@@ -130,7 +136,6 @@
         );
       },
 
-      //
       /**
        * 刷新当前页面
        * 1、若当前页面缓存：必须跳转到当前页面的同时并清除其页面实例缓存，才会达到刷新页面的效果（重置vue实例)
@@ -154,9 +159,15 @@
         console.log('删除所有页面缓存');
       },
 
-      //不刷新跳转页面
+      //常规跳转页面
       normalJump() {
-        console.log('不刷新跳转页面,');
+        console.log('常规跳转页面');
+        this.$router.push({ path: 'system/systemDataDictionary' });
+      },
+
+      //不刷新跳转页面
+      noRefreshlJump() {
+        console.log('不刷新跳转页面');
         this.$router.push({ path: 'system/systemDataDictionary', query: { noRefresh: true } });
       },
 

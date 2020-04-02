@@ -10,6 +10,16 @@ export default (
   return {
     NEAP_CACHE: {
       /**
+       * get cache queue
+       * @returns {Array|default.computed.cachedViews}
+       */
+      getCacheQueue() {
+        optCheck(options);
+        return options.store.state.Cache.cachedViews;
+      },
+
+
+      /**
        * add cache for current page
        * @param view - current page route information
        */
@@ -68,10 +78,19 @@ export default (
         if (typeof query !== 'object')
           throw '[neap-cache] uncaught error during cache: router query must be in object format';
 
-        vm.$router.replace({
-          path: '/redirect' + vm.$route.fullPath,
-          query: query ? Object.assign(query, { refresh: true }) : { refresh: true },
-        });
+        /**
+         * if current route' query has 'noRefresh', refresh current page will lose efficacy
+         * so we del current page cache first
+         */
+        vm.NEAP_CACHE.delCache(vm.$route).then(
+          cachedViews => {
+            vm.$router.replace({
+              path: '/redirect' + vm.$route.fullPath,
+              query: query,
+            });
+          },
+        );
+
       },
 
       refreshAll() {

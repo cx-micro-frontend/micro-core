@@ -38,7 +38,10 @@
       },
     },
     computed: {
-      ...mapGetters(['visitedPages', 'currentVisitedPageTag', 'initRouter']),
+      ...mapGetters(['visitedPages', 'currentVisitedPageTag']),
+      initRoute() {
+        return this.$store.state.SideBar.initRoute;
+      },
       curPath() {
         return this.$route.path;
       },
@@ -51,12 +54,19 @@
       addViewTabs() {
         const route = this.$route;
         const { name } = route;
+        const view = {
+          name: route.name,
+          path: route.path,
+          meta: route.meta,
+        };
+
         if (name) {
-          this.$store.dispatch('addVisitedTab', {
-            name: route.name,
-            path: route.path,
-            meta: route.meta,
-          });
+          this.$store.dispatch('addVisitedPages', view).then(
+            _ => {
+              //add current page cache
+              this.NEAP_CACHE.addCache(view);
+            },
+          );
         }
       },
 
@@ -66,7 +76,7 @@
        * @param view
        */
       clickViewTabs(view) {
-        this.tabJumper(view.path);
+        this.tabJumper(view);
       },
 
       /**
@@ -74,7 +84,7 @@
        * @param view
        */
       closeViewTabs(view) {
-        this.$store.dispatch('delVisitedTab', view).then(({ visitedPages, cachedViews }) => {
+        this.$store.dispatch('delVisitedPages', view).then(({ visitedPages, cachedViews }) => {
 
           /*
           * 判断删除的标签是否为当前页面标签：
@@ -92,7 +102,7 @@
           console.log(l, this.curPath);
 
           if (this.curPath === view.path) {
-            if (this.curPath === this.initRouter && !l) {
+            if (this.curPath === this.initRoute && !l) {
 
               //create a new tab （ init page )
               // this.addViewTabs();
@@ -101,7 +111,7 @@
               this.NEAP_ROUTER.refresh(this);
             }
             else {
-              this.tabJumper(l > 0 ? visitedPages[l - 1].path : this.initRouter);
+              this.tabJumper(l > 0 ? visitedPages[l - 1] : this.initRoute);
             }
           }
         });
@@ -120,7 +130,7 @@
               //清除所有缓存
               this.NEAP_ROUTER.refreshAll();
               //直接跳回到设定的初始页面, 且要刷新该页面
-              this.tabJumper(this.initRouter, true);
+              this.$router.push(this.initRoute);
             },
           );
 
@@ -129,13 +139,21 @@
 
       /**
        * tab Jumper
-       * @param path
-       * @param isRefresh
+       * @param route
+       * @param isNoRefresh
        * @returns {String}
        */
-      tabJumper(path, isRefresh = false) {
+      tabJumper(route, isNoRefresh = true) {
+        console.log('tabJumper-tabJumper-tabJumper');
+        console.log('tabJumper-tabJumper-tabJumper');
+        console.log(route);
+        console.log('tabJumper-tabJumper-tabJumper');
+        console.log('tabJumper-tabJumper-tabJumper');
+
         //in change tab case => we don't need to refresh page
-        this.$router.push({ path: path, query: { noRefresh: !isRefresh } }); //回到主页
+        this.$router.push({ name: route.name, params: { noRefresh: isNoRefresh } });
+
+        // this.$router.push({ path: path, query: { noRefresh: !isRefresh }, meta: { noRefresh: !isRefresh } }); //回到主页
       },
 
       /**
@@ -167,11 +185,16 @@
        * @returns {boolean}
        */
       activeRule(path) {
-        return path === this.$route.path;
+        return path === this.curPath;
       },
     },
     mounted() {
       this.addViewTabs();
+      console.log(7129371893789712893);
+      console.log(7129371893789712893);
+      console.log(7129371893789712893);
+      console.log(this.initRoute);
+      console.log(7129371893789712893);
     },
   };
 </script>

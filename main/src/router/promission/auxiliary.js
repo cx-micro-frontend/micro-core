@@ -1,13 +1,6 @@
 import $store from '../../store/index';
 import { logStyle } from '../../utils/library/log';
 
-// /**
-//  * add tab
-//  */
-// export const addPageTabs = matched => {
-//   $store.dispatch('addVisitedTab', _generateRoute(matched));
-// };
-
 /**
  * router and page information show in console
  * @param to

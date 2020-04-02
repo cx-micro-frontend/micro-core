@@ -9,6 +9,10 @@ const $opts = {
   router: {},
   store: {},
   Layout: {},
+  queryProps: {
+    noRefresh: 'noRefresh',
+  },
+
 };
 
 const install = function(

@@ -18,13 +18,14 @@ export default (
       //check option
       optCheck(options);
 
+      const noRefreshKey = options.queryProps.noRefresh;
       const cachedViews = options.store.state.Cache.cachedViews;
 
       /**
-       * The route query parameter-noRefresh is on => jump && no refresh
+       * The route query/meta parameter-noRefresh is on => jump && no refresh
        * others ( current page is in the cache list ) => Delete the current page cache and jump
        */
-      if (to.query && to.query.noRefresh) {
+      if ((to.query && to.query[noRefreshKey]) || (to.params && to.params[noRefreshKey])) {
         next();
       } else {
         if (cachedViews.indexOf(to.name) > -1) {
