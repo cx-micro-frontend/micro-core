@@ -14,7 +14,6 @@ const getters = {
 
   //layout
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
-  initRouter: state => state.SideBar.initRouter, //菜单栏初始路由
   sideBarList: state => state.SideBar.sideBarList, //菜单栏数据
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
   currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag, //当前访问的page信息(处理为tab页所需的格式)
