@@ -15,7 +15,22 @@ import store from './src/store/index';
 import router from './src/router/index';
 import './src/router/promission/hook';
 
+// load global mixins
+// import GlobalMixins from './src/mixins/Global';
+// Vue.mixin(GlobalMixins);
+
 Vue.config.productionTip = false;
+
+
+import { cache } from './plugins';
+
+Vue.use(cache, {
+  switch: true,
+  router,
+  store,
+  Layout: resolve => require(['./src/layout/Layout.vue'], resolve),
+});
+
 
 new Vue({
   el: '#app',
