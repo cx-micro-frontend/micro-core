@@ -40,7 +40,7 @@ export default {
             {
               path: 'cacheDemo',
               component: () => import(`@ROOT/config/expand/views/cache/cacheDemo.vue`),
-              meta: { title: '缓存示例1', auth: true, key: 'cacheDemo', cache: true },
+              meta: { title: '缓存示例', auth: true, key: 'cacheDemo', cache: true },
               name: 'cacheDemo',
             },
           ],
