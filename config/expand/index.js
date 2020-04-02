@@ -15,7 +15,7 @@ export default {
 
   //路由相关
   route: {
-    keepAlive: true,
+    cache: true,
     //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
     customRoute: Layout => {
       return [
@@ -27,9 +27,21 @@ export default {
           children: [
             {
               path: 'overview',
-              component: () => import(`@ROOT/config/expand/overview/overview.vue`),
-              meta: { auth: true, key: 'overview' },
-              name: '概览',
+              component: () => import(`@ROOT/config/expand/views/overview/overview.vue`),
+              meta: { title: '概览', auth: true, key: 'overview', cache: false },
+              name: 'overview',
+            },
+          ],
+        },
+        {
+          path: '',
+          component: Layout,
+          children: [
+            {
+              path: 'cacheDemo',
+              component: () => import(`@ROOT/config/expand/views/cache/cacheDemo.vue`),
+              meta: { title: '缓存示例1', auth: true, key: 'cacheDemo', cache: true },
+              name: 'cacheDemo',
             },
           ],
         },
