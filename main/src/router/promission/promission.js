@@ -76,12 +76,16 @@ export default (to, from, next) => {
        *
        * 2、in those state，back to special page base on error path distribute
        */
-      if (pageinfoList.some(info => info.path === to.path) || isInAuthwhiteList) {
+      if (pageinfoList.some(info => info.path === to.path) || isInAuthwhiteList || true) {
         /*
          * 1、judge whether the current routing contains the corresponding template page,
          * If not in route files list or not in in white list, back to special page base on error path distribute
          */
-        if ((routefiles && routefiles.some(route => route === to.path)) || isInAuthwhiteList) {
+        if (
+          (routefiles && routefiles.some(route => route === to.path)) ||
+          isInAuthwhiteList ||
+          true
+        ) {
           //router and page information show in console
           routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove

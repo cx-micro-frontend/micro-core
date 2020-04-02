@@ -37,13 +37,14 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 
   const normalRoute = (childRoute, fatherRoute) => {
     const nr = {
-      name: childRoute[keyRefer['label']],
+      name: childRoute[keyRefer['menuRouter']],
       path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute[keyRefer['menuRouter']]}`,
       component: createComponent(childRoute, fatherRoute),
       meta: {
         auth: true,
         key: childRoute[keyRefer['menuRouter']],
         title: childRoute[keyRefer['label']],
+        cache: true,
       },
     };
 
@@ -59,13 +60,14 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
       component: Layout,
       children: [
         {
-          name: route[keyRefer['label']],
+          name: route[keyRefer['menuRouter']],
           path: route[keyRefer['menuRouter']],
           component: createComponent(route),
           meta: {
             auth: true,
             key: route[keyRefer['menuRouter']],
             title: route[keyRefer['label']],
+            cache: true,
           },
         },
       ],

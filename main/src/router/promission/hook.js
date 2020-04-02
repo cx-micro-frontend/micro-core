@@ -6,7 +6,7 @@ import '../../style/Modular/nprogress/nprogress.scss'; // Progress 进度条样�
 NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configuration
 
 import { getToken } from '../../utils/library/auth';
-import { addPageTabs } from './auxiliary';
+// import { addPageTabs } from './auxiliary';
 import whiteList from '../whiteList';
 import promissionhandle from './promission';
 import errorPathDistribute from './errorDistribute';
@@ -60,7 +60,7 @@ router.beforeResolve((to, from, next) => {
 
 router.afterEach((to, from, next) => {
   if (to.meta.auth) {
-    addPageTabs(to.matched);
+    // addPageTabs(to.matched);
   }
   NProgress.done(); // finish progress bar
 });
