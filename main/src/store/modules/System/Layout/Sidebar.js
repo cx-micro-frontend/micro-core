@@ -69,20 +69,25 @@ let _filterMenu = list => {
  * @returns {string}
  * @private
  */
-let _getInitRouter = (list = []) => {
+let _getInitRoute = (list = []) => {
   let initpath = '';
+  let initname = '';
 
-  function getInitRouter(list) {
+  function getInitRoute(list) {
     if (list && list.length) {
       initpath = initpath + '/' + list[0][keyRefer['menuRouter']];
       const children = list[0][keyRefer['children']];
-      getInitRouter(children);
+      initname = list[0][keyRefer['menuRouter']];
+      getInitRoute(children);
     }
   }
 
-  getInitRouter(list);
+  getInitRoute(list);
 
-  return initpath;
+  return {
+    name: initname,
+    fullpath: initpath,
+  };
 };
 
 /**
@@ -97,25 +102,25 @@ function _deCryptoSideBar() {
 const SideBar = {
   state: {
     sideBarList: _deCryptoSideBar().sideBar || [],
-    initRouter: _deCryptoSideBar().initRouter, //默认初始路由地址
+    initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
       state.sideBarList = data.sideBar;
-      state.initRouter = data.initRouter;
+      state.initRoute = data.initRoute;
 
       storageHandle(
         'set',
         'sign_nav',
         JSON.stringify({
           sideBar: data.sideBar,
-          initRouter: data.initRouter,
+          initRoute: data.initRoute,
         })
       );
     },
     DEL_SIDEBAR_DATA: (state, data) => {
       state.sideBarList = [];
-      state.initRouter = null;
+      state.initRoute = null;
       storageHandle('remove', 'sign_nav');
     },
   },
@@ -130,7 +135,7 @@ const SideBar = {
 
             commit('SET_SIDEBAR_DATA', {
               sideBar: sideBarList,
-              initRouter: _getInitRouter(sideBarList),
+              initRoute: _getInitRoute(sideBarList),
             });
 
             //handle page info
