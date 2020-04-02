@@ -3,7 +3,12 @@ import { elementui, nsui, iconfont, utils } from '../../plugins';
 
 //第三方依赖
 Vue.use(elementui);
-Vue.use(nsui);
+Vue.use(nsui, {
+  prefix: 'ns', //stage name
+  tie: '-',
+  log: false, //show log information
+  type: 'globle',
+});
 
 //load applaction style
 import '../style/index.scss';
