@@ -21,7 +21,6 @@ const getters = {
   currentPageInfo: state => state.PageInfo.currentPageInfo, //当前访问的页面信息
 
   //route
-  routeKey: state => state.Router.routeKey, //路由key
   routeErrorSign: state => state.Router.errorSign, //路由错误标识
 
   /**
