@@ -1,6 +1,6 @@
 /* eslint-disable */
 /*
- * version for andbox
+ * version for sandbox
  * set version to packaging
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) Broccoli spring( gcx )
