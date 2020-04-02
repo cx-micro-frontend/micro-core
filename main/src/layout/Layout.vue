@@ -37,7 +37,7 @@
       <!--changing-over  work bench module-->
 
       <transition leave-active-class="" enter-active-class="out-in">
-        <keep-alive :include="cachedViews">
+        <keep-alive :include="cacheQueue">
           <router-view :key="key" v-if="isCache"></router-view>
         </keep-alive>
       </transition>
@@ -79,10 +79,10 @@
       },
 
 
-      cachedViews() {
+      cacheQueue() {
         console.log(' ======= 缓存页面- name 队列：====== ');
-        console.log(this.$store.state.Cache.cachedViews);
-        return this.$store.state.Cache.cachedViews;
+        console.log(this.NEAP_CACHE.getCacheQueue());
+        return this.NEAP_CACHE.getCacheQueue();
       },
     },
     created() {
