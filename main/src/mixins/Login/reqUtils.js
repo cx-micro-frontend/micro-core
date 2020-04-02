@@ -20,7 +20,7 @@ export const getMenu = async () => {
   await $store.dispatch('generateSideBar').then(list => {
     console.log('获取到菜单栏数据');
     console.log(list);
-    // console.log(this.initRouter);
+    // console.log(this.initRoute);
   });
 };
 
