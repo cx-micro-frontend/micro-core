@@ -2,8 +2,10 @@
 <template>
   <ns-page-tabs
     :data="visitedPages"
+    :autoJump="false"
     :limit="tabLimit"
     :activeRule="activeRule"
+    @click-view-tabs="clickViewTabs"
     @close-view-tabs="closeViewTabs"
   >
     <div slot='operate'>
@@ -23,7 +25,6 @@
   </ns-page-tabs>
 </template>
 <script>
-  import { addPageTabs } from '../../../router/promission/auxiliary';
   import { mapGetters } from 'vuex';
 
   export default {
@@ -31,7 +32,11 @@
     data() {
       return {};
     },
-    props: {},
+    watch: {
+      $route() {
+        this.addViewTabs();
+      },
+    },
     computed: {
       ...mapGetters(['visitedPages', 'currentVisitedPageTag', 'initRouter']),
       curPath() {
@@ -42,6 +47,97 @@
       },
     },
     methods: {
+
+      addViewTabs() {
+        const route = this.$route;
+        const { name } = route;
+        if (name) {
+          this.$store.dispatch('addVisitedTab', {
+            name: route.name,
+            path: route.path,
+            meta: route.meta,
+          });
+        }
+      },
+
+
+      /**
+       * 点击当前tabs
+       * @param view
+       */
+      clickViewTabs(view) {
+        this.tabJumper(view.path);
+      },
+
+      /**
+       * 关闭当前tabs
+       * @param view
+       */
+      closeViewTabs(view) {
+        this.$store.dispatch('delVisitedTab', view).then(({ visitedPages, cachedViews }) => {
+
+          /*
+          * 判断删除的标签是否为当前页面标签：
+          * 是：=>
+          *      判断删除后的标签列表长度是否大于0？
+          *             =>大于0则跳转到前一个标签页面，等于0则回到初始页
+          *      判断当前页是否为设置初始页且是唯一一个标签
+          *             =>不跳转路由，直接忽略，不做操作
+          * 否：=>
+          *      直接跳回到设定的初始页面
+          *
+          */
+          const l = visitedPages.length;
+
+          console.log(l, this.curPath);
+
+          if (this.curPath === view.path) {
+            if (this.curPath === this.initRouter && !l) {
+
+              //create a new tab （ init page )
+              // this.addViewTabs();
+
+              //插件方法 - 刷新当前页面
+              this.NEAP_ROUTER.refresh(this);
+            }
+            else {
+              this.tabJumper(l > 0 ? visitedPages[l - 1].path : this.initRouter);
+            }
+          }
+        });
+      },
+
+      /**
+       * 关闭所有tabs
+       * @param views
+       */
+      closeAllViewTabs(views) {
+
+        this.$store.dispatch('delAllVisitedPages').then(() => {
+
+          this.$nextTick(
+            () => {
+              //清除所有缓存
+              this.NEAP_ROUTER.refreshAll();
+              //直接跳回到设定的初始页面, 且要刷新该页面
+              this.tabJumper(this.initRouter, true);
+            },
+          );
+
+        });
+      },
+
+      /**
+       * tab Jumper
+       * @param path
+       * @param isRefresh
+       * @returns {String}
+       */
+      tabJumper(path, isRefresh = false) {
+        //in change tab case => we don't need to refresh page
+        this.$router.push({ path: path, query: { noRefresh: !isRefresh } }); //回到主页
+      },
+
       /**
        * close command - 下拉菜单关闭操作
        * @param command
@@ -66,64 +162,6 @@
       },
 
       /**
-       * 关闭当前tabs
-       * @param view
-       */
-      closeViewTabs(view) {
-        // console.log('关闭单个-ViewTabs');
-        // console.log(view);
-
-        this.$store.dispatch('delVisitedPages', view).then(() => {
-          /*
-          * 判断删除的标签是否为当前页面标签：
-          * 是：=>
-          *      判断删除后的标签列表长度是否大于0？
-          *             =>大于0则跳转到最后一个标签页面，等于0则回到主页
-          *      判断当前页是否为设置初始页
-          *             =>不跳转路由，直接忽略，不做操作
-          * 否：=>
-          *      直接跳回到设定的初始页面
-          *
-          */
-          const l = this.visitedPages.length;
-
-          console.log(l, this.curPath);
-
-          if (this.curPath === view.path) {
-            if (this.curPath === this.initRouter) {
-              addPageTabs(this.$route.matched);
-            }
-            this.$router.push({ path: l > 0 ? this.visitedPages[l - 1].path : this.initRouter });
-          }
-        });
-      },
-
-      /**
-       * 关闭所有tabs
-       * @param views
-       */
-      closeAllViewTabs(views) {
-        // console.log('关闭所有-ViewTabs');
-        // console.log(views);
-
-        this.$store.dispatch('delAllVisitedPages').then(() => {
-          /*
-         * 判断当前页是否为设置初始页：
-         * 是：=>
-         *      不跳转路由，想数据列表中插入设置初始页的信息
-         * 否：=>
-         *      直接跳回到设定的初始页面
-         *
-         */
-          if (this.curPath === this.initRouter) {
-            addPageTabs(this.$route.matched);
-          }
-          this.$router.push({ path: this.initRouter }); //回到主页
-
-        });
-      },
-
-      /**
        * 自定义 tabs 的 active 规则
        * @param path   各tabs path 属性
        * @returns {boolean}
@@ -131,6 +169,9 @@
       activeRule(path) {
         return path === this.$route.path;
       },
+    },
+    mounted() {
+      this.addViewTabs();
     },
   };
 </script>
