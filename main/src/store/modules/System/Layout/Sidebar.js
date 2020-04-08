@@ -134,23 +134,7 @@ const SideBar = {
 
             let baselist = _baseFilterMenu(list);
 
-            console.log(1111111111111111);
-            console.log(1111111111111111);
-
-            console.log(baselist);
-            console.log(1111111111111111);
-
             let sideBarList = expand.layout.sidebar.filter(baselist);
-
-            console.log(333333333333333);
-            console.log(333333333333333);
-
-            console.log(expand.layout.sidebar);
-            console.log(expand.layout.sidebar.filter(baselist));
-            console.log(sideBarList);
-
-            console.log(333333333333333);
-            console.log(333333333333333);
 
             if (!sideBarList) {
               throw '【 NEAP-ERROR 】Custom filter side menu data,  must output data list.';

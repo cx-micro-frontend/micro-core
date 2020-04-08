@@ -46,9 +46,7 @@ export const multipleAuthLogin = async query => {
   initHandle();
   await $store
     .dispatch('multipleEnterpriseLogin', query)
-    .then(() => {
-      console.log(11000111);
-    })
+    .then(() => {})
     .catch(err => {});
 };
 
@@ -61,9 +59,7 @@ export const ssoLogin = async query => {
   initHandle('sso');
   await $store
     .dispatch('ssoLogin', query)
-    .then(info => {
-      console.log(5555555555555);
-    })
+    .then(info => {})
     .catch(_ => {
       $router.push({ path: errorPathDistribute('error_login') });
 

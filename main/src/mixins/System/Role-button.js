@@ -11,10 +11,6 @@ export default {
   created() {
     //get new role button-list
     this.$store.dispatch('getRoleButtonList', { funcId: this.Mix_funcId }).then(data => {
-      console.log('请求到权限按钮！！！！！！！！！！！');
-      console.log(data);
-      console.log(this.tableData);
-
       if (!this.gridBtns || !this.gridBtns.length) return;
       if (this.tableLoader) {
         this.tableLoader(this.gridBtns);

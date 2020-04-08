@@ -58,9 +58,6 @@
       },
 
       themeChange(val) {
-        console.log(22222222);
-        console.log(val);
-        console.log(22222222);
         updateThemeColor({ themeColor: val }).then(() => {
           let userInfo = this.$store.state.User.userinfo;
           this.$store.dispatch('updateLoginData', userInfo);
