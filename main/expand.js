@@ -1,8 +1,8 @@
-import Merge from 'webpack-merge';
+import { deepObjectMerge } from './src/utils/library/marge';
 import expand from '@ROOT/config/expand';
 
 
-const e = Merge({
+const e = deepObjectMerge({
     //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
     UI: {
       theme: null,
@@ -11,8 +11,25 @@ const e = Merge({
 
     //布局
     layout: {
-      //布局厂字框架 - 头部自定义插槽
+      //头部自定义插槽
       headslot: null,
+      //侧边栏
+      sidebar: {
+        /**
+         * 删选侧边栏数据
+         * 注意：
+         * 侧边栏数据直接关系到：
+         * 1、侧边菜单的显示（可通过对应字段的控制达到）
+         * 2、路由的注册
+         * 在删选侧边栏数据时，若删除了其中的条目，其结果是对应菜单栏的路由权限也同时会移除。
+         * 若想隐藏对应菜单栏条目的同时，保留路由权限，则只需控制其显示隐藏即可
+         * @param list
+         * @returns {*}
+         */
+        filter: list => {
+          return list;
+        },
+      },
     },
 
     //路由相关
