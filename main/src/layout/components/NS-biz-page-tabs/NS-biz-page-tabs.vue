@@ -190,11 +190,6 @@
     },
     mounted() {
       this.addViewTabs();
-      console.log(7129371893789712893);
-      console.log(7129371893789712893);
-      console.log(7129371893789712893);
-      console.log(this.initRoute);
-      console.log(7129371893789712893);
     },
   };
 </script>

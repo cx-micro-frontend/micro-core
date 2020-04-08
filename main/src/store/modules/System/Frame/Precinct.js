@@ -29,7 +29,7 @@ const Precinct = {
       state.organizationId = data.organizationId;
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
     },
-    RESET_PRECINCT: (state, data) => {
+    RESET_PRECINCT: state => {
       state.precinctId = '';
       state.precinctName = '';
       state.organizationId = '';
@@ -40,8 +40,8 @@ const Precinct = {
     setPrecinct: ({ commit }, data) => {
       commit('SET_PRECINCT', data);
     },
-    resetPrecinct: ({ commit }, data) => {
-      commit('RESET_PRECINCT', data);
+    resetPrecinct: ({ commit }) => {
+      commit('RESET_PRECINCT');
     },
   },
 };

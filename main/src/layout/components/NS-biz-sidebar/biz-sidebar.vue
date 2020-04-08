@@ -52,13 +52,10 @@
 
         console.log(firstItem, firstIndex);
         console.log(this.currentRoute);
-        const currentPath = this.currentRoute.path;
-        const targetPath = `/${firstItem[this.keyRefer.menuRouter]}`;
-        console.log(currentPath);
-        console.log(targetPath);
-        console.log(currentPath === targetPath);
 
-        this.judgeAndJump(currentPath, targetPath);
+        if (firstItem[keyRefer.children].length) return;
+
+        this.judgeAndJump(firstItem);
 
       },
 
@@ -75,21 +72,23 @@
         console.log(firstItem, secondItem, firstaIndex, secondIndex);
         console.log(this.currentRoute);
 
-        const targetPath = '/' + firstItem[this.keyRefer.menuRouter] + '/' + secondItem[this.keyRefer.menuRouter];
-        const currentPath = this.currentRoute.path;
-
-        this.judgeAndJump(currentPath, targetPath);
+        this.judgeAndJump(firstItem, secondItem);
 
       },
 
       /**
        * judege and router jump
        */
-      judgeAndJump(currentPath, targetPath) {
+      judgeAndJump(firstItem, secondItem) {
+        if (!firstItem) return;
+
+        const pathKey = this.keyRefer.menuRouter;
+        const targetName = secondItem ? secondItem[pathKey] : firstItem[pathKey];
+
         // 非当前页点击
-        if (currentPath !== targetPath) {
+        if (this.currentRoute.name !== targetName) {
           //菜单栏 - 跳转目标页面并清除目标页的缓存
-          this.$router.push({ path: targetPath}); //jump
+          this.$router.push({ name: targetName, params: { noRefresh: false } }); //jump
         }
       },
 

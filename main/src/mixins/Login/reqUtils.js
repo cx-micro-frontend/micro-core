@@ -17,11 +17,7 @@ function initHandle(type = 'normal') {
  */
 export const getMenu = async () => {
   //get side bar data
-  await $store.dispatch('generateSideBar').then(list => {
-    console.log('获取到菜单栏数据');
-    console.log(list);
-    // console.log(this.initRoute);
-  });
+  await $store.dispatch('generateSideBar').then(_ => {});
 };
 
 /**

@@ -26,6 +26,8 @@ service.interceptors.request.use(
   config => {
     !config.headers['funcId'] && (config.headers['funcId'] = $store.state.Core.funcId);
     !config.headers['orgId'] && (config.headers['orgId'] = $store.state.Precinct.organizationId);
+    !config.headers['precinctId'] &&
+      (config.headers['precinctId'] = $store.state.Precinct.precinctId);
 
     config.cancelToken = new axios.CancelToken(function(cancel) {
       $store.commit('registerCancelToken', { cancelToken: cancel });

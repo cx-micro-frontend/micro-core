@@ -2,6 +2,7 @@ import { sideBarService } from '../../../../service/System/Layout/sideBar';
 import keyRefer from '../../../../layout/components/NS-biz-sidebar/sidebar-keyRefer';
 import $store from '../../../../store/index';
 import { storageHandle } from '../../../../utils/storage/storage';
+import expand from '../../../../../expand';
 
 /**
  * filter side bar data
@@ -9,7 +10,7 @@ import { storageHandle } from '../../../../utils/storage/storage';
  * @returns {*}
  * @private
  */
-let _filterMenu = list => {
+let _baseFilterMenu = list => {
   const labelKey = keyRefer['label'];
   const visibleKey = keyRefer['visible'];
   const indexKey = keyRefer['menuIndex'];
@@ -131,17 +132,44 @@ const SideBar = {
           .then(res => {
             const list = res.resultData || [];
 
-            let sideBarList = _filterMenu(list);
+            let baselist = _baseFilterMenu(list);
 
-            commit('SET_SIDEBAR_DATA', {
+            console.log(1111111111111111);
+            console.log(1111111111111111);
+
+            console.log(baselist);
+            console.log(1111111111111111);
+
+            let sideBarList = expand.layout.sidebar.filter(baselist);
+
+            console.log(333333333333333);
+            console.log(333333333333333);
+
+            console.log(expand.layout.sidebar);
+            console.log(expand.layout.sidebar.filter(baselist));
+            console.log(sideBarList);
+
+            console.log(333333333333333);
+            console.log(333333333333333);
+
+            if (!sideBarList) {
+              throw '【 NEAP-ERROR 】Custom filter side menu data,  must output data list.';
+            }
+
+            const navdata = {
               sideBar: sideBarList,
               initRoute: _getInitRoute(sideBarList),
-            });
+            };
+
+            commit('SET_SIDEBAR_DATA', navdata);
 
             //handle page info
             $store.dispatch('setPageInfoList', sideBarList);
 
-            resolve(list);
+            console.log('处理好的菜单栏数据如下：');
+            console.log(navdata);
+
+            resolve(navdata);
           })
           .catch(err => {
             reject(err);

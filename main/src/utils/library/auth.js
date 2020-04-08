@@ -7,7 +7,7 @@ export const getToken = () => {
 };
 
 export const setToken = token => {
-  return Cookies.set(TokenKey, token);
+  Cookies.set(TokenKey, token);
 };
 
 export const removeToken = (edgetoken = ['token', '__jwt_token_']) => {

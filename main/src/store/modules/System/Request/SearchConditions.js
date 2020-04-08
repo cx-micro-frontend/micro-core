@@ -39,8 +39,11 @@ const SearchConditions = {
     },
   },
   actions: {
-    setSearchConditions({ commit }, ID) {
-      commit('SET_SEARCG_CONDITIONS', ID);
+    setSearchConditions({ commit, state }, ID) {
+      return new Promise(resolve => {
+        commit('SET_SEARCG_CONDITIONS', ID);
+        resolve(state.conditions[ID]);
+      });
     },
     emptySearchConditions({ commit }, ID) {
       commit('EMPTY_SEARCH_CONDITIONS', ID);

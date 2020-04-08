@@ -24,7 +24,7 @@ const PageInfo = {
   actions: {
     setPageInfoList({ commit }, data) {
       let pageInfoList = [];
-      if (!data || data.length < 1) {
+      if (!data || !data.length) {
         pageInfoList = [];
       } else {
         data.forEach((firstItem, firstIndex) => {
