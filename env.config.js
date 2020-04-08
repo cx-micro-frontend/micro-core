@@ -15,12 +15,14 @@ const dev_env = {
   IP_CONFIG: '"http://192.168.1.20"',
   // BASE_API: '"http://192.168.1.75/api"',
   // BASE_API: '"http://192.168.1.20:7777"',
-  BASE_API: '"http://new-see.oicp.io:20008/api"', //20 外网地址
+  // BASE_API: '"http://new-see.oicp.io:20008/api"', //20 外网地址
   // BASE_API: '"http://192.168.3.139/api"',
   // BASE_API: '"http://192.168.3.2/api"',
   // BASE_API: '"http://192.168.1.78/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
   // BASE_API: '"/api"',
+  // BASE_API: '"http://10.200.254.162/api"',
+  BASE_API: '"http://ptcs.nwcloud.cn/elder/api"',
 };
 
 /**
