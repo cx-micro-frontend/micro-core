@@ -11,6 +11,24 @@ export default {
   layout: {
     //布局厂字框架 - 头部自定义插槽（本项目中为项目选择)
     headslot: headslot,
+    //侧边栏
+    sidebar: {
+      /**
+       * 删选侧边栏数据
+       * 注意：
+       * 侧边栏数据直接关系到：
+       * 1、侧边菜单的显示（可通过对应字段的控制达到）
+       * 2、路由的注册
+       * 在删选侧边栏数据时，若删除了其中的条目，其结果是对应菜单栏的路由权限也同时会移除。
+       * 若想隐藏对应菜单栏条目的同时，保留路由权限，则只需控制其显示隐藏即可
+       * @param list
+       * @returns {*}
+       */
+      filter: list => {
+        // return list;
+        return list.filter((item, index) => index >= 1);
+      },
+    },
   },
 
   //路由相关
