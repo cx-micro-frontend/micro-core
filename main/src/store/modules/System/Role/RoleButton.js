@@ -1,14 +1,13 @@
 import { roleButtonList } from '../../../../service/System/Role/role-button';
 
 const RoleButton = {
-  state: {
-    roleButtonList: [],
+  namespaced: true,
 
-    roleButton: {
-      ACTION: [],
-      FORM: [],
-      GRID: [],
-    },
+  state: {
+    NEAP_roleButtonList: [],
+    NEAP_roleButtonAction: [],
+    NEAP_roleButtonForm: [],
+    NEAP_roleButtonGrid: [],
   },
 
   mutations: {
@@ -25,22 +24,23 @@ const RoleButton = {
         });
         return data;
       };
-      state.roleButtonList = data;
-      state.roleButton.ACTION = td(data).filter(item => item.areaType === 'ACTION');
-      state.roleButton.FORM = td(data).filter(item => item.areaType === 'FORM');
-      state.roleButton.GRID = data.filter(item => item.areaType === 'GRID');
+
+      state.NEAP_roleButtonList = data;
+      state.NEAP_roleButtonAction = td(data).filter(item => item.areaType === 'ACTION');
+      state.NEAP_roleButtonForm = td(data).filter(item => item.areaType === 'FORM');
+      state.NEAP_roleButtonGrid = data.filter(item => item.areaType === 'GRID');
     },
 
     CLEAR_ROLE_BUTTON_LIST: state => {
-      state.roleButtonList = [];
-      state.roleButton.ACTION = [];
-      state.roleButton.FORM = [];
-      state.roleButton.GRID = [];
+      state.NEAP_roleButtonList = [];
+      state.NEAP_roleButtonAction = [];
+      state.NEAP_roleButtonForm = [];
+      state.NEAP_roleButtonGrid = [];
     },
   },
 
   actions: {
-    getRoleButtonList: ({ commit }, requestHead) => {
+    getRoleButtonList: ({ commit, state }, requestHead) => {
       commit('CLEAR_ROLE_BUTTON_LIST');
       let btnlist = null;
       return new Promise((resolve, reject) => {
@@ -64,7 +64,13 @@ const RoleButton = {
               btnlist = [];
             }
             commit('SET_ROLE_BUTTON_LIST', btnlist);
-            resolve(btnlist);
+
+            resolve({
+              roleButtonList: state.NEAP_roleButtonList,
+              roleButtonAction: state.NEAP_roleButtonAction,
+              roleButtonForm: state.NEAP_roleButtonForm,
+              roleButtonGrid: state.NEAP_roleButtonGrid,
+            });
           })
           .catch(err => {
             btnlist = [];

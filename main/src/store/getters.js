@@ -54,12 +54,6 @@ const getters = {
   //requestHead
   requestHead: state => state.RequestHead.base,
 
-  //role
-  roleButtonList: state => state.RoleButton.roleButtonList,
-  roleButtonAction: state => state.RoleButton.roleButton.ACTION,
-  roleButtonForm: state => state.RoleButton.roleButton.FORM,
-  roleButtonGrid: state => state.RoleButton.roleButton.GRID,
-
   //table
   tableHead: state => state.Table.tableHead,
 };
