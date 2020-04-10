@@ -25,8 +25,8 @@ export default {
        * @returns {*}
        */
       filter: list => {
-        // return list;
-        return list.filter((item, index) => index >= 1);
+        return list;
+        // return list.filter((item, index) => index >= 1);
       },
     },
   },
