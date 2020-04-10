@@ -55,10 +55,10 @@ const getters = {
   requestHead: state => state.RequestHead.base,
 
   //role
-  roleButtonList: state => state.RoleButton.roleButtonList,
-  roleButtonAction: state => state.RoleButton.roleButtonAction,
-  roleButtonForm: state => state.RoleButton.roleButtonForm,
-  roleButtonGrid: state => state.RoleButton.roleButtonGrid,
+  roleButtonList: state => state.RoleButton.NEAP_roleButtonList,
+  roleButtonAction: state => state.RoleButton.NEAP_roleButtonAction,
+  roleButtonForm: state => state.RoleButton.NEAP_roleButtonForm,
+  roleButtonGrid: state => state.RoleButton.NEAP_roleButtonGrid,
 
   //table
   tableHead: state => state.Table.tableHead,
