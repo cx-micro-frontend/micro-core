@@ -76,6 +76,7 @@
        * @param view
        */
       clickViewTabs(view) {
+        if (this.curPath === view.path) return;
         this.tabJumper(view);
       },
 
@@ -98,10 +99,6 @@
           *
           */
           const l = visitedPages.length;
-          console.log(222222222222222);
-          console.log(222222222222222);
-          console.log(222222222222222);
-          console.log(l, this.curPath);
 
           if (this.curPath === view.path) {
             if (this.curPath === this.initRoute.fullpath && !l) {
