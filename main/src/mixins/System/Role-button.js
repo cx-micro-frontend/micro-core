@@ -1,5 +1,3 @@
-import { roleButtonList } from '../../service/System/Role/role-button';
-
 export default {
   data() {
     return {

@@ -75,7 +75,7 @@ export default (
       refresh(vm, query) {
         if (!vm)
           throw '[neap-cache] uncaught error during cache: vue missing, cache dependency on vue, please check it.';
-        if (typeof query !== 'object')
+        if (query && typeof query !== 'object')
           throw '[neap-cache] uncaught error during cache: router query must be in object format';
 
         /**
@@ -85,7 +85,7 @@ export default (
         vm.NEAP_CACHE.delCache(vm.$route).then(
           cachedViews => {
             vm.$router.replace({
-              path: '/redirect' + vm.$route.fullPath,
+              path: '/NEAP_redirect' + vm.$route.fullPath,
               query: query,
             });
           },

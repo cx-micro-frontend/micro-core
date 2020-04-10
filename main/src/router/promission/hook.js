@@ -6,8 +6,7 @@ import '../../style/Modular/nprogress/nprogress.scss'; // Progress 进度条样�
 NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configuration
 
 import { getToken } from '../../utils/library/auth';
-// import { addPageTabs } from './auxiliary';
-import whiteList from '../whiteList';
+import { isInNoAuthwhiteList } from '../whiteList';
 import promissionhandle from './promission';
 import errorPathDistribute from './errorDistribute';
 
@@ -26,7 +25,7 @@ router.beforeEach((to, from, next) => {
 
   NProgress.start(); // start progress bar
 
-  if (whiteList.noAuth.indexOf(to.path) !== -1) {
+  if (isInNoAuthwhiteList(to)) {
     console.log('在免登录白名单，直接进入');
     console.log(to.path);
     next();
@@ -60,7 +59,6 @@ router.beforeResolve((to, from, next) => {
 
 router.afterEach((to, from, next) => {
   if (to.meta.auth) {
-    // addPageTabs(to.matched);
   }
   NProgress.done(); // finish progress bar
 });

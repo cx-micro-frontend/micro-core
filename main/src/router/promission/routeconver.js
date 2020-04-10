@@ -11,7 +11,7 @@ import keyRefer from '../../layout/components/NS-biz-sidebar/sidebar-keyRefer';
 export default sideBarList => {
   let includeModules = [];
 
-  const whiteList = ['overview'];
+  const whiteList = []; //'overview'
 
   //需要注入的路由模块
   if (process.env.ENV_CONFIG === 'dev') {

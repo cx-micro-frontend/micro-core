@@ -50,7 +50,23 @@ generateWhiteList(routes);
 console.info('生成路由白名单如下:');
 console.info(white);
 
-export default white;
+/**
+ * is in whiteList need't to login
+ * @param route - route information
+ * @returns {boolean}
+ */
+export const isInNoAuthwhiteList = route => {
+  return white.noAuth.indexOf(route.path) !== -1;
+};
+
+/**
+ * is in whiteList, but need to login
+ * @param route - route information
+ * @returns {boolean}
+ */
+export const isInAuthwhiteList = route => {
+  return white.auth.indexOf(route.path) > -1 || route.path.indexOf('NEAP_redirect') > -1;
+};
 
 // export default {
 //

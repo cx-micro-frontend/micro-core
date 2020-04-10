@@ -98,11 +98,13 @@
           *
           */
           const l = visitedPages.length;
-
+          console.log(222222222222222);
+          console.log(222222222222222);
+          console.log(222222222222222);
           console.log(l, this.curPath);
 
           if (this.curPath === view.path) {
-            if (this.curPath === this.initRoute && !l) {
+            if (this.curPath === this.initRoute.fullpath && !l) {
 
               //create a new tab （ init page )
               // this.addViewTabs();
@@ -144,11 +146,6 @@
        * @returns {String}
        */
       tabJumper(route, isNoRefresh = true) {
-        console.log('tabJumper-tabJumper-tabJumper');
-        console.log('tabJumper-tabJumper-tabJumper');
-        console.log(route);
-        console.log('tabJumper-tabJumper-tabJumper');
-        console.log('tabJumper-tabJumper-tabJumper');
 
         //in change tab case => we don't need to refresh page
         this.$router.push({ name: route.name, params: { noRefresh: isNoRefresh } });

@@ -3,15 +3,15 @@ export default (
 ) => {
   return [
     // {
-    //   path: '/redirect/:path*',
+    //   path: '/NEAP_redirect/:path*',
     //   component: () => import('./redirect.vue'),
     // }，
     {
-      path: '/redirect',
+      path: '/NEAP_redirect',
       component: options.Layout,
       children: [
         {
-          path: '/redirect/:path*',
+          path: '/NEAP_redirect/:path*',
           component: () => import('./redirect.vue'),
         },
       ],

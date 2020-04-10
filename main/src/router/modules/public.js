@@ -4,7 +4,7 @@ const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 export default [
   { path: '/', redirect: iniView },
-  // {path: '*', redirect: iniView},
+  { path: '*', redirect: iniView },
 
   // {
   //   path: '/redirect',
