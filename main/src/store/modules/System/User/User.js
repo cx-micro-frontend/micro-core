@@ -68,7 +68,7 @@ const User = {
 
       $store.dispatch('removeLockScreen'); //remove / unlock screen
 
-      $store.dispatch('resetPrecinct'); //清除项目信息；
+      $store.dispatch('removePrecinct'); //清除项目信息；
 
       storageHandle('remove', 'sign_user_info'); //remove user information
 

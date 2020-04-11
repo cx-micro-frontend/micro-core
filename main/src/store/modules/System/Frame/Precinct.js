@@ -35,6 +35,13 @@ const Precinct = {
       state.organizationId = '';
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
     },
+
+    REMOVE_PRECINCT: state => {
+      state.precinctId = '';
+      state.precinctName = '';
+      state.organizationId = '';
+      storageHandle('remove', 'sign_precinct');
+    },
   },
   actions: {
     setPrecinct: ({ commit }, data) => {
@@ -42,6 +49,9 @@ const Precinct = {
     },
     resetPrecinct: ({ commit }) => {
       commit('RESET_PRECINCT');
+    },
+    removePrecinct: ({ commit }) => {
+      commit('REMOVE_PRECINCT');
     },
   },
 };
