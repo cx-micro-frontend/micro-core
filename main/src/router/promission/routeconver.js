@@ -17,9 +17,11 @@ export default sideBarList => {
   if (process.env.ENV_CONFIG === 'dev') {
     includeModules = [
       ...whiteList,
+      //injection config <=> sidebar data
       ...injection.modules.filter(item => !item.disabled).map(item => item.repositorie),
     ];
   } else {
+    //injection config <=> sidebar data
     includeModules = injection.modules.filter(item => !item.disabled).map(item => item.repositorie);
   }
 

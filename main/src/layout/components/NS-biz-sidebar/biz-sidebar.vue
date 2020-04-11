@@ -1,7 +1,7 @@
 <template>
   <div class="ns-biz-sidebar">
     <ns-sidebar :type="sidebarType"
-                :data="sideBarList"
+                :data="sideHandle"
                 :jumpByNavEmpty="jumpByNavEmpty"
                 :showTimeout="200"
                 :hideTimeout="200"
@@ -23,6 +23,7 @@
 <script>
   import { mapGetters } from 'vuex';
   import keyRefer from './sidebar-keyRefer';
+  import virtual from './virtual';
 
   export default {
     name: 'ns-biz-sidebar',
@@ -36,6 +37,10 @@
     },
     computed: {
       ...mapGetters(['sideBarList']),
+      //为适应暂时的多级菜单 - 增加虚拟节点处理
+      sideHandle() {
+        return virtual(this.sideBarList);
+      },
       //当前路由信息
       currentRoute() {
         return this.$route;
