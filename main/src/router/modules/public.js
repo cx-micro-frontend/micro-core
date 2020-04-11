@@ -4,18 +4,9 @@ const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 export default [
   { path: '/', redirect: iniView },
-  // { path: '*', redirect: iniView },
 
-  // {
-  //   path: '/redirect',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: '/redirect/:path*',
-  //       component: () => import('../../../plugins/cache/routes/redirect.vue'),
-  //     },
-  //   ],
-  // },
+  //error to add in when use async route, beacuse first jump is miss route
+  // { path: '*', redirect: iniView },
 
   {
     path: '/404',
@@ -37,4 +28,15 @@ export default [
     component: () => import('../../views/Public/error/sso-error.vue'),
     meta: { auth: false, key: 'sso-error', cache: false },
   },
+
+  // {
+  //   path: '/redirect',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: '/redirect/:path*',
+  //       component: () => import('../../../plugins/cache/routes/redirect.vue'),
+  //     },
+  //   ],
+  // },
 ];

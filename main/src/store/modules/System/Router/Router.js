@@ -1,5 +1,6 @@
 import { storageHandle } from '../../../../utils/storage/storage';
 import asyncTransform from '../../../../router/promission/routeconver';
+import errorPathDistribute from '../../../../router/promission/errorDistribute';
 
 const Router = {
   state: {
@@ -14,7 +15,12 @@ const Router = {
      * @constructor
      */
     SET_ASYNC_ROUTER: (state, route) => {
-      state.asyncRouterList = asyncTransform(route);
+      state.asyncRouterList = [
+        ...asyncTransform(route),
+        //any error path => 404 page
+        ...[{ path: '*', redirect: errorPathDistribute('error_route_role') }],
+      ];
+
       storageHandle('set', 'sign_async_router', JSON.stringify(state.asyncRouterList));
     },
 
