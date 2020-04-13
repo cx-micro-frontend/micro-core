@@ -40,6 +40,20 @@ export default {
         {
           path: '',
           component: Layout,
+          redirect: '/guide',
+          name: 'guide',
+          children: [
+            {
+              path: 'guide',
+              component: () => import(`@ROOT/config/expand/views/guide/guide.vue`),
+              meta: { title: '导航', auth: true, key: 'guide', cache: false },
+              name: 'guide',
+            },
+          ],
+        },
+        {
+          path: '',
+          component: Layout,
           redirect: '/overview',
           name: 'overview',
           children: [
