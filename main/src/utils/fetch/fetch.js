@@ -14,6 +14,7 @@ import { elMessage } from './fetch-message';
 import $store from '../../store';
 
 import { backLoginPage } from '../behavior';
+import { getToken } from '../library/auth';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -24,11 +25,7 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    !config.headers['funcId'] && (config.headers['funcId'] = $store.state.Core.funcId);
-    !config.headers['orgId'] && (config.headers['orgId'] = $store.state.Precinct.organizationId);
-    !config.headers['precinctId'] &&
-      (config.headers['precinctId'] = $store.state.Precinct.precinctId);
-
+    service.injectHeaders(config);
     config.cancelToken = new axios.CancelToken(function(cancel) {
       $store.commit('registerCancelToken', { cancelToken: cancel });
     });
@@ -89,6 +86,18 @@ service.redirect = (code, msg) => {
   ) {
     backLoginPage();
   }
+};
+
+/**
+ * service inject header config
+ * @param config
+ */
+service.injectHeaders = config => {
+  !config.headers['token'] && (config.headers['token'] = getToken());
+  !config.headers['funcId'] && (config.headers['funcId'] = $store.state.Core.funcId);
+  !config.headers['orgId'] && (config.headers['orgId'] = $store.state.Precinct.organizationId);
+  !config.headers['precinctId'] &&
+    (config.headers['precinctId'] = $store.state.Precinct.precinctId);
 };
 
 export default service;
