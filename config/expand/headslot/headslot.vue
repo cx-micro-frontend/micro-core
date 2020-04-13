@@ -24,6 +24,7 @@
       selectChange() {
         //切换项目后刷新所有页面-清除所有路由缓存
         this.NEAP_ROUTER.refreshAll();
+        // this.$forceUpdate();
       },
     },
   };
