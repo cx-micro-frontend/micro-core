@@ -1,4 +1,4 @@
-import { optCheck } from '../utils/index';
+import { optCheck, removeChildInBody } from '../utils/index';
 
 /**
  * mixins to plugins for cache
@@ -18,8 +18,10 @@ export default (
       //check option
       optCheck(options);
 
+      // const noRemoveKey = options.queryProps.noRemove;
       const noRefreshKey = options.queryProps.noRefresh;
       const cachedViews = options.store.state.Cache.cachedViews;
+
 
       /**
        * The route query/meta parameter-noRefresh is on => jump && no refresh
@@ -28,6 +30,12 @@ export default (
       if ((to.query && to.query[noRefreshKey]) || (to.params && to.params[noRefreshKey])) {
         next();
       } else {
+
+        //remove dialog node in body
+        // if (!(to.query && to.query[noRemoveKey]) && !(to.params && to.params[noRemoveKey])) {
+        //   removeChildInBody();
+        // }
+
         if (cachedViews.indexOf(to.name) > -1) {
           options.store.dispatch('Cache/delCachedView', to).then(_ => {
             next();

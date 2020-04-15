@@ -11,6 +11,7 @@ const $opts = {
   Layout: {},
   queryProps: {
     noRefresh: 'noRefresh',
+    noRemove: 'noRemove',
   },
 
 };

@@ -1,4 +1,5 @@
-import { optCheck } from '../utils/index';
+import { optCheck, removeChildInBody } from '../utils/index';
+
 
 export default (
   Vue,
@@ -58,6 +59,18 @@ export default (
         optCheck(options);
         options.store.dispatch('Cache/delAllCachedViews');
       },
+
+
+      /**
+       * remove child node in body excluse some node
+       * @param targetNodes - Specific nodes
+       */
+      removeChildInBody(targetNodes = []) {
+        if (Object.prototype.toString.call(targetNodes) !== '[object Array]')
+          throw '[neap-cache] uncaught error during cache: targetNodes parameter must be in array format.';
+
+        removeChildInBody(targetNodes);
+      },
     },
 
     NEAP_ROUTER: {
@@ -84,17 +97,18 @@ export default (
          */
         vm.NEAP_CACHE.delCache(vm.$route).then(
           cachedViews => {
+            // vm.NEAP_CACHE.removeChildInBody();
             vm.$router.replace({
               path: '/NEAP_redirect' + vm.$route.fullPath,
               query: query,
             });
           },
         );
-
       },
 
       refreshAll() {
         optCheck(options);
+        // removeChildInBody();
         return new Promise(resolve => {
           options.store.dispatch('Cache/routeRefresh');
           resolve();
@@ -103,3 +117,4 @@ export default (
     },
   };
 };
+
