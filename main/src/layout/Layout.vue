@@ -111,7 +111,7 @@
     }
     //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
     &.is-hide-frame {
-      .header-wrapper, .sidebar-wrapper, .ns-page-tabs {
+      #header-wrapper, #sidebar-wrapper, #ns-page-tabs {
         display: none;
       }
       .main-container {
