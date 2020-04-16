@@ -9,8 +9,11 @@
 
 const version = '0.0.1';
 
-// const prefix = 'micro_elder_';
-const prefix = 'micro_core_';
+const prefix = 'micro_elder_';
+// const prefix = 'micro_core_';
+// const prefix = 'micro_work_order_';
+
+// const prefix = 'micro_work_order_';
 
 const _VarInjection = require(`./version/${prefix}${version}`);
 
