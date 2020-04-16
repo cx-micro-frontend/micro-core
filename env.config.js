@@ -24,7 +24,6 @@ const dev_env = {
   // BASE_API: '"http://10.200.254.162/api"',
   // BASE_API: '"http://ptcs.nwcloud.cn/elder/api"',
   BASE_API: '"http://arm-ext.ysservice.com.cn/api"',
-
 };
 
 /**
