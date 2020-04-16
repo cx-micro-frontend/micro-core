@@ -1,6 +1,6 @@
 <!--缓存示例页面-->
 <template>
-  <div class="win cacheDemo1">
+  <div class="win cacheDemo1" id="cacheDemo1">
     <div class="ns-container">
       <!--测试表单-->
       <ns-form :model="formModel">
@@ -73,16 +73,46 @@
           </div>
         </ns-col>
       </ns-row>
+
+
+      <h1>子组件在缓存中状态变化示例</h1>
+      <ns-button @click="dialogSw = true">打开弹窗</ns-button>
+      <ns-button @click="click2"
+      >
+        打开弹窗
+      </ns-button>
+      <h2>{{dialogSw}}</h2>
+      <!--侧边滑入窗口-->
+      <SlipDialog
+        :visible.sync="dialogSw"
+      >
+
+      </SlipDialog>
+
+
+      <ns-dialog
+        :visible.sync="dialogSw2"
+        title="侧滑窗口2"
+        :modal="false"
+      >
+        <h2 style="text-align: center;padding: 15px 0 ;margin: 0">侧滑窗口2</h2>
+        <ns-select :options="[]"></ns-select>
+      </ns-dialog>
     </div>
   </div>
 </template>
 
 <script>
+  import SlipDialog from './slip-dialog';
+
   export default {
     name: 'cacheDemo',
+    components: { SlipDialog },
     data() {
       return {
         targetUrl: 'system/systemDataDictionary',
+        dialogSw: false,
+        dialogSw2: false,
         formModel: {
           iptModel1: '',
           iptModel2: '',
@@ -98,8 +128,16 @@
     created() {
       alert('缓存示例页面初始化');
     },
+    wathch: {
+      dialogSw(val) {
+        alert(val);
+      },
+    },
     methods: {
-
+      click2() {
+        this.dialogSw2 = true;
+        console.log(this.dialogSw2);
+      },
       //获取路由Key
       getRouteKey() {
         console.log('获取路由Key:');
@@ -206,4 +244,10 @@
     }
   }
 
+  .ns-dialog {
+    top: 90px;
+    left: 200px;
+    bottom: 0;
+    right: 0;
+  }
 </style>
