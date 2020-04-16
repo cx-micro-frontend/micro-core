@@ -1,5 +1,5 @@
 <template>
-  <ns-biz-slip-dialog
+  <ns-biz-platform-dialog
     class="userSettingDialog"
     :visible.sync="showDialog"
     title="个人设置"
@@ -91,7 +91,7 @@
       <!--修改头像弹窗-->
       <update-avatar-dialog :visible.sync="showUpdateAvatarDialog" @updateAvatar="updateAvatar"></update-avatar-dialog>
     </template>
-  </ns-biz-slip-dialog>
+  </ns-biz-platform-dialog>
 </template>
 
 <script>
