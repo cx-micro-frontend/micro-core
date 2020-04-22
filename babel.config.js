@@ -34,11 +34,11 @@ module.exports = {
     '@vue/babel-plugin-transform-vue-jsx',
     'jsx-v-model',
   ],
-  env: {
-    development: {
-      plugins: [
-        'dynamic-import-node',
-      ],
-    },
-  },
+  // env: {
+  //   development: {
+  //     plugins: [
+  //       'dynamic-import-node',
+  //     ],
+  //   },
+  // },
 };
