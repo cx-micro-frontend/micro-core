@@ -12,10 +12,10 @@ module.exports = {
     port: 8001,
     useEslint: false,
     prescript: [
-      'npm run clean:lib',
-      'npm run build:injecter',
-      'npm run inject',
-      'npm run build:lib',
+      'npm run clean:lib',//清除lib
+      'npm run build:injecter',//注入工具的编译
+      'npm run inject',//注入业务模块
+      'npm run build:lib',//生成lib
     ],
     // prescript: ['npm run clean:lib', 'npm run clone'],
     // proxyTable: {
@@ -95,24 +95,24 @@ module.exports = {
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
     prescript: [
-      'npm run clean:lib',
-      'npm run build:injecter',
-      'npm run inject',
-      'npm run build:lib',
+      'npm run clean:lib',//清除lib
+      'npm run build:injecter',//注入工具的编译
+      'npm run inject',//注入业务模块
+      'npm run build:lib',//生成lib
     ],
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
     mockPath: './main/mock',
-    JSBabelInclude: [
-      'main',
-      'injection',
-      'config',
-      'env.param.config.js',
-      'node_modules/neap-test1',
-      'lib',
-      'NS_test',
-    ],
+    babel: {
+      priority: true,
+      include: [
+        'main',
+        'injection',
+        'config',
+        'lib',
+      ],
+    },
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
