@@ -6,6 +6,8 @@ import SearchConditions from './System/Search-conditions';
 
 import entrance from '../../../injection/entrance/entrance_core';
 
+export { FuncId };
+
 export default {
   mixins: [FuncId, RoleButton, SearchConditions, ...entrance.mixins],
 };
