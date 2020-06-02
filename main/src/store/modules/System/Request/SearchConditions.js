@@ -1,4 +1,4 @@
-const baseConditions = {
+export const baseConditions = {
   companyId: '', //公司id
   departmentId: '', //部门id
   organizationId: '',
