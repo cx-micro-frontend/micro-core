@@ -35,11 +35,20 @@ const e = deepObjectMerge({
     //路由相关
     route: {
       cache: true,
+      cacheExclude: [],
       //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
       customRoute: (Layout) => {
         return [];
       },
     },
+
+
+    //用户行为存储
+    behaviorCache: {
+      //表格行为存储 - 开关
+      pageSize: true,
+    },
+
 
     //请求
     service: {
@@ -63,3 +72,8 @@ console.info('最终处理后的个性依赖注入:');
 console.log(e);
 
 export default e;
+
+
+// eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYW9jYW5neGlvbmciLCJqdGkiOiIxNjUwMjQiLCJpYXQiOjE1OTA3NjEzNzl9.Nh_07T6wPgGnFBZxJWPcXeJReoQj9vbrCCa1UrpXEpk
+//eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYW9jYW5neGlvbmciLCJqdGkiOiIxNjUwMjQiLCJpYXQiOjE1OTA3NjE1MDB9.h4yUBVxWOdiYrKLkehRULVTZ5wM76tGxqVS0YBaUjx4
+//eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjEwNDA1NiIsImlhdCI6MTU5MDc2MTYwMn0.-FjsQnHtT-p8JnEC-NgIuBgI8n9S0hlQL_Qd4mQ1mY0
