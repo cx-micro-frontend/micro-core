@@ -6,6 +6,14 @@ export default {
     storageLife: '',
     partition: true,
   },
+  sign_user_behavior: {
+    name: '用户操作存储信息',
+    storagekey: 'user_behavior',
+    storageMethod: 'localStorage',
+    storageLife: '',
+    partition: true,
+  },
+
   sign_operator_info: {
     name: '操作员信息（图片+标题)',
     storagekey: 'operator_info',
