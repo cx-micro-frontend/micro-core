@@ -29,6 +29,21 @@ const e = deepObjectMerge({
         filter: list => {
           return list;
         },
+
+        /**
+         * 菜单点点击跳转事件拓展
+         * @param firstItem
+         * @param firstIndex
+         * @param secondItem
+         * @param secondIndex
+         * @param level
+         * @param done
+         */
+        jump: ({ firstItem, firstIndex, secondItem, secondIndex, level }, done) => {
+          console.log('expand - sidebar - jump');
+          console.log(firstItem, firstIndex, secondItem, secondIndex, level);
+          done(firstItem, secondItem);
+        },
       },
     },
 

@@ -10,6 +10,7 @@ const keyRefer = {
   icon: 'menuIconcls', //图标
   children: 'childMenus', //子集菜单
   menuIndex: 'menuIndex', //序号 syOrderindex
+  menuLevel: 'syLayer', //菜单层级
   visible: 'syStatus', //隐藏 syStatus
   menuRouter: 'menuMenusubname', //路径符号
   virtualLabel: 'syPyqc', //虚拟节点的名称 - 暂时存在，后续去除

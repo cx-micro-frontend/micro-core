@@ -96,7 +96,9 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 }
 
 function routelevel(route) {
-  return parseInt(route.syLayer) - 1;
+  // return parseInt(route.syLayer) - 1;
+
+  return parseInt(route[keyRefer['menuLevel']]) - 1;
 }
 
 function isModuleRoute(route) {

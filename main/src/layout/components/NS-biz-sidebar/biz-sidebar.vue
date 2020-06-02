@@ -24,6 +24,7 @@
   import { mapGetters } from 'vuex';
   import keyRefer from './sidebar-keyRefer';
   import virtual from './virtual';
+  import expand from '../../../../expand';
 
   export default {
     name: 'ns-biz-sidebar',
@@ -48,6 +49,10 @@
     },
     methods: {
 
+      navClick(parame, fn) {
+        expand.layout.sidebar.jump(parame, fn);
+      },
+
       /**
        * first nav click handle
        * @param firstItem
@@ -60,7 +65,10 @@
 
         if (firstItem[keyRefer.children].length) return;
 
-        this.judgeAndJump(firstItem);
+        this.navClick(
+          { firstItem, firstIndex, level: 1 },
+          this.judgeAndJump,
+        );
 
       },
 
@@ -69,15 +77,18 @@
        * first nav click handle
        * @param firstItem
        * @param secondItem
-       * @param firstaIndex
+       * @param firstIndex
        * @param secondIndex
        */
-      secondNavClick(firstItem, secondItem, firstaIndex, secondIndex) {
+      secondNavClick(firstItem, secondItem, firstIndex, secondIndex) {
 
-        console.log(firstItem, secondItem, firstaIndex, secondIndex);
+        console.log(firstItem, secondItem, firstIndex, secondIndex);
         console.log(this.currentRoute);
 
-        this.judgeAndJump(firstItem, secondItem);
+        this.navClick(
+          { firstItem, firstIndex, secondItem, secondIndex, level: 2 },
+          this.judgeAndJump,
+        );
 
       },
 
