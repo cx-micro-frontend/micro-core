@@ -1,4 +1,4 @@
-import { getToken } from '../library/auth';
+import { getToken, getUserId } from '../library/auth';
 import config from './config';
 
 /**
@@ -11,14 +11,16 @@ import config from './config';
 export const storageHandle = (type, key, data) => {
   existwarning(key);
 
+  const prefix = 'NS';
   /*
    * need key partition ?
    * => add token by factory handle
    * => use key
+   * add a prefix at last
    */
-  const _K = config[key].partition
-    ? storageFactory(config[key].storagekey)
-    : config[key].storagekey;
+  const _K = `${prefix}_${
+    config[key].partition ? storageFactory(config[key].storagekey) : config[key].storagekey
+  }`;
 
   const method = config[key].storageMethod;
 
@@ -45,12 +47,24 @@ function existwarning(key) {
   if (!config[key]) throw 'please register in the storage configuration file first ';
 }
 
-function storageFactory(key) {
-  let token = getToken() || '';
-  token = token.replace(/\-/g, '_').replace(/\./g, '_');
-  const all = `NS_${key}_${token}`;
+/**
+ * Factory for storage
+ * @param key
+ * @param type
+ * @returns {string}
+ */
+function storageFactory(key, type = 'userId') {
+  let suffix = null;
 
-  //eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlckFkbWluIiwianRpIjoiMSIsImlhdCI6MTU2MjkyMTI2NH0.JprDmZqzDf4iaome_pXXF_-fpeN_o5FEV_9J27ROTcM
+  if (type === 'token') {
+    let token = getToken() || '';
+    suffix = token
+      .replace(/\-/g, '_')
+      .replace(/\./g, '_')
+      .substring(0, 70);
+  } else if (type === 'userId') {
+    suffix = getUserId() || '';
+  }
 
-  return all.substring(0, 70);
+  return suffix ? `${key}_${suffix}` : key;
 }
