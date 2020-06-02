@@ -18,6 +18,7 @@ import CancelToken from './modules/System/Request/CancelToken';
 
 //User
 import User from './modules/System/User/User';
+import UserBehavior from './modules/System/User/UserBehavior';
 
 //Layout
 import LockScreen from './modules/System/Layout/LockScreen';
@@ -50,6 +51,7 @@ const store = new Vuex.Store({
 
     //User
     User,
+    UserBehavior,
 
     //Layout
     LockScreen,
