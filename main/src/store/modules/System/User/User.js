@@ -1,4 +1,13 @@
-import { getToken, setToken, removeToken } from '../../../../utils/library/auth';
+import $store from '../../../../store/index';
+import { backLoginPage } from '../../../../utils/behavior';
+import {
+  getToken,
+  setToken,
+  removeToken,
+  getUserId,
+  setUserId,
+  removeUserId,
+} from '../../../../utils/library/auth';
 import { storageHandle } from '../../../../utils/storage/storage';
 import {
   oauthlogin,
@@ -6,8 +15,6 @@ import {
   ssoLogin,
   logout,
 } from '../../../../service/System/User/login';
-import $store from '../../../../store/index';
-import { backLoginPage } from '../../../../utils/behavior';
 
 /**
  * deCrypto user-information data in cookie
@@ -22,7 +29,7 @@ const User = {
   state: {
     userinfo: {
       token: getToken(),
-      userId: _deCryptoUserInfo().userId,
+      userId: getUserId(),
       userAccount: _deCryptoUserInfo().userAccount,
       userName: _deCryptoUserInfo().userName,
       avatar: _deCryptoUserInfo().avatar,
@@ -53,6 +60,11 @@ const User = {
       setToken(data);
     },
 
+    //set user id
+    SET_USER_ID: (state, data) => {
+      setUserId(data);
+    },
+
     //empty
     EMPTY_STORAGE: (state, data) => {
       console.log('EMPTY_STORAGE-EMPTY_STORAGE-EMPTY_STORAGE');
@@ -70,7 +82,11 @@ const User = {
 
       $store.dispatch('removePrecinct'); //清除项目信息；
 
+      $store.dispatch('resetUserBehavior'); //reset user behavior in vuex state
+
       storageHandle('remove', 'sign_user_info'); //remove user information
+
+      removeUserId(); //remove user id
 
       removeToken(); //remove token
     },
@@ -85,6 +101,8 @@ const User = {
             const userinfo = res.resultData || {};
 
             commit('SET_TOKEN', userinfo.token);
+
+            commit('SET_USER_ID', userinfo.userId);
 
             commit('SET_LOGIN_DATA', userinfo);
 
@@ -102,6 +120,9 @@ const User = {
         const userinfo = res.resultData || {};
 
         commit('SET_TOKEN', userinfo.token);
+
+        commit('SET_USER_ID', userinfo.userId);
+
         commit('SET_LOGIN_DATA', userinfo);
       });
     },
@@ -114,6 +135,9 @@ const User = {
             const userinfo = res.resultData || {};
 
             commit('SET_TOKEN', userinfo.token);
+
+            commit('SET_USER_ID', userinfo.userId);
+
             commit('SET_LOGIN_DATA', userinfo);
 
             resolve(userinfo);
