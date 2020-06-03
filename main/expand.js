@@ -12,7 +12,10 @@ const e = deepObjectMerge({
     //布局
     layout: {
       //头部自定义插槽
-      headslot: null,
+      header: {
+        leftSlot: null,
+        rightSlot: null,
+      },
       //侧边栏
       sidebar: {
         /**

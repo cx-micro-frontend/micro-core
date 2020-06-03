@@ -1,24 +1,26 @@
 /*
- * @Author: Broccoli spring( 高仓雄 - gcx )
- * @Date: 2020-05-13 10:48:45
- * @Last Modified by: Broccoli spring( 高仓雄 - gcx )
- * @Last Modified time: 2020-05-14 09:18:55
- */
+* @Author: Broccoli spring( 高仓雄 - gcx )
+* @Date: 2020-05-13 10:48:45
+* @Last Modified by: Broccoli spring( 高仓雄 - gcx )
+* @Last Modified time: 2020-05-14 09:18:55
+*/
 <template>
   <ns-layout :class="{'is-hide-frame':isInIframe}">
     <template slot="header">
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
-        <img :src="operatorInfo.operatorLoginPic" @click="click" />
+        <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
-      <!--业务组 - 自定义头部模块 -->
+      <!--业务组 - 自定义头部插槽 - 左边 -->
       <div class="fl">
-        <header-custom></header-custom>
+        <header-slot-left></header-slot-left>
       </div>
 
       <!--右边 - 用户下拉菜单 业务组在插槽内调用组件，传入值，并且调用方法即可  -->
       <div class="fr">
+        <!--业务组 - 自定义头部插槽 - 右边 -->
+        <header-slot-right></header-slot-right>
         <!--<biz-lock-screen></biz-lock-screen>-->
         <ns-screenfull></ns-screenfull>
         <biz-skiner></biz-skiner>
@@ -54,94 +56,95 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import {
-  bizSidebar,
-  bizTabsViews,
-  bizLockScreen,
-  bizSkiner,
-  bizUserDropdown,
-  headerCustom,
-} from './index';
-import transform from './transform';
-import expand from '../../expand';
+  import { mapGetters } from 'vuex';
+  import {
+    bizSidebar,
+    bizTabsViews,
+    bizLockScreen,
+    bizSkiner,
+    bizUserDropdown,
+    headerSlotLeft,
+    headerSlotRight,
+  } from './index';
+  import transform from './transform';
+  import expand from '../../expand';
 
-export default {
-  name: 'layout',
-  mixins: [transform],
-  components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerCustom },
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe']),
+  export default {
+    name: 'layout',
+    mixins: [transform],
+    components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
+    data() {
+      return {};
+    },
+    computed: {
+      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe']),
 
-    //全局缓存开关
-    isCache() {
-      return expand.route.cache;
-    },
-    cacheExclude() {
-      return expand.route.cacheExclude;
-    },
+      //全局缓存开关
+      isCache() {
+        return expand.route.cache;
+      },
+      cacheExclude() {
+        return expand.route.cacheExclude;
+      },
 
-    key() {
-      //获取整体路由key值
-      const routeKey = this.NEAP_ROUTER.getRouteKey();
-      return (this.$route.path !== undefined ? this.$route.path : this.$route) + '-' + routeKey;
-    },
+      key() {
+        //获取整体路由key值
+        const routeKey = this.NEAP_ROUTER.getRouteKey();
+        return (this.$route.path !== undefined ? this.$route.path : this.$route) + '-' + routeKey;
+      },
 
-    cacheQueue() {
-      console.log(' ======= 缓存页面- name 队列：====== ');
-      console.log(this.NEAP_CACHE.getCacheQueue());
-      return this.NEAP_CACHE.getCacheQueue();
+      cacheQueue() {
+        console.log(' ======= 缓存页面- name 队列：====== ');
+        console.log(this.NEAP_CACHE.getCacheQueue());
+        return this.NEAP_CACHE.getCacheQueue();
+      },
     },
-  },
-  created() {
-    // console.log(this.isInIframe);
-  },
-  methods: {
-    click() {
-      //切换项目后刷新所有页面-清除所有路由缓存
-      this.NEAP_ROUTER.refreshAll();
-      // this.$forceUpdate();
+    created() {
+      // console.log(this.isInIframe);
     },
-  },
-};
+    methods: {
+      click() {
+        //切换项目后刷新所有页面-清除所有路由缓存
+        this.NEAP_ROUTER.refreshAll();
+        // this.$forceUpdate();
+      },
+    },
+  };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-#layout {
-  .head-logo {
-    height: 50px;
-    width: 150px;
-    padding: 11px 12px;
-    box-sizing: border-box;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-  //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
-  &.is-hide-frame {
-    #header-wrapper,
-    #sidebar-wrapper,
-    #page-tabs-wrapper {
-      display: none;
-    }
-    .main-container {
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      padding: 0;
-      .app-main,
-      .win,
-      .ns-container,
-      .ns-container-right,
-      .ns-container-left {
+  #layout {
+    .head-logo {
+      height: 50px;
+      width: 150px;
+      padding: 11px 12px;
+      box-sizing: border-box;
+      img {
+        width: 100%;
         height: 100%;
-        min-height: 100%;
+      }
+    }
+    //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
+    &.is-hide-frame {
+      #header-wrapper,
+      #sidebar-wrapper,
+      #page-tabs-wrapper {
+        display: none;
+      }
+      .main-container {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0;
+        .app-main,
+        .win,
+        .ns-container,
+        .ns-container-right,
+        .ns-container-left {
+          height: 100%;
+          min-height: 100%;
+        }
       }
     }
   }
-}
 </style>

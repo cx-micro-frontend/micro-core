@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'headsolt',
+    name: 'headerSoltLeft',
     data() {
       return {
         model: 'poject1',

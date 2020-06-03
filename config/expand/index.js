@@ -1,4 +1,5 @@
-import headslot from './headslot/headslot';
+import headerSlotLeft from './headslot/headerSlotLeft';
+import headerSlotRight from './headslot/headerSlotRight';
 
 export default {
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
@@ -10,7 +11,11 @@ export default {
   //布局
   layout: {
     //布局厂字框架 - 头部自定义插槽（本项目中为项目选择)
-    headslot: headslot,
+    header: {
+      leftSlot: headerSlotLeft,
+      rightSlot: headerSlotRight,
+    },
+
     //侧边栏
     sidebar: {
       /**
