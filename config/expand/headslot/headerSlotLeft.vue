@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <span class="expand_style_title">外部扩展测试:</span>
     <a @click="aaa">18398129389128938192</a>
     <ns-select :options="options" v-model="model" @change="selectChange"></ns-select>
