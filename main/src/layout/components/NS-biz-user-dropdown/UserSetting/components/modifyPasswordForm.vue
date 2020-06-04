@@ -26,9 +26,12 @@
 
 <script>
   import { updatePassword } from '../../../../../service/System/User/userSetting';
+  import cryptoPassWord from '../../../../../mixins/Login/cryptoPassWord'
 
   export default {
     name: 'modifyPasswordForm',
+
+    mixins: [cryptoPassWord],
 
     data() {
       /**
@@ -93,8 +96,8 @@
           if (valid) {
             let { newPassword, oldPassword } = this.modifyPasswordModel;
             updatePassword({
-              newPassword: newPassword,
-              password: oldPassword,
+              newPassword: this.getCryptoBybase64(newPassword),
+              password: this.getCryptoBybase64(oldPassword),
             }).then(() => {
               this.$refs.modifyPasswordForm.resetFields();
               this.$message.success('更改密码成功');
