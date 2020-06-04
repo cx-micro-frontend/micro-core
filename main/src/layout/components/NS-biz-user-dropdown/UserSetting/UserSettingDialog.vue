@@ -1,17 +1,17 @@
 <template>
-  <ns-biz-platform-dialog
+  <ns-dialog
     class="userSettingDialog"
     :visible.sync="showDialog"
     title="个人设置"
     @close="closeDialog"
   >
     <!--权限按钮区-->
-    <template slot="btns">
+    <template slot="footer">
       <ns-button size="small" @click="showDialog = false">返 回</ns-button>
     </template>
 
     <!--主要内容区-->
-    <template slot="main">
+    <!--<template slot="body">-->
       <div class="module-section">
         <!--用户头像更改-->
         <div class="setting-block-content header-line">
@@ -26,9 +26,9 @@
           </div>
 
           <div class="line-right header-line__value">
-            <div>登录账号：<span>{{userInformation.userAccount}}</span></div>
+            <div>登录账号：<span>{{userinfo.userAccount}}</span></div>
 
-            <div>登录名称：<span>{{userInformation.userName}}</span></div>
+            <div>登录名称：<span>{{userinfo.userName}}</span></div>
 
             <!--<div>性别：<span>{{userInformation.userSex}}</span></div>-->
           </div>
@@ -36,6 +36,7 @@
       </div>
 
       <div class="module-section">
+
         <!--账号安全级别-->
         <div class="setting-block">
           <div class="setting-block-content">
@@ -52,8 +53,10 @@
             </div>
           </div>
         </div>
+
         <!--用户密码修改-->
         <div class="setting-block">
+
           <div class="setting-block-content">
             <div class="line-left">登录密码</div>
             <div class="line-right">安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。</div>
@@ -86,12 +89,14 @@
             </div>
           </div>
         </div>
+
+
       </div>
 
       <!--修改头像弹窗-->
       <update-avatar-dialog :visible.sync="showUpdateAvatarDialog" @updateAvatar="updateAvatar"></update-avatar-dialog>
-    </template>
-  </ns-biz-platform-dialog>
+    <!--</template>-->
+  </ns-dialog>
 </template>
 
 <script>
