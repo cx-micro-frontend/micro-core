@@ -2,8 +2,26 @@ import expand from '../../../expand';
 
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
-export default [
+const customRoute = [
   ...expand.route.customRoute(Layout),
+  ...(expand.mode === 'mam'
+    ? [
+        {
+          path: '',
+          component: Layout,
+          redirect: '/portal',
+          name: 'portal',
+          children: [
+            {
+              path: 'portal',
+              component: () => import('../../views/Portal/Portal.vue'),
+              meta: { auth: true, key: 'portal' },
+              name: '门户页',
+            },
+          ],
+        },
+      ]
+    : []),
 
   // {
   //   path: '',
@@ -21,9 +39,11 @@ export default [
   // },
 
   {
-    path: '/testdemo',
-    name: 'testdemo',
-    component: () => import('../../views/TestDemo/TestDemo.vue'),
-    meta: { auth: false, key: 'testdemo', cache: false },
+    path: '/devTool',
+    name: 'devTool',
+    component: () => import('../../views/DevTool/DevTool.vue'),
+    meta: { auth: false, key: 'devTool', cache: false },
   },
 ];
+
+export default customRoute;

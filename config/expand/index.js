@@ -2,6 +2,12 @@ import headerSlotLeft from './headslot/headerSlotLeft';
 import headerSlotRight from './headslot/headerSlotRight';
 
 export default {
+  /**
+   * sam - single application mode - 单系统模式
+   * mam - multiple application mode - 多系统门户模式
+   */
+  mode: 'mam',
+
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
     theme: () => import('./theme'),
