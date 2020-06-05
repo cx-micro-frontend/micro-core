@@ -1,4 +1,4 @@
-import { getUrlParam } from '../utils/library/urlhandle';
+import { getUrlParam } from '../../utils/library/urlhandle';
 
 export default {
   created() {

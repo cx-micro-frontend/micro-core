@@ -5,7 +5,10 @@
 * @Last Modified time: 2020-05-14 09:18:55
 */
 <template>
-  <ns-layout :class="{'is-hide-frame':isInIframe}">
+  <ns-layout :class="{
+    'is-hide-frame':isInIframe,
+    'is-portal':isPortal
+  }">
     <template slot="header">
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
@@ -66,12 +69,13 @@
     headerSlotLeft,
     headerSlotRight,
   } from './index';
-  import transform from './transform';
+  import transform from './mixins/transform';
+  import portal from './mixins/portal';
   import expand from '../../expand';
 
   export default {
     name: 'layout',
-    mixins: [transform],
+    mixins: [transform, portal],
     components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     data() {
       return {};
@@ -112,39 +116,5 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  #layout {
-    .head-logo {
-      height: 50px;
-      width: 150px;
-      padding: 11px 12px;
-      box-sizing: border-box;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
-    &.is-hide-frame {
-      #header-wrapper,
-      #sidebar-wrapper,
-      #page-tabs-wrapper {
-        display: none;
-      }
-      .main-container {
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        padding: 0;
-        .app-main,
-        .win,
-        .ns-container,
-        .ns-container-right,
-        .ns-container-left {
-          height: 100%;
-          min-height: 100%;
-        }
-      }
-    }
-  }
+  @import "style/layout";
 </style>
