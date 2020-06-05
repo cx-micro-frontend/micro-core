@@ -11,7 +11,7 @@
     name: 'portal',
     methods: {
       click() {
-
+        this.$router.push({ name: 'systemOrgEmployee' });
       },
     },
   };
