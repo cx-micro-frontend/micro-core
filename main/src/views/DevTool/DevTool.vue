@@ -13,7 +13,7 @@
   import data from './data1';
 
   export default {
-    name: 'App',
+    name: 'devTool',
     data() {
       return {
         data,
