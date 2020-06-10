@@ -1,5 +1,6 @@
 import { getBrowserInfo } from '../../../../utils/library/browser';
 import { detectOS } from '../../../../utils/library/detectOS';
+import expand from '../../../../../expand';
 
 /**
  * frame information 框架系统信息
@@ -13,6 +14,7 @@ const FrameInfo = {
     $PROJECT_NAME: process.env.PROJECT_NAME || 'NEAP',
     //登录模式（常规 / 单点）（目前mode 只直接在路由跳转中做区分)
     loginMode: 'normal',
+    integrationMode: expand.integrationMode,
     //当前系统是否为Iframe嵌入
     isInIframe: false,
     //操作系统信息
