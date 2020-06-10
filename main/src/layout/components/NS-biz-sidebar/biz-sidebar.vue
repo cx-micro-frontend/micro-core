@@ -1,5 +1,6 @@
 <template>
   <div class="ns-biz-sidebar">
+
     <ns-sidebar :type="sidebarType"
                 :data="sideHandle"
                 :jumpByNavEmpty="jumpByNavEmpty"
@@ -17,6 +18,14 @@
         <span v-if="secondNavSlot(scope)">=></span>
       </template>
     </ns-sidebar>
+
+
+    <!--侧边栏 - 侧滑弹窗 - 外部资源注入-->
+    <component :is="markName(side_slot_name)"
+               v-if="is_slot_render"
+               :data="menuSlotProps"
+    ></component>
+
   </div>
 </template>
 
@@ -24,16 +33,18 @@
   import { mapGetters } from 'vuex';
   import keyRefer from './sidebar-keyRefer';
   import virtual from './virtual';
+  import menuSlotMixins from './menu-slot-mixins';
   import expand from '../../../../expand';
 
   export default {
     name: 'ns-biz-sidebar',
-    props: {},
+    mixins: [menuSlotMixins],
     data() {
       return {
         sidebarType: 'collapse', //bubble,collapse
         jumpByNavEmpty: true,
         keyRefer: keyRefer,
+        menuSlotProps: null,
       };
     },
     computed: {
@@ -60,6 +71,12 @@
        */
       firstNavClick(firstItem, firstIndex) {
 
+        this.menuSlotProps = {
+          firstItem,
+          firstIndex,
+          level: 1,
+        };
+
         console.log(firstItem, firstIndex);
         console.log(this.currentRoute);
 
@@ -84,6 +101,14 @@
 
         console.log(firstItem, secondItem, firstIndex, secondIndex);
         console.log(this.currentRoute);
+
+        this.menuSlotProps = {
+          firstItem,
+          secondItem,
+          firstIndex,
+          secondIndex,
+          level: 2,
+        };
 
         this.navClick(
           { firstItem, firstIndex, secondItem, secondIndex, level: 2 },
