@@ -1,12 +1,13 @@
-import headerSlotLeft from './headslot/headerSlotLeft';
-import headerSlotRight from './headslot/headerSlotRight';
+import headerSlotLeft from './layout/headslot/headerSlotLeft';
+import headerSlotRight from './layout/headslot/headerSlotRight';
+import sideMenuSlot from './layout/side-menu/side-menu-slot';
 
 export default {
   /**
    * sam - single application mode - 单系统模式
    * mam - multiple application mode - 多系统门户模式
    */
-  mode: 'mam',
+  mode: 'sam',
 
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
@@ -22,8 +23,14 @@ export default {
       rightSlot: headerSlotRight,
     },
 
-    //侧边栏
+    //side menu - 侧边栏
     sidebar: {
+      /**
+       * slot component for side menu
+       * For example, side sliding dialog
+       */
+      slotComponent: sideMenuSlot,
+
       /**
        * 删选侧边栏数据
        * 注意：
