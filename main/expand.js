@@ -7,7 +7,7 @@ const e = deepObjectMerge({
      * sam - single application mode - 单系统模式
      * mam - multiple application mode - 多系统门户模式
      */
-    mode:'sam',
+    mode: 'sam',
 
     //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
     UI: {
@@ -26,6 +26,12 @@ const e = deepObjectMerge({
 
       //侧边栏
       sidebar: {
+        /**
+         * slot component for side menu
+         * For example, side sliding dialog
+         */
+        slotComponent: null,
+
         /**
          * 删选侧边栏数据
          * 注意：
@@ -55,6 +61,8 @@ const e = deepObjectMerge({
           console.log(firstItem, firstIndex, secondItem, secondIndex, level);
           done(firstItem, secondItem);
         },
+
+
       },
     },
 
