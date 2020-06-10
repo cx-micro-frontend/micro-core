@@ -4,7 +4,7 @@ const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 const customRoute = [
   ...expand.route.customRoute(Layout),
-  ...(expand.mode === 'mam'
+  ...(expand.integrationMode === 'mam'
     ? [
         {
           path: '',
@@ -16,7 +16,7 @@ const customRoute = [
               path: 'portal',
               component: () => import('../../views/Portal/Portal.vue'),
               meta: { auth: true, key: 'portal' },
-              name: '门户页',
+              name: 'portal',
             },
           ],
         },
