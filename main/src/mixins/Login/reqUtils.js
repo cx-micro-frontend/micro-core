@@ -21,7 +21,7 @@ export const getMenu = async () => {
    * multiple application mode
    * 多系统门户模式情况
    */
-  if (expand.mode === 'mam') {
+  if (expand.integrationMode === 'mam') {
   }
   //single application mode
   else {
