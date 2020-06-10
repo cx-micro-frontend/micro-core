@@ -15,6 +15,10 @@
         <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
+      <div class="fl">
+        <back-to-portal></back-to-portal>
+      </div>
+
       <!--业务组 - 自定义头部插槽 - 左边 -->
       <div class="fl">
         <header-slot-left></header-slot-left>
@@ -68,6 +72,8 @@
     bizUserDropdown,
     headerSlotLeft,
     headerSlotRight,
+    backToPortal,
+
   } from './index';
   import transform from './mixins/transform';
   import portal from './mixins/portal';
@@ -76,7 +82,7 @@
   export default {
     name: 'layout',
     mixins: [transform, portal],
-    components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
+    components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight, backToPortal },
     data() {
       return {};
     },
