@@ -1,6 +1,7 @@
 import errorPathDistribute from '../../router/promission/errorDistribute';
 import $store from '../../store/index';
 import $router from '../../router/index';
+import expand from '../../../expand';
 
 /**
  * 初始化准备操作
@@ -16,8 +17,17 @@ function initHandle(type = 'normal') {
  * 菜单获取不出来 正常跳转404页面， 单点登录 跳转登录页面
  */
 export const getMenu = async () => {
-  //get side bar data
-  await $store.dispatch('generateSideBar').then(_ => {});
+  /**
+   * multiple application mode
+   * 多系统门户模式情况
+   */
+  if (expand.mode === 'mam') {
+  }
+  //single application mode
+  else {
+    //get side bar data
+    await $store.dispatch('generateSideBar').then(_ => {});
+  }
 };
 
 /**
