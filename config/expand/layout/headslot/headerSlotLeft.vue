@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <span class="expand_style_title">外部扩展测试:</span>
+  <div class="headerSoltLeft" style="margin-left: 30px">
+    <!--<span class="expand_style_title">外部扩展测试:</span>-->
     <a @click="jumper('order')">工单</a>
     <a @click="jumper('test')">测试</a>
     <ns-select :options="options" v-model="model" @change="selectChange"></ns-select>
