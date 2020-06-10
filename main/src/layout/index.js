@@ -5,3 +5,4 @@ export { default as bizSkiner } from './components/NS-biz-skiner/Biz-skiner';
 export { default as bizUserDropdown } from './components/NS-biz-user-dropdown/NS-biz-user-dropdown';
 export { default as headerSlotLeft } from './components/NS-header-slot/NS-header-slot-left';
 export { default as headerSlotRight } from './components/NS-header-slot/NS-header-slot-right';
+export { default as backToPortal } from './components/NS-backToPortal/NS-backToPortal';
