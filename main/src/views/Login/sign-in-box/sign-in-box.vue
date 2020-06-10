@@ -90,6 +90,7 @@
             this.enterprise = await this.checkByLogin({
               userAccount: this.loginForm.username,
               password: this.cryptoPassWord,
+              source: 'xcy',//登录验证标识
             });
 
             //判断是否为多企业，多企业账号跳转到选择企业界面
