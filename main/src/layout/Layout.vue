@@ -15,7 +15,7 @@
         <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
-      <div class="fl">
+      <div class="fl" v-if="integrationMode === 'mam'">
         <back-to-portal></back-to-portal>
       </div>
 
@@ -87,7 +87,8 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe']),
+      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode']),
+
 
       //全局缓存开关
       isCache() {
