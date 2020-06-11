@@ -33,6 +33,7 @@ export default {
           const newQuery = {
             username: query.userAccount,
             password: query.password,
+            source: query.source, //登录验证标识
           };
 
           //直接登录
