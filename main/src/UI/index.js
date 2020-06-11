@@ -14,11 +14,11 @@ Vue.use(nsui, {
 import '../style/index.scss';
 
 //load icon
-(function(window) {
-  if (!iconfont) return;
-  iconfont.roleButton();
-  iconfont.navMenu();
-})(window);
+// (function(window) {
+//   if (!iconfont) return;
+//   iconfont.roleButton();
+//   iconfont.navMenu();
+// })(window);
 
 //components
 import '../components/index';
