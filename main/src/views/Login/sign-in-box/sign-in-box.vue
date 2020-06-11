@@ -71,11 +71,12 @@
       };
     },
     computed: {
-      ...mapGetters(['operatorInfo']),
+      ...mapGetters(['operatorInfo', '$PROJECT_NAME']),
       cryptoPassWord() {
         return this.getCryptoBybase64(this.loginForm.password) || '';
       },
     },
+
     methods: {
       /**
        * 点击登录按钮
@@ -90,7 +91,7 @@
             this.enterprise = await this.checkByLogin({
               userAccount: this.loginForm.username,
               password: this.cryptoPassWord,
-              source: 'xcy',//登录验证标识
+              source: this.$PROJECT_NAME,//登录验证标识
             });
 
             //判断是否为多企业，多企业账号跳转到选择企业界面
@@ -121,6 +122,7 @@
           userAccount: this.loginForm.username,
           password: this.cryptoPassWord,
           enterpriseId: item.enterpriseId,
+          source: this.$PROJECT_NAME,//登录验证标识
         };
         await this.multipleAuthLogin(loginParams);
         jumpToTnitPage();
