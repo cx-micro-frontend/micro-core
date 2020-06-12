@@ -31,6 +31,8 @@ export default (to, from, next) => {
     $store.dispatch('setFuncId', info.funcId);
 
     console.log('=============================');
+    console.log(from);
+    console.log(to);
     console.log(`${from.path}  ${to.path}`);
     console.log('获取到的菜单栏数据：', $store.getters.sideBarList);
     console.log(`addRouFlag 状态：${addRouFlag}`);
@@ -71,17 +73,17 @@ export default (to, from, next) => {
       const isAuthWhite = isInAuthwhiteList(to);
       /*
        * 1、after add async router, in error state:
-       * (1)、jump path is not in async router list and not in white list
+       * (1)、jump name is not in async router list and not in white list
        * (2)、other error
        *
        * 2、in those state，back to special page base on error path distribute
        */
-      if (pageinfoList.some(info => info.path === to.path) || isAuthWhite) {
+      if (pageinfoList.some(info => info.name === to.name) || isAuthWhite) {
         /*
          * 1、judge whether the current routing contains the corresponding template page,
          * If not in route files list or not in in white list, back to special page base on error path distribute
          */
-        if ((routefiles && routefiles.some(route => route === to.path)) || isAuthWhite) {
+        if ((routefiles && routefiles.some(route => route.name === to.name)) || isAuthWhite) {
           //router and page information show in console
           routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove
