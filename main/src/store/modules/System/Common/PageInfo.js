@@ -31,7 +31,8 @@ const PageInfo = {
           if (firstItem[keyRefer['children']] && firstItem[keyRefer['children']].length > 0) {
             firstItem[keyRefer['children']].forEach((secondItem, secondIndex) => {
               pageInfoList.push({
-                name: secondItem[keyRefer['label']], //router-web name
+                title: secondItem[keyRefer['label']], //router-web name
+                name: secondItem[keyRefer['menuRouter']], //router-web name
                 path:
                   '/' +
                   firstItem[keyRefer['menuRouter']] +
@@ -44,7 +45,8 @@ const PageInfo = {
             });
           } else {
             pageInfoList.push({
-              name: firstItem[keyRefer['label']],
+              title: firstItem[keyRefer['label']],
+              name: firstItem[keyRefer['menuRouter']],
               path: '/' + firstItem[keyRefer['menuRouter']],
               funcId: firstItem[keyRefer['funcId']] || 'normalFunic',
             });
