@@ -27,12 +27,14 @@ function pathExist(path) {
 let generateWhiteList = routes => {
   function loop(childRoutes, fatherRoutes = {}) {
     childRoutes.forEach(route => {
-      const p = pathExist(fatherRoutes.path) ? `${fatherRoutes.path}/${route.path}` : route.path;
+      const _r = {
+        path: pathExist(fatherRoutes.path) ? `${fatherRoutes.path}/${route.path}` : route.path,
+        name: route.name,
+      };
 
-      const isAuth = route.meta && route.meta.auth;
-
-      if (p) {
-        white[isAuth ? 'auth' : 'noAuth'].push(p);
+      if (_r.path || _r.name) {
+        const isAuth = route.meta && route.meta.auth;
+        white[isAuth ? 'auth' : 'noAuth'].push(_r);
       }
 
       const children = route.children;
@@ -56,7 +58,14 @@ console.info(white);
  * @returns {boolean}
  */
 export const isInNoAuthwhiteList = route => {
-  return white.noAuth.indexOf(route.path) !== -1;
+  /**
+   * 部分情况比较特殊：
+   * 路由若用name作为跳转标识时：
+   * 若是模块没有注入时，跳转未注入的页面（不存在)，改跳转路由信息为：path为/ name为目标name
+   * 若只判断path 则会错放改页面去path为/ name 为目标name的页面（即在白名单判断逻辑内)，从而避开了异常处理重定向
+   * 故，需要同时判断 path 和 name 都在白名单列表中
+   */
+  return white.noAuth.some(r => r.path === route.path && r.name === route.name);
 };
 
 /**
@@ -65,7 +74,10 @@ export const isInNoAuthwhiteList = route => {
  * @returns {boolean}
  */
 export const isInAuthwhiteList = route => {
-  return white.auth.indexOf(route.path) > -1 || route.path.indexOf('NEAP_redirect') > -1;
+  return (
+    white.auth.some(r => r.path === route.path && r.name === route.name) ||
+    route.path.indexOf('NEAP_redirect') > -1
+  );
 };
 
 // export default {

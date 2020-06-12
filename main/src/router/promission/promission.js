@@ -68,6 +68,7 @@ export default (to, from, next) => {
           next(errorPathDistribute('error_route_role'));
         });
     } else {
+      const isAuthWhite = isInAuthwhiteList(to);
       /*
        * 1、after add async router, in error state:
        * (1)、jump path is not in async router list and not in white list
@@ -75,12 +76,12 @@ export default (to, from, next) => {
        *
        * 2、in those state，back to special page base on error path distribute
        */
-      if (pageinfoList.some(info => info.path === to.path) || isInAuthwhiteList(to)) {
+      if (pageinfoList.some(info => info.path === to.path) || isAuthWhite) {
         /*
          * 1、judge whether the current routing contains the corresponding template page,
          * If not in route files list or not in in white list, back to special page base on error path distribute
          */
-        if ((routefiles && routefiles.some(route => route === to.path)) || isInAuthwhiteList(to)) {
+        if ((routefiles && routefiles.some(route => route === to.path)) || isAuthWhite) {
           //router and page information show in console
           routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove
