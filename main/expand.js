@@ -70,6 +70,24 @@ const e = deepObjectMerge({
     route: {
       cache: true,
       cacheExclude: [],
+
+
+      //路由重定向
+      redirect: {
+
+        'init_view': '/front/login',//重定向: 初始路由
+        'cancel_token': '',//重定向: http请求返回 - 登陆已过期 / 没有token / token失效
+        'loss_token': '/front/login',//重定向: token 缺失或失效
+        'loss_pages': '/error',//重定向: 页面模块缺失,请检查模块是否注入 （动态路由注册后的错误跳转重定向，区别于普通404)
+        '404': '/404',//重定向: 异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失,
+
+        'sso_error_login': '/sso/error',//重定向: SSO - 登录错误
+        'sso_loss_token': '/sso/error',//重定向: SSO - token 缺失或失效
+        'sso_loss_pages': '/sso/error',//重定向: SSO - 页面模块缺失,请检查模块是否注入 （动态路由注册后的错误跳转重定向，区别于普通404)
+        'sso_404': '/sso/error',//重定向: SSO - 异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失,
+
+      },
+
       //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
       customRoute: (Layout) => {
         return [];

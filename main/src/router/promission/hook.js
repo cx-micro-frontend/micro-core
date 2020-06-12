@@ -34,7 +34,7 @@ router.beforeEach((to, from, next) => {
       promissionhandle(to, from, next);
     } else {
       //错误路由分发
-      next(errorPathDistribute('error_token'));
+      next(errorPathDistribute('loss_token'));
     }
   }
 });

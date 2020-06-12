@@ -87,7 +87,7 @@ export default (to, from, next) => {
           next();
         } else {
           //错误路由分发
-          next(errorPathDistribute('error_no_pages'));
+          next(errorPathDistribute('error_loss_pages'));
         }
       } else {
         //错误路由分发

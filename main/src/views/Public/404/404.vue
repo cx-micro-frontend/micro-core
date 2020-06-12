@@ -11,7 +11,7 @@
 
 <script>
   import img_404 from '../../../assets/img/404/404.png';
-  import { backLoginPage } from '../../../utils/behavior';
+  import { backIniView } from '../../../utils/behavior';
 
   export default {
     data() {
@@ -24,7 +24,7 @@
         history.back();
       },
       goLogin() {
-        backLoginPage();
+        backIniView();
       },
     },
   };

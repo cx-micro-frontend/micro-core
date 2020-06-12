@@ -13,7 +13,7 @@ import requestHead from '../../store/modules/System/Request/RequestHeader';
 import { elMessage } from './fetch-message';
 import $store from '../../store';
 
-import { backLoginPage } from '../behavior';
+import { backIniView } from '../behavior';
 import { getToken } from '../library/auth';
 
 const service = axios.create({
@@ -77,14 +77,14 @@ service.interceptors.response.use(
 //token error break
 service.redirect = (code, msg) => {
   if (['710', '712', '720'].some(c => c === code)) {
-    backLoginPage();
+    backIniView();
   }
 
   if (
     msg &&
     ['登陆已过期', '没有token', 'pre:PermissionFilter'].some(err => msg.indexOf(err) > -1)
   ) {
-    backLoginPage();
+    backIniView();
   }
 };
 

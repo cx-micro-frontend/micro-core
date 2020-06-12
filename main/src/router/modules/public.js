@@ -1,9 +1,9 @@
-import { iniView } from '../../config';
+import expand from '../../../expand';
 
-const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
+// const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 export default [
-  { path: '/', redirect: iniView },
+  { path: '/', redirect: expand.route.redirect['init_view'] },
 
   //error to add in when use async route, beacuse first jump is miss route
   // { path: '*', redirect: iniView },

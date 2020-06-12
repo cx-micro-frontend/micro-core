@@ -1,4 +1,5 @@
 import $store from '../../store';
+import expand from '../../../expand';
 
 /**
  * error route jump distribution
@@ -13,28 +14,32 @@ export default type => {
 
   $store.dispatch('setErrorSign', type); //store error sign
 
+  const redirect = expand.route.redirect;
+
   const errorMap = {
+    //general system mode
     normal: {
-      error_token: { path: '/front/login', log: 'token 缺失或失效' },
-      error_route_role: {
-        path: '/404',
-        log: '异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失',
-      },
-      error_no_pages: {
-        path: '/error',
+      loss_token: { path: redirect['loss_token'], log: 'token 缺失或失效' },
+      error_loss_pages: {
+        path: redirect['loss_pages'],
         log: '页面模块缺失,请检查模块是否注入',
+      },
+      error_route_role: {
+        path: redirect['404'],
+        log: '异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失',
       },
     },
+    //sso system mode
     sso: {
-      error_login: { path: '/sso/error', log: 'SSO 登录错误' },
-      error_token: { path: '/sso/error', log: 'token 缺失或失效' },
-      error_route_role: {
-        path: '/sso/error',
-        log: '异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失',
-      },
-      error_no_pages: {
-        path: '/sso/error',
+      error_login: { path: redirect['sso_error_login'], log: 'SSO 登录错误' },
+      loss_token: { path: redirect['sso_loss_token'], log: 'token 缺失或失效' },
+      error_loss_pages: {
+        path: redirect['sso_loss_pages'],
         log: '页面模块缺失,请检查模块是否注入',
+      },
+      error_route_role: {
+        path: redirect['sso_404'],
+        log: '异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失',
       },
     },
   };

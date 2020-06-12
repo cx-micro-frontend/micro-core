@@ -1,5 +1,4 @@
 import $router from '../../router/index';
-import { iniView } from '../../config';
 import { getUrlParam } from '../library/urlhandle';
 import $store from '../../store/index';
 import expand from '../../../expand';
@@ -7,8 +6,8 @@ import expand from '../../../expand';
 /**
  * 返回登录首页
  */
-export const backLoginPage = () => {
-  $router.push({ path: iniView });
+export const backIniView = () => {
+  $router.push({ path: expand.route.redirect['init_view'] });
 };
 
 /**

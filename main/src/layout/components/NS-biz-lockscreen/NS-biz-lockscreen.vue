@@ -36,8 +36,8 @@
             </transition>
           </div>
           <div class="line-block">
-             <span class="lock-screen__tips" v-show="!hasMultiEnterprise">输入密码验证登录, 或点击 <a @click="backLoginPage">返回</a> 登录页</span>
-             <span class="lock-screen__tips" v-show="hasMultiEnterprise">点击 <a @click="hasMultiEnterprise = false ">上一步</a> 返回，或点击 <a @click="backLoginPage">返回</a> 登录页</span>
+             <span class="lock-screen__tips" v-show="!hasMultiEnterprise">输入密码验证登录, 或点击 <a @click="backIniView">返回</a> 登录页</span>
+             <span class="lock-screen__tips" v-show="hasMultiEnterprise">点击 <a @click="hasMultiEnterprise = false ">上一步</a> 返回，或点击 <a @click="backIniView">返回</a> 登录页</span>
           </div>
         </div>
       </ns-dialog>
@@ -47,7 +47,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { backLoginPage } from '../../../utils/behavior/index';
+  import { backIniView } from '../../../utils/behavior/index';
   import cryptoPassWord from '../../../mixins/Login/cryptoPassWord';
   import authLogin from '../../../mixins/Login/authLogin';
 
@@ -82,7 +82,7 @@
 
     },
     methods: {
-      backLoginPage,
+      backIniView,
 
       /**
        * 锁屏登录

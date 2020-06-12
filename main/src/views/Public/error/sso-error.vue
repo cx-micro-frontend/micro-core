@@ -14,6 +14,8 @@
   export default {
     mixins: [mixins],
   };
+
+
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

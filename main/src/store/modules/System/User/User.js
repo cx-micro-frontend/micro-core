@@ -1,5 +1,5 @@
 import $store from '../../../../store/index';
-import { backLoginPage } from '../../../../utils/behavior';
+import { backIniView } from '../../../../utils/behavior';
 import {
   getToken,
   setToken,
@@ -168,7 +168,7 @@ const User = {
         .then(res => {
           if (res) {
             $store.dispatch('emptyStorage');
-            backLoginPage();
+            backIniView();
           }
         })
         .catch(err => console.log(err));
