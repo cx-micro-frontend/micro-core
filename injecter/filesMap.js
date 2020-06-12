@@ -55,7 +55,11 @@ const getRouteFiles = () => {
                * 例如： （firstModule => secondModule => secondModule.vue)
                */
               if (fs.existsSync(join(route2_Path, `${secondDir}.vue`))) {
-                routeFiles.push(`/${firstDir}/${secondDir}`); //拼接注入数组队列
+
+                //拼接注入数组队列
+                routeFiles.push(
+                  `{path: '/${firstDir}/${secondDir}',name: '${secondDir}'}`
+                );
               }
             }
           });
@@ -87,7 +91,7 @@ exports.createRouteFiles = () => {
   function writeRouteFiles() {
     return getRouteFiles().map(route => {
       if (typeof route === 'string') {
-        return `  '${route}',`;
+        return `  ${route},`;
       } else {
         return `  
   //${route.sign}
