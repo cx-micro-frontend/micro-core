@@ -103,17 +103,52 @@ const SideBar = {
       return new Promise((resolve, reject) => {
         sideBarService()
           .then(res => {
-            const list = res.resultData || [];
+            const baseList = res.resultData || [];
 
-            const baselist = expand.layout.sidebar.filter(list);
+            /*
+             * -----------------
+             * 1、get init route
+             * -----------------
+             */
+            let initRoute;
+            // let initRoute = { name: '', fullpath: '' };
+            const _ini = expand.route.initRouteByAuth;
 
-            const initRoute = _getInitRoute(baselist);
-            const sideBarList = _baseFilterMenu(baselist);
-
-            if (!sideBarList) {
-              throw '【 NEAP-ERROR 】Custom filter side menu data,  must output data list.';
+            if (_ini) {
+              if (typeof _ini === 'function') {
+                initRoute = _ini(baseList);
+              } else if (typeof _ini === 'object') {
+                initRoute = _ini;
+              } else {
+              }
+            } else {
+              initRoute = _getInitRoute(baseList);
             }
 
+            if (
+              !['name', 'fullpath'].every(
+                _k => initRoute.hasOwnProperty(_k) && initRoute[_k] === 'string'
+              )
+            ) {
+              reject(
+                `【 NEAP-ERROR 】Custom expand config - "initRouteByAuth": the returned object must contain the name and path fields, and the value is string format`
+              );
+            }
+
+            /*
+             * -----------------------------------
+             * 2、filter nav menu by custom config
+             * -----------------------------------
+             */
+            const filterList = expand.layout.sidebar.filter(baseList);
+
+            const sideBarList = _baseFilterMenu(filterList);
+
+            if (!sideBarList) {
+              reject('【 NEAP-ERROR 】Custom filter side menu data,  must output data list.');
+            }
+
+            //packaging data
             const navdata = {
               sideBar: sideBarList,
               initRoute: initRoute,
@@ -134,6 +169,7 @@ const SideBar = {
           });
       });
     },
+
     delSideBarData: ({ commit }) => {
       commit('DEL_SIDEBAR_DATA');
     },

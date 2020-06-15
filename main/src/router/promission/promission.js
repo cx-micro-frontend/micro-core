@@ -60,6 +60,7 @@ export default (to, from, next) => {
             addRouFlag = true;
 
             next({ ...to, replace: true }); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+            // next({ replace: true });
           } else {
             //错误路由分发
             next(errorPathDistribute('error_route_role'));

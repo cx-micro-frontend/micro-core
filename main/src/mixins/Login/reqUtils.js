@@ -18,7 +18,12 @@ function initHandle(type = 'normal') {
  */
 export const getMenu = async () => {
   //get side bar data
-  await $store.dispatch('generateSideBar').then(_ => {});
+  await $store
+    .dispatch('generateSideBar')
+    .then(_ => {})
+    .catch(err => {
+      console.warn(err);
+    });
 
   // /**
   //  * multiple application mode
