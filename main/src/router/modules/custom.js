@@ -1,5 +1,4 @@
 import expand from '../../../expand';
-
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 const customRoute = [
@@ -10,11 +9,15 @@ const customRoute = [
           path: '',
           component: Layout,
           redirect: '/portal',
-          name: 'portal',
           children: [
             {
               path: 'portal',
-              component: () => import('../../views/Portal/Portal.vue'),
+              component: () =>
+                import(
+                  process.env.NODE_ENV === 'development'
+                    ? '../../../../injection/repositories/NS_portal/views/portal/portal.vue'
+                    : '@ROOT/NS_portal/views/portal/portal.vue'
+                ),
               meta: { auth: true, key: 'portal' },
               name: 'portal',
             },

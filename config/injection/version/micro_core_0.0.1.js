@@ -1,4 +1,13 @@
 module.exports = [
+  {
+    module: '门户页',
+    repositorie: 'portal', //o2o-admin
+    path: 'http://47.96.187.51:3001/NW-frontend/micro-portal.git',
+    branch: 'master',
+    isOwner: false,
+    disabled: false,
+  },
+
   ////o2o - community
   // {
   //   module: '阳光城公告',

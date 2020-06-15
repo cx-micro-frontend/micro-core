@@ -19,7 +19,7 @@ export const jumpToTnitPage = () => {
    * 多系统门户模式情况
    */
   if (expand.integrationMode === 'mam') {
-    $router.push({ path: '/portal' });
+    $router.push({ name: 'portal' });
   }
   //single application mode
   else {
