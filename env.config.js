@@ -15,8 +15,8 @@ const dev_env = {
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
 
-  BASE_API: '"http://192.168.4.40:7777"',
-
+  // BASE_API: '"http://192.168.4.40:7777"',
+  BASE_API: '"http://192.168.1.95/api"',
   // BASE_API: '"http://192.168.1.75/api"',
   // BASE_API: '"http://192.168.1.20:7777"',
   // BASE_API: '"http://new-see.oicp.io:20008/api"', //20 外网地址
