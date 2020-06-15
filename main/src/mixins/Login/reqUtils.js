@@ -17,17 +17,20 @@ function initHandle(type = 'normal') {
  * 菜单获取不出来 正常跳转404页面， 单点登录 跳转登录页面
  */
 export const getMenu = async () => {
-  /**
-   * multiple application mode
-   * 多系统门户模式情况
-   */
-  if (expand.integrationMode === 'mam') {
-  }
-  //single application mode
-  else {
-    //get side bar data
-    await $store.dispatch('generateSideBar').then(_ => {});
-  }
+  //get side bar data
+  await $store.dispatch('generateSideBar').then(_ => {});
+
+  // /**
+  //  * multiple application mode
+  //  * 多系统门户模式情况
+  //  */
+  // if (expand.integrationMode === 'mam') {
+  // }
+  // //single application mode
+  // else {
+  //   //get side bar data
+  //   await $store.dispatch('generateSideBar').then(_ => {});
+  // }
 };
 
 /**

@@ -123,7 +123,7 @@ function createComponent(childRoute, fatherRoute = null) {
     // console.log(varname);
     // return () => import(`${varname}`);
 
-    return _import(childPath, fatherPath);
+    return _import(fatherPath, childPath);
 
     // return _import(`NS_${fatherPath}views/${fatherPath}${childPath}/${childPath}`)
   }
