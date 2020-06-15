@@ -32,6 +32,7 @@ const e = deepObjectMerge({
          */
         slotComponent: null,
 
+
         /**
          * 删选侧边栏数据
          * 注意：
@@ -71,6 +72,14 @@ const e = deepObjectMerge({
       cache: true,
       cacheExclude: [],
 
+      /**
+       * init jump after login
+       * 登录后初始跳转
+       * type - 1、function 2、Object
+       * return { name: 'xx',fullpath: 'xx'}
+       * default - null
+       */
+      initRouteByAuth: null,
 
       //路由重定向
       redirect: {

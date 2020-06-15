@@ -7,7 +7,7 @@ export default {
    * sam - single application mode - 单系统模式
    * mam - multiple application mode - 多系统门户模式
    */
-  integrationMode: 'mam',
+  integrationMode: 'sam',
 
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
@@ -53,6 +53,28 @@ export default {
   route: {
     cache: true,
     cacheExclude: ['systemOrgEmployee'],
+
+    /**
+     * init jump after login
+     * 登录后初始跳转
+     * type - 1、function 2、Object
+     * return { name: 'xx',fullpath: 'xx'}
+     * default - null
+     * @param navmenu - 原始菜单栏数据
+     * @returns {{name: string, fullpath: string}}
+     */
+    initRouteByAuth: navmenu => {
+      console.log('initRouteByAuth-initRouteByAuth');
+      console.log(navmenu);
+      return {
+        name: 'overview',
+        fullpath: '/overview',
+      };
+    },
+
+    //也可以为对象格式
+    // initRouteByAuth: { name: 'overview', fullpath: '/overview' },
+
     //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
     customRoute: Layout => {
       return [
