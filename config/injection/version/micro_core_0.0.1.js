@@ -1,7 +1,7 @@
 module.exports = [
   {
     module: '门户页',
-    repositorie: 'portal', //o2o-admin
+    repositorie: 'portal',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-portal.git',
     branch: 'master',
     isOwner: false,
