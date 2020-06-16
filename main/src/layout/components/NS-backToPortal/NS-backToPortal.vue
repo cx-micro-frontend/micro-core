@@ -1,11 +1,12 @@
 <template>
   <div :class="[
-  'ns-back-to-portal',
-  {'is-active':isActive}
-  ]">
+      'ns-back-to-portal',
+      {'is-active':isActive}
+      ]"
+       @click="back"
+  >
     <ns-icon-class class="back-to-portal-icon"
                    icon-class="el-icon-s-home"
-                   @click="back"
     ></ns-icon-class>
 
     <span>首页</span>
@@ -23,7 +24,7 @@
     },
     methods: {
       back() {
-        this.$router.push({ path: '/portal' });
+        this.$router.push({ name: 'portal' });
       },
     },
     created() {
@@ -33,7 +34,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  $back-color_active:#f2f2f2;
+  $back-color_active: #f2f2f2;
   .ns-back-to-portal {
     cursor: pointer;
     padding: 0 5px;
