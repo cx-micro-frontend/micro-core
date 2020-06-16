@@ -127,11 +127,11 @@ const SideBar = {
 
             if (
               !['name', 'fullpath'].every(
-                _k => initRoute.hasOwnProperty(_k) && initRoute[_k] === 'string'
+                _k => initRoute.hasOwnProperty(_k) && typeof initRoute[_k] === 'string'
               )
             ) {
               reject(
-                `【 NEAP-ERROR 】Custom expand config - "initRouteByAuth": the returned object must contain the name and path fields, and the value is string format`
+                `【 NEAP-ERROR 】Custom expand config - "initRouteByAuth": the returned object must contain the name and fullpath fields, and the value is string format`
               );
             }
 
