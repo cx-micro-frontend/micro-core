@@ -30,17 +30,18 @@ export const jumpToTnitPage = () => {
    */
   const initTargetPath = referRoute || initPath; //登录后的初始路径
 
-  $router.push({ path: initTargetPath });
+  // $router.push({ path: initTargetPath });
 
   /**
    * multiple application mode
    * 多系统门户模式情况
    */
   if (expand.integrationMode === 'mam') {
+    alert('mam');
     $router.push({ name: 'portal' });
-  }
-  //single application mode
-  else {
+  } else {
+    alert('single');
+    //single application mode
     $router.push({ path: initTargetPath });
   }
 };
