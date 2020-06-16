@@ -30,7 +30,7 @@
     "js-cookie": "^2.2.0",
     "neap-ui": "0.0.1-78",
     "nprogress": "^0.2.0",
-    "vue-router": "^3.0.7",
+    "vue-router": "3.1.6",
     "vuex": "^2.3.1",
     "xlsx": "^0.11.0",
     "yarn": "^1.19.1"
