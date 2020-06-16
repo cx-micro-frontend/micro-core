@@ -15,6 +15,7 @@
         <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
+      <!--反回门户页-->
       <div class="fl" v-if="integrationMode === 'mam'">
         <back-to-portal></back-to-portal>
       </div>
@@ -29,8 +30,11 @@
         <!--业务组 - 自定义头部插槽 - 右边 -->
         <header-slot-right></header-slot-right>
         <!--<biz-lock-screen></biz-lock-screen>-->
+        <!--全屏-->
         <ns-screenfull></ns-screenfull>
+        <!--换肤-->
         <biz-skiner></biz-skiner>
+        <!--用户设置下拉-->
         <biz-user-dropdown></biz-user-dropdown>
       </div>
     </template>
