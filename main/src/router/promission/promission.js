@@ -11,8 +11,8 @@ let addRouFlag = false;
  * handle to set Async Router
  * warning:
  * 1、首次加载会挂载动态路由
- * 2、动态路由映射对照表需于path指向路径保持绝对的一直，否则回退 404
- * 3、出现页面空白，注意检查映射表与path
+ * 2、动态路由映射对照表需于path/name 指向路径/name 保持绝对的一致，否则回退-404
+ * 3、出现页面空白，注意检查映射表与path/name
  * @param to
  * @param from
  * @param next
@@ -54,8 +54,10 @@ export default (to, from, next) => {
 
             router.addRoutes(asyncRouterList);
 
-            //router and page information show in console
-            routerAndpageInfo(to);
+            //router and page information show in console after dynamically add routing permission
+            if (addRouFlag) {
+              routerAndpageInfo(to);
+            }
 
             addRouFlag = true;
 
