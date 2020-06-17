@@ -2,11 +2,9 @@ const getters = {
   //frame or mode
   $PROJECT_NAME: state => state.FrameInfo.$PROJECT_NAME, //当前项目名称
 
-  /**
-   * 集成模式
-   * sam - single application mode - 单系统模式
-   * mam - multiple application mode - 多系统门户模式
-   */
+  //集成模式
+  //sam - single application mode - 单系统模式
+  //mam - multiple application mode - 多系统门户模式
   integrationMode: state => state.FrameInfo.integrationMode,
 
   isInIframe: state => state.FrameInfo.isInIframe, //当前系统是否为Iframe嵌入
