@@ -1,7 +1,8 @@
+import $store from '../../../index';
 import { sideBarService, mam_nav_menu_service } from '../../../../service/System/Role/role-menu';
-import $store from '../../../../store/index';
-import { storageHandle } from '../../../../utils/storage/storage';
+import { stateAssign } from '../../../utils';
 import { flattenMenu, createInitRoute } from '../../../../layout/components/NS-nav-menu/utils';
+import { storageHandle } from '../../../../utils/storage/storage';
 import expand from '../../../../../expand';
 
 /**
@@ -21,16 +22,12 @@ const NavMenu = {
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
-      // state.sideMenu = data.sideMenu;
-      // state.activeModule = data.activeModule;
-      // state.initRoute = data.initRoute;
-
-      Object.keys(data).forEach(k => {
-        state[k] = data[k];
-      });
+      //Assignment in mutations to change state
+      stateAssign(state, data, ['sideMenu', 'activeModule', 'initRoute']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
+
     DEL_SIDEBAR_DATA: (state, data) => {
       state.sideMenu = [];
       state.initRoute = null;
@@ -105,7 +102,7 @@ const NavMenu = {
             commit('SET_SIDEBAR_DATA', navdata);
 
             console.log('处理好的菜单栏数据如下：');
-            console.log(filterList);
+            console.log(navdata);
 
             resolve(navdata);
           })
