@@ -15,10 +15,12 @@
         <img :src="operatorInfo.operatorLoginPic" @click="click"/>
       </div>
 
-      <!--反回门户页-->
+
       <div class="fl" v-if="integrationMode === 'mam'">
-        <back-to-portal></back-to-portal>
+        <!--顶层菜单入口-->
+        <ns-top-menu></ns-top-menu>
       </div>
+
 
       <!--业务组 - 自定义头部插槽 - 左边 -->
       <div class="fl">
@@ -69,6 +71,7 @@
 <script>
   import { mapGetters } from 'vuex';
   import {
+    nsTopMenu,
     bizSidebar,
     bizTabsViews,
     bizLockScreen,
@@ -76,7 +79,6 @@
     bizUserDropdown,
     headerSlotLeft,
     headerSlotRight,
-    backToPortal,
 
   } from './index';
   import transform from './mixins/transform';
@@ -86,7 +88,7 @@
   export default {
     name: 'layout',
     mixins: [transform, portal],
-    components: { bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight, backToPortal },
+    components: { nsTopMenu, bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     data() {
       return {};
     },
@@ -121,7 +123,6 @@
       click() {
         //切换项目后刷新所有页面-清除所有路由缓存
         this.NEAP_ROUTER.refreshAll();
-        // this.$forceUpdate();
       },
     },
   };
