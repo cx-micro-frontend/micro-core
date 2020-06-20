@@ -12,7 +12,7 @@ export default {
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
     theme: () => import('./theme'),
-    iconfont: () => import('./iconfont/iconfont.js'),
+    iconfont: () => import('./iconfont/index.js'),
   },
 
   //布局
@@ -30,47 +30,31 @@ export default {
        * For example, side sliding dialog
        */
       slotComponent: sideMenuSlot,
-
-      /**
-       * 删选侧边栏数据
-       * 注意：
-       * 侧边栏数据直接关系到：
-       * 1、侧边菜单的显示（可通过对应字段的控制达到）
-       * 2、路由的注册
-       * 在删选侧边栏数据时，若删除了其中的条目，其结果是对应菜单栏的路由权限也同时会移除。
-       * 若想隐藏对应菜单栏条目的同时，保留路由权限，则只需控制其显示隐藏即可
-       * @param list
-       * @returns {*}
-       */
-      filter: list => {
-        return list;
-        // return list.filter((item, index) => index >= 1);
-      },
     },
   },
 
   //路由相关
   route: {
     cache: true,
-    cacheExclude: ['systemOrgEmployee'],
+    cacheExclude: [],
 
-    /**
-     * init jump after login
-     * 登录后初始跳转
-     * type - 1、function 2、Object
-     * return { name: 'xx',fullpath: 'xx'}
-     * default - null
-     * @param navmenu - 原始菜单栏数据
-     * @returns {{name: string, fullpath: string}}
-     */
-    initRouteByAuth: navmenu => {
-      console.log('initRouteByAuth-initRouteByAuth');
-      console.log(navmenu);
-      return {
-        name: 'overview',
-        fullpath: '/overview',
-      };
-    },
+    // /**
+    //  * init jump after login
+    //  * 登录后初始跳转
+    //  * type - 1、function 2、Object
+    //  * return { name: 'xx',fullpath: 'xx'}
+    //  * default - null
+    //  * @param navmenu - 原始菜单栏数据
+    //  * @returns {{name: string, fullpath: string}}
+    //  */
+    // initRouteByAuth: navmenu => {
+    //   console.log('initRouteByAuth-initRouteByAuth');
+    //   console.log(navmenu);
+    //   return {
+    //     name: 'overview',
+    //     fullpath: '/overview',
+    //   };
+    // },
 
     //也可以为对象格式
     // initRouteByAuth: { name: 'overview', fullpath: '/overview' },
