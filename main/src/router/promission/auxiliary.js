@@ -19,7 +19,7 @@ export const routerAndpageInfo = to => {
   console.log('%c4、所有页面相关信息列表如下:', logStyle('info'));
   console.log($store.state.PageInfo.pageinfoList);
   console.log('%c5、获取菜单栏数据:', logStyle('info'));
-  console.log($store.state.SideBar.sideBarList);
+  console.log($store.state.NavMenu.sideMenu);
   console.log('%c6、获取动态路由列表:', logStyle('info'));
   console.log($store.state.Router.asyncRouterList);
   console.log('%c========================', logStyle('tit'));
