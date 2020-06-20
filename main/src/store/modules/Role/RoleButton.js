@@ -1,4 +1,4 @@
-import { roleButtonList } from '../../../../service/System/Role/role-button';
+import { roleButtonList } from '../../../service/System/Role/role-button';
 
 const RoleButton = {
   namespaced: true,

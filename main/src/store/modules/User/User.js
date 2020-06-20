@@ -1,5 +1,5 @@
-import $store from '../../../../store/index';
-import { backIniView } from '../../../../utils/behavior';
+import $store from '../../../store/index';
+import { backIniView } from '../../../utils/behavior';
 import {
   getToken,
   setToken,
@@ -7,14 +7,14 @@ import {
   getUserId,
   setUserId,
   removeUserId,
-} from '../../../../utils/library/auth';
-import { storageHandle } from '../../../../utils/storage/storage';
+} from '../../../utils/library/auth';
+import { storageHandle } from '../../../utils/storage/storage';
 import {
   oauthlogin,
   multipleEnterpriseLogin,
   ssoLogin,
   logout,
-} from '../../../../service/System/User/login';
+} from '../../../service/System/User/login';
 
 /**
  * deCrypto user-information data in cookie

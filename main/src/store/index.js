@@ -3,29 +3,29 @@ import Vuex from 'vuex';
 import getters from './getters';
 
 //core / mode
-import Core from './modules/System/Common/Core';
-import FrameInfo from './modules/System/Frame/FrameInfo';
-import Precinct from './modules/System/Frame/Precinct';
+import Core from './modules/Common/Core';
+import FrameInfo from './modules/Frame/FrameInfo';
+import Precinct from './modules/Frame/Precinct';
 
 //common
-import SearchConditions from './modules/System/Request/SearchConditions';
-import RoleButton from './modules/System/Role/RoleButton';
+import SearchConditions from './modules/Request/SearchConditions';
+import RoleButton from './modules/Role/RoleButton';
 
 //request
-import RequestHead from './modules/System/Request/RequestHeader';
-import CancelToken from './modules/System/Request/CancelToken';
+import RequestHead from './modules/Request/RequestHeader';
+import CancelToken from './modules/Request/CancelToken';
 
 //User
-import User from './modules/System/User/User';
-import UserBehavior from './modules/System/User/UserBehavior';
+import User from './modules/User/User';
+import UserBehavior from './modules/User/UserBehavior';
 
 //Layout
-import LockScreen from './modules/System/Layout/LockScreen';
-import CoverPainting from './modules/System/User/CoverPainting';
-import NavMenu from './modules/System/Layout/NavMenu';
-import PageInfo from './modules/System/Common/PageInfo';
-import PageTabs from './modules/System/Layout/PageTabs';
-import Router from './modules/System/Router/Router';
+import LockScreen from './modules/Layout/LockScreen';
+import CoverPainting from './modules/User/CoverPainting';
+import NavMenu from './modules/Layout/NavMenu';
+import PageInfo from './modules/Common/PageInfo';
+import PageTabs from './modules/Layout/PageTabs';
+import Router from './modules/Router/Router';
 
 import entrance from '../../../injection/entrance/entrance_core';
 

@@ -1,9 +1,9 @@
-import $store from '../../../index';
-import { sideBarService, mam_nav_menu_service } from '../../../../service/System/Role/role-menu';
-import { stateAssign } from '../../../utils';
-import { flattenMenu, createInitRoute } from '../../../../layout/components/NS-nav-menu/utils';
-import { storageHandle } from '../../../../utils/storage/storage';
-import expand from '../../../../../expand';
+import $store from '../../index';
+import { sideBarService, mam_nav_menu_service } from '../../../service/System/Role/role-menu';
+import { stateAssign } from '../../utils/index';
+import { flattenMenu, createInitRoute } from '../../../layout/components/NS-nav-menu/utils';
+import { storageHandle } from '../../../utils/storage/storage';
+import expand from '../../../../expand';
 
 /**
  * deCrypto side bar-information data in storage

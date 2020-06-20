@@ -1,6 +1,6 @@
-import expand from '../../../../../expand';
-import { judgeType } from '../../../../utils/library/judge';
-import { storageHandle } from '../../../../utils/storage/storage';
+import expand from '../../../../expand';
+import { judgeType } from '../../../utils/library/judge';
+import { storageHandle } from '../../../utils/storage/storage';
 
 /**
  * deCrypto user-behavior data in storage

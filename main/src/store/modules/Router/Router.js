@@ -1,8 +1,8 @@
-import { storageHandle } from '../../../../utils/storage/storage';
-import asyncTransform from '../../../../router/promission/routeconver';
-import errorPathDistribute from '../../../../router/promission/errorDistribute';
-import expand from '../../../../../expand';
-import { flattenMenu } from '../../../../layout/components/NS-nav-menu/utils';
+import { storageHandle } from '../../../utils/storage/storage';
+import asyncTransform from '../../../router/promission/routeconver';
+import errorPathDistribute from '../../../router/promission/errorDistribute';
+import expand from '../../../../expand';
+import { flattenMenu } from '../../../layout/components/NS-nav-menu/utils';
 
 const Router = {
   state: {

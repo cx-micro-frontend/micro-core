@@ -1,4 +1,4 @@
-import { baseConditions } from '../../store/modules/System/Request/SearchConditions';
+import { baseConditions } from '../../store/modules/Request/SearchConditions';
 
 export default {
   data() {

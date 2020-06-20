@@ -1,5 +1,5 @@
-import { getOperatorInfo } from '../../../../service/System/Layout/coverPainting';
-import { storageHandle } from '../../../../utils/storage/storage';
+import { getOperatorInfo } from '../../../service/System/Layout/coverPainting';
+import { storageHandle } from '../../../utils/storage/storage';
 
 /**
  * get some operator info in Storage

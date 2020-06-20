@@ -1,4 +1,4 @@
-import { storageHandle } from '../../../../utils/storage/storage';
+import { storageHandle } from '../../../utils/storage/storage';
 
 const PageTabs = {
   state: {

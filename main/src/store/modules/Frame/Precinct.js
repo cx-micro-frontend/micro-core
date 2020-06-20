@@ -1,5 +1,5 @@
-import { stateAssign } from '../../../utils';
-import { storageHandle } from '../../../../utils/storage/storage';
+import { stateAssign } from '../../utils/index';
+import { storageHandle } from '../../../utils/storage/storage';
 
 /**
  * deCrypto side bar-information data in storage

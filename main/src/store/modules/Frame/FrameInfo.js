@@ -1,6 +1,6 @@
-import { getBrowserInfo } from '../../../../utils/library/browser';
-import { detectOS } from '../../../../utils/library/detectOS';
-import expand from '../../../../../expand';
+import { getBrowserInfo } from '../../../utils/library/browser';
+import { detectOS } from '../../../utils/library/detectOS';
+import expand from '../../../../expand';
 
 /**
  * frame information 框架系统信息

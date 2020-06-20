@@ -9,7 +9,7 @@
 import axios from 'axios';
 import { fileFlowDistribute, flowTypeList } from './fileFlowDistribute';
 import solveGetCache from './solveGetCache';
-import requestHead from '../../store/modules/System/Request/RequestHeader';
+import requestHead from '../../store/modules/Request/RequestHeader';
 import { elMessage } from './fetch-message';
 import $store from '../../store';
 
