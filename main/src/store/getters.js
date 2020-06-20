@@ -20,7 +20,9 @@ const getters = {
 
   //layout
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
-  sideBarList: state => state.SideBar.sideBarList, //菜单栏数据
+  sideMenu: state => state.NavMenu.sideMenu, //菜单栏数据
+  activeModule: state => state.NavMenu.activeModule, //当前激活的顶部系统模块
+
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
   currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag, //当前访问的page信息(处理为tab页所需的格式)
   currentPageInfo: state => state.PageInfo.currentPageInfo, //当前访问的页面信息
