@@ -10,7 +10,6 @@ import Precinct from './modules/System/Frame/Precinct';
 //common
 import SearchConditions from './modules/System/Request/SearchConditions';
 import RoleButton from './modules/System/Role/RoleButton';
-import Table from './modules/System/Table/Table';
 
 //request
 import RequestHead from './modules/System/Request/RequestHeader';
@@ -42,8 +41,6 @@ const store = new Vuex.Store({
     //common
     Search: SearchConditions,
     RoleButton,
-
-    Table,
 
     //request
     RequestHead,
