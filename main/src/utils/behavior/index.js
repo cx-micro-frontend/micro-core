@@ -16,10 +16,7 @@ export const backIniView = () => {
 export const jumpToTnitPage = () => {
   const referRoute = getUrlParam('referRoute');
 
-  //是否为单点，是否存在referRoute
-  // this.initPath = referRoute || this.initRoute; initRoute
-
-  const initPath = $store.state.SideBar.initRoute.fullpath;
+  const initPath = $store.state.NavMenu.initRoute.fullpath;
 
   /**
    * jump order:
@@ -30,16 +27,11 @@ export const jumpToTnitPage = () => {
    */
   const initTargetPath = referRoute || initPath; //登录后的初始路径
 
-  // $router.push({ path: initTargetPath });
-
   /**
-   * multiple application mode
-   * 多系统门户模式情况
+   * two case：
+   * single application mode（单系统门户模式情况) - go to target path
+   * multiple application mode（多系统门户模式情况) - go to portal
+   *
    */
-  if (expand.integrationMode === 'mam') {
-    $router.push({ name: 'portal' });
-  } else {
-    //single application mode
-    $router.push({ path: initTargetPath });
-  }
+  $router.push({ path: initTargetPath });
 };
