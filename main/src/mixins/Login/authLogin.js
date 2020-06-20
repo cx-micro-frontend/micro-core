@@ -38,7 +38,6 @@ export default {
 
           //直接登录
           await authLogin(newQuery);
-
           await getMenu();
 
           return enterprise;
