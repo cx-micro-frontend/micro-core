@@ -1,8 +1,6 @@
 <template>
   <div class="headerSoltLeft" style="margin-left: 30px">
     <!--<span class="expand_style_title">外部扩展测试:</span>-->
-    <a @click="jumper('order')">工单</a>
-    <a @click="jumper('test')">测试</a>
     <ns-select :options="options" v-model="model" @change="selectChange"></ns-select>
   </div>
 </template>
@@ -23,26 +21,7 @@
       };
     },
     methods: {
-      jumper(type) {
-        this.$store.dispatch('getUserBehavior');
 
-        if (type === 'order') {
-          this.$router.push({ name: 'systemOrgEmployee' });
-        }
-        else if (type === 'test') {
-          this.$router.push({ name: 'systemOrgEmployee' });
-        }
-
-
-        console.log(this.$store.dispatch('getUserBehavior'));
-        // 存pageSize
-        // this.$store.dispatch('setUserBehavior', {
-        //   funcID: 'gcxtest123' ,
-        //   data:{
-        //     pageSize: 100
-        //   }
-        // });
-      },
       selectChange() {
 
         // this.NEAP_CACHE.removeChildInBody();
