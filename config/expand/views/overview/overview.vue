@@ -245,7 +245,7 @@
       this.setCalendar();
       this.setTodayDynamic();
       this.setBirthDay();
-      alert('概览页初始化')
+      // alert('概览页初始化')
     },
     mounted() {
       this.setChart();
