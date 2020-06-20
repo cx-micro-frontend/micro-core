@@ -1,4 +1,5 @@
 import { deepObjectMerge } from './src/utils/library/marge';
+import { filterMenu } from './src/layout/components/NS-nav-menu/utils';
 import expand from '@ROOT/config/expand';
 
 
@@ -41,11 +42,20 @@ const e = deepObjectMerge({
          * 2、路由的注册
          * 在删选侧边栏数据时，若删除了其中的条目，其结果是对应菜单栏的路由权限也同时会移除。
          * 若想隐藏对应菜单栏条目的同时，保留路由权限，则只需控制其显示隐藏即可
+         * 默认配置：
+         * 本例中，只对应转换了菜单栏条目的显示隐藏字段
          * @param list
          * @returns {*}
          */
         filter: list => {
-          return list;
+          const filterList = filterMenu(list);
+
+          if (filterList && filterList instanceof Array) {
+            return filterList;
+          }
+          else {
+            throw ('【 NEAP-ERROR 】Custom filter side menu data,  must output data list.');
+          }
         },
 
         /**
@@ -85,7 +95,7 @@ const e = deepObjectMerge({
       redirect: {
 
         'init_view': '/front/login',//重定向: 初始路由
-        'cancel_token': '',//重定向: http请求返回 - 登陆已过期 / 没有token / token失效
+        'cancel_token': '/front/login',//重定向: http请求返回 - 登陆已过期 / 没有token / token失效
         'loss_token': '/front/login',//重定向: token 缺失或失效
         'loss_pages': '/error',//重定向: 页面模块缺失,请检查模块是否注入 （动态路由注册后的错误跳转重定向，区别于普通404)
         '404': '/404',//重定向: 异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失,
