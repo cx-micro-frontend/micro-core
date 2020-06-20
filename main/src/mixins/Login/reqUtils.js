@@ -18,24 +18,31 @@ function initHandle(type = 'normal') {
  */
 export const getMenu = async () => {
   //get side bar data
-  await $store
-    .dispatch('generateSideBar')
-    .then(_ => {})
-    .catch(err => {
-      console.warn(err);
-    });
+  // await $store
+  //   .dispatch('generateSideBar')
+  //   .then(_ => {
+  //   })
+  //   .catch(err => {
+  //     console.warn(err);
+  //   });
 
-  // /**
-  //  * multiple application mode
-  //  * 多系统门户模式情况
-  //  */
-  // if (expand.integrationMode === 'mam') {
-  // }
-  // //single application mode
-  // else {
-  //   //get side bar data
-  //   await $store.dispatch('generateSideBar').then(_ => {});
-  // }
+  /**
+   * multiple application mode
+   * 多系统门户模式情况
+   */
+  if (expand.integrationMode === 'mam') {
+    await $store.dispatch('generate_mam_nav_menu').then(_ => {});
+  }
+  //single application mode
+  else {
+    //get side bar data
+    await $store
+      .dispatch('generateSideBar')
+      .then(_ => {})
+      .catch(err => {
+        console.warn(err);
+      });
+  }
 };
 
 /**
