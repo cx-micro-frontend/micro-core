@@ -23,7 +23,7 @@ import UserBehavior from './modules/System/User/UserBehavior';
 //Layout
 import LockScreen from './modules/System/Layout/LockScreen';
 import CoverPainting from './modules/System/User/CoverPainting';
-import SideBar from './modules/System/Layout/Sidebar';
+import NavMenu from './modules/System/Layout/NavMenu';
 import PageInfo from './modules/System/Common/PageInfo';
 import PageTabs from './modules/System/Layout/PageTabs';
 import Router from './modules/System/Router/Router';
@@ -56,7 +56,7 @@ const store = new Vuex.Store({
     //Layout
     LockScreen,
     CoverPainting,
-    SideBar,
+    NavMenu,
     PageInfo,
     PageTabs,
     Router,
