@@ -1,4 +1,4 @@
-import keyRefer from '../../../../layout/components/NS-biz-sidebar/sidebar-keyRefer';
+import keyRefer from '../../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
 import { storageHandle } from '../../../../utils/storage/storage';
 
 const PageInfo = {
