@@ -1,6 +1,8 @@
 import { storageHandle } from '../../../../utils/storage/storage';
 import asyncTransform from '../../../../router/promission/routeconver';
 import errorPathDistribute from '../../../../router/promission/errorDistribute';
+import expand from '../../../../../expand';
+import { flattenMenu } from '../../../../layout/components/NS-nav-menu/utils';
 
 const Router = {
   state: {
@@ -15,8 +17,22 @@ const Router = {
      * @constructor
      */
     SET_ASYNC_ROUTER: (state, route) => {
+      let _r = [];
+
+      /**
+       * two case：
+       * single application mode（单系统门户模式情况) - should flatten menu data
+       * multiple application mode（多系统门户模式情况) - direct use menu data
+       *
+       */
+      if (expand.integrationMode === 'mam') {
+        _r = flattenMenu(route);
+      } else {
+        _r = route;
+      }
+
       state.asyncRouterList = [
-        ...asyncTransform(route),
+        ...asyncTransform(_r),
         //any error path => 404 page
         ...[{ path: '*', redirect: errorPathDistribute('error_route_role') }],
       ];
