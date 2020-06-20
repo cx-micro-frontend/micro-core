@@ -53,14 +53,15 @@
 
       addViewTabs() {
         const route = this.$route;
-        const { name } = route;
+        const { name, path, meta } = route;
         const view = {
-          name: route.name,
-          path: route.path,
-          meta: route.meta,
+          name, path, meta,
         };
 
-        if (name) {
+        //判断是否为门户页
+        const isPortal = name === 'portal' || path === '/portal';
+
+        if (name && !isPortal) {
           this.$store.dispatch('addVisitedPages', view).then(
             _ => {
               //add current page cache
@@ -69,7 +70,6 @@
           );
         }
       },
-
 
       /**
        * 点击当前tabs
@@ -182,13 +182,14 @@
         return path === this.curPath;
       },
     },
+
     mounted() {
       this.addViewTabs();
     },
   };
 </script>
-<style rel="stylesheet/scss" lang="scss">
-  .operate-slot {
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .el-dropdown {
     .el-dropdown-link.el-dropdown-selfdefine {
       padding: 0;
     }
