@@ -1,3 +1,4 @@
+import { stateAssign } from '../../../utils';
 import { storageHandle } from '../../../../utils/storage/storage';
 
 /**
@@ -21,18 +22,26 @@ const Precinct = {
     precinctId: _deCryptoPrecinct().precinctId || '',
     precinctName: _deCryptoPrecinct().precinctName || '',
     organizationId: _deCryptoPrecinct().organizationId || '',
+    organizationName: _deCryptoPrecinct().organizationName || '',
   },
   mutations: {
     SET_PRECINCT: (state, data) => {
-      state.precinctId = data.precinctId;
-      state.precinctName = data.precinctName;
-      state.organizationId = data.organizationId;
+      //Assignment in mutations to change state
+      stateAssign(state, data, [
+        'precinctId',
+        'precinctName',
+        'organizationId',
+        'organizationName',
+      ]);
+
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
     },
     RESET_PRECINCT: state => {
       state.precinctId = '';
       state.precinctName = '';
       state.organizationId = '';
+      state.organizationName = '';
+
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
     },
 
@@ -40,6 +49,7 @@ const Precinct = {
       state.precinctId = '';
       state.precinctName = '';
       state.organizationId = '';
+      state.organizationName = '';
       storageHandle('remove', 'sign_precinct');
     },
   },
