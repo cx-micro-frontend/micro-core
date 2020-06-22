@@ -29,16 +29,12 @@ export const formController = {
       throw 'The function of formController - get have two params (ID and Key), ID and Key is String format, you better find it';
     }
     let getVal = null;
-    const ControllerList = $store.state.AutoForm.control.formController;
-    if (ControllerList.length > 0) {
-      ControllerList.map((item, index) => {
-        if (item.hasOwnProperty(ID)) {
-          if (item[ID].hasOwnProperty(Key)) {
-            getVal = item[ID][Key];
-          }
-        }
-      });
+    const ControllerList = $store.state.AutoForm.control.formController || {};
+
+    if (ControllerList.hasOwnProperty(ID)) {
+      if (ControllerList[ID].hasOwnProperty(Key)) getVal = ControllerList[ID][Key];
     }
+
     return getVal;
   },
   //delete one info
