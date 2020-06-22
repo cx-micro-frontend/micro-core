@@ -16,7 +16,7 @@ const dev_env = {
   IP_CONFIG: '"http://192.168.1.20"',
 
   // BASE_API: '"http://192.168.4.40:7777"',
-  BASE_API: '"http://192.168.1.95/api"',
+  // BASE_API: '"http://192.168.1.95/api"',
   // BASE_API: '"http://192.168.1.75/api"',
   // BASE_API: '"http://192.168.1.20:7777"',
   // BASE_API: '"http://new-see.oicp.io:20008/api"', //20 外网地址
@@ -28,7 +28,7 @@ const dev_env = {
   // BASE_API: '"http://10.200.254.162/api"',
   // BASE_API: '"http://ptcs.nwcloud.cn/elder/api"', //养老
   // BASE_API: '"http://arm-ext.ysservice.com.cn/api"',//永生
-  // BASE_API: '"http://192.168.1.20/api"',
+  BASE_API: '"http://192.168.1.20/api"',
 };
 
 /**
