@@ -106,7 +106,7 @@ const User = {
 
             commit('SET_LOGIN_DATA', userinfo);
 
-            resolve(res.resultData);
+            resolve(userinfo);
           })
           .catch(err => {
             reject(err);
@@ -116,14 +116,22 @@ const User = {
 
     //多户登录
     multipleEnterpriseLogin({ commit }, query) {
-      return multipleEnterpriseLogin(query).then(res => {
-        const userinfo = res.resultData || {};
+      return new Promise((resolve, reject) => {
+        multipleEnterpriseLogin(query)
+          .then(res => {
+            const userinfo = res.resultData || {};
 
-        commit('SET_TOKEN', userinfo.token);
+            commit('SET_TOKEN', userinfo.token);
 
-        commit('SET_USER_ID', userinfo.userId);
+            commit('SET_USER_ID', userinfo.userId);
 
-        commit('SET_LOGIN_DATA', userinfo);
+            commit('SET_LOGIN_DATA', userinfo);
+
+            resolve(userinfo);
+          })
+          .catch(err => {
+            reject(err);
+          });
       });
     },
 

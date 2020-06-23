@@ -88,17 +88,23 @@
             this.submitLoading = true;
 
             // 获取多集团信息 / 检测是否是多企业账号
-            this.enterprise = await this.checkByLogin({
+            const callResolve = await this.checkByLogin({
               userAccount: this.loginForm.username,
               password: this.cryptoPassWord,
               source: this.$PROJECT_NAME,//登录验证标识
             });
 
+            const { enterprise, userinfo } = callResolve;
+
+            this.enterprise = enterprise;
+
             //判断是否为多企业，多企业账号跳转到选择企业界面
             this.submitLoading = false;
 
             //非多集团情况下，登陆后直接跳转
-            if (this.enterprise.length === 1) {
+            if (userinfo &&
+              (this.enterprise && this.enterprise.length === 1)
+            ) {
               jumpToTnitPage();
             }
 
@@ -124,8 +130,16 @@
           enterpriseId: item.enterpriseId,
           source: this.$PROJECT_NAME,//登录验证标识
         };
-        await this.multipleAuthLogin(loginParams);
-        jumpToTnitPage();
+
+        const callResolve = await this.multipleAuthLogin(loginParams);
+
+
+
+        //抛出 成功回调数据 存在，即：登录成功的情况下，跳转路由
+        if (callResolve) {
+          jumpToTnitPage();
+        }
+
       },
     },
   };

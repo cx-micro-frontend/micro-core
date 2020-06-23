@@ -17,15 +17,6 @@ function initHandle(type = 'normal') {
  * 菜单获取不出来 正常跳转404页面， 单点登录 跳转登录页面
  */
 export const getMenu = async () => {
-  //get side bar data
-  // await $store
-  //   .dispatch('generateSideBar')
-  //   .then(_ => {
-  //   })
-  //   .catch(err => {
-  //     console.warn(err);
-  //   });
-
   /**
    * multiple application mode
    * 多系统门户模式情况
@@ -52,14 +43,7 @@ export const getMenu = async () => {
  */
 export const authLogin = async query => {
   initHandle();
-  await $store.dispatch('oauthlogin', query).then(
-    () => {
-      console.log('常规登录成功');
-    },
-    error => {
-      console.log('登录失败', error);
-    }
-  );
+  return $store.dispatch('oauthlogin', query);
 };
 
 /**
@@ -69,10 +53,7 @@ export const authLogin = async query => {
  */
 export const multipleAuthLogin = async query => {
   initHandle();
-  await $store
-    .dispatch('multipleEnterpriseLogin', query)
-    .then(() => {})
-    .catch(err => {});
+  return $store.dispatch('multipleEnterpriseLogin', query);
 };
 
 /**

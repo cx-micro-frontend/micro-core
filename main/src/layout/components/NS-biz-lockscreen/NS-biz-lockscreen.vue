@@ -118,12 +118,15 @@
        * @returns {Promise<void>}
        */
       async selectHandle(item, i) {
-        await this.multipleAuthLogin({
+        const userinfo = await this.multipleAuthLogin({
           userAccount: this.userinfo.userAccount,
           password: this.cryptoPassWord,
           enterpriseId: item.enterpriseId,
         });
-        this.reLoginSuccess();
+
+        if (userinfo) {
+          this.reLoginSuccess();
+        }
       },
 
       /**

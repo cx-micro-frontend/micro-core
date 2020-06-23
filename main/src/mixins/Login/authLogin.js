@@ -28,6 +28,7 @@ export default {
 
         this.hasMultiEnterprise = enterprise.length > 1;
 
+        let userinfo = null;
         // 不是多企业账号，
         if (!this.hasMultiEnterprise) {
           const newQuery = {
@@ -37,13 +38,17 @@ export default {
           };
 
           //直接登录
-          await authLogin(newQuery);
-          await getMenu();
+          userinfo = await authLogin(newQuery);
 
-          return enterprise;
+          if (userinfo) {
+            await getMenu();
+          }
         }
 
-        return enterprise;
+        return {
+          enterprise,
+          userinfo,
+        };
       } catch (e) {
         return e;
       }
@@ -55,8 +60,13 @@ export default {
      * @returns {Promise<void>}
      */
     async multipleAuthLogin(query) {
-      await multipleAuthLogin(query);
-      await getMenu();
+      const userinfo = await multipleAuthLogin(query);
+
+      if (userinfo) {
+        await getMenu();
+      }
+
+      return userinfo;
     },
 
     /**
