@@ -10,7 +10,7 @@ const merge = require('webpack-merge');
  */
 const dev_env = {
   // PROJECT_NAME: '"NEAP"',
-  PROJECT_NAME: '"xcy"',
+  PROJECT_NAME: '"jf"',
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
