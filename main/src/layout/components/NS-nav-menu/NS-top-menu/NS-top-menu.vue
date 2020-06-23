@@ -29,12 +29,12 @@
   export default {
     name: 'ns-back-to-portal',
     computed: {
+      ...mapGetters(['navMenu']),
       isActive() {
         return this.$route.name === 'portal';
       },
-      ...mapGetters(['sideMenu']),
       topNavMenu() {
-        return createTopMenu(this.sideMenu);
+        return createTopMenu(this.navMenu);
       },
     },
     methods: {
@@ -44,7 +44,7 @@
       },
       jumper(item) {
         //获取当前激活的系统模块菜单数据
-        const current = this.filterMenuByToggle(this.sideMenu, item.moduleId);
+        const current = this.filterMenuByToggle(this.navMenu, item.moduleId);
         //生成当前系统模块菜单的初始跳转路由
         const initRoute = createInitRoute(current);
 

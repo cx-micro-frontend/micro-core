@@ -16,20 +16,20 @@ function _deCryptoSideBar() {
 
 const NavMenu = {
   state: {
-    sideMenu: _deCryptoSideBar().sideMenu || [],
+    navMenu: _deCryptoSideBar().navMenu || [],
     activeModule: _deCryptoSideBar().activeModule || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['sideMenu', 'activeModule', 'initRoute']);
+      stateAssign(state, data, ['navMenu', 'activeModule', 'initRoute']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
 
     DEL_SIDEBAR_DATA: (state, data) => {
-      state.sideMenu = [];
+      state.navMenu = [];
       state.initRoute = null;
       storageHandle('remove', 'sign_nav');
     },
@@ -54,7 +54,7 @@ const NavMenu = {
 
             //packaging data
             const navdata = {
-              sideMenu: filterList,
+              navMenu: filterList,
               initRoute: createInitRoute(baseList),
             };
 
@@ -93,7 +93,7 @@ const NavMenu = {
 
             //packaging data
             const navdata = {
-              sideMenu: filterList,
+              navMenu: filterList,
               initRoute: {
                 name: 'portal',
                 fullpath: '/portal',

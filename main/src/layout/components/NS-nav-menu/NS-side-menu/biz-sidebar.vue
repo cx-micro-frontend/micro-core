@@ -50,7 +50,7 @@
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'activeModule']),
+      ...mapGetters(['navMenu', 'activeModule']),
       //当前路由信息
       currentRoute() {
         return this.$route;
@@ -61,7 +61,7 @@
       activeModule: {
         handler: function(val) {
           if (expand.integrationMode === 'mam') {
-            const menu = JSON.parse(JSON.stringify(this.sideMenu));
+            const menu = JSON.parse(JSON.stringify(this.navMenu));
             const d = filterMenuByToggle(menu, val);
             this.menuData = virtual(d);
             // this.$forceUpdate();
@@ -100,7 +100,7 @@
           }
           else {
             //为适应暂时的多级菜单 - 增加虚拟节点处理
-            this.menuData = virtual(this.sideMenu);
+            this.menuData = virtual(this.navMenu);
           }
 
         },
