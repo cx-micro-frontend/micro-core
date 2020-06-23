@@ -14,7 +14,7 @@ const dev_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
-
+  IFRAME_IP_CONFIG: '"http://192.168.1.135:2180"',
   // BASE_API: '"http://192.168.4.40:7777"',
   // BASE_API: '"http://192.168.1.95/api"',
   // BASE_API: '"http://192.168.1.75/api"',
@@ -61,6 +61,8 @@ const prod_env = {
   NODE_ENV: '"production"',
   ENV_CONFIG: '"prod"',
   BASE_API: '"/api"',
+  IP_CONFIG: '""',
+  IFRAME_IP_CONFIG: '""',
 };
 /**
  * test env config
