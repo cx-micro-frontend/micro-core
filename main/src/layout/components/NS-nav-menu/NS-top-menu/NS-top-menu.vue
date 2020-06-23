@@ -24,7 +24,8 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { createTopMenu, filterMenuByToggle, createInitRoute } from '../../../../layout/components/NS-nav-menu/utils';
+  import { createTopMenu, filterModuleByToggle, createInitRoute } from '../../../../layout/components/NS-nav-menu/utils';
+  import keyRefer from '../../NS-nav-menu/nav-menu-keyRefer';
 
   export default {
     name: 'ns-back-to-portal',
@@ -38,18 +39,21 @@
       },
     },
     methods: {
-      filterMenuByToggle,
+      filterModuleByToggle,
       back() {
         this.$router.push({ name: 'portal' });
       },
       jumper(item) {
         //获取当前激活的系统模块菜单数据
-        const current = this.filterMenuByToggle(this.navMenu, item.moduleId);
+        const currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId);
+
+        const children = currentModule[0][keyRefer['children']];
+
         //生成当前系统模块菜单的初始跳转路由
-        const initRoute = createInitRoute(current);
+        const initRoute = createInitRoute(children);
 
         this.$store.dispatch('toggle_top_nav_menu', {
-          activeModule: item.moduleId,
+          currentModule,
           initRoute: initRoute,
         }).then(_ => {
           // alert(initRoute.name);

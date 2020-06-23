@@ -34,7 +34,6 @@
   import keyRefer from '../nav-menu-keyRefer';
   import virtual from './virtual';
   import menuSlotMixins from './menu-slot-mixins';
-  import { filterMenuByToggle } from '../utils';
   import expand from '../../../../../expand';
 
   export default {
@@ -46,66 +45,42 @@
         jumpByNavEmpty: true,
         keyRefer: keyRefer,
         menuSlotProps: null,
-        menuData: [],
       };
     },
     computed: {
-      ...mapGetters(['navMenu', 'activeModule']),
+      ...mapGetters(['navMenu','currentModule']),
       //当前路由信息
       currentRoute() {
         return this.$route;
       },
-    },
-    watch: {
-      //model value binding child to father or father to child.
-      activeModule: {
-        handler: function(val) {
+      menuData(){
+        try {
           if (expand.integrationMode === 'mam') {
-            const menu = JSON.parse(JSON.stringify(this.navMenu));
-            const d = filterMenuByToggle(menu, val);
-            this.menuData = virtual(d);
-            // this.$forceUpdate();
-            // console.log(45454545454);
-            // console.log(45454545454);
-            // console.log(this.menuData);
-            // console.log(45454545454);
-            // console.log(45454545454);
+            console.log(222222);
+            console.log(222222);
+            console.log(222222);
+            console.log(this.currentModule);
+            if (!this.currentModule) return [];
 
-            // this.menuData =
-            //   [
-            //
-            //     //概览页
-            //     {
-            //       menuIconcls: 'menu-gailan',
-            //       menuMenuname: '概览', //显示名称
-            //       menuMenusubname: 'overview', //路径符号
-            //       funcId: 'dashboard', //func-ID
-            //       syLayer: 2,
-            //       syOrderindex: 1,
-            //       syStatus: '1', //隐藏与否
-            //       childMenus: [],
-            //     },
-            //     //缓存示例页面
-            //     {
-            //       menuIconcls: 'menu-jiedaiguanli',
-            //       menuMenuname: '缓存', //显示名称
-            //       menuMenusubname: 'cacheDemo', //路径符号
-            //       funcId: 'cacheDemo', //func-ID
-            //       syLayer: 2,
-            //       syOrderindex: 1,
-            //       syStatus: '1', //隐藏与否
-            //       childMenus: [],
-            //     },
-            //   ];
+            const currentModule = JSON.parse(JSON.stringify(this.currentModule));
+            const menu = currentModule[0][keyRefer['children']];
+
+
+            console.log(virtual(menu));
+            console.log(222222);
+
+            return virtual(menu);
           }
           else {
             //为适应暂时的多级菜单 - 增加虚拟节点处理
-            this.menuData = virtual(this.navMenu);
+            return virtual(this.navMenu);
           }
-
-        },
-        immediate: true,
-      },
+        }
+        catch (e) {
+          console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');
+          return [];
+        }
+      }
     },
     methods: {
 

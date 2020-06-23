@@ -28,8 +28,9 @@ const PageInfo = {
         pageInfoList = [];
       } else {
         data.forEach((firstItem, firstIndex) => {
-          if (firstItem[keyRefer['children']] && firstItem[keyRefer['children']].length > 0) {
-            firstItem[keyRefer['children']].forEach((secondItem, secondIndex) => {
+          const children = firstItem[keyRefer['children']];
+          if (children && children.length > 0) {
+            children.forEach((secondItem, secondIndex) => {
               pageInfoList.push({
                 title: secondItem[keyRefer['label']], //router-web name
                 name: secondItem[keyRefer['menuRouter']], //router-web name
@@ -41,6 +42,7 @@ const PageInfo = {
                 firstMenuIndex: firstItem[keyRefer['menuIndex']] - 1, //first menu index ( -1 )
                 secondMenuIndex: secondItem[keyRefer['menuIndex']] - 1, //second menu index ( -1 )
                 funcId: secondItem[keyRefer['funcId']], //funcId
+                iframeUrl: secondItem[keyRefer['iframeUrl']],
               });
             });
           } else {
@@ -49,6 +51,7 @@ const PageInfo = {
               name: firstItem[keyRefer['menuRouter']],
               path: '/' + firstItem[keyRefer['menuRouter']],
               funcId: firstItem[keyRefer['funcId']] || 'normalFunic',
+              iframeUrl: secondItem[keyRefer['iframeUrl']],
             });
           }
         });

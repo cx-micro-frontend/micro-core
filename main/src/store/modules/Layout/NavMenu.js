@@ -17,13 +17,13 @@ function _deCryptoSideBar() {
 const NavMenu = {
   state: {
     navMenu: _deCryptoSideBar().navMenu || [],
-    activeModule: _deCryptoSideBar().activeModule || '',
+    currentModule: _deCryptoSideBar().currentModule || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['navMenu', 'activeModule', 'initRoute']);
+      stateAssign(state, data, ['navMenu', 'currentModule', 'initRoute']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
@@ -115,7 +115,7 @@ const NavMenu = {
     /**
      * toggle top nav menu module
      * @param commit
-     * @param data - activeModule / initRoute
+     * @param data - currentModule / initRoute
      * @returns {Promise<any>}
      */
     toggle_top_nav_menu({ commit }, data) {

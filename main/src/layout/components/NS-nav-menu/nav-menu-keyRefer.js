@@ -7,6 +7,7 @@
 const keyRefer = {
   moduleId: 'moduleId', //顶部子系统模块 - ID
   moduleName: 'moduleName', //顶部子系统模块 - 显示名称
+  iframeUrl: 'url', //v8子系统模块 iframe 嵌入文件相对路径地址
 
   funcId: 'funcId', //func-ID
   label: 'menuMenuname', //显示名称

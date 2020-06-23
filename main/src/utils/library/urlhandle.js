@@ -21,3 +21,12 @@ export const getUrlParam = name => {
 export const getBaseURL = () => {
   return process.env.NODE_ENV === 'development' ? process.env.IP_CONFIG : '';
 };
+
+/**
+ * get iframe base url from process env
+ * config in env.config.js - root path
+ * @returns {any}
+ */
+export const iframeBaseURL = () => {
+  return process.env.IFRAME_IP_CONFIG;
+};

@@ -22,11 +22,11 @@ export const createTopMenu = list => {
  * @param key
  * @returns {*}
  */
-export const filterMenuByToggle = (list, key) => {
+export const filterModuleByToggle = (list, key) => {
   try {
-    return list.filter(l => l[keyRefer['moduleId']] === key)[0][keyRefer['children']];
+    return list.filter(l => l[keyRefer['moduleId']] === key);
   } catch (e) {
-    return [];
+    return {};
   }
 };
 
@@ -123,15 +123,9 @@ export const createInitRoute = list => {
     } else {
     }
   } else {
-    console.log(888888888);
-    console.log(8888888888);
-    console.log(list);
     initRoute = _getInitRouteInMenu(list);
   }
 
-  console.log(99999999999999999);
-  console.log(initRoute);
-  console.log(99999999999999999);
   if (
     !['name', 'fullpath'].every(
       _k => initRoute.hasOwnProperty(_k) && typeof initRoute[_k] === 'string'
