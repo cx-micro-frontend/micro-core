@@ -48,7 +48,6 @@ const CoverPainting = {
       };
 
       storageHandle('set', 'sign_operator_info', JSON.stringify(state.operatorInfo));
-      document.title = state.operatorInfo.operatorName;
     },
   },
   actions: {

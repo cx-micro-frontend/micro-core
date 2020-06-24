@@ -9,13 +9,33 @@
       <ns-icon-class class="back-to-portal-icon"
                      icon-class="el-icon-s-home"
       ></ns-icon-class>
-
       <span>首页</span>
     </div>
 
+    <el-popover
+      v-model="model"
+      popper-class="ns-top-menu_popover"
+      width="380"
+      placement="bottom"
+      trigger="click"
+      v-if="popoverDisplay"
+    >
+      <div class="ns-top-menu_module" slot="reference">
+        <ns-icon-svg :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
+        <span>我的应用</span>
+      </div>
 
-    <div class="ns-top-menu_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
-      <span>{{item.moduleName}}</span>
+      <div class="sub-system_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
+        <ns-icon-svg icon-class="module-zhaoshangzulin"></ns-icon-svg>
+        <p>{{item.moduleName}}</p>
+      </div>
+
+    </el-popover>
+
+    <div class="fl clear" v-if="!popoverDisplay" >
+      <div class="ns-top-menu_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
+        <span>{{item.moduleName}}</span>
+      </div>
     </div>
 
   </div>
@@ -29,6 +49,11 @@
 
   export default {
     name: 'ns-back-to-portal',
+    data() {
+      return {
+        model: false,
+      };
+    },
     computed: {
       ...mapGetters(['navMenu']),
       isActive() {
@@ -36,6 +61,9 @@
       },
       topNavMenu() {
         return createTopMenu(this.navMenu);
+      },
+      popoverDisplay() {
+        return this.topNavMenu && this.topNavMenu.length > 3;
       },
     },
     methods: {
@@ -59,26 +87,6 @@
           // alert(initRoute.name);
           this.$router.push({ name: initRoute.name, params: { noRefresh: true } });
         });
-
-
-        // this.$store.dispatch('getUserBehavior');
-        //
-        // if (type === 'order') {
-        //   this.$router.push({ name: 'systemOrgEmployee' });
-        // }
-        // else if (type === 'test') {
-        //   this.$router.push({ name: 'systemOrgEmployee' });
-        // }
-
-
-        // console.log(this.$store.dispatch('getUserBehavior'));
-        // 存pageSize
-        // this.$store.dispatch('setUserBehavior', {
-        //   funcID: 'gcxtest123' ,
-        //   data:{
-        //     pageSize: 100
-        //   }
-        // });
       },
     },
     created() {
@@ -108,19 +116,43 @@
         background: $back-color_active;
       }
     }
-    //铃铛
-    i.ns-icon-class {
-      font-size: 22px;
-      width: 20px;
-      height: 20px;
+
+    svg.ns-icon-svg, i.ns-icon-class {
       vertical-align: -0.1em;
       padding: 0;
       color: #222222;
     }
+    i.ns-icon-class {
+      font-size: 20px;
+      vertical-align: -0.2em;
+    }
+
     span {
+      font-size: 14px;
       font-weight: bold;
       color: #222222;
     }
+  }
+</style>
 
+<style rel="stylesheet/scss" lang="scss">
+  .el-popover.ns-top-menu_popover {
+    padding: 15px;
+    .sub-system_module {
+      width: 60px;
+      text-align: center;
+      margin: 5px 20px 5px 0;
+      cursor: pointer;
+      &:nth-child(5n+0) {
+        margin-right: 0;
+      }
+      svg {
+        width: 44px;
+        height: 44px;
+      }
+      p {
+        color: #666;
+      }
+    }
   }
 </style>

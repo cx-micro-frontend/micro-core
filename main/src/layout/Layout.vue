@@ -83,11 +83,12 @@
   } from './index';
   import transform from './mixins/transform';
   import portal from './mixins/portal';
+  import changeDocumentTitle from './mixins/changeDocumentTitle';
   import expand from '../../expand';
 
   export default {
     name: 'layout',
-    mixins: [transform, portal],
+    mixins: [transform, portal, changeDocumentTitle],
     components: { nsTopMenu, bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     data() {
       return {};

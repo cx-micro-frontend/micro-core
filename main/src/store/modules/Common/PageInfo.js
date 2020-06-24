@@ -51,7 +51,7 @@ const PageInfo = {
               name: firstItem[keyRefer['menuRouter']],
               path: '/' + firstItem[keyRefer['menuRouter']],
               funcId: firstItem[keyRefer['funcId']] || 'normalFunic',
-              iframeUrl: secondItem[keyRefer['iframeUrl']],
+              iframeUrl: firstItem[keyRefer['iframeUrl']],
             });
           }
         });
