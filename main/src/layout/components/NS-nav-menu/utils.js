@@ -107,10 +107,10 @@ function _getInitRouteInMenu(list) {
 
 /**
  * create init route
- * @param parame :
- *    - sideMenu
-      - navMenu
-      - moduleId
+ * @param parame:
+ *     - sideMenu - 原始菜单栏数据
+       - navMenu - 所有子系统模块导航菜单数据（只在 multiple application mode - 多系统门户模式 中存在)
+       - moduleId - 当前激活系统模块id（只在 multiple application mode - 多系统门户模式 中存在)
  * @returns {*}
  */
 export const createInitRoute = parame => {
