@@ -4,6 +4,7 @@ import { routerAndpageInfo } from './auxiliary';
 import { isInAuthwhiteList } from '../whiteList';
 import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
+import { logStyle } from '../../utils/library/log';
 let addRouFlag = false;
 
 /**
@@ -33,7 +34,8 @@ export default (to, from, next) => {
     console.log(from);
     console.log(to);
     console.log(`${from.path}  ${to.path}`);
-    console.log('获取到的菜单栏数据：', $store.getters.navMenu);
+    console.log('获取所有子系统模块导航数据：', $store.getters.navMenu);
+    console.log('获取到的菜单栏数据：', $store.getters.sideMenu);
     console.log(`addRouFlag 状态：${addRouFlag}`);
     console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
     console.log(pageinfoList);

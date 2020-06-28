@@ -48,33 +48,15 @@
       };
     },
     computed: {
-      ...mapGetters(['navMenu','currentModule']),
+      ...mapGetters(['sideMenu']),
       //当前路由信息
       currentRoute() {
         return this.$route;
       },
       menuData(){
         try {
-          if (expand.integrationMode === 'mam') {
-            console.log(222222);
-            console.log(222222);
-            console.log(222222);
-            console.log(this.currentModule);
-            if (!this.currentModule) return [];
-
-            const currentModule = JSON.parse(JSON.stringify(this.currentModule));
-            const menu = currentModule[0][keyRefer['children']];
-
-
-            console.log(virtual(menu));
-            console.log(222222);
-
-            return virtual(menu);
-          }
-          else {
-            //为适应暂时的多级菜单 - 增加虚拟节点处理
-            return virtual(this.navMenu);
-          }
+          //为适应暂时的多级菜单 - 增加虚拟节点处理
+          return virtual(this.sideMenu);
         }
         catch (e) {
           console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');

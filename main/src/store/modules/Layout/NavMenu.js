@@ -17,13 +17,14 @@ function _deCryptoSideBar() {
 const NavMenu = {
   state: {
     navMenu: _deCryptoSideBar().navMenu || [],
-    currentModule: _deCryptoSideBar().currentModule || '',
+    sideMenu: _deCryptoSideBar().sideMenu || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
+    moduleId: _deCryptoSideBar().moduleId || '',
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['navMenu', 'currentModule', 'initRoute']);
+      stateAssign(state, data, ['navMenu', 'sideMenu', 'initRoute', 'moduleId']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
@@ -54,7 +55,7 @@ const NavMenu = {
 
             //packaging data
             const navdata = {
-              navMenu: filterList,
+              sideMenu: filterList,
               initRoute: createInitRoute(baseList),
             };
 
@@ -91,13 +92,18 @@ const NavMenu = {
              */
             $store.dispatch('setPageInfoList', flattenMenu(filterList));
 
-            //packaging data
+            /**
+             * After login in, only the navigation data of all modules can be obtained.
+             * The data in the sidebar needs to be obtained by clicking select module
+             * @type {{navMenu: *, initRoute: {name: string, fullpath: string}}}
+             */
             const navdata = {
               navMenu: filterList,
               initRoute: {
                 name: 'portal',
                 fullpath: '/portal',
               },
+              moduleId: 'portal',
             };
             commit('SET_SIDEBAR_DATA', navdata);
 
@@ -115,12 +121,16 @@ const NavMenu = {
     /**
      * toggle top nav menu module
      * @param commit
-     * @param data - currentModule / initRoute
+     * @param data - sideMenu / initRoute
      * @returns {Promise<any>}
      */
     toggle_top_nav_menu({ commit }, data) {
       return new Promise(resolve => {
-        commit('SET_SIDEBAR_DATA', data);
+        commit('SET_SIDEBAR_DATA', {
+          sideMenu: data.sideMenu,
+          initRoute: data.initRoute,
+          moduleId: data.moduleId,
+        });
         resolve();
       });
     },

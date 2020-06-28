@@ -32,7 +32,7 @@
 
     </el-popover>
 
-    <div class="fl clear" v-if="!popoverDisplay" >
+    <div class="fl clear" v-if="!popoverDisplay">
       <div class="ns-top-menu_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
         <span>{{item.moduleName}}</span>
       </div>
@@ -73,15 +73,17 @@
       },
       jumper(item) {
         //获取当前激活的系统模块菜单数据
-        const currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId);
+        const _currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId)[0];
 
-        const children = currentModule[0][keyRefer['children']];
+        const moduleId = _currentModule[keyRefer['moduleId']];
+        const sideMenu = _currentModule[keyRefer['children']];
 
         //生成当前系统模块菜单的初始跳转路由
-        const initRoute = createInitRoute(children);
+        const initRoute = createInitRoute(sideMenu);
 
         this.$store.dispatch('toggle_top_nav_menu', {
-          currentModule,
+          sideMenu,
+          moduleId,
           initRoute: initRoute,
         }).then(_ => {
           // alert(initRoute.name);
