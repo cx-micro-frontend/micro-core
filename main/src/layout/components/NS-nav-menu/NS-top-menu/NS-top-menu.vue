@@ -79,7 +79,11 @@
         const sideMenu = _currentModule[keyRefer['children']];
 
         //生成当前系统模块菜单的初始跳转路由
-        const initRoute = createInitRoute(sideMenu);
+        const initRoute = createInitRoute({
+          sideMenu,
+          navMenu: this.navMenu,
+          moduleId,
+        });
 
         this.$store.dispatch('toggle_top_nav_menu', {
           sideMenu,

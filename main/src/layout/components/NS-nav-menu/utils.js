@@ -105,7 +105,15 @@ function _getInitRouteInMenu(list) {
   };
 }
 
-export const createInitRoute = list => {
+/**
+ * create init route
+ * @param parame :
+ *    - sideMenu
+      - navMenu
+      - moduleId
+ * @returns {*}
+ */
+export const createInitRoute = parame => {
   /*
    * -----------------
    * 1、get init route
@@ -117,13 +125,13 @@ export const createInitRoute = list => {
 
   if (_ini) {
     if (judgeType(_ini) === 'function') {
-      initRoute = _ini(list);
+      initRoute = _ini(parame);
     } else if (judgeType(_ini) === 'object') {
       initRoute = _ini;
     } else {
     }
   } else {
-    initRoute = _getInitRouteInMenu(list);
+    initRoute = _getInitRouteInMenu(parame.sideMenu);
   }
 
   if (

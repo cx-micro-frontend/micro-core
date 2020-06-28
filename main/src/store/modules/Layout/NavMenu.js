@@ -56,7 +56,9 @@ const NavMenu = {
             //packaging data
             const navdata = {
               sideMenu: filterList,
-              initRoute: createInitRoute(baseList),
+              initRoute: createInitRoute({
+                sideMenu: baseList,
+              }),
             };
 
             commit('SET_SIDEBAR_DATA', navdata);
