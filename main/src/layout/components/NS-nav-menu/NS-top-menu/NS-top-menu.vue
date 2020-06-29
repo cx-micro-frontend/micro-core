@@ -22,7 +22,7 @@
     >
       <div class="ns-top-menu_module" slot="reference">
         <ns-icon-svg :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
-        <span>我的应用</span>
+        <span style="margin-left: 2px">我的应用</span>
       </div>
 
       <div class="sub-system_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
