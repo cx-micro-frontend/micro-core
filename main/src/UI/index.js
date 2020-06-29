@@ -18,6 +18,7 @@ import '../style/index.scss';
 //   if (!iconfont) return;
 //   iconfont.roleButton();
 //   iconfont.navMenu();
+//   iconfont.moduleMenu();
 // })(window);
 
 //components
