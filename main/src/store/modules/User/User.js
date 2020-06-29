@@ -38,6 +38,7 @@ const User = {
       userSex: _deCryptoUserInfo().userSex,
       themeColor: _deCryptoUserInfo().themeColor,
       NWExID: _deCryptoUserInfo().NWExID, //v8 需要
+      NWESessionId: _deCryptoUserInfo().NWESessionId, //v8 需要
     },
   },
   mutations: {
@@ -53,6 +54,7 @@ const User = {
       state.userinfo.userSex = data.userSex;
       state.userinfo.themeColor = data.themeColor;
       state.userinfo.NWExID = data.NWExID;
+      state.userinfo.NWESessionId = data.NWESessionId;
 
       storageHandle('set', 'sign_user_info', JSON.stringify(state.userinfo));
     },

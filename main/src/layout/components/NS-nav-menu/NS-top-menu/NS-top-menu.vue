@@ -26,7 +26,7 @@
       </div>
 
       <div class="sub-system_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
-        <ns-icon-svg icon-class="module-zhaoshangzulin"></ns-icon-svg>
+        <ns-icon-svg :icon-class="item.icon"></ns-icon-svg>
         <p>{{item.moduleName}}</p>
       </div>
 
@@ -73,7 +73,7 @@
       },
       jumper(item) {
         //获取当前激活的系统模块菜单数据
-        const _currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId)[0];
+        const _currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId);
 
         const moduleId = _currentModule[keyRefer['moduleId']];
         const sideMenu = _currentModule[keyRefer['children']];
@@ -92,6 +92,7 @@
         }).then(_ => {
           // alert(initRoute.name);
           this.$router.push({ name: initRoute.name, params: { noRefresh: true } });
+          this.model = false;
         });
       },
     },
@@ -101,45 +102,6 @@
   };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-  $back-color_active: #f2f2f2;
-  .ns-top-menu {
-    cursor: pointer;
-    margin: 0 5px;
-    .ns-top-menu_module {
-      display: inline-block;
-      padding: 0 5px;
-      margin-right: 5px;
-      /*min-width: 80px;*/
-      text-align: center;
-      &:last-child {
-        margin-right: 0;
-      }
-      &:hover {
-        background: $back-color_active;
-      }
-      &.is-active {
-        background: $back-color_active;
-      }
-    }
-
-    svg.ns-icon-svg, i.ns-icon-class {
-      vertical-align: -0.1em;
-      padding: 0;
-      color: #222222;
-    }
-    i.ns-icon-class {
-      font-size: 20px;
-      vertical-align: -0.2em;
-    }
-
-    span {
-      font-size: 14px;
-      font-weight: bold;
-      color: #222222;
-    }
-  }
-</style>
 
 <style rel="stylesheet/scss" lang="scss">
   .el-popover.ns-top-menu_popover {
@@ -159,6 +121,46 @@
       p {
         color: #666;
       }
+    }
+  }
+</style>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  $back-color_active: #f2f2f2;
+  .ns-top-menu {
+    cursor: pointer;
+    margin: 0 5px;
+    .ns-top-menu_module {
+      display: inline-block;
+      padding: 0 5px;
+      margin-right: 5px;
+      /*min-width: 80px;*/
+      text-align: center;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        background: transparent;
+      }
+      &.is-active {
+        background: transparent;
+      }
+    }
+
+    svg.ns-icon-svg, i.ns-icon-class {
+      vertical-align: -0.1em;
+      padding: 0;
+      color: #fff;
+    }
+    i.ns-icon-class {
+      font-size: 20px;
+      vertical-align: -0.2em;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
     }
   }
 </style>

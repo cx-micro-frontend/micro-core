@@ -44,12 +44,15 @@ export default {
     //  * type - 1、function 2、Object
     //  * return { name: 'xx',fullpath: 'xx'}
     //  * default - null
-    //  * @param navmenu - 原始菜单栏数据
+    //  * @param parame:
+    //  *     - sideMenu - 原始菜单栏数据
+    //  - navMenu - 所有子系统模块导航菜单数据（只在 multiple application mode - 多系统门户模式 中存在)
+    //  - moduleId - 当前激活系统模块id（只在 multiple application mode - 多系统门户模式 中存在)
     //  * @returns {{name: string, fullpath: string}}
     //  */
-    // initRouteByAuth: navmenu => {
+    // initRouteByAuth: parame => {
     //   console.log('initRouteByAuth-initRouteByAuth');
-    //   console.log(navmenu);
+    //   console.log(parame);
     //   return {
     //     name: 'overview',
     //     fullpath: '/overview',
