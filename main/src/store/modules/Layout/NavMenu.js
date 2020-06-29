@@ -16,7 +16,7 @@ function _deCryptoSideBar() {
 
 const NavMenu = {
   state: {
-    navMenu: _deCryptoSideBar().navMenu || [],
+    moduleMenu: _deCryptoSideBar().moduleMenu || [],
     sideMenu: _deCryptoSideBar().sideMenu || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     moduleId: _deCryptoSideBar().moduleId || '',
@@ -24,13 +24,13 @@ const NavMenu = {
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['navMenu', 'sideMenu', 'initRoute', 'moduleId']);
+      stateAssign(state, data, ['moduleMenu', 'sideMenu', 'initRoute', 'moduleId']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
 
     DEL_SIDEBAR_DATA: (state, data) => {
-      state.navMenu = [];
+      state.moduleMenu = [];
       state.initRoute = null;
       storageHandle('remove', 'sign_nav');
     },
@@ -97,10 +97,10 @@ const NavMenu = {
             /**
              * After login in, only the navigation data of all modules can be obtained.
              * The data in the sidebar needs to be obtained by clicking select module
-             * @type {{navMenu: *, initRoute: {name: string, fullpath: string}}}
+             * @type {{moduleMenu: *, initRoute: {name: string, fullpath: string}}}
              */
             const navdata = {
-              navMenu: filterList,
+              moduleMenu: filterList,
               initRoute: {
                 name: 'portal',
                 fullpath: '/portal',

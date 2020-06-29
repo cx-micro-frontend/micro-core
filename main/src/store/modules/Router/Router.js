@@ -13,12 +13,13 @@ const Router = {
     /**
      * set async router list
      * @param state
-     * @param route
+     * @param navData - moduleMenu/sideMenu
      * @constructor
      */
-    SET_ASYNC_ROUTER: (state, route) => {
+    SET_ASYNC_ROUTER: (state, navData) => {
       let _r = [];
 
+      const { moduleMenu, sideMenu } = navData;
       /**
        * two case：
        * single application mode（单系统门户模式情况) - should flatten menu data
@@ -26,9 +27,9 @@ const Router = {
        *
        */
       if (expand.integrationMode === 'mam') {
-        _r = flattenMenu(route);
+        _r = flattenMenu(moduleMenu);
       } else {
-        _r = route;
+        _r = sideMenu;
       }
 
       state.asyncRouterList = [
@@ -57,10 +58,16 @@ const Router = {
     },
   },
   actions: {
-    setAsyncRouter: ({ commit }, route) => {
+    /**
+     * set async router
+     * @param commit
+     * @param navData - moduleMenu/sideMenu
+     * @returns {Promise<any>}
+     */
+    setAsyncRouter: ({ commit }, navData) => {
       return new Promise((resolve, reject) => {
-        if (route) {
-          commit('SET_ASYNC_ROUTER', route);
+        if (navData) {
+          commit('SET_ASYNC_ROUTER', navData);
           resolve();
         } else {
           reject();

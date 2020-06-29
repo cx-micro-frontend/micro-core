@@ -20,7 +20,7 @@ const getters = {
 
   //layout
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
-  navMenu: state => state.NavMenu.navMenu, //所有导航菜单数据
+  moduleMenu: state => state.NavMenu.moduleMenu, //所有导航菜单数据
   sideMenu: state => state.NavMenu.sideMenu, //当前的侧边栏导航数据
 
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示

@@ -55,12 +55,12 @@
       };
     },
     computed: {
-      ...mapGetters(['navMenu']),
+      ...mapGetters(['moduleMenu']),
       isActive() {
         return this.$route.name === 'portal';
       },
       topNavMenu() {
-        return createTopMenu(this.navMenu);
+        return createTopMenu(this.moduleMenu);
       },
       popoverDisplay() {
         return this.topNavMenu && this.topNavMenu.length > 3;
@@ -73,7 +73,7 @@
       },
       jumper(item) {
         //获取当前激活的系统模块菜单数据
-        const _currentModule = this.filterModuleByToggle(this.navMenu, item.moduleId);
+        const _currentModule = this.filterModuleByToggle(this.moduleMenu, item.moduleId);
 
         const moduleId = _currentModule[keyRefer['moduleId']];
         const sideMenu = _currentModule[keyRefer['children']];
@@ -81,7 +81,7 @@
         //生成当前系统模块菜单的初始跳转路由
         const initRoute = createInitRoute({
           sideMenu,
-          navMenu: this.navMenu,
+          moduleMenu: this.moduleMenu,
           moduleId,
         });
 

@@ -19,7 +19,7 @@ export const routerAndpageInfo = to => {
   console.log('%c4、所有页面相关信息列表如下:', logStyle('info'));
   console.log($store.state.PageInfo.pageinfoList);
   console.log('%c5、获取所有子系统模块导航数据:', logStyle('info'));
-  console.log($store.state.NavMenu.navMenu);
+  console.log($store.state.NavMenu.moduleMenu);
   console.log('%c6、获取侧边菜单导航数据:', logStyle('info'));
   console.log($store.state.NavMenu.sideMenu);
   console.log('%c7、获取动态路由列表:', logStyle('info'));
