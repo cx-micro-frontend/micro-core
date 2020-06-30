@@ -28,5 +28,5 @@ export const getBaseURL = () => {
  * @returns {any}
  */
 export const iframeBaseURL = () => {
-  return process.env.IFRAME_IP_CONFIG;
+  return process.env.IFRAME_IP_CONFIG || '';
 };
