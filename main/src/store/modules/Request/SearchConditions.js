@@ -5,7 +5,7 @@ export const baseConditions = {
   dictionaryitemDictionaryId: '',
   filterList: [], //条件
   pageNum: 1, //当前页数
-  pageSize: 10, //每页显示条目个数
+  pageSize: 20, //每页显示条目个数
   orderBy: '', //排序：升序还是降序
   orderFieldName: '', //排序：字段名
   mainSearch: '', //输入框值
