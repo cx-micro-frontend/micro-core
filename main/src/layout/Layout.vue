@@ -84,6 +84,7 @@
   import transform from './mixins/transform';
   import portal from './mixins/portal';
   import changeDocumentTitle from './mixins/changeDocumentTitle';
+  // import killOptionByScroll from './mixins/killOptionByScroll';
   import expand from '../../expand';
 
   export default {

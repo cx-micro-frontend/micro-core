@@ -12,7 +12,8 @@
                 @second-nav-click="secondNavClick"
                 @mouse-enter="mouseEnter">
       <template slot="first-slot" slot-scope="scope">
-        <ns-icon-svg icon-class="jiantou" v-if="scope.item.menuIndex === 1" style="margin-left: 25px"></ns-icon-svg>
+        <!--<ns-icon-svg icon-class="jiantou" v-if="scope.item.menuIndex === 1" style="margin-left: 25px"></ns-icon-svg>-->
+        <ns-icon-svg icon-class="jiantou" v-if="scope.item.menuMenusubname === 'guide'" style="margin-left: 25px"></ns-icon-svg>
       </template>
       <template slot="second-slot" slot-scope="scope">
         <span v-if="secondNavSlot(scope)">=></span>
@@ -53,7 +54,7 @@
       currentRoute() {
         return this.$route;
       },
-      menuData(){
+      menuData() {
         try {
           //为适应暂时的多级菜单 - 增加虚拟节点处理
           return virtual(this.sideMenu);
@@ -62,10 +63,9 @@
           console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');
           return [];
         }
-      }
+      },
     },
     methods: {
-
       navClick(parame, fn) {
         expand.layout.sidebar.jump(parame, fn);
       },
