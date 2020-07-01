@@ -40,7 +40,7 @@
     computed: {
       ...mapGetters(['visitedPages', 'currentVisitedPageTag']),
       initRoute() {
-        return this.$store.state.SideBar.initRoute;
+        return this.$store.state.NavMenu.initRoute;
       },
       curPath() {
         return this.$route.path;
