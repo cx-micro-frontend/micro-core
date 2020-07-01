@@ -9,6 +9,7 @@
     'is-hide-frame':isInIframe,
     'is-portal':isPortal
   }">
+
     <template slot="header">
       <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
       <div class="fl head-logo">
@@ -84,12 +85,12 @@
   import transform from './mixins/transform';
   import portal from './mixins/portal';
   import changeDocumentTitle from './mixins/changeDocumentTitle';
-  // import killOptionByScroll from './mixins/killOptionByScroll';
+  import killPopoverByScroll from './mixins/killPopoverByScroll';
   import expand from '../../expand';
 
   export default {
     name: 'layout',
-    mixins: [transform, portal, changeDocumentTitle],
+    mixins: [transform, portal, changeDocumentTitle, killPopoverByScroll],
     components: { nsTopMenu, bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     data() {
       return {};
