@@ -45,7 +45,7 @@ const UserBehavior = {
         return false;
       }
 
-      if (judgeType(data) !== 'object') {
+      if (!data || judgeType(data) !== 'object') {
         return false;
       }
 
