@@ -22,6 +22,24 @@ const UserBehavior = {
     behavior: _deCryptoUserBehavior(),
   },
   mutations: {
+    /**
+     * ACTIVE USER BEHAVIOR
+     * 激活 UserBehavior - 从本地存储中获取，手动触发 state 存储
+     * @param state
+     * @constructor
+     */
+    ACTIVE_USER_BEHAVIOR: state => {
+      state.behavior = _deCryptoUserBehavior();
+    },
+
+    /**
+     * set user behavior
+     * @param state
+     * @param funcID
+     * @param data
+     * @returns {boolean}
+     * @constructor
+     */
     SET_USER_BEHAVIOR: (state, { funcID, data }) => {
       if (!funcID) {
         return false;
@@ -31,8 +49,6 @@ const UserBehavior = {
         return false;
       }
 
-      console.log(22222222222);
-
       const behaviorCache = expand.behaviorCache;
 
       Object.keys(data).forEach(key => {
@@ -41,19 +57,13 @@ const UserBehavior = {
         }
       });
 
-      console.log(data);
-
-      console.log(22222222222);
-
       if (Object.keys(data).length) {
-        console.log(333333333333);
         state.behavior[funcID] = Object.assign({}, state.behavior[funcID], data);
 
         storageHandle('set', 'sign_user_behavior', JSON.stringify(state.behavior));
-
-        // localStorage.setItem(userBehaviorKey(), JSON.stringify(state.behavior));
       }
     },
+
     RESET_USER_BEHAVIOR: state => {
       state.behavior = {};
     },
@@ -64,17 +74,23 @@ const UserBehavior = {
     },
   },
   actions: {
+    /**
+     * 激活 UserBehavior - 从本地存储中获取，手动触发 state 存储，
+     * @param commit
+     * @param data
+     */
+    activeUserBehavior: ({ commit }, data) => {
+      commit('ACTIVE_USER_BEHAVIOR', data);
+    },
+    /**
+     * set user behavior data
+     * @param commit
+     * @param data
+     */
     setUserBehavior: ({ commit }, data) => {
       commit('SET_USER_BEHAVIOR', data);
     },
 
-    getUserBehavior: ({ state, commit }, data) => {
-      console.log('getUserBehavior-getUserBehavior');
-      console.log('getUserBehavior-getUserBehavior');
-      console.log(state);
-      console.log('getUserBehavior-getUserBehavior');
-      return state;
-    },
     resetUserBehavior: ({ commit }) => {
       commit('RESET_USER_BEHAVIOR');
     },
