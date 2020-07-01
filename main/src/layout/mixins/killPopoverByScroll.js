@@ -1,3 +1,5 @@
+import { debounce } from '../../utils/library/event';
+
 let lock = true;
 let el = null;
 
@@ -11,25 +13,33 @@ MouseupEvent.initEvent('mouseup', true, true);
 // const MouseupEvent = new Event('mouseup', { bubbles: true });
 
 /**
+ * 模拟 下拉框 - popover 之外点击
  * fakeClickOutSide
  */
 const fakeClickOutSide = () => {
   document.dispatchEvent(MousedownEvent);
   document.dispatchEvent(MouseupEvent);
-  lock = true; // console.log('dispatchEvent');
+  lock = true;
 };
+
 /**
  * mousedownHandle
  * @param e
  */
 const mousedownHandle = e => {
   let classList = e.target.classList;
-  if (classList.contains('el-select__caret') || classList.contains('el-input__inner')) {
-    lock = false;
-    return;
-  }
-  if (lock) return;
-  fakeClickOutSide();
+
+  let checkDom = (e.path || []).some(dom => {
+    let classList = dom.classList || [];
+    return classList.contains('el-dropdown') || classList.contains('el-popover__reference');
+  });
+
+  //select\dropdown\popover
+  lock = !(
+    classList.contains('el-select__caret') ||
+    classList.contains('el-input__inner') ||
+    checkDom
+  );
 };
 
 /**
@@ -37,36 +47,31 @@ const mousedownHandle = e => {
  * @param e
  */
 const mousewheelHandle = e => {
-  console.log(e);
-  console.log(e.target);
-  console.log(e.target.classList);
-  console.log(e.target.parentNode.classList);
-  console.log(e.target.classList.contains('el-select-dropdown__list'));
-  if (
-    lock ||
-    e.target.classList.contains('el-select-dropdown__item') ||
-    e.target.classList.contains('el-select-dropdown__list') ||
-    e.target.parentNode.classList.contains('el-select-dropdown__item')
-  )
-    return;
+  if (lock) return;
+
+  let checkPopper = (e.path || []).some(dom => {
+    return (dom.classList || []).contains('el-popper');
+  });
+
+  if (checkPopper) return;
+
   fakeClickOutSide();
 };
+
 /**
  * eventListener
  * @param type
  */
 const eventListener = type => {
   el[type + 'EventListener']('mousedown', mousedownHandle);
-  window[type + 'EventListener']('mousewheel', mousewheelHandle);
-  window[type + 'EventListener']('DOMMouseScroll', mousewheelHandle); // fireFox 3.5+
+  let mouseWheel = /Firefox/i.test(navigator.userAgent) ? 'DOMMouseScroll' : 'mousewheel';
+
+  window[type + 'EventListener'](mouseWheel, debounce(mousewheelHandle, 500, true));
 };
 
 export default {
   mounted() {
-    // el = this.$root.$el;
-
     el = document.body;
-
     el.addFakeClickOutSideEventCount = el.addFakeClickOutSideEventCount || 0;
     !el.addFakeClickOutSideEventCount &&
       this.$nextTick(() => {
