@@ -82,7 +82,7 @@ const oauthLogin = (req, res) => {
         99
       )}-eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODg1NzE3NzExOSIsImp0aSI6IjkyNyIsImlhdCI6MTU1OTAzNzI2NX0.ta1UL4da-kG0lknikwPX1VRucWqf_XNWHRSSAG9BcmA`,
       userAccount: userAccount,
-      userId: Mock.Random.float(1, 100),
+      userId: userAccount,// Mock.Random.natural(1, 100)
       userName: `高仓雄-${userAccount}`,
       userPhone: '18768183457',
       userSex: '1',
