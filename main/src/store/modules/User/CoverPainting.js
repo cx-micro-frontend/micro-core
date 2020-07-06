@@ -1,4 +1,7 @@
-import { getOperatorInfo } from '../../../service/System/Layout/coverPainting';
+import {
+  getOperatorInfo,
+  getOperatorInfoSimple,
+} from '../../../service/System/Layout/coverPainting';
 import { storageHandle } from '../../../utils/storage/storage';
 
 /**
@@ -55,6 +58,23 @@ const CoverPainting = {
       getOperatorInfo(data).then(res => {
         const info = res.resultData;
         commit('SET_SCOVER_PAINTING', info);
+      });
+    },
+
+    /**
+     * 获取操作员信息 - 永生单点 - 获取信息简化，去除背景
+     * @param commit
+     * @param query
+     * @returns {Promise<any>}
+     */
+    getCoverPaintingSimple({ commit }, query) {
+      return new Promise(resolve => {
+        getOperatorInfoSimple(query).then(res => {
+          const info = res.resultData;
+          commit('SET_SCOVER_PAINTING', info);
+
+          resolve(info);
+        });
       });
     },
 
