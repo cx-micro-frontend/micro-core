@@ -23,7 +23,7 @@ export default (to, from, next) => {
   //get current page infomation data
   const currentPageInfo =
     pageinfoList.find(item => {
-      return item.path === to.path;
+      return item.routePath === to.path;
     }) || {};
 
   $store.dispatch('setCurrentPage', currentPageInfo).then(info => {

@@ -49,7 +49,7 @@ export const filterMenu = list => {
    */
   const done = list => {
     list.forEach((item, index) => {
-      item[visibleKey] = item[visibleKey] === '0';
+      item[visibleKey] = item[visibleKey] === '1';
 
       let childNodes = item[childrenKey];
 
@@ -91,9 +91,19 @@ function _getInitRouteInMenu(list) {
 
   function _Loop(list) {
     if (list && list.length) {
-      initpath = initpath + '/' + list[0][keyRefer['menuRouter']];
-      const children = list[0][keyRefer['children']];
-      initname = list[0][keyRefer['menuRouter']];
+      const targetItem = list[0];
+
+      /**
+       * 叶子节点，才取其 routePath
+       * 若非叶子节点，则向下遍历取其子 routePath
+       */
+      if (targetItem[keyRefer['isLeaf']]) {
+        initpath = targetItem[keyRefer['routePath']];
+      }
+
+      const children = targetItem[keyRefer['children']];
+      initname = targetItem[keyRefer['routeName']];
+
       _Loop(children);
     }
   }
@@ -133,6 +143,11 @@ export const createInitRoute = parame => {
     }
   } else {
     initRoute = _getInitRouteInMenu(parame.sideMenu);
+
+    console.log(172937912783971298);
+    console.log(172937912783971298);
+    console.log(initRoute);
+    console.log(172937912783971298);
   }
 
   if (

@@ -1,41 +1,21 @@
 const modules = require('@ROOT/config/injection/index').modules;
 
-module.exports = (firstPath, secondPath) => {
-  const currentModule = modules.filter(m => m.repositorie === firstPath);
+module.exports = (templatePath, belongModule) => {
+  if (!templatePath) return '';
+  const currentModule = modules.filter(m => m.repositorie === belongModule);
 
   const isOwner = currentModule[0].isOwner;
-  const isLandingRoot = currentModule[0].landingRoot;
 
-  const moduleName = firstPath ? `NS_${firstPath}/` : '';
+  // console.log('templatePath-templatePath-templatePath')
+  // console.log(templatePath)
 
-  if (isOwner || isLandingRoot) {
-    // console.log('引入 自有  模块路由');
-
-    if (secondPath) {
-      // console.log(`@ROOT/${moduleName}views/${firstPath}/${secondPath}/${secondPath}.vue`);
-      return () => import(`@ROOT/${moduleName}views/${firstPath}/${secondPath}/${secondPath}.vue`);
-    } else {
-      // console.log(`@ROOT/${moduleName}views/${firstPath}/${firstPath}.vue`);
-      return () => import(`@ROOT/${moduleName}views/${firstPath}/${firstPath}.vue`);
-    }
+  if (isOwner) {
+    console.log('引入 自有  模块路由');
+    return () => import(`@ROOT${templatePath}`);
   } else {
-    // console.log('引入 外部  模块路由');
-    if (secondPath) {
-      // console.log(
-      //   `../../../injection/repositories/${moduleName}views/${firstPath}/${secondPath}/${secondPath}.vue`
-      // );
-      return () =>
-        import(
-          `../../../../injection/repositories/${moduleName}views/${firstPath}/${secondPath}/${secondPath}.vue`
-        );
-    } else {
-      // console.log(
-      //   `../../../injection/repositories/${moduleName}views/${firstPath}/${firstPath}.vue`
-      // );
-      return () =>
-        import(
-          `../../../../injection/repositories/${moduleName}views/${firstPath}/${firstPath}.vue`
-        );
-    }
+    console.log('引入 外部  模块路由');
+    return () => import(`../../../../injection/repositories${templatePath}`);
+
+    // return () => import(`../../../../injection/repositories/NS_system/views/system/systemOrgEmployee/systemOrgEmployee.vue`);
   }
 };

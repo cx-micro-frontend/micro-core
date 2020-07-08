@@ -26,12 +26,25 @@ export default sideBarList => {
   }
 
   const addRouterList = sideBarList.filter(
-    item => includeModules.indexOf(item[keyRefer['menuRouter']]) > -1
+    item => includeModules.indexOf(item[keyRefer['routeName']]) > -1
   );
 
-  return filterAsyncRouter(addRouterList);
+  console.log(787878787878);
+  console.log(787878787878);
+  console.log(addRouterList);
+  console.log(787878787878);
+  console.log(787878787878);
+  const a = filterAsyncRouter(addRouterList);
+  console.log(a);
+  return a;
 };
 
+/**
+ * filter async router - create and filter route config
+ * @param asyncRouterMap - 原始队列信息
+ * @param loopFatherRouter - loop
+ * @returns {Array}
+ */
 function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
   //遍历后台传来的路由字符串，转换为组件对象
 
@@ -39,12 +52,12 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 
   const normalRoute = (childRoute, fatherRoute) => {
     const nr = {
-      name: childRoute[keyRefer['menuRouter']],
-      path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute[keyRefer['menuRouter']]}`,
+      name: childRoute[keyRefer['routeName']],
+      path: childRoute[keyRefer['routePath']],
       component: createComponent(childRoute, fatherRoute),
       meta: {
         auth: true,
-        key: childRoute[keyRefer['menuRouter']],
+        key: childRoute[keyRefer['routeName']],
         title: childRoute[keyRefer['label']],
         cache: true,
       },
@@ -62,12 +75,12 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
       component: Layout,
       children: [
         {
-          name: route[keyRefer['menuRouter']],
-          path: route[keyRefer['menuRouter']],
+          name: route[keyRefer['routeName']],
+          path: route[keyRefer['routePath']],
           component: createComponent(route),
           meta: {
             auth: true,
-            key: route[keyRefer['menuRouter']],
+            key: route[keyRefer['routeName']],
             title: route[keyRefer['label']],
             cache: true,
           },
@@ -80,7 +93,11 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
   asyncRouterMap.forEach(route => {
     let r = {};
     if (isModuleRoute(route)) {
-      if (hasChildRoute(route)) {
+      /**
+       * 非叶子节点 且 存在子集 => 常规路由注册 (如：业户=>房产管理)
+       * 叶子节点 或 不存在子集 => 特殊路由注册 (如：概览)
+       */
+      if (!isLeaf(route) && hasChildRoute(route)) {
         r = normalRoute(route, loopFatherRouter);
       } else {
         r = spRoute(route);
@@ -109,22 +126,22 @@ function hasChildRoute(route) {
   return route[keyRefer['children']] && route[keyRefer['children']].length;
 }
 
-function createComponent(childRoute, fatherRoute = null) {
-  const childPath = childRoute[keyRefer['menuRouter']];
+function isLeaf(route) {
+  return route[keyRefer['isLeaf']];
+}
+
+function createComponent(route, fatherRoute = null) {
+  const rootRouteName = route[keyRefer['rootRouteName']];
+  const templatePath = route[keyRefer['templatePath']];
+
+  console.log(232333333);
+  console.log(isModuleRoute(route));
 
   //root route
-  if (isModuleRoute(childRoute)) {
+  if (isModuleRoute(route)) {
     //normal first route
     return Layout;
   } else {
-    const fatherPath = fatherRoute ? `${fatherRoute[keyRefer['menuRouter']]}` : '';
-    // console.log('当前模板路径：');
-    // const varname = `../../../NS_${fatherPath}views/${fatherPath}/${childPath}/${childPath}.vue`
-    // console.log(varname);
-    // return () => import(`${varname}`);
-
-    return _import(fatherPath, childPath);
-
-    // return _import(`NS_${fatherPath}views/${fatherPath}${childPath}/${childPath}`)
+    return _import(templatePath, rootRouteName);
   }
 }

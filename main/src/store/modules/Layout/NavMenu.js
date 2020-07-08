@@ -50,6 +50,10 @@ const NavMenu = {
             //filter nav menu by custom config
             const filterList = expand.layout.sidebar.filter(baseList);
 
+            console.log(12312312);
+            console.log(filterList);
+            console.log(12312312);
+
             //handle page info
             $store.dispatch('setPageInfoList', filterList);
 

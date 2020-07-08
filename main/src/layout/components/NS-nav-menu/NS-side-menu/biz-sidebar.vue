@@ -1,24 +1,16 @@
 <template>
   <div class="ns-biz-sidebar">
 
-    <ns-sidebar :type="sidebarType"
-                :data="menuData"
-                :jumpByNavEmpty="jumpByNavEmpty"
-                :showTimeout="200"
-                :hideTimeout="200"
-                :keyRefer="keyRefer"
-                hasVirtualNode
-                @first-nav-click="firstNavClick"
-                @second-nav-click="secondNavClick"
-                @mouse-enter="mouseEnter">
-      <template slot="first-slot" slot-scope="scope">
-        <!--<ns-icon-svg icon-class="jiantou" v-if="scope.item.menuIndex === 1" style="margin-left: 25px"></ns-icon-svg>-->
-        <ns-icon-svg icon-class="jiantou" v-if="scope.item.menuMenusubname === 'guide'" style="margin-left: 25px"></ns-icon-svg>
-      </template>
-      <template slot="second-slot" slot-scope="scope">
-        <span v-if="secondNavSlot(scope)">=></span>
-      </template>
-    </ns-sidebar>
+    <!--多级导航栏-->
+    <ns-multiple-navMenu
+      :data="menuData"
+      :keyRefer="keyRefer"
+      :defaultActive="activeKey"
+      :slotRander="slotRanderFn"
+      :closeByLeafClick="false"
+      @node-click="nodeClick"
+    >
+    </ns-multiple-navMenu>
 
 
     <!--侧边栏 - 侧滑弹窗 - 外部资源注入-->
@@ -33,31 +25,41 @@
 <script>
   import { mapGetters } from 'vuex';
   import keyRefer from '../nav-menu-keyRefer';
-  import virtual from './virtual';
   import menuSlotMixins from './menu-slot-mixins';
   import expand from '../../../../../expand';
+
 
   export default {
     name: 'ns-biz-sidebar',
     mixins: [menuSlotMixins],
+
     data() {
       return {
-        sidebarType: 'collapse', //bubble,collapse
-        jumpByNavEmpty: true,
-        keyRefer: keyRefer,
         menuSlotProps: null,
+        currentNode: null,
+        keyRefer,
       };
     },
     computed: {
-      ...mapGetters(['sideMenu']),
+      ...mapGetters(['sideMenu', 'currentPageInfo']),
       //当前路由信息
       currentRoute() {
         return this.$route;
       },
+      activeKey() {
+        return this.currentPageInfo.activeKey;
+      },
       menuData() {
         try {
           //为适应暂时的多级菜单 - 增加虚拟节点处理
-          return virtual(this.sideMenu);
+          console.log(78817837192837);
+          console.log(78817837192837);
+          console.log(78817837192837);
+          console.log(this.sideMenu);
+          console.log(78817837192837);
+          console.log(78817837192837);
+          console.log(78817837192837);
+          return this.sideMenu;
         }
         catch (e) {
           console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');
@@ -66,71 +68,65 @@
       },
     },
     methods: {
+      slotRanderFn(h, node) {
+        console.log(898989898989);
+        console.log(898989898989);
+        console.log(898989898989);
+        console.log(node);
+        console.log(898989898989);
+        console.log(898989898989);
+
+        //导航
+        if (node.data[keyRefer['routeName']] === 'guide') {
+          return h('ns-icon-svg', {
+            'attrs': {
+              iconClass: 'menu-shezhi',
+            },
+            style: {
+              'margin-left': '15px',
+            },
+          });
+        }
+      },
+
       navClick(parame, fn) {
         expand.layout.sidebar.jump(parame, fn);
       },
 
-      /**
-       * first nav click handle
-       * @param firstItem
-       * @param firstIndex
-       */
-      firstNavClick(firstItem, firstIndex) {
+      nodeClick(node, instance) {
+        this.currentNode = node;
+        console.log('nodeClick-nodeClick');
+        console.log(node);
+        console.log(instance);
 
-        this.menuSlotProps = {
-          firstItem,
-          firstIndex,
-          level: 1,
-        };
-
-        console.log(firstItem, firstIndex);
-        console.log(this.currentRoute);
-
-        if (firstItem[keyRefer.children].length) return;
+        // this.menuSlotProps = {
+        //   firstItem,
+        //   firstIndex,
+        //   level: 1,
+        // };
 
         this.navClick(
-          { firstItem, firstIndex, level: 1 },
+          { node, instance },
           this.judgeAndJump,
         );
-
-      },
-
-
-      /**
-       * first nav click handle
-       * @param firstItem
-       * @param secondItem
-       * @param firstIndex
-       * @param secondIndex
-       */
-      secondNavClick(firstItem, secondItem, firstIndex, secondIndex) {
-
-        console.log(firstItem, secondItem, firstIndex, secondIndex);
-        console.log(this.currentRoute);
-
-        this.menuSlotProps = {
-          firstItem,
-          secondItem,
-          firstIndex,
-          secondIndex,
-          level: 2,
-        };
-
-        this.navClick(
-          { firstItem, firstIndex, secondItem, secondIndex, level: 2 },
-          this.judgeAndJump,
-        );
-
       },
 
       /**
        * judege and router jump
        */
-      judgeAndJump(firstItem, secondItem) {
-        if (!firstItem) return;
+      judgeAndJump() {
 
-        const pathKey = this.keyRefer.menuRouter;
-        const targetName = secondItem ? secondItem[pathKey] : firstItem[pathKey];
+        //非叶子节点不能点击跳转路由
+        if (!this.currentNode || !this.currentNode.isLeaf) return;
+
+        const routeNameKey = keyRefer.routeName;
+        const targetName = this.currentNode.data[routeNameKey];
+
+
+        console.log(123123123123);
+        console.log(targetName);
+        console.log(this.currentRoute.name);
+        console.log(123123123123);
 
         // 非当前页点击
         if (this.currentRoute.name !== targetName) {
@@ -139,25 +135,17 @@
         }
       },
 
-      secondNavSlot(scope) {
-        const firstitem = scope.item.firstitem;
-        const seconditem = scope.item.seconditem;
-        if (!firstitem && !firstitem.childMenus && !firstitem.childMenus.length) {
-          return false;
-        }
-        return firstitem.menuIndex === 3 && seconditem.menuIndex === 1;
-      },
-      /**
-       * nav mouse event
-       * @param index
-       * @param item
-       */
-      mouseEnter(index, item) {
-        // console.log('mouseEvent-mouseEvent');
-        // console.log(index, item);
-      },
     },
     created() {
+      console.log(12312312);
+      console.log(12312312);
+      console.log(12312312);
+      console.log(12312312);
+      console.log(this.currentPageInfo);
+      console.log(12312312);
+      console.log(12312312);
+
+
     },
   };
 </script>

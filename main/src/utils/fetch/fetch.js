@@ -18,7 +18,7 @@ import { getToken } from '../library/auth';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
-  timeout: 30000,
+  timeout: 300000, //300s 5分钟
   withCredentials: true,
   headers: requestHead.state.base,
 });

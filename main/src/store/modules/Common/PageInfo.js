@@ -1,6 +1,66 @@
 import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
+
+const modules = require('@ROOT/config/injection/index').modules;
 import { storageHandle } from '../../../utils/storage/storage';
 
+/**
+ * create page information list
+ * @param data - 菜单栏数据
+ * @returns {Array}
+ */
+function createPageInfo(data) {
+  let pageInfoList = [];
+
+  if (!data || !data.length) {
+    pageInfoList = [];
+  } else {
+    /**
+     * 节点递归循环处理
+     * 生成页面信息队列
+     * @param list
+     * @param parentIndex
+     */
+    const done = (list, parentIndex = '') => {
+      list.forEach((item, index) => {
+        const rootRouteName = item[keyRefer['rootRouteName']];
+        const currentModule = modules.filter(m => m.repositorie === rootRouteName);
+
+        const isMicro = currentModule && currentModule.length;
+        const isOwner = isMicro && currentModule[0].isOwner;
+
+        pageInfoList.push({
+          title: item[keyRefer['label']], //router-web name
+          name: item[keyRefer['routeName']], //router-web name
+          routePath: item[keyRefer['routePath']], //router-web name
+          targetUrl: item[keyRefer['targetUrl']],
+          visible: item[keyRefer['visible']],
+          isLeaf: item[keyRefer['isLeaf']],
+          funcId: item[keyRefer['funcId']],
+          templatePath: item[keyRefer['templatePath']],
+          behavior: item[keyRefer['behavior']],
+          isOwner: isOwner,
+          isMicro: isMicro,
+          activeKey: `${parentIndex}${index}`,
+        });
+
+        const children = item[keyRefer['children']];
+
+        if (children && children.length > 0) {
+          done(children, `${index}-`);
+        }
+      });
+    };
+
+    done(data);
+
+    return pageInfoList;
+  }
+}
+
+/**
+ * Page Info for vuex
+ * @type {{state: {pageinfoList: any | Array, currentPageInfo: {}}, mutations: {SET_PAGE_INFO_LIST: PageInfo.mutations.SET_PAGE_INFO_LIST, SET_CURRENT_PAGE: PageInfo.mutations.SET_CURRENT_PAGE, EMPTY_PAGE_INFO: PageInfo.mutations.EMPTY_PAGE_INFO}, actions: {setPageInfoList({commit: *}, *=): void, setCurrentPage({commit: *}, *=): *, emptyPageInfo: PageInfo.actions.emptyPageInfo}}}
+ */
 const PageInfo = {
   state: {
     pageinfoList: JSON.parse(storageHandle('get', 'sign_page_info')) || [],
@@ -23,40 +83,14 @@ const PageInfo = {
   },
   actions: {
     setPageInfoList({ commit }, data) {
-      let pageInfoList = [];
-      if (!data || !data.length) {
-        pageInfoList = [];
-      } else {
-        data.forEach((firstItem, firstIndex) => {
-          const children = firstItem[keyRefer['children']];
-          if (children && children.length > 0) {
-            children.forEach((secondItem, secondIndex) => {
-              pageInfoList.push({
-                title: secondItem[keyRefer['label']], //router-web name
-                name: secondItem[keyRefer['menuRouter']], //router-web name
-                path:
-                  '/' +
-                  firstItem[keyRefer['menuRouter']] +
-                  '/' +
-                  secondItem[keyRefer['menuRouter']], //path
-                firstMenuIndex: firstItem[keyRefer['menuIndex']] - 1, //first menu index ( -1 )
-                secondMenuIndex: secondItem[keyRefer['menuIndex']] - 1, //second menu index ( -1 )
-                funcId: secondItem[keyRefer['funcId']], //funcId
-                iframeUrl: secondItem[keyRefer['iframeUrl']],
-              });
-            });
-          } else {
-            pageInfoList.push({
-              title: firstItem[keyRefer['label']],
-              name: firstItem[keyRefer['menuRouter']],
-              path: '/' + firstItem[keyRefer['menuRouter']],
-              funcId: firstItem[keyRefer['funcId']] || 'normalFunic',
-              iframeUrl: firstItem[keyRefer['iframeUrl']],
-            });
-          }
-        });
-      }
-      commit('SET_PAGE_INFO_LIST', pageInfoList);
+      const _PI = createPageInfo(data);
+
+      console.log(1231321312);
+      console.log(1231321312);
+      console.log(_PI);
+      console.log(1231321312);
+
+      commit('SET_PAGE_INFO_LIST', _PI);
     },
 
     setCurrentPage({ commit }, data) {
@@ -71,4 +105,5 @@ const PageInfo = {
     },
   },
 };
+
 export default PageInfo;

@@ -60,17 +60,14 @@ const e = deepObjectMerge({
 
         /**
          * 菜单点点击跳转事件拓展
-         * @param firstItem
-         * @param firstIndex
-         * @param secondItem
-         * @param secondIndex
-         * @param level
+         * @param node
+         * @param instance
          * @param done
          */
-        jump: ({ firstItem, firstIndex, secondItem, secondIndex, level }, done) => {
+        jump: ({ node, instance }, done) => {
           console.log('expand - sidebar - jump');
-          console.log(firstItem, firstIndex, secondItem, secondIndex, level);
-          done(firstItem, secondItem);
+          // console.log(firstItem, firstIndex, secondItem, secondIndex, level);
+          done();
         },
 
 
