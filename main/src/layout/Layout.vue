@@ -56,6 +56,9 @@
     <template slot="app-main">
       <!--changing-over  work bench module-->
 
+      <!--特殊处理 -  解决报表  嵌入 缓存问题，不要可以删除，还需要删除路由转换的地方-->
+      <ns-arm-iframe></ns-arm-iframe>
+
       <transition leave-active-class enter-active-class="out-in">
         <keep-alive :include="cacheQueue" :exclude="cacheExclude">
           <router-view :key="key" v-if="isCache"></router-view>

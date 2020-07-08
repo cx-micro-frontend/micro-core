@@ -29,29 +29,51 @@ export default sideBarList => {
     item => includeModules.indexOf(item[keyRefer['menuRouter']]) > -1
   );
 
-  return filterAsyncRouter(addRouterList);
+  return filterAsyncRouter(addRouterList, false);
 };
 
-function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
+/**
+ * filterAsyncRouter
+ * @param asyncRouterMap
+ * @param isReportChildren 是否是报表下的子路由页面
+ * @param loopFatherRouter
+ * @returns {Array}
+ */
+function filterAsyncRouter(asyncRouterMap, isReportChildren, loopFatherRouter = null) {
   //遍历后台传来的路由字符串，转换为组件对象
 
   if (!asyncRouterMap || !asyncRouterMap.length) return [];
 
   const normalRoute = (childRoute, fatherRoute) => {
+    const menuRouter = childRoute[keyRefer['menuRouter']];
+
     const nr = {
-      name: childRoute[keyRefer['menuRouter']],
-      path: `${isModuleRoute(childRoute) ? '/' : ''}${childRoute[keyRefer['menuRouter']]}`,
+      name: menuRouter,
+      path: `${isModuleRoute(childRoute) ? '/' : ''}${menuRouter}`,
       component: createComponent(childRoute, fatherRoute),
       meta: {
         auth: true,
-        key: childRoute[keyRefer['menuRouter']],
+        key: menuRouter,
         title: childRoute[keyRefer['label']],
         cache: true,
       },
     };
 
+    /**
+     * 如果是报表下的子路由页面，则需要去除对应的component的模板页面配置
+     * 不需要的话，这段话可以注释！！！！
+     */
+    if (isReportChildren) {
+      delete nr.component;
+    }
+
     if (hasChildRoute(childRoute)) {
-      nr.children = filterAsyncRouter(childRoute[keyRefer['children']], childRoute);
+      const isReportChildren = menuRouter === 'reporting';
+      nr.children = filterAsyncRouter(
+        childRoute[keyRefer['children']],
+        isReportChildren,
+        childRoute
+      );
     }
     return nr;
   };
