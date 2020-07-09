@@ -8,8 +8,9 @@
   >
     <div v-if="dialogVisible">
       <h1>我是侧滑！</h1>
-      <h2>{{data.firstIndex}}</h2>
-      <h2>{{data.level}}</h2>
+      <h2>{{node.label}}</h2>
+      <h2>{{node.data.menuMenusubname}}</h2>
+      <h2>{{node.data.level}}</h2>
     </div>
   </ns-biz-drawer-dialog>
 </template>
@@ -23,12 +24,19 @@
       };
     },
     props: {
-      data: { type: Object },
+      node: { type: Object },
+    },
+    computed: {
+      routeName() {
+        return this.node.data.menuMenusubname;
+      },
     },
     watch: {
-      data(val) {
+      node(val) {
         if (val) {
-          this.dialogVisible = true;
+          if (this.routeName === 'guide') {
+            this.dialogVisible = true;
+          }
         }
       },
     },
