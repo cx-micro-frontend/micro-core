@@ -22,6 +22,7 @@ const getters = {
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
   moduleMenu: state => state.NavMenu.moduleMenu, //所有导航菜单数据
   sideMenu: state => state.NavMenu.sideMenu, //当前的侧边栏导航数据
+  sideMenuExpand: state => state.NavMenu.isExpand, //当前的侧边栏-初始化是否展开
 
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
   currentVisitedPageTag: state => state.PageTabs.currentVisitedPageTag, //当前访问的page信息(处理为tab页所需的格式)

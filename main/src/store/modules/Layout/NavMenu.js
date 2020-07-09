@@ -20,6 +20,7 @@ const NavMenu = {
     sideMenu: _deCryptoSideBar().sideMenu || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     moduleId: _deCryptoSideBar().moduleId || '',
+    isExpand: _deCryptoSideBar().isExpand || false,
   },
   mutations: {
     SET_SIDEBAR_DATA: (state, data) => {
@@ -29,10 +30,15 @@ const NavMenu = {
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
 
-    DEL_SIDEBAR_DATA: (state, data) => {
+    DEL_SIDE_MENU_DATA: (state, data) => {
       state.moduleMenu = [];
       state.initRoute = null;
       storageHandle('remove', 'sign_nav');
+    },
+
+    TOGGLE_SIDE_MENU_EXPAND_STATE: (state, data) => {
+      state.isExpand = data;
+      storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
   },
   actions: {
@@ -141,8 +147,20 @@ const NavMenu = {
       });
     },
 
-    delSideBarData: ({ commit }) => {
-      commit('DEL_SIDEBAR_DATA');
+    /**
+     * delete sideBar data
+     * @param commit
+     */
+    delSideMenuData: ({ commit }) => {
+      commit('DEL_SIDE_MENU_DATA');
+    },
+    /**
+     * toggle sideMenu expand state
+     * @param commit
+     * @param data
+     */
+    toggleSideMenuExpandState: ({ commit }, data) => {
+      commit('TOGGLE_SIDE_MENU_EXPAND_STATE', data);
     },
   },
 };

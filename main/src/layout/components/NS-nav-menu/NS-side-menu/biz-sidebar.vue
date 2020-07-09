@@ -2,22 +2,25 @@
   <div class="ns-biz-sidebar">
 
     <!--多级导航栏-->
-    <ns-multiple-navMenu
+    <ns-side-menu
       :data="menuData"
       :keyRefer="keyRefer"
       :defaultActive="activeKey"
+      :expanded="sideMenuExpand"
       :slotRander="slotRanderFn"
       :closeByLeafClick="false"
       @node-click="nodeClick"
+      @toggle-expand="toggleExpand"
     >
-    </ns-multiple-navMenu>
+    </ns-side-menu>
 
 
     <!--侧边栏 - 侧滑弹窗 - 外部资源注入-->
     <component :is="markName(side_slot_name)"
                v-if="is_slot_render"
-               :data="menuSlotProps"
+               :node="menuSlotProps"
     ></component>
+
 
   </div>
 </template>
@@ -41,7 +44,7 @@
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'currentPageInfo']),
+      ...mapGetters(['sideMenu', 'currentPageInfo', 'sideMenuExpand']),
       //当前路由信息
       currentRoute() {
         return this.$route;
@@ -49,16 +52,10 @@
       activeKey() {
         return this.currentPageInfo.activeKey;
       },
+
       menuData() {
         try {
           //为适应暂时的多级菜单 - 增加虚拟节点处理
-          console.log(78817837192837);
-          console.log(78817837192837);
-          console.log(78817837192837);
-          console.log(this.sideMenu);
-          console.log(78817837192837);
-          console.log(78817837192837);
-          console.log(78817837192837);
           return this.sideMenu;
         }
         catch (e) {
@@ -69,13 +66,6 @@
     },
     methods: {
       slotRanderFn(h, node) {
-        console.log(898989898989);
-        console.log(898989898989);
-        console.log(898989898989);
-        console.log(node);
-        console.log(898989898989);
-        console.log(898989898989);
-
         //导航
         if (node.data[keyRefer['routeName']] === 'guide') {
           return h('ns-icon-svg', {
@@ -97,13 +87,8 @@
         this.currentNode = node;
         console.log('nodeClick-nodeClick');
         console.log(node);
-        console.log(instance);
 
-        // this.menuSlotProps = {
-        //   firstItem,
-        //   firstIndex,
-        //   level: 1,
-        // };
+        this.menuSlotProps = node;
 
         this.navClick(
           { node, instance },
@@ -122,30 +107,22 @@
         const routeNameKey = keyRefer.routeName;
         const targetName = this.currentNode.data[routeNameKey];
 
-
-        console.log(123123123123);
-        console.log(targetName);
-        console.log(this.currentRoute.name);
-        console.log(123123123123);
-
         // 非当前页点击
         if (this.currentRoute.name !== targetName) {
           //菜单栏 - 跳转目标页面并清除目标页的缓存
           this.$router.push({ name: targetName, params: { noRefresh: false } }); //jump
         }
       },
-
+      toggleExpand(state) {
+        this.$store.dispatch('toggleSideMenuExpandState', state);
+      },
     },
     created() {
-      console.log(12312312);
-      console.log(12312312);
-      console.log(12312312);
-      console.log(12312312);
+      console.log('created-created');
+      console.log('created-created');
       console.log(this.currentPageInfo);
-      console.log(12312312);
-      console.log(12312312);
-
-
+      console.log('created-created');
+      console.log('created-created');
     },
   };
 </script>

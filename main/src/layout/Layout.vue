@@ -7,7 +7,9 @@
 <template>
   <ns-layout :class="{
     'is-hide-frame':isInIframe,
-    'is-portal':isPortal
+    'is-portal':isPortal,
+    'is-expand':sideMenuExpand,
+    'is-collapse':!sideMenuExpand,
   }">
 
     <template slot="header">
@@ -96,7 +98,7 @@
       return {};
     },
     computed: {
-      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode']),
+      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode', 'sideMenuExpand']),
 
 
       //全局缓存开关
