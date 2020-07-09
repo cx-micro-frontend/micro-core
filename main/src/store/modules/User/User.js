@@ -74,7 +74,7 @@ const User = {
       console.log('EMPTY_STORAGE-EMPTY_STORAGE-EMPTY_STORAGE');
 
       $store.dispatch('delAllVisitedPages');
-      $store.dispatch('delSideBarData');
+      $store.dispatch('delSideMenuData');
       $store.dispatch('emptyPageInfo');
 
       $store.dispatch('removeAsyncRouter');
