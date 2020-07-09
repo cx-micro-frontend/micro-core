@@ -202,7 +202,7 @@ const sam_nav_menu2 = (req, res) => {
         templatePath: '',//资源文件对应路径
         syStatus: '1', //隐藏与否
         syLayer: 2,//菜单层级
-        isLeaf: false,//是否为叶子节点
+        isLeaf: true,//是否为叶子节点
         behavior: '',//交互/集成模式
         url: '',//v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
         childMenus: [],
@@ -218,7 +218,7 @@ const sam_nav_menu2 = (req, res) => {
         templatePath: '',//资源文件对应路径
         syStatus: '1', //隐藏与否
         syLayer: 2,//菜单层级
-        isLeaf: false,//是否为叶子节点
+        isLeaf: true,//是否为叶子节点
         behavior: '',//交互/集成模式
         url: '',//v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
         childMenus: [],
@@ -235,7 +235,7 @@ const sam_nav_menu2 = (req, res) => {
         templatePath: '',//资源文件对应路径
         syStatus: '1', //隐藏与否
         syLayer: 2,//菜单层级
-        isLeaf: false,//是否为叶子节点
+        isLeaf: true,//是否为叶子节点
         behavior: '',//交互/集成模式
         url: '',//v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
         childMenus: [],
