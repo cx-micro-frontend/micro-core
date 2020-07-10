@@ -13,7 +13,7 @@ const keyRefer = {
   icon: 'menuIconcls', //图标
   children: 'childMenus', //子集菜单
   visible: 'syStatus', //隐藏 syStatus
-  isLeaf: 'isLeaf', //是否为叶子节点
+  isLeaf: 'is_leaf', //是否为叶子节点
   routeName: 'menuMenusubname', //前端路由name (唯一)
   rootRouteName: 'rootMenuSubName', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
   routePath: 'routePath', //前端路由路径（拼接好的全路径）
