@@ -72,7 +72,8 @@ export default (to, from, next) => {
             next(errorPathDistribute('error_route_role'));
           }
         })
-        .catch(_ => {
+        .catch(err => {
+          console.warn(err);
           //错误路由分发
           next(errorPathDistribute('error_route_role'));
         });

@@ -65,6 +65,7 @@ const Router = {
      * @returns {Promise<any>}
      */
     setAsyncRouter: ({ commit }, navData) => {
+      // return commit('SET_ASYNC_ROUTER', navData);
       return new Promise((resolve, reject) => {
         if (navData) {
           commit('SET_ASYNC_ROUTER', navData);

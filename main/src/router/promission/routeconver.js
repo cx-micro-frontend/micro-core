@@ -29,11 +29,6 @@ export default sideBarList => {
     item => includeModules.indexOf(item[keyRefer['routeName']]) > -1
   );
 
-  console.log(787878787878);
-  console.log(787878787878);
-  console.log(addRouterList);
-  console.log(787878787878);
-  console.log(787878787878);
   const a = filterAsyncRouter(addRouterList);
   console.log(a);
   return a;
@@ -133,9 +128,6 @@ function isLeaf(route) {
 function createComponent(route, fatherRoute = null) {
   const rootRouteName = route[keyRefer['rootRouteName']];
   const templatePath = route[keyRefer['templatePath']];
-
-  console.log(232333333);
-  console.log(isModuleRoute(route));
 
   //root route
   if (isModuleRoute(route)) {
