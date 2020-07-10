@@ -17,19 +17,22 @@
 //布局
 #layout {
 
-  &.is-collapse {
-    #page-tabs-wrapper, #main-container {
-      left: 50px;
-      transition: all 300ms ease;
+  //侧边导航展开/折叠 - 位置与动画
+  &:not(.is-portal){
+    &.is-collapse {
+      #page-tabs-wrapper, #main-container {
+        left: 50px;
+        transition: all 300ms ease;
+      }
+    }
+    &.is-expand {
+      #page-tabs-wrapper, #main-container {
+        left: 120px;
+        transition: all 300ms ease;
+      }
     }
   }
 
-  &.is-expand {
-    #page-tabs-wrapper, #main-container {
-      left: 120px;
-      transition: all 300ms ease;
-    }
-  }
 
   .head-logo {
     height: 50px;
@@ -49,7 +52,7 @@
     #page-tabs-wrapper {
       display: none;
     }
-    .main-container {
+    #main-container {
       top: 0;
       left: 0;
       bottom: 0;
@@ -73,7 +76,7 @@
       display: none;
     }
 
-    .main-container {
+    #main-container {
       top: 50px;
       left: 0;
       bottom: 0;

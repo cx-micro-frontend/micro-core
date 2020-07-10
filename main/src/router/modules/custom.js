@@ -13,7 +13,7 @@ const customRoute = [
           children: [
             {
               path: 'portal',
-              component: _import('portal'),
+              component: _import('/NS_portal/views/portal/portal.vue', 'portal'),
 
               // component: () =>
               //   import(
