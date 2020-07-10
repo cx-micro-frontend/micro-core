@@ -139,6 +139,7 @@ module.exports = {
     modules_sandbox: injection_sandbox,
     staticInclude: [], //配置需要抽取拷贝的静态资源名称
   },
+
   tools: {
     publish: {
       prescript: [

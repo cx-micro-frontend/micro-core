@@ -25,7 +25,7 @@ function createPageInfo(data) {
         const rootRouteName = item[keyRefer['rootRouteName']];
         const currentModule = modules.filter(m => m.repositorie === rootRouteName);
 
-        const isMicro = currentModule && currentModule.length;
+        const isMicro = currentModule && currentModule.length > 0;
         const isOwner = isMicro && currentModule[0].isOwner;
 
         pageInfoList.push({

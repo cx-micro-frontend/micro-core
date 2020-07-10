@@ -17,7 +17,7 @@ function _deCryptoSideBar() {
 const NavMenu = {
   state: {
     moduleMenu: _deCryptoSideBar().moduleMenu || [],
-    sideMenu: _deCryptoSideBar().sideMenu || '',
+    sideMenu: _deCryptoSideBar().sideMenu || [],
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     moduleId: _deCryptoSideBar().moduleId || '',
     isExpand: _deCryptoSideBar().isExpand || false,
