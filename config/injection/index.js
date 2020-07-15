@@ -36,6 +36,14 @@ const _BasicInjection = [
     disabled: false,
     // landingRoot: false, //是否注入根目录中
   },
+  {
+    module: '非标嵌入模块', //模块中文名称
+    repositorie: 'neapInject', //模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_neapInject.git',
+    branch: 'master', //抽取分支
+    isOwner: false, //是否为自有模块
+    disabled: false,
+  },
   // {
   //   module: '测试示例', //模块中文名称
   //   repositorie: 'test', //模块唯一标识key
