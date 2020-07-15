@@ -2,7 +2,7 @@ import router from '../index';
 import $store from '../../store/index';
 import { routerAndpageInfo } from './auxiliary';
 import { isInAuthwhiteList } from '../whiteList';
-import routefiles from '../../../../injection/config/routefiles';
+// import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
 
 let addRouFlag = false;
@@ -91,7 +91,8 @@ export default (to, from, next) => {
          * 1、judge whether the current routing contains the corresponding template page,
          * If not in route files list or not in in white list, back to special page base on error path distribute
          */
-        if ((routefiles && routefiles.some(route => route.name === to.name)) || isAuthWhite) {
+        // if ((routefiles && routefiles.some(route => route.name === to.name)) || isAuthWhite) {
+        if (isAuthWhite) {
           //router and page information show in console
           routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove
