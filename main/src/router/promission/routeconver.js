@@ -25,9 +25,16 @@ export default sideBarList => {
     includeModules = injection.modules.filter(item => !item.disabled).map(item => item.repositorie);
   }
 
+  console.log(123123123);
+  console.log(includeModules);
+  console.log(123123123);
   const addRouterList = sideBarList.filter(
-    item => includeModules.indexOf(item[keyRefer['routeName']]) > -1
+    item => includeModules.indexOf(item[keyRefer['rootRouteName']]) > -1
   );
+
+  console.log(33333333333);
+  console.log(addRouterList);
+  console.log(33333333333333);
 
   const a = filterAsyncRouter(addRouterList);
   console.log(a);
@@ -128,12 +135,16 @@ function isLeaf(route) {
 function createComponent(route, fatherRoute = null) {
   const rootRouteName = route[keyRefer['rootRouteName']];
   const templatePath = route[keyRefer['templatePath']];
+  const behavior = route.behavior;
 
   //root route
   if (isModuleRoute(route)) {
     //normal first route
     return Layout;
   } else {
+    if (['101', '102'].indexOf(behavior) > -1) {
+      return null;
+    }
     return _import(templatePath, rootRouteName);
   }
 }
