@@ -131,23 +131,12 @@ module.exports = [
     disabled: false,
   },
 
-  // 人事模块
-  // {
-  //   module: '人事管理',
-  //   repositorie: 'PersonnelManagement',
-  //   isOwner: true,
-  //   disabled: false,
-  // },
-  // {
-  //   module: '员工管理',
-  //   repositorie: 'HumanInfo',
-  //   isOwner: true,
-  //   disabled: false,
-  // },
-  // {
-  //   module: '金服组件',
-  //   repositorie: 'golden_service_components',
-  //   isOwner: true,
-  //   disabled: false,
-  // },
+  // v8内嵌 人事/办公模块
+  {
+    module: 'NEAP内嵌',
+    repositorie: 'neapInject',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
+    isOwner: false,
+    disabled: false,
+  },
 ];
