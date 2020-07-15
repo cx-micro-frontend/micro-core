@@ -142,6 +142,14 @@ function createComponent(route, fatherRoute = null) {
     //normal first route
     return Layout;
   } else {
+    /**
+     * 交互/集成模式
+     * 100 - 常规跳转v10界面
+     * 101 - 常规跳转v10界面（直接嵌入第三方）
+     * 102 - 常规跳转v10界面（混合嵌入）- v10部分+外部嵌入
+     * 103 - 常规跳转v10界面（混合嵌入）- v10部分+v8
+     * 非常规界面，注册路由，模板置空
+     */
     if (['101', '102'].indexOf(behavior) > -1) {
       return null;
     }
