@@ -7,6 +7,7 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
+
   {
     module: '数据中心',
     repositorie: 'dataCenter',
