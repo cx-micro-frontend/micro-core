@@ -61,11 +61,13 @@ const User = {
 
     //set token info
     SET_TOKEN: (state, data) => {
+      state.userinfo.token = data;
       setToken(data);
     },
 
     //set user id
     SET_USER_ID: (state, data) => {
+      state.userinfo.userId = data;
       setUserId(data);
     },
 
@@ -88,11 +90,16 @@ const User = {
 
       $store.dispatch('resetUserBehavior'); //reset user behavior in vuex state
 
-      storageHandle('remove', 'sign_user_info'); //remove user information
+      //remove token
+      state.userinfo.token = '';
+      removeToken();
 
-      removeUserId(); //remove user id
+      //remove user id
+      state.userinfo.userId = '';
+      removeUserId();
 
-      removeToken(); //remove token
+      //remove user information
+      storageHandle('remove', 'sign_user_info');
     },
   },
 
