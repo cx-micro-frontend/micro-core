@@ -58,6 +58,8 @@
     <template slot="app-main">
       <!--changing-over  work bench module-->
 
+      <neap-injecter-iframe></neap-injecter-iframe>
+
       <transition leave-active-class enter-active-class="out-in">
         <keep-alive :include="cacheQueue" :exclude="cacheExclude">
           <router-view :key="key" v-if="isCache"></router-view>
