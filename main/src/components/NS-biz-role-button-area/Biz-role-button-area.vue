@@ -8,7 +8,7 @@
         v-if="singleBtnList && singleBtnList.length>0"
         v-show="!item.hide"
     >
-      <ns-button :type="item.type" :disabled="item.disabled" @click="singleClick(item)">
+      <ns-button :type="item.type" :disabled="item.disabled" :loading="item.loading" @click="singleClick(item)">
         <ns-icon-svg :icon-class="item.icon" v-if="item.icon"></ns-icon-svg>
         {{item.name}}
       </ns-button>
@@ -20,7 +20,7 @@
         @command="handleCommand"
       >
         <!--title click modules-->
-        <ns-button type="text" class="el-dropdown-link">
+        <ns-button class="el-dropdown-link" type="text">
           更多<i class="el-icon-caret-bottom el-icon--right"></i>
         </ns-button>
 
@@ -42,10 +42,14 @@
 </template>
 
 <script>
-  import iconMap from './iconMap';
-
   export default {
     name: 'role-button-area',
+    data() {
+      return {
+        singleBtnList: [],
+        dropDownBtnList: [],
+      };
+    },
     props: {
       buttonList: {
         type: Array, default() {
@@ -53,19 +57,19 @@
         },
       },
     },
-    computed: {
-      singleBtnList() {
-        return this.buttonList.filter(item => item.btnType === 'single');
+    watch: {
+      buttonList: {
+        handler: function(newVal, oldVue) {
+          this.singleBtnList = newVal.filter(item => item.btnType === 'single');
+          this.dropDownBtnList = newVal.filter(item => item.btnType === 'dropDown');
+        },
+        immediate: true,
       },
-      dropDownBtnList() {
-        return this.buttonList.filter(item => item.btnType === 'dropDown');
-      },
-
     },
     methods: {
-      singleClick(item) {
+      singleClick(item, done) {
         console.log(item);
-        this.$emit('command', item);
+        this.$emit('command', item, done);
       },
       handleCommand(command) {
 
@@ -74,14 +78,13 @@
         this.$emit('command', current);
 
       },
-      iconTransform(item) {
-        try {
-          return iconMap.filter(i => i.name === item.name)[0].icon;
-        }
-        catch (e) {
-          return '';
-        }
-      },
+    },
+    created() {
+
+    },
+    beforeDestroy() {
+      this.singleBtnList = [];
+      this.dropDownBtnList = [];
     },
   };
 </script>
