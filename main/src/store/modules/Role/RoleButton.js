@@ -58,6 +58,7 @@ const RoleButton = {
                   disabled: item.resourcebuttonDisabled === '1', //是否禁用
                   hide: item.resourcebuttonHidden === '1', //是否隐藏
                   icon: item.resourcebuttonIconcls, //按钮图标
+                  loading: false,
                 };
               });
             } catch (e) {
