@@ -1,5 +1,4 @@
 import { deepObjectMerge } from './src/utils/library/marge';
-import { filterMenu } from './src/layout/components/NS-nav-menu/utils';
 import expand from '@ROOT/config/expand';
 
 
@@ -48,14 +47,7 @@ const e = deepObjectMerge({
          * @returns {*}
          */
         filter: list => {
-          const filterList = filterMenu(list);
-
-          if (filterList && filterList instanceof Array) {
-            return filterList;
-          }
-          else {
-            throw ('【 NEAP-ERROR 】Custom filter side menu data,  must output data list.');
-          }
+          return list;
         },
 
         /**
@@ -80,13 +72,14 @@ const e = deepObjectMerge({
       cacheExclude: [],
 
       /**
-       * init jump after login
-       * 登录后初始跳转
+       * init jump after toggle module
+       * 切换顶部导航菜单后，跳转当前模块的初始路由地址
        * type - 1、function 2、Object
        * return { name: 'xx',fullpath: 'xx'}
        * default - null
        */
-      initRouteByAuth: null,
+      initRouteByToggleModule: null,
+
 
       //路由重定向
       redirect: {
