@@ -37,31 +37,55 @@ export const filterModuleByToggle = (list, key) => {
  * @returns {*}
  * @private
  */
-export const filterMenu = list => {
+export const handleMenuData = list => {
   const visibleKey = keyRefer['visible'];
   const childrenKey = keyRefer['children'];
+  const levelKey = keyRefer['menuLevel'];
+  const menuIdKey = keyRefer['menuId'];
+  const initRouteKey = keyRefer['initRoute'];
+
+  const _level = expand.integrationMode === 'mam' ? 0 : 1;
 
   /**
    * 节点递归循环处理
    * 1、显示隐藏字段 => 转换布尔值
    * 显示隐藏字段 => 转换布尔值
-   * @param list
+   * @param list - 数据
+   * @param level - 层级
+   * @param parentIndex
    */
-  const done = list => {
+  const done = (list, level, parentIndex = '') => {
     list.forEach((item, index) => {
       item[visibleKey] = item[visibleKey] === '1';
+
+      //add level sign
+      item[levelKey] = level;
+
+      if (item[levelKey] === 1) {
+        item[initRouteKey] = createInitRoute(item);
+      }
+
+      let transmitIndex = '';
+      if (item[levelKey] >= 1) {
+        item[menuIdKey] = `${parentIndex}${index}`;
+        transmitIndex = `${index}-`;
+      }
 
       let childNodes = item[childrenKey];
 
       if (childNodes && childNodes.length > 0) {
-        done(childNodes);
+        done(childNodes, level + 1, transmitIndex);
       }
     });
   };
 
-  done(list);
+  done(list, _level);
 
-  return list;
+  if (list && list instanceof Array) {
+    return list;
+  } else {
+    throw '【 NEAP-ERROR 】Custom filter side menu data,  must output data list.';
+  }
 };
 
 /**
@@ -81,17 +105,23 @@ export const flattenMenu = list => {
 
 /**
  * get init router path
- * @param list
- * @returns {string}
+ * @param menu - array / object
+ * @returns {{name: string, fullpath: string}}
  * @private
  */
-function _getInitRouteInMenu(list) {
+function _getInitRouteInMenu(menu) {
   let initpath = '';
   let initname = '';
 
-  function _Loop(list) {
-    if (list && list.length) {
-      const targetItem = list[0];
+  function _Loop(menuDate) {
+    if (menuDate) {
+      let targetItem = null;
+
+      if (judgeType(menuDate) === 'array') {
+        targetItem = menuDate[0];
+      } else if (judgeType(menuDate) === 'object') {
+        targetItem = menuDate;
+      }
 
       /**
        * 叶子节点，才取其 routePath
@@ -99,16 +129,17 @@ function _getInitRouteInMenu(list) {
        */
       if (targetItem[keyRefer['isLeaf']]) {
         initpath = targetItem[keyRefer['routePath']];
+        initname = targetItem[keyRefer['routeName']];
       }
-
       const children = targetItem[keyRefer['children']];
-      initname = targetItem[keyRefer['routeName']];
 
-      _Loop(children);
+      if (children && children.length) {
+        _Loop(children);
+      }
     }
   }
 
-  _Loop(list);
+  _Loop(menu);
 
   return {
     name: initname,
@@ -118,13 +149,13 @@ function _getInitRouteInMenu(list) {
 
 /**
  * create init route
- * @param parame:
+ * @param currentMenu:
  *     - sideMenu - 原始菜单栏数据
- - moduleMenu - 所有子系统模块导航菜单数据（只在 multiple application mode - 多系统门户模式 中存在)
- - moduleId - 当前激活系统模块id（只在 multiple application mode - 多系统门户模式 中存在)
+ *     - moduleMenu - 所有子系统模块导航菜单数据（只在 multiple application mode - 多系统门户模式 中存在)
+ *     - moduleId - 当前激活系统模块id（只在 multiple application mode - 多系统门户模式 中存在)
  * @returns {*}
  */
-export const createInitRoute = parame => {
+export const createInitRoute = currentMenu => {
   /*
    * -----------------
    * 1、get init route
@@ -132,22 +163,17 @@ export const createInitRoute = parame => {
    */
   let initRoute;
   // let initRoute = { name: '', fullpath: '' };
-  const _ini = expand.route.initRouteByAuth;
+  const _ini = expand.route.initRouteByToggleModule;
 
   if (_ini) {
     if (judgeType(_ini) === 'function') {
-      initRoute = _ini(parame);
+      initRoute = _ini(currentMenu);
     } else if (judgeType(_ini) === 'object') {
       initRoute = _ini;
     } else {
     }
   } else {
-    initRoute = _getInitRouteInMenu(parame.sideMenu);
-
-    console.log(172937912783971298);
-    console.log(172937912783971298);
-    console.log(initRoute);
-    console.log(172937912783971298);
+    initRoute = _getInitRouteInMenu(currentMenu);
   }
 
   if (

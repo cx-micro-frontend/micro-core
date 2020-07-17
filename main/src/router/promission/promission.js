@@ -17,8 +17,18 @@ let addRouFlag = false;
  * @param from
  * @param next
  */
-export default (to, from, next) => {
+export default async (to, from, next) => {
   const pageinfoList = $store.state.PageInfo.pageinfoList;
+
+  /**
+   * toggle module handle when route is change (two routes belonging to different modules)
+   * toggle modules through moduleId:
+   *  - sideMenu - 切换侧边栏数据
+   *  - initRoute - 切换当前侧边栏导航菜单的初始路由
+   */
+  if (from.meta.moduleId !== to.meta.moduleId) {
+    await $store.dispatch('toggle_module_handle', to.meta.moduleId);
+  }
 
   //get current page infomation data
   const currentPageInfo =
@@ -92,10 +102,11 @@ export default (to, from, next) => {
          * If not in route files list or not in in white list, back to special page base on error path distribute
          */
         // if ((routefiles && routefiles.some(route => route.name === to.name)) || isAuthWhite) {
-        if (isAuthWhite) {
+        if (true || isAuthWhite) {
           //router and page information show in console
           routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove
+
           next();
         } else {
           //错误路由分发

@@ -3,9 +3,10 @@
 
     <!--多级导航栏-->
     <ns-side-menu
+      ref="ns-biz-sidebar"
       :data="menuData"
       :keyRefer="keyRefer"
-      :defaultActive="activeKey"
+      :defaultActive="defaultActive"
       :expanded="sideMenuExpand"
       :slotRander="slotRanderFn"
       :closeByLeafClick="false"
@@ -40,6 +41,7 @@
       return {
         menuSlotProps: null,
         currentNode: null,
+        defaultActive: '',
         keyRefer,
       };
     },
@@ -50,7 +52,7 @@
         return this.$route;
       },
       activeKey() {
-        return this.currentPageInfo.activeKey;
+        return this.currentPageInfo.menuId;
       },
 
       menuData() {
@@ -62,6 +64,17 @@
           console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');
           return [];
         }
+      },
+    },
+    watch: {
+      activeKey: {
+        handler: function(keyVal) {
+          console.log(99999999999);
+          console.log(99999999999);
+          console.log(keyVal);
+          console.log(99999999999);
+          this.$refs['ns-biz-sidebar'].setActive(keyVal);
+        },
       },
     },
     methods: {
@@ -113,6 +126,11 @@
           this.$router.push({ name: targetName, params: { noRefresh: false } }); //jump
         }
       },
+
+      /**
+       * toggle sideMenu expand state
+       * @param state
+       */
       toggleExpand(state) {
         this.$store.dispatch('toggleSideMenuExpandState', state);
       },

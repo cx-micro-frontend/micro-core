@@ -1,9 +1,15 @@
 import $store from '../../index';
 import { sideBarService, mam_nav_menu_service } from '../../../service/System/Role/role-menu';
 import { stateAssign } from '../../utils/index';
-import { flattenMenu, createInitRoute } from '../../../layout/components/NS-nav-menu/utils';
+import {
+  handleMenuData,
+  flattenMenu,
+  createInitRoute,
+  filterModuleByToggle,
+} from '../../../layout/components/NS-nav-menu/utils';
 import { storageHandle } from '../../../utils/storage/storage';
 import expand from '../../../../expand';
+import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
 
 /**
  * deCrypto side bar-information data in storage
@@ -23,7 +29,7 @@ const NavMenu = {
     isExpand: _deCryptoSideBar().isExpand || false,
   },
   mutations: {
-    SET_SIDEBAR_DATA: (state, data) => {
+    SET_MENU_DATA: (state, data) => {
       //Assignment in mutations to change state
       stateAssign(state, data, ['moduleMenu', 'sideMenu', 'initRoute', 'moduleId']);
 
@@ -71,7 +77,7 @@ const NavMenu = {
               }),
             };
 
-            commit('SET_SIDEBAR_DATA', navdata);
+            commit('SET_MENU_DATA', navdata);
 
             console.log('处理好的菜单栏数据如下：');
             console.log(navdata);
@@ -93,10 +99,19 @@ const NavMenu = {
       return new Promise((resolve, reject) => {
         mam_nav_menu_service()
           .then(res => {
-            const baseList = res.resultData || [];
+            const r = res.resultData || [];
+            const baseList = handleMenuData(r);
 
             //filter nav menu by custom config
             const filterList = expand.layout.sidebar.filter(baseList);
+
+            console.log(888888888888);
+            console.log(888888888888);
+            console.log(888888888888);
+            console.log(filterList);
+            console.log(888888888888);
+            console.log(888888888888);
+            console.log(888888888888);
 
             /**
              * in multiple application mode  - nav menu  data need flattening handle
@@ -117,7 +132,7 @@ const NavMenu = {
               },
               moduleId: 'portal',
             };
-            commit('SET_SIDEBAR_DATA', navdata);
+            commit('SET_MENU_DATA', navdata);
 
             console.log('处理好的菜单栏数据如下：');
             console.log(navdata);
@@ -131,20 +146,42 @@ const NavMenu = {
     },
 
     /**
-     * toggle top nav menu module
+     * toggle module handle when route is change (two routes belonging to different modules)
+     * 通过 moduleId 来切换 模块：
+     *  - sideMenu - 切换侧边栏数据
+     *  - initRoute - 切换当前侧边栏导航菜单的初始路由
      * @param commit
-     * @param data - sideMenu / initRoute
+     * @param state
+     * @param moduleId - 顶部模块id
      * @returns {Promise<any>}
      */
-    toggle_top_nav_menu({ commit }, data) {
+    toggle_module_handle({ commit, state }, moduleId) {
       return new Promise(resolve => {
-        commit('SET_SIDEBAR_DATA', {
-          sideMenu: data.sideMenu,
-          initRoute: data.initRoute,
-          moduleId: data.moduleId,
-        });
-        resolve();
+        //获取当前激活的系统模块菜单数据
+        const _currentModule = filterModuleByToggle(state.moduleMenu, moduleId);
+
+        const sideMenu = _currentModule[keyRefer['children']];
+
+        const initRoute = sideMenu[0][keyRefer['initRoute']];
+
+        const navdata = {
+          sideMenu,
+          initRoute,
+          moduleId,
+        };
+        commit('SET_MENU_DATA', navdata);
+
+        resolve(navdata);
       });
+    },
+
+    /**
+     * toggle sideMenu expand state
+     * @param commit
+     * @param data
+     */
+    toggleSideMenuExpandState: ({ commit }, data) => {
+      commit('TOGGLE_SIDE_MENU_EXPAND_STATE', data);
     },
 
     /**
@@ -153,14 +190,6 @@ const NavMenu = {
      */
     delSideMenuData: ({ commit }) => {
       commit('DEL_SIDE_MENU_DATA');
-    },
-    /**
-     * toggle sideMenu expand state
-     * @param commit
-     * @param data
-     */
-    toggleSideMenuExpandState: ({ commit }, data) => {
-      commit('TOGGLE_SIDE_MENU_EXPAND_STATE', data);
     },
   },
 };

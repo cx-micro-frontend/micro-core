@@ -18,9 +18,8 @@ function createPageInfo(data) {
      * 节点递归循环处理
      * 生成页面信息队列
      * @param list
-     * @param parentIndex
      */
-    const done = (list, parentIndex = '') => {
+    const done = list => {
       list.forEach((item, index) => {
         const rootRouteName = item[keyRefer['rootRouteName']];
         const currentModule = modules.filter(m => m.repositorie === rootRouteName);
@@ -36,17 +35,18 @@ function createPageInfo(data) {
           visible: item[keyRefer['visible']],
           isLeaf: item[keyRefer['isLeaf']],
           funcId: item[keyRefer['funcId']],
+          moduleId: item[keyRefer['moduleId']], //所属 顶部子系统模块 - ID
+          menuId: item[keyRefer['menuId']],
           templatePath: item[keyRefer['templatePath']],
           behavior: item[keyRefer['behavior']],
           isOwner: isOwner,
           isMicro: isMicro,
-          activeKey: `${parentIndex}${index}`,
         });
 
         const children = item[keyRefer['children']];
 
         if (children && children.length > 0) {
-          done(children, `${index}-`);
+          done(children);
         }
       });
     };

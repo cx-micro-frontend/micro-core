@@ -44,7 +44,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { createTopMenu, filterModuleByToggle, createInitRoute } from '../../../../layout/components/NS-nav-menu/utils';
+  import { createTopMenu } from '../../../../layout/components/NS-nav-menu/utils';
   import keyRefer from '../../NS-nav-menu/nav-menu-keyRefer';
 
   export default {
@@ -52,10 +52,12 @@
     data() {
       return {
         model: false,
+        currentModuleId: null,
+        keyRefer,
       };
     },
     computed: {
-      ...mapGetters(['moduleMenu']),
+      ...mapGetters(['moduleMenu', 'initRoute', 'moduleId']),
       isActive() {
         return this.$route.name === 'portal';
       },
@@ -66,34 +68,39 @@
         return this.topNavMenu && this.topNavMenu.length > 3;
       },
     },
+    watch: {
+      moduleId: {
+        handler: function(val) {
+
+        },
+        immediate: true,
+      },
+    },
     methods: {
-      filterModuleByToggle,
       back() {
         this.$router.push({ name: 'portal' });
       },
       jumper(item) {
-        //获取当前激活的系统模块菜单数据
-        const _currentModule = this.filterModuleByToggle(this.moduleMenu, item.moduleId);
+        if (this.currentModuleId === item.moduleId) return;
 
-        const moduleId = _currentModule[keyRefer['moduleId']];
-        const sideMenu = _currentModule[keyRefer['children']];
+        /**
+         * toggle module handle when route is change (two routes belonging to different modules)
+         * 通过 moduleId 来切换 模块：
+         *  - sideMenu - 切换侧边栏数据
+         *  - initRoute - 切换当前侧边栏导航菜单的初始路由
+         */
+        this.$store.dispatch('toggle_module_handle', item.moduleId).then(navdata => {
+          console.log(772372673627637);
+          console.log(navdata);
+          console.log(772372673627637);
+          this.$router.push({ name: navdata.initRoute.name, params: { noRefresh: true } });
 
-        //生成当前系统模块菜单的初始跳转路由
-        const initRoute = createInitRoute({
-          sideMenu,
-          moduleMenu: this.moduleMenu,
-          moduleId,
-        });
-
-        this.$store.dispatch('toggle_top_nav_menu', {
-          sideMenu,
-          moduleId,
-          initRoute: initRoute,
-        }).then(_ => {
-          // alert(initRoute.name);
-          this.$router.push({ name: initRoute.name, params: { noRefresh: true } });
+          this.currentModuleId = item.moduleId;
           this.model = false;
-        });
+        }).catch(err => {
+            console.warn(err);
+          },
+        );
       },
     },
     created() {

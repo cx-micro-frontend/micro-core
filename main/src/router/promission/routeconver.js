@@ -62,6 +62,7 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
         key: childRoute[keyRefer['routeName']],
         title: childRoute[keyRefer['label']],
         cache: true,
+        moduleId: childRoute[keyRefer['moduleId']],
       },
     };
 
@@ -85,6 +86,7 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
             key: route[keyRefer['routeName']],
             title: route[keyRefer['label']],
             cache: true,
+            moduleId: route[keyRefer['moduleId']],
           },
         },
       ],
@@ -117,7 +119,7 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 function routelevel(route) {
   // return parseInt(route.syLayer) - 1;
 
-  return parseInt(route[keyRefer['menuLevel']]) - 1;
+  return parseInt(route[keyRefer['menuLevel']]);
 }
 
 function isModuleRoute(route) {
