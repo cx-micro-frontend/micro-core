@@ -88,7 +88,7 @@ export default {
             {
               path: 'overview',
               component: () => import(`@ROOT/config/expand/views/overview/overview.vue`),
-              meta: { title: '概览', auth: true, key: 'overview', cache: false },
+              meta: { title: '概览', auth: true, key: 'overview', cache: false, moduleId: 'other' },
               name: 'overview',
             },
           ],
@@ -100,7 +100,13 @@ export default {
             {
               path: 'cacheDemo',
               component: () => import(`@ROOT/config/expand/views/cache/cacheDemo.vue`),
-              meta: { title: '缓存示例', auth: true, key: 'cacheDemo', cache: true },
+              meta: {
+                title: '缓存示例',
+                auth: true,
+                key: 'cacheDemo',
+                cache: true,
+                moduleId: 'other',
+              },
               name: 'cacheDemo',
             },
           ],
