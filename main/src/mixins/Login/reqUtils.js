@@ -22,7 +22,10 @@ export const getMenu = async () => {
    * 多系统门户模式情况
    */
   if (expand.integrationMode === 'mam') {
-    await $store.dispatch('generate_mam_nav_menu').then(_ => {});
+    await $store
+      .dispatch('generate_mam_nav_menu')
+      .then(_ => {})
+      .catch(err => console.warn(err));
   }
   //single application mode
   else {
