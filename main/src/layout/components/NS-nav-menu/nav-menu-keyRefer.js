@@ -9,6 +9,7 @@ const keyRefer = {
   moduleName: 'moduleName', //顶部子系统模块 - 显示名称
 
   funcId: 'funcId', //func-ID (唯一)
+  menuId: 'menuId', //菜单导航ID
   label: 'menuMenuname', //显示名称
   icon: 'menuIconcls', //图标
   children: 'childMenus', //子集菜单
@@ -20,6 +21,8 @@ const keyRefer = {
   templatePath: 'templatePath', //资源文件对应路径
   behavior: 'behavior ', //交互/集成模式
   targetUrl: 'url', //v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
+
+  initRoute: 'initRoute', //当前菜单的初始路由
 
   menuLevel: 'syLayer', //菜单层级
 
