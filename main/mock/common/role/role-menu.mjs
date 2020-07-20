@@ -364,7 +364,7 @@ const mam_nav_menu = (req, res) => {
       },
       {
         iconUrl: null,
-        moduleId: 'other',
+        moduleId: 'FIN',
         moduleName: '其他',
         childMenus: [
           //概览页
@@ -380,7 +380,7 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
           //缓存示例页面
@@ -396,14 +396,14 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
         ],
       },
       {
         iconUrl: null,
-        moduleId: 'other',
+        moduleId: 'FIN',
         moduleName: '其他',
         childMenus: [
           //概览页
@@ -419,7 +419,7 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
           //缓存示例页面
@@ -435,14 +435,14 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
         ],
       },
       {
         iconUrl: null,
-        moduleId: 'other',
+        moduleId: 'FIN',
         moduleName: '其他',
         childMenus: [
           //概览页
@@ -458,7 +458,7 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
           //缓存示例页面
@@ -474,7 +474,7 @@ const mam_nav_menu = (req, res) => {
             syLayer: 2,//菜单层级
             is_leaf: true,//是否为叶子节点
             behavior: '100',//交互/集成模式
-            moduleId: 'other',
+            moduleId: 'FIN',
             childMenus: [],
           },
         ],
