@@ -4,9 +4,9 @@ import { stateAssign } from '../../utils/index';
 import {
   handleMenuData,
   flattenMenu,
-  createInitRoute,
   filterModuleByToggle,
-} from '../../../layout/components/NS-nav-menu/utils';
+} from '../../../layout/components/NS-nav-menu/utils/dataHandle';
+import { createInitRoute } from '../../../layout/components/NS-nav-menu/utils/initRoute';
 import { storageHandle } from '../../../utils/storage/storage';
 import expand from '../../../../expand';
 import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
@@ -57,14 +57,11 @@ const NavMenu = {
       return new Promise((resolve, reject) => {
         sideBarService()
           .then(res => {
-            const baseList = res.resultData || [];
+            const r = res.resultData || [];
+            const baseList = handleMenuData(r);
 
             //filter nav menu by custom config
             const filterList = expand.layout.sidebar.filter(baseList);
-
-            console.log(12312312);
-            console.log(filterList);
-            console.log(12312312);
 
             //handle page info
             $store.dispatch('setPageInfoList', filterList);
@@ -72,9 +69,7 @@ const NavMenu = {
             //packaging data
             const navdata = {
               sideMenu: filterList,
-              initRoute: createInitRoute({
-                sideMenu: baseList,
-              }),
+              initRoute: createInitRoute(baseList),
             };
 
             commit('SET_MENU_DATA', navdata);
@@ -104,14 +99,6 @@ const NavMenu = {
 
             //filter nav menu by custom config
             const filterList = expand.layout.sidebar.filter(baseList);
-
-            console.log(888888888888);
-            console.log(888888888888);
-            console.log(888888888888);
-            console.log(filterList);
-            console.log(888888888888);
-            console.log(888888888888);
-            console.log(888888888888);
 
             /**
              * in multiple application mode  - nav menu  data need flattening handle

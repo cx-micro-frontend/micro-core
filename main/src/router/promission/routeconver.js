@@ -25,16 +25,9 @@ export default sideBarList => {
     includeModules = injection.modules.filter(item => !item.disabled).map(item => item.repositorie);
   }
 
-  console.log(123123123);
-  console.log(includeModules);
-  console.log(123123123);
   const addRouterList = sideBarList.filter(
     item => includeModules.indexOf(item[keyRefer['rootRouteName']]) > -1
   );
-
-  console.log(33333333333);
-  console.log(addRouterList);
-  console.log(33333333333333);
 
   const a = filterAsyncRouter(addRouterList);
   console.log(a);
@@ -56,7 +49,8 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
     const nr = {
       name: childRoute[keyRefer['routeName']],
       path: childRoute[keyRefer['routePath']],
-      component: createComponent(childRoute, fatherRoute),
+      component: createComponent(childRoute, fatherRoute, false),
+      injectComponent: createComponent(childRoute, fatherRoute, true),
       meta: {
         auth: true,
         key: childRoute[keyRefer['routeName']],
@@ -80,7 +74,8 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
         {
           name: route[keyRefer['routeName']],
           path: route[keyRefer['routePath']],
-          component: createComponent(route),
+          component: createComponent(route, null, false),
+          injectComponent: createComponent(route, null, true),
           meta: {
             auth: true,
             key: route[keyRefer['routeName']],
@@ -96,14 +91,14 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
   const accessedRouters = [];
   asyncRouterMap.forEach(route => {
     let r = {};
+    //是否是 根路由
     if (isModuleRoute(route)) {
-      /**
-       * 非叶子节点 且 存在子集 => 常规路由注册 (如：业户=>房产管理)
-       * 叶子节点 或 不存在子集 => 特殊路由注册 (如：概览)
-       */
+      //非叶子节点 且 存在子集 => 常规路由注册 (如：业户=>房产管理)
       if (!isLeaf(route) && hasChildRoute(route)) {
         r = normalRoute(route, loopFatherRouter);
-      } else {
+      }
+      //叶子节点 或 不存在子集 => 特殊路由注册 (如：概览)
+      else {
         r = spRoute(route);
       }
     } else {
@@ -118,7 +113,6 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 
 function routelevel(route) {
   // return parseInt(route.syLayer) - 1;
-
   return parseInt(route[keyRefer['menuLevel']]);
 }
 
@@ -134,13 +128,24 @@ function isLeaf(route) {
   return route[keyRefer['isLeaf']];
 }
 
-function createComponent(route, fatherRoute = null) {
+/**
+ * create component
+ * @param route
+ * @param fatherRoute
+ * @param isInjectRoute - 是否是 非标-集成模式页面
+ * @returns {*}
+ */
+function createComponent(route, fatherRoute = null, isInjectRoute = false) {
   const rootRouteName = route[keyRefer['rootRouteName']];
   const templatePath = route[keyRefer['templatePath']];
-  const behavior = route.behavior;
+  const behavior = route[keyRefer['behavior']];
 
-  //root route
-  if (isModuleRoute(route)) {
+  /**
+   * 跟路由 + 叶子节点 => layout
+   * 非标-集成模式页面 => null (路由中不体现 component，在集成界面中手动注册组件形式注册)
+   * 常规 => 对应页面 component
+   */
+  if (isModuleRoute(route) && !isLeaf(route)) {
     //normal first route
     return Layout;
   } else {

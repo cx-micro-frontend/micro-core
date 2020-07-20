@@ -123,7 +123,7 @@
         // 非当前页点击
         if (this.currentRoute.name !== targetName) {
           //菜单栏 - 跳转目标页面并清除目标页的缓存
-          this.$router.push({ name: targetName, params: { noRefresh: false } }); //jump
+          this.$router.push({ name: targetName, params: { noRefresh: false, jumpMode: 'sideMenu' } }); //jump
         }
       },
 

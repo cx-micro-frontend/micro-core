@@ -85,11 +85,6 @@ const PageInfo = {
     setPageInfoList({ commit }, data) {
       const _PI = createPageInfo(data);
 
-      console.log(1231321312);
-      console.log(1231321312);
-      console.log(_PI);
-      console.log(1231321312);
-
       commit('SET_PAGE_INFO_LIST', _PI);
     },
 

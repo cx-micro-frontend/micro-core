@@ -44,7 +44,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { createTopMenu } from '../../../../layout/components/NS-nav-menu/utils';
+  import { createTopMenu } from '../../../../layout/components/NS-nav-menu/utils/dataHandle';
   import keyRefer from '../../NS-nav-menu/nav-menu-keyRefer';
 
   export default {
@@ -93,7 +93,7 @@
           console.log(772372673627637);
           console.log(navdata);
           console.log(772372673627637);
-          this.$router.push({ name: navdata.initRoute.name, params: { noRefresh: true } });
+          this.$router.push({ name: navdata.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
 
           this.currentModuleId = item.moduleId;
           this.model = false;
