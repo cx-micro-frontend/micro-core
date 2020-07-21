@@ -1,6 +1,6 @@
 import expand from '../../../../../expand';
 import keyRefer from '../nav-menu-keyRefer';
-import { isSpecialBehavior } from './propsJudge';
+import menuNodeProps from './menuNodeProps';
 import { judgeType } from '../../../../utils/library/judge';
 
 /**
@@ -18,7 +18,7 @@ function _getInitRouteInMenu(menu) {
       let targetItem = null;
 
       if (judgeType(menuDate) === 'array' && menuDate.length) {
-        targetItem = menuDate.find(item => !isSpecialBehavior(item));
+        targetItem = menuDate.find(item => !menuNodeProps.isInjectPage(item));
       } else if (judgeType(menuDate) === 'object') {
         targetItem = menuDate;
       }

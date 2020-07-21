@@ -2,6 +2,7 @@ const injection = require('@ROOT/config/injection/index.js');
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`); //获取组件的方法
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 import keyRefer from '../../layout/components/NS-nav-menu/nav-menu-keyRefer';
+import menuNodeProps from '../../layout/components/NS-nav-menu/utils/menuNodeProps';
 
 /**
  * get async routes
@@ -138,7 +139,6 @@ function isLeaf(route) {
 function createComponent(route, fatherRoute = null, isInjectRoute = false) {
   const rootRouteName = route[keyRefer['rootRouteName']];
   const templatePath = route[keyRefer['templatePath']];
-  const behavior = route[keyRefer['behavior']];
 
   /**
    * 跟路由 + 叶子节点 => layout
@@ -157,7 +157,7 @@ function createComponent(route, fatherRoute = null, isInjectRoute = false) {
      * 103 - 常规跳转v10界面（混合嵌入）- v10部分+v8
      * 非常规界面，注册路由，模板置空
      */
-    if (['101', '102'].indexOf(behavior) > -1) {
+    if (menuNodeProps.isInjectPage(route)) {
       return null;
     }
     return _import(templatePath, rootRouteName);
