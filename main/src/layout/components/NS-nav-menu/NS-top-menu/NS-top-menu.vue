@@ -78,7 +78,7 @@
     },
     methods: {
       back() {
-        this.$router.push({ name: 'portal' });
+        this.$router.push({ name: 'portal', params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item) {
         if (this.currentModuleId === item.moduleId) return;
