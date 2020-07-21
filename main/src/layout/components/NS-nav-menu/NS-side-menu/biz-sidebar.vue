@@ -30,6 +30,7 @@
   import { mapGetters } from 'vuex';
   import keyRefer from '../nav-menu-keyRefer';
   import menuSlotMixins from './menu-slot-mixins';
+  import menuNodeProps from '../utils/menuNodeProps';
   import expand from '../../../../../expand';
 
 
@@ -69,10 +70,6 @@
     watch: {
       activeKey: {
         handler: function(keyVal) {
-          console.log(99999999999);
-          console.log(99999999999);
-          console.log(keyVal);
-          console.log(99999999999);
           this.$refs['ns-biz-sidebar'].setActive(keyVal);
         },
       },
@@ -117,6 +114,8 @@
         //非叶子节点不能点击跳转路由
         if (!this.currentNode || !this.currentNode.isLeaf) return;
 
+        if (menuNodeProps.isSlipPage(this.currentNode.data)) return;
+
         const routeNameKey = keyRefer.routeName;
         const targetName = this.currentNode.data[routeNameKey];
 
@@ -134,13 +133,6 @@
       toggleExpand(state) {
         this.$store.dispatch('toggleSideMenuExpandState', state);
       },
-    },
-    created() {
-      console.log('created-created');
-      console.log('created-created');
-      console.log(this.currentPageInfo);
-      console.log('created-created');
-      console.log('created-created');
     },
   };
 </script>
