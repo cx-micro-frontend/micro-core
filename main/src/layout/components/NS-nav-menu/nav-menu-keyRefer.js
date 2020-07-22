@@ -19,7 +19,7 @@ const keyRefer = {
   rootRouteName: 'rootMenuSubName', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
   routePath: 'routePath', //前端路由路径（拼接好的全路径）
   templatePath: 'templatePath', //资源文件对应路径
-  behavior: 'behavior ', //交互/集成模式
+  behavior: 'behavior', //交互/集成模式
   targetUrl: 'url', //v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
 
   initRoute: 'initRoute', //当前菜单的初始路由
