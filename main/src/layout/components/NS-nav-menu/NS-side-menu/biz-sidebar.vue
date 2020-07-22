@@ -114,6 +114,7 @@
         //非叶子节点不能点击跳转路由
         if (!this.currentNode || !this.currentNode.isLeaf) return;
 
+        // alert(menuNodeProps.isSlipPage(this.currentNode.data));
         if (menuNodeProps.isSlipPage(this.currentNode.data)) return;
 
         const routeNameKey = keyRefer.routeName;
