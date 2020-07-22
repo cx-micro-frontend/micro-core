@@ -133,10 +133,10 @@ function isLeaf(route) {
  * create component
  * @param route
  * @param fatherRoute
- * @param isInjectRoute - 是否是 非标-集成模式页面
+ * @param flag - 是否是 在非标-集成模式页面下 => 用于生成特殊 inject 模板，赋值于路由 injectComponent 字段
  * @returns {*}
  */
-function createComponent(route, fatherRoute = null, isInjectRoute = false) {
+function createComponent(route, fatherRoute = null, flag = false) {
   const rootRouteName = route[keyRefer['rootRouteName']];
   const templatePath = route[keyRefer['templatePath']];
 
@@ -157,7 +157,7 @@ function createComponent(route, fatherRoute = null, isInjectRoute = false) {
      * 103 - 常规跳转v10界面（混合嵌入）- v10部分+v8
      * 非常规界面，注册路由，模板置空
      */
-    if (menuNodeProps.isInjectPage(route)) {
+    if (menuNodeProps.isInjectPage(route) && !flag) {
       return null;
     }
     return _import(templatePath, rootRouteName);
