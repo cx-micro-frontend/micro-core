@@ -18,7 +18,8 @@ function _getInitRouteInMenu(menu) {
       let targetItem = null;
 
       if (judgeType(menuDate) === 'array' && menuDate.length) {
-        targetItem = menuDate.find(item => !menuNodeProps.isInjectPage(item));
+        //gets the first node item that is not a sideslip type
+        targetItem = menuDate.find(item => !menuNodeProps.isSlipPage(item));
       } else if (judgeType(menuDate) === 'object') {
         targetItem = menuDate;
       }
