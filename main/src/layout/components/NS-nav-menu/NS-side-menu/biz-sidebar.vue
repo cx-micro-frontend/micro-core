@@ -95,10 +95,17 @@
 
       nodeClick(node, instance) {
         this.currentNode = node;
+
+        this.menuSlotProps = node;
+
+        //add sign for click time
+        if (this.menuSlotProps) {
+          this.menuSlotProps.activeTime = new Date().getTime();
+        }
+
         console.log('nodeClick-nodeClick');
         console.log(node);
 
-        this.menuSlotProps = node;
 
         this.navClick(
           { node, instance },
