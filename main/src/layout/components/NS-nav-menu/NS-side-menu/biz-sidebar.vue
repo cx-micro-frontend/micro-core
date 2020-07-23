@@ -100,7 +100,7 @@
 
         //add sign for click time
         if (this.menuSlotProps) {
-          this.menuSlotProps.activeTime = new Date().getTime();
+          this.$set( this.menuSlotProps, 'activeTime', new Date().getTime());
         }
 
         console.log('nodeClick-nodeClick');
