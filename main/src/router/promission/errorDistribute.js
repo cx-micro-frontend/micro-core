@@ -20,9 +20,13 @@ export default type => {
     //general system mode
     normal: {
       loss_token: { path: redirect['loss_token'], log: 'token 缺失或失效' },
-      error_loss_pages: {
+      loss_pages: {
         path: redirect['loss_pages'],
         log: '页面模块缺失,请检查模块是否注入',
+      },
+      error_route_create: {
+        path: redirect['404'],
+        log: '路由动态创建失败,请检查数据返回是否正常',
       },
       error_route_role: {
         path: redirect['404'],
@@ -33,7 +37,7 @@ export default type => {
     sso: {
       error_login: { path: redirect['sso_error_login'], log: 'SSO 登录错误' },
       loss_token: { path: redirect['sso_loss_token'], log: 'token 缺失或失效' },
-      error_loss_pages: {
+      loss_pages: {
         path: redirect['sso_loss_pages'],
         log: '页面模块缺失,请检查模块是否注入',
       },
@@ -45,7 +49,7 @@ export default type => {
   };
 
   try {
-    console.log(errorMap[loginMode][type].log);
+    console.warn(errorMap[loginMode][type].log);
     return errorMap[loginMode][type].path;
   } catch (e) {
     return '/front/login';

@@ -58,6 +58,7 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
         title: childRoute[keyRefer['label']],
         cache: true,
         moduleId: childRoute[keyRefer['moduleId']],
+        // rootRouteName: childRoute[keyRefer['rootRouteName']],
       },
     };
 
@@ -83,6 +84,7 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
             title: route[keyRefer['label']],
             cache: true,
             moduleId: route[keyRefer['moduleId']],
+            // rootRouteName: route[keyRefer['rootRouteName']],
           },
         },
       ],

@@ -13,7 +13,8 @@ export default {
   computed: {
     ...mapGetters(['loginMode', 'routeErrorSign']),
     localeskey() {
-      return `${this.loginMode}.${this.routeErrorSign}`;
+      const s = this.routeErrorSign || 'error_route_role';
+      return `${this.loginMode}.${s}`;
     },
     maintit() {
       return errorMessage[`${this.localeskey}.main`];

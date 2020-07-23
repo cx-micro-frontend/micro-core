@@ -11,7 +11,7 @@ export default [
   {
     path: '/404',
     name: '404',
-    component: () => import('../../views/Public/404/404.vue'),
+    component: () => import('../../views/Public/error/error.vue'),
     meta: { auth: false, key: '404', cache: false },
   },
 
