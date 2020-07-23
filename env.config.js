@@ -14,8 +14,7 @@ const dev_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
-  // IFRAME_IP_CONFIG: '"http://192.168.1.135:2180"',
-  // BASE_API: '"http://10.200.254.166/api"',
+  IFRAME_IP_CONFIG: '"http://192.168.1.52"',
   BASE_API: '"http://192.168.1.52/api"',
   // BASE_API: '"http://192.168.4.40:7777"',
   // BASE_API: '"http://192.168.1.95/api"',
@@ -63,9 +62,9 @@ const prod_env = {
   PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"production"',
   ENV_CONFIG: '"prod"',
-  BASE_API: '"/api"',
   IP_CONFIG: '""',
   IFRAME_IP_CONFIG: '""',
+  BASE_API: '"/api"',
 };
 /**
  * test env config
