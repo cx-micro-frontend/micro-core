@@ -19,6 +19,9 @@ let addRouFlag = false;
  * @param next
  */
 export default async (to, from, next) => {
+  // next(errorPathDistribute('error_route_create'));
+  // return false;
+
   const pageinfoList = $store.state.PageInfo.pageinfoList;
 
   console.log('promission-promission-promission');
@@ -91,9 +94,9 @@ export default async (to, from, next) => {
           }
         })
         .catch(err => {
+          //路由动态创建失败
           console.warn(err);
-          //错误路由分发
-          next(errorPathDistribute('error_route_role'));
+          next(errorPathDistribute('error_route_create'));
         });
     } else {
       const isAuthWhite = isInAuthwhiteList(to);
@@ -117,11 +120,11 @@ export default async (to, from, next) => {
 
           next();
         } else {
-          //错误路由分发
-          next(errorPathDistribute('error_loss_pages'));
+          //页面模块缺失,请检查模块是否注入
+          next(errorPathDistribute('loss_pages'));
         }
       } else {
-        //错误路由分发
+        //异步路由列表配置项与路由跳转路径不匹配,或权限路由缺失
         next(errorPathDistribute('error_route_role'));
       }
     }
