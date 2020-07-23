@@ -90,9 +90,7 @@
          *  - initRoute - 切换当前侧边栏导航菜单的初始路由
          */
         this.$store.dispatch('toggle_module_handle', item.moduleId).then(navdata => {
-          console.log(772372673627637);
-          console.log(navdata);
-          console.log(772372673627637);
+
           this.$router.push({ name: navdata.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
 
           this.currentModuleId = item.moduleId;
