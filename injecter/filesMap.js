@@ -45,6 +45,16 @@ const getRouteFiles = () => {
             sign: `===== ${firstDir} module routing allowance list =====`,
           });
 
+          /*
+           * 判断该一级模块下是否存在同名.vue文件
+           * 例如： （firstModule => firstModule.vue)
+           */
+          if (fs.existsSync(join(route1_Path, `${firstDir}.vue`))) {
+            routeFiles.push(
+              `{path: '/${firstDir}',name: '${firstDir}'}`,
+            );
+          }
+
           //Loop second level page directory
           fs.readdirSync(route1_Path).forEach(secondDir => {
             let route2_Path = join(route1_Path, secondDir); //二级模块路径
@@ -55,10 +65,9 @@ const getRouteFiles = () => {
                * 例如： （firstModule => secondModule => secondModule.vue)
                */
               if (fs.existsSync(join(route2_Path, `${secondDir}.vue`))) {
-
                 //拼接注入数组队列
                 routeFiles.push(
-                  `{path: '/${firstDir}/${secondDir}',name: '${secondDir}'}`
+                  `{path: '/${firstDir}/${secondDir}',name: '${secondDir}'}`,
                 );
               }
             }
