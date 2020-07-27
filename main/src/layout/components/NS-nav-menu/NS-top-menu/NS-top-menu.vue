@@ -48,18 +48,19 @@
   import keyRefer from '../../NS-nav-menu/nav-menu-keyRefer';
 
   export default {
-    name: 'ns-back-to-portal',
+    name: 'ns-top-menu',
     data() {
       return {
         model: false,
         currentModuleId: null,
+        portalName: 'portal',
         keyRefer,
       };
     },
     computed: {
       ...mapGetters(['moduleMenu', 'initRoute', 'moduleId']),
       isActive() {
-        return this.$route.name === 'portal';
+        return this.$route.name === this.portalName;
       },
       topNavMenu() {
         return createTopMenu(this.moduleMenu);
@@ -78,7 +79,8 @@
     },
     methods: {
       back() {
-        this.$router.push({ name: 'portal', params: { noRefresh: true, jumpMode: 'topMenu' } });
+        this.currentModuleId = this.portalName;
+        this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item) {
         if (this.currentModuleId === item.moduleId) return;
@@ -95,14 +97,12 @@
 
           this.currentModuleId = item.moduleId;
           this.model = false;
+
         }).catch(err => {
             console.warn(err);
           },
         );
       },
-    },
-    created() {
-
     },
   };
 </script>
