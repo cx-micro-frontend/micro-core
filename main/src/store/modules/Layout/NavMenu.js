@@ -151,6 +151,10 @@ const NavMenu = {
 
         const initRoute = sideMenu[0][keyRefer['initRoute']];
 
+        // console.log(12312312312)
+        // console.log(initRoute)
+        // console.log(12312312312)
+
         const navdata = {
           sideMenu,
           initRoute,
