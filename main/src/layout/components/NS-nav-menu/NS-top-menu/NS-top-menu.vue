@@ -79,6 +79,7 @@
     },
     methods: {
       back() {
+        if (this.isActive) return;
         this.currentModuleId = this.portalName;
         this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
