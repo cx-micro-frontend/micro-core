@@ -48,15 +48,27 @@ service.interceptors.response.use(
         return response;
       });
     } else {
-      const resData = response.data;
+      let resData = response.data;
 
-      const resultCodeList = ['200', 200, '0000'];
-      if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
-        return Promise.resolve(resData);
-      } else {
-        elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
-
-        return Promise.reject(resData);
+      //file blob type
+      if (resData.type === 'application/json') {
+        let reader = new FileReader();
+        reader.readAsText(resData, 'utf-8');
+        reader.onload = e => {
+          console.log('--- file blob type ---', JSON.parse(e.target.result));
+          resData = JSON.parse(e.target.result);
+          elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
+        };
+      }
+      //normal type
+      else {
+        const resultCodeList = ['200', 200, '0000'];
+        if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
+          return Promise.resolve(resData);
+        } else {
+          elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
+          return Promise.reject(resData);
+        }
       }
     }
   },
