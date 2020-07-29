@@ -50,18 +50,17 @@ service.interceptors.response.use(
     } else {
       let resData = response.data;
 
-      //判断是否是文件流返回
+      //file blob type
       if (resData.type === 'application/json') {
         let reader = new FileReader();
         reader.readAsText(resData, 'utf-8');
         reader.onload = e => {
-          console.log('----', JSON.parse(e.target.result));
+          console.log('--- file blob type ---', JSON.parse(e.target.result));
           resData = JSON.parse(e.target.result);
-          console.log(resData);
           elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
         };
       }
-      //正常返回
+      //normal type
       else {
         const resultCodeList = ['200', 200, '0000'];
         if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
