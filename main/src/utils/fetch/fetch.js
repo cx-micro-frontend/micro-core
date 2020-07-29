@@ -48,15 +48,28 @@ service.interceptors.response.use(
         return response;
       });
     } else {
-      const resData = response.data;
+      let resData = response.data;
 
-      const resultCodeList = ['200', 200, '0000'];
-      if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
-        return Promise.resolve(resData);
-      } else {
-        elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
-
-        return Promise.reject(resData);
+      //判断是否是文件流返回
+      if (resData.type === 'application/json') {
+        let reader = new FileReader();
+        reader.readAsText(resData, 'utf-8');
+        reader.onload = e => {
+          console.log('----', JSON.parse(e.target.result));
+          resData = JSON.parse(e.target.result);
+          console.log(resData);
+          elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
+        };
+      }
+      //正常返回
+      else {
+        const resultCodeList = ['200', 200, '0000'];
+        if (resData && resultCodeList.indexOf(resData.resultCode) > -1) {
+          return Promise.resolve(resData);
+        } else {
+          elMessage(resData.resultMsg, () => service.redirect(resData.resultCode, resData.message));
+          return Promise.reject(resData);
+        }
       }
     }
   },
