@@ -9,7 +9,8 @@
       :defaultActive="defaultActive"
       :expanded="sideMenuExpand"
       :slotRander="slotRanderFn"
-      :closeByLeafClick="false"
+      :closeByLeafClick="true"
+      :trigger="trigger"
       @node-click="nodeClick"
       @toggle-expand="toggleExpand"
     >
@@ -43,6 +44,7 @@
         menuSlotProps: null,
         currentNode: null,
         defaultActive: '',
+        trigger:'hover',
         keyRefer,
       };
     },
@@ -139,6 +141,7 @@
        * @param state
        */
       toggleExpand(state) {
+        if (this.trigger === 'hover') return;
         this.$store.dispatch('toggleSideMenuExpandState', state);
       },
     },
