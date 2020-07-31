@@ -32,20 +32,18 @@
   }
   //内容区域
   .sign-in-box {
+    position: absolute;
+    display: flex;
     background: #ffffff;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    /*width: 52%;*/
-    /*height: 60%;*/
-    /*min-height: 400px;*/
     width: 1000px;
     height: 560px;
-    z-index: 10;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    z-index: 10;
+    overflow: hidden;
 
     //标题
     .sign-in-title {
@@ -75,7 +73,7 @@
 
       //标题
       .sign-in-title {
-        color: #1D73FF;
+        color: #333;
       }
 
       //登录输入部分
