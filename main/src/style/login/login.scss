@@ -32,31 +32,31 @@
   }
   //内容区域
   .sign-in-box {
-    background: #ffffff;
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    /*width: 52%;*/
-    /*height: 60%;*/
-    /*min-height: 400px;*/
+    position: absolute;
+    display: flex;
+
     width: 1000px;
     height: 560px;
-    z-index: 10;
-    position: absolute;
+
     top: 50%;
     left: 50%;
+
+    background: #ffffff;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+
+    border-radius: 8px;
+    overflow: hidden;
+
+    z-index: 10;
     transform: translate(-50%, -50%);
-    display: flex;
 
     //标题
     .sign-in-title {
-      padding: 65px 0 40px 0;
-      font-size: 32px;
-      font-weight: 600;
       letter-spacing: 0;
       text-align: center;
     }
 
-    //左边
+    //左边区域部分（ 主要是图片 + 部分文字 )
     .sign-in-left {
       width: 44%;
       height: 100%;
@@ -65,17 +65,23 @@
 
       //标题
       .sign-in-title {
-        color: #2a3f52;
+        padding: 80px 0 40px 0;
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
       }
     }
 
-    //右边
+    //右边（ 登录输入 + 部分文字 )
     .sign-in-right {
       flex: 1;
 
       //标题
       .sign-in-title {
-        color: #1D73FF;
+        padding: 80px 0 40px 0;
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
       }
 
       //登录输入部分
