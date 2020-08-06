@@ -17,14 +17,6 @@ function _getInitRouteInMenu(menu) {
     if (menuDate) {
       let targetItem = null;
 
-      // console.log(22222222222);
-      // console.log(22222222222);
-      // console.log(22222222222);
-      // console.log(menuDate);
-      // console.log(22222222222);
-      // console.log(22222222222);
-      // console.log(22222222222);
-
       if (judgeType(menuDate) === 'array' && menuDate.length) {
         //gets the first node item that is not a sideslip type
         targetItem = menuDate.find(item => !menuNodeProps.isSlipPage(item));
@@ -97,4 +89,16 @@ export const createInitRoute = currentMenu => {
   }
 
   return initRoute;
+};
+
+/**
+ * 从返回的后台数据中获取初始路由 name 和  path
+ * @param currentMenu
+ * @returns {{name: *, fullpath: *}}
+ */
+export const getInitRoute = currentMenu => {
+  return {
+    name: currentMenu[keyRefer['defaultRouteName']],
+    fullpath: currentMenu[keyRefer['defaultRoutePath']],
+  };
 };

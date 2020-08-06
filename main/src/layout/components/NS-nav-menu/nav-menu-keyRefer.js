@@ -29,6 +29,9 @@ const keyRefer = {
 
   initRoute: 'initRoute', //当前菜单的初始路由
 
+  defaultRouteName: 'defaultRouteName',
+  defaultRoutePath: 'defaultRoutePath',
+
   menuIndex: 'menuIndex', //序号 syOrderindex
   virtualLabel: 'syPyqc', //虚拟节点的名称 - 暂时存在，后续去除
   isVirtual: 'isVirtual', //是否虚拟节点 -  暂时存在，后续去除

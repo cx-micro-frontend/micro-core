@@ -1,6 +1,6 @@
 import keyRefer from '../nav-menu-keyRefer';
 import expand from '../../../../../expand';
-import { createInitRoute } from './initRoute';
+// import { createInitRoute } from './initRoute';
 
 /**
  * create top nav menu - 生成顶部导航菜单数据
@@ -37,18 +37,20 @@ export const filterModuleByToggle = (list, key) => {
  * 2、增加层级标识
  * 3、增加menuId标识 （如：1-1-1),用于active对照标识
  * 4、多系统门户模式中，增加在各级根菜单数据中增加初始路由字段(level = 1)
- * @param list
+ * @param menu
  * @returns {*}
  * @private
  */
-export const handleMenuData = list => {
+export const handleMenuData = menu => {
   const visibleKey = keyRefer['visible'];
   const childrenKey = keyRefer['children'];
   const levelKey = keyRefer['menuLevel'];
   const menuIdKey = keyRefer['menuId'];
-  const initRouteKey = keyRefer['initRoute'];
+  // const initRouteKey = keyRefer['initRoute'];
 
   const _level = expand.integrationMode === 'mam' ? 0 : 1;
+
+  // if (!(menu[childrenKey] && menu[childrenKey] instanceof Array)) return menu;
 
   /**
    * 节点递归循环处理
@@ -65,9 +67,9 @@ export const handleMenuData = list => {
       item[levelKey] = level;
 
       //in multiple application mode , should create init route to every root item (level = 1)
-      if (expand.integrationMode === 'mam' && item[levelKey] === 1) {
-        item[initRouteKey] = createInitRoute(item);
-      }
+      // if (expand.integrationMode === 'mam' && item[levelKey] === 1) {
+      //   item[initRouteKey] = createInitRoute(item);
+      // }
 
       //add menu id (use to active sign)
       let transmitIndex = '';
@@ -84,10 +86,12 @@ export const handleMenuData = list => {
     });
   };
 
-  done(list, _level);
+  done(menu, _level);
 
-  if (list && list instanceof Array) {
-    return list;
+  return menu;
+
+  if (menu && menu instanceof Array) {
+    return menu;
   } else {
     throw '【 NEAP-ERROR 】Custom filter side menu data,  must output data list.';
   }

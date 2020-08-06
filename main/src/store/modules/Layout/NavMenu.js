@@ -6,7 +6,10 @@ import {
   flattenMenu,
   filterModuleByToggle,
 } from '../../../layout/components/NS-nav-menu/utils/dataHandle';
-import { createInitRoute } from '../../../layout/components/NS-nav-menu/utils/initRoute';
+import {
+  createInitRoute,
+  getInitRoute,
+} from '../../../layout/components/NS-nav-menu/utils/initRoute';
 import { storageHandle } from '../../../utils/storage/storage';
 import expand from '../../../../expand';
 import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
@@ -94,8 +97,11 @@ const NavMenu = {
       return new Promise((resolve, reject) => {
         mam_nav_menu_service()
           .then(res => {
-            const r = res.resultData || [];
-            const baseList = handleMenuData(r);
+            const r = res.resultData || {};
+
+            const rList = r[keyRefer['children']] || [];
+
+            const baseList = handleMenuData(rList);
 
             //filter nav menu by custom config
             const filterList = expand.layout.sidebar.filter(baseList);
@@ -113,12 +119,10 @@ const NavMenu = {
              */
             const navdata = {
               moduleMenu: filterList,
-              initRoute: {
-                name: 'portal',
-                fullpath: '/portal',
-              },
+              initRoute: getInitRoute(r),
               moduleId: 'portal',
             };
+
             commit('SET_MENU_DATA', navdata);
 
             console.log('处理好的菜单栏数据如下：');
@@ -149,11 +153,7 @@ const NavMenu = {
 
         const sideMenu = _currentModule[keyRefer['children']];
 
-        const initRoute = sideMenu[0][keyRefer['initRoute']];
-
-        // console.log(12312312312)
-        // console.log(initRoute)
-        // console.log(12312312312)
+        const initRoute = getInitRoute(_currentModule);
 
         const navdata = {
           sideMenu,
