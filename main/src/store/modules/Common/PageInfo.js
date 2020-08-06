@@ -29,16 +29,22 @@ function createPageInfo(data) {
 
         pageInfoList.push({
           title: item[keyRefer['label']], //router-web name
-          name: item[keyRefer['routeName']], //router-web name
-          routePath: item[keyRefer['routePath']], //router-web name
-          targetUrl: item[keyRefer['targetUrl']],
           visible: item[keyRefer['visible']],
           isLeaf: item[keyRefer['isLeaf']],
+
+          name: item[keyRefer['routeName']], //router-web name
+
+          routePath: item[keyRefer['routePath']], //router-web name
+          templatePath: item[keyRefer['templatePath']],
+          targetUrl: item[keyRefer['targetUrl']],
+
           funcId: item[keyRefer['funcId']],
           moduleId: item[keyRefer['moduleId']], //所属 顶部子系统模块 - ID
           menuId: item[keyRefer['menuId']],
-          templatePath: item[keyRefer['templatePath']],
+
           behavior: item[keyRefer['behavior']],
+          topHiddenController: item[keyRefer['topHiddenController']],
+
           isOwner: isOwner,
           isMicro: isMicro,
         });
