@@ -22,6 +22,8 @@ const keyRefer = {
   behavior: 'behavior', //交互/集成模式
   targetUrl: 'url', //v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
 
+  topHiddenController: 'hideTopControl', //隐藏顶部控件 值可以为单个控件名称，也可以是逗号分割的多个控件名称
+
   initRoute: 'initRoute', //当前菜单的初始路由
 
   menuLevel: 'syLayer', //菜单层级
