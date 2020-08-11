@@ -4,7 +4,7 @@ module.exports = [
     repositorie: 'portal',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_portal.git',
     branch: 'master',
-    isOwner: false,
+    isOwner: true,
     disabled: false,
   },
 ];
