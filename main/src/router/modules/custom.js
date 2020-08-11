@@ -1,11 +1,12 @@
 import expand from '../../../expand';
 
+const modules = require('@ROOT/config/injection/index').modules;
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`); //获取组件的方法
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
 const customRoute = [
   ...expand.route.customRoute(Layout),
-  ...(expand.integrationMode === 'mam'
+  ...(modules.some(m => m.repositorie === 'portal')
     ? [
         {
           path: '',
