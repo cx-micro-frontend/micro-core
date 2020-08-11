@@ -1,4 +1,4 @@
-import { createInitRoute } from '../layout/components/NS-nav-menu/utils/initRoute';
+// import { createInitRoute } from '../layout/components/NS-nav-menu/utils/initRoute';
 
 const getters = {
   //frame or mode

@@ -1,6 +1,6 @@
 <!--top nav menu - 顶部系统模块导航菜单-->
 <template>
-  <div class="ns-top-menu clear">
+  <div class="ns-top-menu clear" v-if="topNavMenu && topNavMenu.length>1">
     <div :class="[
       'ns-top-menu_module back fl',
       {'is-active':isActive}
@@ -56,6 +56,14 @@
         portalName: 'portal',
         keyRefer,
       };
+    },
+    created() {
+      console.log(1312312312);
+      console.log(1312312312);
+      console.log(1312312312);
+      console.log(this.moduleMenu);
+      console.log(1312312312);
+      console.log(1312312312);
     },
     computed: {
       ...mapGetters(['moduleMenu', 'initRoute', 'moduleId']),
