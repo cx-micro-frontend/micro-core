@@ -1,6 +1,6 @@
 import keyRefer from '../nav-menu-keyRefer';
 import expand from '../../../../../expand';
-// import { createInitRoute } from './initRoute';
+import { createInitRoute } from './initRoute';
 
 /**
  * create top nav menu - 生成顶部导航菜单数据
@@ -66,10 +66,13 @@ export const handleMenuData = menu => {
       //add level sign
       item[levelKey] = level;
 
-      //in multiple application mode , should create init route to every root item (level = 1)
-      // if (expand.integrationMode === 'mam' && item[levelKey] === 1) {
-      //   item[initRouteKey] = createInitRoute(item);
-      // }
+      //should create init route to every root item (level = 0)
+      if (item[levelKey] === 0) {
+        item[keyRefer['defaultRouteName']] =
+          item[keyRefer['defaultRouteName']] || createInitRoute(item).name;
+        item[keyRefer['defaultRoutePath']] =
+          item[keyRefer['defaultRoutePath']] || createInitRoute(item).fullpath;
+      }
 
       //add menu id (use to active sign)
       let transmitIndex = '';
