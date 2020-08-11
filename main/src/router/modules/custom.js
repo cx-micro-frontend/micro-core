@@ -4,6 +4,7 @@ const modules = require('@ROOT/config/injection/index').modules;
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`); //获取组件的方法
 const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
 
+const templatePath = '/NS_portal/views/portal/portal.vue';
 const customRoute = [
   ...expand.route.customRoute(Layout),
   ...(modules.some(m => m.repositorie === 'portal')
@@ -14,6 +15,7 @@ const customRoute = [
           children: [
             {
               path: 'portal',
+              // component: () => import(`@ROOT${templatePath}`),
               component: _import('/NS_portal/views/portal/portal.vue', 'portal'),
 
               // component: () =>
