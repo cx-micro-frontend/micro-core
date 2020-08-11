@@ -372,8 +372,8 @@ const mam_nav_menu = (req, res) => {
             iconUrl: null,
             moduleId: 'FIN',
             moduleName: '其他',
-            defaultRouteName: 'overview',
-            defaultRoutePath: '/overview',
+            defaultRouteName: null,//'/overview'
+            defaultRoutePath: null,//'/overview'
             childMenus: [
               //概览页
               {
