@@ -122,7 +122,7 @@ const sam_nav_menu2 = (req, res) => {
             menuMenusubname: 'systemOrgEmployee',
             rootMenuSubName: 'system',
             routePath: '/system/systemOrgEmployee',
-            templatePath: '/NS_system/views/system/systemOrgEmployee/systemOrgEmployee.vue',
+            templatePath: 'system/views/system/systemOrgEmployee/systemOrgEmployee.vue',
             syStatus: '1',
             syLayer: 3,
             is_leaf: true,
@@ -138,7 +138,7 @@ const sam_nav_menu2 = (req, res) => {
             menuMenusubname: 'systemRolePermission',//前端路由name (唯一)
             rootMenuSubName: 'system',
             routePath: '/system/systemRolePermission', //前端路由路径（拼接好的全路径）
-            templatePath: '/NS_system/views/system/systemRolePermission/systemRolePermission.vue',
+            templatePath: 'system/views/system/systemRolePermission/systemRolePermission.vue',
             syStatus: '1',
             syLayer: 3,
             is_leaf: true,
@@ -154,7 +154,7 @@ const sam_nav_menu2 = (req, res) => {
             menuMenusubname: 'systemDataDictionary',//前端路由name (唯一)
             rootMenuSubName: 'system',
             routePath: '/system/systemDataDictionary', //前端路由路径（拼接好的全路径）
-            templatePath: '/NS_system/views/system/systemDataDictionary/systemDataDictionary.vue',
+            templatePath: 'system/views/system/systemDataDictionary/systemDataDictionary.vue',
             syStatus: '1',
             syLayer: 3,
             is_leaf: true,
@@ -170,7 +170,7 @@ const sam_nav_menu2 = (req, res) => {
             menuMenusubname: 'designSync',//前端路由name (唯一)
             rootMenuSubName: 'system',
             routePath: '/system/designSync', //前端路由路径（拼接好的全路径）
-            templatePath: '/NS_system/views/system/designSync/designSync.vue',
+            templatePath: 'system/views/system/designSync/designSync.vue',
             syStatus: '1',
             syLayer: 3,
             is_leaf: true,
@@ -186,7 +186,7 @@ const sam_nav_menu2 = (req, res) => {
             menuMenusubname: 'systemTheme',//前端路由name (唯一)
             rootMenuSubName: 'system',
             routePath: '/system/systemTheme', //前端路由路径（拼接好的全路径）
-            templatePath: '/NS_system/views/system/systemOperatorColour/systemOperatorColour.vue',
+            templatePath: 'system/views/system/systemOperatorColour/systemOperatorColour.vue',
             syStatus: '1',
             syLayer: 3,
             is_leaf: true,
@@ -291,7 +291,7 @@ const mam_nav_menu = (req, res) => {
                     menuMenusubname: 'systemOrgEmployee',
                     rootMenuSubName: 'system',
                     routePath: '/system/systemOrgEmployee',
-                    templatePath: '/NS_system/views/system/systemOrgEmployee/systemOrgEmployee.vue',
+                    templatePath: 'system/views/system/systemOrgEmployee/systemOrgEmployee.vue',
                     syStatus: '1',
                     syLayer: 3,
                     is_leaf: true,
@@ -307,7 +307,7 @@ const mam_nav_menu = (req, res) => {
                     menuMenusubname: 'systemRolePermission',//前端路由name (唯一)
                     rootMenuSubName: 'system',
                     routePath: '/system/systemRolePermission', //前端路由路径（拼接好的全路径）
-                    templatePath: '/NS_system/views/system/systemRolePermission/systemRolePermission.vue',
+                    templatePath: 'system/views/system/systemRolePermission/systemRolePermission.vue',
                     syStatus: '1',
                     syLayer: 3,
                     is_leaf: true,
@@ -323,7 +323,7 @@ const mam_nav_menu = (req, res) => {
                     menuMenusubname: 'systemDataDictionary',//前端路由name (唯一)
                     rootMenuSubName: 'system',
                     routePath: '/system/systemDataDictionary', //前端路由路径（拼接好的全路径）
-                    templatePath: '/NS_system/views/system/systemDataDictionary/systemDataDictionary.vue',
+                    templatePath: 'system/views/system/systemDataDictionary/systemDataDictionary.vue',
                     syStatus: '1',
                     syLayer: 3,
                     is_leaf: true,
@@ -339,7 +339,7 @@ const mam_nav_menu = (req, res) => {
                     menuMenusubname: 'designSync',//前端路由name (唯一)
                     rootMenuSubName: 'system',
                     routePath: '/system/designSync', //前端路由路径（拼接好的全路径）
-                    templatePath: '/NS_system/views/system/designSync/designSync.vue',
+                    templatePath: 'system/views/system/designSync/designSync.vue',
                     syStatus: '1',
                     syLayer: 3,
                     is_leaf: true,
@@ -355,7 +355,7 @@ const mam_nav_menu = (req, res) => {
                     menuMenusubname: 'systemTheme',//前端路由name (唯一)
                     rootMenuSubName: 'system',
                     routePath: '/system/systemTheme', //前端路由路径（拼接好的全路径）
-                    templatePath: '/NS_system/views/system/systemOperatorColour/systemOperatorColour.vue',
+                    templatePath: 'system/views/system/systemOperatorColour/systemOperatorColour.vue',
                     syStatus: '1',
                     syLayer: 3,
                     is_leaf: true,

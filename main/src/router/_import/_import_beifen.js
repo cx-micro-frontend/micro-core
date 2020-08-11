@@ -1,4 +1,4 @@
-const modules = require('@ROOT/config/injection/index').modules;
+import { modules } from '../../../dependencies';
 
 module.exports = (childPath, fatherPath) => {
   const currentModule = modules.filter(m => m.repositorie === fatherPath);

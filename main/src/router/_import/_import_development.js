@@ -1,4 +1,4 @@
-const modules = require('@ROOT/config/injection/index').modules;
+import { modules } from '../../../dependencies';
 
 module.exports = (templatePath, belongModule) => {
   if (!templatePath) return null;
@@ -6,16 +6,8 @@ module.exports = (templatePath, belongModule) => {
 
   const isOwner = currentModule[0].isOwner;
 
-  // console.log('templatePath-templatePath-templatePath')
-  // console.log(templatePath)
-
-  if (isOwner) {
-    console.log('引入 自有  模块路由');
-    return () => import(`@ROOT${templatePath}`);
-  } else {
-    console.log('引入 外部  模块路由');
-    return () => import(`../../../../injection/repositories${templatePath}`);
-
-    // return () => import(`../../../../injection/repositories/NS_system/views/system/systemOrgEmployee/systemOrgEmployee.vue`);
-  }
+  console.log(`引入 ${isOwner ? '自有' : '外部'}  模块路由`);
+  return isOwner
+    ? () => import(`@ROOT/NS_${templatePath}`)
+    : () => import(`../../../../injection/repositories/NS_${templatePath}`);
 };

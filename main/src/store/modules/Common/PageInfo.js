@@ -1,7 +1,6 @@
-import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
-
-const modules = require('@ROOT/config/injection/index').modules;
+import { modules } from '../../../../dependencies';
 import { storageHandle } from '../../../utils/storage/storage';
+import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
 
 /**
  * create page information list
