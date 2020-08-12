@@ -38,30 +38,6 @@ export default {
     cache: true,
     cacheExclude: [],
 
-    // /**
-    //  * init jump after login
-    //  * 登录后初始跳转
-    //  * type - 1、function 2、Object
-    //  * return { name: 'xx',fullpath: 'xx'}
-    //  * default - null
-    //  * @param parame:
-    //  *     - sideMenu - 原始菜单栏数据
-    //  - moduleMenu - 所有子系统模块导航菜单数据（只在 multiple application mode - 多系统门户模式 中存在)
-    //  - moduleId - 当前激活系统模块id（只在 multiple application mode - 多系统门户模式 中存在)
-    //  * @returns {{name: string, fullpath: string}}
-    //  */
-    // initRouteByAuth: parame => {
-    //   console.log('initRouteByAuth-initRouteByAuth');
-    //   console.log(parame);
-    //   return {
-    //     name: 'overview',
-    //     fullpath: '/overview',
-    //   };
-    // },
-
-    //也可以为对象格式
-    // initRouteByAuth: { name: 'overview', fullpath: '/overview' },
-
     //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
     customRoute: Layout => {
       return [

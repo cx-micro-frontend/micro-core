@@ -71,16 +71,6 @@ const e = deepObjectMerge({
       cache: true,
       cacheExclude: [],
 
-      /**
-       * init jump after toggle module
-       * 切换顶部导航菜单后，跳转当前模块的初始路由地址
-       * type - 1、function 2、Object
-       * return { name: 'xx',fullpath: 'xx'}
-       * default - null
-       */
-      initRouteByToggleModule: null,
-
-
       //路由重定向
       redirect: {
 
