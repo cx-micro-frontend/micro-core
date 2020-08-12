@@ -74,7 +74,7 @@ export default {
             {
               path: 'guide',
               component: () => import(`@ROOT/config/expand/views/guide/guide.vue`),
-              meta: { title: '导航', auth: true, key: 'guide', cache: false },
+              meta: { title: '导航', auth: true, key: 'guide', cache: false, type: 'normal' },
               name: 'guide',
             },
           ],
@@ -88,7 +88,14 @@ export default {
             {
               path: 'overview',
               component: () => import(`@ROOT/config/expand/views/overview/overview.vue`),
-              meta: { title: '概览', auth: true, key: 'overview', cache: false, moduleId: 'FIN' },
+              meta: {
+                title: '概览',
+                auth: true,
+                key: 'overview',
+                cache: false,
+                moduleId: 'FIN',
+                type: 'normal',
+              },
               name: 'overview',
             },
           ],
@@ -106,6 +113,7 @@ export default {
                 key: 'cacheDemo',
                 cache: true,
                 moduleId: 'FIN',
+                type: 'normal',
               },
               name: 'cacheDemo',
             },
