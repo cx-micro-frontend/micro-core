@@ -25,21 +25,6 @@ export default async (to, from, next) => {
   const pageinfoList = $store.state.PageInfo.pageinfoList;
 
   console.log('promission-promission-promission');
-  /**
-   * jump by toggle top menu / side menu is excluded
-   * only general jump or switch tab page Jump will execute the following statement:
-   * toggle module handle when route is change (two routes belonging to different modules)
-   * toggle modules through moduleId:
-   *  - sideMenu - 切换侧边栏数据
-   *  - initRoute - 切换当前侧边栏导航菜单的初始路由
-   */
-  if (
-    expand.integrationMode === 'mam' &&
-    !['topMenu', 'sideMenu'].some(k => k === to.params.jumpMode) &&
-    from.meta.moduleId !== to.meta.moduleId
-  ) {
-    await $store.dispatch('toggle_module_handle', to.meta.moduleId);
-  }
 
   //get current page infomation data
   const currentPageInfo =
