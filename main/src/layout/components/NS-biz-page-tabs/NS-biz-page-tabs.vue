@@ -30,7 +30,9 @@
   export default {
     name: 'biz-page-tabs',
     data() {
-      return {};
+      return {
+        excludeRouteName: ['portal', 'NEAP_redirect'],
+      };
     },
     watch: {
       $route() {
@@ -58,10 +60,8 @@
           name, path, meta,
         };
 
-        //判断是否为门户页
-        const isPortal = name === 'portal' || path === '/portal';
-
-        if (name && !isPortal) {
+        //判断是否为特殊页（不加tab)
+        if (!this.excludeRouteName.some(k => name === k)) {
           this.$store.dispatch('addVisitedPages', view).then(
             _ => {
               //add current page cache
