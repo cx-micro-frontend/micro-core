@@ -25,10 +25,10 @@ export default (
        * @param view - current page route information
        */
       addCache(view) {
-        console.log('add cache for current page');
-        console.log(Vue);
-        console.log(options);
-        console.log('add cache for current page');
+        // console.log('add cache for current page');
+        // console.log(Vue);
+        // console.log(options);
+        // console.log('add cache for current page');
 
         optCheck(options);
 
@@ -97,10 +97,15 @@ export default (
          */
         vm.NEAP_CACHE.delCache(vm.$route).then(
           cachedViews => {
+            console.log(99999999999)
+            console.log(vm.$route)
+            console.log(99999999999)
+
             // vm.NEAP_CACHE.removeChildInBody();
             vm.$router.replace({
               path: '/NEAP_redirect' + vm.$route.fullPath,
               query: query,
+              meta:vm.$route.meta
             });
           },
         );
