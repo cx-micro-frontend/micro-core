@@ -12,21 +12,21 @@ export default [
     path: '/404',
     name: '404',
     component: () => import('../../views/Public/error/error.vue'),
-    meta: { auth: false, key: '404', cache: false },
+    meta: { auth: false, key: '404', cache: false, type: 'special' },
   },
 
   {
     path: '/error',
     name: 'error',
     component: () => import('../../views/Public/error/error.vue'),
-    meta: { auth: false, key: 'error', cache: false },
+    meta: { auth: false, key: 'error', cache: false, type: 'special' },
   },
 
   {
     path: '/sso/error',
     name: 'sso-error',
     component: () => import('../../views/Public/error/sso-error.vue'),
-    meta: { auth: false, key: 'sso-error', cache: false },
+    meta: { auth: false, key: 'sso-error', cache: false, type: 'special' },
   },
 
   // {

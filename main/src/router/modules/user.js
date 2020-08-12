@@ -12,7 +12,7 @@ export default [
         path: 'login',
         component: () => import('../../views/Login/login.vue'),
         name: 'login',
-        meta: { title: '登录页', auth: false, key: 'login', type: 'Front', cache: false },
+        meta: { title: '登录页', auth: false, key: 'login', cache: false, type: 'special' },
       },
       {
         path: 'login-station',
@@ -22,8 +22,8 @@ export default [
           title: '登录中转页',
           auth: false,
           key: 'login-station',
-          type: 'login-station',
           cache: false,
+          type: 'special',
         },
       },
     ],

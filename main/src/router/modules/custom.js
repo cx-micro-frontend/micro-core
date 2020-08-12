@@ -23,7 +23,13 @@ const customRoute = [
               //       : '@ROOT/NS_portal/views/portal/portal/portal.vue'
               //   ),
 
-              meta: { title: '门户主页', auth: true, key: 'portal' },
+              meta: {
+                title: '门户主页',
+                auth: true,
+                key: 'portal',
+                moduleId: 'portal',
+                type: 'special',
+              },
               name: 'portal',
             },
           ],
