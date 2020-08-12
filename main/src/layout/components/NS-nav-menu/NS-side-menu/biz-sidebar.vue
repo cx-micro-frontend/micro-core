@@ -72,6 +72,13 @@
     watch: {
       activeKey: {
         handler: function(keyVal) {
+          // console.log(9999999999)
+          // console.log(9999999999)
+          // console.log(9999999999)
+          // console.log(this.$refs['ns-biz-sidebar'])
+          // console.log(keyVal)
+          // console.log(9999999999)
+          // console.log(9999999999)
           this.$refs['ns-biz-sidebar'].setActive(keyVal);
         },
       },

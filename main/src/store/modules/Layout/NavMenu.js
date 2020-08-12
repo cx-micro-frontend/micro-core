@@ -6,10 +6,7 @@ import {
   flattenMenu,
   filterModuleByToggle,
 } from '../../../layout/components/NS-nav-menu/utils/dataHandle';
-import {
-  createInitRoute,
-  getInitRoute,
-} from '../../../layout/components/NS-nav-menu/utils/initRoute';
+import { getInitRoute } from '../../../layout/components/NS-nav-menu/utils/initRoute';
 import { storageHandle } from '../../../utils/storage/storage';
 import expand from '../../../../expand';
 import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
@@ -27,14 +24,15 @@ const NavMenu = {
   state: {
     moduleMenu: _deCryptoSideBar().moduleMenu || [],
     sideMenu: _deCryptoSideBar().sideMenu || [],
-    initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     moduleId: _deCryptoSideBar().moduleId || '',
+    initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
+    subInitRoute: _deCryptoSideBar().subInitRoute, //默认初始路由地址
     isExpand: _deCryptoSideBar().isExpand || false,
   },
   mutations: {
     SET_MENU_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['moduleMenu', 'sideMenu', 'initRoute', 'moduleId']);
+      stateAssign(state, data, ['moduleMenu', 'sideMenu', 'moduleId', 'initRoute', 'subInitRoute']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
@@ -72,7 +70,7 @@ const NavMenu = {
             //packaging data
             const navdata = {
               sideMenu: filterList,
-              initRoute: createInitRoute(baseList),
+              initRoute: getInitRoute(baseList),
             };
 
             commit('SET_MENU_DATA', navdata);
@@ -150,14 +148,14 @@ const NavMenu = {
       return new Promise(resolve => {
         //获取当前激活的系统模块菜单数据
         const _currentModule = filterModuleByToggle(state.moduleMenu, moduleId);
-
+        console.log(_currentModule);
         const sideMenu = _currentModule[keyRefer['children']];
 
-        const initRoute = getInitRoute(_currentModule);
+        const subInitRoute = getInitRoute(_currentModule);
 
         const navdata = {
           sideMenu,
-          initRoute,
+          subInitRoute, //子系统的初始路由
           moduleId,
         };
         commit('SET_MENU_DATA', navdata);

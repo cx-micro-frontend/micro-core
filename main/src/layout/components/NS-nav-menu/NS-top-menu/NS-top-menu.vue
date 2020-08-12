@@ -57,16 +57,11 @@
         keyRefer,
       };
     },
-    created() {
-      console.log(1312312312);
-      console.log(1312312312);
-      console.log(1312312312);
-      console.log(this.moduleMenu);
-      console.log(1312312312);
-      console.log(1312312312);
-    },
+    // created() {
+    //   console.log(this.moduleMenu);
+    // },
     computed: {
-      ...mapGetters(['moduleMenu', 'initRoute', 'moduleId']),
+      ...mapGetters(['moduleMenu', 'moduleId']),
       isActive() {
         return this.$route.name === this.portalName;
       },
@@ -102,7 +97,7 @@
          */
         this.$store.dispatch('toggle_module_handle', item.moduleId).then(navdata => {
 
-          this.$router.push({ name: navdata.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
+          this.$router.push({ name: navdata.subInitRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
 
           this.currentModuleId = item.moduleId;
           this.model = false;
