@@ -1,5 +1,3 @@
-// import { createInitRoute } from '../layout/components/NS-nav-menu/utils/initRoute';
-
 const getters = {
   //frame or mode
   $PROJECT_NAME: state => state.FrameInfo.$PROJECT_NAME, //当前项目名称
