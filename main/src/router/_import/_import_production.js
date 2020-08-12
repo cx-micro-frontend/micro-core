@@ -6,7 +6,7 @@ module.exports = (templatePath, belongModule) => {
 
   const isOwner = currentModule[0].isOwner;
 
-  console.log(`引入 ${isOwner ? '自有' : '外部'}  模块路由`);
+  // console.log(`引入 ${isOwner ? '自有' : '外部'}  模块路由`);
   return isOwner
     ? () => import(`@ROOT/NS_${templatePath}`)
     : () => import(`../../../../injection/repositories/NS_${templatePath}`);
