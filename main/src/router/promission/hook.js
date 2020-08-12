@@ -8,8 +8,8 @@ NProgress.configure({ showSpinner: false, speed: 800 }); // NProgress Configurat
 import { getToken } from '../../utils/library/auth';
 import { isInNoAuthwhiteList } from '../whiteList';
 import promissionhandle from './promission';
+import { routerAndpageInfo } from './auxiliary';
 import errorPathDistribute from './errorDistribute';
-import expand from '../../../expand';
 
 router.beforeEach((to, from, next) => {
   // console.log('============== 路由状态 ==================');
@@ -59,22 +59,10 @@ router.beforeResolve((to, from, next) => {
 });
 
 router.afterEach(async (to, from, next) => {
-  /**
-   * jump by toggle top menu / side menu is excluded
-   * only general jump or switch tab page Jump will execute the following statement:
-   * toggle module handle when route is change (two routes belonging to different modules)
-   * toggle modules through moduleId:
-   *  - sideMenu - 切换侧边栏数据
-   *  - initRoute - 切换当前侧边栏导航菜单的初始路由
-   */
-  if (
-    expand.integrationMode === 'mam' &&
-    to.meta.type === 'normal' &&
-    !['topMenu', 'sideMenu'].some(k => k === to.params.jumpMode) &&
-    from.meta.moduleId !== to.meta.moduleId
-  ) {
-    await $store.dispatch('toggle_module_handle', to.meta.moduleId);
-  }
+  console.log('开始全局路由钩子 - afterEach');
+
+  //router and page information show in console
+  routerAndpageInfo(to);
 
   NProgress.done(); // finish progress bar
 });

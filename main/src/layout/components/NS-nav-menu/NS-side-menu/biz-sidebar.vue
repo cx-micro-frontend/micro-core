@@ -44,7 +44,7 @@
         menuSlotProps: null,
         currentNode: null,
         defaultActive: '',
-        trigger:'hover',
+        trigger: 'hover',
         keyRefer,
       };
     },
@@ -72,15 +72,16 @@
     watch: {
       activeKey: {
         handler: function(keyVal) {
-          // console.log(9999999999)
-          // console.log(9999999999)
-          // console.log(9999999999)
-          // console.log(this.$refs['ns-biz-sidebar'])
-          // console.log(keyVal)
-          // console.log(9999999999)
-          // console.log(9999999999)
-          this.$refs['ns-biz-sidebar'].setActive(keyVal);
+
+          this.$nextTick(() => {
+            const _t = this.$refs['ns-biz-sidebar'];
+            if (_t) {
+              _t.setActive(keyVal);
+            }
+          });
+
         },
+        immediate: true,
       },
     },
     methods: {
@@ -109,7 +110,7 @@
 
         //add sign for click time
         if (this.menuSlotProps) {
-          this.$set( this.menuSlotProps, 'activeTime', new Date().getTime());
+          this.$set(this.menuSlotProps, 'activeTime', new Date().getTime());
         }
 
         console.log('nodeClick-nodeClick');

@@ -52,16 +52,12 @@
     data() {
       return {
         model: false,
-        currentModuleId: null,
         portalName: 'portal',
         keyRefer,
       };
     },
-    // created() {
-    //   console.log(this.moduleMenu);
-    // },
     computed: {
-      ...mapGetters(['moduleMenu', 'moduleId']),
+      ...mapGetters(['moduleMenu']),
       isActive() {
         return this.$route.name === this.portalName;
       },
@@ -71,22 +67,19 @@
       popoverDisplay() {
         return this.topNavMenu && this.topNavMenu.length > 3;
       },
-    },
-    watch: {
-      moduleId: {
-        handler: function(val) {
-
-        },
-        immediate: true,
+      currentModuleId() {
+        const route = this.$route;
+        const { meta } = route;
+        return meta.moduleId;
       },
     },
     methods: {
       back() {
         if (this.isActive) return;
-        this.currentModuleId = this.portalName;
         this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item) {
+
         if (this.currentModuleId === item.moduleId) return;
 
         /**
@@ -99,7 +92,6 @@
 
           this.$router.push({ name: navdata.subInitRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
 
-          this.currentModuleId = item.moduleId;
           this.model = false;
 
         }).catch(err => {
@@ -108,6 +100,10 @@
         );
       },
     },
+
+    // created() {
+    //   console.log(this.moduleMenu);
+    // },
   };
 </script>
 

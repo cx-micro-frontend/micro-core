@@ -148,7 +148,7 @@ const NavMenu = {
       return new Promise(resolve => {
         //获取当前激活的系统模块菜单数据
         const _currentModule = filterModuleByToggle(state.moduleMenu, moduleId);
-        console.log(_currentModule);
+
         const sideMenu = _currentModule[keyRefer['children']];
 
         const subInitRoute = getInitRoute(_currentModule);

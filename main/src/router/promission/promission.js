@@ -1,6 +1,5 @@
 import router from '../index';
 import $store from '../../store/index';
-import { routerAndpageInfo } from './auxiliary';
 import { isInAuthwhiteList } from '../whiteList';
 // import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
@@ -19,12 +18,25 @@ let addRouFlag = false;
  * @param next
  */
 export default async (to, from, next) => {
-  // next(errorPathDistribute('error_route_create'));
-  // return false;
+  console.log('开始全局路由钩子 - beforeEach - promission');
+  /**
+   * jump by toggle top menu / side menu is excluded
+   * only general jump or switch tab page Jump will execute the following statement:
+   * toggle module handle when route is change (two routes belonging to different modules)
+   * toggle modules through moduleId:
+   *  - sideMenu - 切换侧边栏数据
+   *  - initRoute - 切换当前侧边栏导航菜单的初始路由
+   */
+  if (
+    expand.integrationMode === 'mam' &&
+    to.meta.type === 'normal' &&
+    !['topMenu', 'sideMenu'].some(k => k === to.params.jumpMode) &&
+    from.meta.moduleId !== to.meta.moduleId
+  ) {
+    await $store.dispatch('toggle_module_handle', to.meta.moduleId);
+  }
 
   const pageinfoList = $store.state.PageInfo.pageinfoList;
-
-  console.log('promission-promission-promission');
 
   //get current page infomation data
   const currentPageInfo =
@@ -42,6 +54,7 @@ export default async (to, from, next) => {
     console.log(`${from.path}  ${to.path}`);
     console.log('获取所有子系统模块导航数据：', $store.getters.moduleMenu);
     console.log('获取到的菜单栏数据：', $store.getters.sideMenu);
+    console.log('setCurrentPage：', info);
     console.log(`addRouFlag 状态：${addRouFlag}`);
     console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
     console.log(pageinfoList);
@@ -63,11 +76,6 @@ export default async (to, from, next) => {
             console.log('开始  addRoutes ');
 
             router.addRoutes(asyncRouterList);
-
-            //router and page information show in console after dynamically add routing permission
-            if (addRouFlag) {
-              routerAndpageInfo(to);
-            }
 
             addRouFlag = true;
 
@@ -99,8 +107,6 @@ export default async (to, from, next) => {
          */
         // if ((routefiles && routefiles.some(route => route.name === to.name)) || isAuthWhite) {
         if (true || isAuthWhite) {
-          //router and page information show in console
-          routerAndpageInfo(to);
           $store.dispatch('removeErrorSign'); //remove
 
           next();
