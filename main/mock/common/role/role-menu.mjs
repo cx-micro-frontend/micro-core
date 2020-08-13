@@ -86,6 +86,215 @@ const sam_nav_menu = (req, res) => {
         syStatus: '1', //隐藏与否
         childMenus: [],
       },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      },
+      //缓存示例页面
+      {
+        menuIconcls: 'menu-jiedaiguanli',
+        menuMenuname: '缓存', //显示名称
+        menuMenusubname: 'cacheDemo', //路径符号
+        funcId: 'cacheDemo', //func-ID
+        syLayer: 2,
+        syOrderindex: 1,
+        syStatus: '1', //隐藏与否
+        childMenus: [],
+      }
     ],
   });
 };

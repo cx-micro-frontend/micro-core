@@ -36,10 +36,11 @@
   import virtual from './virtual';
   import menuSlotMixins from './menu-slot-mixins';
   import expand from '../../../../../expand';
+  import fixedScroll from './fixedScroll/fixedScroll';
 
   export default {
     name: 'ns-biz-sidebar',
-    mixins: [menuSlotMixins],
+    mixins: [menuSlotMixins, fixedScroll],
     data() {
       return {
         sidebarType: 'collapse', //bubble,collapse

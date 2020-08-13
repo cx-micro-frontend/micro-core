@@ -1,0 +1,42 @@
+//自制滚动条
+.scrollbar-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 8px;
+  height: 100%;
+  display: none !important;
+  &__scrollbar {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+    &.active {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+#layout.app-wrapper div#page-tabs-wrapper {
+  z-index: 1498;
+}
+
+//侧边栏区域
+#layout.app-wrapper #sidebar-wrapper {
+  z-index: 1499 !important;
+  background: #252836;
+  ul.first-nav {
+    height: auto;
+  }
+}
+
+//侧滑栏二级菜单
+.first-nav li.first-nav-items ul.second-nav {
+  display: none;
+}
+
+.first-nav li.first-nav-items:hover ul.second-nav {
+  display: block;
+}
