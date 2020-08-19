@@ -1,7 +1,6 @@
 @import 'public';
 @import 'mixins/mixins';
 
-
 //右侧  转换 内容窗口
 .win {
   min-height: 100%;
@@ -34,7 +33,6 @@
       height: calc(
         100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
       );
-      background: $--color-white;
       overflow: hidden;
       box-sizing: border-box;
     }
