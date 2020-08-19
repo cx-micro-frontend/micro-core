@@ -29,6 +29,8 @@ const keyRefer = {
 
   initRoute: 'initRoute', //当前菜单的初始路由
 
+  showTerminal: 'showTerminal',
+
   defaultRouteName: 'defaultRouteName',
   defaultRoutePath: 'defaultRoutePath',
 
