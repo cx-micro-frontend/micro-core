@@ -15,9 +15,10 @@
     <el-popover
       v-model="model"
       popper-class="ns-top-menu_popover"
-      width="380"
-      placement="bottom"
+      width="400"
+      placement="bottom-start"
       trigger="click"
+      :visible-arrow="false"
       v-if="popoverDisplay"
     >
       <div class="ns-top-menu_module" slot="reference">
@@ -110,13 +111,19 @@
 
 <style rel="stylesheet/scss" lang="scss">
   .el-popover.ns-top-menu_popover {
-    padding: 15px;
+    margin-top: 0;
+    padding: 12px 12px 29px 29px;
     .sub-system_module {
-      width: 60px;
+      width: 83px;
+      height: 83px;
+      margin: 17px 17px 0 0;
+      padding: 25px 0 0 0;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 2px 18px 0px rgba(183, 192, 215, 0.5);
       text-align: center;
-      margin: 5px 20px 5px 0;
       cursor: pointer;
-      &:nth-child(5n+0) {
+      &:nth-child(4n+0) {
         margin-right: 0;
       }
       svg {
@@ -124,7 +131,10 @@
         height: 44px;
       }
       p {
-        color: #666;
+        color: #000;
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 11px;
       }
     }
   }
