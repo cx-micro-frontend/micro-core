@@ -1,0 +1,70 @@
+.el-select .el-input .el-input__icon,
+.el-input__icon,
+.el-tree-node__expand-icon {
+  color: $--color-text-secondary;
+  border-left-color: $--color-text-secondary;
+}
+
+.el-icon--right {
+  margin-left: 1px;
+}
+
+#action-summary {
+  background: white;
+}
+
+//表头背景色-临时
+.cx-grid .grid-container .el-table tr th {
+  background: #f0f0f0;
+}
+//表格内链接文字和操作栏文字颜色
+.cx-grid .grid-container .cell div.grid-cell_link,
+.el-table__row .el-button,
+.cx-grid .grid-container .cell .action-scope .el-dropdown span.el-dropdown-link,
+.vxe-table .action-scope .ns-button,
+div.vxe-table .action-scope .el-dropdown span {
+  color: $--color-primary;
+}
+//表格操作栏按钮背景色
+.el-table__row .el-button,
+.operate-wrap .el-button,
+.vxe-table .action-scope .ns-button {
+  background: transparent;
+  border-color: transparent;
+}
+//表格行悬停颜色
+.el-table__body tr.hover-row.current-row > td,
+.el-table__body tr.hover-row.el-table__row--striped.current-row > td,
+.el-table__body tr.hover-row.el-table__row--striped > td,
+.el-table__body tr.hover-row > td,
+div.vxe-table tr.vxe-body--row.row--hover,
+div.vxe-table tr.vxe-body--row.row--hover td:hover {
+  background: $--background-color-base;
+}
+//弹窗权限按钮
+.dialog-footer .ns-role-button + .ns-role-button {
+  margin-left: 10px;
+}
+//省略文字悬浮提示文字
+.vxe-table--tooltip-wrapper.is--visible {
+  z-index: 9999 !important;
+}
+//侧滑弹窗
+div.ns-slip-dialog {
+  z-index: 1501;
+}
+
+.expand_style_title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff8c39;
+}
+
+#layout.app-wrapper #page-tabs-wrapper {
+  z-index: 1000;
+}
+
+//抽屉图标颜色
+.ns-drawer__switch i {
+  color: #e8e8e8;
+}

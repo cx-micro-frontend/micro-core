@@ -1,0 +1,24 @@
+/*Tabs*/
+.el-tabs__item.is-active {
+  font-weight: bold;
+}
+//箭头背景色
+.el-tabs.arrowTabs .el-tabs__item.is-active {
+  background: $--color-primary !important;
+  &:not(:first-of-type):before {
+    border-top-color: $--color-primary !important;
+    border-bottom-color: $--color-primary !important;
+  }
+  &:not(:last-of-type):after {
+    border-left-color: $--color-primary !important;
+  }
+}
+// 顶部标签
+.ns-page-tabs {
+  background-color: #e8e8e8;
+  border-bottom: 1px solid #dfdfdf;
+  li.tab-tag::before {
+    background-color: #e8e8e8;
+    border: 1px solid #dfdfdf;
+  }
+}

@@ -1,27 +1,28 @@
 //---------- base color ----------
-$--color-black: #000; //纯黑
-$--color-text-primary: #333333; //重要文字
-$--color-text-regular: #666666; //主力文字色系
-$--color-text-secondary: #999999; //辅助文字颜色
-$--color-text-placeholder: #cccccc; //失效文字颜色
-$--color-text-supply: #e3e3e3; //补充色系
-$--border-color: #d9d9d9;
-$--border-color-light: #d9d9d9; //边框颜色-浅
-$--border-color-lighter: #eeeeee; //边框颜色-更浅
-$--background-color-base: #f4f4f4; //base background-color
+$--color-text-primary: #333; //重要文字
+$--color-text-regular: #666; //主力文字色系
+$--color-text-secondary: #999; //辅助文字颜色
+$--color-text-placeholder: #c8c8c8; //失效文字颜色
+// $--color-text-supply: #e3e3e3; //补充色系
+$--border-color: #ccc;
+$--border-color-light: #ededed; //边框颜色-浅
+$--border-color-lighter: #efefef; //边框颜色-更浅
+$--border-extra-light: #f5f5f5; //边框颜色-极浅
+$--background-color-base: #f5f5f5; //base background-color
 $--color-white: #fff; //纯白
+$--color-black: #000; //纯黑
 
 //---------- base color ----------
-$--color-primary: #0d315d ;
+$--color-primary: #0068B7;
 $--color-primary-link: #409eff;
 $--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 input / select
 $--color-primary-light: #4097f9; //基础主色-浅色
 
 //---------- theme color ----------
-$--color-success: #52c41a;
-$--color-warning: #f4a546;
-$--color-danger: #d6454c;
-$--color-info: #0a7af8;
+$--color-success: #16ca37;
+$--color-warning: #ffae00;
+$--color-danger: #ff5131;
+$--color-info: #999;
 
 //---------- dialog - 弹窗  ----------
 $dialog-default_width: 650px; //基础默认宽度
@@ -68,7 +69,7 @@ $container-border_color: #e8e8e8; //container 内容模块划分边框线
 
 //---------- 页面标签选项卡模块 ----------
 $tabs-height: 38px; //tabs模块 高度
-$tabs-back: #e1e4e9; //tabs模块 背景颜色  --  较深的灰色
+$tabs-back: #e8e8e8; //tabs模块 背景颜色  --  较深的灰色
 $tabs-allClose_color: #999; //tabs模块 关闭所有 背景颜色
 $tabs-allClose-hover_color: #333; //tabs模块 关闭所有 鼠标移入背景颜色
 
