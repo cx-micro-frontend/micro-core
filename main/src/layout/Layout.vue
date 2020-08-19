@@ -5,57 +5,61 @@
 * @Last Modified time: 2020-05-14 09:18:55
 */
 <template>
-  <ns-layout :class="{
+  <div
+    id="layout"
+    class="app-wrapper clear"
+    :class="{
     'is-hide-frame':isInIframe,
     'is-portal':isPortal,
     'is-expand':sideMenuExpand,
     'is-collapse':!sideMenuExpand,
   }">
+    <div id="header-wrapper" class="fl">
+      <div class="ns-header clear">
+        <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
+        <div class="fl head-logo">
+          <img :src="operatorInfo.operatorLoginPic" @click="click"/>
+        </div>
 
-    <template slot="header">
-      <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
-      <div class="fl head-logo">
-        <img :src="operatorInfo.operatorLoginPic" @click="click"/>
+        <div class="fl" v-if="integrationMode === 'mam'">
+          <!--顶层菜单入口-->
+          <ns-top-menu></ns-top-menu>
+        </div>
+
+        <!--业务组 - 自定义头部插槽 - 左边 -->
+        <div class="fl">
+          <header-slot-left></header-slot-left>
+        </div>
+
+        <!--右边 - 用户下拉菜单 业务组在插槽内调用组件，传入值，并且调用方法即可  -->
+        <div class="fr">
+          <!--业务组 - 自定义头部插槽 - 右边 -->
+          <header-slot-right></header-slot-right>
+          <!--<biz-lock-screen></biz-lock-screen>-->
+          <!--全屏-->
+          <ns-screenfull></ns-screenfull>
+          <!--换肤-->
+          <biz-skiner></biz-skiner>
+          <!--用户设置下拉-->
+          <biz-user-dropdown></biz-user-dropdown>
+        </div>
       </div>
+    </div>
 
-
-      <div class="fl" v-if="integrationMode === 'mam'">
-        <!--顶层菜单入口-->
-        <ns-top-menu></ns-top-menu>
-      </div>
-
-
-      <!--业务组 - 自定义头部插槽 - 左边 -->
-      <div class="fl">
-        <header-slot-left></header-slot-left>
-      </div>
-
-      <!--右边 - 用户下拉菜单 业务组在插槽内调用组件，传入值，并且调用方法即可  -->
-      <div class="fr">
-        <!--业务组 - 自定义头部插槽 - 右边 -->
-        <header-slot-right></header-slot-right>
-        <!--<biz-lock-screen></biz-lock-screen>-->
-        <!--全屏-->
-        <ns-screenfull></ns-screenfull>
-        <!--换肤-->
-        <biz-skiner></biz-skiner>
-        <!--用户设置下拉-->
-        <biz-user-dropdown></biz-user-dropdown>
-      </div>
-    </template>
 
     <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
-    <template slot="sidebar">
+    <div id="side-menu-wrapper">
       <biz-sidebar></biz-sidebar>
-    </template>
+    </div>
+
 
     <!--history task-tabs link-->
-    <template slot="tabs-view">
+    <div id="page-tabs-wrapper">
       <biz-tabs-views></biz-tabs-views>
-    </template>
+    </div>
 
     <!--工作台模块 - 嵌入路由视图即可 -->
-    <template slot="app-main">
+    <section id="main-container">
       <!--changing-over  work bench module-->
 
       <neap-injecter-iframe></neap-injecter-iframe>
@@ -69,8 +73,10 @@
       <transition leave-active-class enter-active-class="out-in">
         <router-view :key="key" v-if="!isCache"></router-view>
       </transition>
-    </template>
-  </ns-layout>
+
+    </section>
+
+  </div>
 </template>
 
 <script>
@@ -135,5 +141,5 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  @import "style/layout";
+  @import "style/index";
 </style>

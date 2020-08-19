@@ -1,6 +1,6 @@
 <!--page tabs in business-->
 <template>
-  <ns-page-tabs
+  <PageTabs
     :data="visitedPages"
     :autoJump="false"
     :limit="tabLimit"
@@ -22,13 +22,15 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </ns-page-tabs>
+  </PageTabs>
 </template>
 <script>
+  import PageTabs from './component/PageTabs';
   import { mapGetters } from 'vuex';
 
   export default {
     name: 'biz-page-tabs',
+    components: { PageTabs },
     data() {
       return {
         excludeRouteName: ['portal', 'NEAP_redirect'],

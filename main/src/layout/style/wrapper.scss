@@ -1,0 +1,58 @@
+@import './var';
+
+/* ------------  顶部模块 ------------  */
+#header-wrapper {
+  position: absolute;
+  width: 100%;
+  z-index: 2000;
+  .ns-header {
+    width: 100%;
+    min-width: 500px;
+    height: $navH;
+    line-height: $navH;
+    padding-left: $navH_pl;
+    padding-right: $navH_pr;
+    background: #252836;
+    box-sizing: border-box;
+    img {
+      display: block;
+    }
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+/* ------------ 左侧导航栏模块 ------------*/
+#side-menu-wrapper {
+  position: absolute;
+  top: $navH;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  &:hover {
+    z-index: 9999;
+  }
+}
+
+#page-tabs-wrapper {
+  position: absolute;
+  top: $navH;
+  left: $navL;
+  right: 0;
+  z-index: 1999;
+}
+
+/* ------------ 内容 模块 ------------ */
+#main-container {
+  position: absolute;
+  top: $navH + $tabs;
+  bottom: 1px;
+  left: $navL;
+  right: 0;
+  padding: $container_gapT $container_gapR $container_gapB $container_gapL;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: auto;
+  transition: all, 0.4s, linear;
+}
