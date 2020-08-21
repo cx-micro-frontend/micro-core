@@ -13,12 +13,3 @@
     border-left-color: $--color-primary !important;
   }
 }
-// 顶部标签
-.ns-page-tabs {
-  background-color: #e8e8e8;
-  border-bottom: 1px solid #dfdfdf;
-  li.tab-tag::before {
-    background-color: #e8e8e8;
-    border: 1px solid #dfdfdf;
-  }
-}

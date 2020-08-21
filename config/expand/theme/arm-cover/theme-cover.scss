@@ -9,9 +9,6 @@
   margin-left: 1px;
 }
 
-#action-summary {
-  background: white;
-}
 
 //表头背景色-临时
 .cx-grid .grid-container .el-table tr th {
@@ -41,27 +38,11 @@ div.vxe-table tr.vxe-body--row.row--hover,
 div.vxe-table tr.vxe-body--row.row--hover td:hover {
   background: $--background-color-base;
 }
-//弹窗权限按钮
-.dialog-footer .ns-role-button + .ns-role-button {
-  margin-left: 10px;
-}
+
+
 //省略文字悬浮提示文字
 .vxe-table--tooltip-wrapper.is--visible {
   z-index: 9999 !important;
-}
-//侧滑弹窗
-div.ns-slip-dialog {
-  z-index: 1501;
-}
-
-.expand_style_title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ff8c39;
-}
-
-#layout.app-wrapper #page-tabs-wrapper {
-  z-index: 1000;
 }
 
 //抽屉图标颜色

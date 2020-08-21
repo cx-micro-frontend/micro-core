@@ -149,8 +149,9 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
   }
 }
 
+//表格-分页器-背景色
 .biz-table {
   .ns-pagination {
-    background-color: $--background-color-base;
+    background-color: $--table-pagination-background-color;
   }
 }
