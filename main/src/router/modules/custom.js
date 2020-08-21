@@ -37,6 +37,29 @@ const customRoute = [
       ]
     : []),
 
+  ...(modules.some(m => m.repositorie === 'overview')
+    ? [
+        {
+          path: '',
+          component: Layout,
+          children: [
+            {
+              path: 'overview',
+              component: _import('overview/views/overview/overview', 'overview'),
+              meta: {
+                title: '概览',
+                auth: true,
+                key: 'overview',
+                moduleId: 'FIN',
+                type: 'normal',
+              },
+              name: 'portal',
+            },
+          ],
+        },
+      ]
+    : []),
+
   {
     path: '/devTool',
     name: 'devTool',
