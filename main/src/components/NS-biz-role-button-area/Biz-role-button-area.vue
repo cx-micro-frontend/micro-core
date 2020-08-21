@@ -62,6 +62,14 @@
         handler: function(newVal, oldVue) {
           this.singleBtnList = newVal.filter(item => item.btnType === 'single');
           this.dropDownBtnList = newVal.filter(item => item.btnType === 'dropDown');
+
+          // console.log(123123123123)
+          // console.log(123123123123)
+          // console.log(this.singleBtnList)
+          // console.log(this.dropDownBtnList)
+          // console.log(123123123123)
+          // console.log(123123123123)
+
         },
         immediate: true,
       },
