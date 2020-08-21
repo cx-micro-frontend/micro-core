@@ -1,4 +1,4 @@
-@import './var';
+@import '../../style/var';
 
 html,
 body {
@@ -8,7 +8,7 @@ body {
     height: inherit;
     min-width: $min-window_width;
     min-height: $min-window_height;
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -19,7 +19,9 @@ body {
   height: 100%;
   overflow: hidden;
 
-  @import "wrapper";
+  @import "./wrapper";
+
+  @import "./container";
 
   //侧边导航展开/折叠 - 位置与动画
   &:not(.is-portal){

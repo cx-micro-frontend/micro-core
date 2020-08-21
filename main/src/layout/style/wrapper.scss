@@ -1,4 +1,4 @@
-@import './var';
+@import '../../style/var';
 
 /* ------------  顶部模块 ------------  */
 #header-wrapper {
@@ -41,18 +41,4 @@
   left: $navL;
   right: 0;
   z-index: 1999;
-}
-
-/* ------------ 内容 模块 ------------ */
-#main-container {
-  position: absolute;
-  top: $navH + $tabs;
-  bottom: 1px;
-  left: $navL;
-  right: 0;
-  padding: $container_gapT $container_gapR $container_gapB $container_gapL;
-  box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: auto;
-  transition: all, 0.4s, linear;
 }
