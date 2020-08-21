@@ -22,7 +22,7 @@ function _deCryptoSideBar() {
 
 const NavMenu = {
   state: {
-    moduleMenu: _deCryptoSideBar().moduleMenu || [],
+    moduleMenu: _deCryptoSideBar().moduleMenu || {},
     sideMenu: _deCryptoSideBar().sideMenu || [],
     moduleId: _deCryptoSideBar().moduleId || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
