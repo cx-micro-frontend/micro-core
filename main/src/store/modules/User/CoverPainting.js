@@ -25,6 +25,7 @@ const CoverPainting = {
       operatorPicture: '', //登录页 - 左侧图片（sign in box)
       operatorBackgroudPic: '', //登录页 - 大背景图
       operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片
+      operatorCopyright: _getStorage().operatorCopyright, //版权信息
     },
   },
   mutations: {
@@ -33,11 +34,11 @@ const CoverPainting = {
       storageHandle('remove', 'sign_operator_info');
 
       let o = {};
-      const titkeylist = ['operatorDesc', 'operatorName'];
+      const textkeylist = ['operatorDesc', 'operatorName', 'operatorCopyright'];
 
       Object.keys(data).forEach(key => {
         if (state.operatorInfo.hasOwnProperty(key)) {
-          if (titkeylist.indexOf(key) !== -1) {
+          if (textkeylist.indexOf(key) !== -1) {
             o[key] = data[key];
           } else {
             o[key] = 'data:image/jpeg;base64,' + data[key];
