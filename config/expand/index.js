@@ -23,6 +23,11 @@ export default {
       rightSlot: headerSlotRight,
     },
 
+    //tab 页标签
+    tabs: {
+      type: 'trapezoid', //normal, trapezoid
+    },
+
     //side menu - 侧边栏
     sidebar: {
       /**
@@ -52,27 +57,6 @@ export default {
               component: () => import(`@ROOT/config/expand/views/guide/guide.vue`),
               meta: { title: '导航', auth: true, key: 'guide', cache: false, type: 'normal' },
               name: 'guide',
-            },
-          ],
-        },
-        {
-          path: '',
-          component: Layout,
-          redirect: '/overview',
-          name: 'overview',
-          children: [
-            {
-              path: 'overview',
-              component: () => import(`@ROOT/config/expand/views/overview/overview.vue`),
-              meta: {
-                title: '概览',
-                auth: true,
-                key: 'overview',
-                cache: false,
-                moduleId: 'FIN',
-                type: 'normal',
-              },
-              name: 'overview',
             },
           ],
         },
