@@ -23,6 +23,10 @@ const e = deepObjectMerge({
         leftSlot: null,
         rightSlot: null,
       },
+      //tab 页标签
+      tabs: {
+        type: 'normal',
+      },
 
       //侧边栏
       sidebar: {
