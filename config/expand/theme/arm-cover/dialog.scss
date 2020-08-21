@@ -41,6 +41,10 @@ $dialog-body_min_height: 350px; //body内容实际部分最小高度
     text-align: center;
     .role-button-area {
       display: inline-block;
+      //弹窗权限按钮
+      .ns-role-button + .ns-role-button {
+        margin-left: 10px;
+      }
     }
   }
 }

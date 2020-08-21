@@ -96,9 +96,18 @@
     }
     .el-table__fixed-body-wrapper {
       .el-table__body {
-        tr:last-child {
-          td {
-            //border-bottom: none !important;
+        .el-table__body tr {
+          //表格行悬停颜色
+          &.hover-row.current-row > td,
+          &.el-table__body tr.hover-row.el-table__row--striped.current-row > td,
+          &.el-table__body tr.hover-row.el-table__row--striped > td,
+          &.el-table__body tr.hover-row > td {
+            background: $--background-color-base;
+          }
+          &:last-child {
+            td {
+              //border-bottom: none !important;
+            }
           }
         }
       }

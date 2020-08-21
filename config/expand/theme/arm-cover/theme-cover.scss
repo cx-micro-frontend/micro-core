@@ -9,43 +9,19 @@
   margin-left: 1px;
 }
 
-
-//表头背景色-临时
-.cx-grid .grid-container .el-table tr th {
-  background: #f0f0f0;
+//抽屉图标颜色
+.ns-drawer__switch i {
+  color: #e8e8e8;
 }
-//表格内链接文字和操作栏文字颜色
-.cx-grid .grid-container .cell div.grid-cell_link,
-.el-table__row .el-button,
-.cx-grid .grid-container .cell .action-scope .el-dropdown span.el-dropdown-link,
-.vxe-table .action-scope .ns-button,
-div.vxe-table .action-scope .el-dropdown span {
+
+//表格内链接文字和操作栏文字颜色(后续处理)
+.el-table__row .el-button {
   color: $--color-primary;
 }
-//表格操作栏按钮背景色
+//表格操作栏按钮背景色(后续处理)
 .el-table__row .el-button,
 .operate-wrap .el-button,
 .vxe-table .action-scope .ns-button {
   background: transparent;
   border-color: transparent;
-}
-//表格行悬停颜色
-.el-table__body tr.hover-row.current-row > td,
-.el-table__body tr.hover-row.el-table__row--striped.current-row > td,
-.el-table__body tr.hover-row.el-table__row--striped > td,
-.el-table__body tr.hover-row > td,
-div.vxe-table tr.vxe-body--row.row--hover,
-div.vxe-table tr.vxe-body--row.row--hover td:hover {
-  background: $--background-color-base;
-}
-
-
-//省略文字悬浮提示文字
-.vxe-table--tooltip-wrapper.is--visible {
-  z-index: 9999 !important;
-}
-
-//抽屉图标颜色
-.ns-drawer__switch i {
-  color: #e8e8e8;
 }

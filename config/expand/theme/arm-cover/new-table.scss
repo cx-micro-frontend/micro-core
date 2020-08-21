@@ -18,7 +18,7 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
   //height: $table-height;
 }
 
-.vxe-table {
+div.vxe-table {
   //整体字体颜色
   color: #606266;
 
@@ -46,8 +46,15 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
   }
 
   //内容部分下边框
-  .vxe-body--row .vxe-body--column {
-    border-bottom: 1px solid #e8e8e8;
+  tr.vxe-body--row {
+    //表格行悬停颜色
+    &.row--hover,
+    &.row--hover td:hover {
+      background: $--background-color-base;
+    }
+    .vxe-body--column {
+      border-bottom: 1px solid #e8e8e8;
+    }
   }
 
   // ==== background style change ====
@@ -120,10 +127,9 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
 
   .action-scope {
     //操作列-操作按钮 - dropdown
-    .el-dropdown {
-      span {
-        color: $--color-primary-link;
-      }
+    .ns-button,
+    .el-dropdown span {
+      color: $--color-primary;
     }
 
     .ns-button {
@@ -143,10 +149,16 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
   }
 }
 
+//合计行区域
 .ns-table {
   .vxe-table.scroll--x + div.summary-area {
     bottom: 10px;
   }
+}
+
+//省略文字悬浮提示文字
+.vxe-table--tooltip-wrapper.is--visible {
+  z-index: 9999 !important;
 }
 
 //表格-分页器-背景色
