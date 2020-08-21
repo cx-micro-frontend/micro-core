@@ -104,6 +104,7 @@ module.exports = {
   },
   base: {
     mockPath: './main/mock',
+    // sassResources: [path.resolve('./config/expand/theme/test123.scss')],
     babel: {
       priority: true,
       include: ['main', 'injection', 'config', 'lib'],
