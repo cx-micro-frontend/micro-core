@@ -21,7 +21,6 @@ import './src/router/promission/hook';
 
 Vue.config.productionTip = false;
 
-
 import { cache } from './plugins';
 
 Vue.use(cache, {
@@ -31,7 +30,6 @@ Vue.use(cache, {
   Layout: resolve => require(['./src/layout/Layout.vue'], resolve),
 });
 
-
 new Vue({
   el: '#app',
   router,
@@ -39,3 +37,5 @@ new Vue({
   components: { App },
   template: '<App/>',
 });
+
+
