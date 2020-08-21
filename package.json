@@ -14,7 +14,8 @@
     "build:lib": "node build/create-lib.js --color",
     "clean:lib": "rimraf ./lib/",
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
-    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4"
+    "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
+    "nvm": "nvm"
   },
   "license": "ISC",
   "dependencies": {
