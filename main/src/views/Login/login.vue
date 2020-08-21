@@ -5,7 +5,7 @@
       <img class="login-logo" :src="operatorInfo.operatorLogo" alt="">
     </div>
     <sign-in-box></sign-in-box>
-    <div class="login-footer">Copyright (c) 2019-present 杭州信息技术有限公司 版权所有</div>
+    <div class="login-footer">{{ operatorInfo.operatorCopyright || '&copy;2020~现在 杭州新视窗信息技术有限公司 版权所有' }}</div>
   </div>
 </template>
 <script>
