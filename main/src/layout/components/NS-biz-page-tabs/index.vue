@@ -2,6 +2,7 @@
 <template>
   <PageTabs
     :data="visitedPages"
+    :type="tabType"
     :autoJump="false"
     :limit="tabLimit"
     :activeRule="activeRule"
@@ -27,6 +28,7 @@
 <script>
   import PageTabs from './component/PageTabs';
   import { mapGetters } from 'vuex';
+  import expand from '../../../../expand';
 
   export default {
     name: 'biz-page-tabs',
@@ -51,6 +53,9 @@
       },
       tabLimit() {
         return this.$store.state.PageTabs.limit;
+      },
+      tabType() {
+        return expand.layout.tabs.type || 'normal';//normal, trapezoid
       },
     },
     methods: {

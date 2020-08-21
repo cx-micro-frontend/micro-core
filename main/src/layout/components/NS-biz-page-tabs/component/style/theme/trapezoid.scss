@@ -1,0 +1,50 @@
+$tabs-part_height: 30px; //tabs 单个标签页高度
+$tabs-part-border_color: rgba(218, 219, 225, 1); //tabs模块 边框色
+
+//页面标签选项卡模块 - 梯形四边形模式
+.ns-page-tabs {
+  &.ns-page-tabs__trapezoid {
+
+    //tabs 单个标签页
+    li.tab-tag {
+      height: 30px;
+      bottom: 0;
+      top: 2px;
+      &::before {
+        bottom: -1px;
+        border: 1px solid $tabs-part-border_color;
+        border-bottom: none;
+        transform: perspective(1.5em) rotateX(5deg);
+        transform-origin: left;
+      }
+
+      //选中项
+      &.tag-active {
+        top: 0;
+        height: $tabs-part_height + 2px;
+      }
+
+      //tag 标签
+      .el-tag {
+        width: calc(100% - 3px);
+        height: $tabs-part_height;
+        line-height: $tabs-part_height;
+        //tag 标签内容
+        .el-tag-contnet {
+          border-right: none;
+        }
+      }
+      //tag 遮罩渐变
+      .tab-tag-mask {
+        &::before {
+          transform: perspective(1.5em) rotateX(5deg);
+          transform-origin: left;
+        }
+      }
+      //tag 关闭按钮图标
+      i.el-icon-close {
+        top: ($tabs-part_height - $tabs-icon-close_height)/2 + 1px;
+      }
+    }
+  }
+}

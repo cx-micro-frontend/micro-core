@@ -7,6 +7,7 @@ export default {
   },
   props: {
     data: { type: Array },
+    type: { type: String, default: 'normal' }, //normal, trapezoid
     limit: { type: Number, default: 6 },
     autoJump: { type: Boolean, default: true },
     activeRule: { type: Function },
@@ -24,28 +25,39 @@ export default {
       //select the first 6 objects in the visited-views array
       return this.data.slice(-this.limit);
     },
+    tagClass() {
+      const _n = 'ns-page-tabs';
+      return `${_n} ${_n}__${this.type}`;
+    },
   },
   render(h) {
     return (
-      <ul class={'ns-page-tabs'} style={{ display: this.visitedView.length ? 'block' : 'none' }}>
+      <ul class={this.tagClass} style={{ display: this.visitedView.length ? 'block' : 'none' }}>
         {Array.from(this.visitedView).map((tag, i) => [
-          <li class={['tab-tag', { 'tag-active': this.isActive(tag.path) }]} key={tag.path}>
-            <el-tag
-              closable
-              on-close={this.closeViewTabs.bind(this, tag)}
-              on-click={this.tabsjump.bind(this, tag)}
-            >
-              {
-                <img
-                  src={
-                    this.isActive(tag.path)
-                      ? require('./image/pageTabs-active@3x.png')
-                      : require('./image/pageTabs@3x.png')
-                  }
-                />
-              }
-              <span class={'el-tag-text'}> {tag.title}</span>
+          <li
+            class={['tab-tag', { 'tag-active': this.isActive(tag.path) }]}
+            key={tag.path}
+            on-click={this.tabsjump.bind(this, tag)}
+          >
+            <el-tag>
+              <span class="el-tag-contnet">
+                {
+                  <img
+                    src={
+                      this.isActive(tag.path)
+                        ? require('./image/pageTabs-active@3x.png')
+                        : require('./image/pageTabs@3x.png')
+                    }
+                  />
+                }
+                <span class={'el-tag-text'}> {tag.title}</span>
+              </span>
             </el-tag>
+            <div class="tab-tag-mask"></div>
+            <i
+              class={'el-tag__close el-icon-close'}
+              on-click={this.closeViewTabs.bind(this, tag)}
+            />
           </li>,
         ])}
 
@@ -84,6 +96,8 @@ export default {
     },
     //click tab jump
     tabsjump(tag) {
+      console.log(13213123123);
+      console.log(tag);
       if (this.autoJump) {
         this.$router.push({ path: tag.path });
       } else {
