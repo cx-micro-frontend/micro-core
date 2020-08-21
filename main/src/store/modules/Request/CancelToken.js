@@ -8,12 +8,15 @@
 const CancelToken = {
   state: {
     cancelTokenList: [], // 取消请求token数组
+    cancelSwitch: false, //启用开关
   },
   mutations: {
     registerCancelToken(state, payload) {
+      if (!state.cancelSwitch) return;
       state.cancelTokenList.push(payload.cancelToken);
     },
-    clearCancelToken({ cancelTokenList }) {
+    clearCancelToken({ cancelTokenList, cancelSwitch }) {
+      if (!cancelSwitch) return;
       cancelTokenList.forEach(item => {
         item({
           type: 'cancelToken',
