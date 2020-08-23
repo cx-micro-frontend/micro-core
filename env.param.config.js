@@ -114,6 +114,14 @@ module.exports = {
       '@ROOT': path.resolve(''),
       '@NEAP': path.resolve('main/src'),
     },
+
+    // svgSprite:{
+    //   extract:true,
+    //   include:path.resolve('config/expand/icons'),
+    //   outputPath: "static/svgIcons/",
+    //   publicPath: "static/svgIcons/",
+    //   spriteFilename: "svg-sprite.svg"
+    // },
     prettier: {
       switch: true,
       files: [
