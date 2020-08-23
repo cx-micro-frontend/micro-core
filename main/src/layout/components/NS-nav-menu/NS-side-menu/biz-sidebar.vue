@@ -23,7 +23,6 @@
                :node="menuSlotProps"
     ></component>
 
-
   </div>
 </template>
 
@@ -104,21 +103,20 @@
       },
 
       nodeClick(node, instance) {
+        console.log('nodeClick-nodeClick');
+        console.log(node);
+
         this.currentNode = node;
 
-        this.menuSlotProps = node;
+        this.menuSlotProps = this.currentNode;
 
         //add sign for click time
         if (this.menuSlotProps) {
           this.$set(this.menuSlotProps, 'activeTime', new Date().getTime());
         }
 
-        console.log('nodeClick-nodeClick');
-        console.log(node);
-
-
         this.navClick(
-          { node, instance },
+          { node: this.menuSlotProps, instance },
           this.judgeAndJump,
         );
       },
@@ -131,7 +129,7 @@
         //非叶子节点不能点击跳转路由
         if (!this.currentNode || !this.currentNode.isLeaf) return;
 
-        // alert(menuNodeProps.isSlipPage(this.currentNode.data));
+        // 剔除侧滑情况
         if (menuNodeProps.isSlipPage(this.currentNode.data)) return;
 
         const routeNameKey = keyRefer.routeName;
