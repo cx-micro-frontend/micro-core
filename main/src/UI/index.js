@@ -30,5 +30,7 @@ import '../../../injection/entrance/entrance_ui';
 //业务组个性化注入
 import './Custom-UI/index';
 
+import '../icons';
+
 //load utils event
 // import '../utils';
