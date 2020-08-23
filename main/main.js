@@ -30,6 +30,8 @@ Vue.use(cache, {
   Layout: resolve => require(['./src/layout/Layout.vue'], resolve),
 });
 
+
+
 new Vue({
   el: '#app',
   router,
