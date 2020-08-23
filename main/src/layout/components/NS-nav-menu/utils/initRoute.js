@@ -1,4 +1,3 @@
-import expand from '../../../../../expand';
 import keyRefer from '../nav-menu-keyRefer';
 import menuNodeProps from './menuNodeProps';
 import { judgeType } from '../../../../utils/library/judge';
