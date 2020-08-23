@@ -1,36 +1,49 @@
 import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
 import fetch from '@NEAP/utils/fetch/fetch';
-
-//机构信息
-export function getOrgInfo() {
-  return fetch({
-    url: '/elderly/care/statistics/orgInfo',
-    method: 'get',
-  });
-}
-
-//获取基础长者数据
-export function getBase() {
-  return fetch({
-    url: '/elderly/profile/elderStatistics/base',
-    method: 'get',
-  });
-}
-
-//今日动态
-export function getTodayDynamic() {
-  return fetch({
-    url: '/elderly/care/statistics/todayDynamic',
-    method: 'get',
-  });
-}
-
-//本月生日
-export function getBirthday(query) {
+export function getOverviewData(query) {
+  // 概览数据-获取
+  // dataFilter(head);
   dataFilter(query);
   return fetch({
-    url: '/elderly/profile/elderStatistics/birthday',
+    url: '/bill/reporting/overview',
+    method: 'post',
+    // headers: head,
+    data: query,
+  });
+}
+
+export function getOverviewData1(query) {
+  // 概览数据-获取
+  // dataFilter(head);
+  dataFilter(query);
+  return fetch({
+    url: '/soss/notice/list-notice',
+    method: 'post',
+    // headers: head,
+    data: query,
+  });
+}
+
+export function getOverviewData2(query) {
+  // 概览数据-获取
+  // dataFilter(head);
+  dataFilter(query);
+  return fetch({
+    url: '/soss/product/list-product',
+    method: 'post',
+    // headers: head,
+    data: query,
+  });
+}
+
+export function getOverviewData3(query) {
+  // 概览数据-获取
+  // dataFilter(head);
+  dataFilter(query);
+  return fetch({
+    url: '/soss/product/statis-productInfos',
     method: 'get',
+    // headers: head,
     params: query,
   });
 }
