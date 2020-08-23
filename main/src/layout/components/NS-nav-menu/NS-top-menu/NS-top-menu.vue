@@ -3,7 +3,7 @@
   <div class="ns-top-menu clear" v-if="topNavMenu && topNavMenu.length>1">
     <div :class="[
       'ns-top-menu_module back fl',
-      {'is-active':isActive}
+      {'is-active':isPortalActive}
       ]" @click="back"
     >
       <ns-icon-class class="back-to-portal-icon"
@@ -19,25 +19,24 @@
       placement="bottom-start"
       trigger="click"
       :visible-arrow="false"
-      v-if="popoverDisplay"
     >
       <div class="ns-top-menu_module" slot="reference">
         <ns-icon-svg :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
         <span style="margin-left: 2px">我的应用</span>
       </div>
 
-      <div class="sub-system_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
-        <ns-icon-svg :icon-class="item.icon"></ns-icon-svg>
+      <div :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
+           v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item,index)"
+      >
+        <!--<ns-icon-svg :icon-class="item.icon"></ns-icon-svg>-->
+        <!--<ns-icon-svg icon-class="bug"></ns-icon-svg>-->
+
+        <ns-icon-svg :icon-class="currentModuleId === item.moduleId?`${item.icon}_active`:item.icon"></ns-icon-svg>
+
         <p>{{item.moduleName}}</p>
       </div>
 
     </el-popover>
-
-    <div class="fl clear" v-if="!popoverDisplay">
-      <div class="ns-top-menu_module fl" v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item)">
-        <span>{{item.moduleName}}</span>
-      </div>
-    </div>
 
   </div>
 
@@ -55,11 +54,12 @@
         model: false,
         portalName: 'portal',
         keyRefer,
+        activeIndex: null,
       };
     },
     computed: {
       ...mapGetters(['moduleMenu']),
-      isActive() {
+      isPortalActive() {
         return this.$route.name === this.portalName;
       },
       topNavMenu() {
@@ -76,11 +76,12 @@
     },
     methods: {
       back() {
-        if (this.isActive) return;
+        if (this.isPortalActive) return;
         this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
-      jumper(item) {
+      jumper(item, index) {
 
+        this.activeIndex = index;
         if (this.currentModuleId === item.moduleId) return;
 
         /**
@@ -117,18 +118,25 @@
       width: 83px;
       height: 83px;
       margin: 17px 17px 0 0;
-      padding: 25px 0 0 0;
+      padding: 20px 0 0 0;
       border-radius: 3px;
       background: rgba(255, 255, 255, 1);
       box-shadow: 0px 2px 18px 0px rgba(183, 192, 215, 0.5);
       text-align: center;
       cursor: pointer;
+      box-sizing: border-box;
+      &.active{
+        background: #D62127;
+        p {
+          color: #fff;
+        }
+      }
       &:nth-child(4n+0) {
         margin-right: 0;
       }
       svg {
-        width: 44px;
-        height: 44px;
+        width: 23px;
+        height: 20px;
       }
       p {
         color: #000;
