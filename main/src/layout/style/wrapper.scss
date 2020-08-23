@@ -30,9 +30,11 @@
   bottom: 0;
   left: 0;
   z-index: 2000;
-  &:hover {
-    z-index: 9999;
-  }
+
+  //这里需要注释掉
+  //&:hover {
+  //  z-index: 9999;
+  //}
 }
 
 #page-tabs-wrapper {
