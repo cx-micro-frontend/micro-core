@@ -262,7 +262,7 @@ const mam_nav_menu = (req, res) => {
         childMenus: [
           //系统设置
           {
-            iconUrl: null,
+            menuIconcls: 'module-shezhizhongxin',
             moduleId: 'system',
             moduleName: '系统设置',
             defaultRouteName: 'systemOrgEmployee',
@@ -369,28 +369,12 @@ const mam_nav_menu = (req, res) => {
             ],
           },
           {
-            iconUrl: null,
+            menuIconcls: 'module-xiangmutuozhan',
             moduleId: 'FIN',
             moduleName: '其他',
             defaultRouteName: null,//'/overview'
             defaultRoutePath: null,//'/overview'
             childMenus: [
-              //概览页
-              {
-                menuMenuname: '概览', //显示名称
-                funcId: 'dashboard', //func-ID
-                menuIconcls: 'menu-gailan',//图标
-                menuMenusubname: 'overview', //路径符号
-                rootMenuSubName: 'other',//root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
-                routePath: '/overview', //前端路由路径（拼接好的全路径）
-                templatePath: '',//资源文件对应路径
-                syStatus: '1', //隐藏与否
-                syLayer: 2,//菜单层级
-                is_leaf: true,//是否为叶子节点
-                behavior: '100',//交互/集成模式
-                moduleId: 'FIN',
-                childMenus: [],
-              },
               //缓存示例页面
               {
                 menuMenuname: '缓存', //显示名称
@@ -399,6 +383,22 @@ const mam_nav_menu = (req, res) => {
                 menuMenusubname: 'cacheDemo', //路径符号
                 rootMenuSubName: 'other',//root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
                 routePath: '/cacheDemo', //前端路由路径（拼接好的全路径）
+                templatePath: '',//资源文件对应路径
+                syStatus: '1', //隐藏与否
+                syLayer: 2,//菜单层级
+                is_leaf: true,//是否为叶子节点
+                behavior: '100',//交互/集成模式
+                moduleId: 'FIN',
+                childMenus: [],
+              },
+              //概览页
+              {
+                menuMenuname: '概览', //显示名称
+                funcId: 'dashboard', //func-ID
+                menuIconcls: 'menu-gailan',//图标
+                menuMenusubname: 'overview', //路径符号
+                rootMenuSubName: 'other',//root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
+                routePath: '/overview', //前端路由路径（拼接好的全路径）
                 templatePath: '',//资源文件对应路径
                 syStatus: '1', //隐藏与否
                 syLayer: 2,//菜单层级
