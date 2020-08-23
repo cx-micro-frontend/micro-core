@@ -15,4 +15,5 @@ if (fs.existsSync(`${utils.inJectPath().root}/main`)) {
   shell.cp('-R', `${utils.inJectPath().root}/main/expand.js`, `${utils.inJectPath().root}/lib/expand.js`);
   shell.cp('-R', `${utils.inJectPath().root}/main/dependencies.js`, `${utils.inJectPath().root}/lib/dependencies.js`);
   shell.cp('-R', `${utils.inJectPath().root}/main/plugins`, `${utils.inJectPath().root}/lib/plugins`);
+
 }
