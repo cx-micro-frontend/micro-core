@@ -15,6 +15,7 @@
     "clean:lib": "rimraf ./lib/",
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
     "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
+    "svgo": "svgo -f config/expand/icons --config=config/expand/icons.yml",
     "nvm": "nvm"
   },
   "license": "ISC",
@@ -29,7 +30,7 @@
     "element-ui": "2.11.1",
     "jquery": "3.4.1",
     "js-cookie": "^2.2.0",
-    "neap-ui": "0.0.1-93",
+    "neap-ui": "0.0.2-1",
     "nprogress": "^0.2.0",
     "vue-native-websocket": "^2.0.14",
     "vue-router": "3.1.6",
@@ -40,7 +41,7 @@
   "devDependencies": {
     "@vant/compiler": "^1.0.0",
     "babel-preset-es2015": "^6.24.1",
-    "cx-builder": "0.0.53-42",
+    "cx-builder": "0.0.53-43",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.3",
     "gulp-notify": "^3.2.0",
