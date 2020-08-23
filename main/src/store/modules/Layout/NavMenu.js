@@ -24,7 +24,6 @@ const NavMenu = {
   state: {
     moduleMenu: _deCryptoSideBar().moduleMenu || {},
     sideMenu: _deCryptoSideBar().sideMenu || [],
-    moduleId: _deCryptoSideBar().moduleId || '',
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     subInitRoute: _deCryptoSideBar().subInitRoute, //默认初始路由地址
     isExpand: _deCryptoSideBar().isExpand || false,
@@ -32,7 +31,7 @@ const NavMenu = {
   mutations: {
     SET_MENU_DATA: (state, data) => {
       //Assignment in mutations to change state
-      stateAssign(state, data, ['moduleMenu', 'sideMenu', 'moduleId', 'initRoute', 'subInitRoute']);
+      stateAssign(state, data, ['moduleMenu', 'sideMenu', 'initRoute', 'subInitRoute']);
 
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
@@ -118,7 +117,6 @@ const NavMenu = {
             const navdata = {
               moduleMenu: filterList,
               initRoute: getInitRoute(r),
-              moduleId: 'portal',
             };
 
             commit('SET_MENU_DATA', navdata);
@@ -156,7 +154,6 @@ const NavMenu = {
         const navdata = {
           sideMenu,
           subInitRoute, //子系统的初始路由
-          moduleId,
         };
         commit('SET_MENU_DATA', navdata);
 

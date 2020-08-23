@@ -33,13 +33,13 @@
   import menuNodeProps from '../utils/menuNodeProps';
   import expand from '../../../../../expand';
 
-
   export default {
     name: 'ns-biz-sidebar',
     mixins: [menuSlotMixins],
 
     data() {
       return {
+        menuData: [],
         menuSlotProps: null,
         currentNode: null,
         defaultActive: '',
@@ -48,7 +48,7 @@
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'currentPageInfo', 'sideMenuExpand']),
+      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'sideMenuExpand']),
       //当前路由信息
       currentRoute() {
         return this.$route;
@@ -56,29 +56,35 @@
       activeKey() {
         return this.currentPageInfo.menuId;
       },
-
-      menuData() {
-        try {
-          //为适应暂时的多级菜单 - 增加虚拟节点处理
-          return this.sideMenu;
-        }
-        catch (e) {
-          console.error('【 NEAP-ERROR 】Failed to generate nav menu data ');
-          return [];
-        }
+      sideMenuChange() {
+        return {
+          moduleId: this.currentPageInfo.moduleId,
+          activeKey: this.activeKey,
+        };
       },
     },
     watch: {
-      activeKey: {
-        handler: function(keyVal) {
+      sideMenuChange: {
+        handler: function(newVal, oldVal) {
 
-          this.$nextTick(() => {
-            const _t = this.$refs['ns-biz-sidebar'];
-            if (_t) {
-              _t.setActive(keyVal);
-            }
-          });
-
+          /**
+           * toggle module handle when route is change (two routes belonging to different modules)
+           * 通过 moduleId 来切换 模块：
+           *  - sideMenu - 切换侧边栏数据
+           *  - initRoute - 切换当前侧边栏导航菜单的初始路由
+           */
+          this.$store.dispatch('toggle_module_handle', newVal.moduleId).then(navdata => {
+            this.menuData = navdata.sideMenu || [];
+            this.$nextTick(() => {
+              const _t = this.$refs['ns-biz-sidebar'];
+              if (_t) {
+                _t.setActive(newVal.activeKey);
+              }
+            });
+          }).catch(err => {
+              console.warn(`【 NEAP-ERROR 】Failed to generate nav menu data: ${err} `);
+            },
+          );
         },
         immediate: true,
       },

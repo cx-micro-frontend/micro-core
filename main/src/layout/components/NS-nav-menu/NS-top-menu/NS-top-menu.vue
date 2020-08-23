@@ -58,7 +58,7 @@
       };
     },
     computed: {
-      ...mapGetters(['moduleMenu']),
+      ...mapGetters(['moduleMenu', 'currentPageInfo']),
       isPortalActive() {
         return this.$route.name === this.portalName;
       },
@@ -69,9 +69,7 @@
         return this.topNavMenu && this.topNavMenu.length > 3;
       },
       currentModuleId() {
-        const route = this.$route;
-        const { meta } = route;
-        return meta.moduleId;
+        return this.currentPageInfo.moduleId;
       },
     },
     methods: {
@@ -125,7 +123,7 @@
       text-align: center;
       cursor: pointer;
       box-sizing: border-box;
-      &.active{
+      &.active {
         background: #D62127;
         p {
           color: #fff;
