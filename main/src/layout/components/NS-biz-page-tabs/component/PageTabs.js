@@ -96,8 +96,6 @@ export default {
     },
     //click tab jump
     tabsjump(tag) {
-      console.log(13213123123);
-      console.log(tag);
       if (this.autoJump) {
         this.$router.push({ path: tag.path });
       } else {
