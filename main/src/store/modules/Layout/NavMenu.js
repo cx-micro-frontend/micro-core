@@ -145,8 +145,6 @@ const NavMenu = {
       return new Promise(resolve => {
         let navdata = {};
 
-        state.moduleMenu.length = 1;
-
         if ((state.moduleMenu.length = 1)) {
           const _module = state.moduleMenu[0];
           const sideMenu = _module[keyRefer['children']];
