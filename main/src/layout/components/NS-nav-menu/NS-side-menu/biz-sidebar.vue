@@ -43,7 +43,7 @@
         menuSlotProps: null,
         currentNode: null,
         defaultActive: '',
-        trigger: 'hover',
+        trigger: 'click',
         keyRefer,
       };
     },
