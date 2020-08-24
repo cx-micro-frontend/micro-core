@@ -15,7 +15,7 @@
     'is-collapse':!sideMenuExpand,
   }">
     <div id="header-wrapper" class="fl">
-      <div class="ns-header clear">
+      <div id="Header" class="ns-header clear">
         <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
         <div class="fl head-logo">
           <img :src="operatorInfo.operatorLoginPic" @click="click"/>
