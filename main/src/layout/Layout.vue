@@ -46,12 +46,10 @@
       </div>
     </div>
 
-
     <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
     <div id="side-menu-wrapper">
       <biz-sidebar></biz-sidebar>
     </div>
-
 
     <!--history task-tabs link-->
     <div id="page-tabs-wrapper">
