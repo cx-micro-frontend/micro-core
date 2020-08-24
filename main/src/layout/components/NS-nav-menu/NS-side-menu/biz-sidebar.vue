@@ -43,7 +43,7 @@
         menuSlotProps: null,
         currentNode: null,
         defaultActive: '',
-        trigger: 'click',
+        trigger: 'hover',
         keyRefer,
       };
     },
@@ -95,7 +95,7 @@
         if (node.data[keyRefer['routeName']] === 'guide') {
           return h('ns-icon-svg', {
             'attrs': {
-              iconClass: 'menu-shezhi',
+              iconClass: 'PathCopy1',
             },
             style: {
               'margin-left': '15px',
