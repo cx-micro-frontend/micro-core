@@ -28,6 +28,7 @@ export default sideBarList => {
     includeModules = injection.modules.filter(item => !item.disabled).map(item => item.repositorie);
   }
 
+  //需要处理注册路由的菜单数据（一级 rootRouteName )必须和注入模块一一对应（ repositorie 值）)
   const addRouterList = sideBarList.filter(
     item => includeModules.indexOf(item[keyRefer['rootRouteName']]) > -1
   );
