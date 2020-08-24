@@ -53,7 +53,7 @@ const customRoute = [
                 moduleId: 'FIN',
                 type: 'normal',
               },
-              name: 'portal',
+              name: 'overview',
             },
           ],
         },
