@@ -57,6 +57,12 @@
         return this.currentPageInfo.menuId;
       },
       sideMenuChange() {
+        console.log(22222222222)
+        console.log(22222222222)
+        console.log(this.currentPageInfo)
+        console.log(this.currentPageInfo.moduleId)
+        console.log(22222222222)
+        console.log(22222222222)
         return {
           moduleId: this.currentPageInfo.moduleId,
           activeKey: this.activeKey,
@@ -67,6 +73,11 @@
       sideMenuChange: {
         //这里还要优化 moduleId 和 activeKey ，分情况，activeKey变化需需变更执行菜单数据处理
         handler: function(newVal, oldVal) {
+          console.log(216836128379812793871298)
+          console.log(216836128379812793871298)
+          console.log(newVal)
+          console.log(216836128379812793871298)
+          console.log(216836128379812793871298)
           /**
            * toggle module handle when route is change (two routes belonging to different modules)
            * 通过 moduleId 来切换 模块：
