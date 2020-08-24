@@ -46,6 +46,9 @@ export const handleMenuData = menu => {
   const childrenKey = keyRefer['children'];
   const levelKey = keyRefer['menuLevel'];
   const menuIdKey = keyRefer['menuId'];
+  const isLeafKey = keyRefer['isLeaf'];
+  const showTerminal = keyRefer['showTerminal'];
+
   // const initRouteKey = keyRefer['initRoute'];
 
   const _level = expand.integrationMode === 'mam' ? 0 : 1;
@@ -62,6 +65,11 @@ export const handleMenuData = menu => {
     list.forEach((item, index) => {
       //add visible sign
       item[visibleKey] = item[visibleKey] === '1';
+
+      //这里最好能把 移动端的菜单  移除掉
+      if (item[isLeafKey] && item[showTerminal] === 2) {
+        item[visibleKey] = false;
+      }
 
       //add level sign
       item[levelKey] = level;
