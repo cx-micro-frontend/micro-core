@@ -34,11 +34,7 @@ export default {
     return (
       <ul class={this.tagClass} style={{ display: this.visitedView.length ? 'block' : 'none' }}>
         {Array.from(this.visitedView).map((tag, i) => [
-          <li
-            class={['tab-tag', { 'tag-active': this.isActive(tag.path) }]}
-            key={tag.path}
-            on-click={this.tabsjump.bind(this, tag)}
-          >
+          <li class={['tab-tag', { 'tag-active': this.isActive(tag.path) }]} key={tag.path}>
             <el-tag>
               <span class="el-tag-contnet">
                 {
@@ -53,7 +49,7 @@ export default {
                 <span class={'el-tag-text'}> {tag.title}</span>
               </span>
             </el-tag>
-            <div class="tab-tag-mask"></div>
+            <div class="tab-tag-mask" on-click={this.tabsjump.bind(this, tag)}></div>
             <i
               class={'el-tag__close el-icon-close'}
               on-click={this.closeViewTabs.bind(this, tag)}
