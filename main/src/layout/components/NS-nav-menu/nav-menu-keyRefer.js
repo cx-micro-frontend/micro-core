@@ -29,7 +29,7 @@ const keyRefer = {
 
   initRoute: 'initRoute', //当前菜单的初始路由
 
-  showTerminal: 'showTerminal',
+  showTerminal: 'showTerminal', //判断哪端（终端) 显示/隐藏菜单 -  1:PC显示 2:移动端显示 3或null:均显示
 
   defaultRouteName: 'defaultRouteName',
   defaultRoutePath: 'defaultRoutePath',
