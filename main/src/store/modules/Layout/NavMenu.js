@@ -4,7 +4,6 @@ import { stateAssign } from '../../utils/index';
 import {
   handleMenuData,
   flattenMenu,
-  filterModuleByToggle,
 } from '../../../layout/components/NS-nav-menu/utils/dataHandle';
 import { getInitRoute } from '../../../layout/components/NS-nav-menu/utils/initRoute';
 import { storageHandle } from '../../../utils/storage/storage';
@@ -144,17 +143,21 @@ const NavMenu = {
      */
     toggle_module_handle({ commit, state }, moduleId) {
       return new Promise(resolve => {
+        let navdata = {};
+        for (let _module of state.moduleMenu) {
+          if (_module[keyRefer['moduleId']] === moduleId) {
+            const sideMenu = _module[keyRefer['children']];
+            const subInitRoute = getInitRoute(_module);
+
+            navdata = {
+              sideMenu,
+              subInitRoute, //子系统的初始路由
+            };
+            break;
+          }
+        }
+
         //获取当前激活的系统模块菜单数据
-        const _currentModule = filterModuleByToggle(state.moduleMenu, moduleId);
-
-        const sideMenu = _currentModule[keyRefer['children']];
-
-        const subInitRoute = getInitRoute(_currentModule);
-
-        const navdata = {
-          sideMenu,
-          subInitRoute, //子系统的初始路由
-        };
         commit('SET_MENU_DATA', navdata);
 
         resolve(navdata);

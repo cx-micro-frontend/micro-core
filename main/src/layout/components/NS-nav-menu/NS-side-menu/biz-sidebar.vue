@@ -65,8 +65,8 @@
     },
     watch: {
       sideMenuChange: {
+        //这里还要优化 moduleId 和 activeKey ，分情况，activeKey变化需需变更执行菜单数据处理
         handler: function(newVal, oldVal) {
-
           /**
            * toggle module handle when route is change (two routes belonging to different modules)
            * 通过 moduleId 来切换 模块：
