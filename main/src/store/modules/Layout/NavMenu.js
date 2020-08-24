@@ -144,16 +144,30 @@ const NavMenu = {
     toggle_module_handle({ commit, state }, moduleId) {
       return new Promise(resolve => {
         let navdata = {};
-        for (let _module of state.moduleMenu) {
-          if (_module[keyRefer['moduleId']] === moduleId) {
-            const sideMenu = _module[keyRefer['children']];
-            const subInitRoute = getInitRoute(_module);
 
-            navdata = {
-              sideMenu,
-              subInitRoute, //子系统的初始路由
-            };
-            break;
+        state.moduleMenu.length = 1;
+
+        if ((state.moduleMenu.length = 1)) {
+          const _module = state.moduleMenu[0];
+          const sideMenu = _module[keyRefer['children']];
+          const subInitRoute = getInitRoute(_module);
+
+          navdata = {
+            sideMenu,
+            subInitRoute, //子系统的初始路由
+          };
+        } else {
+          for (let _module of state.moduleMenu) {
+            if (_module[keyRefer['moduleId']] === moduleId) {
+              const sideMenu = _module[keyRefer['children']];
+              const subInitRoute = getInitRoute(_module);
+
+              navdata = {
+                sideMenu,
+                subInitRoute, //子系统的初始路由
+              };
+              break;
+            }
           }
         }
 
