@@ -66,7 +66,7 @@ export default {
           children: [
             {
               path: 'cacheDemo',
-              component: () => import(`@ROOT/config/expand/views/cache/cacheDemo.vue`),
+              component: () => import(`@ROOT/config/expand/views/cache/cacheDemo2.vue`),
               meta: {
                 title: '缓存示例',
                 auth: true,

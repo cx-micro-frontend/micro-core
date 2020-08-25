@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "version": "0.0.25-91",
+  "version": "0.0.25-92",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@vant/compiler": "^1.0.0",
     "babel-preset-es2015": "^6.24.1",
-    "cx-builder": "0.0.53-43",
+    "cx-builder": "0.0.53-45",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.3",
     "gulp-notify": "^3.2.0",

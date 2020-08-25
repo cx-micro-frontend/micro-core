@@ -33,7 +33,6 @@
         <!--<ns-icon-svg icon-class="jichufuwu-2"></ns-icon-svg>-->
 
         <ns-icon-svg :icon-class="currentModuleId === item.moduleId?`${item.icon}_active`:item.icon"></ns-icon-svg>
-
         <p>{{item.moduleName}}</p>
       </div>
 
