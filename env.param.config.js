@@ -122,6 +122,7 @@ module.exports = {
     //   publicPath: "static/svgIcons/",
     //   spriteFilename: "svg-sprite.svg"
     // },
+
     prettier: {
       switch: true,
       files: [
