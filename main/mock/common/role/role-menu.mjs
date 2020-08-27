@@ -391,6 +391,22 @@ const mam_nav_menu = (req, res) => {
                 moduleId: 'FIN',
                 childMenus: [],
               },
+              //缓存示例页面
+              {
+                menuMenuname: '缓存', //显示名称
+                funcId: 'cacheDemo3', //func-ID
+                menuIconcls: 'menu-jiedaiguanli',
+                menuMenusubname: 'cacheDemo3', //路径符号
+                rootMenuSubName: 'other',//root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
+                routePath: '/cacheDemo3', //前端路由路径（拼接好的全路径）
+                templatePath: '',//资源文件对应路径
+                syStatus: '1', //隐藏与否
+                syLayer: 2,//菜单层级
+                is_leaf: true,//是否为叶子节点
+                behavior: '100',//交互/集成模式
+                moduleId: 'FIN',
+                childMenus: [],
+              },
               //概览页
               {
                 menuMenuname: '概览', //显示名称
