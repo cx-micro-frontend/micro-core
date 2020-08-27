@@ -27,12 +27,14 @@
 
       <div :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
            v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item,index)"
+           @mouseenter="hoverIndex = index"
+           @mouseleave="hoverIndex = null"
       >
         <!--<ns-icon-svg :icon-class="item.icon"></ns-icon-svg>-->
         <!--<ns-icon-svg icon-class="bug"></ns-icon-svg>-->
         <!--<ns-icon-svg icon-class="jichufuwu-2"></ns-icon-svg>-->
 
-        <ns-icon-svg :icon-class="currentModuleId === item.moduleId?`${item.icon}_active`:item.icon"></ns-icon-svg>
+        <ns-icon-svg :icon-class="isActiveModule(item,index)?`${item.icon}_active`:item.icon"></ns-icon-svg>
         <p>{{item.moduleName}}</p>
       </div>
 
@@ -55,6 +57,7 @@
         portalName: 'portal',
         keyRefer,
         activeIndex: null,
+        hoverIndex: null,
       };
     },
     computed: {
@@ -73,6 +76,9 @@
       },
     },
     methods: {
+      isActiveModule(item, index) {
+        return this.currentModuleId === item.moduleId || this.hoverIndex === index;
+      },
       back() {
         if (this.isPortalActive) return;
         this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
@@ -99,6 +105,7 @@
           },
         );
       },
+
     },
 
     // created() {
@@ -123,7 +130,8 @@
       text-align: center;
       cursor: pointer;
       box-sizing: border-box;
-      &.active {
+
+      &:hover, &.active {
         background: #D62127;
         p {
           color: #fff;
