@@ -1,5 +1,7 @@
 export { default as nsTopMenu } from './components/NS-nav-menu/NS-top-menu/NS-top-menu';
-export { default as bizSidebar } from './components/NS-nav-menu/NS-side-menu/biz-sidebar';
+
+// export { default as bizSidebar } from './components/NS-nav-menu/NS-side-menu/biz-sidebar';
+export { default as bizSidebar } from './components/NS-nav-menu/NS-side-menu/index';
 
 export { default as bizTabsViews } from './components/NS-biz-page-tabs/index';
 export { default as bizLockScreen } from './components/NS-biz-lockscreen/NS-biz-lockscreen';
