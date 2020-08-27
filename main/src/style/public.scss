@@ -1,4 +1,4 @@
-@import 'mixins/mixins';
+@import 'mixins/index';
 
 //---------- base color ----------
 $--color-black: #000; //纯黑
@@ -121,6 +121,6 @@ li {
   }
 }
 
-//@include scrollbarVisible();
-@include scrollbarStyle();
-
+//@include scrollbarVisibleHover();
+//@include scrollbarStyle(8);
+@include scrollbarStyle(10px);
