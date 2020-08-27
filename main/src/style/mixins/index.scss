@@ -1,0 +1,24 @@
+@import "scrollbar";
+
+@mixin clearFloat {
+  zoom: 1;
+  &:after {
+    clear: both;
+  }
+  &:after,
+  &:before {
+    display: table;
+    content: '';
+  }
+}
+
+@mixin setMockBlockByBatch($baseName, $start, $end) {
+  $class-slug: $baseName !default;
+  @for $i from $start to $end {
+    &.#{$class-slug}-#{$i} {
+      .el-form-item__error {
+        margin-left: $i + px;
+      }
+    }
+  }
+}

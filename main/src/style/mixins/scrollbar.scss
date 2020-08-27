@@ -1,0 +1,66 @@
+//scrollbarVisible
+@mixin scrollbarVisibleHover($size: 10px) {
+  &::-webkit-scrollbar-thumb:vertical,
+  &::-webkit-scrollbar-thumb:horizontal {
+    visibility: hidden;
+  }
+
+  /*滚动条垂直方向的宽度*/
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    transition: all .3s linear;
+    &::-webkit-scrollbar-thumb:vertical,
+    &::-webkit-scrollbar-thumb:horizontal {
+      visibility: visible;
+
+    }
+    /*滚动条垂直方向的宽度*/
+    &::-webkit-scrollbar {
+      width: $size;
+      height: $size;
+    }
+  }
+}
+
+@mixin scrollbarHidden() {
+  &::-webkit-scrollbar-thumb:vertical,
+  &::-webkit-scrollbar-thumb:horizontal {
+    visibility: hidden;
+  }
+  /*滚动条垂直方向的宽度*/
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@mixin scrollbarStyle($size: 10px) {
+  /*滚动条垂直方向的宽度*/
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  /* 垂直滚动条的滑动块 */
+  ::-webkit-scrollbar-thumb:vertical {
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(129, 129, 129, 0.5);
+  }
+
+  /* 水平滚动条的滑动块 */
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(129, 129, 129, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:hover,
+  ::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgba(255, 255, 255, 0.68);
+  }
+}
