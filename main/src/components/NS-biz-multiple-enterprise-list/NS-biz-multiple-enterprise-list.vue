@@ -40,7 +40,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "../../style/mixins/mixins";
+  @import "../../style/mixins/index";
 
   .multiple-enterprise-list {
     padding: 5px;
@@ -54,7 +54,7 @@
       height: 40px;
       line-height: 40px;
     }
-    @include scrollbarVisible();
+    //@include scrollbarVisibleHover();
     ul.enterprise-container {
       height: 120px;
       font-size: 16px;

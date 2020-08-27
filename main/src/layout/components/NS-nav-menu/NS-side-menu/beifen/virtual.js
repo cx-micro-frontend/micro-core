@@ -1,4 +1,4 @@
-import keyRefer from '../nav-menu-keyRefer';
+import keyRefer from '../../nav-menu-keyRefer';
 
 export default list => {
   const labelKey = keyRefer['label'];

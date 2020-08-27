@@ -1,0 +1,130 @@
+@import "../../../../../style/mixins/index";
+@import "var";
+
+@include scrollbarVisibleHover(10px);
+
+@mixin menuItemStyle() {
+  min-width: $side-menu__width;
+  height: $side-menu-item__height;
+  line-height: $side-menu-item__height;
+  padding: 0 !important;
+  .ns-menu-item__content {
+    height: 100%;
+    &:hover {
+      background-color: rgba(255, 255, 255, .1);
+      svg.ns-icon-svg, span {
+        color: #fff;
+      }
+    }
+
+    svg.ns-icon-svg {
+      width: 14px;
+      height: 14px;
+      padding: 0;
+      color: #ff2967;
+    }
+    span {
+      padding-left: 10px;
+      color: #757893;
+    }
+  }
+}
+
+.ns-side-menu {
+
+  border: none;
+
+  width: $side-menu__width;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  height: calc(100% - 40px);
+
+  /*animation-delay: 2s;*/
+
+  &.el-menu--collapse {
+    width: $side-menu-collapse__width;
+    li.el-submenu, li.el-menu-item {
+      span, i.el-submenu__icon-arrow {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+    }
+
+    .ns-sub-menu {
+      li.el-submenu, li.el-menu-item {
+        span, i.el-submenu__icon-arrow {
+          display: inline;
+          visibility: visible;
+        }
+      }
+    }
+
+    .ns-sub-menu.is-active {
+      .ns-menu-item__content.level-1 {
+        background-color: #66aaf2;
+      }
+
+    }
+
+  }
+
+  .el-menu-item {
+    @include menuItemStyle()
+  }
+}
+
+.ns-sub-menu {
+  font-size: 14px;
+
+  .ns-menu-group__title {
+    display: none;
+  }
+
+  //菜单项
+  .el-submenu__title, .el-menu-item {
+    @include menuItemStyle()
+  }
+
+  &.is-active {
+    .ns-menu-item__content.level-1 {
+      background-color: transparent;
+      color: #66aaf2;
+    }
+  }
+
+  .el-menu-item {
+    &.is-active {
+      .ns-menu-item__content {
+        color: #66aaf2;
+      }
+    }
+  }
+
+}
+
+#body > .ns-sub-menu {
+
+  .el-menu.el-menu--popup {
+    margin: 0 3px;
+    border-radius: 5px;
+
+    .ns-menu-group__title {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 1);
+    }
+    .ns-menu-group__content {
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+
+      //@include scrollbarVisibleHover();
+
+    }
+  }
+}

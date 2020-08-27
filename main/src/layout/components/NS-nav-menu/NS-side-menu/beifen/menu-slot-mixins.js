@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import expand from '../../../../../expand';
+import expand from '../../../../../../expand';
 
 export default {
   computed: {

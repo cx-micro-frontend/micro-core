@@ -28,10 +28,10 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import keyRefer from '../nav-menu-keyRefer';
+  import keyRefer from '../../nav-menu-keyRefer';
   import menuSlotMixins from './menu-slot-mixins';
-  import menuNodeProps from '../utils/menuNodeProps';
-  import expand from '../../../../../expand';
+  import menuNodeProps from '../../utils/menuNodeProps';
+  import expand from '../../../../../../expand';
 
   export default {
     name: 'ns-biz-sidebar',
