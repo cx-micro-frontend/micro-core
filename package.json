@@ -15,7 +15,7 @@
     "clean:lib": "rimraf ./lib/",
     "upgrade": "node_modules/cx-builder/lib/entry.sh root 6 3",
     "reinstall": "node_modules/cx-builder/lib/entry.sh root 6 4",
-    "svgo": "svgo -f config/expand/icons --config=config/expand/icons.yml",
+    "svgo": "svgo -f config/expand/iconfont/module-menu/ --config=config/expand/iconfont/svgo.yml",
     "nvm": "nvm"
   },
   "license": "ISC",
