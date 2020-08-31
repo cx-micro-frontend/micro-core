@@ -26,6 +26,7 @@
   }
 }
 
+
 @mixin scrollbarHidden() {
   &::-webkit-scrollbar-thumb:vertical,
   &::-webkit-scrollbar-thumb:horizontal {
