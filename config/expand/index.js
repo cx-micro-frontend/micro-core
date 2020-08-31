@@ -25,7 +25,7 @@ export default {
 
     //tab 页标签
     tabs: {
-      type: 'trapezoid', //normal, trapezoid
+      type: 'normal', //normal, trapezoid
     },
 
     //side menu - 侧边栏
@@ -76,25 +76,6 @@ export default {
                 type: 'normal',
               },
               name: 'cacheDemo',
-            },
-          ],
-        },
-        {
-          path: '',
-          component: Layout,
-          children: [
-            {
-              path: 'cacheDemo3',
-              component: () => import(`@ROOT/config/expand/views/cache/cacheDemo3.vue`),
-              meta: {
-                title: '缓存示例',
-                auth: true,
-                key: 'cacheDemo3',
-                cache: true,
-                moduleId: 'FIN',
-                type: 'normal',
-              },
-              name: 'cacheDemo3',
             },
           ],
         },
