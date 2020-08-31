@@ -16,6 +16,8 @@ const dev_env = {
   IP_CONFIG: '"http://192.168.1.20"',
   IFRAME_IP_CONFIG: '"http://192.168.1.52"',
   // BASE_API: '"http://192.168.1.52/api"',
+  BASE_API: '"http://new-see.oicp.io:25280/api"',
+
   // BASE_API: '"http://192.168.4.40:7777"',
   // BASE_API: '"http://192.168.1.95/api"',
   // BASE_API: '"http://192.168.1.75/api"',
@@ -26,7 +28,7 @@ const dev_env = {
   // BASE_API: '"http://192.168.1.78/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
   // BASE_API: '"/api"',
-  BASE_API: '"http://10.200.254.166/api"',
+  // BASE_API: '"http://10.200.254.166/api"',
   // BASE_API: '"http://ptcs.nwcloud.cn/elder/api"', //养老
   // BASE_API: '"http://arm-ext.ysservice.com.cn/api"',//永生
   // BASE_API: '"http://192.168.1.20/api"',
