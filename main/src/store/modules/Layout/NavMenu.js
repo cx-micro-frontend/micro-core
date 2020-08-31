@@ -25,7 +25,8 @@ const NavMenu = {
     sideMenu: _deCryptoSideBar().sideMenu || [],
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     subInitRoute: _deCryptoSideBar().subInitRoute, //默认初始路由地址
-    isExpand: _deCryptoSideBar().isExpand || false,
+    isCollapse: _deCryptoSideBar().isCollapse || true,
+    sideMenuTheme: _deCryptoSideBar().sideMenuTheme || 'dark', //bright / dark
   },
   mutations: {
     SET_MENU_DATA: (state, data) => {
@@ -41,8 +42,12 @@ const NavMenu = {
       storageHandle('remove', 'sign_nav');
     },
 
-    TOGGLE_SIDE_MENU_EXPAND_STATE: (state, data) => {
-      state.isExpand = data;
+    TOGGLE_SIDE_MENU_COLLAPSE_STATE: (state, data) => {
+      state.isCollapse = data;
+      storageHandle('set', 'sign_nav', JSON.stringify(state));
+    },
+    TOGGLE_SIDE_MENU_THEME: (state, data) => {
+      state.sideMenuTheme = data;
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
   },
@@ -181,8 +186,16 @@ const NavMenu = {
      * @param commit
      * @param data
      */
-    toggleSideMenuExpandState: ({ commit }, data) => {
-      commit('TOGGLE_SIDE_MENU_EXPAND_STATE', data);
+    toggleSideMenuCollapseState: ({ commit }, data) => {
+      commit('TOGGLE_SIDE_MENU_COLLAPSE_STATE', data);
+    },
+    /**
+     * toggle sideMenu theme
+     * @param commit
+     * @param data
+     */
+    toggleSideMenuTheme: ({ commit }, data) => {
+      commit('TOGGLE_SIDE_MENU_THEME', data);
     },
 
     /**
