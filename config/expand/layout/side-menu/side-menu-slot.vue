@@ -43,12 +43,11 @@
     },
     watch: {
       'node.activeTime': {
-        handler(val) {
+        handler(time) {
           if (this.node) {
-            let { data } = this.node || {};
-            if (['reporting', 'guide'].contains((data || {}).menuMenusubname)) {
+            if (['reporting', 'guide'].contains((this.node || {}).menuMenusubname)) {
               this.dialogVisible = true;
-              this.showDialogName = data.menuMenusubname;
+              this.showDialogName = this.node.menuMenusubname;
             }
             else {
               this.resetState();//重置
