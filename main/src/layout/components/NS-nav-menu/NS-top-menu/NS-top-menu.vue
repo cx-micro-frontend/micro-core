@@ -40,6 +40,15 @@
 
     </el-popover>
 
+    <el-switch
+      v-model="switchTheme"
+      active-color="#13ce66"
+      inactive-color="#ff4949"
+      @change="themeChange"
+    >
+      测试
+    </el-switch>
+
   </div>
 
 </template>
@@ -54,16 +63,17 @@
     data() {
       return {
         model: false,
-        portalName: 'portal',
         keyRefer,
         activeIndex: null,
         hoverIndex: null,
+        switchTheme: '',
+
       };
     },
     computed: {
-      ...mapGetters(['moduleMenu', 'currentPageInfo']),
+      ...mapGetters(['moduleMenu', 'currentPageInfo', 'initRoute']),
       isPortalActive() {
-        return this.$route.name === this.portalName;
+        return this.$route.name === this.initRoute.name;
       },
       topNavMenu() {
         return createTopMenu(this.moduleMenu);
@@ -76,12 +86,15 @@
       },
     },
     methods: {
+      themeChange(val) {
+        this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
+      },
       isActiveModule(item, index) {
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
       },
       back() {
         if (this.isPortalActive) return;
-        this.$router.push({ name: this.portalName, params: { noRefresh: true, jumpMode: 'topMenu' } });
+        this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item, index) {
 
