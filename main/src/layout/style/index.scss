@@ -21,28 +21,24 @@ body {
 
   @import "./wrapper";
 
-  @import "./container";
-
   //侧边导航展开/折叠 - 位置与动画
-  &:not(.is-portal){
+  &:not(.is-portal) {
     &.is-collapse {
-      #page-tabs-wrapper, #main-container {
-        left: 50px;
-        transition: all 300ms ease;
+      #page-tabs-wrapper, #main-wrapper {
+        left: $NEAP-side-menu__width--collapse;
+        transition: all 350ms linear;
       }
     }
     &.is-expand {
-      #page-tabs-wrapper, #main-container {
-        left: 120px;
-        transition: all 300ms ease;
+      #page-tabs-wrapper, #main-wrapper {
+        left: $NEAP-side-menu__width--expand;
+        transition: all 350ms linear;
       }
     }
   }
 
-
   .head-logo {
     height: 50px;
-    //width: 150px;
     padding: 11px 12px;
     box-sizing: border-box;
     img {
@@ -58,7 +54,7 @@ body {
     #page-tabs-wrapper {
       display: none;
     }
-    #main-container {
+    #main-wrapper {
       top: 0;
       left: 0;
       bottom: 0;
@@ -82,7 +78,7 @@ body {
       display: none;
     }
 
-    #main-container {
+    #main-wrapper {
       top: 50px;
       left: 0;
       bottom: 0;
@@ -98,6 +94,5 @@ body {
       }
     }
   }
-
 
 }

@@ -40,7 +40,22 @@
 #page-tabs-wrapper {
   position: absolute;
   top: $navH;
-  left: $navL;
   right: 0;
   z-index: 1999;
+}
+
+/* ------------ 内容 模块 ------------ */
+#main-wrapper {
+  position: absolute;
+  top: $navH + $tabs;
+  bottom: 1px;
+  right: 0;
+  padding: $container_gapT $container_gapR $container_gapB $container_gapL;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: auto;
+  transition: all, 0.4s, linear;
+  background-color: $--wrapper-background-color;
+
+  @import "./container";
 }

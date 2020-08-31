@@ -1,58 +1,41 @@
 @import '../../style/mixins/index';
 @import '../../style/var';
 
-/* ------------ 内容 模块 ------------ */
-#main-container {
-  position: absolute;
-  top: $navH + $tabs;
-  bottom: 1px;
-  left: $navL;
-  right: 0;
-  padding: $container_gapT $container_gapR $container_gapB $container_gapL;
+//右侧  转换 内容窗口
+.win {
+  min-height: 100%;
+  padding: $win_pt $win_pr $win_pb $win_pl;
   box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: auto;
-  transition: all, 0.4s, linear;
-  background-color: $--wrapper-background-color;
-  //右侧  转换 内容窗口
-  .win {
-    min-height: 100%;
-    padding: $win_pt $win_pr $win_pb $win_pl;
+  //container
+  .ns-container {
+    min-height: calc(
+      100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
+    );
     box-sizing: border-box;
-    //container
-    .ns-container {
-      min-height: calc(
+    @include clearFloat;
+
+    //left of container (tree)
+    .ns-container-left {
+      float: left;
+      width: 210px;
+      height: calc(
         100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
       );
+      border: 1px solid $--container-border-color;
+      background: $--container-left-background-color;
       box-sizing: border-box;
-      @include clearFloat;
+      margin-right: 10px;
+    }
 
-      //left of container (tree)
-      .ns-container-left {
-        float: left;
-        width: 210px;
-        height: calc(
-          100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
-        );
-        border: 1px solid $--container-border-color;
-        background: $--container-left-background-color;
-        box-sizing: border-box;
-        margin-right: 10px;
-      }
-
-      //right of container (grid + search)
-      .ns-container-right {
-        position: relative;
-        height: calc(
-          100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
-        );
-        background: $--container-right-background-color;
-        overflow: hidden;
-        box-sizing: border-box;
-      }
+    //right of container (grid + search)
+    .ns-container-right {
+      position: relative;
+      height: calc(
+        100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
+      );
+      background: $--container-right-background-color;
+      overflow: hidden;
+      box-sizing: border-box;
     }
   }
 }
-
-
-
