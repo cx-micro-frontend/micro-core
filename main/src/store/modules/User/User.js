@@ -15,6 +15,7 @@ import {
   ssoLogin,
   logout,
 } from '../../../service/System/User/login';
+import { stateAssign } from '../../utils/index';
 
 /**
  * deCrypto user-information data in cookie
@@ -45,16 +46,19 @@ const User = {
     //login and set/store - token info
     SET_LOGIN_DATA: (state, data) => {
       //user information by login
-      state.userinfo.userId = data.userId;
-      state.userinfo.userAccount = data.userAccount;
-      state.userinfo.userName = data.userName;
-      state.userinfo.avatar = data.avatar; //avatar data mock
-      state.userinfo.userType = data.userType;
-      state.userinfo.userPhone = data.userPhone;
-      state.userinfo.userSex = data.userSex;
-      state.userinfo.themeColor = data.themeColor;
-      state.userinfo.NWExID = data.NWExID;
-      state.userinfo.NWESessionId = data.NWESessionId;
+      //Assignment in mutations to change state
+      stateAssign(state.userinfo, data, [
+        'userId',
+        'userAccount',
+        'userName',
+        'avatar',
+        'userType',
+        'userPhone',
+        'userSex',
+        'themeColor',
+        'NWExID',
+        'NWESessionId',
+      ]);
 
       storageHandle('set', 'sign_user_info', JSON.stringify(state.userinfo));
     },
@@ -191,6 +195,15 @@ const User = {
           }
         })
         .catch(err => console.warn(err));
+    },
+
+    /**
+     * update theme color
+     * @param commit
+     * @param query
+     */
+    updateThemeColor({ commit }, query) {
+      commit('SET_LOGIN_DATA', query);
     },
   },
 };
