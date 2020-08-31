@@ -28,8 +28,9 @@
       changeTheme() {
         console.log('换肤改变', this.skinerModel);
         updateThemeColor({ themeColor: this.skinerModel }).then(() => {
-          let userInfo = this.$store.state.User.userinfo;
-          this.$store.dispatch('updateLoginData', userInfo);
+          this.$store.dispatch('updateThemeColor', {
+            themeColor: this.skinerModel,
+          });
         });
       },
 
