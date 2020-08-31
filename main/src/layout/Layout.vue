@@ -11,8 +11,8 @@
     :class="{
     'is-hide-frame':isInIframe,
     'is-portal':isPortal,
-    'is-expand':sideMenuExpand,
-    'is-collapse':!sideMenuExpand,
+    'is-expand':!sideMenuCollapse,
+    'is-collapse':sideMenuCollapse,
   }">
     <div id="header-wrapper" class="fl">
       <div id="Header" class="ns-header clear">
@@ -48,7 +48,7 @@
 
     <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
     <div id="side-menu-wrapper">
-      <biz-sidebar></biz-sidebar>
+      <biz-side-menu></biz-side-menu>
     </div>
 
     <!--history task-tabs link-->
@@ -57,7 +57,7 @@
     </div>
 
     <!--工作台模块 - 嵌入路由视图即可 -->
-    <section id="main-container">
+    <section id="main-wrapper">
       <!--changing-over  work bench module-->
 
       <neap-injecter-iframe></neap-injecter-iframe>
@@ -81,7 +81,7 @@
   import { mapGetters } from 'vuex';
   import {
     nsTopMenu,
-    bizSidebar,
+    bizSideMenu,
     bizTabsViews,
     bizLockScreen,
     bizSkiner,
@@ -99,12 +99,12 @@
   export default {
     name: 'layout',
     mixins: [transform, portal, changeDocumentTitle, killPopoverByScroll],
-    components: { nsTopMenu, bizSidebar, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
+    components: { nsTopMenu, bizSideMenu, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     data() {
       return {};
     },
     computed: {
-      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode', 'sideMenuExpand']),
+      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode', 'sideMenuCollapse']),
 
 
       //全局缓存开关
