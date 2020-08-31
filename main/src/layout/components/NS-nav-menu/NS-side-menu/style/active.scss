@@ -1,0 +1,63 @@
+
+.ns-side-menu {
+
+  //侧边栏 - 折叠状态下 => 第一级：
+  //背景色 - 主题色
+  //图标色 - 白色
+  //文字 - 隐藏
+  &.el-menu--collapse {
+    .ns-sub-menu.is-active, .el-menu-item.is-active {
+      .ns-menu-item__content.level-1 {
+        transition: background-color 600ms ease-in-out;
+        background-color: var(--themeColor);
+        svg.ns-icon-svg {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  //侧边栏 - 展开状态下（手风琴) => （ menu-item 非嵌套在 sub-menu 中 )：
+  //背景色 - 无
+  //图标色 - 主题色
+  //文字 - 主题色
+  .el-menu-item.is-active {
+    .ns-menu-item__content {
+      svg.ns-icon-svg, span {
+        color: var(--themeColor);
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.ns-sub-menu {
+  &.is-active {
+    //侧边栏 - 展开状态下（手风琴) => 第一级（ sub-menu )：
+    //背景色 - 透明
+    //图标色 - 主题色
+    //文字 - 主题色
+    .ns-menu-item__content.level-1 {
+      background-color: transparent;
+
+      svg.ns-icon-svg, span {
+        color: var(--themeColor);
+        font-weight: bold;
+      }
+    }
+  }
+
+  //侧边栏 - 展开状态下（手风琴) => （ menu-item 嵌套在 sub-menu 中 )：
+  //背景色 - 无
+  //图标色 - 主题色
+  //文字 - 主题色
+  .el-menu-item.is-active {
+    .ns-menu-item__content {
+      svg.ns-icon-svg, span {
+        color: var(--themeColor);
+        font-weight: bold;
+      }
+    }
+  }
+
+}

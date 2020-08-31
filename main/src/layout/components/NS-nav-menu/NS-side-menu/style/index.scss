@@ -1,19 +1,23 @@
-@import "../../../../../style/mixins/index";
+@import "../../../../../style/mixins";
+@import "../../../../../style/var";
 @import "var";
-
-@include scrollbarVisibleHover(10px);
+@import "active";
 
 @mixin menuItemStyle() {
-  min-width: $side-menu__width;
+  min-width: $NEAP-side-menu__width--collapse;
   height: $side-menu-item__height;
   line-height: $side-menu-item__height;
   padding: 0 !important;
   .ns-menu-item__content {
+    width: 100%;
     height: 100%;
+    box-sizing: border-box;
+    //background-color: var(--color);
+
     &:hover {
-      background-color: rgba(255, 255, 255, .1);
+      background-color: var(--backgroundColorHover);
       svg.ns-icon-svg, span {
-        color: #fff;
+        color: var(--themeColor);
       }
     }
 
@@ -21,7 +25,7 @@
       width: 14px;
       height: 14px;
       padding: 0;
-      color: #ff2967;
+      color: #757893;
     }
     span {
       padding-left: 10px;
@@ -32,18 +36,21 @@
 
 .ns-side-menu {
 
-  border: none;
+  width: $NEAP-side-menu__width--expand;
+  height: calc(100% - 40px);
 
-  width: $side-menu__width;
   overflow-y: auto;
   overflow-x: hidden;
+  border: none;
 
-  height: calc(100% - 40px);
+  //transition: width 200ms ease-in-out !important;
 
   /*animation-delay: 2s;*/
 
   &.el-menu--collapse {
-    width: $side-menu-collapse__width;
+    width: $NEAP-side-menu__width--collapse;
+    //transition: width 200ms ease-in-out !important;
+
     li.el-submenu, li.el-menu-item {
       span, i.el-submenu__icon-arrow {
         height: 0;
@@ -63,22 +70,23 @@
       }
     }
 
-    .ns-sub-menu.is-active {
-      .ns-menu-item__content.level-1 {
-        background-color: #66aaf2;
-      }
-
-    }
-
   }
 
+  .el-menu-item, .el-submenu__title {
+    background-color: transparent !important;
+  }
   .el-menu-item {
-    @include menuItemStyle()
+    @include menuItemStyle();
   }
+
 }
 
 .ns-sub-menu {
   font-size: 14px;
+
+  .el-menu-item, .el-submenu__title {
+    background-color: transparent !important;
+  }
 
   .ns-menu-group__title {
     display: none;
@@ -87,21 +95,6 @@
   //菜单项
   .el-submenu__title, .el-menu-item {
     @include menuItemStyle()
-  }
-
-  &.is-active {
-    .ns-menu-item__content.level-1 {
-      background-color: transparent;
-      color: #66aaf2;
-    }
-  }
-
-  .el-menu-item {
-    &.is-active {
-      .ns-menu-item__content {
-        color: #66aaf2;
-      }
-    }
   }
 
 }
@@ -117,7 +110,7 @@
       height: 40px;
       line-height: 40px;
       font-weight: bold;
-      color: rgba(255, 255, 255, 1);
+      color: var(--groupTitle);
     }
     .ns-menu-group__content {
       max-height: calc(100vh - 110px);

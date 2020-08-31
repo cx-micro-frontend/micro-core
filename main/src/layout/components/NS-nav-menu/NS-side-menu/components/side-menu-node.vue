@@ -10,18 +10,25 @@
 
                   :key="menuIndex(childIndex)"
                   :index="menuIndex(childIndex)"
-
+                  v-show="getProperty(child,'visible')"
 
       >
-        <p class="ns-menu-group__title" :style="{'padding-left': baseGap +'px'}">测试测试</p>
+        <p class="ns-menu-group__title" :style="{'padding-left': baseGap +'px','--groupTitle':themeStyle.groupTitle}">{{getProperty(child,'label')}}</p>
+
         <template slot="title">
           <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
-               :style="{'padding-left': paddingGap}"
-               @click="nodeClick(child,childIndex)">
+               :style="{
+               'padding-left': paddingGap,
+               '--themeColor':themeColor,
+               '--backgroundColorHover':themeStyle.backgroundColorHover}"
+               @click="nodeClick(child,childIndex,$event)">
             <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
+
             <!--<span>{{menuIndex(childIndex)}}</span>-->
+            <!--<span>{{getProperty(child,'isLeaf')}}</span>-->
 
             <span slot="title" :style="{'font-size':labelFontSize}">{{getProperty(child,'label')}}</span>
+
           </div>
         </template>
 
@@ -31,6 +38,8 @@
                        :level="menuLevel"
                        :collapse="collapse"
                        :keyRefer="keyRefer"
+                       :themeColor="themeColor"
+                       @node-click="nodeClickBroadcast"
         ></nav-menu-node>
 
       </el-submenu>
@@ -38,13 +47,32 @@
       <el-menu-item v-else
                     :index="menuIndex(childIndex)"
                     style="padding-right: 0;"
-                    @click="nodeClick(child,childIndex)">
-        <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]" :style="`padding-left: ${paddingGap}`">
-          <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
-          <!--<span>{{menuIndex(childIndex)}}</span>-->
-          <span :style="{'font-size':labelFontSize}">{{getProperty(child,'label')}}</span>
-        </div>
+                    @click="nodeClick(child)"
+                    v-show="getProperty(child,'visible')"
+      >
+        <el-tooltip :disabled="!collapse || menuLevel > 1"
+                    effect="dark"
+                    placement="right"
+                    :content="getProperty(child,'label')"
+        >
+          <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
+               :style="{
+               'padding-left': paddingGap,
+               '--themeColor':themeColor,
+               '--backgroundColorHover':themeStyle.backgroundColorHover}
+              ">
+            <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
+
+            <!--<span>{{menuIndex(childIndex)}}</span>-->
+            <!--<span>{{getProperty(child,'isLeaf')}}</span>-->
+
+            <span :style="{'font-size':labelFontSize}">{{getProperty(child,'label')}}</span>
+
+          </div>
+        </el-tooltip>
+
       </el-menu-item>
+
     </template>
 
 
@@ -53,8 +81,14 @@
 </template>
 
 <script>
+  import Emitter from '../../../../../mixins/Utils/emitter';
+  import sideMenuPalette from '../mixins/side-menu-palette';
+  import slotRender from './slotRender';
+
   export default {
     name: 'nav-menu-node',
+    mixins: [Emitter, sideMenuPalette],
+    components: { slotRender },
     // inheritAttrs: true, v-bind="$attrs"
     props: {
       index: { type: String },
@@ -63,6 +97,7 @@
 
       collapse: { type: Boolean },
       keyRefer: { type: Object },
+      themeColor: { type: String },
     },
     data() {
       return {
@@ -87,15 +122,6 @@
       labelFontSize() {
         return this.menuLevel > 1 ? '13px' : '14px';
       },
-      popuplimitedHeight(){
-
-      }
-    },
-    created() {
-      console.log(222222222);
-      console.log(this.data);
-      console.log(this.keyRefer);
-      console.log(this.$attrs);
     },
     methods: {
       getProperty(data, key) {
@@ -108,14 +134,42 @@
       showSubmenu(node) {
         const _children = this.getProperty(node, 'children');
         const _isLeaf = this.getProperty(node, 'isLeaf');
-        return !_isLeaf && (_children && _children.length);
 
+        if (!_isLeaf && (_children && _children.length)) {
+          const visibleKey = this.keyRefer['visible'];
+          const isChildrenAllHidden = _children.every(node => !node[visibleKey]);
+          return !isChildrenAllHidden;
+        }
+        else {
+          return false;
+        }
       },
-      nodeClick(node, index) {
-        console.log('菜单节点点击事件');
-        console.log(node);
-        console.log(index);
+
+
+      /**
+       * node click event
+       * @param node
+       */
+      nodeClick(node) {
+        this.$emit('node-click', node, this);
       },
+
+
+      /**
+       * 内层  子树组件 展开节点
+       * @param node
+       * @param instance
+       */
+      nodeClickBroadcast(node, instance) {
+
+        this.broadcast('menu-node', 'menu-node-click', node);
+
+        this.$emit('node-click', node, instance);
+      },
+
+    },
+    created() {
+
     },
   };
 </script>

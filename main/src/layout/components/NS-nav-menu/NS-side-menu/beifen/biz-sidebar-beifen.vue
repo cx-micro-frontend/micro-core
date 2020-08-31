@@ -34,7 +34,7 @@
   import { mapGetters } from 'vuex';
   import keyRefer from '../../nav-menu-keyRefer';
   import virtual from './virtual';
-  import menuSlotMixins from './menu-slot-mixins';
+  import menuSlotMixins from '../mixins/menu-slot-mixins';
   import expand from '../../../../../../expand';
 
   export default {
