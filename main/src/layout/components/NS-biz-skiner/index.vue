@@ -1,3 +1,4 @@
+<!--换肤功能-->
 <template>
   <ns-skiner v-model="skinerModel"
              :color-format="colorFormat"
@@ -12,12 +13,15 @@
 <script>
   import { mapGetters } from 'vuex';
   import { updateThemeColor } from '../../../service/System/Layout/coverPainting';
+  import nsSkiner from './components/Skiner';
+
 
   export default {
     name: 'Biz-skiner',
+    components: { nsSkiner },
     data() {
       return {
-        skinerModel: '#e70012',
+        skinerModel: '#0A7AF8',
         colorFormat: 'hax',
       };
     },

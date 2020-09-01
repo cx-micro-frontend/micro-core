@@ -1,0 +1,6 @@
+/**
+ * 换肤切换动画
+ */
+@mixin changeTheme() {
+  transition: background-color 600ms ease-in-out;
+}
