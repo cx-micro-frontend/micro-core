@@ -17,6 +17,7 @@ module.exports = {
       'npm run inject', //注入业务模块
       'npm run build:lib', //生成lib
     ],
+
     // prescript: ['npm run clean:lib', 'npm run clone'],
     // proxyTable: {
     //   '/api': {
@@ -24,6 +25,7 @@ module.exports = {
     //     changeOrigin: true
     //   }
     // }
+
   },
   prod: {
     entry: { app: './main/main.js' },
