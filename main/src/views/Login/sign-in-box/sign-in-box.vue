@@ -1,3 +1,4 @@
+<!--登录 - 盒子 - 区域-->
 <template>
   <div class="sign-in-box">
     <!--用户名账号登录窗口-->
@@ -9,36 +10,42 @@
       <!--登录主体内容部分-->
       <div class="sign-in-main">
         <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
-          <ns-form class="loginForm" ref="loginForm" :model="loginForm" :rules="rules_login"
-                   label-width="0px" :show-message="false" v-if="!hasMultiEnterprise">
 
-            <ns-form-item prop="username">
-              <ns-input v-model="loginForm.username" placeholder="请输入用户名" width="100%" height="40px"></ns-input>
-            </ns-form-item>
+          <div class="sign-in-main_container" v-if="!hasMultiEnterprise">
+            <ns-form class="loginForm" ref="loginForm" :model="loginForm" :rules="rules_login"
+                     label-width="0px" :show-message="false">
 
-            <ns-form-item prop="password" class="pwd" :show-message="false">
-              <ns-input type="password" autocomplete="on" v-model="loginForm.password" placeholder="登录密码"
-                        width="100%" height="40px" @keyup.native.enter="submitForm('loginForm')">
-              </ns-input>
-            </ns-form-item>
+              <ns-form-item prop="username">
+                <ns-input v-model="loginForm.username" placeholder="请输入用户名" width="100%" height="40px"></ns-input>
+              </ns-form-item>
 
-            <ns-form-item>
-              <ns-button type="primary" :loading="submitLoading" @click="submitForm('loginForm')">登录</ns-button>
-            </ns-form-item>
-          </ns-form>
+              <ns-form-item prop="password" class="pwd" :show-message="false">
+                <ns-input type="password" autocomplete="on" v-model="loginForm.password" placeholder="登录密码"
+                          width="100%" height="40px" @keyup.native.enter="submitForm('loginForm')">
+                </ns-input>
+              </ns-form-item>
+
+              <ns-form-item>
+                <ns-button type="primary" :loading="submitLoading" @click="submitForm('loginForm')">登录</ns-button>
+              </ns-form-item>
+            </ns-form>
+            <!--第三方账号登录-->
+            <third-party-login class="thirdPartyLogin"></third-party-login>
+          </div>
+
         </transition>
 
         <!--多企业账号，选择登录-->
         <transition name="custom-classes-transition" enter-active-class="animated slideInRight" leave-active-class="animated slideOutRight">
-          <div class="enterprise-block" v-if="hasMultiEnterprise">
-
+          <div class="sign-in-main_container enterprise-block" v-if="hasMultiEnterprise">
             <multiple-enterprise-list :list="enterprise" @select-handle="selectHandle"></multiple-enterprise-list>
             <ns-button @click="hasMultiEnterprise = false ">返回上一页</ns-button>
-
           </div>
         </transition>
 
+
       </div>
+
     </div>
   </div>
 </template>
@@ -49,12 +56,15 @@
   import cryptoPassWord from '../../../mixins/Login/cryptoPassWord';
 
   import multipleEnterpriseList from '../../../components/NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
+  import thirdPartyLogin from '../third-party-login/third-party-login';
+
+
   import { jumpToTnitPage } from '../../../utils/behavior';
 
   export default {
     name: 'sign-in-box',
     mixins: [authLogin, cryptoPassWord],
-    components: { multipleEnterpriseList },
+    components: { multipleEnterpriseList, thirdPartyLogin },
     data() {
       return {
         submitLoading: false,//请求加载状态
@@ -134,7 +144,6 @@
         const callResolve = await this.multipleAuthLogin(loginParams);
 
 
-
         //抛出 成功回调数据 存在，即：登录成功的情况下，跳转路由
         if (callResolve) {
           jumpToTnitPage();
@@ -148,23 +157,30 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .sign-in-main {
     position: relative;
-    height: 250px;
+    min-height: 360px;
     overflow: hidden;
-    .loginForm, .enterprise-block {
+
+    //容器区域
+    .sign-in-main_container {
       position: absolute;
       max-width: 400px;
       width: 70%;
       padding-left: 15%;
       padding-right: 15%;
-    }
 
-    .loginForm {
-      .el-button {
-        margin-top: 15px;
+      //第三方登录
+      .thirdPartyLogin {
+        margin-top: 80px;
       }
-    }
-    .el-button {
-      width: 100%;
+      .loginForm {
+        .el-button {
+          margin-top: 15px;
+        }
+      }
+      .el-button {
+        width: 100%;
+      }
+
     }
   }
 

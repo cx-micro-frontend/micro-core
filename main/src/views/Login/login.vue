@@ -28,5 +28,5 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  @import "../../style/login/login";
+  @import "style";
 </style>
