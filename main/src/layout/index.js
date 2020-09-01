@@ -5,7 +5,7 @@ export { default as bizSideMenu } from './components/NS-nav-menu/NS-side-menu/in
 
 export { default as bizTabsViews } from './components/NS-biz-page-tabs/index';
 export { default as bizLockScreen } from './components/NS-biz-lockscreen/NS-biz-lockscreen';
-export { default as bizSkiner } from './components/NS-biz-skiner/Biz-skiner';
+export { default as bizSkiner } from './components/NS-biz-skiner/index';
 export { default as bizUserDropdown } from './components/NS-biz-user-dropdown/NS-biz-user-dropdown';
 
 export { default as headerSlotLeft } from './components/NS-header-slot/NS-header-slot-left';
