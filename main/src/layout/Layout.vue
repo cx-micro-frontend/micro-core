@@ -14,7 +14,7 @@
     'is-expand':!sideMenuCollapse,
     'is-collapse':sideMenuCollapse,
   }">
-    <div id="header-wrapper" class="fl">
+    <div id="header-wrapper" class="fl" :style="{'--themeColor':themeColor}">
       <div id="Header" class="ns-header clear">
         <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
         <div class="fl head-logo">
@@ -105,8 +105,6 @@
     },
     computed: {
       ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode', 'sideMenuCollapse']),
-
-
       //全局缓存开关
       isCache() {
         return expand.route.cache;
@@ -125,6 +123,9 @@
         console.log(' ======= 缓存页面- name 队列：====== ');
         console.log(this.NEAP_CACHE.getCacheQueue());
         return this.NEAP_CACHE.getCacheQueue();
+      },
+      themeColor() {
+        return this.userinfo.themeColor;
       },
     },
     created() {
