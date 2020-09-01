@@ -169,12 +169,16 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   $back-color_active: #f2f2f2;
+
+  //顶部导航菜单
   .ns-top-menu {
     cursor: pointer;
     margin: 0 5px;
+
+    //各个模块
     .ns-top-menu_module {
       display: inline-block;
-      padding: 0 5px;
+      padding: 0 10px;
       margin-right: 5px;
       /*min-width: 80px;*/
       text-align: center;
@@ -182,10 +186,15 @@
         margin-right: 0;
       }
       &:hover {
-        background: transparent;
+        background: rgba(0, 0, 0, .1);
+        span {
+          font-weight: bold;
+        }
       }
-      &.is-active {
-        background: transparent;
+      &.is-active, &:hover {
+        i, svg {
+          transform: scale(1.1, 1.1);
+        }
       }
     }
 
@@ -194,6 +203,7 @@
       padding: 0;
       color: #fff;
     }
+
     i.ns-icon-class {
       font-size: 20px;
       vertical-align: -0.2em;
@@ -201,7 +211,6 @@
 
     span {
       font-size: 14px;
-      font-weight: bold;
       color: #fff;
     }
   }
