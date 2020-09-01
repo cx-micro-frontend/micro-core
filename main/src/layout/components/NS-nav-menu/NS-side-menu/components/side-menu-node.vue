@@ -20,7 +20,9 @@
                :style="{
                'padding-left': paddingGap,
                '--themeColor':themeColor,
-               '--backgroundColorHover':themeStyle.backgroundColorHover}"
+               '--textColor':themeStyle.textColor,
+               '--backgroundColorHover':themeStyle.backgroundColorHover
+               }"
                @click="nodeClick(child,childIndex,$event)">
             <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
 
@@ -59,6 +61,7 @@
                :style="{
                'padding-left': paddingGap,
                '--themeColor':themeColor,
+               '--textColor':themeStyle.textColor,
                '--backgroundColorHover':themeStyle.backgroundColorHover}
               ">
             <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>

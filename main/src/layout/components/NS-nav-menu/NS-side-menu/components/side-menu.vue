@@ -6,9 +6,7 @@
            class="ns-side-menu noselect"
            :class="`ns-side-menu__${mode}`"
 
-
            :background-color="themeStyle.backgroundColor"
-           :text-color="themeStyle.textColor"
            :active-text-color="themeColor"
 
            :collapse="collapse"

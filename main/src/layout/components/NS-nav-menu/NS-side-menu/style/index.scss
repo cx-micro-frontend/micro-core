@@ -12,7 +12,6 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    //background-color: var(--color);
 
     &:hover {
       background-color: var(--backgroundColorHover);
@@ -25,11 +24,11 @@
       width: 14px;
       height: 14px;
       padding: 0;
-      color: #757893;
+      color: var(--textColor);
     }
     span {
       padding-left: 10px;
-      color: #757893;
+      color: var(--textColor);
     }
   }
 }

@@ -4,7 +4,7 @@ const menuPalette = {
   dark: {
     backgroundColor: '#1A1C38',
     backgroundColorHover: 'rgba(255, 255, 255, .1)',
-    textColor: '#9094B5',
+    textColor: '#B8BACF',
     groupTitle: '#ffffff',
   },
   bright: {

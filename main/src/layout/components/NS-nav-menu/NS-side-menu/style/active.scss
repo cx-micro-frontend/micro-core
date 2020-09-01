@@ -8,7 +8,7 @@
   &.el-menu--collapse {
     .ns-sub-menu.is-active, .el-menu-item.is-active {
       .ns-menu-item__content.level-1 {
-        transition: background-color 600ms ease-in-out;
+        @include changeTheme();
         background-color: var(--themeColor);
         svg.ns-icon-svg {
           color: #fff;
