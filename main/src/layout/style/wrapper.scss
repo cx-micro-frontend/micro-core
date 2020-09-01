@@ -1,11 +1,14 @@
 @import '../../style/var';
+@import '../../style/mixins';
 
 /* ------------  顶部模块 ------------  */
 #header-wrapper {
   position: absolute;
   width: 100%;
   z-index: 2000;
-  background: #252836;
+  background-color: var(--themeColor);
+  @include changeTheme();
+
   .ns-header {
     width: 100%;
     min-width: 500px;
