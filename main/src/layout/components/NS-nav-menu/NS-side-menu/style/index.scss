@@ -25,10 +25,12 @@
       height: 14px;
       padding: 0;
       color: var(--textColor);
+      @include transition__changeTheme(color);
     }
     span {
       padding-left: 10px;
       color: var(--textColor);
+      @include transition__changeTheme(color);
     }
   }
 }
@@ -67,14 +69,14 @@
           visibility: visible;
         }
       }
-      .ns-menu-group__title {
+      p.ns-menu-group__title {
         display: block;
       }
     }
 
   }
 
-  .ns-menu-group__title {
+  p.ns-menu-group__title {
     display: none;
   }
 
@@ -101,13 +103,12 @@
 
 }
 
-#body > .ns-sub-menu {
-
+.ns-sub-menu {
   .el-menu.el-menu--popup {
     margin: 0 3px;
     border-radius: 5px;
 
-    .ns-menu-group__title {
+    p.ns-menu-group__title {
       display: block;
       height: 40px;
       line-height: 40px;

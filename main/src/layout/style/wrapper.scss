@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 2000;
   background-color: var(--themeColor);
-  @include changeTheme();
+  @include transition__changeTheme();
 
   .ns-header {
     width: 100%;
