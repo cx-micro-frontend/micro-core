@@ -25,12 +25,12 @@
       height: 14px;
       padding: 0;
       color: var(--textColor);
-      @include transition__changeTheme(color);
+      @include transition__changeTheme();
     }
     span {
       padding-left: 10px;
       color: var(--textColor);
-      @include transition__changeTheme(color);
+      @include transition__changeTheme();
     }
   }
 }
