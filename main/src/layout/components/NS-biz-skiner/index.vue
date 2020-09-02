@@ -31,10 +31,11 @@
     methods: {
       changeTheme() {
         console.log('换肤改变', this.skinerModel);
-        updateThemeColor({ themeColor: this.skinerModel }).then(() => {
-          this.$store.dispatch('updateThemeColor', {
-            themeColor: this.skinerModel,
-          });
+
+        this.$store.dispatch('updateThemeColor', {
+          themeColor: this.skinerModel,
+        }).then(_ => {
+          updateThemeColor({ themeColor: this.skinerModel });
         });
       },
 

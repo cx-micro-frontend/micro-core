@@ -25,7 +25,6 @@ module.exports = {
     //     changeOrigin: true
     //   }
     // }
-
   },
   prod: {
     entry: { app: './main/main.js' },
