@@ -4,7 +4,7 @@
   >
     <!--多级导航栏-->
     <side-menu :data="sideMenu"
-               :collapse="collapse"
+               :collapse="sideMenuCollapse"
                :keyRefer="keyRefer"
                :themeColor="themeColor"
                :defaultActive="activeKey"
@@ -14,7 +14,7 @@
 
     <div class="main-menu__expanded">
       <el-tooltip
-        :content="collapse ? '展开' : '收起'"
+        :content="sideMenuCollapse ? '展开' : '收起'"
         effect="dark"
         placement="right"
         :hide-after="800"
@@ -57,12 +57,11 @@
         menuData: [],
         currentNode: null,
         trigger: 'hover',
-        keyRefer,
-        collapse: true,
+        keyRefer
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'sideMenuExpand', 'userinfo']),
+      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'userinfo','sideMenuCollapse']),
       themeColor() {
         return this.userinfo.themeColor;
       },

@@ -1,6 +1,6 @@
 /**
  * 换肤切换动画
  */
-@mixin transition__changeTheme($duration:600ms) {
-  transition: all $duration ease;
+@mixin transition__changeTheme($duration:400ms) {
+  transition: all $duration ease-out;
 }

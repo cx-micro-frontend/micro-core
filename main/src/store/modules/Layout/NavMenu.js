@@ -37,12 +37,6 @@ const NavMenu = {
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
 
-    DEL_SIDE_MENU_DATA: (state, data) => {
-      state.moduleMenu = [];
-      state.initRoute = null;
-      storageHandle('remove', 'sign_nav');
-    },
-
     TOGGLE_SIDE_MENU_COLLAPSE_STATE: (state, data) => {
       state.isCollapse = data;
       storageHandle('set', 'sign_nav', JSON.stringify(state));
@@ -50,6 +44,12 @@ const NavMenu = {
     TOGGLE_SIDE_MENU_THEME: (state, data) => {
       state.sideMenuTheme = data;
       storageHandle('set', 'sign_nav', JSON.stringify(state));
+    },
+
+    DEL_SIDE_MENU_DATA: (state, data) => {
+      state.moduleMenu = [];
+      state.initRoute = null;
+      storageHandle('remove', 'sign_nav');
     },
   },
   actions: {

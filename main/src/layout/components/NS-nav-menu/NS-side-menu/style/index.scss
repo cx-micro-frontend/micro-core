@@ -92,6 +92,11 @@
 .ns-sub-menu {
   font-size: 14px;
 
+  //下拉图标箭头
+  .el-submenu__icon-arrow {
+    right: 10px;
+  }
+
   .el-menu-item, .el-submenu__title {
     background-color: transparent !important;
   }
