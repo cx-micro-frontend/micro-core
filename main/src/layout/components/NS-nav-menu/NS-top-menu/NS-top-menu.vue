@@ -40,14 +40,14 @@
 
     </el-popover>
 
-    <el-switch
-      v-model="switchTheme"
-      active-color="#13ce66"
-      inactive-color="#ff4949"
-      @change="themeChange"
-    >
-      测试
-    </el-switch>
+    <!--<el-switch-->
+      <!--v-model="switchTheme"-->
+      <!--active-color="#13ce66"-->
+      <!--inactive-color="#ff4949"-->
+      <!--@change="themeChange"-->
+    <!--&gt;-->
+      <!--测试-->
+    <!--</el-switch>-->
 
   </div>
 
@@ -86,9 +86,11 @@
       },
     },
     methods: {
-      themeChange(val) {
-        this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
-      },
+
+      // themeChange(val) {
+      //   this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
+      // },
+
       isActiveModule(item, index) {
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
       },
