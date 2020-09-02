@@ -16,7 +16,7 @@
     data() {
       return {
         list: [
-          'wx', 'wx',
+          // 'wx', 'wx',
         ],
       };
     },
