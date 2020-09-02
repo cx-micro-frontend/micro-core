@@ -9,6 +9,7 @@ import { getInitRoute } from '../../../layout/components/NS-nav-menu/utils/initR
 import { storageHandle } from '../../../utils/storage/storage';
 import expand from '../../../../expand';
 import keyRefer from '../../../layout/components/NS-nav-menu/nav-menu-keyRefer';
+import menuNodeProps from '../../../layout/components/NS-nav-menu/utils/menuNodeProps';
 
 /**
  * deCrypto side bar-information data in storage

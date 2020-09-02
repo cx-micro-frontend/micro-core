@@ -29,7 +29,7 @@ export const createSubSystemInitRoute = menu => {
 
       if (judgeType(menuDate) === 'array' && menuDate.length) {
         //gets the first node item that is not a sideslip type
-        targetItem = menuDate.find(item => !menuNodeProps.isSlipPage(item));
+        targetItem = menuDate.find(item => !menuNodeProps.isSlipPage(item)) || {};
       } else if (judgeType(menuDate) === 'object') {
         targetItem = menuDate;
       }
@@ -46,6 +46,15 @@ export const createSubSystemInitRoute = menu => {
 
         if (children && children.length) {
           _Loop(children);
+        } else {
+          initpath = 'no normal menu/route in sub menu';
+          initname = 'no normal menu/route in sub menu';
+          console.error(
+            '【 NEAP-ERROR 】There are special menus( report/guide ) in the current queue, normal menu not included'
+          );
+          console.error(
+            '【 NEAP-ERROR 】在计算当前子菜单的首页时，当前菜单全是特殊菜单，如（导航，报表)，导致无法正确定位其初始跳转路由'
+          );
         }
       }
     }
