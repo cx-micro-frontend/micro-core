@@ -37,7 +37,7 @@ const User = {
       userType: _deCryptoUserInfo().userType,
       userPhone: _deCryptoUserInfo().userPhone,
       userSex: _deCryptoUserInfo().userSex,
-      themeColor: _deCryptoUserInfo().themeColor,
+      themeColor: _deCryptoUserInfo().themeColor || '#0A7AF8',
       NWExID: _deCryptoUserInfo().NWExID, //v8 需要
       NWESessionId: _deCryptoUserInfo().NWESessionId, //v8 需要
     },
