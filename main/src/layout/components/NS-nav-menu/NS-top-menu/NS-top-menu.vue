@@ -3,7 +3,7 @@
   <div class="ns-top-menu clear" v-if="topNavMenu && topNavMenu.length>1">
     <div :class="[
       'ns-top-menu_module back fl',
-      {'is-active':isPortalActive}
+      {'is-active':isCurrentActive}
       ]" @click="back"
     >
       <ns-icon-class class="back-to-portal-icon"
@@ -72,7 +72,7 @@
     },
     computed: {
       ...mapGetters(['moduleMenu', 'currentPageInfo', 'initRoute']),
-      isPortalActive() {
+      isCurrentActive() {
         return this.$route.name === this.initRoute.name;
       },
       topNavMenu() {
@@ -93,7 +93,7 @@
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
       },
       back() {
-        if (this.isPortalActive) return;
+        if (this.isCurrentActive) return;
         this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item, index) {

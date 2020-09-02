@@ -67,8 +67,15 @@
           visibility: visible;
         }
       }
+      .ns-menu-group__title {
+        display: block;
+      }
     }
 
+  }
+
+  .ns-menu-group__title {
+    display: none;
   }
 
   .el-menu-item, .el-submenu__title {
@@ -85,10 +92,6 @@
 
   .el-menu-item, .el-submenu__title {
     background-color: transparent !important;
-  }
-
-  .ns-menu-group__title {
-    display: none;
   }
 
   //菜单项
