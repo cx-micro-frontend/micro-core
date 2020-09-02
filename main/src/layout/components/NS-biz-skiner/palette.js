@@ -5,9 +5,10 @@ export default {
   commons: [
     { key: 'blue', color: '#0A7AF8' },
     { key: 'green', color: '#4CA770' },
+    { key: 'yellow', color: '#e2df2d' },
     { key: 'red', color: '#E24C57' },
     { key: 'purple', color: '#8352AF' },
-    { key: 'black', color: '#252836' },
+    // { key: 'black', color: '#252836' },
     // { key: 'black', color: '#000' },
     { key: 'custom', color: null },
   ],
