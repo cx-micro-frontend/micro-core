@@ -16,7 +16,7 @@
     &:hover {
       background-color: var(--backgroundColorHover);
       svg.ns-icon-svg, span {
-        color: var(--themeColor);
+        color: var(--activeTextColor);
       }
     }
 

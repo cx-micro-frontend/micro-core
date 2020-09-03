@@ -1,4 +1,6 @@
 <!--缓存示例页面-->
+
+<!--:active-text-color="themeColor"-->
 <template>
 
   <el-menu :mode="mode"
@@ -7,7 +9,7 @@
            :class="`ns-side-menu__${mode}`"
 
            :background-color="themeStyle.backgroundColor"
-           :active-text-color="themeColor"
+
 
            :collapse="collapse"
 
@@ -18,7 +20,6 @@
                    :keyRefer="keyRefer"
                    :level="0"
                    :collapse="collapse"
-                   :themeColor="themeColor"
                    @node-click="menuNodeClick"
 
     ></nav-menu-node>
@@ -44,7 +45,6 @@
       data: { type: Array },
       keyRefer: { type: Object },
       defaultActive: { type: String },
-      themeColor: { type: String },
       collapse: { type: Boolean, default: true },
       uniqueOpened: { type: Boolean, default: true },
     },

@@ -20,8 +20,8 @@
         :hide-after="800"
       >
         <ns-icon-class
-          :icon-class="collapse ? 'CombinedShapeCopyx':'CombinedShapex' "
-          @click="toggleCollapse"
+          :icon-class="sideMenuCollapse ? 'CombinedShapeCopyx':'CombinedShapex' "
+          @click="toggleCollapse()"
         />
       </el-tooltip>
     </div>
@@ -57,14 +57,12 @@
         menuData: [],
         currentNode: null,
         trigger: 'hover',
-        keyRefer
+        collapseState: null,
+        keyRefer,
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'userinfo','sideMenuCollapse']),
-      themeColor() {
-        return this.userinfo.themeColor;
-      },
+      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'sideMenuCollapse']),
       //当前路由信息
       currentRoute() {
         return this.$route;
@@ -107,8 +105,9 @@
        * 切换菜单栏展开/收起 状态
        */
       toggleCollapse() {
-        this.collapse = !this.collapse;
-        this.$store.dispatch('toggleSideMenuCollapseState', this.collapse);
+        this.collapseState = this.sideMenuCollapse;
+        this.collapseState = !this.collapseState;
+        this.$store.dispatch('toggleSideMenuCollapseState', this.collapseState);
 
       },
 

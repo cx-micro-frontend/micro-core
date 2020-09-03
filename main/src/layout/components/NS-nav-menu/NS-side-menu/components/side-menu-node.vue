@@ -19,12 +19,17 @@
           <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
                :style="{
                'padding-left': paddingGap,
-               '--themeColor':themeColor,
                '--textColor':themeStyle.textColor,
-               '--backgroundColorHover':themeStyle.backgroundColorHover
+               '--activeTextColor':themeStyle.activeTextColor,
+
+
+               '--backgroundColorHover':themeStyle.backgroundColorHover,
+
+               '--activeBackgroundColor':themeStyle.activeBackgroundColor
                }"
                @click="nodeClick(child,childIndex,$event)">
-            <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
+
+            <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="iconShow(child)"></ns-icon-svg>
 
             <!--<span>{{menuIndex(childIndex)}}</span>-->
             <!--<span>{{getProperty(child,'isLeaf')}}</span>-->
@@ -40,7 +45,6 @@
                        :level="menuLevel"
                        :collapse="collapse"
                        :keyRefer="keyRefer"
-                       :themeColor="themeColor"
                        @node-click="nodeClickBroadcast"
         ></nav-menu-node>
 
@@ -60,11 +64,14 @@
           <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
                :style="{
                'padding-left': paddingGap,
-               '--themeColor':themeColor,
                '--textColor':themeStyle.textColor,
-               '--backgroundColorHover':themeStyle.backgroundColorHover}
+               '--activeTextColor':themeStyle.activeTextColor,
+               '--backgroundColorHover':themeStyle.backgroundColorHover,
+               '--activeBackgroundColor':themeStyle.activeBackgroundColor
+               }
+
               ">
-            <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="getProperty(child,'icon')"></ns-icon-svg>
+            <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="iconShow(child)"></ns-icon-svg>
 
             <!--<span>{{menuIndex(childIndex)}}</span>-->
             <!--<span>{{getProperty(child,'isLeaf')}}</span>-->
@@ -100,7 +107,6 @@
 
       collapse: { type: Boolean },
       keyRefer: { type: Object },
-      themeColor: { type: String },
     },
     data() {
       return {
@@ -130,6 +136,16 @@
       getProperty(data, key) {
         return data[this.keyRefer[key]];
       },
+      /**
+       * icon show state
+       * @param child
+       */
+      iconShow(child) {
+        const _icon = this.getProperty(child, 'icon');
+        return _icon && this.menuLevel === 1;
+      },
+
+
       menuIndex(i) {
         return this.index ? `${this.index}-${i}` : i + '';
       },
