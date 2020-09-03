@@ -1,9 +1,11 @@
 <!--登录 - 第三方账号登录 - 选择区域-->
 <template>
-  <div class="sign-in__third-party" v-if="list && list.length">
+  <div class="sign-in__third-party" v-if="thirdPartyLoginList && thirdPartyLoginList.length">
     <el-divider>第三方账号登录</el-divider>
     <ul class="third-party_module">
-      <li v-for="(item, index) in list" :key="index" @click="thirdPartyLogin(item,index)">
+      <li v-for="(item, index) in thirdPartyLoginList"
+          :key="index"
+          @click="thirdPartyLogin(item,index)">
         <img :src="require(`../assets/third-party-login__${item}@2x.png`)">
       </li>
     </ul>
@@ -11,16 +13,43 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+  import qs from 'querystring';
+
   export default {
     name: 'third-party-login',
     data() {
-      return {
-        list: [
-          // 'wx', 'wx',
-        ],
-      };
+      return {};
+    },
+    computed: {
+      ...mapGetters(['operatorInfo', '$PROJECT_NAME']),
+      thirdPartyLoginList() {
+        return this.operatorInfo.loginSettingList || [];
+      },
     },
     methods: {
+
+
+      codeRedirectFactory(info) {
+
+        let redirect_uri = location.origin + location.pathname + '#/front/loginTransfer-wx';
+
+        let codeUrl = 'https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect';
+
+        let query = {
+          redirect_uri,
+          appid: info.appid,
+          usertype: 'member',
+        };
+
+        console.log('跳转的地址信息为:');
+        console.log(query);
+        console.log(codeUrl + '?' + qs.stringify(query));
+
+        return codeUrl + '?' + qs.stringify(query);
+
+      },
+
       /**
        *
        * @param item
@@ -29,6 +58,11 @@
       thirdPartyLogin(item, index) {
         console.log('第三方登录');
         console.log(item, index);
+
+        document.location.href = this.codeRedirectFactory(item);
+
+        // document.location.href='https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect?appid=ww290506382537cb9a&redirect_uri=http%3A%2F%2Fnew-see.oicp.io%3A25280%2Fv10%2Fneap-test%2F%23%2Ffront%2FloginTransfer-wx&usertype=member'
+
       },
     },
   };

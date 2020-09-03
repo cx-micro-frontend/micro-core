@@ -27,6 +27,9 @@ const CoverPainting = {
       operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片
       operatorCopyright:
         _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
+
+      source: 'NEAP',
+      loginSettingList: [],
     },
   },
   mutations: {
@@ -35,14 +38,19 @@ const CoverPainting = {
       storageHandle('remove', 'sign_operator_info');
 
       let o = {};
-      const textkeylist = ['operatorDesc', 'operatorName', 'operatorCopyright'];
+      const imgKeyList = [
+        'operatorLogo',
+        'operatorPicture',
+        'operatorBackgroudPic',
+        'operatorLoginPic',
+      ];
 
       Object.keys(data).forEach(key => {
         if (state.operatorInfo.hasOwnProperty(key)) {
-          if (textkeylist.indexOf(key) !== -1) {
-            o[key] = data[key];
-          } else {
+          if (imgKeyList.indexOf(key) !== -1) {
             o[key] = 'data:image/jpeg;base64,' + data[key];
+          } else {
+            o[key] = data[key];
           }
         }
       });
