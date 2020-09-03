@@ -14,14 +14,14 @@
       <p>
         电话：0571-88231790 / 15988863036 Email：market@new-see.com
       </p>
-      <p>
-        © 2019 - 2019 杭州新视窗信息技术有限公司
-      </p>
+      <p>{{operatorInfo.operatorCopyright}}</p>
     </div>
   </ns-dialog>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+
   export default {
     name: 'about-dialog',
     props: {
@@ -36,6 +36,9 @@
     },
     data() {
       return {};
+    },
+    computed: {
+      ...mapGetters(['operatorInfo']),
     },
     methods: {
 

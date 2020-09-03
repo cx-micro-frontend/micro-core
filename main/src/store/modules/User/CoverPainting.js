@@ -25,7 +25,8 @@ const CoverPainting = {
       operatorPicture: '', //登录页 - 左侧图片（sign in box)
       operatorBackgroudPic: '', //登录页 - 大背景图
       operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片
-      operatorCopyright: _getStorage().operatorCopyright, //版权信息
+      operatorCopyright:
+        _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
     },
   },
   mutations: {
