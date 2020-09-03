@@ -10,6 +10,8 @@
            :active-text-color="themeColor"
 
            :collapse="collapse"
+
+           :unique-opened="uniqueOpened"
   >
 
     <nav-menu-node :data="data"
@@ -40,10 +42,11 @@
     },
     props: {
       data: { type: Array },
-      collapse: { type: Boolean, default: true },
       keyRefer: { type: Object },
       defaultActive: { type: String },
       themeColor: { type: String },
+      collapse: { type: Boolean, default: true },
+      uniqueOpened: { type: Boolean, default: true },
     },
     data() {
       return {
