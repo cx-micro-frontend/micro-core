@@ -9,8 +9,7 @@ const merge = require('webpack-merge');
  * @type {{NODE_ENV: string, ENV_CONFIG: string, BASE_API: string}}
  */
 const dev_env = {
-  // PROJECT_NAME: '"NEAP"',
-  PROJECT_NAME: '"jf"',
+  PROJECT_NAME: '"NEAP"',
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',

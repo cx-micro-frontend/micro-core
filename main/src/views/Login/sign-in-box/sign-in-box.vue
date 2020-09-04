@@ -81,7 +81,7 @@
       };
     },
     computed: {
-      ...mapGetters(['operatorInfo', '$PROJECT_NAME']),
+      ...mapGetters(['operatorInfo', 'logininfo']),
       cryptoPassWord() {
         return this.getCryptoBybase64(this.loginForm.password) || '';
       },
@@ -101,7 +101,7 @@
             const callResolve = await this.checkByLogin({
               userAccount: this.loginForm.username,
               password: this.cryptoPassWord,
-              source: this.$PROJECT_NAME,//登录验证标识
+              source: this.logininfo.source,//登录验证标识
             });
 
             const { enterprise, userinfo } = callResolve;
@@ -138,7 +138,7 @@
           userAccount: this.loginForm.username,
           password: this.cryptoPassWord,
           enterpriseId: item.enterpriseId,
-          source: this.$PROJECT_NAME,//登录验证标识
+          source: this.logininfo.source,//登录验证标识
         };
 
         const callResolve = await this.multipleAuthLogin(loginParams);

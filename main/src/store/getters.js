@@ -46,6 +46,7 @@ const getters = {
    * themeColor - 用户主题
    */
   userinfo: state => state.User.userinfo,
+  logininfo: state => state.User.logininfo,
 
   /**
    * 租户信息 - 个性化配置 - cover painting operatorInfo

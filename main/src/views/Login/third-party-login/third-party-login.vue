@@ -6,7 +6,7 @@
       <li v-for="(item, index) in thirdPartyLoginList"
           :key="index"
           @click="thirdPartyLogin(item,index)">
-        <img :src="require(`../assets/third-party-login__${item}@2x.png`)">
+        <img :src="require(`../assets/third-party-login__${item.source}@2x.png`)" :alt="item.source">
       </li>
     </ul>
   </div>
@@ -22,14 +22,17 @@
       return {};
     },
     computed: {
-      ...mapGetters(['operatorInfo', '$PROJECT_NAME']),
+      ...mapGetters(['operatorInfo', 'logininfo']),
       thirdPartyLoginList() {
-        return this.operatorInfo.loginSettingList || [];
+        return this.logininfo.loginSettingList || [];
       },
     },
     methods: {
-
-
+      /**
+       * 企微定向跳转信息处理
+       * @param info
+       * @returns {string}
+       */
       codeRedirectFactory(info) {
 
         let redirect_uri = location.origin + location.pathname + '#/front/loginTransfer-wx';
@@ -51,7 +54,7 @@
       },
 
       /**
-       *
+       * 第三方登录
        * @param item
        * @param index
        */
@@ -59,7 +62,11 @@
         console.log('第三方登录');
         console.log(item, index);
 
-        document.location.href = this.codeRedirectFactory(item);
+        const _url = this.codeRedirectFactory(item);
+
+        console.log(_url);
+
+        document.location.href = _url;
 
         // document.location.href='https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect?appid=ww290506382537cb9a&redirect_uri=http%3A%2F%2Fnew-see.oicp.io%3A25280%2Fv10%2Fneap-test%2F%23%2Ffront%2FloginTransfer-wx&usertype=member'
 

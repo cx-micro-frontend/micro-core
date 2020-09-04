@@ -27,9 +27,6 @@ const CoverPainting = {
       operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片
       operatorCopyright:
         _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
-
-      source: 'NEAP',
-      loginSettingList: [],
     },
   },
   mutations: {
@@ -66,8 +63,14 @@ const CoverPainting = {
   actions: {
     getCoverPainting({ commit }, data) {
       getOperatorInfo(data).then(res => {
-        const info = res.resultData;
-        commit('SET_SCOVER_PAINTING', info);
+        const r = res.resultData;
+
+        commit('SET_SCOVER_PAINTING', r);
+
+        commit('SET_LOGIN_INFO', {
+          source: r.source || 'NEAP',
+          loginSettingList: r.loginSettingList || [],
+        });
       });
     },
 

@@ -41,6 +41,10 @@ const User = {
       NWExID: _deCryptoUserInfo().NWExID, //v8 需要
       NWESessionId: _deCryptoUserInfo().NWESessionId, //v8 需要
     },
+    logininfo: {
+      source: 'NEAP', //PC登录 source 值
+      loginSettingList: [], //第三方登录信息列表
+    },
   },
   mutations: {
     //login and set/store - token info
@@ -104,6 +108,11 @@ const User = {
 
       //remove user information
       storageHandle('remove', 'sign_user_info');
+    },
+
+    //set login info
+    SET_LOGIN_INFO: (state, data) => {
+      stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
     },
   },
 
