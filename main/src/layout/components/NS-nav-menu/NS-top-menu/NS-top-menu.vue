@@ -1,6 +1,6 @@
 <!--top nav menu - 顶部系统模块导航菜单-->
 <template>
-  <div class="ns-top-menu clear" v-if="topNavMenu && topNavMenu.length>1">
+  <div class="ns-top-menu clear" v-if="topNavMenuShow">
     <div :class="[
       'ns-top-menu_module back fl',
       {'is-active':isCurrentActive}
@@ -41,12 +41,12 @@
     </el-popover>
 
     <!--<el-switch-->
-      <!--v-model="switchTheme"-->
-      <!--active-color="#13ce66"-->
-      <!--inactive-color="#ff4949"-->
-      <!--@change="themeChange"-->
+    <!--v-model="switchTheme"-->
+    <!--active-color="#13ce66"-->
+    <!--inactive-color="#ff4949"-->
+    <!--@change="themeChange"-->
     <!--&gt;-->
-      <!--测试-->
+    <!--测试-->
     <!--</el-switch>-->
 
   </div>
@@ -75,8 +75,19 @@
       isCurrentActive() {
         return this.$route.name === this.initRoute.name;
       },
+      isPortalRoute() {
+        return this.$route.name === 'portal';
+      },
       topNavMenu() {
         return createTopMenu(this.moduleMenu);
+      },
+      topNavMenuShow() {
+        if (!this.topNavMenu) return false;
+        if (this.topNavMenu.length === 1 && this.isPortalRoute) {
+          return true;
+        }
+        return this.topNavMenu.length > 1;
+
       },
       popoverDisplay() {
         return this.topNavMenu && this.topNavMenu.length > 3;
