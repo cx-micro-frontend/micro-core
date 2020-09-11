@@ -9,7 +9,6 @@ export default {
   // defaultRouteName: 'systemOrgEmployee',
   // defaultRoutePath: '/system/systemOrgEmployee',
 
-
   childMenus: [
     //系统设置
     {
