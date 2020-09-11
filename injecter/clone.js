@@ -17,6 +17,9 @@ exports.cloneRepositories = () => {
   const injectmodules = utils.modulesConfig().filter(module => !module.isOwner && !module.disabled);
 
   injectmodules.forEach(module => {
+
+    shell.rm('-rf', utils.inJectPath().repositorie_tmp);
+
     fs.mkdirSync(utils.inJectPath().repositorie_tmp);
 
     const branch_name = module.branch || 'master';
@@ -67,6 +70,7 @@ exports.cloneRepositories = () => {
         );
       }
     }
+
     shell.rm('-rf', utils.inJectPath().repositorie_tmp);
   });
 };
