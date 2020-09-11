@@ -85,7 +85,14 @@ export const encryptBase64 = (val, key) => {
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.ZeroPadding,
     });
-    return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+
+    const res = CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+
+    // console.log(res);
+    // console.log(encodeURIComponent(res));
+    // console.log('%2Fz1XaCurZ4jawo8D51dO%2BQ==')
+
+    return res;
   } else {
     throw 'The data format of encrypted content and key should be string，find it.';
   }
