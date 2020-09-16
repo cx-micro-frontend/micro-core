@@ -51,7 +51,11 @@ $tabs-part_height: 38px; //tabs 单个标签页高度
       }
       .el-tag {
         color: $tabs-part-color_active;
+        .el-tag-contnet {
+          border-right: none;
+        }
       }
+
       .tab-tag-mask {
         &::before {
           background: linear-gradient(
