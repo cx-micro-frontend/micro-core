@@ -15,7 +15,7 @@ const RoleButton = {
       const td = (data, type) => {
         data.forEach(item => {
           if (item.areaType === 'ACTION') {
-            item.type = 'text';
+            item.type = '';
           }
           if (item.areaType === 'FORM') {
             let normalBtns = ['formCancelBtn', 'formReturnBtn'];
