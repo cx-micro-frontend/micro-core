@@ -1,6 +1,7 @@
 {
   "name": "neap-test1",
-  "version": "0.0.26-5",
+  "tag": "20200916-g01",
+  "version": "0.0.26-6",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
   "private": false,
@@ -32,6 +33,7 @@
     "js-cookie": "^2.2.0",
     "neap-ui": "0.0.2-5",
     "nprogress": "^0.2.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
     "vue-native-websocket": "^2.0.14",
     "vue-router": "3.1.6",
     "vue2-scrollbar": "^0.0.3",
