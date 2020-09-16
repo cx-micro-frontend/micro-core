@@ -83,7 +83,7 @@
         return this.isButtonStyle ? '' : item.type;
       },
       singleClick(item, done) {
-        console.log(item);
+        // console.log(item);
         this.$emit('command', item, done);
       },
       handleCommand(command) {
@@ -157,7 +157,7 @@
 
   //更多 - 下拉 dropdown - menu
   .el-popper.el-dropdown-menu.more-role-button-menu {
-    margin: 0;
+    margin-top: 2px;
     padding: 8px 0;
     .el-dropdown-menu__item {
       font-size: 14px;
