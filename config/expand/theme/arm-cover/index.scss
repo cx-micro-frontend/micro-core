@@ -12,6 +12,12 @@
 @import "tabs";
 @import "new-table";
 
-//.arm-search-modular .search-conditions {
-//  background-color: $--wrapper-background-color !important;
-//}
+//todo 后续要删除
+//筛选器背景
+.search-modular, .arm-search-modular {
+  background-color: $--wrapper-background-color !important;
+  .search-conditions {
+    background-color: $--wrapper-background-color !important;
+  }
+}
+
