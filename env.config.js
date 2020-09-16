@@ -16,6 +16,9 @@ const dev_env = {
   IFRAME_IP_CONFIG: '"http://192.168.1.52"',
   // BASE_API: '"http://192.168.1.52/api"',
   BASE_API: '"http://new-see.oicp.io:25280/api"',
+
+  // BASE_API: '"http://121.196.31.230/api"',
+
   // BASE_API: '"http://10.200.254.162/api"',
   // BASE_API: '" http://114.55.145.244/api"',
 

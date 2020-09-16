@@ -12,10 +12,10 @@ module.exports = {
     port: 8001,
     useEslint: false,
     prescript: [
-      'npm run clean:lib', //清除lib
-      'npm run build:injecter', //注入工具的编译
-      'npm run inject', //注入业务模块
-      'npm run build:lib', //生成lib
+      // 'npm run clean:lib', //清除lib
+      // 'npm run build:injecter', //注入工具的编译
+      // 'npm run inject', //注入业务模块
+      // 'npm run build:lib', //生成lib
     ],
 
     // prescript: ['npm run clean:lib', 'npm run clone'],
