@@ -149,10 +149,14 @@ div.vxe-table {
   }
 }
 
-//合计行区域
+
 .ns-table {
+  //合计行区域
   .vxe-table.scroll--x + div.summary-area {
     bottom: 10px;
+  }
+  .vxe-table {
+    height: 100%;
   }
 }
 
