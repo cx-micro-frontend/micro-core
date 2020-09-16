@@ -31,7 +31,7 @@
         return `${this.projectName} ${this.routeName}`;
       },
       appTag() {
-        return `${this.projectName}-${packageJson.tag || 'normal'}`;
+        return `${this.projectName}-${packageJson['neap-tag'] || 'normal'}`;
       },
     },
   };
