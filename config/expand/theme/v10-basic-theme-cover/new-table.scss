@@ -6,8 +6,8 @@
 @import '../var';
 
 $table-height: 38px;
-$table-border__color: #e8e8e8; //边框色
-$table-head__backgroundcolor: #f0f0f0; //表头背景色
+$table-border__color: #e6e8ee;//边框色
+$table-head__backgroundcolor: #f5f6f9; //表头背景色
 $table-head__linecolor: #d6d8da; //表头 - 分割线颜色
 $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
 
@@ -19,6 +19,7 @@ $table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
 }
 
 div.vxe-table {
+  font-family: auto;
   //整体字体颜色
   color: #606266;
 
@@ -53,7 +54,7 @@ div.vxe-table {
       background: $--background-color-base;
     }
     .vxe-body--column {
-      border-bottom: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e6e8ee;
     }
   }
 
@@ -64,7 +65,7 @@ div.vxe-table {
 
   //表头设置
   .vxe-header--column {
-    background-color: #f0f0f0;
+    background-color: #f5f6f9;
     //表格分割线 - 高度/颜色
     .vxe-resizable.is--line:before {
       height: 100%;
@@ -78,6 +79,7 @@ div.vxe-table {
 
   //表头背景色
   .vxe-table--header-wrapper {
+    border-top-color: #e6e8ee;
     background-color: $table-head__backgroundcolor;
   }
 
@@ -148,7 +150,6 @@ div.vxe-table {
     }
   }
 }
-
 
 .ns-table {
   //合计行区域

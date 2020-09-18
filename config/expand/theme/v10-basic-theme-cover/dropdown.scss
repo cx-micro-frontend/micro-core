@@ -1,0 +1,12 @@
+/*下拉菜单字体*/
+.el-dropdown {
+  font-size: 14px;
+}
+
+/*下拉菜单内间距*/
+.el-dropdown-menu {
+  padding: 10px 0;
+  .el-dropdown-menu__item i{
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,16 @@
+//---------- tree - 树  ----------
+.ns-tree .halo-tree {
+  .icon-close-block,
+  .icon-open-block {
+    background: #fff;
+  }
+  li,
+  li.leaf {
+    &:before {
+      top: -13px;
+    }
+    &:after {
+      top: 12px;
+    }
+  }
+}

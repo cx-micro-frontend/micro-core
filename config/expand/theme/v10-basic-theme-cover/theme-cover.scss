@@ -18,6 +18,7 @@
 .el-table__row .el-button {
   color: $--color-primary;
 }
+
 //表格操作栏按钮背景色(后续处理)
 .el-table__row .el-button,
 .operate-wrap .el-button,
@@ -25,3 +26,4 @@
   background: transparent;
   border-color: transparent;
 }
+
