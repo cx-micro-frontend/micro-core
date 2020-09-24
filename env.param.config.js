@@ -9,13 +9,14 @@ module.exports = {
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
+    // host: '172.16.1.102', //'192.168.6.205','192.168.6.182' /  192.168.0.106
     port: 8001,
     useEslint: false,
     prescript: [
-      'npm run clean:lib', //清除lib
-      'npm run build:injecter', //注入工具的编译
-      'npm run inject', //注入业务模块
-      'npm run build:lib', //生成lib
+      // 'npm run clean:lib', //清除lib
+      // 'npm run build:injecter', //注入工具的编译
+      // 'npm run inject', //注入业务模块
+      // 'npm run build:lib', //生成lib
     ],
 
     // prescript: ['npm run clean:lib', 'npm run clone'],
@@ -96,10 +97,10 @@ module.exports = {
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
     prescript: [
-      'npm run clean:lib', //清除lib
-      'npm run build:injecter', //注入工具的编译
-      'npm run inject', //注入业务模块
-      'npm run build:lib', //生成lib
+      // 'npm run clean:lib', //清除lib
+      // 'npm run build:injecter', //注入工具的编译
+      // 'npm run inject', //注入业务模块
+      // 'npm run build:lib', //生成lib
     ],
     inSandbox: false, //代码是否在沙盒中打包
   },
