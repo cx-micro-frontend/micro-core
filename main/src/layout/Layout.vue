@@ -14,7 +14,7 @@
     'is-expand':!sideMenuCollapse,
     'is-collapse':sideMenuCollapse,
   }">
-    <div id="header-wrapper" class="fl" :style="{'--themeColor':themeColor}">
+    <div id="header-wrapper" class="fl" :style="{'background-color':themeColor,'--themeColor':themeColor}">
       <div id="Header" class="ns-header clear">
         <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
         <div class="fl head-logo">
@@ -48,12 +48,12 @@
 
     <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
     <div id="side-menu-wrapper">
-      <biz-side-menu></biz-side-menu>
+      <biz-side-menu v-if="!isPortal"></biz-side-menu>
     </div>
 
     <!--history task-tabs link-->
     <div id="page-tabs-wrapper">
-      <biz-tabs-views></biz-tabs-views>
+      <biz-tabs-views v-if="!isPortal"></biz-tabs-views>
     </div>
 
     <!--工作台模块 - 嵌入路由视图即可 -->
