@@ -54,7 +54,7 @@
       <!--用户密码修改-->
       <div class="setting-block">
         <div class="setting-block-content">
-          <div class="line-left">登录密码</div>
+          <div class="line-left">请输入密码</div>
           <div class="line-right">安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。</div>
           <div class="line-operation checked">
             <i class="el-icon-circle-check-outline"></i>
