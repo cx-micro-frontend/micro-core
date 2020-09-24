@@ -2,5 +2,5 @@
  * 换肤切换动画
  */
 @mixin transition__changeTheme($duration:400ms) {
-  transition: all $duration ease-out;
+  transition: background-color $duration ease-out;
 }
