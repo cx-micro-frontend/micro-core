@@ -134,7 +134,7 @@
           this.$nextTick(
             () => {
               //清除所有缓存
-              this.NEAP_ROUTER.refreshAll();
+              // this.NEAP_ROUTER.refreshAll();
               console.log(12638716287361827);
               console.log(this.initRoute.name);
               //直接跳回到设定的初始页面, 且要刷新该页面
