@@ -23,6 +23,7 @@ import '../style/index.scss';
 
 //components
 import '../components/index';
+import '../layout/components/index';
 
 //enject UI
 import '../../../injection/entrance/entrance_ui';

@@ -64,6 +64,11 @@ const User = {
         'NWESessionId',
       ]);
 
+      console.log(4444444444);
+      console.log(4444444444);
+      console.log(state.userinfo);
+      console.log(4444444444);
+
       storageHandle('set', 'sign_user_info', JSON.stringify(state.userinfo));
     },
 
