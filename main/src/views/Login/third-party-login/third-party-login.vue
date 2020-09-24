@@ -6,7 +6,7 @@
       <li v-for="(item, index) in thirdPartyLoginList"
           :key="index"
           @click="thirdPartyLogin(item,index)">
-        <img :src="require(`../assets/third-party-login__${item.source}@2x.png`)" :alt="item.source">
+        <!--<img :src="require(`../assets/third-party-login__${item.source}@2x.png`)" :alt="item.source">-->
       </li>
     </ul>
   </div>
