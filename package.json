@@ -1,6 +1,6 @@
 {
   "name": "neap-test1",
-  "neap-tag": "20200916-g01",
+  "neap-tag": "20200924-g01",
   "version": "0.0.26-10",
   "description": "neap-test1",
   "author": "Broccoli spring( gcx )",
@@ -28,6 +28,7 @@
     "cx-theme": "^1.0.5",
     "davidshimjs-qrcodejs": "^0.0.2",
     "echarts": "^4.2.1",
+    "element-resize-detector": "^1.2.1",
     "element-ui": "2.11.1",
     "jquery": "3.4.1",
     "js-cookie": "^2.2.0",
