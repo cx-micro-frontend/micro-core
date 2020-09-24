@@ -122,13 +122,12 @@
 
       //single button
       .el-button.ns-button {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
         margin-right: 0;
         box-sizing: border-box;
 
         span {
-          font-size: 13px;
           line-height: 14px;
           color: #606266;
         }
@@ -160,7 +159,7 @@
     margin-top: 2px;
     padding: 8px 0;
     .el-dropdown-menu__item {
-      font-size: 14px;
+      font-size: 13px;
       color: #333;
       line-height: 32px;
     }
