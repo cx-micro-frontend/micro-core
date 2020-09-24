@@ -17,6 +17,7 @@ const keyRefer = {
   menuLevel: 'syLayer', //菜单层级
   children: 'childMenus', //子集菜单
 
+  moduleJumpPath: 'moduleUrl', //模块点击跳转地址
   routeName: 'menuMenusubname', //前端路由name (唯一)
   rootRouteName: 'rootMenuSubName', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
 
