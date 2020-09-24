@@ -20,7 +20,7 @@
               </ns-form-item>
 
               <ns-form-item prop="password" class="pwd" :show-message="false">
-                <ns-input type="password" autocomplete="on" v-model="loginForm.password" placeholder="登录密码"
+                <ns-input type="password" autocomplete="on" v-model="loginForm.password" placeholder="请输入密码"
                           width="100%" height="40px" @keyup.native.enter="submitForm('loginForm')">
                 </ns-input>
               </ns-form-item>
