@@ -105,7 +105,6 @@
        * 切换菜单栏展开/收起 状态
        */
       toggleCollapse() {
-        this.collapseState = this.sideMenuCollapse;
         this.collapseState = !this.collapseState;
         this.$store.dispatch('toggleSideMenuCollapseState', this.collapseState);
 

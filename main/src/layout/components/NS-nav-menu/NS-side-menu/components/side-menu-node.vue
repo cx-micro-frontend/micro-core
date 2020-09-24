@@ -13,21 +13,17 @@
                   v-show="getProperty(child,'visible')"
 
       >
-        <p class="ns-menu-group__title" :style="{'padding-left': baseGap +'px','--groupTitle':themeStyle.groupTitle}">{{getProperty(child,'label')}}</p>
+        <p class="ns-menu-group__title" :style="{'padding-left': baseGap +'px','color': themeStyle.groupTitle}">
+          {{getProperty(child,'label')}}
+        </p>
 
         <template slot="title">
-          <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
+          <div :class="nodeContentClass(childIndex)"
                :style="{
                'padding-left': paddingGap,
-               '--textColor':themeStyle.textColor,
-               '--activeTextColor':themeStyle.activeTextColor,
-
-
-               '--backgroundColorHover':themeStyle.backgroundColorHover,
-
-               '--activeBackgroundColor':themeStyle.activeBackgroundColor
+                ...nodeStyle(child,childIndex,'submenu')
                }"
-               @click="nodeClick(child,childIndex,$event)">
+               @click="nodeClick(child)">
 
             <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="iconShow(child)"></ns-icon-svg>
 
@@ -44,6 +40,8 @@
                        :index="menuIndex(childIndex)"
                        :level="menuLevel"
                        :collapse="collapse"
+                       :indexPath="indexPath"
+                       :activeIndex="activeIndex"
                        :keyRefer="keyRefer"
                        @node-click="nodeClickBroadcast"
         ></nav-menu-node>
@@ -61,16 +59,11 @@
                     placement="right"
                     :content="getProperty(child,'label')"
         >
-          <div :class="['ns-menu-item__content oneline-ellipsis',levelClass]"
+          <div :class="nodeContentClass(childIndex)"
                :style="{
                'padding-left': paddingGap,
-               '--textColor':themeStyle.textColor,
-               '--activeTextColor':themeStyle.activeTextColor,
-               '--backgroundColorHover':themeStyle.backgroundColorHover,
-               '--activeBackgroundColor':themeStyle.activeBackgroundColor
-               }
-
-              ">
+                ...nodeStyle(child,childIndex,'leaf')}
+               ">
             <ns-icon-svg :icon-class="getProperty(child,'icon') || ''" v-if="iconShow(child)"></ns-icon-svg>
 
             <!--<span>{{menuIndex(childIndex)}}</span>-->
@@ -91,6 +84,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import Emitter from '../../../../../mixins/Utils/emitter';
   import sideMenuPalette from '../mixins/side-menu-palette';
   import slotRender from './slotRender';
@@ -106,6 +100,8 @@
       data: { type: Array },
 
       collapse: { type: Boolean },
+      activeIndex: { type: String },
+      indexPath: { type: Array },
       keyRefer: { type: Object },
     },
     data() {
@@ -114,6 +110,8 @@
       };
     },
     computed: {
+      ...mapGetters(['browserInfo']),
+
       menuLevel() {
         return this.level + 1;
       },
@@ -124,6 +122,7 @@
       levelClass() {
         return `level-${this.menuLevel}`;
       },
+
       subMenuClass() {
         return `ns-sub-menu ns-sub-menu__popup ${this.levelClass}`;
       },
@@ -131,11 +130,13 @@
       labelFontSize() {
         return this.menuLevel > 1 ? '13px' : '14px';
       },
+
     },
     methods: {
       getProperty(data, key) {
         return data[this.keyRefer[key]];
       },
+
       /**
        * icon show state
        * @param child
@@ -148,6 +149,14 @@
 
       menuIndex(i) {
         return this.index ? `${this.index}-${i}` : i + '';
+      },
+
+      /**
+       * node 节点  class
+       * @param childIndex
+       */
+      nodeContentClass(childIndex) {
+        return ['ns-menu-item__content oneline-ellipsis',`is-${this.sideMenuTheme}` ,this.levelClass, { 'is-active': this.inIndexPath(childIndex) }];
       },
 
       showSubmenu(node) {
@@ -163,7 +172,6 @@
           return false;
         }
       },
-
 
       /**
        * node click event
@@ -186,13 +194,31 @@
         this.$emit('node-click', node, instance);
       },
 
-    },
-    created() {
+      /**
+       * create node style
+       * @param child
+       * @param childIndex
+       * @param type
+       * @returns {{'background-color': string, color: any, 'font-weight': string}}
+       */
+      nodeStyle(child, childIndex, type) {
+        //是否在 active 链中
+        const isInActiveChain = this.inIndexPath(childIndex);
+        // const isActiveIndex = this.activeIndex === menuIndex;
 
+        return {
+          'background-color': isInActiveChain ? this.themeStyle.activeBackgroundColor : 'transparent',
+          'color': isInActiveChain ? this.themeStyle.activeTextColor : null,
+          'font-weight': isInActiveChain ? 'bold' : 'normal',
+          '--backgroundColorHover': this.themeStyle.backgroundColorHover,
+        };
+
+      },
+
+      inIndexPath(index) {
+        const menuIndex = this.menuIndex(index);
+        return this.indexPath.indexOf(menuIndex) > -1;
+      },
     },
   };
 </script>
-
-<style scoped>
-
-</style>

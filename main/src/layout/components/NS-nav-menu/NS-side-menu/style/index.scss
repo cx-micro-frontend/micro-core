@@ -1,37 +1,49 @@
 @import "../../../../../style/mixins";
 @import "../../../../../style/var";
 @import "var";
-@import "active";
+//@import "active";
+$backgroundColorHover_dark: rgba(255, 255, 255, .1);
+$backgroundColorHover_bright: rgba(0, 0, 0, .1);
 
 @mixin menuItemStyle() {
   min-width: $NEAP-side-menu__width--collapse;
   height: $side-menu-item__height;
   line-height: $side-menu-item__height;
   padding: 0 !important;
+
   .ns-menu-item__content {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    &:hover {
-      background-color: var(--backgroundColorHover);
-      svg.ns-icon-svg, span {
-        color: var(--activeTextColor);
-      }
-    }
+    @include transition__changeTheme();
 
     svg.ns-icon-svg {
       width: 14px;
       height: 14px;
       padding: 0;
-      color: var(--textColor);
-      @include transition__changeTheme();
+      color: inherit;
     }
     span {
       padding-left: 10px;
-      color: var(--textColor);
-      @include transition__changeTheme();
+      color: inherit;
     }
+
+    &:not(.is-active) {
+      &.is-dark {
+        &:hover {
+          background-color: $backgroundColorHover_dark;
+          background-color: #{'var(--backgroundColorHover)'} !important;
+        }
+      }
+      &.is-bright {
+        &:hover {
+          background-color: $backgroundColorHover_bright;
+          background-color: #{'var(--backgroundColorHover)'} !important;
+        }
+      }
+    }
+
   }
 }
 
@@ -86,7 +98,6 @@
   .el-menu-item {
     @include menuItemStyle();
   }
-
 }
 
 .ns-sub-menu {
@@ -118,7 +129,6 @@
       height: 40px;
       line-height: 40px;
       font-weight: bold;
-      color: var(--groupTitle);
     }
     .ns-menu-group__content {
       max-height: calc(100vh - 110px);
@@ -129,3 +139,29 @@
     }
   }
 }
+
+//特殊处理部分 - 菜单非折叠下 - 节点展开的情况下，只标识叶子节点（背景色，字体色），链路父级节点（背景色，字体色 - 不做改变)
+.ns-side-menu {
+  //菜单非折叠下
+  &:not(.el-menu--collapse) {
+    //节点展开
+    .ns-sub-menu.is-opened {
+      //节点内容区域
+      .el-submenu__title .ns-menu-item__content {
+        background-color: transparent !important;
+        color: inherit !important;
+      }
+    }
+  }
+}
+
+.ns-side-menu {
+
+  &__bright {
+    .el-menu-item {
+      @include menuItemStyle();
+    }
+  }
+
+}
+

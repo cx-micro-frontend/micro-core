@@ -14,6 +14,7 @@
 
     <el-popover
       v-model="model"
+      class="fl"
       popper-class="ns-top-menu_popover"
       width="400"
       placement="bottom-start"
@@ -40,14 +41,14 @@
 
     </el-popover>
 
-    <!--<el-switch-->
-    <!--v-model="switchTheme"-->
-    <!--active-color="#13ce66"-->
-    <!--inactive-color="#ff4949"-->
-    <!--@change="themeChange"-->
-    <!--&gt;-->
-    <!--测试-->
-    <!--</el-switch>-->
+    <el-switch
+    v-model="switchTheme"
+    active-color="#13ce66"
+    inactive-color="#ff4949"
+    @change="themeChange"
+    >
+    测试
+    </el-switch>
 
   </div>
 
@@ -98,9 +99,9 @@
     },
     methods: {
 
-      // themeChange(val) {
-      //   this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
-      // },
+      themeChange(val) {
+        this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
+      },
 
       isActiveModule(item, index) {
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
@@ -110,9 +111,14 @@
         this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
       },
       jumper(item, index) {
-
         this.activeIndex = index;
         if (this.currentModuleId === item.moduleId) return;
+
+        if (item.moduleJumpPath) {
+          window.open(item.moduleJumpPath);
+          return;
+        }
+
 
         /**
          * toggle module handle when route is change (two routes belonging to different modules)

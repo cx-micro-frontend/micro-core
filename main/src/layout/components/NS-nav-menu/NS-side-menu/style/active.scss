@@ -1,92 +1,92 @@
-
-.ns-side-menu {
-
-  //侧边栏 - 折叠状态下：
-  //背景色 - 主题色
-  //图标色 - 白色
-  //文字 - 隐藏
-  &.el-menu--collapse {
-    .ns-sub-menu.is-active, .el-menu-item.is-active {
-      .ns-menu-item__content {
-
-        @include transition__changeTheme();
-
-        background-color: var(--activeBackgroundColor);
-
-        svg.ns-icon-svg {
-          color: #fff;
-        }
-      }
-    }
-
-  }
-
-  //侧边栏 - 展开状态下（手风琴) => （ menu-item 非嵌套在 sub-menu 中 )：
-  //背景色 - 无
-  //图标色 - 主题色
-  //文字 - 主题色
-  .el-menu-item.is-active {
-    .ns-menu-item__content {
-
-      background-color: var(--activeBackgroundColor);
-
-      &:hover {
-        background-color: var(--activeBackgroundColor);
-      }
-
-      svg.ns-icon-svg, span {
-        color: var(--activeTextColor);
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-.ns-sub-menu {
-
-  //侧边栏 - 展开状态下（手风琴) - 关闭状态 - 有子节点（ sub-menu )：
-  //背景色 - 透明
-  //图标色 - 主题色
-  //文字 - 主题色
-  &.is-active:not(.is-opened) {
-
-    .ns-menu-item__content {
-
-      background-color: var(--activeBackgroundColor);
-
-      &:hover {
-        background-color: var(--activeBackgroundColor);
-      }
-
-      svg.ns-icon-svg, span {
-        color: var(--activeTextColor);
-        font-weight: bold;
-      }
-    }
-    //关闭状态 - 其子节点背景色全部去除：
-    .el-menu-item .ns-menu-item__content {
-      background-color: transparent;
-    }
-  }
-
-  //侧边栏 - 展开状态下（手风琴) => （ menu-item 嵌套在 sub-menu 中 )：
-  //背景色 - 无
-  //图标色 - 主题色
-  //文字 - 主题色
-  .el-menu-item.is-active {
-    .ns-menu-item__content {
-
-      background-color: var(--activeBackgroundColor);
-
-      &:hover {
-        background-color: var(--activeBackgroundColor);
-      }
-
-      svg.ns-icon-svg, span {
-        color: var(--activeTextColor);
-        font-weight: bold;
-      }
-    }
-  }
-
-}
+//
+//.ns-side-menu {
+//
+//  //侧边栏 - 折叠状态下：
+//  //背景色 - 主题色
+//  //图标色 - 白色
+//  //文字 - 隐藏
+//  &.el-menu--collapse {
+//    .ns-sub-menu.is-active, .el-menu-item.is-active {
+//      .ns-menu-item__content {
+//
+//        @include transition__changeTheme();
+//
+//        //background-color: var(--activeBackgroundColor);
+//
+//        //svg.ns-icon-svg {
+//        //  color: #fff;
+//        //}
+//      }
+//    }
+//
+//  }
+//
+//  //侧边栏 - 展开状态下（手风琴) => （ menu-item 非嵌套在 sub-menu 中 )：
+//  //背景色 - 无
+//  //图标色 - 主题色
+//  //文字 - 主题色
+//  .el-menu-item.is-active {
+//    .ns-menu-item__content {
+//
+//      //background-color: var(--activeBackgroundColor);
+//
+//      &:hover {
+//        //background-color: var(--activeBackgroundColor);
+//      }
+//
+//      //svg.ns-icon-svg, span {
+//      //  color: var(--activeTextColor);
+//      //  font-weight: bold;
+//      //}
+//    }
+//  }
+//}
+//
+//.ns-sub-menu {
+//
+//  //侧边栏 - 展开状态下（手风琴) - 关闭状态 - 有子节点（ sub-menu )：
+//  //背景色 - 透明
+//  //图标色 - 主题色
+//  //文字 - 主题色
+//  &.is-active:not(.is-opened) {
+//
+//    .ns-menu-item__content {
+//
+//      //background-color: var(--activeBackgroundColor);
+//
+//      &:hover {
+//        //background-color: var(--activeBackgroundColor);
+//      }
+//
+//      //svg.ns-icon-svg, span {
+//      //  color: var(--activeTextColor);
+//      //  font-weight: bold;
+//      //}
+//    }
+//    //关闭状态 - 其子节点背景色全部去除：
+//    .el-menu-item .ns-menu-item__content {
+//      background-color: transparent;
+//    }
+//  }
+//
+//  //侧边栏 - 展开状态下（手风琴) => （ menu-item 嵌套在 sub-menu 中 )：
+//  //背景色 - 无
+//  //图标色 - 主题色
+//  //文字 - 主题色
+//  .el-menu-item.is-active {
+//    .ns-menu-item__content {
+//
+//      //background-color: var(--activeBackgroundColor);
+//
+//      //&:hover {
+//      //  background-color: var(--activeBackgroundColor);
+//      //}
+//
+//      //svg.ns-icon-svg, span {
+//      //  color: var(--activeTextColor);
+//      //  font-weight: bold;
+//      //}
+//    }
+//  }
+//
+//}

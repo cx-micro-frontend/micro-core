@@ -13,6 +13,7 @@ export const createTopMenu = list => {
       moduleName: l[keyRefer['moduleName']],
       moduleId: l[keyRefer['moduleId']],
       icon: l[keyRefer['icon']],
+      moduleJumpPath: l[keyRefer['moduleJumpPath']],
     };
   });
 };
