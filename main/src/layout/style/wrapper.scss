@@ -6,22 +6,84 @@
   position: absolute;
   width: 100%;
   z-index: 2000;
-  background-color: var(--themeColor);
   @include transition__changeTheme();
 
   .ns-header {
     width: 100%;
     min-width: 500px;
-    height: $navH;
-    line-height: $navH;
-    padding-left: $navH_pl;
-    padding-right: $navH_pr;
+    height: $NEAP-header__height;
+    line-height: $NEAP-header__height;
+    padding-left: $NEAP-header__padding--left;
+    padding-right: $NEAP-header__padding--right;
     box-sizing: border-box;
+
+    .ns-header-logo {
+      height: $NEAP-header__height;
+      padding: 11px 12px;
+      margin-right: $NEAP-module__gap;
+      box-sizing: border-box;
+      overflow: hidden;
+      img {
+        //width: 100%;
+        height: 100%;
+      }
+    }
+
+    .ns-header__module {
+      height: inherit;
+      line-height: inherit;
+      margin-right: $NEAP-module__gap;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
     img {
       display: block;
     }
-    svg {
-      fill: #fff;
+
+    i.ns-header__text, svg.ns-header__text {
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+    }
+
+    //头部 - 图标 - svg
+    svg.ns-header__text {
+      fill: #656882;
+    }
+
+    //头部 - 图标 - i
+    i.ns-header__text {
+      font-weight: normal;
+    }
+
+    //头部 - 文字
+    .ns-header__text {
+      color: #656882;
+      font-weight: bold;
+    }
+
+    //头部 - 分割线
+    .ns-header__line {
+      border-color: rgba(101, 104, 130, 0.1);
+    }
+
+    &.is-banner {
+      background-color: var(--themeColor);
+      //头部 - 分割线
+      .ns-header__line {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      //头部 - 文字
+      .ns-header__text {
+        color: #fff;
+      }
+      //头部 - 图标 - svg
+      svg.ns-header__text {
+        fill: #fff;
+      }
+
     }
   }
 }
@@ -29,7 +91,7 @@
 /* ------------ 左侧导航栏模块 ------------*/
 #side-menu-wrapper {
   position: absolute;
-  top: $navH;
+  top: $NEAP-header__height;
   bottom: 0;
   left: 0;
   z-index: 2000;
@@ -42,7 +104,7 @@
 
 #page-tabs-wrapper {
   position: absolute;
-  top: $navH;
+  top: $NEAP-header__height;
   right: 0;
   z-index: 1999;
 }
@@ -50,7 +112,7 @@
 /* ------------ 内容 模块 ------------ */
 #main-wrapper {
   position: absolute;
-  top: $navH + $tabs;
+  top: $NEAP-header__height + $NEAP-tabs__height;
   bottom: 1px;
   right: 0;
   padding: $container_gapT $container_gapR $container_gapB $container_gapL;

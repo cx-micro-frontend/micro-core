@@ -15,22 +15,19 @@
 
 
 
-
 //todo 后续要删除
 //筛选器背景
-.search-modular, .arm-search-modular {
+.ns-search-conditions {
   background-color: $--wrapper-background-color !important;
-  .search-conditions {
+  .ns-search-conditions__wrapper {
     background-color: $--wrapper-background-color !important;
-
-     //业户 新增按钮
-    .role-button-area{
-      .el-button--text.ns-button{
+    //业户 新增按钮
+    .role-button-area li.role-button-area__part{
+      .el-button--text.ns-button.el-button{
         padding: 10px 15px;
         color: #FFF;
         border-color: $--color-primary;
         background-color: $--color-primary;
-        margin-right: 10px;
 
         &:hover{
           background: $--color-primary-hover;

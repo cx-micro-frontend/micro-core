@@ -2,7 +2,7 @@
 <template>
  <span class="message-tips">
     <el-badge :value="value" :max="99">
-      <ns-icon-svg class="message-tips-icon" icon-class="tixing" @click="tipsClick"/>
+      <ns-icon-svg class="ns-header__text message-tips-icon" icon-class="tixing" @click="tipsClick"/>
     </el-badge>
   </span>
 </template>
@@ -57,7 +57,7 @@
   .message-tips {
     .el-badge {
       margin-top: 0;
-      margin-right: 10px;
+      margin-right: 5px;
       vertical-align: baseline;
 
       //铃铛

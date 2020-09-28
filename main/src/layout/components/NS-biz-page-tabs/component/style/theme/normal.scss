@@ -2,13 +2,13 @@
 @import '../../../../../../style/var';
 @import '../var';
 
-$tabs-part_height: 38px; //tabs 单个标签页高度
+$tabs-part_height: $NEAP-tabs__height; //tabs 单个标签页高度
 
 //页面标签选项卡模块 - 常规模式
 .ns-page-tabs, .ns-page-tabs__normal {
   display: block;
-  height: $tabs-height;
-  line-height: $tabs-height;
+  height: $NEAP-tabs__height;
+  line-height: $NEAP-tabs__height;
   vertical-align: top;
   background-color: $tabs-back;
   padding: 0 10px;
@@ -22,7 +22,7 @@ $tabs-part_height: 38px; //tabs 单个标签页高度
     display: inline-block;
     width: 120px;
     height: $tabs-part_height;
-    line-height: $tabs-height;
+    line-height: $NEAP-tabs__height;
     top: 0;
     bottom: 0;
     color: #333;
@@ -163,7 +163,7 @@ $tabs-part_height: 38px; //tabs 单个标签页高度
   .operate-slot {
     float: right;
     height: 100%;
-    line-height: $tabs-height;
+    line-height: $NEAP-tabs__height;
     cursor: pointer;
     .operate-slot-icon {
       color: $tabs-allClose_color;

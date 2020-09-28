@@ -1,10 +1,8 @@
 <!--锁屏组件-->
 <template>
   <span class="lockscreen">
-    <ns-icon-svg icon-class="suo"
-                 @click="lockScreen"
-    ></ns-icon-svg>
-      <ns-dialog
+    <ns-icon-svg icon-class="suo" @click="lockScreen"></ns-icon-svg>
+    <ns-dialog
         class="lock-screen__dialog"
         type="simple"
         size="mini"
@@ -42,7 +40,6 @@
         </div>
       </ns-dialog>
   </span>
-
 </template>
 
 <script>

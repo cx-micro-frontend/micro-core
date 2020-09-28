@@ -9,7 +9,7 @@
   //container
   .ns-container {
     min-height: calc(
-      100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
+      100vh - #{$NEAP-tabs__height} - #{$win_pt} - #{$win_pb} - #{$NEAP-header__height} - #{$win_gapT} - #{$win_gapB} - 1px
     );
     box-sizing: border-box;
     @include clearFloat;
@@ -19,7 +19,7 @@
       float: left;
       width: 210px;
       height: calc(
-        100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
+        100vh - #{$NEAP-tabs__height} - #{$win_pt} - #{$win_pb} - #{$NEAP-header__height} - #{$win_gapT} - #{$win_gapB} - 1px
       );
       border: 1px solid $--container-border-color;
       background: $--container-left-background-color;
@@ -31,7 +31,7 @@
     .ns-container-right {
       position: relative;
       height: calc(
-        100vh - #{$tabs} - #{$win_pt} - #{$win_pb} - #{$navH} - #{$win_gapT} - #{$win_gapB} - 1px
+        100vh - #{$NEAP-tabs__height} - #{$win_pt} - #{$win_pb} - #{$NEAP-header__height} - #{$win_gapT} - #{$win_gapB} - 1px
       );
       background: $--container-right-background-color;
       overflow: hidden;

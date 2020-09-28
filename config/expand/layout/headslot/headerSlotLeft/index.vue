@@ -6,8 +6,8 @@
       placement="top-start"
       width="260"
       trigger="click">
-      <div class="fl" style="padding-left: 10px; cursor: pointer; color: #fff; " slot="reference">
-        <ns-icon-svg icon-class="xiangmu"></ns-icon-svg>
+      <div class="ns-header__text fl" style="cursor: pointer;" slot="reference">
+        <ns-icon-svg class="ns-header__text" icon-class="xiangmu" style="padding: 0;"></ns-icon-svg>
         {{precinctObj.precinctName || '暂无选择小区'}}
         <i class="el-icon-caret-bottom" v-show="precinctObj.precinctName"></i>
       </div>
@@ -34,7 +34,7 @@
         precinctObj: {},
         organizationId: '',
         option: [],
-        visible: false
+        visible: false,
       };
     },
     created() {
@@ -47,9 +47,9 @@
         this.$store.dispatch('setPrecinct', obj);
         this.NEAP_CACHE.delAllCache();
         this.NEAP_ROUTER.refreshAll();
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.NEAP_CACHE.addCache(this.$route);
-        })
+        });
       },
 
       //初始化
@@ -65,15 +65,15 @@
                 obj.organizationId = obj.refOrganizationId;
                 obj.organizationName = obj.refOrganizationName;
                 this.changePrecincts(obj);
-              }else{
+              } else {
                 this.$store.dispatch('setPrecinct', {
-                  precinctName: 'isWrong'
+                  precinctName: 'isWrong',
                 });
               }
             })
             .catch(() => {
               this.$store.dispatch('setPrecinct', {
-                precinctName: 'isWrong'
+                precinctName: 'isWrong',
               });
             });
         }

@@ -6,8 +6,8 @@ body {
   min-height: 100%;
   #app {
     height: inherit;
-    min-width: $min-window_width;
-    min-height: $min-window_height;
+    min-width: $NEAP-window__minWidth;//最小窗口宽度
+    min-height: $NEAP-window__minHeight;//最小窗口高度
     font-size: 14px;
   }
 }
@@ -28,22 +28,20 @@ body {
         left: $NEAP-side-menu__width--collapse;
         transition: all 300ms ease-in-out;
       }
+      .ns-header-logo {
+        width: $NEAP-side-menu__width--collapse;
+        transition: all 300ms ease-in-out;
+      }
     }
     &.is-expand {
       #page-tabs-wrapper, #main-wrapper {
         left: $NEAP-side-menu__width--expand;
         transition: all 300ms ease-in-out;
       }
-    }
-  }
-
-  .head-logo {
-    height: 50px;
-    padding: 11px 12px;
-    box-sizing: border-box;
-    img {
-      //width: 100%;
-      height: 100%;
+      .ns-header-logo {
+        width: $NEAP-side-menu__width--expand;
+        transition: all 300ms ease-in-out;
+      }
     }
   }
 
