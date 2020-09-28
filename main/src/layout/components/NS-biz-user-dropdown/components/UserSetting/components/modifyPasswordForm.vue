@@ -25,8 +25,8 @@
 </template>
 
 <script>
-  import { updatePassword } from '../../../../../service/System/User/userSetting';
-  import cryptoPassWord from '../../../../../mixins/Login/cryptoPassWord'
+  import { updatePassword } from '../../../../../../service/System/User/userSetting';
+  import cryptoPassWord from '../../../../../../mixins/Login/cryptoPassWord'
 
   export default {
     name: 'modifyPasswordForm',

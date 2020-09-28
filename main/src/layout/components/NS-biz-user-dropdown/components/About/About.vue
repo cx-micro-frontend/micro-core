@@ -8,7 +8,7 @@
     autoHeight
   >
     <div class="about-logo fl">
-      <img src="../../../../assets/img/logo/logo-blue.png" alt="">
+      <img src="../../../../../assets/img/logo/logo-blue.png" alt="">
     </div>
     <div class="about-describe fl">
       <p>

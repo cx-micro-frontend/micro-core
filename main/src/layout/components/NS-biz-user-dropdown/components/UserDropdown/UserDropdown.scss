@@ -1,0 +1,52 @@
+@import '../../../../../style/mixins/index';
+@import '../../../../../style/var';
+
+$avatar-size: 30px;
+
+//user drop down in header
+.ns-user-dropdown {
+  display: inline-block;
+  cursor: pointer;
+  height: $NEAP-header__height;
+  line-height: $NEAP-header__height;
+  padding: 0 5px 0 20px;
+  border-left: 1px  solid;
+
+  .ns-user-dropdown__main {
+    height: 100%;
+    line-height: inherit;
+    .user-abbreviation {
+      display: inline-block;
+      width: $avatar-size;
+      line-height: $avatar-size;
+      background: #0a7af8;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 12px;
+      color: #ffffff;
+    }
+    img {
+      display: inline;
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 0.2 * $avatar-size;
+      vertical-align: middle;
+    }
+    // 欢迎 名字
+    .hello {
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    i {
+      padding-left: 2px;
+      font-size: 12px;
+    }
+  }
+
+}
+
+.el-dropdown-menu.ns-user-dropdown__menu {
+  margin: 0 !important;
+  padding: 5px 0;
+}
