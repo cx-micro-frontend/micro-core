@@ -11,40 +11,13 @@
     :class="{
     'is-hide-frame':isInIframe,
     'is-portal':isPortal,
-    'is-expand':!sideMenuCollapse,
-    'is-collapse':sideMenuCollapse,
+    'is-expand':!isSideMenuCollapse,
+    'is-collapse':isSideMenuCollapse,
   }">
-    <div id="header-wrapper" class="fl" :style="{'background-color':themeColor,'--themeColor':themeColor}">
-      <div id="Header" class="ns-header clear">
-        <!--左logo 插槽 - 根据实际情况插入业务组图片 -->
-        <div class="fl head-logo">
-          <img :src="operatorInfo.operatorLoginPic" @click="click"/>
-        </div>
-
-        <div class="fl" v-if="integrationMode === 'mam'">
-          <!--顶层菜单入口-->
-          <ns-top-menu></ns-top-menu>
-        </div>
-
-        <!--业务组 - 自定义头部插槽 - 左边 -->
-        <div class="fl">
-          <header-slot-left></header-slot-left>
-        </div>
-
-        <!--右边 - 用户下拉菜单 业务组在插槽内调用组件，传入值，并且调用方法即可  -->
-        <div class="fr">
-          <!--业务组 - 自定义头部插槽 - 右边 -->
-          <header-slot-right></header-slot-right>
-          <!--<biz-lock-screen></biz-lock-screen>-->
-          <!--全屏-->
-          <ns-screenfull></ns-screenfull>
-          <!--换肤-->
-          <biz-skiner></biz-skiner>
-          <!--用户设置下拉-->
-          <biz-user-dropdown></biz-user-dropdown>
-        </div>
-      </div>
+    <div id="header-wrapper" class="fl">
+      <ns-header></ns-header>
     </div>
+
 
     <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
     <div id="side-menu-wrapper">
@@ -80,15 +53,9 @@
 <script>
   import { mapGetters } from 'vuex';
   import {
-    nsTopMenu,
     bizSideMenu,
     bizTabsViews,
-    bizLockScreen,
-    bizSkiner,
-    bizUserDropdown,
-    headerSlotLeft,
-    headerSlotRight,
-
+    nsHeader,
   } from './index';
   import transform from './mixins/transform';
   import portal from './mixins/portal';
@@ -99,12 +66,12 @@
   export default {
     name: 'layout',
     mixins: [transform, portal, changeDocumentTitle, killPopoverByScroll],
-    components: { nsTopMenu, bizSideMenu, bizTabsViews, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
+    components: { nsHeader, bizSideMenu, bizTabsViews },
     data() {
       return {};
     },
     computed: {
-      ...mapGetters(['userinfo', 'operatorInfo', 'isInIframe', 'integrationMode', 'sideMenuCollapse']),
+      ...mapGetters([ 'isInIframe', 'isSideMenuCollapse']),
       //全局缓存开关
       isCache() {
         return expand.route.cache;
@@ -124,18 +91,9 @@
         console.log(this.NEAP_CACHE.getCacheQueue());
         return this.NEAP_CACHE.getCacheQueue();
       },
-      themeColor() {
-        return this.userinfo.themeColor;
-      },
     },
     created() {
       // console.log(this.isInIframe);
-    },
-    methods: {
-      click() {
-        //切换项目后刷新所有页面-清除所有路由缓存
-        this.NEAP_ROUTER.refreshAll();
-      },
     },
   };
 </script>
