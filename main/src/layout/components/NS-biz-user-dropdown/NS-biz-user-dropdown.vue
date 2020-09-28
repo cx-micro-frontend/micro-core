@@ -22,12 +22,14 @@
 <script>
 
   import { mapGetters } from 'vuex';
-  import About from './About/About';
-  import personalSettingDialog from './UserSetting/UserSettingDialog';
+  import nsUserDropdown from './components/UserDropdown/UserDropdown';
+  import personalSettingDialog from './components/UserSetting/UserSettingDialog';
+  import About from './components/About/About';
+
 
   export default {
     name: 'biz-user-dropdown',
-    components: { About, personalSettingDialog },
+    components: { nsUserDropdown, About, personalSettingDialog },
     data() {
       return {
         abbreviation: true,//头像为简单模式 - 显示用户姓名的最后一个字

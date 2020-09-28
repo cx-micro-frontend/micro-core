@@ -6,10 +6,10 @@
       {'is-active':isCurrentActive}
       ]" @click="back"
     >
-      <ns-icon-class class="back-to-portal-icon"
+      <ns-icon-class class="ns-header__text back-to-portal-icon"
                      icon-class="el-icon-s-home"
       ></ns-icon-class>
-      <span>首页</span>
+      <span class="ns-header__text">首页</span>
     </div>
 
     <el-popover
@@ -22,8 +22,8 @@
       :visible-arrow="false"
     >
       <div class="ns-top-menu_module" slot="reference">
-        <ns-icon-svg :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
-        <span style="margin-left: 2px">我的应用</span>
+        <ns-icon-svg class="ns-header__text" :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
+        <span class="ns-header__text" style="margin-left: 2px">我的应用</span>
       </div>
 
       <div :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
@@ -40,15 +40,6 @@
       </div>
 
     </el-popover>
-
-    <el-switch
-    v-model="switchTheme"
-    active-color="#13ce66"
-    inactive-color="#ff4949"
-    @change="themeChange"
-    >
-    测试
-    </el-switch>
 
   </div>
 
@@ -67,8 +58,6 @@
         keyRefer,
         activeIndex: null,
         hoverIndex: null,
-        switchTheme: '',
-
       };
     },
     computed: {
@@ -98,11 +87,6 @@
       },
     },
     methods: {
-
-      themeChange(val) {
-        this.$store.dispatch('toggleSideMenuTheme', val ? 'dark' : 'bright');
-      },
-
       isActiveModule(item, index) {
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
       },
@@ -187,18 +171,18 @@
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  @import "../../../../style/var";
+
   $back-color_active: #f2f2f2;
 
   //顶部导航菜单
   .ns-top-menu {
     cursor: pointer;
-    margin: 0 5px;
-
     //各个模块
     .ns-top-menu_module {
       display: inline-block;
-      padding: 0 10px;
-      margin-right: 5px;
+      padding: 0 5px;
+      margin-right: $NEAP-module__gap;
       /*min-width: 80px;*/
       text-align: center;
       &:last-child {
@@ -220,7 +204,6 @@
     svg.ns-icon-svg, i.ns-icon-class {
       vertical-align: -0.1em;
       padding: 0;
-      color: #fff;
     }
 
     i.ns-icon-class {
@@ -230,7 +213,6 @@
 
     span {
       font-size: 14px;
-      color: #fff;
     }
   }
 </style>

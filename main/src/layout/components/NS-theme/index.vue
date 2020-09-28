@@ -7,7 +7,7 @@
     trigger='click'
   >
     <ns-theme-config></ns-theme-config>
-    <ns-icon-class slot="reference" icon-class="skin"/>
+    <ns-icon-class slot="reference" class="ns-header__text" icon-class="skin"/>
   </el-popover>
 
 </template>

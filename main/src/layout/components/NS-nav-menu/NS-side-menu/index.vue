@@ -4,28 +4,13 @@
   >
     <!--多级导航栏-->
     <side-menu :data="sideMenu"
-               :collapse="sideMenuCollapse"
+               :collapse="isSideMenuCollapse"
                :keyRefer="keyRefer"
                :themeColor="themeColor"
                :defaultActive="activeKey"
                @node-click="nodeClick">
 
     </side-menu>
-
-    <div class="main-menu__expanded">
-      <el-tooltip
-        :content="sideMenuCollapse ? '展开' : '收起'"
-        effect="dark"
-        placement="right"
-        :hide-after="800"
-      >
-        <ns-icon-class
-          :icon-class="sideMenuCollapse ? 'CombinedShapeCopyx':'CombinedShapex' "
-          @click="toggleCollapse()"
-        />
-      </el-tooltip>
-    </div>
-
 
     <!--侧边栏 - 侧滑弹窗 - 外部资源注入-->
     <component :is="markName(side_slot_name)"
@@ -57,12 +42,11 @@
         menuData: [],
         currentNode: null,
         trigger: 'hover',
-        collapseState: null,
         keyRefer,
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'sideMenuCollapse']),
+      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'isSideMenuCollapse']),
       //当前路由信息
       currentRoute() {
         return this.$route;
@@ -96,20 +80,9 @@
         },
         immediate: true,
       },
-
     },
 
     methods: {
-
-      /**
-       * 切换菜单栏展开/收起 状态
-       */
-      toggleCollapse() {
-        this.collapseState = !this.collapseState;
-        this.$store.dispatch('toggleSideMenuCollapseState', this.collapseState);
-
-      },
-
       /**
        * menu node click
        * @param node
@@ -161,6 +134,7 @@
       },
 
     },
+
   };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -168,30 +142,10 @@
   @import "../../../../style/mixins/index";
 
   .ns-biz-sideMenu {
-
     height: 100%;
+    padding: 10px 0;
     border-right: 1px solid #e6e6e6;
     box-sizing: border-box;
-    .ns-side-menu {
-      height: calc(100% - 55px);
-      padding-top: 10px;
-
-    }
-
-    //展开按钮（底部)
-    .main-menu__expanded {
-      position: absolute;
-      bottom: 0;
-      width: calc(100% - 1px);
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-      i.ns-icon-class {
-        font-size: 13px;
-        cursor: pointer;
-        color: #656882;
-      }
-    }
   }
 
 </style>

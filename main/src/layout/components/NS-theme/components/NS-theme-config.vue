@@ -6,7 +6,7 @@
       <!--换肤功能-->
       <ns-skiner v-model="themeConfigForm.themeColor"
                  color-format="hax"
-                 @change-theme="changeTheme"
+                 @change-theme="changeTheme($event,'themeColor')"
       ></ns-skiner>
     </ns-form-item>
     <el-divider></el-divider>
@@ -14,14 +14,16 @@
       <ns-switch
         v-model="themeConfigForm.bannerCover"
         active-text="通栏显示"
-        @change="bannerCoverChange"
+        @change="changeTheme($event,'bannerCover')"
       >
       </ns-switch>
 
     </ns-form-item>
     <el-divider></el-divider>
     <ns-form-item label="侧边栏主题" prop="sideMenuTheme">
-      <ns-radio v-model="themeConfigForm.sideMenuTheme" :options="sideMenuThemeOption"></ns-radio>
+      <ns-radio v-model="themeConfigForm.sideMenuTheme" :options="sideMenuThemeOption"
+                @change="changeTheme($event,'sideMenuTheme')"
+      ></ns-radio>
     </ns-form-item>
 
   </ns-form>
@@ -29,47 +31,50 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { updateThemeColor } from '../../../../service/System/Layout/coverPainting';
   import nsSkiner from '../../NS-skiner';
 
   export default {
     name: 'NS-theme-config',
     components: { nsSkiner },
+    props: {
+      syncRequest: { type: Boolean, default: false },
+    },
     data() {
       return {
         themeConfigForm: {
           themeColor: '',
-          bannerCover: false,
+          bannerCover: true,
           sideMenuTheme: 'darkMenu',
         },
         sideMenuThemeOption: [
-          { label: '深色主题', value: 'darkMenu' },
-          { label: '浅色主题', value: 'bightMenu' },
+          { label: '深色主题', value: 'dark' },
+          { label: '浅色主题', value: 'bright' },
         ],
       };
     },
     computed: {
-      ...mapGetters(['userinfo']),
+      ...mapGetters(['themeColor']),
     },
     methods: {
-      changeTheme() {
-        console.log('换肤改变', this.themeConfigForm.themeColor);
+      changeTheme(value, prop) {
+        console.log(`${prop}-改变`, this.themeConfigForm.themeColor);
+
+        console.log(prop);
+        console.log(value);
+
         const query = {
-          themeColor: this.themeConfigForm.themeColor,
+          data: value,
+          syncRequest: this.syncRequest,
+          prop,
         };
 
-        this.$store.dispatch('updateThemeColor', query).then(_ => {
-          updateThemeColor(query);
-        });
-      },
-
-      bannerCoverChange() {
+        this.$store.dispatch('updateTheme', query);
 
       },
     },
     created() {
-      if (this.userinfo.themeColor) {
-        this.themeConfigForm.themeColor = this.userinfo.themeColor;
+      if (this.themeColor) {
+        this.themeConfigForm.themeColor = this.themeColor;
       }
     },
   };

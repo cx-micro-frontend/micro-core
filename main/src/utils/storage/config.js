@@ -6,6 +6,14 @@ export default {
     storageLife: '',
     partition: true,
   },
+  sign_user_theme: {
+    name: '用户主题',
+    storagekey: 'user_theme',
+    storageMethod: 'localStorage',
+    storageLife: '',
+    partition: true,
+  },
+
   sign_user_behavior: {
     name: '用户操作存储信息',
     storagekey: 'user_behavior',

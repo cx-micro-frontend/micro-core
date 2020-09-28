@@ -25,23 +25,12 @@ const NavMenu = {
     sideMenu: _deCryptoSideBar().sideMenu || [],
     initRoute: _deCryptoSideBar().initRoute, //默认初始路由地址
     subInitRoute: _deCryptoSideBar().subInitRoute, //默认初始路由地址
-    isCollapse: _deCryptoSideBar().isCollapse || true,
-    sideMenuTheme: _deCryptoSideBar().sideMenuTheme || 'dark', //bright / dark
   },
   mutations: {
     SET_MENU_DATA: (state, data) => {
       //Assignment in mutations to change state
       stateAssign(state, data, ['moduleMenu', 'sideMenu', 'initRoute', 'subInitRoute']);
 
-      storageHandle('set', 'sign_nav', JSON.stringify(state));
-    },
-
-    TOGGLE_SIDE_MENU_COLLAPSE_STATE: (state, data) => {
-      state.isCollapse = data;
-      storageHandle('set', 'sign_nav', JSON.stringify(state));
-    },
-    TOGGLE_SIDE_MENU_THEME: (state, data) => {
-      state.sideMenuTheme = data;
       storageHandle('set', 'sign_nav', JSON.stringify(state));
     },
 
@@ -179,23 +168,6 @@ const NavMenu = {
 
         resolve(navdata);
       });
-    },
-
-    /**
-     * toggle sideMenu expand state
-     * @param commit
-     * @param data
-     */
-    toggleSideMenuCollapseState: ({ commit }, data) => {
-      commit('TOGGLE_SIDE_MENU_COLLAPSE_STATE', data);
-    },
-    /**
-     * toggle sideMenu theme
-     * @param commit
-     * @param data
-     */
-    toggleSideMenuTheme: ({ commit }, data) => {
-      commit('TOGGLE_SIDE_MENU_THEME', data);
     },
 
     /**

@@ -1,8 +1,5 @@
 <!--缓存示例页面-->
-
-<!--:active-text-color="themeColor"-->
 <template>
-
   <el-menu :mode="mode"
            :default-active="defaultActive"
            class="ns-side-menu noselect"

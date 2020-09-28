@@ -2,10 +2,8 @@ import { mapGetters } from 'vuex';
 // --themeColor
 export default {
   computed: {
-    ...mapGetters(['userinfo', 'sideMenuTheme']),
-    themeColor() {
-      return this.userinfo.themeColor;
-    },
+    ...mapGetters(['themeColor', 'sideMenuTheme', 'userTheme']),
+
     menuPalette() {
       return {
         dark: {

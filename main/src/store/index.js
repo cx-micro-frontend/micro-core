@@ -17,6 +17,7 @@ import CancelToken from './modules/Request/CancelToken';
 
 //User
 import User from './modules/User/User';
+import UserThemeSetting from './modules/User/UserThemeSetting';
 import UserBehavior from './modules/User/UserBehavior';
 
 //Layout
@@ -48,6 +49,7 @@ const store = new Vuex.Store({
 
     //User
     User,
+    UserThemeSetting,
     UserBehavior,
 
     //Layout
