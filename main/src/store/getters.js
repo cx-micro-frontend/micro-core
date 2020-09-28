@@ -22,7 +22,7 @@ const getters = {
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
   moduleMenu: state => state.NavMenu.moduleMenu, //所有导航菜单数据
   sideMenu: state => state.NavMenu.sideMenu, //当前的侧边栏导航数据
-  sideMenuCollapse: state => state.NavMenu.isCollapse, //当前的侧边栏 伸缩 状态
+  sideMenuCollapse: state => state.NavMenu.isCollapse, //
   sideMenuTheme: state => state.NavMenu.sideMenuTheme, //当前的侧边栏 主题
   initRoute: state => state.NavMenu.initRoute, //系统初始路由
 
@@ -46,6 +46,20 @@ const getters = {
    * themeColor - 用户主题
    */
   userinfo: state => state.User.userinfo,
+
+  /**
+   * userTheme - 用户主题
+   * themeColor - 主题色
+   * bannerCover -
+   * isSideMenuCollapse - 侧边栏 主题色
+   * isSideMenuCollapse - 当前的侧边栏 伸缩 状态
+   */
+  userTheme: state => state.UserThemeSetting.userTheme,
+  themeColor: state => state.UserThemeSetting.userTheme.themeColor,
+  bannerCover: state => state.UserThemeSetting.userTheme.bannerCover,
+  sideMenuTheme: state => state.UserThemeSetting.userTheme.sideMenuTheme,
+  isSideMenuCollapse: state => state.UserThemeSetting.userTheme.isSideMenuCollapse,
+
   logininfo: state => state.User.logininfo,
 
   /**
