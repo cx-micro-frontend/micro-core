@@ -1,18 +1,17 @@
 //---------- layout - 布局  ----------
-$min-window_width: 1280px; //最小窗口宽度
-$min-window_height: 600px; //最小窗口高度
+$NEAP-window__minWidth: 1280px; //最小窗口宽度
+$NEAP-window__minHeight: 600px; //最小窗口高度
 
+$NEAP-tabs__height: 38px; //tabs模块 高度
 
-$tabs: 38px; //历史浏览标签卡高度
+$NEAP-side-menu__width--collapse: 50px; //侧边菜单-宽度（折叠)
+$NEAP-side-menu__width--expand: 180px; //侧边菜单-宽度（展开)
 
-$NEAP-side-menu__width--collapse:50px;//侧边菜单-宽度（折叠)
-$NEAP-side-menu__width--expand:180px;//侧边菜单-宽度（展开)
+$NEAP-header__height: 50px; //顶部导航高度
+$NEAP-header__padding--left: 0px; //顶部导航左 padding
+$NEAP-header__padding--right: 10px; //顶部导航右 padding
+$NEAP-module__gap: 15px; //顶部导航各模块间距
 
-
-$navH: 50px; //顶部导航高度
-$navH_p: 36px; //顶部导航下拉菜单，各个部分高度
-$navH_pl: 0px; //顶部导航左 padding
-$navH_pr: 10px; //顶部导航右 padding
 
 //---- 右侧窗口悬浮显示 上下左右 空隙值 ----
 $container_gapT: 0px;
@@ -30,9 +29,6 @@ $win_pt: 10px;
 $win_pb: 0px;
 $win_pl: 10px;
 $win_pr: 10px;
-
-
-
 
 //head
 $--head-icon-size: 20px;
