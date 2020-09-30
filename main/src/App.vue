@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  const packageJson = require('../../package.json');
+  const packageJson = require('@ROOT/package.json');
 
   export default {
     name: 'app',
