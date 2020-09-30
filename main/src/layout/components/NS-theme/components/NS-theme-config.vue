@@ -37,7 +37,7 @@
     name: 'NS-theme-config',
     components: { nsSkiner },
     props: {
-      syncRequest: { type: Boolean, default: false },
+      syncRequest: { type: Boolean, default: true },
     },
     data() {
       return {
