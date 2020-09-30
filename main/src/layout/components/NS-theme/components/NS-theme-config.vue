@@ -63,13 +63,14 @@
         console.log(value);
 
         const query = {
-          data: value,
-          syncRequest: this.syncRequest,
-          prop,
+          prop,//当前字段名
+          data: value,//值
+          syncRequest: this.syncRequest,//是否同步服务端存储
         };
 
         this.$store.dispatch('updateTheme', query);
 
+        this.$emit('updateTheme', this.themeConfigForm);
       },
     },
     created() {
