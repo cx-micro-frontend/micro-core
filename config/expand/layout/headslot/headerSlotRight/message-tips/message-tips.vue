@@ -2,7 +2,7 @@
 <template>
  <span class="message-tips">
     <el-badge :value="value" :max="99">
-      <ns-icon-svg class="ns-header__text message-tips-icon" icon-class="tixing" @click="tipsClick"/>
+      <ns-icon-svg class="ns-header__text message-tips-icon" icon-class="neap-tixing" @click="tipsClick"/>
     </el-badge>
   </span>
 </template>

@@ -21,10 +21,14 @@ const CoverPainting = {
       operatorName: _getStorage().operatorName, //document title / head title
 
       // === images ===
-      operatorLogo: '', //登录页 - 图标
+      operatorLogo: _getStorage().operatorLogo, //布局-head 左侧Logo图片 (大)
+      operatorLogoMini: _getStorage().operatorLogoMini, //布局-head 左侧Logo图片 (小)
+
       operatorPicture: '', //登录页 - 左侧图片（sign in box)
       operatorBackgroudPic: '', //登录页 - 大背景图
-      operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片
+
+      operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片 （旧的，即将废弃)
+
       operatorCopyright:
         _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
     },
@@ -36,10 +40,9 @@ const CoverPainting = {
 
       let o = {};
       const imgKeyList = [
-        'operatorLogo',
-        'operatorPicture',
-        'operatorBackgroudPic',
-        'operatorLoginPic',
+        // 'operatorPicture', //登录页 - 左侧图片（sign in box)
+        // 'operatorBackgroudPic', //登录页 - 大背景图
+        // 'operatorLoginPic',
       ];
 
       Object.keys(data).forEach(key => {

@@ -12,7 +12,7 @@ export default {
     { key: 'brown', color: '#997C71' }, //棕色
     { key: 'skyBlue', color: '#0AB2D4' }, //天蓝色
     { key: 'green', color: '#11C26D' }, //天蓝色
-    { key: 'grey', color: '#757575' }, //灰色
+    { key: 'blueBlack', color: '#040325' }, //蓝黑
     { key: 'cornflowerBlue', color: '#667AFA' }, //矢车菊的蓝色
     { key: 'darkOrange', color: '#EB670A' }, //深橙色
     { key: 'pink', color: '#F84684' }, //粉色

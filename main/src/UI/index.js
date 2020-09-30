@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { elementui, nsui, iconfont, utils } from '../../plugins';
+import { elementui, nsui, utils } from '../../plugins';
 
 //第三方依赖
 Vue.use(elementui);
@@ -13,14 +13,6 @@ Vue.use(nsui, {
 //load applaction style
 import '../style/index.scss';
 
-//load icon
-// (function(window) {
-//   if (!iconfont) return;
-//   iconfont.roleButton();
-//   iconfont.navMenu();
-//   iconfont.moduleMenu();
-// })(window);
-
 //components
 import '../components/index';
 import '../layout/components/index';
@@ -31,6 +23,8 @@ import '../../../injection/entrance/entrance_ui';
 //业务组个性化注入
 import './Custom-UI/index';
 
+//load framework icon
+import '../icons/framework/iconfont';
 import '../icons';
 
 //load utils event

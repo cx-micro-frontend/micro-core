@@ -81,6 +81,5 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .biz-user-dropdown {
     display: inline-block;
-    margin-left: 10px;
   }
 </style>

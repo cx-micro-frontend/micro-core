@@ -1,8 +1,5 @@
-import $store from '../../../store/index';
 import { updateThemeColor } from '../../../service/System/Layout/coverPainting';
-
 import { storageHandle } from '../../../utils/storage/storage';
-
 import { stateAssign } from '../../utils/index';
 
 /**
@@ -26,8 +23,6 @@ const UserThemeSetting = {
   mutations: {
     //login and set/store - token info
     SET_THEME_DATA: (state, data) => {
-      console.log(33333333);
-      console.log(data);
       //user information by login
       //Assignment in mutations to change state
       stateAssign(state.userTheme, data, [
@@ -37,10 +32,14 @@ const UserThemeSetting = {
         'isSideMenuCollapse',
       ]);
 
-      console.log(4444444444);
-      console.log(4444444444);
-      console.log(state);
-      console.log(4444444444);
+      storageHandle('set', 'sign_user_theme', JSON.stringify(state.userTheme));
+    },
+
+    REMOVE_THEME_DATA: state => {
+      state.userTheme.themeColor = '#0A7AF8';
+      state.userTheme.bannerCover = false;
+      state.userTheme.sideMenuTheme = 'dark';
+      state.userTheme.isSideMenuCollapse = true;
 
       storageHandle('set', 'sign_user_theme', JSON.stringify(state.userTheme));
     },
@@ -78,6 +77,14 @@ const UserThemeSetting = {
         default:
           break;
       }
+    },
+
+    /**
+     * remove theme data
+     * @param commit
+     */
+    removeThemeData({ commit }) {
+      commit('REMOVE_THEME_DATA');
     },
   },
 };

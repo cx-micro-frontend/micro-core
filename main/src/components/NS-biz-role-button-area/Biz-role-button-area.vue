@@ -122,8 +122,7 @@
 
       //single button
       .el-button.ns-button {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 8px 12px;
         margin-right: 0;
         box-sizing: border-box;
 

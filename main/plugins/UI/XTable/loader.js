@@ -47,7 +47,6 @@ import Vue from 'vue';
 
 import VXETable from 'vxe-table';
 import 'vxe-table/lib/index.css';
-import './theme-cover/index.scss';
 
 import VXETablePluginElement from 'vxe-table-plugin-element';
 

@@ -7,7 +7,6 @@
 
 import nsui from './UI/NS-UI/index'; //load ns-ui
 import elementui from './UI/Element-UI/index';//load element-ui
-import iconfont from './UI/Iconfont/index';
 import cache from './cache/index';
 import utils from '../src/utils/index';//methods library
 import Package from '../../package';
@@ -18,7 +17,6 @@ export {
   version,
   nsui,
   elementui,
-  iconfont,
   cache,
   utils,
 };

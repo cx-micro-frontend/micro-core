@@ -2,12 +2,14 @@
 //$--tabs-background-color: rgba(230, 232, 237, 1); //tabs条 背景颜色  --  较深的灰色
 //$--tabs-tag-background-color: rgba(241, 242, 245, 1); //tabs - tag 模块 背景颜色
 
-
-$--wrapper-background-color:rgba(241,242,245,1); //工作台背景色 rgb(247, 248, 251)
-$--tabs-background-color: #E6E8ED; //tabs条 背景颜色  --  较深的灰色
-$--tabs-tag-background-color: rgba(230, 232, 237, 1); //tabs - tag 模块 背景颜色
+$--wrapper-background-color: #f0f2f5; //工作台背景色 rgb(247, 248, 251)
+$--tabs-background-color: #EAECF3; //tabs条 背景颜色  --  较深的灰色
+$--tabs-tag-background-color: #e6e8ed; //tabs - tag 模块 背景颜色
 
 $--container-left-background-color: #fff; //工作台 - 左边容器 - 背景色
 $--container-right-background-color: #fff; //工作台 - 左边容器 - 背景色
 
-$--container-border-color: #e8e8e8; //工作台 - 容器 - 模块划分边框线
+$--container-border-color: #e6e8ee; //工作台 - 容器 - 模块划分边框线
+
+$NEAP-header__color: #656882; //顶部文字/图标颜色
+$NEAP-tabs__text-color: #656882; //tab页文字颜色

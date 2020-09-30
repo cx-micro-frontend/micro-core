@@ -21,7 +21,8 @@
       height: calc(
         100vh - #{$NEAP-tabs__height} - #{$win_pt} - #{$win_pb} - #{$NEAP-header__height} - #{$win_gapT} - #{$win_gapB} - 1px
       );
-      border: 1px solid $--container-border-color;
+      border: 1px solid ;
+      border-color: $--container-border-color ; //#e6e8ee
       background: $--container-left-background-color;
       box-sizing: border-box;
       margin-right: 10px;

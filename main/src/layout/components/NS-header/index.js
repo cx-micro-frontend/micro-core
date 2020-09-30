@@ -1,4 +1,6 @@
+export { default as nsHeaderLogo } from '../NS-header-logo/NS-header-logo';
 export { default as nsMenuCollapse } from '../NS-nav-menu/NS-menu-collapse/NS-menu-collapse';
+export { default as nsBackHome } from '../NS-back-home/NS-back-home';
 export { default as nsTopMenu } from '../NS-nav-menu/NS-top-menu/NS-top-menu';
 
 export { default as bizLockScreen } from '../NS-biz-lockscreen/NS-biz-lockscreen';

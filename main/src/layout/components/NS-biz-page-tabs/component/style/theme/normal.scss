@@ -97,8 +97,10 @@ $tabs-part_height: $NEAP-tabs__height; //tabs 单个标签页高度
           height: $tabs-icon-img_height;
           margin: 0 2px -2px 0;
         }
+        //tab 页签 文字大小
         .el-tag-text {
-          font-size: 13px;
+          font-size: $NEAP-tabs__font-size;
+          color: $NEAP-tabs__text-color;
         }
       }
 

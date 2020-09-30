@@ -1,8 +1,8 @@
 <template>
   <div class="ns-menu-collapse">
-    <ns-icon-class
+    <ns-icon-svg
       class="ns-header__text"
-      :icon-class="isSideMenuCollapse ? 'CombinedShapeCopyx':'CombinedShapex' "
+      :icon-class="isSideMenuCollapse ? 'neap-zhankai':'neap-shouqi'"
       @click="toggleCollapse"
     />
   </div>
@@ -46,17 +46,5 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "../../../../style/var";
-  //展开按钮（底部)
-  .ns-menu-collapse {
-    height: $NEAP-header__height;
-    line-height: $NEAP-header__height;
-    i.ns-icon-class {
-      font-size: 13px;
-      cursor: pointer;
-      color: #656882;
-      vertical-align: 0.2em;
-      padding: 0;
-    }
-  }
+
 </style>

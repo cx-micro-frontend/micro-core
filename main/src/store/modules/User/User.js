@@ -99,7 +99,8 @@ const User = {
 
       $store.dispatch('removeLockScreen'); //remove / unlock screen
 
-      $store.dispatch('removePrecinct'); //清除项目信息；
+      $store.dispatch('removeThemeData'); //清除 主题信息；
+      $store.dispatch('removePrecinct'); //清除 项目信息；
 
       $store.dispatch('resetUserBehavior'); //reset user behavior in vuex state
 

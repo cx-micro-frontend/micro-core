@@ -1,25 +1,14 @@
 <!--top nav menu - 顶部系统模块导航菜单-->
 <template>
-  <div class="ns-top-menu clear" v-if="topNavMenuShow">
-    <div :class="[
-      'ns-top-menu_module back fl',
-      {'is-active':isCurrentActive}
-      ]" @click="back"
-    >
-      <ns-icon-class class="ns-header__text back-to-portal-icon"
-                     icon-class="el-icon-s-home"
-      ></ns-icon-class>
-      <span class="ns-header__text">首页</span>
-    </div>
-
+  <div class="ns-top-menu">
     <el-popover
       v-model="model"
-      class="fl"
       popper-class="ns-top-menu_popover"
       width="400"
       placement="bottom-start"
       trigger="click"
       :visible-arrow="false"
+      v-if="topNavMenuShow"
     >
       <div class="ns-top-menu_module" slot="reference">
         <ns-icon-svg class="ns-header__text" :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
@@ -35,12 +24,13 @@
         <!--<ns-icon-svg icon-class="bug"></ns-icon-svg>-->
         <!--<ns-icon-svg icon-class="jichufuwu-2"></ns-icon-svg>-->
 
-        <ns-icon-svg :icon-class="isActiveModule(item,index)?`${item.icon}_active`:item.icon"></ns-icon-svg>
+        <ns-icon-svg :icon-class="isActiveModule(item,index)?`${item.icon}_active`:item.icon" v-if="item.icon"></ns-icon-svg>
+        <ns-icon-svg :icon-class="isActiveModule(item,index)?`xiangmutuozhan_active`:xiangmutuozhan" v-else></ns-icon-svg>
+
         <p>{{item.moduleName}}</p>
       </div>
 
     </el-popover>
-
   </div>
 
 </template>
@@ -90,10 +80,6 @@
       isActiveModule(item, index) {
         return this.currentModuleId === item.moduleId || this.hoverIndex === index;
       },
-      back() {
-        if (this.isCurrentActive) return;
-        this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
-      },
       jumper(item, index) {
         this.activeIndex = index;
         if (this.currentModuleId === item.moduleId) return;
@@ -121,12 +107,7 @@
           },
         );
       },
-
     },
-
-    // created() {
-    //   console.log(this.moduleMenu);
-    // },
   };
 </script>
 
@@ -171,48 +152,10 @@
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "../../../../style/var";
-
-  $back-color_active: #f2f2f2;
-
   //顶部导航菜单
   .ns-top-menu {
-    cursor: pointer;
-    //各个模块
     .ns-top-menu_module {
-      display: inline-block;
-      padding: 0 5px;
-      margin-right: $NEAP-module__gap;
-      /*min-width: 80px;*/
-      text-align: center;
-      &:last-child {
-        margin-right: 0;
-      }
-      &:hover {
-        background: rgba(0, 0, 0, .1);
-        span {
-          font-weight: bold;
-        }
-      }
-      &.is-active, &:hover {
-        i, svg {
-          transform: scale(1.1, 1.1);
-        }
-      }
-    }
 
-    svg.ns-icon-svg, i.ns-icon-class {
-      vertical-align: -0.1em;
-      padding: 0;
-    }
-
-    i.ns-icon-class {
-      font-size: 20px;
-      vertical-align: -0.2em;
-    }
-
-    span {
-      font-size: 14px;
     }
   }
 </style>

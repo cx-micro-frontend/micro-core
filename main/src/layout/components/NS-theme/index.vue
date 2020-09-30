@@ -7,7 +7,7 @@
     trigger='click'
   >
     <ns-theme-config></ns-theme-config>
-    <ns-icon-class slot="reference" class="ns-header__text" icon-class="skin"/>
+    <ns-icon-svg slot="reference" class="ns-header__text" icon-class="neap-huanfu"/>
   </el-popover>
 
 </template>
@@ -23,23 +23,6 @@
     },
   };
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-  @import "../../../style/var/layout.scss";
-
-  .ns-theme {
-    i {
-      width: $--head-icon-size;
-      height: $--head-icon-size;
-      line-height: $--head-icon-size;
-      font-size: $--head-icon-size;
-      color: $--head-icon-color;
-      cursor: pointer;
-    }
-  }
-
-
-</style>
 
 <style rel="stylesheet/scss" lang="scss">
   .ns-theme__popper {

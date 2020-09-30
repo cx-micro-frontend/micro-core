@@ -2,7 +2,7 @@
 <template>
   <div class="login-wrap" :style="{'background-image': 'url(' + operatorInfo.operatorBackgroudPic + ')'}">
     <div class="login-header">
-      <img class="login-logo" :src="operatorInfo.operatorLogo" alt="">
+      <!--<img class="login-logo" :src="operatorInfo.operatorLogo" alt="">-->
     </div>
     <sign-in-box></sign-in-box>
     <div class="login-footer">{{operatorInfo.operatorCopyright}}</div>
