@@ -13,13 +13,13 @@
     </div>
 
     <!--返回首页-->
-    <div class="ns-header__module hover fl">
+    <div class="ns-header__module hover fl" v-if="isMultipleApplication">
       <ns-back-home></ns-back-home>
     </div>
 
     <!--顶部 - 菜单-->
-    <div class="ns-header__module hover fl" v-if="integrationMode === 'mam'">
-      <ns-top-menu></ns-top-menu>
+    <div class="ns-header__module hover fl" v-if="isMultipleApplication">
+      <ns-top-menu :topNavMenuData="topNavMenuData"></ns-top-menu>
     </div>
 
     <!--业务组 - 自定义头部插槽 - 左边 -->
@@ -57,6 +57,9 @@
 <script>
   import { mapGetters } from 'vuex';
   import portal from '../../mixins/portal';
+  import topNavMenuData from '../../mixins/topNavMenuData';
+  import integrationMode from '../../mixins/integrationMode';
+
   import {
     nsHeaderLogo,
     nsMenuCollapse,
@@ -71,7 +74,7 @@
 
   export default {
     name: 'ns-header',
-    mixins: [portal],
+    mixins: [portal, topNavMenuData, integrationMode],
     components: { nsHeaderLogo, nsMenuCollapse, nsBackHome, nsTopMenu, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     computed: {
       ...mapGetters(['themeColor', 'bannerCover', 'integrationMode']),

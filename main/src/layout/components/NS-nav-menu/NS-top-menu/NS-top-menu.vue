@@ -8,7 +8,6 @@
       placement="bottom-start"
       trigger="click"
       :visible-arrow="false"
-      v-if="topNavMenuShow"
     >
       <div class="ns-top-menu_module" slot="reference">
         <ns-icon-svg class="ns-header__text" :icon-class="`module-wodeyingyong-${model?'dakai':'guanbi'}`"></ns-icon-svg>
@@ -16,7 +15,7 @@
       </div>
 
       <div :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
-           v-for="(item, index) in topNavMenu" :key="index" @click="jumper(item,index)"
+           v-for="(item, index) in topNavMenuData" :key="index" @click="jumper(item,index)"
            @mouseenter="hoverIndex = index"
            @mouseleave="hoverIndex = null"
       >
@@ -37,11 +36,17 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import { createTopMenu } from '../../../../layout/components/NS-nav-menu/utils/dataHandle';
   import keyRefer from '../../NS-nav-menu/nav-menu-keyRefer';
 
   export default {
     name: 'ns-top-menu',
+    props: {
+      topNavMenuData: {
+        type: Array, default: () => {
+          return [];
+        },
+      },
+    },
     data() {
       return {
         model: false,
@@ -51,27 +56,16 @@
       };
     },
     computed: {
-      ...mapGetters(['moduleMenu', 'currentPageInfo', 'initRoute']),
+      ...mapGetters(['currentPageInfo', 'initRoute']),
+
       isCurrentActive() {
         return this.$route.name === this.initRoute.name;
       },
-      isPortalRoute() {
-        return this.$route.name === 'portal';
-      },
-      topNavMenu() {
-        return createTopMenu(this.moduleMenu);
-      },
-      topNavMenuShow() {
-        if (!this.topNavMenu) return false;
-        if (this.topNavMenu.length === 1 && this.isPortalRoute) {
-          return true;
-        }
-        return this.topNavMenu.length > 1;
 
-      },
       popoverDisplay() {
-        return this.topNavMenu && this.topNavMenu.length > 3;
+        return this.topNavMenuData && this.topNavMenuData.length > 3;
       },
+
       currentModuleId() {
         return this.currentPageInfo.moduleId;
       },

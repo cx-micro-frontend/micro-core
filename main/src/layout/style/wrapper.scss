@@ -6,7 +6,7 @@
   position: absolute;
   width: 100%;
   z-index: 2000;
-  @include transition__changeTheme();
+
 
   .ns-header {
     width: 100%;
@@ -17,7 +17,7 @@
     padding-right: $NEAP-header__padding--right;
     box-sizing: border-box;
     box-shadow: 0px 2px 5px 0px rgba(215, 215, 215, 0.4);
-
+    @include transition__changeTheme();
 
     .ns-header__module {
       height: inherit;
