@@ -15,9 +15,11 @@ const dev_env = {
   IP_CONFIG: '"http://192.168.1.20"',
   IFRAME_IP_CONFIG: '"http://192.168.1.52"',
   // BASE_API: '"http://192.168.1.52/api"',
-  BASE_API: '"http://new-see.oicp.io:25280/api"',
 
-  // BASE_API: '"http://192.168.4.40/api"',
+  BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
+  // BASE_API: '"http://124.71.162.124:81/api"',//saas 环境
+
+  // BASE_API: '"http://192.168.4.40/api"',//张晨飞 本机
 
   // BASE_API: '"http://121.196.31.230/api"',
 

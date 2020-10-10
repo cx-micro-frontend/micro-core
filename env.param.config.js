@@ -20,6 +20,7 @@ module.exports = {
     ],
 
     // prescript: ['npm run clean:lib', 'npm run clone'],
+
     // proxyTable: {
     //   '/api': {
     //     target: 'http://192.168.1.20',
@@ -96,12 +97,14 @@ module.exports = {
     dropConsole: false, //去除 console
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
+
     prescript: [
       // 'npm run clean:lib', //清除lib
       // 'npm run build:injecter', //注入工具的编译
       // 'npm run inject', //注入业务模块
       // 'npm run build:lib', //生成lib
     ],
+
     inSandbox: false, //代码是否在沙盒中打包
   },
   base: {
@@ -117,13 +120,13 @@ module.exports = {
       '@NEAP': path.resolve('main/src'),
     },
 
-    // svgSprite:{
-    //   extract:true,
-    //   include:path.resolve('config/expand/icons'),
-    //   outputPath: "static/svgIcons/",
-    //   publicPath: "static/svgIcons/",
-    //   spriteFilename: "svg-sprite.svg"
-    // },
+    svgSprite: {
+      include: path.resolve('config/expand/iconfont/single'),
+      // extract:true,
+      // outputPath: "static/svgIcons/",
+      // publicPath: "static/svgIcons/",
+      // spriteFilename: "svg-sprite.svg"
+    },
 
     prettier: {
       switch: true,
