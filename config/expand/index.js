@@ -12,7 +12,7 @@ export default {
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
     theme: () => import('./theme'),
-    iconfont: () => import('./iconfont-old/index.js'),
+    iconfont: () => import('./iconfont/mixin/index.js'),
   },
 
   //布局
@@ -41,7 +41,7 @@ export default {
   //路由相关
   route: {
     cache: true,
-    cacheExclude: [],
+    // cacheExclude: ['portal'],
 
     //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
     customRoute: Layout => {
