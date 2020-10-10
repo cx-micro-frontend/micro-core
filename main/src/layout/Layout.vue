@@ -11,8 +11,8 @@
     :class="{
     'is-hide-frame':isInIframe,
     'is-portal':isPortal,
-    'is-expand':!isSideMenuCollapse,
-    'is-collapse':isSideMenuCollapse,
+    'is-expand':!sideMenuCollapse,
+    'is-collapse':sideMenuCollapse,
   }">
     <div id="header-wrapper" class="fl">
       <ns-header></ns-header>
@@ -71,12 +71,14 @@
       return {};
     },
     computed: {
-      ...mapGetters([ 'isInIframe', 'isSideMenuCollapse']),
+      ...mapGetters([ 'isInIframe', 'sideMenuCollapse']),
       //全局缓存开关
       isCache() {
         return expand.route.cache;
       },
       cacheExclude() {
+        console.log(' ======= cacheExclude 队列：====== ');
+        console.log(expand.route.cacheExclude);
         return expand.route.cacheExclude;
       },
 

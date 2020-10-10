@@ -25,7 +25,8 @@ const customRoute = [
 
               meta: {
                 title: '门户主页',
-                auth: true,
+                auth: true, //是否需要登录才能访问
+                cache: false, //是否需要缓存
                 key: 'portal',
                 moduleId: 'portal',
                 type: 'special',
@@ -48,7 +49,8 @@ const customRoute = [
               component: _import('overview/views/overview/overview', 'overview'),
               meta: {
                 title: '概览',
-                auth: true,
+                auth: true, //是否需要登录才能访问
+                cache: false, //是否需要缓存
                 key: 'overview',
                 moduleId: 'FIN',
                 type: 'normal',

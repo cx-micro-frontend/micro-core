@@ -37,7 +37,6 @@ const User = {
       userType: _deCryptoUserInfo().userType,
       userPhone: _deCryptoUserInfo().userPhone,
       userSex: _deCryptoUserInfo().userSex,
-      themeColor: _deCryptoUserInfo().themeColor || '#0A7AF8',
       NWExID: _deCryptoUserInfo().NWExID, //v8 需要
       NWESessionId: _deCryptoUserInfo().NWESessionId, //v8 需要
     },
@@ -59,15 +58,15 @@ const User = {
         'userType',
         'userPhone',
         'userSex',
-        'themeColor',
         'NWExID',
         'NWESessionId',
       ]);
 
-      console.log(4444444444);
-      console.log(4444444444);
-      console.log(state.userinfo);
-      console.log(4444444444);
+      /**
+       * part of the fields in the login auth interface (themecolor / bannercover / sidemenutheme / sidemenucollapse - the interface involved by the user topic) is stored in the topic state management
+       * 将登录auth接口中部分字段（themeColor/bannerCover/sideMenuTheme/sideMenuCollapse - 用户主题涉及到的接口)，存储到 主题的状态管理中
+       */
+      $store.commit('SET_THEME_DATA', data);
 
       storageHandle('set', 'sign_user_info', JSON.stringify(state.userinfo));
     },
@@ -210,15 +209,6 @@ const User = {
           }
         })
         .catch(err => console.warn(err));
-    },
-
-    /**
-     * update theme color
-     * @param commit
-     * @param query
-     */
-    updateThemeColor({ commit }, query) {
-      commit('SET_LOGIN_DATA', query);
     },
   },
 };

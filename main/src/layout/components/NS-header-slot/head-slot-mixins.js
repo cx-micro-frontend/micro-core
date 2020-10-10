@@ -41,17 +41,6 @@ export default {
     markName(name) {
       return 'neap-expand-' + name;
     },
-
-    // themeChange(val) {
-    //   updateThemeColor({ themeColor: val }).then(() => {
-    //     let userInfo = this.$store.state.User.userinfo;
-    //     this.$store.dispatch('updateLoginData', userInfo);
-    //   });
-    //   // this.$store.dispatch('settings/changeSetting', {
-    //   //   key: 'theme',
-    //   //   value: val
-    //   // })
-    // },
   },
 
   created() {

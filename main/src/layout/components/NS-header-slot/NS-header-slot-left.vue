@@ -18,7 +18,6 @@
 
   // import { hasFile } from '../../utils/library/judge';
   // import ThemePicker from '../../../components/ThemePicker/index';
-  // import { updateThemeColor } from '../../../service/System/Layout/coverPainting';
 
 
   export default {

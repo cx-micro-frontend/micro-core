@@ -4,7 +4,7 @@
   >
     <!--多级导航栏-->
     <side-menu :data="sideMenu"
-               :collapse="isSideMenuCollapse"
+               :collapse="sideMenuCollapse"
                :keyRefer="keyRefer"
                :themeColor="themeColor"
                :defaultActive="activeKey"
@@ -46,7 +46,7 @@
       };
     },
     computed: {
-      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'isSideMenuCollapse']),
+      ...mapGetters(['sideMenu', 'moduleMenu', 'currentPageInfo', 'sideMenuCollapse']),
       //当前路由信息
       currentRoute() {
         return this.$route;

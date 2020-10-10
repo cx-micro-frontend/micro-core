@@ -1,4 +1,4 @@
-import { updateThemeColor } from '../../../service/System/Layout/coverPainting';
+import { updateUserTheme } from '../../../service/System/User/updateUserTheme';
 import { storageHandle } from '../../../utils/storage/storage';
 import { stateAssign } from '../../utils/index';
 
@@ -17,19 +17,24 @@ const UserThemeSetting = {
       themeColor: _deCryptoUserThemeSetting().themeColor || '#0A7AF8', //主题色
       bannerCover: _deCryptoUserThemeSetting().bannerCover || true, //是否通栏显示
       sideMenuTheme: _deCryptoUserThemeSetting().sideMenuTheme || 'dark', // 侧边栏 主题色 - bright / dark
-      isSideMenuCollapse: _deCryptoUserThemeSetting().isSideMenuCollapse || true, //当前的侧边栏 伸缩 状态
+      sideMenuCollapse: _deCryptoUserThemeSetting().sideMenuCollapse || true, //当前的侧边栏 伸缩 状态
     },
   },
   mutations: {
     //login and set/store - token info
     SET_THEME_DATA: (state, data) => {
+      console.log(123123123123123);
+      console.log(123123123123123);
+      console.log(data);
+      console.log(123123123123123);
+
       //user information by login
       //Assignment in mutations to change state
       stateAssign(state.userTheme, data, [
         'themeColor',
         'bannerCover',
         'sideMenuTheme',
-        'isSideMenuCollapse',
+        'sideMenuCollapse',
       ]);
 
       storageHandle('set', 'sign_user_theme', JSON.stringify(state.userTheme));
@@ -39,7 +44,7 @@ const UserThemeSetting = {
       state.userTheme.themeColor = '#0A7AF8';
       state.userTheme.bannerCover = true;
       state.userTheme.sideMenuTheme = 'dark';
-      state.userTheme.isSideMenuCollapse = true;
+      state.userTheme.sideMenuCollapse = true;
 
       storageHandle('set', 'sign_user_theme', JSON.stringify(state.userTheme));
     },
@@ -63,16 +68,16 @@ const UserThemeSetting = {
       if (!syncRequest) return;
       switch (prop) {
         case 'themeColor':
-          updateThemeColor(_q);
+          updateUserTheme(_q);
           break;
         case 'bannerCover':
-          // updateThemeColor(_q);
+          updateUserTheme(_q);
           break;
         case 'sideMenuTheme':
-          // updateThemeColor(_q);
+          updateUserTheme(_q);
           break;
-        case 'isSideMenuCollapse':
-          // updateThemeColor(_q);
+        case 'sideMenuCollapse':
+          updateUserTheme(_q);
           break;
         default:
           break;

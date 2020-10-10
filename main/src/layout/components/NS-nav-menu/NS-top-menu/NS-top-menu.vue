@@ -14,8 +14,9 @@
         <span class="ns-header__text" style="margin-left: 2px">我的应用</span>
       </div>
 
-      <div :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
-           v-for="(item, index) in topNavMenuData" :key="index" @click="jumper(item,index)"
+      <div v-for="(item, index) in topNavMenuData" :key="index" @click="jumper(item,index)"
+           :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
+           :style="{backgroundColor:isActiveModule(item,index)?themeColor:'transparent'}"
            @mouseenter="hoverIndex = index"
            @mouseleave="hoverIndex = null"
       >
@@ -56,7 +57,7 @@
       };
     },
     computed: {
-      ...mapGetters(['currentPageInfo', 'initRoute']),
+      ...mapGetters(['currentPageInfo', 'initRoute', 'themeColor']),
 
       isCurrentActive() {
         return this.$route.name === this.initRoute.name;
@@ -123,11 +124,12 @@
       box-sizing: border-box;
 
       &:hover, &.active {
-        background: #D62127;
+        /*background: #D62127;*/
         p {
           color: #fff;
         }
       }
+
       &:nth-child(4n+0) {
         margin-right: 0;
       }

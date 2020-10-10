@@ -2,7 +2,7 @@
   <div class="ns-menu-collapse">
     <ns-icon-svg
       class="ns-header__text"
-      :icon-class="isSideMenuCollapse ? 'neap-zhankai':'neap-shouqi'"
+      :icon-class="sideMenuCollapse ? 'neap-zhankai':'neap-shouqi'"
       @click="toggleCollapse"
     />
   </div>
@@ -19,7 +19,7 @@
       };
     },
     computed: {
-      ...mapGetters(['isSideMenuCollapse']),
+      ...mapGetters(['sideMenuCollapse']),
     },
     methods: {
 
@@ -30,7 +30,7 @@
         this.collapseState = !this.collapseState;
 
         this.$store.dispatch('updateTheme', {
-          prop: 'isSideMenuCollapse',
+          prop: 'sideMenuCollapse',
           data: this.collapseState,
           syncRequest: true,
         });
@@ -40,7 +40,7 @@
       },
     },
     created() {
-      this.collapseState = this.isSideMenuCollapse;
+      this.collapseState = this.sideMenuCollapse;
     },
   };
 </script>

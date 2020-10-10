@@ -42,9 +42,9 @@
     data() {
       return {
         themeConfigForm: {
-          themeColor: '',
-          bannerCover: true,
-          sideMenuTheme: 'darkMenu',
+          themeColor: this.themeColor,
+          bannerCover: this.bannerCover,
+          sideMenuTheme: this.sideMenuTheme,
         },
         sideMenuThemeOption: [
           { label: '深色主题', value: 'dark' },
@@ -53,7 +53,7 @@
       };
     },
     computed: {
-      ...mapGetters(['themeColor']),
+      ...mapGetters(['themeColor', 'bannerCover', 'sideMenuTheme']),
     },
     methods: {
       changeTheme(value, prop) {
@@ -74,9 +74,12 @@
       },
     },
     created() {
-      if (this.themeColor) {
-        this.themeConfigForm.themeColor = this.themeColor;
-      }
+      //初始化赋值：'themeColor', 'bannerCover', 'sideMenuTheme' 值赋予 themeConfigForm 对象
+      Object.keys(this.themeConfigForm).forEach(key => {
+        this.themeConfigForm[key] = this[key];
+      });
+
+
     },
   };
 </script>

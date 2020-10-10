@@ -42,7 +42,6 @@ const getters = {
    * userType - 用户类型
    * userPhone - 用户手机
    * userSex - 用户性别
-   * themeColor - 用户主题
    */
   userinfo: state => state.User.userinfo,
 
@@ -50,14 +49,14 @@ const getters = {
    * userTheme - 用户主题
    * themeColor - 主题色
    * bannerCover -
-   * isSideMenuCollapse - 侧边栏 主题色
-   * isSideMenuCollapse - 当前的侧边栏 伸缩 状态
+   * sideMenuCollapse - 侧边栏 主题色
+   * sideMenuCollapse - 当前的侧边栏 伸缩 状态
    */
   userTheme: state => state.UserThemeSetting.userTheme,
   themeColor: state => state.UserThemeSetting.userTheme.themeColor,
   bannerCover: state => state.UserThemeSetting.userTheme.bannerCover,
   sideMenuTheme: state => state.UserThemeSetting.userTheme.sideMenuTheme,
-  isSideMenuCollapse: state => state.UserThemeSetting.userTheme.isSideMenuCollapse,
+  sideMenuCollapse: state => state.UserThemeSetting.userTheme.sideMenuCollapse,
 
   logininfo: state => state.User.logininfo,
 

@@ -2,7 +2,7 @@
   <div
     class="ns-back-home"
     :class="[{'is-active':isCurrentActive}]"
-    @click="back"
+    @click="toPortal"
   >
     <ns-icon-svg class="ns-header__text"
                  icon-class="neap-shouye"
@@ -23,9 +23,17 @@
       },
     },
     methods: {
-      back() {
-        if (this.isCurrentActive) return;
-        this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
+      toPortal() {
+        /**
+         * 1、当前页点击时，重定向跳转至门户首页并刷新当前页
+         * 2、非当前页点击时，正常跳转 门户首页
+         */
+        if (this.isCurrentActive) {
+          this.$router.replace({ path: '/NEAP_redirect' + this.$route.fullPath, params: { noRefresh: true, jumpMode: 'topMenu' } });
+        }
+        else {
+          this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'topMenu' } });
+        }
       },
     },
   };
@@ -34,7 +42,7 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .ns-back-home {
     /*&.is-active {*/
-      /*background: rgba(0, 0, 0, .1);*/
+    /*background: rgba(0, 0, 0, .1);*/
     /*}*/
   }
 </style>

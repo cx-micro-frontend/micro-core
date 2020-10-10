@@ -10,9 +10,9 @@
   export default {
     name: 'ns-header-logo',
     computed: {
-      ...mapGetters(['themeColor', 'isSideMenuCollapse', 'operatorInfo']),
+      ...mapGetters(['themeColor', 'sideMenuCollapse', 'operatorInfo']),
       logoSrc() {
-        return this.isSideMenuCollapse ? this.operatorInfo.operatorLogoMini : this.operatorInfo.operatorLogo;
+        return this.sideMenuCollapse ? this.operatorInfo.operatorLogoMini : this.operatorInfo.operatorLogo;
       },
     },
     methods: {

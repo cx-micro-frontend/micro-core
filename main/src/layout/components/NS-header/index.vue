@@ -14,7 +14,7 @@
 
     <!--返回首页-->
     <div class="ns-header__module hover fl" v-if="isMultipleApplication">
-      <ns-back-home></ns-back-home>
+      <ns-to-home></ns-to-home>
     </div>
 
     <!--顶部 - 菜单-->
@@ -63,7 +63,7 @@
   import {
     nsHeaderLogo,
     nsMenuCollapse,
-    nsBackHome,
+    nsToHome,
     nsTopMenu,
     bizLockScreen,
     bizSkiner,
@@ -75,7 +75,7 @@
   export default {
     name: 'ns-header',
     mixins: [portal, topNavMenuData, integrationMode],
-    components: { nsHeaderLogo, nsMenuCollapse, nsBackHome, nsTopMenu, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
+    components: { nsHeaderLogo, nsMenuCollapse, nsToHome, nsTopMenu, bizLockScreen, bizSkiner, bizUserDropdown, headerSlotLeft, headerSlotRight },
     computed: {
       ...mapGetters(['themeColor', 'bannerCover', 'integrationMode']),
       headerStyle() {
