@@ -2,7 +2,7 @@ import './UserDropdown.scss';
 
 // user drop down in header
 export default {
-  name: 'ns-user-dropdown',
+  name: 'user-dropdown',
   data() {
     return {
       isopen: false,
@@ -31,12 +31,12 @@ export default {
   render(h) {
     return (
       <el-dropdown
-        class={'ns-user-dropdown ns-header__line'}
+        class={'user-dropdown ns-header__line'}
         trigger={this.trigger}
         on-visible-change={this.visibleChange}
       >
         {
-          <section class={'ns-user-dropdown__main'}>
+          <section class={'user-dropdown__main'}>
             {this.abbreviation ? (
               <div class={'user-abbreviation'}>{this.simple}</div>
             ) : this.avator ? (
@@ -49,7 +49,7 @@ export default {
           </section>
         }
         {
-          <el-dropdown-menu class={'ns-user-dropdown__menu'} slot={'dropdown'}>
+          <el-dropdown-menu class={'user-dropdown__menu'} slot={'dropdown'}>
             {this.options.map((opt, index) => [
               <el-dropdown-item key={index} nativeOnClick={this.click.bind(this, opt.value, index)}>
                 {opt.label}

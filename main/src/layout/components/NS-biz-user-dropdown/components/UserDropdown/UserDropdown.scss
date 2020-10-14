@@ -4,7 +4,7 @@
 $avatar-size: 30px;
 
 //user drop down in header
-.ns-user-dropdown {
+.user-dropdown {
   display: inline-block;
   cursor: pointer;
   height: $NEAP-header__height;
@@ -12,14 +12,14 @@ $avatar-size: 30px;
   padding: 0 5px 0 20px;
   border-left: 1px  solid;
 
-  .ns-user-dropdown__main {
+  .user-dropdown__main {
     height: 100%;
     line-height: inherit;
     .user-abbreviation {
       display: inline-block;
       width: $avatar-size;
       line-height: $avatar-size;
-      background: #0a7af8;
+      background: rgba(0,0,0,.5);//#0a7af8
       border-radius: 50%;
       text-align: center;
       font-size: 12px;
@@ -46,7 +46,7 @@ $avatar-size: 30px;
 
 }
 
-.el-dropdown-menu.ns-user-dropdown__menu {
+.el-dropdown-menu.user-dropdown__menu {
   margin: 0 !important;
   padding: 5px 0;
 }
