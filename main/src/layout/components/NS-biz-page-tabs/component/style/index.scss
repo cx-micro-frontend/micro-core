@@ -2,6 +2,161 @@
 @import '../../../../../style/var';
 @import 'var';
 
-@import 'theme/normal';
-@import 'theme/trapezoid';
+.ns-page-tabs, .ns-page-tabs__normal {
+  display: block;
+  height: $NEAP-tabs__height;
+  line-height: $NEAP-tabs__height;
+  //vertical-align: top;
+  background-color: $tabs-back;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  @include clearFloat;
+
+  //tabs 单个标签页
+  li.ns-tag-tooltip {
+    position: relative;
+    width: 120px;
+    height: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: $tabs-part-back;
+    //transition: all 200ms linear;
+
+    .ns-tag {
+      display: flex; /*Flex布局*/
+      align-items: center; /*指定垂直居中*/
+      width: 100%;
+      height: inherit;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      transform: translateZ(1px);
+
+      //tag 内容区域
+      .ns-tag-contnet {
+        width: 100%;
+        height: 12px;
+        line-height: 12px;
+        padding: 0 5px 0 10px;
+        border-right: 1px solid rgba(218, 219, 225, 1);
+        box-sizing: border-box;
+        overflow: hidden;
+
+        //tag 图片装饰区域
+        img {
+          vertical-align: 0.05em;
+          width: $tabs-icon-img_width;
+          height: $tabs-icon-img_height;
+          margin: 0 2px -2px 0;
+        }
+
+        //tab 页签 文字区域
+        .ns-tag-text {
+          width: 75px;
+          font-size: $NEAP-tabs__font-size;
+          color: $NEAP-tabs__text-color;
+          overflow: hidden;
+        }
+
+        //tag 关闭按钮图标区域
+        i.el-icon-close {
+          right: 0;
+          width: $tabs-icon-close_width;
+          height: $tabs-icon-close_height;
+          color: $NEAP-tabs__text-color;
+          transition: all 400ms linear;
+          &:hover {
+            color: #333;
+            font-weight: bolder;
+            background: transparent;
+            margin-top: 1px;
+            transform: rotate(90deg) scale(1.2);
+
+          }
+        }
+
+      }
+
+      //tag 遮罩渐变区域
+      .ns-tag-mask {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 20px;
+          bottom: 0;
+          left: 0;
+          background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0) 0%,
+              rgba(255, 255, 255, 0) 85%,
+              $tabs-part-back 95%,
+              $tabs-part-back 100%
+          );
+        }
+      }
+
+    }
+
+    //鼠标移入
+    &:hover {
+      background: $tabs-part-back_hover;
+
+      //tag 遮罩渐变区域
+      .ns-tag-mask {
+        &::before {
+          background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0) 0%,
+              rgba(255, 255, 255, 0) 85%,
+              $--wrapper-background-color 95%,
+              $--wrapper-background-color 100%
+          );
+        }
+      }
+    }
+
+    //选中项
+    &.tag-active {
+      font-weight: normal;
+      background: $tabs-part-back_active;
+
+      .ns-tag {
+        color: $tabs-part-color_active;
+        .ns-tag-contnet {
+          border-right: none;
+        }
+      }
+
+      //tag 遮罩渐变区域
+      .ns-tag-mask {
+        &::before {
+          background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0) 0%,
+              rgba(255, 255, 255, 0) 85%,
+              $--wrapper-background-color 95%,
+              $--wrapper-background-color 100%
+          );
+        }
+      }
+    }
+  }
+}
+
+.ns-tag-popper.el-tooltip__popper {
+  margin-top: 5px;
+  border: 1px solid rgba(218, 219, 225, 1);
+  color: $NEAP-tabs__text-color;
+  .popper__arrow {
+    border-bottom-color: rgba(218, 219, 225, 1) !important;
+  }
+  .popper__arrow::after {
+    //color: red;
+    //border-color: rgba(218, 219, 225, 1);
+  }
+}
+
 

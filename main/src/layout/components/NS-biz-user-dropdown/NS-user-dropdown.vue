@@ -1,8 +1,8 @@
 <!--用户下拉菜单-->
 <template>
-  <div class="biz-user-dropdown">
+  <div class="ns-user-dropdown">
 
-    <ns-user-dropdown
+    <user-dropdown
       :options="options"
       :avator="userinfo.avatar"
       :userName="userinfo.userName"
@@ -10,7 +10,7 @@
       trigger="click"
       @click="userDropdownClick"
     >
-    </ns-user-dropdown>
+    </user-dropdown>
 
     <About :visible="aboutVisible"></About>
 
@@ -22,14 +22,14 @@
 <script>
 
   import { mapGetters } from 'vuex';
-  import nsUserDropdown from './components/UserDropdown/UserDropdown';
+  import userDropdown from './components/UserDropdown/UserDropdown';
   import personalSettingDialog from './components/UserSetting/UserSettingDialog';
   import About from './components/About/About';
 
 
   export default {
-    name: 'biz-user-dropdown',
-    components: { nsUserDropdown, About, personalSettingDialog },
+    name: 'ns-user-dropdown',
+    components: { userDropdown, About, personalSettingDialog },
     data() {
       return {
         abbreviation: true,//头像为简单模式 - 显示用户姓名的最后一个字
@@ -79,7 +79,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .biz-user-dropdown {
+  .ns-user-dropdown {
     display: inline-block;
   }
 </style>

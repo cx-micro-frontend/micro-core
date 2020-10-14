@@ -1,0 +1,24 @@
+//@import '../../../../../style/var/palette';
+
+//---------- 页面标签选项卡模块 ----------
+
+$tabs-back: $--tabs-background-color; //tabs模块 背景颜色  --  较深的灰色
+$tabs-part-back: $--tabs-tag-background-color; //tabs模块 背景颜色
+
+$tabs-allClose_color: #999; //tabs模块 关闭所有 背景颜色
+$tabs-allClose-hover_color: #333; //tabs模块 关闭所有 鼠标移入背景颜色
+
+//tabs 单个标签页
+$tabs-part_width: 150px; //tabs 单个标签页宽度
+
+$tabs-part-back_active: $--wrapper-background-color; //tabs模块 选中项背景颜色
+$tabs-part-back_hover: $--wrapper-background-color; //tabs 鼠标移入背景颜色
+
+$tabs-part_color: #333333; //tabs模块字体颜色  --  较浅的灰色
+$tabs-part-color_active: #000; //tabs模块 选中项字体颜色  --  较深的灰色
+
+$tabs-icon-img_width: 12px; //tabs 标签页左侧图标宽度
+$tabs-icon-img_height: 12px; //tabs 标签页左侧图标高度
+
+$tabs-icon-close_width: 12px; //tabs 标签页右侧关闭图标宽度
+$tabs-icon-close_height: 12px; //tabs 标签页右侧关闭图标宽度

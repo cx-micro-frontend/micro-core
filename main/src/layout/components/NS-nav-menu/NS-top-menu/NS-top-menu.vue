@@ -4,7 +4,7 @@
     <el-popover
       v-model="model"
       popper-class="ns-top-menu_popover"
-      width="400"
+      :width="popoverWidth"
       placement="bottom-start"
       trigger="click"
       :visible-arrow="false"
@@ -16,7 +16,10 @@
 
       <div v-for="(item, index) in topNavMenuData" :key="index" @click="jumper(item,index)"
            :class="['sub-system_module fl',{'active':currentModuleId === item.moduleId}]"
-           :style="{backgroundColor:isActiveModule(item,index)?themeColor:'transparent'}"
+           :style="{
+             backgroundColor:isActiveModule(item,index)?themeColor:'transparent',
+             'margin-right': (index + 1) % perInRow === 0? 0:'17px',
+           }"
            @mouseenter="hoverIndex = index"
            @mouseleave="hoverIndex = null"
       >
@@ -58,6 +61,15 @@
     },
     computed: {
       ...mapGetters(['currentPageInfo', 'initRoute', 'themeColor']),
+
+      //一行几个
+      perInRow() {
+        return this.topNavMenuData.length > 16 ? 5 : 4;
+      },
+
+      popoverWidth() {
+        return this.perInRow * 100;
+      },
 
       isCurrentActive() {
         return this.$route.name === this.initRoute.name;
@@ -130,9 +142,6 @@
         }
       }
 
-      &:nth-child(4n+0) {
-        margin-right: 0;
-      }
       svg {
         width: 23px;
         height: 20px;

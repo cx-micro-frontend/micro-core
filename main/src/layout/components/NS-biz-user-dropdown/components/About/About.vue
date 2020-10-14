@@ -10,7 +10,7 @@
     <div class="about-logo fl">
       <img src="../../../../../assets/img/logo/logo-blue.png" alt="">
     </div>
-    <div class="about-describe fl">
+    <div class="about-describe fr">
       <p>
         电话：0571-88231790 / 15988863036 Email：market@new-see.com
       </p>
@@ -55,7 +55,6 @@
     .about-logo {
       width: 120px;
       height: 50px;
-      margin-right: 30px;
       img {
         width: 100%;
         height: 100%;

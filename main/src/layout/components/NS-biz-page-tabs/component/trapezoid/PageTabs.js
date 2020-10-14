@@ -1,12 +1,9 @@
 import './style/index';
-import { stopPropagation } from '../../../../utils/library/event';
 
 export default {
   name: 'page-tabs',
   data() {
-    return {
-      isDisabledTooltip: true, // 是否需要禁止提示
-    };
+    return {};
   },
   props: {
     data: { type: Array },
@@ -37,45 +34,31 @@ export default {
     return (
       <ul class={this.tagClass} style={{ display: this.visitedView.length ? 'block' : 'none' }}>
         {Array.from(this.visitedView).map((tag, i) => [
-          <el-tooltip
-            popper-class={'ns-tag-popper'}
-            effect="light"
-            content={tag.title}
-            disabled={this.isDisabledTooltip}
-          >
-            <li
-              class={['ns-tag-tooltip fl', { 'tag-active': this.isActive(tag.path) }]}
-              key={tag.path}
-              on-mouseover={this.onMouseOver.bind(this, `ns-tag-text-${i}`)}
-              on-click={this.tabsjump.bind(this, tag)}
-            >
-              <el-tag class="ns-tag">
-                <div class="ns-tag-contnet clear">
+          <li class={['tab-tag', { 'tag-active': this.isActive(tag.path) }]} key={tag.path}>
+            <el-tag>
+              <span class="el-tag-contnet">
+                {
                   <img
-                    class={'fl'}
                     src={
                       this.isActive(tag.path)
                         ? require('./image/pageTabs-active@3x.png')
                         : require('./image/pageTabs@3x.png')
                     }
                   />
-                  <div class={'ns-tag-text fl'}>
-                    <span ref={`ns-tag-text-${i}`}> {tag.title}</span>
-                  </div>
-                  <i
-                    class={'el-tag__close el-icon-close fr'}
-                    on-click={this.closeViewTabs.bind(this, tag)}
-                  />
-                </div>
-
-                <div class="ns-tag-mask" />
-              </el-tag>
-            </li>
-          </el-tooltip>,
+                }
+                <span class={'el-tag-text'}> {tag.title}</span>
+              </span>
+            </el-tag>
+            <div class="tab-tag-mask" on-click={this.tabsjump.bind(this, tag)}></div>
+            <i
+              class={'el-tag__close el-icon-close'}
+              on-click={this.closeViewTabs.bind(this, tag)}
+            />
+          </li>,
         ])}
 
         {
-          <div class={'operate-slot fr'}>
+          <div class={'operate-slot'}>
             {this.$slots['operate'] ? (
               <div slot="operate">{this.$slots['operate']}</div>
             ) : this.visitedView.length ? (
@@ -93,7 +76,7 @@ export default {
   methods: {
     //close this tab
     closeViewTabs(view, $event) {
-      stopPropagation($event);
+      $event.preventDefault();
       this.$emit('close-view-tabs', view);
     },
     //close all tabs
@@ -109,21 +92,11 @@ export default {
     },
     //click tab jump
     tabsjump(tag) {
-      console.log('又跳转了');
       if (this.autoJump) {
         this.$router.push({ path: tag.path });
       } else {
         this.$emit('click-view-tabs', tag);
       }
-    },
-
-    // 移入事件: 判断内容的宽度contentWidth是否大于父级的宽度
-    onMouseOver(str) {
-      let parentWidth = this.$refs[str].parentNode.offsetWidth;
-      let contentWidth = this.$refs[str].offsetWidth;
-
-      // 判断是否禁用tooltip功能
-      this.isDisabledTooltip = contentWidth <= parentWidth;
     },
   },
 };

@@ -9,10 +9,21 @@
 
   export default {
     name: 'ns-header-logo',
+    props: {
+      isToggle: { type: Boolean, dafault: true },
+      initLogo: { type: String, dafault: 'normal' },//normal / mini
+    },
     computed: {
       ...mapGetters(['themeColor', 'sideMenuCollapse', 'operatorInfo']),
       logoSrc() {
-        return this.sideMenuCollapse ? this.operatorInfo.operatorLogoMini : this.operatorInfo.operatorLogo;
+        //是否支持 切换 logo
+        if (this.isToggle) {
+          return this.sideMenuCollapse ? this.operatorInfo.operatorLogoMini : this.operatorInfo.operatorLogo;
+        }
+        else {
+          //不支持 切换 logo 情况下的 默认初始化 logo
+          return this.initLogo === 'normal' ? this.operatorInfo.operatorLogo : this.operatorInfo.operatorLogoMini;
+        }
       },
     },
     methods: {

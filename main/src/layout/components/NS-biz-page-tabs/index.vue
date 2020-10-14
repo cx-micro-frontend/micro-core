@@ -134,8 +134,6 @@
           this.$nextTick(
             () => {
 
-              console.log(12638716287361827);
-              console.log(this.initRoute.name);
               //直接跳回到设定的初始页面, 且要刷新该页面
               this.$router.push({ name: this.initRoute.name, params: { noRefresh: true, jumpMode: 'pageTab' } });
 
@@ -159,7 +157,6 @@
        * @returns {String}
        */
       tabJumper(route, isNoRefresh = true) {
-
         //in change tab case => we don't need to refresh page
         this.$router.push({ name: route.name, params: { noRefresh: isNoRefresh, jumpMode: 'pageTab' } });
 
