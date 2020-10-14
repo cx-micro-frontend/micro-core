@@ -10,8 +10,8 @@
   export default {
     name: 'ns-header-logo',
     props: {
-      isToggle: { type: Boolean, dafault: true },
-      initLogo: { type: String, dafault: 'normal' },//normal / mini
+      isToggle: { type: Boolean, default: true },
+      initLogo: { type: String, default: 'normal' },//normal / mini
     },
     computed: {
       ...mapGetters(['themeColor', 'sideMenuCollapse', 'operatorInfo']),
