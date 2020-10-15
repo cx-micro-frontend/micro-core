@@ -2,6 +2,7 @@
 <template>
   <div class="sign-in-box">
     <!--用户名账号登录窗口-->
+    <!--<img :src="operatorInfo.operatorPicture" alt="">-->
     <div class="sign-in-left" :style="{'background-image': 'url(' + operatorInfo.operatorPicture + ')'}">
       <p class="sign-in-title">{{operatorInfo.operatorDesc}}</p>
     </div>

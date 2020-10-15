@@ -41,17 +41,19 @@ const CoverPainting = {
 
       let o = {};
       const imgKeyList = [
-        // 'operatorPicture', //登录页 - 左侧图片（sign in box)
-        // 'operatorBackgroudPic', //登录页 - 大背景图
-        // 'operatorLoginPic',
+        'operatorLogo',
+        'operatorLogoMini',
+        'operatorPicture', //登录页 - 左侧图片（sign in box)
+        'operatorBackgroudPic', //登录页 - 大背景图
       ];
 
       Object.keys(data).forEach(key => {
         if (state.operatorInfo.hasOwnProperty(key)) {
           if (imgKeyList.indexOf(key) !== -1) {
-            o[key] = 'data:image/jpeg;base64,' + data[key];
-          } else {
+            // o[key] = 'data:image/jpeg;base64,' + data[key];
             o[key] = resourcepath(data[key]);
+          } else {
+            o[key] = data[key];
           }
         }
       });
