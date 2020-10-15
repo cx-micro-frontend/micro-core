@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  import { resourcepath } from './utils/library/resource';
+
   const packageJson = require('@ROOT/package.json');
 
   export default {
@@ -19,6 +21,14 @@
     created() {
       this.$store.dispatch('setBrowserInfo'); //设置浏览器信息
       this.$store.dispatch('setOSInfo'); //设置操作系统信息
+
+      // console.log(7817398712893789123);
+      // console.log(resourcepath('D1BuAvp7khWn54c8QBJPkA=='));
+      // console.log(7817398712893789123);
+
+      // 192.168.1.52/api/fastdfs/fastdfs/pictureUrl?fileId=D1BuAvp7khWn54c8QBJPkA==
+
+
     },
     computed: {
       projectName() {

@@ -1,6 +1,6 @@
 <!--login station 中转跳转页面-->
 <template>
-  <div class="login-wrap">
+  <div class="loginTransfer-neap">
     <!--<h1>loading......</h1>-->
     <img src="../../assets/img/loading/loading.gif" alt="loading"/>
   </div>
@@ -47,7 +47,7 @@
   };
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  .login-wrap {
+  .loginTransfer-neap {
     position: relative;
     text-align: center;
     h1 {

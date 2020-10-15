@@ -164,7 +164,12 @@ const User = {
       });
     },
 
-    //单点登录
+    /**
+     * 单点登录
+     * @param commit
+     * @param query
+     * @returns {Promise<any>}
+     */
     ssoLogin({ commit }, query) {
       return new Promise((resolve, reject) => {
         ssoLogin(query)

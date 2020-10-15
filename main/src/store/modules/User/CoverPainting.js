@@ -3,6 +3,7 @@ import {
   getOperatorInfoSimple,
 } from '../../../service/System/Layout/coverPainting';
 import { storageHandle } from '../../../utils/storage/storage';
+import { resourcepath } from '../../../utils/library/resource';
 
 /**
  * get some operator info in Storage
@@ -50,7 +51,7 @@ const CoverPainting = {
           if (imgKeyList.indexOf(key) !== -1) {
             o[key] = 'data:image/jpeg;base64,' + data[key];
           } else {
-            o[key] = data[key];
+            o[key] = resourcepath(data[key]);
           }
         }
       });

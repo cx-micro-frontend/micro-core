@@ -15,13 +15,13 @@ export default [
         meta: { title: '登录页', auth: false, key: 'login', cache: false, type: 'special' },
       },
       {
-        path: 'login-station',
-        component: () => import('../../views/Login/loginStation.vue'),
-        name: 'login-station',
+        path: 'loginTransfer-neap',
+        component: () => import('../../views/Login/loginTransfer-neap.vue'),
+        name: 'loginTransfer-neap',
         meta: {
           title: '登录中转页',
           auth: false,
-          key: 'login-station',
+          key: 'loginTransfer-neap',
           cache: false,
           type: 'special',
         },
