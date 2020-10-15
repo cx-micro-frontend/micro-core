@@ -13,7 +13,7 @@ export const resourcepath = val => {
   if (httpStart || base64Start) {
     return val;
   } else {
-    return `${process.env.BASE_API}/fastdfs/fastdfs/pictureUrl?fileId=${val}`;
+    return `${process.env.BASE_API}/fastdfs/fastdfs/pictureUrl?fileId=${encodeURIComponent(val)}`;
     // return `${window.location.protocol}//${window.location.host}/api/fastdfs/fastdfs/pictureUrl?fileId=${val}`;
   }
 };
