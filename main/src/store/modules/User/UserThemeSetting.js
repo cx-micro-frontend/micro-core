@@ -23,11 +23,6 @@ const UserThemeSetting = {
   mutations: {
     //login and set/store - token info
     SET_THEME_DATA: (state, data) => {
-      console.log(123123123123123);
-      console.log(123123123123123);
-      console.log(data);
-      console.log(123123123123123);
-
       //user information by login
       //Assignment in mutations to change state
       stateAssign(state.userTheme, data, [
