@@ -59,13 +59,12 @@
   } from './index';
   import transform from './mixins/transform';
   import portal from './mixins/portal';
-  import changeDocumentTitle from './mixins/changeDocumentTitle';
   import killPopoverByScroll from './mixins/killPopoverByScroll';
   import expand from '../../expand';
 
   export default {
     name: 'layout',
-    mixins: [transform, portal, changeDocumentTitle, killPopoverByScroll],
+    mixins: [transform, portal, killPopoverByScroll],
     components: { nsHeader, bizSideMenu, bizTabsViews },
     data() {
       return {};
