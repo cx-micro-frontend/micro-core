@@ -12,12 +12,16 @@
 </template>
 
 <script>
-  import { resourcepath } from './utils/library/resource';
+  import changeDocumentTitle from './mixins/Global/DocumentTitle';
+  // import { resourcepath } from './utils/library/resource';
 
   const packageJson = require('@ROOT/package.json');
 
   export default {
     name: 'app',
+
+    mixins: [changeDocumentTitle],
+
     created() {
       this.$store.dispatch('setBrowserInfo'); //设置浏览器信息
       this.$store.dispatch('setOSInfo'); //设置操作系统信息
