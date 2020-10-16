@@ -1,13 +1,9 @@
 <!--登录 - 盒子 - 区域-->
 <template>
-  <div class="sign-in-box">
+  <div class="sign-in-box" :style="{'background-image': 'url(' + operatorInfo.operatorPicture + ')'}">
+    <!--<img src="./operatorPictureAll.png" alt="" style="width: 100%;height: 100%">-->
     <!--用户名账号登录窗口-->
-    <!--<img :src="operatorInfo.operatorPicture" alt="">-->
-    <div class="sign-in-left" :style="{'background-image': 'url(' + operatorInfo.operatorPicture + ')'}">
-      <p class="sign-in-title">{{operatorInfo.operatorDesc}}</p>
-    </div>
     <div class="sign-in-right">
-      <p class="sign-in-title">登录</p>
       <!--登录主体内容部分-->
       <div class="sign-in-main">
         <transition name="custom-classes-transition" enter-active-class="animated slideInLeft" leave-active-class="animated slideOutLeft">
@@ -46,7 +42,6 @@
 
 
       </div>
-
     </div>
   </div>
 </template>
@@ -156,35 +151,77 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .sign-in-main {
-    position: relative;
-    min-height: 360px;
+  //内容区域
+  .sign-in-box {
+    position: absolute;
+
+    width: 1000px;
+    height: 560px;
+
+    top: 50%;
+    left: 50%;
+
+    background: #ffffff no-repeat;
+    background-size: 100% 100%;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+
+    border-radius: 8px;
     overflow: hidden;
 
-    //容器区域
-    .sign-in-main_container {
-      position: absolute;
-      max-width: 400px;
-      width: 70%;
-      padding-left: 15%;
-      padding-right: 15%;
+    transform: translate(-50%, -50%);
 
-      //第三方登录
-      .thirdPartyLogin {
-        margin-top: 80px;
-      }
-      .loginForm {
-        .el-button {
-          margin-top: 15px;
+    //右边（ 登录输入 + 部分文字 )
+    .sign-in-right {
+      width: 56%;
+      height: 100%;
+      margin-left: auto;
+
+      //登录输入部分
+      .sign-in-main {
+        position: relative;
+        height: 100%;
+        margin: 0 30px;
+        padding-top: 180px;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        //容器区域
+        .sign-in-main_container {
+          position: absolute;
+          max-width: 400px;
+          width: 70%;
+          padding-left: 15%;
+          padding-right: 15%;
+
+          //第三方登录
+          .thirdPartyLogin {
+            margin-top: 80px;
+          }
+          .loginForm {
+            .el-button {
+              margin-top: 15px;
+            }
+          }
+          .el-button {
+            width: 100%;
+          }
+
+        }
+
+        //表单部分
+        .ns-form-item {
+          margin-bottom: 16px !important;
+        }
+
+        //按钮
+        .ns-button {
+          font-size: 14px;
+          font-weight: 500;
+          height: 44px;
         }
       }
-      .el-button {
-        width: 100%;
-      }
-
     }
   }
-
 </style>
 
 
