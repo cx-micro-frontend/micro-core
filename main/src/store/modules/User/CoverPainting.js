@@ -28,6 +28,8 @@ const CoverPainting = {
       operatorPicture: '', //登录页 - 左侧图片（sign in box)
       operatorBackgroudPic: '', //登录页 - 大背景图
 
+      qrcodePic: '', //app 下载二维码
+
       operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片 （旧的，即将废弃)
 
       operatorCopyright:
@@ -45,6 +47,7 @@ const CoverPainting = {
         'operatorLogoMini',
         'operatorPicture', //登录页 - 左侧图片（sign in box)
         'operatorBackgroudPic', //登录页 - 大背景图
+        'qrcodePic', //app 下载二维码
       ];
 
       Object.keys(data).forEach(key => {
@@ -97,6 +100,11 @@ const CoverPainting = {
       });
     },
 
+    /**
+     * set operator info in vuex  设置操作员（封面)信息
+     * @param commit
+     * @param data
+     */
     setCoverPainting({ commit }, data) {
       commit('SET_SCOVER_PAINTING', data);
     },

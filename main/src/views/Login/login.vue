@@ -10,7 +10,7 @@
 </template>
 <script>
   import { mapGetters } from 'vuex';
-  import signInBox from './sign-in-box/sign-in-box';
+  import signInBox from './components/sign-in-box/sign-in-box';
 
   export default {
     components: { signInBox },

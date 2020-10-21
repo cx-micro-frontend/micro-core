@@ -73,18 +73,21 @@
         </el-collapse-transition>
 
       </div>
+
       <!--用户手机修改-->
-      <div class="setting-block">
-        <div class="setting-block-content">
-          <div class="line-left">手机绑定</div>
-          <div class="line-right">您的手机为安全手机，可以找回密码，但不能用于登录</div>
-          <div class="line-operation unchecked">
-            <i class="el-icon-warning"></i>
-            <span>未设置</span>
-            <ns-button type="text" @click="setMobile">设置</ns-button>
-          </div>
-        </div>
-      </div>
+      <!--暂时注释掉-->
+      <!--<div class="setting-block">-->
+        <!--<div class="setting-block-content">-->
+          <!--<div class="line-left">手机绑定</div>-->
+          <!--<div class="line-right">您的手机为安全手机，可以找回密码，但不能用于登录</div>-->
+          <!--<div class="line-operation unchecked">-->
+            <!--<i class="el-icon-warning"></i>-->
+            <!--<span>未设置</span>-->
+            <!--<ns-button type="text" @click="setMobile">设置</ns-button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
     </div>
 
     <!--修改头像弹窗-->
