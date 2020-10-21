@@ -1,28 +1,7 @@
 @import 'mixins/index';
+@import 'var/index';
 
-//---------- base color ----------
-$--color-black: #000; //纯黑
-$--color-text-primary: #333333; //重要文字
-$--color-text-regular: #666666; //主力文字色系
-$--color-text-secondary: #999999; //辅助文字颜色
-$--color-text-placeholder: #cccccc; //失效文字颜色
-$--color-text-supply: #e3e3e3; //补充色系
-$--border-color-light: #d9d9d9; //边框颜色-浅
-$--border-color-lighter: #eeeeee; //边框颜色-更浅
-$--background-color-base: #f4f4f4; //base background-color
-$--color-white: #fff; //纯白
 
-//---------- base color ----------
-$--color-primary: #0a7af8;
-$--color-primary-link: #409eff;
-$--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 input / select
-$--color-primary-light: #4097f9; //基础主色-浅色
-
-//---------- theme color ----------
-$--color-success: #16ca37;
-$--color-warning: #ffae00;
-$--color-danger: #ff5131;
-$--color-info: #0a7af8;
 
 //---------- 删选器模块 ----------
 $search-top-height: 36px; //删选器顶部高度
