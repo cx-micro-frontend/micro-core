@@ -4,16 +4,20 @@
     <div class="login-header">
       <!--<img class="login-logo" :src="operatorInfo.operatorLogo" alt="">-->
     </div>
+
     <sign-in-box></sign-in-box>
+
     <div class="login-footer">{{operatorInfo.operatorCopyright}}</div>
+
   </div>
 </template>
 <script>
   import { mapGetters } from 'vuex';
   import signInBox from './components/sign-in-box/sign-in-box';
+  import QRCodeDownLoade from './components/QRCodeDownLoad/QRCodeDownLoad';
 
   export default {
-    components: { signInBox },
+    components: { signInBox, QRCodeDownLoade },
     data() {
       return {
         isDefault: 1,

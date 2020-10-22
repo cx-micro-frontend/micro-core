@@ -6,7 +6,11 @@
     <div class="sign-in-right">
 
       <!--app 下载二维码-->
-      <QRCodeDownLoade></QRCodeDownLoade>
+      <div class="sign-in-qrcode">
+        <ns-qrcode-download></ns-qrcode-download>
+      </div>
+
+
 
       <!--登录主体内容部分-->
       <div class="sign-in-main">
@@ -57,7 +61,6 @@
 
   import multipleEnterpriseList from '../../../../components/NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
   import thirdPartyLogin from '../third-party-login/third-party-login';
-  import QRCodeDownLoade from '../QRCodeDownLoade/QRCodeDownLoade';
 
 
   import { jumpToTnitPage } from '../../../../utils/behavior/index';
@@ -65,7 +68,7 @@
   export default {
     name: 'sign-in-box',
     mixins: [authLogin, cryptoPassWord],
-    components: { multipleEnterpriseList, thirdPartyLogin, QRCodeDownLoade },
+    components: { multipleEnterpriseList, thirdPartyLogin },
     data() {
       return {
         submitLoading: false,//请求加载状态
@@ -180,6 +183,12 @@
       width: 56%;
       height: 100%;
       margin-left: auto;
+
+      .sign-in-qrcode{
+        position: absolute;
+        top: 4px;
+        right: 4px;
+      }
 
       //登录输入部分
       .sign-in-main {
