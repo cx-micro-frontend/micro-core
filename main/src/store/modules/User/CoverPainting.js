@@ -95,6 +95,11 @@ const CoverPainting = {
           const info = res.resultData;
           commit('SET_SCOVER_PAINTING', info);
 
+          commit('SET_LOGIN_INFO', {
+            source: r.source || 'NEAP',
+            loginSettingList: r.loginSettingList || [],
+          });
+
           resolve(info);
         });
       });

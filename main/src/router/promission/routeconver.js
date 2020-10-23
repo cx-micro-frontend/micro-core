@@ -51,8 +51,8 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
 
   const normalRoute = (childRoute, fatherRoute) => {
     const nr = {
-      name: childRoute[keyRefer['routeName']],
-      path: childRoute[keyRefer['routePath']],
+      name: childRoute[keyRefer['routeName']] || 'neap_error__routeName',
+      path: childRoute[keyRefer['routePath']] || 'neap_error__routePath',
       component: createComponent(childRoute, fatherRoute, false),
       injectComponent: createComponent(childRoute, fatherRoute, true),
       meta: {
@@ -78,8 +78,8 @@ function filterAsyncRouter(asyncRouterMap, loopFatherRouter = null) {
       component: Layout,
       children: [
         {
-          name: route[keyRefer['routeName']],
-          path: route[keyRefer['routePath']],
+          name: route[keyRefer['routeName']] || 'neap_error__routeName',
+          path: route[keyRefer['routePath']] || 'neap_error__routePath',
           component: createComponent(route, null, false),
           injectComponent: createComponent(route, null, true),
           meta: {

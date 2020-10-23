@@ -26,16 +26,16 @@
   import keyRefer from '../nav-menu-keyRefer';
 
   import sideMenu from './components/side-menu';
-  import menuNodeProps from '../utils/menuNodeProps';
 
   import menuSlotMixins from './mixins/menu-slot-mixins';
   import sideMenuPalette from './mixins/side-menu-palette';
+  import sideMenuJump from './mixins/side-menu-jump';
 
   import expand from '../../../../../expand';
 
   export default {
     name: 'ns-biz-sideMenu',
-    mixins: [menuSlotMixins, sideMenuPalette],
+    mixins: [menuSlotMixins, sideMenuPalette, sideMenuJump],
     components: { sideMenu },
     data() {
       return {
@@ -109,30 +109,6 @@
       navClick(parame, fn) {
         expand.layout.sidebar.jump(parame, fn);
       },
-
-      /**
-       * judege and router jump
-       */
-      judgeAndJump() {
-        console.log('judgeAndJump-judgeAndJump');
-        const isLeaf = this.currentNode[keyRefer['isLeaf']];
-        const routeName = this.currentNode[keyRefer['routeName']];
-
-
-        //非叶子节点不能点击跳转路由
-        if (!this.currentNode || !isLeaf) return;
-
-        // 剔除侧滑情况
-        if (menuNodeProps.isSlipPage(this.currentNode)) return;
-
-        // 非当前页点击
-        if (this.currentRoute.name !== routeName) {
-
-          //菜单栏 - 跳转目标页面并清除目标页的缓存
-          this.$router.push({ name: routeName, params: { noRefresh: false, jumpMode: 'sideMenu' } }); //jump
-        }
-      },
-
     },
 
   };
@@ -146,6 +122,10 @@
     padding: 10px 0;
     border-right: 1px solid #e6e6e6;
     box-sizing: border-box;
+  }
+
+  .routeCheck-notification {
+
   }
 
 </style>
