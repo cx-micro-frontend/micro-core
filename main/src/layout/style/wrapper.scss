@@ -6,6 +6,7 @@
   //position: absolute;
   width: 100%;
   z-index: 1;
+  margin-top: -$NEAP-header__height;
   .ns-header {
     width: 100%;
     height: $NEAP-header__height;
