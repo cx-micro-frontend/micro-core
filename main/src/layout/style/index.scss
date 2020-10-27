@@ -28,7 +28,12 @@ body {
 ///*布局*/
 #layout {
   height: 100%;
+  padding-top: $NEAP-header__height;
+  box-sizing: border-box;
   overflow: hidden;
+  & > .ns-container {
+    height: 100%;
+  }
 
   @import "./wrapper";
 
