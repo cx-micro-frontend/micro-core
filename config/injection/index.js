@@ -35,6 +35,7 @@ const _BasicInjection = [
     disabled: false,
     // landingRoot: false, //是否注入根目录中
   },
+  //v8\v9等嵌入模块
   {
     module: '非标嵌入模块', //模块中文名称
     repositorie: 'neapInject', //模块唯一标识key
