@@ -1,5 +1,5 @@
 @import "../../../../../style/mixins";
-@import "../../../../../style/var";
+@import "../../../../../style/var/index";
 @import "var";
 //@import "active";
 $backgroundColorHover_dark: rgba(255, 255, 255, .1);
@@ -47,12 +47,13 @@ $backgroundColorHover_bright: rgba(0, 0, 0, .1);
   }
 }
 
-.ns-side-menu {
+ul.ns-side-menu {
   width: $NEAP-side-menu__width--expand;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  border: none;
+  border-right: none;
+
 
   //transition: width 200ms ease-in-out !important;
 
@@ -139,7 +140,7 @@ $backgroundColorHover_bright: rgba(0, 0, 0, .1);
 }
 
 //特殊处理部分 - 菜单非折叠下 - 节点展开的情况下，只标识叶子节点（背景色，字体色），链路父级节点（背景色，字体色 - 不做改变)
-.ns-side-menu {
+ul.ns-side-menu {
   //菜单非折叠下
   &:not(.el-menu--collapse) {
     //节点展开
@@ -153,7 +154,7 @@ $backgroundColorHover_bright: rgba(0, 0, 0, .1);
   }
 }
 
-.ns-side-menu {
+ul.ns-side-menu {
 
   &__bright {
     .el-menu-item {

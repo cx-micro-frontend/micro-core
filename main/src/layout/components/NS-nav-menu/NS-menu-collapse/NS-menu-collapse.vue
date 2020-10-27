@@ -1,9 +1,8 @@
 <template>
-  <div class="ns-menu-collapse">
+  <div class="ns-menu-collapse" @click="toggleCollapse">
     <ns-icon-svg
       class="ns-header__text"
       :icon-class="sideMenuCollapse ? 'neap-zhankai':'neap-shouqi'"
-      @click="toggleCollapse"
     />
   </div>
 </template>
@@ -34,9 +33,6 @@
           data: this.collapseState,
           syncRequest: true,
         });
-
-        // this.$store.dispatch('toggleSideMenuCollapseState', this.collapseState);
-
       },
     },
     created() {

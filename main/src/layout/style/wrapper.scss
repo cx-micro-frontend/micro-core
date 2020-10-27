@@ -1,16 +1,13 @@
-@import '../../style/var';
+@import '../../style/var/index';
 @import '../../style/mixins';
 
 /* ------------  顶部模块 ------------  */
 #header-wrapper {
-  position: absolute;
+  //position: absolute;
   width: 100%;
-  z-index: 2000;
-
-
+  z-index: 1;
   .ns-header {
     width: 100%;
-    min-width: 500px;
     height: $NEAP-header__height;
     line-height: $NEAP-header__height;
     padding-left: $NEAP-header__padding--left;
@@ -91,31 +88,16 @@
 
 /* ------------ 左侧导航栏模块 ------------*/
 #side-menu-wrapper {
-  position: absolute;
-  top: $NEAP-header__height;
-  bottom: 0;
-  left: 0;
-  z-index: 2000;
-
-  //这里需要注释掉
-  //&:hover {
-  //  z-index: 9999;
-  //}
+  z-index: 2;
 }
 
 #page-tabs-wrapper {
-  position: absolute;
-  top: $NEAP-header__height;
-  right: 0;
-  z-index: 1999;
+
 }
 
 /* ------------ 内容 模块 ------------ */
 #main-wrapper {
-  position: absolute;
-  top: $NEAP-header__height + $NEAP-tabs__height;
-  bottom: 1px;
-  right: 0;
+  height: 100%;
   padding: $container_gapT $container_gapR $container_gapB $container_gapL;
   box-sizing: border-box;
   overflow-y: auto;

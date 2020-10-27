@@ -5,45 +5,56 @@
 * @Last Modified time: 2020-05-14 09:18:55
 */
 <template>
+  <!--整体布局-->
   <div
     id="layout"
-    class="app-wrapper clear"
+    class="ns-container is-vertical"
     :class="{
     'is-hide-frame':isInIframe,
     'is-portal':isPortal,
     'is-expand':!sideMenuCollapse,
     'is-collapse':sideMenuCollapse,
   }">
+
     <div id="header-wrapper" class="fl">
       <ns-header></ns-header>
     </div>
 
 
-    <!--侧边栏 - 业务组直接调用封装的侧边栏组件即可 -->
-    <div id="side-menu-wrapper">
-      <biz-side-menu v-if="!isPortal"></biz-side-menu>
-    </div>
+    <section class="ns-container">
 
-    <!--history task-tabs link-->
-    <div id="page-tabs-wrapper">
-      <biz-tabs-views v-if="!isPortal"></biz-tabs-views>
-    </div>
+      <!--左侧（侧边栏） -->
+      <aside id="side-menu-wrapper">
+        <biz-side-menu v-if="!isPortal"></biz-side-menu>
+      </aside>
 
-    <!--工作台模块 - 嵌入路由视图即可 -->
-    <section id="main-wrapper">
-      <!--changing-over  work bench module-->
+      <!--右侧（ tab + main)-->
+      <section class="ns-container is-vertical">
 
-      <neap-injecter-iframe></neap-injecter-iframe>
+        <!--history task-tabs link-->
+        <div id="page-tabs-wrapper">
+          <biz-tabs-views v-if="!isPortal"></biz-tabs-views>
+        </div>
 
-      <transition leave-active-class enter-active-class="out-in">
-        <keep-alive :include="cacheQueue" :exclude="cacheExclude">
-          <router-view :key="key" v-if="isCache"></router-view>
-        </keep-alive>
-      </transition>
+        <!--工作台模块 - 嵌入路由视图即可 -->
+        <section id="main-wrapper">
+          <!--changing-over  work bench module-->
 
-      <transition leave-active-class enter-active-class="out-in">
-        <router-view :key="key" v-if="!isCache"></router-view>
-      </transition>
+          <neap-injecter-iframe></neap-injecter-iframe>
+
+          <transition leave-active-class enter-active-class="out-in">
+            <keep-alive :include="cacheQueue" :exclude="cacheExclude">
+              <router-view :key="key" v-if="isCache"></router-view>
+            </keep-alive>
+          </transition>
+
+          <transition leave-active-class enter-active-class="out-in">
+            <router-view :key="key" v-if="!isCache"></router-view>
+          </transition>
+
+        </section>
+
+      </section>
 
     </section>
 

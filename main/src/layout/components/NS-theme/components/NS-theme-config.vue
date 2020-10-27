@@ -26,6 +26,12 @@
       ></ns-radio>
     </ns-form-item>
 
+    <ns-form-item label="菜单显示" prop="sideMenuTheme">
+      <ns-radio v-model="themeConfigForm.sideMenuCollapse" :options="sideMenuCollapseOption"
+                @change="changeTheme($event,'sideMenuCollapse')"
+      ></ns-radio>
+    </ns-form-item>
+
   </ns-form>
 </template>
 
@@ -45,15 +51,20 @@
           themeColor: this.themeColor,
           bannerCover: this.bannerCover,
           sideMenuTheme: this.sideMenuTheme,
+          sideMenuCollapse: this.sideMenuTheme,
         },
         sideMenuThemeOption: [
           { label: '深色主题', value: 'dark' },
           { label: '浅色主题', value: 'bright' },
         ],
+        sideMenuCollapseOption: [
+          { label: '菜单展开', value: false },
+          { label: '菜单关闭', value: true },
+        ],
       };
     },
     computed: {
-      ...mapGetters(['themeColor', 'bannerCover', 'sideMenuTheme']),
+      ...mapGetters(['themeColor', 'bannerCover', 'sideMenuTheme','sideMenuCollapse']),
     },
     methods: {
       changeTheme(value, prop) {

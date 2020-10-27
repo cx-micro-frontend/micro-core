@@ -1,6 +1,7 @@
 import menuNodeProps from '../../utils/menuNodeProps';
 import keyRefer from '../../nav-menu-keyRefer';
-import { modules } from '../../../../../../dependencies';
+// import { modules } from '../../../../../../dependencies';
+import routefiles from '../../../../../../../injection/config/routefiles';
 
 export default {
   data() {
@@ -19,7 +20,7 @@ export default {
       const templatePath = this.currentNode[keyRefer['templatePath']];
       const hasRouteName = !routePath.indexOf('neap_error__routeName') > -1;
       const hasRoutePath = !routePath.indexOf('neap_error__routePath') > -1;
-      const hasViewTemplate = modules.some(m => m.repositorie === routeName);
+      const hasViewTemplate = routefiles && routefiles.some(m => m.name === routeName);
 
       return {
         checkResult: hasRouteName && hasRoutePath && Boolean(templatePath) && hasViewTemplate,
@@ -67,7 +68,7 @@ export default {
           this.$notify({
             type: 'error',
             customClass: 'routeCheck-notification',
-            duration: 0,
+            duration: 3000,
             onClose: $event => {
               this.isMoreInfo = false;
             },
