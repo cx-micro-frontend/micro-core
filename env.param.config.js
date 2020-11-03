@@ -159,6 +159,7 @@ module.exports = {
     publish: {
       prescript: [
         // 'npm run inject',
+        'npm run fix-memory-limit',
         'npm run clean:lib',
         'npm run build:injecter',
         'npm run build:lib',
