@@ -1,4 +1,4 @@
-const requestHead = {
+const requestHeader = {
   state: {
     base: {
       appId: '07d8737811434732',
@@ -7,4 +7,4 @@ const requestHead = {
   },
 };
 
-export default requestHead;
+export default requestHeader;
