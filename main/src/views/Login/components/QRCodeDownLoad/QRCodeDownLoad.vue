@@ -5,6 +5,7 @@
     :popper-class="popperClassHandle"
     :placement="placement"
     :trigger='trigger'
+    v-if="operatorInfo.qrcodePic"
   >
     <!--弹出框内容部分-->
     <div class="QRCodeDownLoade-main">
@@ -12,7 +13,7 @@
       <slot name="content">
         <img :src="operatorInfo.qrcodePic" alt="">
       </slot>
-      <p @click="toDownload">下载新视窗插件</p>
+      <!--<p @click="toDownload">下载新视窗插件</p>-->
     </div>
 
     <!--入口部分-->
@@ -49,7 +50,10 @@
     },
     methods: {
       toDownload() {
-        window.open('https://www3.zjlcwg.com/BPMSite/ClientSupport/OCXInstall.aspx');
+        //绿城
+        // window.open('https://www3.zjlcwg.com/BPMSite/ClientSupport/OCXInstall.aspx');
+        //新视窗OA
+        window.open('http://oa.new-see.com/BPMSite/ClientSupport/OCXInstall.aspx');
       },
     },
   };
