@@ -2,7 +2,7 @@
 <template>
   <div class="loginTransfer-neap">
     <!--<h1>loading......</h1>-->
-    <img src="../../assets/img/loading/loading.gif" alt="loading"/>
+    <img src="../../assets/img/loading/loading1.gif" alt="loading"/>
   </div>
 </template>
 <script>
@@ -50,16 +50,11 @@
   .loginTransfer-neap {
     position: relative;
     text-align: center;
+    line-height: 100vh;
     h1 {
       font-weight: 400;
       color: #1f2f3d;
       margin: 30px 0 5px -100px;
-    }
-    img {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      margin-left: -100px;
     }
   }
 </style>

@@ -55,6 +55,7 @@ body {
 
   //在嵌套模式下，去掉头，侧边栏，tab页面，内容部分全屏撑开
   &.is-hide-frame {
+    padding-top: 0;
     #header-wrapper,
     #side-menu-wrapper,
     #page-tabs-wrapper {

@@ -79,8 +79,12 @@ export const handleMenuData = menu => {
       if (item[levelKey] === 0) {
         const { name, fullpath } = createSubSystemInitRoute(item);
 
+        //默认取后台返回的 各个子菜单 初始路由值，否则取前端计算的结果
         item[keyRefer['defaultRouteName']] = item[keyRefer['defaultRouteName']] || name;
         item[keyRefer['defaultRoutePath']] = item[keyRefer['defaultRoutePath']] || fullpath;
+
+        // item[keyRefer['defaultRouteName']] = name;
+        // item[keyRefer['defaultRoutePath']] = fullpath;
       }
 
       //add menu id (use to active sign)

@@ -1,6 +1,8 @@
 import { isMultipleEnterprise } from '../../service/System/User/login';
 import { authLogin, multipleAuthLogin, ssoLogin, getMenu } from './reqUtils';
 import { jumpToTnitPage } from '../../utils/behavior';
+import errorPathDistribute from '../../router/promission/errorDistribute';
+import $router from '../../router';
 
 /**
  * mixins - 混入 - 检测是否是多企业账号
@@ -75,9 +77,14 @@ export default {
      * @returns {Promise<void>}
      */
     async ssoLogin(query) {
-      await ssoLogin(query);
-      await getMenu();
-      jumpToTnitPage();
+      const userinfo = await ssoLogin(query);
+
+      if (userinfo) {
+        await getMenu();
+        jumpToTnitPage();
+      } else {
+        $router.push({ path: errorPathDistribute('error_login') });
+      }
     },
   },
 };

@@ -3,7 +3,6 @@ import $store from '../../store/index';
 import { isInAuthwhiteList } from '../whiteList';
 // import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
-import expand from '../../../expand';
 
 let addRouFlag = false;
 

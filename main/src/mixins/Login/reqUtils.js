@@ -1,6 +1,5 @@
-import errorPathDistribute from '../../router/promission/errorDistribute';
+// import errorPathDistribute from '../../router/promission/errorDistribute';
 import $store from '../../store/index';
-import $router from '../../router/index';
 import expand from '../../../expand';
 
 /**
@@ -66,19 +65,19 @@ export const multipleAuthLogin = async query => {
  */
 export const ssoLogin = async query => {
   initHandle('sso');
-  await $store
-    .dispatch('ssoLogin', query)
-    .then(info => {})
-    .catch(_ => {
-      $router.push({ path: errorPathDistribute('error_login') });
+  return $store.dispatch('ssoLogin', query);
 
-      // const referPath = getUrlParam('referPath');
+  // http://localhost:8001/#/front/loginTransfer-neap?referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDMzNjM3NDB9.iFl4dRSt50etEylGDRDnhBrWY4wWIdv68T-5Ya7sBJY&appclientType=pc&appid=
+  // http://localhost:8001/#/front/loginTransfer-neap?referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDQzODE2Njd9.zmLik8REtAsUcrHduQhom3kg_kCDUJzCvDeHhdnR-rs&appclientType=pc&appid=
 
-      // if (referPath) {
-      //   location.href = '//' + referPath;
-      // }
-      // else {
-      //   this.$router.push({ path: '/sso/404' });
-      // }
-    });
+  // http://localhost:8001/#/front/loginTransfer-neap?isShowFrame=false&referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDQzODgzMjh9.s9UWy2wBDaYrEwAL40_pBrb8X9HZY2Upfg5mHFYEO7c&appclientType=pc&appid=
+
+  // const referPath = getUrlParam('referPath');
+
+  // if (referPath) {
+  //   location.href = '//' + referPath;
+  // }
+  // else {
+  //   this.$router.push({ path: '/sso/404' });
+  // }
 };

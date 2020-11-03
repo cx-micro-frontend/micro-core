@@ -1,6 +1,7 @@
 import fetch from '../../../utils/fetch/fetch';
 import qs from 'querystring';
 import { dataFilter } from '../../../utils/fetch/fetchDataType';
+import { getUrlParam } from '../../../utils/library/urlhandle';
 
 /**
  * isMultipleEnterprise 检测是否是多企业账号
@@ -65,6 +66,11 @@ export const ssoLogin = query => {
   return fetch({
     url: '/oauth/sso',
     method: 'post',
+    headers: {
+      //这里需要注意的是： appclientType / appid  大小写有误，只能将错就错，对于取值有变化，需要注意。
+      appId: getUrlParam('appid') || '07d8737811434732',
+      appClientType: getUrlParam('appclientType') || 'pc-test',
+    },
     data: query,
     params: query,
   });
