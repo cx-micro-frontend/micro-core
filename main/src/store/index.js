@@ -12,7 +12,7 @@ import SearchConditions from './modules/Request/SearchConditions';
 import RoleButton from './modules/Role/RoleButton';
 
 //request
-import RequestHead from './modules/Request/RequestHeader';
+import RequestHeader from './modules/Request/RequestHeader';
 import CancelToken from './modules/Request/CancelToken';
 
 //User
@@ -44,7 +44,7 @@ const store = new Vuex.Store({
     RoleButton,
 
     //request
-    RequestHead,
+    RequestHeader,
     CancelToken,
 
     //User
