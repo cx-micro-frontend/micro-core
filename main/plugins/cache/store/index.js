@@ -41,6 +41,7 @@ const Cache = (Vue, options) => {
           }
         }
       },
+
       DEL_ALL_CACHED_VIEWS: state => {
         state.cachedViews = [];
       },
