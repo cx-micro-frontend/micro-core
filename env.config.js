@@ -15,7 +15,7 @@ const dev_env = {
   IP_CONFIG: '"http://192.168.1.20"',
   IFRAME_IP_CONFIG: '"http://192.168.1.52"',
   // BASE_API: '"http://192.168.1.52/api"',
-
+  // BASE_API: '"http://222.76.48.148:6107/api"', //伯恩物业系统
   BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
   // BASE_API: '"http://124.71.162.124:81/api"',//saas 环境
 
