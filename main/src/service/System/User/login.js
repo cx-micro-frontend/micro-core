@@ -69,7 +69,7 @@ export const ssoLogin = query => {
     headers: {
       //这里需要注意的是： appclientType / appid  大小写有误，只能将错就错，对于取值有变化，需要注意。
       appId: getUrlParam('appid') || '07d8737811434732',
-      appClientType: getUrlParam('appclientType') || 'pc-test',
+      appClientType: getUrlParam('appclientType') || 'pc',
     },
     data: query,
     params: query,
