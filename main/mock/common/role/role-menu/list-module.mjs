@@ -10,7 +10,7 @@ const navData = (req, res) => {
     resultCode: '200',
     resultMsg: '操作成功。',
     restLog: null,
-    resultData: single_module_nav_menu,
+    resultData: multiple_module_nav_menu,
   });
 };
 
