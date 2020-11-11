@@ -70,7 +70,7 @@ export const ssoLogin = async query => {
   // http://localhost:8001/#/front/loginTransfer-neap?referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDMzNjM3NDB9.iFl4dRSt50etEylGDRDnhBrWY4wWIdv68T-5Ya7sBJY&appclientType=pc&appid=
   // http://localhost:8001/#/front/loginTransfer-neap?referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDQzODE2Njd9.zmLik8REtAsUcrHduQhom3kg_kCDUJzCvDeHhdnR-rs&appclientType=pc&appid=
 
-  // http://localhost:8001/#/front/loginTransfer-neap?isShowFrame=false&referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDQzODgzMjh9.s9UWy2wBDaYrEwAL40_pBrb8X9HZY2Upfg5mHFYEO7c&appclientType=pc&appid=
+  // http://localhost:8001/#/front/loginTransfer-neap?isShowFrame=false&referRoute=/overview&token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjIiLCJpYXQiOjE2MDQzODgzMjh9.s9UWy2wBDaYrEwAL40_pBrb8X9HZY2Upfg5mHFYEO7c&appclientType=lanlin&appid=
 
   // const referPath = getUrlParam('referPath');
 

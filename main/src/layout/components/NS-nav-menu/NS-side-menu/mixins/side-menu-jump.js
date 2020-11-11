@@ -50,6 +50,18 @@ export default {
       // 剔除侧滑情况
       if (menuNodeProps.isSlipPage(this.currentNode)) return;
 
+      //是否是外链 - 202 - 外链跳转（打开新浏览器窗口）
+      if (menuNodeProps.isOuterLink(this.currentNode)) {
+        window.open(this.currentNode[keyRefer['targetUrl']]);
+        return;
+      }
+
+      //是否是内链 - 201 - 内链跳转（当前页刷新）
+      if (menuNodeProps.isInnerLink(this.currentNode)) {
+        window.location.href = this.currentNode[keyRefer['targetUrl']];
+        return;
+      }
+
       // 非当前页点击
       if (this.currentRoute.name !== routeName) {
         const res = this.jumpCheck();
