@@ -12921,6 +12921,40 @@ export default {
           moduleId: 'FIN',
           childMenus: [],
         },
+        //跳转外链
+        {
+          menuMenuname: '跳转内链', //显示名称
+          funcId: 'innerLink', //func-ID
+          menuIconcls: 'menu-gailan', //图标
+          menuMenusubname: 'innerLink', //路径符号
+          rootMenuSubName: 'other', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
+          routePath: '/innerLink', //前端路由路径（拼接好的全路径）
+          templatePath: '', //资源文件对应路径
+          syStatus: '1', //隐藏与否
+          syLayer: 2, //菜单层级
+          is_leaf: true, //是否为叶子节点
+          url: 'https://www.baidu.com',
+          behavior: '201', //交互/集成模式
+          moduleId: 'OTHER',
+          childMenus: [],
+        },
+        //跳转外链
+        {
+          menuMenuname: '跳转外链', //显示名称
+          funcId: 'outerLink', //func-ID
+          menuIconcls: 'menu-gailan', //图标
+          menuMenusubname: 'outerLink', //路径符号
+          rootMenuSubName: 'other', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
+          routePath: '/outerLink', //前端路由路径（拼接好的全路径）
+          templatePath: '', //资源文件对应路径
+          syStatus: '1', //隐藏与否
+          syLayer: 2, //菜单层级
+          is_leaf: true, //是否为叶子节点
+          url: 'https://www.baidu.com',
+          behavior: '202', //交互/集成模式
+          moduleId: 'OTHER',
+          childMenus: [],
+        },
       ],
     },
   ],
