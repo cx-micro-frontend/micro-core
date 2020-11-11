@@ -9,8 +9,18 @@ module.exports = [
     disabled: false,
   },
 
+  // 设计器组件
   {
-    module: '门户管理',
+    module: '设计器组件',
+    repositorie: 'designer_components',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
+    branch: 'master',
+    isOwner: false,
+    disabled: false,
+  },
+
+  {
+    module: '设计中心',
     repositorie: 'portalManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     isOwner: false,
