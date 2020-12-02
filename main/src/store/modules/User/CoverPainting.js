@@ -96,8 +96,8 @@ const CoverPainting = {
           commit('SET_SCOVER_PAINTING', info);
 
           commit('SET_LOGIN_INFO', {
-            source: r.source || 'NEAP',
-            loginSettingList: r.loginSettingList || [],
+            source: info.source || 'NEAP',
+            loginSettingList: info.loginSettingList || [],
           });
 
           resolve(info);
