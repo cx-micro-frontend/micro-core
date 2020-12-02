@@ -23,15 +23,17 @@ const Precinct = {
     precinctName: _deCryptoPrecinct().precinctName || '',
     organizationId: _deCryptoPrecinct().organizationId || '',
     organizationName: _deCryptoPrecinct().organizationName || '',
+    dimon: _deCryptoPrecinct().organizationName || '',
   },
   mutations: {
     SET_PRECINCT: (state, data) => {
       //Assignment in mutations to change state
       stateAssign(state, data, [
-        'precinctId',
-        'precinctName',
-        'organizationId',
-        'organizationName',
+        'precinctId',//项目id
+        'precinctName',//项目名称
+        'organizationId',//组织id
+        'organizationName',//组织名称
+        'dimon',//维度
       ]);
 
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
@@ -41,7 +43,7 @@ const Precinct = {
       state.precinctName = '';
       state.organizationId = '';
       state.organizationName = '';
-
+      state.dimon = '';
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
     },
 
@@ -50,6 +52,7 @@ const Precinct = {
       state.precinctName = '';
       state.organizationId = '';
       state.organizationName = '';
+      state.dimon = '';
       storageHandle('remove', 'sign_precinct');
     },
   },
