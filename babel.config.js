@@ -24,6 +24,14 @@ module.exports = {
     //     'style': false, // 样式是否也按需加载
     //   },
     // ],
+
+    ['import', {
+      libraryName: 'vant',
+      libraryDirectory: 'es',
+      style: true,
+    }, 'vant'],
+
+
     '@babel/plugin-transform-runtime',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-object-assign',
