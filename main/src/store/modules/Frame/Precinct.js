@@ -23,7 +23,7 @@ const Precinct = {
     precinctName: _deCryptoPrecinct().precinctName || '',
     organizationId: _deCryptoPrecinct().organizationId || '',
     organizationName: _deCryptoPrecinct().organizationName || '',
-    dimon: _deCryptoPrecinct().organizationName || '',
+    dimon: _deCryptoPrecinct().dimon || '',
   },
   mutations: {
     SET_PRECINCT: (state, data) => {
