@@ -2,7 +2,7 @@
   "name": "neap-core",
   "neap-tag": "20201027-g01",
   "version": "0.0.1-10",
-  "description": "neap-test1",
+  "description": "neap-core",
   "author": "Broccoli spring( gcx )",
   "private": false,
   "scripts": {
