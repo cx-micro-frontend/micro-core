@@ -76,7 +76,7 @@ const getters = {
   searchConditions: state => state.Search.conditions,
 
   //requestHead
-  requestHead: state => state.RequestHead.base,
+  requestHead: state => state.RequestHeader.base,
 
   //role
   roleButtonList: state => state.RoleButton.NEAP_roleButtonList,
