@@ -29,11 +29,11 @@ const Precinct = {
     SET_PRECINCT: (state, data) => {
       //Assignment in mutations to change state
       stateAssign(state, data, [
-        'precinctId',//项目id
-        'precinctName',//项目名称
-        'organizationId',//组织id
-        'organizationName',//组织名称
-        'dimon',//维度
+        'precinctId', //项目id
+        'precinctName', //项目名称
+        'organizationId', //组织id
+        'organizationName', //组织名称
+        'dimon', //维度
       ]);
 
       storageHandle('set', 'sign_precinct', JSON.stringify(state));
