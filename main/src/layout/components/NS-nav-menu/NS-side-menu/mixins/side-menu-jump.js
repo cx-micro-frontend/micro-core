@@ -95,7 +95,7 @@ export default {
                   on: {
                     click: $event => {
                       this.isMoreInfo = true;
-                      alert(this.isMoreInfo);
+                      // alert(this.isMoreInfo);
                     },
                   },
                 },
