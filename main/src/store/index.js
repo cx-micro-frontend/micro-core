@@ -28,6 +28,9 @@ import PageInfo from './modules/Common/PageInfo';
 import PageTabs from './modules/Layout/PageTabs';
 import Router from './modules/Router/Router';
 
+//other
+import BizExpand from './modules/BizExpand/BizExpand';
+
 import entrance from '../../../injection/entrance/entrance_core';
 
 Vue.use(Vuex);
@@ -59,6 +62,9 @@ const store = new Vuex.Store({
     PageInfo,
     PageTabs,
     Router,
+
+    //Other
+    BizExpand,
   }),
   getters: Object.assign({}, entrance.model.getters, getters),
 });
