@@ -71,17 +71,18 @@
   import transform from './mixins/transform';
   import portal from './mixins/portal';
   import killPopoverByScroll from './mixins/killPopoverByScroll';
+  import bizDataExpand from './mixins/bizDataExpand';
   import expand from '../../expand';
 
   export default {
     name: 'layout',
-    mixins: [transform, portal, killPopoverByScroll],
+    mixins: [transform, portal, killPopoverByScroll, bizDataExpand],
     components: { nsHeader, bizSideMenu, bizTabsViews },
     data() {
       return {};
     },
     computed: {
-      ...mapGetters([ 'isInIframe', 'sideMenuCollapse']),
+      ...mapGetters(['isInIframe', 'sideMenuCollapse']),
       //全局缓存开关
       isCache() {
         return expand.route.cache;
