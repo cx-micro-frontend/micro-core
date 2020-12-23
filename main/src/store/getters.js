@@ -84,6 +84,9 @@ const getters = {
   roleButtonForm: state => state.RoleButton.NEAP_roleButtonForm,
   roleButtonGrid: state => state.RoleButton.NEAP_roleButtonGrid,
 
+  //other
+  bizExpandData: state => state.BizExpand.bizExpandData, //业务接口数据拓展 - 在全局请求获取部分业务配置数据
+
   //table
   tableHead: state => state.Table.tableHead,
 };
