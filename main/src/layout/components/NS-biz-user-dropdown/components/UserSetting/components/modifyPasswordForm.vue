@@ -42,9 +42,10 @@
        */
       const validatePassword = (rule, value, callback) => {
         if (value) {
-          let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/;
+          // let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/;
+          let reg = /^[\da-zA-Z!@#$%^&*\-()+_]{6,15}$/;
           if (!reg.test(value)) {
-            callback(new Error('请输入6-15位英文和数字混合密码'));
+            callback(new Error('请输入6-15位英文、数字、符号的混合密码'));
           }
           else {
             if (this.modifyPasswordModel.newPassword && this.modifyPasswordModel.repeatPassword) {
