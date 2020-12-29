@@ -28,7 +28,7 @@
         <!--<ns-icon-svg icon-class="jichufuwu-2"></ns-icon-svg>-->
 
         <ns-icon-svg :icon-class="isActiveModule(item,index)?`${item.icon}_active`:item.icon" v-if="item.icon"></ns-icon-svg>
-        <ns-icon-svg :icon-class="isActiveModule(item,index)?`xiangmutuozhan_active`:xiangmutuozhan" v-else></ns-icon-svg>
+        <ns-icon-svg :icon-class="isActiveModule(item,index)?`xiangmutuozhan_active`:`xiangmutuozhan`" v-else></ns-icon-svg>
 
         <p>{{item.moduleName}}</p>
       </div>
