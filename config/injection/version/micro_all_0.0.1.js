@@ -1,5 +1,5 @@
 module.exports = [
-  // 动态门户
+  // 静态20201207门户分支
   {
     module: '门户页',
     repositorie: 'portal',
@@ -9,20 +9,51 @@ module.exports = [
     disabled: false,
   },
 
-  // 设计器组件
+  // 设计中心 - 门户管理
   {
-    module: '设计器组件',
-    repositorie: 'designer_components',
-    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
-    branch: 'master',
+    module: '门户管理',
+    repositorie: 'portalManagement',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
 
+  // 驾驶舱管理
   {
-    module: '设计中心',
-    repositorie: 'portalManagement',
+    module: '驾驶舱管理',
+    repositorie: 'datashowManagement',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
+    isOwner: false,
+    disabled: false,
+  },
+
+  // 设计中心 - 设计器
+  {
+    module: '设计器',
+    repositorie: 'micro_bi_designer',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    isOwner: false,
+    disabled: false,
+  },
+  // 设计中心 - 生成器
+  {
+    module: '生成器',
+    repositorie: 'micro_bi_generator',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    isOwner: false,
+    disabled: false,
+  },
+
+  // 设计中心 - 设计器物料
+  {
+    module: '设计器物料',
+    repositorie: 'micro_bi_packages',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -31,6 +62,7 @@ module.exports = [
     module: '主题设置',
     repositorie: 'themeDesign',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -40,7 +72,7 @@ module.exports = [
     module: '业户',
     repositorie: 'owner',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -50,7 +82,7 @@ module.exports = [
     module: '应收中台组件库',
     repositorie: 'arm_components',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -58,7 +90,7 @@ module.exports = [
     module: '消息管理',
     repositorie: 'messageManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -66,7 +98,7 @@ module.exports = [
     module: '项目管理',
     repositorie: 'service',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -74,7 +106,7 @@ module.exports = [
     module: '票据',
     repositorie: 'bill',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -82,7 +114,7 @@ module.exports = [
     module: '报表',
     repositorie: 'reporting',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -90,7 +122,7 @@ module.exports = [
     module: '退款',
     repositorie: 'refund',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -98,7 +130,7 @@ module.exports = [
     module: '凭证',
     repositorie: 'voucherBatch',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -106,7 +138,7 @@ module.exports = [
     module: '权责应收',
     repositorie: 'power',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -114,7 +146,7 @@ module.exports = [
     module: '仪表',
     repositorie: 'Meter',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -122,7 +154,7 @@ module.exports = [
     module: '计费',
     repositorie: 'charge',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -130,7 +162,7 @@ module.exports = [
     module: '收款',
     repositorie: 'pay',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -138,7 +170,15 @@ module.exports = [
     module: '任务',
     repositorie: 'job',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '业务配置',
+    repositorie: 'config',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -146,7 +186,7 @@ module.exports = [
     module: '概览',
     repositorie: 'overview',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -156,7 +196,7 @@ module.exports = [
     module: '招商租赁',
     repositorie: 'rent',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -166,17 +206,17 @@ module.exports = [
     module: 'soss',
     repositorie: 'soss',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
-    branch: 'V1.0.20201022.ARM.RC',
+    branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
     disabled: false,
   },
 
   //o2o
   {
-    module: '认证管理', //模块中文名称
+    module: '客户审核', //模块中文名称
     repositorie: 'customer', //模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
-    branch: 'master.ARM',
+    branch: 'master',
     isOwner: false, //是否为自有模块
     disabled: false, //是否禁用
   },
@@ -185,18 +225,33 @@ module.exports = [
     module: '公众号配置', //模块中文名称
     repositorie: 'maintenance', //模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
-    branch: 'master.ARM',
+    branch: 'master',
     isOwner: false, //是否为自有模块
     disabled: false, //是否禁用
   },
-
-  //消息提醒
   {
-    module: '消息提醒',
-    repositorie: 'notice',
-    path: 'http://47.96.187.51:3001/NW-frontend/micro_message_management.git',
-    isOwner: false,
-    disabled: false,
+    module: '频道管理', //模块中文名称
+    repositorie: 'message', //模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
+    branch: 'master',
+    isOwner: false, //是否为自有模块
+    disabled: false, //是否禁用
+  },
+  {
+    module: '物业服务', //模块中文名称
+    repositorie: 'repairMessage', //模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
+    branch: 'master',
+    isOwner: false, //是否为自有模块
+    disabled: false, //是否禁用
+  },
+  {
+    module: '邻里中心', //模块中文名称
+    repositorie: 'bbs', //模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
+    branch: 'master',
+    isOwner: false, //是否为自有模块
+    disabled: false, //是否禁用
   },
 
   // 工单
@@ -227,7 +282,22 @@ module.exports = [
     module: '工单报表',
     repositorie: 'servicereport',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '呼叫中心',
+    repositorie: 'callcenter',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
+    isOwner: false,
+    disabled: false,
+  },
 
+  //消息提醒
+  {
+    module: '消息提醒',
+    repositorie: 'notice',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_message_management.git',
     isOwner: false,
     disabled: false,
   },
@@ -275,13 +345,20 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
+  {
+    module: '统计报表',
+    repositorie: 'qualityReport',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
+    isOwner: false,
+    disabled: false,
+  },
 
   //验房
   {
     module: '验房业务组件库',
     repositorie: 'check_house_components',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
@@ -289,7 +366,7 @@ module.exports = [
     module: '细部检查',
     repositorie: 'detailcheck',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
@@ -297,7 +374,7 @@ module.exports = [
     module: '交付',
     repositorie: 'deilver',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
@@ -305,7 +382,7 @@ module.exports = [
     module: '集中交付',
     repositorie: 'focusdeilver',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
@@ -313,7 +390,7 @@ module.exports = [
     module: '验房参数',
     repositorie: 'checkhousepara',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
@@ -321,8 +398,9 @@ module.exports = [
     module: '交验房报表',
     repositorie: 'checkhousereport',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
-    branch: 'v1.0.20201009.basic.RC',
+    branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
     disabled: false,
   },
+
 ];

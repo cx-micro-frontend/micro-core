@@ -43,9 +43,9 @@
     },
     watch: {
       'node.activeTime': {
-        handler(time) {
+        handler(val) {
           if (this.node) {
-            if (['reporting', 'guide'].contains((this.node || {}).menuMenusubname)) {
+            if (['reporting', 'guide'].contains(this.node.menuMenusubname)) {
               this.dialogVisible = true;
               this.showDialogName = this.node.menuMenusubname;
             }

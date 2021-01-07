@@ -1,0 +1,15 @@
+<i class="biz-notification__icon" :class="[ typeClass, iconClass ]" v-if="type || iconClass"></i>
+<div class="biz-notification__group" :class="{ 'is-with-icon': typeClass || iconClass }">
+<div class="biz-notification__title">
+    <h2>{{title}}</h2>
+    <article>xxxxxxx@333.ccxxxxxxxxxxxxxxxxxxxxxxxxomx</article>
+</div>
+
+<div class="biz-notification__content" v-show="message">
+    <slot>
+    <p v-if="!dangerouslyUseHTMLString">{{ message }}</p>
+    <p v-else v-html="message"></p>
+    </slot>
+</div>
+<div class="el-notification__closeBtn el-icon-close" v-if="showClose" @click.stop="close"></div>
+</div>

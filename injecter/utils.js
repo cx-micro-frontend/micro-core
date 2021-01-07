@@ -47,6 +47,64 @@ exports.inJectPath = () => {
 };
 
 /**
+ * create modules group
+ * @param oldModuleList
+ * @returns {Array}
+ */
+exports.createModulesGroup = (oldModuleList = []) => {
+  let newModuleList = [];
+
+  for (let item of oldModuleList) {
+    let path = item.path, branch = item.branch;
+
+    let idx = newModuleList.findIndex(val => {
+      return val.path === path && val.branch === branch;
+    });
+
+    /**
+     * 匹配存在 => 匹配的对象 否则 为空对象
+     * @type {{}}
+     */
+    let resultMap = idx !== -1 ? newModuleList[idx] : {};
+
+    const childItem = {
+      module: item['module'],
+      repositorie: item['repositorie'],
+    };
+
+    //对象为空（ 不存在同属归类的其他兄弟，是第一个 )
+    if (Object.keys(resultMap).length === 0) {
+      let childreModules = [];
+
+      childreModules.push(childItem);
+
+      resultMap['path'] = path;
+      resultMap['branch'] = branch;
+      resultMap['childreModules'] = childreModules;
+      resultMap['childreModulesNames'] = [childreModules[0].module];
+
+      newModuleList.push(resultMap);
+    }
+    //对象不为空 （ 已存在同属归类的其他兄弟 )
+    else {
+      //获取到父亲对象
+      let resultObj = newModuleList[idx] || {};
+
+      const childreModules = resultObj['childreModules'];
+
+      resultMap['childreModulesNames'].push(childItem.module);
+
+      //处理后的父亲无需操作，直接加入儿子即可
+      childreModules.push(childItem);
+    }
+  }
+
+  return newModuleList;
+};
+
+
+
+/**
  * get inject config for neap
  * @returns {module.exports.prod_injection|{modules, modules_sandbox, staticInclude}|{}}
  */
@@ -78,10 +136,6 @@ exports.getMockPath = () => {
     signale.error('No mock local path found in env.param.config.js, replace with \'./mock\' ');
     return './mock';
   }
-};
-
-exports.version = () => {
-  return process.env.VERSION || packageJson.version;
 };
 
 /**
@@ -131,6 +185,10 @@ exports.judgeAndRemove = (path, cb = null) => {
   cb();
 };
 
+exports.version = () => {
+  return process.env.VERSION || packageJson.version;
+};
+
 exports.moduleRename = (name, type) => {
   return 'inject' + '_' + name + '__' + type;
 };
@@ -140,7 +198,6 @@ exports.repositoryName = module => {
 
   return `${namespace}_${module.repositorie}`;
 };
-
 
 exports.sysdate = () => {
   const myDate = new Date();

@@ -74,6 +74,12 @@
                 reportDesc: '统计各个项目的减免情况，包括减免金额、减免流程、减免时间等',
                 show: true,
               },
+              {
+                reportName: '应收款调整表',
+                reportPath: 'shouldPayAdjust',
+                reportDesc: '统计各个项目的应收调整情况',
+                show: true,
+              }
             ],
           },
           {
@@ -92,8 +98,14 @@
                 show: true,
               },
               {
+                reportName: '交房收费明细表',
+                reportPath: 'deliveryChargeDetail',
+                reportDesc: '统计各个项目的收款科目明细情况',
+                show: true,
+              },
+              {
                 reportName: '收银统计表',
-                reportPath: 'chargeCountTable',
+                reportPath: 'cashierStatistics',
                 reportDesc: '统计各个项目预收、清欠等情况',
                 show: true,
               },
@@ -107,6 +119,12 @@
                 reportName: '押金台账',
                 reportPath: 'depositAccount',
                 reportDesc: '统计各个项目的押金收入和支出情况',
+                show: true,
+              },
+              {
+                reportName: '押金台账汇总表',
+                reportPath: 'depositGather',
+                reportDesc: '统计各个项目的押金收入和支出的汇总情况',
                 show: true,
               },
               {
@@ -125,6 +143,12 @@
                 reportName: '静态收缴率统计表',
                 reportPath: 'staticConfiscateRateReport',
                 reportDesc: '统计集团、区域、项目维度的静态收缴率',
+                show: true,
+              },
+              {
+                reportName: '实时收缴率统计表',
+                reportPath: 'actualTimeConfiscateRate',
+                reportDesc: '统计集团、区域、项目维度的实时收缴率',
                 show: true,
               },
               {
@@ -154,6 +178,18 @@
                 reportName: '欠款账龄汇总表',
                 reportPath: 'agingSummaryOfArrearsReport',
                 reportDesc: '统计集团、区域等欠款账龄情况，可下钻看欠款明细',
+                show: true,
+              },
+              {
+                reportName: '客户欠费明细表',
+                reportPath: 'arrearsDetailReport',
+                reportDesc: '统计项目下，所有房产的欠费明细情况',
+                show: true,
+              },
+              {
+                reportName: '年度应收已收欠费明细表',
+                reportPath: 'yearsArrearsReport',
+                reportDesc: '统计年度的应收已收欠费信息',
                 show: true,
               },
             ],
@@ -192,7 +228,7 @@
                 show: true,
               },
               {
-                reportName: '权责收入往来表',
+                reportName: '收入往来表',
                 reportPath: 'rightsAndLiabilitiesReport',
                 reportDesc: '统计集团、区域等权责收入情况',
                 show: true,
@@ -226,6 +262,18 @@
                 reportDesc: '统计某个项目根据收费科目的权责应收明细情况',
                 show: true,
               },
+              {
+                reportName: '权责税率结转单',
+                reportPath: 'powerTaxRateReport',
+                reportDesc: '统计某个项目根据收费科目收入的税率收入情况',
+                show: true,
+              },
+              {
+                reportName: '权责收入往来表',
+                reportPath: 'powerDutiesIncome',
+                reportDesc: '统计集团、区域等权责收入情况',
+                show: true,
+              },
             ],
           },
           {
@@ -244,6 +292,12 @@
                 show: true,
               },
               {
+                reportName: '收费情况表',
+                reportPath: 'chargeCollectionBoenReport',
+                reportDesc: '统计集团、区域、项目不同科目及结算方式的总金额',
+                show: true,
+              },
+              {
                 reportName: '收款情况统计表',
                 reportPath: 'makeCollectionsRateReport',
                 reportDesc: '统计集团、区域、项目统计不同结算方式的笔数、金额等',
@@ -253,6 +307,12 @@
                 reportName: '收款入账情况表',
                 reportPath: 'collectionsEntryRateReport',
                 reportDesc: '统计集团、区域、项目最新交账日期及收款进度及对应的金额',
+                show: true,
+              },
+              {
+                reportName: '票据使用情况表',
+                reportPath: 'billUsedSituation',
+                reportDesc: '统计项目上的票据使用情况',
                 show: true,
               },
               {

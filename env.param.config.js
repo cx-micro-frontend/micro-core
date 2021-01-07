@@ -100,10 +100,11 @@ module.exports = {
     // prescript: ['npm run clean:lib', 'npm run clone'],
 
     prescript: [
-      // 'npm run clean:lib', //清除lib
-      // 'npm run build:injecter', //注入工具的编译
-      // 'npm run inject', //注入业务模块
-      // 'npm run build:lib', //生成lib
+      'npm run clean:lib', //清除lib
+      'npm run build:injecter', //注入工具的编译
+      'npm run inject', //注入业务模块
+      'npm run fix-memory-limit', //开启内存上限
+      'npm run build:lib', //生成lib
     ],
 
     inSandbox: false, //代码是否在沙盒中打包

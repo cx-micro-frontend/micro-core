@@ -10,13 +10,37 @@ const utils = require('./utils');
 const copy_rename = require('./config').copy_rename;
 const osType = os.type(); // system type
 
+/**
+ * clone business repositories
+ */
 exports.cloneRepositories = () => {
+
   //require clone shell script
   const shell_clone = path.resolve(__dirname, './clone.sh');
 
-  const injectmodules = utils.modulesConfig().filter(module => !module.isOwner && !module.disabled);
+  /**
+   * Remove configuration items that not to clone ( isOwner = true || disabled = true )
+   * 删除不用克隆操作的配置项 ( isOwner = true || disabled = true )
+   */
+  const filterModules = utils.modulesConfig().filter(module => !module.isOwner && !module.disabled);
 
-  injectmodules.forEach(module => {
+  /**
+   * Operate the filtered injection configuration sequence - 将过滤过的注入配置数列进行操作：
+   * 1、Clone is classified according to its name and branch path - 依据 clone 路径  和 分支名称 进行 归类拆解
+   * 2、Simplify the classified data - 对归类后的数据进行精简
+   * 后续的clone 操作首先依据clone path 与 clone branch 进行 （大幅减少clone次数)
+   * @type {Array}
+   */
+  const injectModules = utils.createModulesGroup(filterModules);
+
+  /**
+   * 根据所处理的注入配置清单进行循环clone处理，步骤如下：
+   * 1、克隆业务仓库模块代码至临时目录
+   * 2、从零时文件夹中，过滤并复制所需业务模块至最终文件夹中
+   * 3、删除零时文件夹
+   * 4、重复循环
+   */
+  injectModules.forEach(module => {
 
     shell.rm('-rf', utils.inJectPath().repositorie_tmp);
 
@@ -24,10 +48,20 @@ exports.cloneRepositories = () => {
 
     const branch_name = module.branch || 'master';
 
+    //切分模块名 （数组 => 字符转 分割)
+    const module_names = module.childreModulesNames.join(',');
+
+    //clone 计时开始：初始时间
+    const start = process.hrtime.bigint();
+
     //windows operating system
     if (osType === 'Windows_NT') {
-      console.log(`cloning target:" ${module.module} "\n`);
-      shell.exec(`git clone -b ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`);
+
+      console.log(`\x1B[34m Cloning target: ${module_names} \x1B[0m \n`);
+      console.log(`\x1B[32m Cloning branch: ${branch_name} \x1B[0m \n`);
+      console.log(`\x1B[33m Cloning from: ${module.path} \x1B[0m \n`);
+
+      shell.exec(`git clone -b ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp} --depth=1 --progress`);
     }
     else {
       /**
@@ -37,39 +71,48 @@ exports.cloneRepositories = () => {
        * repositorie_tmp => 本地复制路径  BRANCH  branch
        */
       shell.exec(
-        `${shell_clone} ${module.module} ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
+        `${shell_clone} ${module_names} ${branch_name} ${module.path} ${utils.inJectPath().repositorie_tmp}`,
       );
     }
 
-    const repositoryName = utils.repositoryName(module);
+    //clone 计时结束：结束时间
+    const end = process.hrtime.bigint();
+    const difference = ((Number(`${end - start}` + '')) / 1E9).toFixed(2);//Nanosecond to second
 
-    if (fs.existsSync(`${utils.inJectPath().repositorie_tmp}/${repositoryName}`)) {
-      /**
-       * is landing to root path by key - landingRoot
-       * true => root path
-       * 【
-       *    use to load some repositories （system) in root path,
-       *    in this way, we don't to push code to sandbox and clone it back to business module
-       *  】
-       * false / undefined => to injection => repositories path
-       */
+    console.log(`clone done in ${difference} s`);
 
-      if (module.landingRoot) {
-        const targetPath = `${utils.inJectPath().root}/${repositoryName}`;
-        if (fs.existsSync(targetPath)) {
-          shell.rm('-rf', targetPath);
+    const childreModules = module.childreModules;
+
+    childreModules.forEach(childModule => {
+      const repositoryName = utils.repositoryName(childModule);
+
+      if (fs.existsSync(`${utils.inJectPath().repositorie_tmp}/${repositoryName}`)) {
+        /**
+         * is landing to root path by key - landingRoot
+         * true => root path
+         * 【
+         *    use to load some repositories （system) in root path,
+         *    in this way, we don't to push code to sandbox and clone it back to business module
+         *  】
+         * false / undefined => to injection => repositories path
+         */
+        if (module.landingRoot) {
+          const targetPath = `${utils.inJectPath().root}/${repositoryName}`;
+          if (fs.existsSync(targetPath)) {
+            shell.rm('-rf', targetPath);
+          }
+
+          shell.cp('-R', `${utils.inJectPath().repositorie_tmp}/${repositoryName}`, targetPath);
         }
-
-        shell.cp('-R', `${utils.inJectPath().repositorie_tmp}/${repositoryName}`, targetPath);
+        else {
+          shell.cp(
+            '-R',
+            `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
+            `${utils.inJectPath().repositorie}/${repositoryName}`,
+          );
+        }
       }
-      else {
-        shell.cp(
-          '-R',
-          `${utils.inJectPath().repositorie_tmp}/${repositoryName}`,
-          `${utils.inJectPath().repositorie}/${repositoryName}`,
-        );
-      }
-    }
+    });
 
     shell.rm('-rf', utils.inJectPath().repositorie_tmp);
   });

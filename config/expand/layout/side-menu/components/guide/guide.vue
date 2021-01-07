@@ -23,7 +23,7 @@
         class="height33"
         :class="{ notAllowed: hoverItem === 'houseManagement' && !isAllowed }"
         :style="{ left: offsetLeft + 164 + 'px', top: offsetTop + 16 + 'px' }"
-        @click="handleClick('houseManagement', true)"
+        @click="handleClick('houseManagement')"
         @mouseenter.stop="handleMouseEnter('building')"
         @mouseleave="handleMouseLeave"
       ></div>
@@ -31,7 +31,7 @@
         class="height33"
         :class="{ notAllowed: hoverItem === 'houseManagement' && !isAllowed }"
         :style="{ left: offsetLeft + 164 + 'px', top: offsetTop + 64 + 'px' }"
-        @click="handleClick('houseManagement', true)"
+        @click="handleClick('houseManagement')"
         @mouseenter.stop="handleMouseEnter('carport')"
         @mouseleave="handleMouseLeave"
       ></div>
@@ -39,7 +39,7 @@
         class="height33"
         :class="{ notAllowed: hoverItem === 'houseManagement' && !isAllowed }"
         :style="{ left: offsetLeft + 164 + 'px', top: offsetTop + 112 + 'px' }"
-        @click="handleClick('houseManagement', true)"
+        @click="handleClick('houseManagement')"
         @mouseenter.stop="handleMouseEnter('custom')"
         @mouseleave="handleMouseLeave"
       ></div>
@@ -271,11 +271,12 @@
 <script>
   import { mapGetters } from 'vuex';
 
+
   export default {
     name: 'guidance',
     data() {
       return {
-        offsetLeft: 94,
+        offsetLeft: 0,
         offsetTop: 0,
         path: {
           // 项目开通
@@ -306,8 +307,8 @@
           billCollar: '/bill/bill-billcollar', // 票据分配
           billRecord: '/bill/bill-billrecord', // 票据补录
           // 报表
-          houseReport: '/reporting/houseInfoReport', // 房产报表
-          chargeReport: '/reporting/dayClosingReport', // 交账报表
+          houseReport: '/ownerreport/houseInfoReport', // 房产报表
+          chargeReport: '', // 交账报表
           billReport: '', // 票据报表
         },
         isAllowed: true,
@@ -318,35 +319,17 @@
       ...mapGetters(['sideMenu']),
     },
     methods: {
-      handleClick(key, openDialog) {
+      handleClick(key) {
         if (this.hoverItem === key && !this.isAllowed) return;
-        if (openDialog) {
-          this.$emit('change-route', { path: this.path[key], query: { open: 'true' } });
-        } else {
-          this.$emit('change-route', this.path[key]);
-        }
+        this.$emit('change-route', this.path[key]);
       },
       handleMouseEnter(key) {
         this.hoverItem = key;
-        let index = this.path[key].lastIndexOf('/');
-        let firstItem = key === 'buyProduct' ? 'service' : this.path[key].substring(1, index);
-        let secondItem = key === 'buyProduct' ? 'home' : this.path[key].substring(index + 1);
-        for (let i = 0; i < this.sideMenu.length; i++) {
-          let item = this.sideMenu[i];
-          if (item.menuMenusubname === firstItem) {
-            if (item.childMenus.length) {
-              let idx = item.childMenus.findIndex(o => {
-                return o.menuMenusubname === secondItem;
-              });
-              this.isAllowed = idx !== -1;
-            } else {
-              this.isAllowed = item.menuMenusubname === secondItem;
-            }
-            break;
-          } else {
-            this.isAllowed = false;
-          }
-        }
+        this.isAllowed = this.isRouteRole(this.path[key])
+      },
+      isRouteRole(target) {
+        const pageinfoList = this.$store.state.PageInfo.pageinfoList;
+        return pageinfoList.some(info => info.routePath === target || info.name === target);
       },
       handleMouseLeave() {
         this.hoverItem = '';
@@ -384,9 +367,11 @@
     }
 
     .guidance {
-      height: calc(100% - 112px);
+      width: 902px;
+      height: 650px;
       margin-top: 38px;
       position: relative;
+      display: inline-block;
 
       div {
         position: absolute;

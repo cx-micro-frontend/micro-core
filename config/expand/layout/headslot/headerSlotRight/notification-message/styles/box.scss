@@ -1,0 +1,93 @@
+// 消息动画
+.el-notification-leave-active {
+  opacity: 0;
+  /deep/ &.right {
+    transform: translateX(100%);
+  }
+  /deep/ &.left {
+    transform: translateX(-100%);
+  }
+}
+
+.biz-notification__customClass {
+  padding: 8px 210px 10px 13px;
+  justify-content: flex-start;
+  .el-notification__group {
+    margin-left: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    .el-notification__content p {
+      .biz-notification__icon {
+        border-radius: 3px;
+        background-color: #36a3f7;
+        color: white;
+        transition: color 0.8s, background-color 0.8s;
+      }
+    }
+  }
+  .el-notification__content {
+    margin: 0;
+    p {
+      display: flex;
+      width: calc(100% - 60px);
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      // justify-content: space-between;
+      .biz-notification {
+        &__group {
+          width: calc(100% - 80px);
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+        &__title {
+          width: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 25px;
+          color: #303133;
+          margin: 0;
+        
+          h2 {
+            width: 270px;
+            font-size: 15px;
+            overflow: hidden; /*内容超出后隐藏*/
+            text-overflow: ellipsis; /* 超出内容显示为省略号*/
+            white-space: nowrap; /*文本不进行换行*/
+          }
+          article {
+            width: 180px;
+            color: #999;
+            font-size: 14px;
+            padding-left: 5px;
+            overflow: hidden; /*内容超出后隐藏*/
+            text-overflow: ellipsis; /* 超出内容显示为省略号*/
+            white-space: nowrap; /*文本不进行换行*/
+          }
+        }
+        &__content {
+          height: 25px;
+          p {
+            display: inline-block;
+            width: 250px;
+            margin: 0;
+            font-size: 14px;
+            line-height: 25px;
+            overflow: hidden; /*内容超出后隐藏*/
+            text-overflow: ellipsis; /* 超出内容显示为省略号*/
+            white-space: nowrap; /*文本不进行换行*/
+          }
+        }
+        &__icon {
+          height: 40px;
+          width: 40px;
+          font-size: 40px;
+          padding: 5px;
+          color: #36a3f7;
+        }
+      }
+    }
+  }
+}

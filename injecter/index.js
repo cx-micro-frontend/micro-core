@@ -12,6 +12,11 @@ const clone = require('./clone');
 const injection = require('./injection');
 const filesMap = require('./filesMap');
 
+const startMsg = 'Check and create injection directory ....\n';
+const startInjectMsg = 'Start injecting for loading business module ....\n';
+
+signale.start(startMsg);
+
 /**
  * create dir
  * injection =>{ entrance , repositorie }
@@ -24,22 +29,21 @@ utils.judgeAndMkdir(utils.inJectPath().injection, () => {
   shell.chmod(777, utils.inJectPath().injection);
 });
 
-const startMsg = 'Start injecting for loading business module ....\n';
-signale.start(startMsg);
+signale.start(startInjectMsg);
 
 clone.cloneRepositories(); //clone buiness repositories
 
-//get inject list
-//Depending on ( buiness inject config and neap controller config) key( disabled )
+// get inject list
+// Depending on ( buiness inject config and neap controller config) key( disabled )
 const injectList = utils
   .modulesConfig()
   .filter(item =>
     controller[item.repositorie]
       ? !item.disabled && !controller[item.repositorie].disabled
-      : !item.disabled
+      : !item.disabled,
   );
 
-//inject core
+// inject core
 signale.start('Start injecting state manager ...\n');
 injection.injection_core_entry(injectList);
 
