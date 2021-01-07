@@ -31,6 +31,7 @@ Vue.use(cache, {
 });
 
 
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   el: '#app',
