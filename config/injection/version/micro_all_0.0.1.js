@@ -1,10 +1,10 @@
 module.exports = [
-  // 静态20201207门户分支
+  // 碧桂园来访演示 - 门户（支持 多租户+多业态)
   {
     module: '门户页',
     repositorie: 'portal',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_portal.git',
-    branch: 'v1.0.20201207.portal.dynamic.RC',
+    branch: 'v1.0.20210107.portal.dynamic.CountryGarden.RC',
     isOwner: false,
     disabled: false,
   },
@@ -14,7 +14,7 @@ module.exports = [
     module: '门户管理',
     repositorie: 'portalManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -34,7 +34,7 @@ module.exports = [
     module: '设计器',
     repositorie: 'micro_bi_designer',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -43,26 +43,34 @@ module.exports = [
     module: '生成器',
     repositorie: 'micro_bi_generator',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
-
   // 设计中心 - 设计器物料
   {
     module: '设计器物料',
     repositorie: 'micro_bi_packages',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
 
+  // 表单设计管理
+  {
+    module: '表单设计管理',
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
+    repositorie: 'formDesign',
+    isOwner: false,
+    disabled: false,
+  },
   {
     module: '主题设置',
     repositorie: 'themeDesign',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.1.20201214.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -253,7 +261,6 @@ module.exports = [
     isOwner: false, //是否为自有模块
     disabled: false, //是否禁用
   },
-
   // 工单
   {
     module: '工单业务组件库',
@@ -354,6 +361,7 @@ module.exports = [
   },
 
   //验房
+
   {
     module: '验房业务组件库',
     repositorie: 'check_house_components',
@@ -402,5 +410,4 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
-
 ];
