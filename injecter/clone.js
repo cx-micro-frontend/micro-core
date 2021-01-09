@@ -77,9 +77,9 @@ exports.cloneRepositories = () => {
 
     //clone 计时结束：结束时间
     const end = process.hrtime.bigint();
-    const difference = ((Number(`${end - start}` + '')) / 1E9).toFixed(2);//Nanosecond to second
+    const timeInterval = ((Number(`${end - start}` + '')) / 1E9).toFixed(2);//Nanosecond to second
 
-    console.log(`clone done in ${difference} s`);
+    console.log(`clone done in ${timeInterval} s`);
 
     const childreModules = module.childreModules;
 
