@@ -1,6 +1,6 @@
 import { setMessageRead, setMessageSetting } from './service/service';
 
-import postDeskTop from './mixins/post-desktop'
+import postDeskTop from './mixins/post-desktop';
 import { Notification } from 'element-ui';
 import './styles/box.scss';
 

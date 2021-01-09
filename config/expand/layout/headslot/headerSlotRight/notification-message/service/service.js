@@ -29,7 +29,7 @@ export function setMessageRead(
 
 /**
  * 对消息进行处理
- * @param {object} data 
+ * @param {object} data
  */
 export function setMessageSetting(
   data = {

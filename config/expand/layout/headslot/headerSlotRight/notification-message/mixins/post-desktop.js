@@ -1,11 +1,11 @@
-import Push from 'push.js'
+import Push from 'push.js';
 export default {
   methods: {
     /**
      * @description: 桌面推送
      */
     pushMessage(message) {
-      const bizParameters = JSON.parse(message.bizParameters)
+      const bizParameters = JSON.parse(message.bizParameters);
       Push.create(message.title, {
         body: message.content,
         requireInteraction: true,
@@ -18,7 +18,7 @@ export default {
         // onError():回调，当通知抛出错误的时候触发,
         // onShow():回调，当显示通知的时候触发,
         timeout: message.stickDuration * 1000, //通知自动关闭的时间，毫秒
-      })
+      });
     },
   },
   created() {

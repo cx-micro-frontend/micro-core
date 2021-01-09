@@ -1,84 +1,84 @@
 //---------------------------通用函数--------------------------------
 /***
-***UTF8&Base64位编码
-***
-***/
-const _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-export const encode = (input) => {
-	var output = "";
-	var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-	var i = 0;
+ ***UTF8&Base64位编码
+ ***
+ ***/
+const _keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+export const encode = input => {
+  var output = '';
+  var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+  var i = 0;
 
-   input = _utf8_encode(input);
+  input = _utf8_encode(input);
   // input = Utf8ToUnicode(input)
-	while (i < input.length) {
+  while (i < input.length) {
+    chr1 = input.charCodeAt(i++);
+    chr2 = input.charCodeAt(i++);
+    chr3 = input.charCodeAt(i++);
 
-		chr1 = input.charCodeAt(i++);
-		chr2 = input.charCodeAt(i++);
-		chr3 = input.charCodeAt(i++);
+    enc1 = chr1 >> 2;
+    enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+    enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+    enc4 = chr3 & 63;
 
-		enc1 = chr1 >> 2;
-		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-		enc4 = chr3 & 63;
+    if (isNaN(chr2)) {
+      enc3 = enc4 = 64;
+    } else if (isNaN(chr3)) {
+      enc4 = 64;
+    }
 
-		if (isNaN(chr2)) {
-			enc3 = enc4 = 64;
-		} else if (isNaN(chr3)) {
-			enc4 = 64;
-		}
+    output =
+      output +
+      _keyStr.charAt(enc1) +
+      _keyStr.charAt(enc2) +
+      _keyStr.charAt(enc3) +
+      _keyStr.charAt(enc4);
+  }
 
-		output = output + _keyStr.charAt(enc1) + _keyStr.charAt(enc2) + _keyStr.charAt(enc3) + _keyStr.charAt(enc4);
-
-	}
-
-	return output;
-}
-
-/***
-***UTF8&Base64位解码
-***
-***/
-export const decode = (input) => {
-	var output = "";
-	var chr1, chr2, chr3;
-	var enc1, enc2, enc3, enc4;
-	var i = 0;
-
-	input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-
-	while (i < input.length) {
-
-		enc1 = _keyStr.indexOf(input.charAt(i++));
-		enc2 = _keyStr.indexOf(input.charAt(i++));
-		enc3 = _keyStr.indexOf(input.charAt(i++));
-		enc4 = _keyStr.indexOf(input.charAt(i++));
-
-		chr1 = (enc1 << 2) | (enc2 >> 4);
-		chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-		chr3 = ((enc3 & 3) << 6) | enc4;
-
-		output = output + String.fromCharCode(chr1);
-
-		if (enc3 != 64) {
-			output = output + String.fromCharCode(chr2);
-		}
-		if (enc4 != 64) {
-			output = output + String.fromCharCode(chr3);
-		}
-
-	}
-
-	output = _utf8_decode(output);
-
-	return output;
-
-}
+  return output;
+};
 
 /***
-***UTF—8编码
-***
-***/
+ ***UTF8&Base64位解码
+ ***
+ ***/
+export const decode = input => {
+  var output = '';
+  var chr1, chr2, chr3;
+  var enc1, enc2, enc3, enc4;
+  var i = 0;
+
+  input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+
+  while (i < input.length) {
+    enc1 = _keyStr.indexOf(input.charAt(i++));
+    enc2 = _keyStr.indexOf(input.charAt(i++));
+    enc3 = _keyStr.indexOf(input.charAt(i++));
+    enc4 = _keyStr.indexOf(input.charAt(i++));
+
+    chr1 = (enc1 << 2) | (enc2 >> 4);
+    chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+    chr3 = ((enc3 & 3) << 6) | enc4;
+
+    output = output + String.fromCharCode(chr1);
+
+    if (enc3 != 64) {
+      output = output + String.fromCharCode(chr2);
+    }
+    if (enc4 != 64) {
+      output = output + String.fromCharCode(chr3);
+    }
+  }
+
+  output = _utf8_decode(output);
+
+  return output;
+};
+
+/***
+ ***UTF—8编码
+ ***
+ ***/
 // export const _utf8_encode = (string) => {
 // 	string = string.replace(/\r\n/g, "\n");
 // 	var utftext = "";
@@ -106,45 +106,41 @@ export const decode = (input) => {
 // }
 
 /***
-***UTF—8解码
-***
-***/
-export const _utf8_decode = (utftext) => {
-	var string = "";
-	var i = 0;
-	var c = 0;
-	var c3 = 0;
-	var c2 = 0;
+ ***UTF—8解码
+ ***
+ ***/
+export const _utf8_decode = utftext => {
+  var string = '';
+  var i = 0;
+  var c = 0;
+  var c3 = 0;
+  var c2 = 0;
 
-	while (i < utftext.length) {
+  while (i < utftext.length) {
+    c = utftext.charCodeAt(i);
 
-		c = utftext.charCodeAt(i);
+    if (c < 128) {
+      string += String.fromCharCode(c);
+      i++;
+    } else if (c > 191 && c < 224) {
+      c2 = utftext.charCodeAt(i + 1);
+      string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+      i += 2;
+    } else {
+      c2 = utftext.charCodeAt(i + 1);
+      c3 = utftext.charCodeAt(i + 2);
+      string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+      i += 3;
+    }
+  }
 
-		if (c < 128) {
-			string += String.fromCharCode(c);
-			i++;
-		}
-		else if ((c > 191) && (c < 224)) {
-			c2 = utftext.charCodeAt(i + 1);
-			string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
-			i += 2;
-		}
-		else {
-			c2 = utftext.charCodeAt(i + 1);
-			c3 = utftext.charCodeAt(i + 2);
-			string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
-			i += 3;
-		}
-
-	}
-
-	return string;
-}
+  return string;
+};
 
 /***
-***UTF—8转变成Unicode
-***
-***/
+ ***UTF—8转变成Unicode
+ ***
+ ***/
 // export const Utf8ToUnicode = (strUtf8) =>
 // {
 //         var bstr = "";
@@ -209,36 +205,32 @@ export const _utf8_decode = (utftext) => {
 //         return bstr;
 // }
 //通用取当前时间
-export const CurentTime = ()=>{ 
-	var now = new Date();
-			 
-	var year = now.getFullYear();       //年
-	var month = now.getMonth() + 1;     //月
-	var day = now.getDate();            //日
-			
-	var hh = now.getHours();            //时
-	var mm = now.getMinutes();          //分
-	var sc = now.getSeconds(); //获取当前秒数(0-59) 
-	var scc = now.getMilliseconds(); //获取当前毫秒数(0-999) 
-	var clock = year + "-";
-			 
-	if(month < 10)
-		 clock += "0";
-			 
-		 clock += month + "-";
-			 
-	if(day < 10)
-		 clock += "0";
-					 
-		 clock += day + " ";
-			 
-	if(hh < 10)
-		 clock += "0";    
-		 clock += hh + ":";
-		 if (mm < 10) clock += '0'; 
-		clock += mm +":";
-	 if (sc < 10) 
-		 clock += '0'; 
-		clock += sc +" "+scc;  
-		 return(clock); 
-} 
+export const CurentTime = () => {
+  var now = new Date();
+
+  var year = now.getFullYear(); //年
+  var month = now.getMonth() + 1; //月
+  var day = now.getDate(); //日
+
+  var hh = now.getHours(); //时
+  var mm = now.getMinutes(); //分
+  var sc = now.getSeconds(); //获取当前秒数(0-59)
+  var scc = now.getMilliseconds(); //获取当前毫秒数(0-999)
+  var clock = year + '-';
+
+  if (month < 10) clock += '0';
+
+  clock += month + '-';
+
+  if (day < 10) clock += '0';
+
+  clock += day + ' ';
+
+  if (hh < 10) clock += '0';
+  clock += hh + ':';
+  if (mm < 10) clock += '0';
+  clock += mm + ':';
+  if (sc < 10) clock += '0';
+  clock += sc + ' ' + scc;
+  return clock;
+};
