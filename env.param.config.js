@@ -16,7 +16,6 @@ module.exports = {
       // 'npm run clean:lib', //清除lib
       // 'npm run build:injecter', //注入工具的编译
       // 'npm run inject', //注入业务模块
-      // 'npm run fix-memory-limit', //开启内存上限
       // 'npm run build:lib', //生成lib
     ],
 
@@ -95,6 +94,7 @@ module.exports = {
     },
     prodCssSourceMap: false,
     prodJsSourceMap: false,
+    clearWarning: false, //在控制台去除警告日志
     dropConsole: false, //去除 console
     dropDebugger: true, //去除 debugger
     // prescript: ['npm run clean:lib', 'npm run clone'],
@@ -103,7 +103,6 @@ module.exports = {
       'npm run clean:lib', //清除lib
       'npm run build:injecter', //注入工具的编译
       'npm run inject', //注入业务模块
-      'npm run fix-memory-limit', //开启内存上限
       'npm run build:lib', //生成lib
     ],
 
