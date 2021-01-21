@@ -1,6 +1,7 @@
 const path = require('path');
 const config = require(path.resolve('env.param.config'));
 
+
 /**
  * Original full injection configuration list
  * 原始全量注入配置清单 - 来自于项目注入配置文件
@@ -30,19 +31,25 @@ const parse = str => {
   return typeof str === 'string' ? JSON.parse(str) : {};
 };
 
-console.log('所传递的环境变量：', process.env.MODULES_LIST);
-console.log('所传递的环境变量：', process.env.SUBSYSTEMS_LIST);
-console.log('所传递的环境变量：', process.env.HEADTOOLBAR_LIST);
+
+//环境变量取值：
+const ENV_SUBSYSTEMS_LIST = process.env.SUBSYSTEMS_LIST;
+const ENV_MODULES_LIST = process.env.MODULES_LIST;
+const ENV_HEADTOOLBAR_LIST = process.env.HEADTOOLBAR_LIST;
 
 let SUBSYSTEMS_LIST = null;
 let MODULES_LIST = null;
+let HEADTOOLBAR_LIST = null;
 
 try {
   // 子系统（一级大模块系统，如：arm，system，check_house，work_order等)
-  SUBSYSTEMS_LIST = parse(process.env.SUBSYSTEMS_LIST).SUBSYSTEMS_LIST;
+  SUBSYSTEMS_LIST = ENV_SUBSYSTEMS_LIST ? parse(ENV_SUBSYSTEMS_LIST).SUBSYSTEMS_LIST : null;
 
-// 子模块（内部子模块，如：owner，system，charge，report 等)
-  MODULES_LIST = parse(process.env.MODULES_LIST).MODULES_LIST;
+  // 子模块（内部子模块，如：owner，system，charge，report 等)
+  MODULES_LIST = ENV_MODULES_LIST ? parse(ENV_MODULES_LIST).MODULES_LIST : null;
+
+  // 子模块（内部子模块，如：owner，system，charge，report 等)
+  HEADTOOLBAR_LIST = ENV_HEADTOOLBAR_LIST ? parse(ENV_HEADTOOLBAR_LIST).HEADTOOLBAR_LIST : null;
 }
 catch (e) {
   console.log(`\x1B[91m 
@@ -50,6 +57,7 @@ catch (e) {
 - jekines脚本配置中关于子系统和子模块的按需配置有误，请检查.
 \x1B[0m \n`);
 }
+
 
 /**
  * 输出 处理后 的 微前端注入配置项目
@@ -65,9 +73,19 @@ module.exports = (() => {
   //是否处于 jekines 构建的环境下
   const isJenkins = process.env.PROD_ENV === 'jenkins';
 
-
   if (isJenkins) {
 
+    console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
+    console.info('所传递的环境变量：', ENV_MODULES_LIST);
+    console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
+
+    console.table([
+      { key: '子系统过滤抽取配置:', value: SUBSYSTEMS_LIST },
+      { key: '子模块过滤抽取配置:', value: MODULES_LIST },
+      { key: '头部工具条过滤抽取配置:', value: HEADTOOLBAR_LIST },
+    ]);
+
+    //子系统抽取配置 与 子模块抽取配置 都不存在时，默认为：不需要过滤，直接输出全量配置的微前端注入配置项目
     if (!SUBSYSTEMS_LIST && !MODULES_LIST) {
       return injectConfigList();
     }
