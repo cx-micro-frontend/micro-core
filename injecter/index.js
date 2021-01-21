@@ -6,9 +6,10 @@ const fs = require('fs');
 const shell = require('shelljs');
 const signale = require('signale');
 const utils = require('./utils');
+const injectConfigList = require('./injectionList/index');//输出 处理后 的 微前端注入配置项目
 const controller = require(path.resolve(__dirname, './controller/controller'));
 
-const clone = require('./clone');
+const clone = require('./clone/index');
 const injection = require('./injection');
 const filesMap = require('./filesMap');
 
@@ -35,13 +36,9 @@ clone.cloneRepositories(); //clone buiness repositories
 
 // get inject list
 // Depending on ( buiness inject config and neap controller config) key( disabled )
-const injectList = utils
-  .modulesConfig()
-  .filter(item =>
-    controller[item.repositorie]
-      ? !item.disabled && !controller[item.repositorie].disabled
-      : !item.disabled,
-  );
+const injectList = injectConfigList.filter(item =>
+  controller[item.repositorie] ? !controller[item.repositorie].disabled : true,
+);
 
 // inject core
 signale.start('Start injecting state manager ...\n');

@@ -6,8 +6,9 @@ const join = require('path').join;
 const fs = require('fs');
 const os = require('os');
 const shell = require('shelljs');
-const utils = require('./utils');
-const copy_rename = require('./config').copy_rename;
+const utils = require('../utils');
+const injectConfigList = require('../injectionList/index');//输出 处理后 的 微前端注入配置项目
+const copy_rename = require('../config').copy_rename;
 const osType = os.type(); // system type
 
 /**
@@ -19,10 +20,10 @@ exports.cloneRepositories = () => {
   const shell_clone = path.resolve(__dirname, './clone.sh');
 
   /**
-   * Remove configuration items that not to clone ( isOwner = true || disabled = true )
-   * 删除不用克隆操作的配置项 ( isOwner = true || disabled = true )
+   * Remove configuration items that not to clone ( isOwner = true )
+   * 删除不用克隆操作的配置项 ( isOwner = true )
    */
-  const filterModules = utils.modulesConfig().filter(module => !module.isOwner && !module.disabled);
+  const filterModules = injectConfigList.filter(module => !module.isOwner);
 
   /**
    * Operate the filtered injection configuration sequence - 将过滤过的注入配置数列进行操作：

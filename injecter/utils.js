@@ -113,19 +113,6 @@ exports.getInjectConfig = () => {
 };
 
 /**
- * get modules config list to inject
- * @returns {*}
- */
-exports.modulesConfig = () => {
-  const inSandBox = config.prod.inSandbox;
-  if (inSandBox) {
-    return config.prod_injection.modules_sandbox.modules || [];
-  } else {
-    return config.prod_injection.modules || [];
-  }
-};
-
-/**
  * get config ( env.param.config.js )
  * @returns {any | {}}
  */

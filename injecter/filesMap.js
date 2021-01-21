@@ -5,12 +5,13 @@ const path = require('path');
 const fs = require('fs');
 const join = require('path').join;
 const utils = require('./utils');
+const injectConfigList = require('./injectionList/index');//输出 处理后 的 微前端注入配置项目
+
 
 const getRouteFiles = () => {
   let routeFiles = [];
 
-  utils.modulesConfig().forEach(module => {
-    if (module.disabled) return;
+  injectConfigList.forEach(module => {
 
     const repositoryName = utils.repositoryName(module);
 

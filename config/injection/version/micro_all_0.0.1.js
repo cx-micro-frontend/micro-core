@@ -78,7 +78,8 @@ module.exports = [
   //业户
   {
     module: '业户',
-    repositorie: 'owner',
+    repositorie: 'owner', //模块唯一标识key
+    rootRepositorie: 'arm', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -89,6 +90,7 @@ module.exports = [
   {
     module: '应收中台组件库',
     repositorie: 'arm_components',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -97,6 +99,7 @@ module.exports = [
   {
     module: '消息管理',
     repositorie: 'messageManagement',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -105,6 +108,7 @@ module.exports = [
   {
     module: '项目管理',
     repositorie: 'service',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -113,6 +117,7 @@ module.exports = [
   {
     module: '票据',
     repositorie: 'bill',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -121,6 +126,7 @@ module.exports = [
   {
     module: '报表',
     repositorie: 'reporting',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -129,6 +135,7 @@ module.exports = [
   {
     module: '退款',
     repositorie: 'refund',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -137,6 +144,7 @@ module.exports = [
   {
     module: '凭证',
     repositorie: 'voucherBatch',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -145,6 +153,7 @@ module.exports = [
   {
     module: '权责应收',
     repositorie: 'power',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -153,6 +162,7 @@ module.exports = [
   {
     module: '仪表',
     repositorie: 'Meter',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -161,6 +171,7 @@ module.exports = [
   {
     module: '计费',
     repositorie: 'charge',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -169,6 +180,7 @@ module.exports = [
   {
     module: '收款',
     repositorie: 'pay',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -177,6 +189,7 @@ module.exports = [
   {
     module: '任务',
     repositorie: 'job',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -185,6 +198,7 @@ module.exports = [
   {
     module: '业务配置',
     repositorie: 'config',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -193,6 +207,7 @@ module.exports = [
   {
     module: '概览',
     repositorie: 'overview',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -203,6 +218,7 @@ module.exports = [
   {
     module: '招商租赁',
     repositorie: 'rent',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -213,6 +229,7 @@ module.exports = [
   {
     module: 'soss',
     repositorie: 'soss',
+    rootRepositorie: 'arm',
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
@@ -223,6 +240,7 @@ module.exports = [
   {
     module: '客户审核', //模块中文名称
     repositorie: 'customer', //模块唯一标识key
+    rootRepositorie: 'o2o_admin', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
     branch: 'master',
     isOwner: false, //是否为自有模块
@@ -232,6 +250,7 @@ module.exports = [
   {
     module: '公众号配置', //模块中文名称
     repositorie: 'maintenance', //模块唯一标识key
+    rootRepositorie: 'o2o_admin', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
     branch: 'master',
     isOwner: false, //是否为自有模块
@@ -240,6 +259,7 @@ module.exports = [
   {
     module: '频道管理', //模块中文名称
     repositorie: 'message', //模块唯一标识key
+    rootRepositorie: 'o2o_admin', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
     branch: 'master',
     isOwner: false, //是否为自有模块
@@ -248,6 +268,7 @@ module.exports = [
   {
     module: '物业服务', //模块中文名称
     repositorie: 'repairMessage', //模块唯一标识key
+    rootRepositorie: 'o2o_admin', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
     branch: 'master',
     isOwner: false, //是否为自有模块
@@ -256,6 +277,7 @@ module.exports = [
   {
     module: '邻里中心', //模块中文名称
     repositorie: 'bbs', //模块唯一标识key
+    rootRepositorie: 'o2o_admin', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_o2o_admin', //clone 路径
     branch: 'master',
     isOwner: false, //是否为自有模块
@@ -265,22 +287,23 @@ module.exports = [
   {
     module: '工单业务组件库',
     repositorie: 'work_order_components',
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
-
     isOwner: false,
     disabled: false,
   },
-  {
-    module: '工单列表',
-    repositorie: 'servicemanage',
-    path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
-
-    isOwner: false,
-    disabled: false,
-  },
+  // {
+  //   module: '工单列表',
+  //   repositorie: 'servicemanage',
+  //   rootRepositorie:'work_order',//根模块唯一标识key
+  //   path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
+  //   isOwner: false,
+  //   disabled: false,
+  // },
   {
     module: '工单设置',
     repositorie: 'servicesetup',
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
@@ -288,6 +311,7 @@ module.exports = [
   {
     module: '工单报表',
     repositorie: 'servicereport',
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
@@ -295,6 +319,7 @@ module.exports = [
   {
     module: '呼叫中心',
     repositorie: 'callcenter',
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
@@ -304,6 +329,7 @@ module.exports = [
   {
     module: '消息提醒',
     repositorie: 'notice',
+    rootRepositorie: 'message_management', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_message_management.git',
     isOwner: false,
     disabled: false,
@@ -313,6 +339,7 @@ module.exports = [
   {
     module: '品质组件库',
     repositorie: 'quality_components',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -320,6 +347,7 @@ module.exports = [
   {
     module: '项目自查',
     repositorie: 'projectCheck',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -327,6 +355,7 @@ module.exports = [
   {
     module: '品质核查',
     repositorie: 'qualityCheck',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -334,6 +363,7 @@ module.exports = [
   {
     module: '专项抽查',
     repositorie: 'specialCheck',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -341,6 +371,7 @@ module.exports = [
   {
     module: '品质设置',
     repositorie: 'qualitSeting',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -348,6 +379,7 @@ module.exports = [
   {
     module: '随手拍',
     repositorie: 'randomTask',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
@@ -355,16 +387,17 @@ module.exports = [
   {
     module: '统计报表',
     repositorie: 'qualityReport',
+    rootRepositorie: 'quality', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_quality',
     isOwner: false,
     disabled: false,
   },
 
   //验房
-
   {
     module: '验房业务组件库',
     repositorie: 'check_house_components',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
@@ -373,6 +406,7 @@ module.exports = [
   {
     module: '细部检查',
     repositorie: 'detailcheck',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
@@ -381,6 +415,7 @@ module.exports = [
   {
     module: '交付',
     repositorie: 'deilver',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
@@ -389,6 +424,7 @@ module.exports = [
   {
     module: '集中交付',
     repositorie: 'focusdeilver',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
@@ -397,6 +433,7 @@ module.exports = [
   {
     module: '验房参数',
     repositorie: 'checkhousepara',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
@@ -405,6 +442,7 @@ module.exports = [
   {
     module: '交验房报表',
     repositorie: 'checkhousereport',
+    rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
     isOwner: false,
