@@ -106,7 +106,6 @@ module.exports = {
       'npm run clean:lib', //清除lib
       'npm run build:injecter', //注入工具的编译
       'npm run inject', //注入业务模块
-      'npm run build:lib', //生成lib
     ],
 
     inSandbox: false, //代码是否在沙盒中打包
@@ -162,11 +161,9 @@ module.exports = {
   tools: {
     publish: {
       prescript: [
-        // 'npm run inject',
-        // 'npm run fix-memory-limit',
         'npm run clean:lib',
-        'npm run build:injecter',
         'npm run build:lib',
+        'npm run build:injecter',
       ],
     },
     npmUpgradeList: [
