@@ -6,8 +6,8 @@
 #即：一级大模块系统，如：arm，system，check_house，work_order等
 #注意：如果不需要配置，请将下列代码注释掉即可，如果想打全量包，则无需配置任何参数
 #=====================================================================
-SUBSYSTEMS_LIST='"arm","system","check_house","work_order"'
-#SUBSYSTEMS_LIST='"system"'
+#SUBSYSTEMS_LIST='"arm","system","check_house","work_order"'
+SUBSYSTEMS_LIST='"system"'
 
 
 #=====================================================================
