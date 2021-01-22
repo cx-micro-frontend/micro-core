@@ -1,8 +1,10 @@
+//portal,design_center,arm,o2o_admin,work_order,quality,check_house,message_management
 module.exports = [
   // 碧桂园来访演示 - 门户（支持 多租户+多业态)
   {
     module: '门户页',
     repositorie: 'portal',
+    rootRepositorie: 'portal', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_portal.git',
     branch: 'v1.0.20210107.portal.dynamic.CountryGarden.RC',
     isOwner: false,
@@ -13,6 +15,7 @@ module.exports = [
   {
     module: '门户管理',
     repositorie: 'portalManagement',
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -23,6 +26,7 @@ module.exports = [
   {
     module: '驾驶舱管理',
     repositorie: 'datashowManagement',
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -33,6 +37,7 @@ module.exports = [
   {
     module: '设计器',
     repositorie: 'micro_bi_designer',
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -42,6 +47,7 @@ module.exports = [
   {
     module: '生成器',
     repositorie: 'micro_bi_generator',
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -51,6 +57,7 @@ module.exports = [
   {
     module: '设计器物料',
     repositorie: 'micro_bi_packages',
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -60,15 +67,17 @@ module.exports = [
   // 表单设计管理
   {
     module: '表单设计管理',
+    repositorie: 'formDesign', //模块唯一标识key
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
-    repositorie: 'formDesign',
     isOwner: false,
     disabled: false,
   },
   {
     module: '主题设置',
-    repositorie: 'themeDesign',
+    repositorie: 'themeDesign', //模块唯一标识key
+    rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
     isOwner: false,
@@ -90,7 +99,7 @@ module.exports = [
   {
     module: '应收中台组件库',
     repositorie: 'arm_components',
-    rootRepositorie: 'arm',
+    rootRepositorie: 'arm', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro-arm.git',
     branch: 'V1.0.20210107.ARM.RC',
     isOwner: false,
