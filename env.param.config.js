@@ -160,11 +160,7 @@ module.exports = {
 
   tools: {
     publish: {
-      prescript: [
-        'npm run clean:lib',
-        'npm run build:lib',
-        'npm run build:injecter',
-      ],
+      prescript: ['npm run clean:lib', 'npm run build:lib', 'npm run build:injecter'],
     },
     npmUpgradeList: [
       {
