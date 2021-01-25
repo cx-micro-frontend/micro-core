@@ -37,19 +37,25 @@ const ENV_SUBSYSTEMS_LIST = process.env.SUBSYSTEMS_LIST;
 const ENV_MODULES_LIST = process.env.MODULES_LIST;
 const ENV_HEADTOOLBAR_LIST = process.env.HEADTOOLBAR_LIST;
 
+
+console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
+console.info('所传递的环境变量：', ENV_MODULES_LIST);
+console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
+
+
 let SUBSYSTEMS_LIST = null;
 let MODULES_LIST = null;
 let HEADTOOLBAR_LIST = null;
 
 try {
   // 子系统（一级大模块系统，如：arm，system，check_house，work_order等)
-  SUBSYSTEMS_LIST = ENV_SUBSYSTEMS_LIST ? parse(ENV_SUBSYSTEMS_LIST).SUBSYSTEMS_LIST : null;
+  SUBSYSTEMS_LIST = ENV_SUBSYSTEMS_LIST ? ENV_SUBSYSTEMS_LIST.split(",") : null;
 
   // 子模块（内部子模块，如：owner，system，charge，report 等)
-  MODULES_LIST = ENV_MODULES_LIST ? parse(ENV_MODULES_LIST).MODULES_LIST : null;
+  MODULES_LIST = ENV_MODULES_LIST ? ENV_MODULES_LIST.split(",") : null;
 
   // 子模块（内部子模块，如：owner，system，charge，report 等)
-  HEADTOOLBAR_LIST = ENV_HEADTOOLBAR_LIST ? parse(ENV_HEADTOOLBAR_LIST).HEADTOOLBAR_LIST : null;
+  HEADTOOLBAR_LIST = ENV_HEADTOOLBAR_LIST ? ENV_HEADTOOLBAR_LIST.split(","): null;
 }
 catch (e) {
   console.log(`\x1B[91m 
@@ -75,9 +81,9 @@ module.exports = (() => {
 
   if (isJenkins) {
 
-    console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
-    console.info('所传递的环境变量：', ENV_MODULES_LIST);
-    console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
+    // console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
+    // console.info('所传递的环境变量：', ENV_MODULES_LIST);
+    // console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
 
     console.table([
       { key: '子系统过滤抽取配置:', value: SUBSYSTEMS_LIST },
