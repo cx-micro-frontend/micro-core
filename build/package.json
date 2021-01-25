@@ -1,0 +1,21 @@
+{
+  "name": "core-builder",
+  "version": "1.0.0",
+  "description": "gulp builder for neap-core",
+  "author": "Broccoli spring( gcx )",
+  "license": "ISC",
+  "main": "compile-injecter.js",
+  "scripts": {
+
+  },
+  "devDependencies": {
+    "@vant/compiler": "^1.0.0",
+    "gulp": "^4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "gulp-babel": "^6.1.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.1"
+  }
+}

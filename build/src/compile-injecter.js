@@ -1,3 +1,4 @@
+const path = require('path');
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
@@ -7,11 +8,15 @@ const javascriptObfuscator = require('gulp-javascript-obfuscator');//js压缩混
 // const gutil = require('gulp-util');//gulp 4 建议弃用
 // const rename = require("gulp-rename");
 
-const _base_path = '../injecter/';
-const _base_dist_path = '../lib/injecter/';
+const _base_path = '../../injecter/';
+const _base_dist_path = '../../lib/injecter/';
 
-let t = 0;       								       //计数开始为0
-const showinfo = function() {
+// const _base_path = path.resolve('injecter');
+// const _base_dist_path = path.resolve('../../','lib/injecter/');
+
+let t = 0;//计数开始为0
+
+function showinfo() {
   t++;
   const curDate = new Date();
   const Year = curDate.getFullYear().toString().slice(-2);
@@ -20,7 +25,7 @@ const showinfo = function() {
   const Hours = ('0' + curDate.getHours()).slice(-2);
   const Minutes = ('0' + curDate.getMinutes()).slice(-2);
   return FullDate = '\n' + '           - Author : 高仓雄（gcx / Spring of broccoli，Contact ：Wechat（lensgcx）' + '\n' + '           - Date:' + Year + '-' + Month + '-' + Day + '-' + Hours + '-' + Minutes + '\n' + '           - Current: ' + t + 'st refresh loading... ' + '\n' + '           - running tasks...';
-};
+}
 
 
 //
