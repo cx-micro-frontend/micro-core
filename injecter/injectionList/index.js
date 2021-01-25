@@ -38,9 +38,9 @@ const ENV_MODULES_LIST = process.env.MODULES_LIST;
 const ENV_HEADTOOLBAR_LIST = process.env.HEADTOOLBAR_LIST;
 
 
-console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
-console.info('所传递的环境变量：', ENV_MODULES_LIST);
-console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
+// console.info('所传递的环境变量：', ENV_SUBSYSTEMS_LIST);
+// console.info('所传递的环境变量：', ENV_MODULES_LIST);
+// console.info('所传递的环境变量：', ENV_HEADTOOLBAR_LIST);
 
 
 let SUBSYSTEMS_LIST = null;
