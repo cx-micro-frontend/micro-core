@@ -5,16 +5,29 @@ const path = require('path');
 const fs = require('fs');
 const shell = require('shelljs');
 
-const root = path.resolve('');
+const mainPath = path.resolve('main');
+const libPath = path.resolve('lib');
+
+
+/**
+ * 有lib删除，无lib则创建
+ */
+if (fs.existsSync(libPath)) {
+  shell.rm('-rf', path);//清除lib
+}
+else {
+  fs.mkdirSync(libPath);
+}
+
 
 if (fs.existsSync(`${path.resolve('')}/main`)) {
 
-  shell.cp('-R', `${root}/main/mock`, `${root}/lib/mock`);
-  shell.cp('-R', `${root}/main/src`, `${root}/lib/src`);
-  shell.cp('-R', `${root}/main/static`, `${root}/lib/static`);
-  shell.cp('-R', `${root}/main/main.js`, `${root}/lib/main.js`);
-  shell.cp('-R', `${root}/main/expand.js`, `${root}/lib/expand.js`);
-  shell.cp('-R', `${root}/main/dependencies.js`, `${root}/lib/dependencies.js`);
-  shell.cp('-R', `${root}/main/plugins`, `${root}/lib/plugins`);
+  shell.cp('-R', `${mainPath}/mock`, `${libPath}/mock`);
+  shell.cp('-R', `${mainPath}/src`, `${libPath}/src`);
+  shell.cp('-R', `${mainPath}/static`, `${libPath}/static`);
+  shell.cp('-R', `${mainPath}.js`, `${libPath}/main.js`);
+  shell.cp('-R', `${mainPath}/expand.js`, `${libPath}/expand.js`);
+  shell.cp('-R', `${mainPath}/dependencies.js`, `${libPath}/dependencies.js`);
+  shell.cp('-R', `${mainPath}/plugins`, `${libPath}/plugins`);
 
 }
