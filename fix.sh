@@ -26,7 +26,7 @@ rm -f yarn.lock
 tyarn
 
 #修复打开node运行内存上限
-cross-env LIMIT=16384 increase-memory-limit
+#cross-env LIMIT=16384 increase-memory-limit
 
 
 echo "===== 开始完毕 ====="
