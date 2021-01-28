@@ -53,6 +53,7 @@
 #MODULES='bill,refund,Meter,report,pay,job'
 #HEADTOOLBAR='a,b,c,d,e,f,g'
 
+echo 123123123123
+echo cross-env NODE_ENV=production env_config=prod PROD_ENV=jenkins SUBSYSTEMS_LIST=$1 SUBSYSTEMS_LIST=$1 MODULES_LIST=$2  HEADTOOLBAR_LIST=$3 npm run build:dist
 
-
-cross-env NODE_ENV=production env_config=prod PROD_ENV=jenkins SUBSYSTEMS_LIST=$1 MODULES_LIST=$2  HEADTOOLBAR_LIST=$3 npm run build:dist
+#cross-env NODE_ENV=production env_config=prod PROD_ENV=jenkins SUBSYSTEMS_LIST=$1 SUBSYSTEMS_LIST=$1 MODULES_LIST=$2  HEADTOOLBAR_LIST=$3 npm run build:dist
