@@ -19,13 +19,17 @@ else {
   fs.mkdirSync(libPath);
 }
 
+console.log(123123213)
+console.log(mainPath)
+console.log(123123213)
+
 
 if (fs.existsSync(`${path.resolve('')}/main`)) {
 
   shell.cp('-R', `${mainPath}/mock`, `${libPath}/mock`);
   shell.cp('-R', `${mainPath}/src`, `${libPath}/src`);
   shell.cp('-R', `${mainPath}/static`, `${libPath}/static`);
-  shell.cp('-R', `${mainPath}.js`, `${libPath}/main.js`);
+  shell.cp('-R', `${mainPath}/main.js`, `${libPath}/main.js`);
   shell.cp('-R', `${mainPath}/expand.js`, `${libPath}/expand.js`);
   shell.cp('-R', `${mainPath}/dependencies.js`, `${libPath}/dependencies.js`);
   shell.cp('-R', `${mainPath}/plugins`, `${libPath}/plugins`);
