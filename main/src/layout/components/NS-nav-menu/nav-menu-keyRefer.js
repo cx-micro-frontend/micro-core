@@ -17,12 +17,13 @@ const keyRefer = {
   menuLevel: 'syLayer', //菜单层级
   children: 'childMenus', //子集菜单
 
-  moduleJumpPath: 'moduleUrl', //模块点击跳转地址
   routeName: 'menuMenusubname', //前端路由name (唯一)
   rootRouteName: 'rootMenuSubName', //root 前端路由name / 所属微前端 子系统模块，如：业户，系统设置，计费，收款 等
+  formName: 'menuNodeinfo', //菜单 所对应的 数据库表 名称
 
   routePath: 'routePath', //前端路由路径（拼接好的全路径）
   templatePath: 'templatePath', //资源文件对应路径
+  moduleJumpPath: 'moduleUrl', //模块点击跳转地址
 
   targetUrl: 'url', //v8子系统模块 iframe 嵌入文件相对路径地址 / 外部链接跳转路径
   behavior: 'behavior', //交互/集成模式
