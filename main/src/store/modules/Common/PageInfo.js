@@ -32,6 +32,7 @@ function createPageInfo(data) {
           isLeaf: item[keyRefer['isLeaf']],
 
           name: item[keyRefer['routeName']], //router-web name
+          formName: item[keyRefer['formName']], //菜单 所对应的 数据库表 名称
 
           routePath: item[keyRefer['routePath']], //router-web name
           templatePath: item[keyRefer['templatePath']],
