@@ -19,11 +19,6 @@ else {
   fs.mkdirSync(libPath);
 }
 
-console.log(123123213)
-console.log(mainPath)
-console.log(123123213)
-
-
 if (fs.existsSync(`${path.resolve('')}/main`)) {
 
   shell.cp('-R', `${mainPath}/mock`, `${libPath}/mock`);
