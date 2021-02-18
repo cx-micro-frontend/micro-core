@@ -71,7 +71,7 @@ module.exports = [
     rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
     branch: 'v1.0.20210101.NEAP.BIDESIGN.RC',
-    isOwner: true,
+    isOwner: false,
     disabled: false,
   },
 
