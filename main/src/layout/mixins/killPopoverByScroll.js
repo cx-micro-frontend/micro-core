@@ -78,8 +78,8 @@ function eventPath(evt) {
  * @param e
  */
 const mousewheelHandle = e => {
-  console.log(e);
-  console.log(lock);
+  // console.log(e);
+  // console.log(lock);
 
   if (lock) return;
 
