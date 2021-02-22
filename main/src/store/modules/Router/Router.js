@@ -6,10 +6,20 @@ import { flattenMenu } from '../../../layout/components/NS-nav-menu/utils/dataHa
 
 const Router = {
   state: {
+    addRouteFlag: true,
     asyncRouterList: JSON.parse(storageHandle('get', 'sign_async_router')) || [],
     errorSign: storageHandle('get', 'sign_error_sign') || '',
   },
   mutations: {
+    /**
+     * toggle add route flag - 切换注入路由的标识
+     * @param state
+     * @param flag
+     */
+    TOGGLE_ADD_ROUTE_FLAG: (state, flag) => {
+      state.addRouteFlag = flag;
+    },
+
     /**
      * set async router list
      * @param state
@@ -59,7 +69,7 @@ const Router = {
   },
   actions: {
     /**
-     * set async router
+     * set async router - 设置动态路由
      * @param commit
      * @param navData - moduleMenu/sideMenu
      * @returns {Promise<any>}
