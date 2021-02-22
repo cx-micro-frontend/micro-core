@@ -210,6 +210,11 @@ const User = {
         .then(res => {
           if (res) {
             $store.dispatch('emptyStorage');
+            /**
+             * open add route flag - 打开注入路由的标识
+             * 再次登录时：需要再次获取和处理异步路由数据
+             */
+            $store.commit('TOGGLE_ADD_ROUTE_FLAG', true);
             backIniView();
           }
         })
