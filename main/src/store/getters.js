@@ -30,6 +30,7 @@ const getters = {
   currentPageInfo: state => state.PageInfo.currentPageInfo, //当前访问的页面信息
 
   //route
+  addRouteFlag: state => state.Router.addRouteFlag, //切换注入路由的标识
   routeErrorSign: state => state.Router.errorSign, //路由错误标识
 
   /**
