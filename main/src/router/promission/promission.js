@@ -4,8 +4,6 @@ import { isInAuthwhiteList } from '../whiteList';
 // import routefiles from '../../../../injection/config/routefiles';
 import errorPathDistribute from './errorDistribute';
 
-let addRouFlag = false;
-
 /**
  * handle to set Async Router
  * warning:
@@ -31,18 +29,19 @@ export default async (to, from, next) => {
     //store current funcId from current page info
     $store.dispatch('setFuncId', info.funcId);
 
-    console.log('=============================');
-    console.log(from);
-    console.log(to);
-    console.log(`${from.path}  ${to.path}`);
-    console.log('获取所有子系统模块导航数据：', $store.getters.moduleMenu);
-    console.log('获取到的菜单栏数据：', $store.getters.sideMenu);
-    console.log('setCurrentPage：', info);
-    console.log(`addRouFlag 状态：${addRouFlag}`);
-    console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
-    console.log(pageinfoList);
+    // console.log('=============================');
+    // console.log(from);
+    // console.log(to);
+    // console.log(`${from.path}  ${to.path}`);
+    // console.log('获取所有子系统模块导航数据：', $store.getters.moduleMenu);
+    // console.log('获取到的菜单栏数据：', $store.getters.sideMenu);
+    // console.log('setCurrentPage：', info);
+    // console.log(`addRouteFlag 状态：${$store.getters.addRouteFlag}`);
+    // console.log('获取异步路由列表：', $store.state.Router.asyncRouterList);
+    // console.log(pageinfoList);
+    // alert($store.getters.addRouteFlag);
 
-    if (!addRouFlag) {
+    if ($store.getters.addRouteFlag) {
       console.log('设置动态路由');
 
       //handle async router
@@ -60,7 +59,11 @@ export default async (to, from, next) => {
 
             router.addRoutes(asyncRouterList);
 
-            addRouFlag = true;
+            /**
+             * close add route flag - 关闭注入路由的标识
+             * 再次跳转路由时：不需要再次获取和处理异步路由数据
+             */
+            $store.commit('TOGGLE_ADD_ROUTE_FLAG', false);
 
             next({ ...to, replace: true }); // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
             // next({ replace: true });
