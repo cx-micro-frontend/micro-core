@@ -19,6 +19,8 @@ const dev_env = {
   BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
   // BASE_API: '"http://124.71.162.124:81/api"',//saas 环境
 
+  // BASE_API: '"http://openapi.new-see.com:3000/mock/130"', //Yapi 环境
+
   // BASE_API: '"http://192.168.4.40/api"',//张晨飞 本机
 
   // BASE_API: '"http://121.196.31.230/api"',
