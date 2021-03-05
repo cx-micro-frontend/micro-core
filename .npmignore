@@ -46,6 +46,7 @@ env.config.js
 env.param.config.js
 
 npmmenu.md
+pnpm-lock.yaml
 yarn.lock
 index.html
 favicon.ico
