@@ -133,12 +133,15 @@ exports.cloneStatic = () => {
    * 判断当前执行环节目录下，母体中是否存在 static 文件，存在，则进行拷贝注入操作，否则无需处理
    */
   if (fs.existsSync(static_inJect_path)) {
+
     /*
-     * judge static in root is exists or not:
-     * not => create dir
-     * 目标目录下没有 static 文件就为其创建一个
-     */
-    utils.mkdir(static_target_path);
+    * judge static in root is exists or not:
+    * not => create dir
+    * 目标目录下没有 static 文件就为其创建一个
+    */
+    if (!fs.existsSync(static_target_path)) {
+      fs.mkdirSync(static_target_path);
+    }
 
     const whitestatic = ['.gitkeep', 'loadBuffer', 'intercept'];
 
@@ -180,17 +183,22 @@ exports.cloneMock = () => {
    * 判断当前执行环节目录下，母体中是否存在 mock 文件，存在，则进行拷贝注入操作，否则无需处理
    */
   if (fs.existsSync(mock_inJect_path)) {
+
     //目标目录下没有mock文件就为其创建一个
-    utils.mkdir(mock_target_path);
+    if (!fs.existsSync(mock_target_path)) {
+      fs.mkdirSync(mock_target_path);
+    }
 
     const NEAP_mock_target_path = `${mock_target_path}/${copy_rename.mock}`;
 
-    /**
-     * judge exists:
+    /*
+     * 每次都要删除 _NEAP_MOCK_DATA 这个文件，然后重新注入新的文件
+     * 这边不需要再判断是否存在了，直接删除即可:
      * yes = > remove
      */
-    utils.judgeAndRemove(NEAP_mock_target_path);
+    shell.rm('-rf', NEAP_mock_target_path);
 
+    //然后重新注入 _NEAP_MOCK_DATA 文件
     shell.cp('-R', mock_inJect_path, NEAP_mock_target_path);
   }
 };
