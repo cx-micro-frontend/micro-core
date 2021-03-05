@@ -16,7 +16,7 @@ body {
 .ns-container {
   display: flex;
   flex-direction: row;
-  flex: 1;
+  flex: 1 0 0px !important;
   flex-basis: auto;
   min-width: 0;
   box-sizing: border-box;
