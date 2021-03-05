@@ -142,21 +142,7 @@ exports.judgeAndMkdir = (path, cb = null) => {
   cb();
 };
 
-/**
- * judge exists:
- * not => create dir
- * @param path
- * @param cb
- */
-exports.mkdir = (path, cb = null) => {
-  if (fs.existsSync(path)) {
-    return;
-  } else {
-    fs.mkdirSync(path);
-  }
-  if (!cb) return;
-  cb();
-};
+
 
 /**
  * judge exists:
