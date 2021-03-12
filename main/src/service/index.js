@@ -96,3 +96,86 @@ export const tableDataFetch = data => {
     params: data.method === 'get' ? data.query : data.params,
   });
 };
+
+//===============================================================
+
+/***
+ * 获取树节点，一次性加载
+ * @param context
+ */
+export function treeDataFetchAll(context) {
+  return fetch({
+    url: `/nlcpd/${context}/getTreeInfo`,
+    method: 'get',
+  });
+}
+
+/***
+ * 获取树节点，按需加载
+ * @param context
+ * @param params
+ */
+export function treeDataFetchByLazy(context, params) {
+  dataFilter(params);
+  return fetch({
+    url: `/nlcpd/${context}/getTreeInfoByLazy`,
+    method: 'get',
+    params,
+  });
+}
+
+/**
+ * 增加树节点
+ * @param context
+ * @param data
+ */
+export function treeNodeAdd(context, data) {
+  dataFilter(data);
+  return fetch({
+    url: `/nlcpd/${context}/addNode`,
+    method: 'post',
+    data,
+  });
+}
+
+/**
+ * 更新树节点
+ * @param context
+ * @param data
+ */
+export function treeNodeUpdate(context, data) {
+  dataFilter(data);
+  return fetch({
+    url: `/nlcpd/${context}/updateNode`,
+    method: 'delete',
+    data,
+  });
+}
+
+/**
+ * 删除树节点
+ * @param context
+ * @param data
+ */
+export function treeNodeDelete(context, data) {
+  dataFilter(data);
+  return fetch({
+    url: `/nlcpd/${context}/deleteNode`,
+    method: 'delete',
+    data,
+  });
+}
+
+/**
+ * 拖拉dragNode
+ * @param context
+ * @param data
+ */
+export function treeNodeDrag(context, data) {
+  dataFilter(data);
+  return fetch({
+    url: `/nlcpd/${context}/dragNode`,
+    method: 'post',
+    data,
+  });
+}
