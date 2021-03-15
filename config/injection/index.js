@@ -9,14 +9,10 @@
 
 const version = '0.0.1';
 
-// const prefix = 'micro_empty_';
-// const prefix = 'micro_elder_';
-const prefix = 'micro_all_';
-// const prefix = 'micro_core_';
-// const prefix = 'micro_work_order_';
-// const prefix = 'micro_work_order_';
+const prefix = 'all';
+// const prefix = 'BIDesign';
 
-const _VarInjection = require(`./version/${prefix}${version}`);
+const _VarInjection = require(`./version/${prefix}/micro_release_${prefix}_${version}`);
 
 const _BasicInjection = [
   {
@@ -37,7 +33,6 @@ const _BasicInjection = [
     branch: 'master.ARM', //抽取分支
     isOwner: false, //是否为自有模块
     disabled: false,
-    // landingRoot: false, //是否注入根目录中
   },
   //v8\v9等嵌入模块
   {
@@ -48,15 +43,7 @@ const _BasicInjection = [
     branch: 'master', //抽取分支
     isOwner: false, //是否为自有模块
     disabled: false,
-  },
-  // {
-  //   module: '测试示例', //模块中文名称
-  //   repositorie: 'test', //模块唯一标识key
-  //   path: 'http://192.168.1.47:3000/Framework-frontend/micro_test_demo.git',
-  //   // landingRoot: false, //是否注入根目录中
-  //   isOwner: true, //是否为自有模块
-  //   disabled: false, //是否禁用
-  // },
+  }
 ];
 
 module.exports = {
