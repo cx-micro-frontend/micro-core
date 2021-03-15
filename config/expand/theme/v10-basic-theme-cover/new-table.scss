@@ -9,7 +9,7 @@ $table-height: 38px;
 $table-border__color: #e6e8ee;//边框色
 $table-head__backgroundcolor: #f5f6f9; //表头背景色
 $table-head__linecolor: #d6d8da; //表头 - 分割线颜色
-$table-row__hover: $--background-color-base; //行 - 鼠标移入背景色
+$table-row__hover: #f5f6f9; //行 - 鼠标移入背景色
 
 .vxe-table.size--small .vxe-body--column.col--ellipsis,
 .vxe-table.size--small .vxe-footer--column.col--ellipsis,
@@ -171,4 +171,9 @@ div.vxe-table {
   .ns-pagination {
     background-color: $--table-pagination-background-color;
   }
+}
+
+// 为了话务工具条在最顶层显示
+#layout #header-wrapper{
+  z-index: 999!important;
 }

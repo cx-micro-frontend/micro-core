@@ -68,7 +68,7 @@
 
     mounted() {
       this.getUnreadCount();
-      // this.initWebSocket();
+      this.initWebSocket();
     },
 
     beforeDestroy() {

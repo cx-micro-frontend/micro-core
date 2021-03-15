@@ -12,7 +12,8 @@
     <div class="popup-status">呼叫中...</div>
     <div class="popup-btns">
       <ns-button class="popup-btn"
-                 @click="ClearCall">挂断</ns-button>
+                 @click="ClearCall"
+                 :disabled="agentstatus === '有来电'">挂断</ns-button>
       <ns-button v-if="agentstatus === '有来电'"
                  class="popup-btn"
                  style="background: #4ac80c"
@@ -25,7 +26,7 @@
 
 <script>
 export default {
-  name: 'CallPopup',
+  name: 'call-popup',
   components: {},
   props: {
     agentstatus: { type: String },

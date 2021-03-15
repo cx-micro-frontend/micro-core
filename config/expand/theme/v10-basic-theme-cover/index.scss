@@ -15,32 +15,36 @@
 
 
 
+
 //todo 后续要删除
 //筛选器背景
 .ns-search-conditions {
   background-color: $--wrapper-background-color !important;
   .ns-search-conditions__wrapper {
     background-color: $--wrapper-background-color !important;
-    //业户 新增按钮
-    .role-button-area li.role-button-area__part{
-      .el-button--text.ns-button.el-button{
-        padding: 10px 15px;
-        color: #FFF;
-        border-color: $--color-primary;
-        background-color: $--color-primary;
-
-        &:hover{
-          background: $--color-primary-hover;
-          border-color: $--color-primary-hover;
-          color: #FFF;
-        }
-
-        span, svg{
-          color:  #FFF;
-        }
-
-      }
+    .el-form-item {
+      margin: 0 6px 7px 0!important;
     }
+    // //业户 新增按钮
+    //.role-button-area li.role-button-area__part{
+    //  .el-button--text.ns-button.el-button{
+    //    padding: 10px 15px;
+    //    color: #FFF;
+    //    border-color: $--color-primary;
+    //    background-color: $--color-primary;
+    //
+    //    &:hover{
+    //      background: $--color-primary-hover;
+    //      border-color: $--color-primary-hover;
+    //      color: #FFF;
+    //    }
+    //
+    //    span, svg{
+    //      color:  #FFF;
+    //    }
+    //
+    //  }
+    //}
   }
 }
 

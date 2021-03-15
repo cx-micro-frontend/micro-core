@@ -195,7 +195,24 @@
             ],
           },
           {
-            reportWrapperTitle: '权责结转报表',
+            reportWrapperTitle: '经营报表',
+            reportWrapperContent: [
+              {
+                reportName: '经营收费明细表',
+                reportPath: 'operateDetailReport',
+                reportDesc: '统计经营类收入及公共收益分成明细情况',
+                show: true,
+              },
+              {
+                reportName: '经营收费汇总表',
+                reportPath: 'operateAllReport',
+                reportDesc: '统计经营类收入及公共收益分成汇总情况',
+                show: true,
+              },
+            ],
+          },
+          {
+            reportWrapperTitle: '结转报表',
             reportWrapperContent: [
               {
                 reportName: '收入结转汇总表',
@@ -342,6 +359,24 @@
                 reportName: '空置时间统计表',
                 reportPath: 'houseIdleTimeReport',
                 reportDesc: '统计项目所有房产的租赁空置天数和空置率',
+                show: true,
+              },
+              {
+                reportName: '商管年度报表',
+                reportPath: 'rentContractReport',
+                reportDesc: '统计各商铺年度应收以及欠费，汇总每月实收金额',
+                show: true,
+              },
+              {
+                reportName: '房间合同资产统计表',
+                reportPath: 'rentStatisticsReport',
+                reportDesc: '以房产维度，统计每个房产租赁合同的概况信息',
+                show: true,
+              },
+              {
+                reportName: '合同保证金表',
+                reportPath: 'contractDepositReport',
+                reportDesc: '统计合同各类保证金的收退信息',
                 show: true,
               },
             ],

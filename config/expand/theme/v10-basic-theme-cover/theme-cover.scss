@@ -7,9 +7,10 @@
 
 .el-icon--right {
   margin-left: 1px;
-}
+}.operate-wrap .el-button,
 
-//抽屉图标颜色
+
+   //抽屉图标颜色
 .ns-drawer__switch i {
   color: #e8e8e8;
 }
@@ -21,9 +22,12 @@
 
 //表格操作栏按钮背景色(后续处理)
 .el-table__row .el-button,
-.operate-wrap .el-button,
 .vxe-table .action-scope .ns-button {
   background: transparent;
   border-color: transparent;
 }
 
+//.operate-wrap .el-button{
+//  background: transparent;
+//  border-color: transparent;
+//}

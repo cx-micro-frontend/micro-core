@@ -1,12 +1,9 @@
 <!-- 话务工具条 -->
 <template>
-  <div>
+  <div v-if="visivle">
     <!-- 迷你工具条 -->
-    <MiniToolbar
-      v-if="miniToolbarVisible"
-      :agentstatus="agentstatus"
-      @openToolbar="openToolbar"
-    ></MiniToolbar>
+    <mini-toolbar v-if="miniToolbarVisible" :agentstatus="agentstatus" @openToolbar="openToolbar"></mini-toolbar>
+
     <!-- 底部工具条 -->
     <div v-if="bottomToolbarVisible" class="toolbar">
       <div class="toolbar-img">
@@ -31,9 +28,7 @@
       </div>
       <ns-input v-else v-model="phoneNumber" placeholder="请输入电话号码"></ns-input>
 
-      <ns-button v-if="agentstatus === '正在通话'" class="toolbar-4-1" @click="ClearCall"
-        >挂断</ns-button
-      >
+      <ns-button v-if="agentstatus === '正在通话'" class="toolbar-4-1" @click="ClearCall">挂断</ns-button>
       <ns-button v-else class="toolbar-call" @click="outbondCall">呼出</ns-button>
       <ns-select
         v-if="agentstatus !== '正在通话'"
@@ -44,44 +39,35 @@
         :clearable="false"
         @change="changeloginStatus"
       ></ns-select>
-      <!-- <ns-input v-if="agentstatus === '正在通话'"
-                class="toolbar-3"
-                v-model="search"
-                placeholder="输入电话、房号、客户名查询"></ns-input> -->
-      <!-- <div v-else
-           class="toolbar-6">呼叫记录</div> -->
+
       <div class="toolbar-7" @click="foldUp">></div>
     </div>
+    
     <!-- 呼叫弹屏 -->
-    <CallPopup
-      v-if="popupVisible"
-      :phoneNumber="phoneNumber"
-      :agentstatus="agentstatus"
-      @ClearCall="ClearCall"
-      @AnswerCall="AnswerCall"
-    ></CallPopup>
+    <call-popup v-if="popupVisible" :phoneNumber="phoneNumber" :agentstatus="agentstatus" @ClearCall="ClearCall" @AnswerCall="AnswerCall"></call-popup>
   </div>
 </template>
 
 <script>
-import { addCall } from './service.js'
+import { mapGetters } from 'vuex';
+import { addCall, getAgentByUserId } from './service.js'
 import { decode, CurentTime } from './utils/index.js'
-import MiniToolbar from './components/MiniToolbar'
-import CallPopup from './components/CallPopup'
+import miniToolbar from './components/mini-toolbar'
+import callPopup from './components/call-popup'
 import { EventBus } from './utils/eventBus'
 
 export default {
-  name: 'CallToolbar',
+  name: 'call-toolbar',
   components: {
-    MiniToolbar,
-    CallPopup,
+    miniToolbar,
+    callPopup,
   },
-  props: {
-    agentData: { type: Object },
+  computed: {
+    ...mapGetters(['bizExpandData']),
   },
-  computed: {},
   data() {
     return {
+      ws: null, // WebSocket 实例
       serverAddress: '', // 服务器地址
       serverPort: '', // 服务器端口
       agentId: '', // 坐席工号
@@ -119,19 +105,17 @@ export default {
       hh: '00', // 时
       mm: '00', // 分
       ss: '00', // 秒
+      lockReconnect:false, //避免重复连接，因为onerror之后会立即触发 onclose
+      reconnectCount: 0, // 重连次数
+      visivle: false, // 本组件是否显示
     }
   },
   watch: {
-    agentData: {
-      handler(agentData) {
-        this.serverAddress = agentData.serverAddress
-        this.serverPort = agentData.serverPort
-        this.agentId = agentData.agentNumber
-        this.agentPassword = agentData.agentPassword
-        this.deviceID = agentData.extensionNumber
-        this.agentUsername = agentData.userName
-        this.agentAccount = agentData.userAccount
-        this.initWebSocket()
+    bizExpandData: {
+      handler(data) {
+        if (data.CallingCenterToolBar && data.CallingCenterToolBar.value === '1') { // 开启工具条
+          this.getAgentByUserId()
+        }
       },
       immediate: true,
     },
@@ -140,17 +124,20 @@ export default {
   methods: {
     // 初始化WebSocket
     initWebSocket() {
-      // TODO: https
-      this.$connect(`ws://${this.serverAddress}:${this.serverPort}`)
-      this.$socket.onmessage = this.onMessage
-      this.$socket.onclose = this.onClose
-      this.$socket.onerror = this.onError
+      this.ws = new WebSocket(`ws://${this.serverAddress}:${this.serverPort}`)
+      this.ws.onopen = this.onOpen
+      this.ws.onmessage = this.onMessage
+      this.ws.onclose = this.onClose
+      this.ws.onerror = this.onError
+    },
+    onOpen(event){
+      console.log(event, '连接成功✔️')
     },
     // 指定收到服务器数据后的回调函数
     onMessage(event) {
       let data = decode(event.data)
       let res = JSON.parse(data)
-      console.log(res, '收到服务器数据了')
+      console.log(res, '收到服务器数据了✔️')
       if (res.Resp != null) {
         this.OnResp(res)
       } else if (res.Event != null) {
@@ -158,12 +145,14 @@ export default {
       }
     },
     onClose(e) {
-      console.log('连接关闭', e)
+      console.log('连接关闭⚡', e)
       clearTimeout(this.timer)
       this.timer = ''
+      this.reconnect();
     },
     onError(e) {
-      console.log('报错', e)
+      console.log('报错⚡', e)
+      this.reconnect();
     },
     // 改变座席状态
     changeloginStatus(e) {
@@ -199,7 +188,7 @@ export default {
       }
     },
     agentLogin() {
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           //发送签入数据
           Command: 'Login',
@@ -212,7 +201,7 @@ export default {
     },
     //座席签出
     AgentLogout() {
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           //发送签出入数据
           Command: 'Logout',
@@ -222,6 +211,7 @@ export default {
           ExtData: 'ExtData',
         })
       )
+      console.log('我发起签出🧡');
     },
     // 座席签入
     loginHandle(res) {
@@ -261,6 +251,7 @@ export default {
         case 'Logout':
           console.log('签出成功🧡')
           this.agentstatus = '签出中'
+          this.loginStatus = '3'
           break
         case 'SetAgentState':
           this.OnFreeOrBusy(res)
@@ -269,7 +260,7 @@ export default {
     },
 
     heartBeat() {
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           Device: this.deviceID,
           Time: CurentTime(),
@@ -309,7 +300,7 @@ export default {
       if (this.agentstatus !== '签出中' && this.phoneNumber) {
         this.popupVisible = true
         this.$router.push({ name: 'currentDialogue', query: { contactPhone: this.phoneNumber.replace(new RegExp('^90'), '') } })
-        this.$socket.send(
+        this.ws.send(
           JSON.stringify({
             Command: 'MakeCall',
             Number: this.phoneNumber,
@@ -345,7 +336,7 @@ export default {
     //关闭呼叫
     ClearCall() {
       console.log('我点挂断🧡');
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           //发送挂机数据
           Command: 'ClearCall',
@@ -400,6 +391,7 @@ export default {
       this.isCallComing = false
       this.popupVisible = false
       this.phoneNumber = ''
+      this.customerName = ''
       this.resetTimer()
     },
     OnCallComing(res) {
@@ -452,7 +444,7 @@ export default {
 　　  this.ss = '00';
     },
     AnswerCall() {
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           //发送呼叫应答数据
           Command: 'AnswerCall',
@@ -464,7 +456,7 @@ export default {
     },
     // 示忙/示闲
     setAgentState(agentState) {
-      this.$socket.send(
+      this.ws.send(
         JSON.stringify({
           Command: 'SetAgentState',
           OpAgentID: this.agentId,
@@ -479,13 +471,43 @@ export default {
     // 刷新时签出
     beforeunloadHandler () {
       this.AgentLogout()
+    },
+    reconnect(){
+      if(this.lockReconnect || this.reconnectCount > 2){
+        return
+      }
+      this.lockReconnect = true;
+      this.reconnectCount ++
+      setTimeout(()=>{
+        this.initWebSocket();
+        this.lockReconnect = false;
+      },5000)
+    },
+    // 获取坐席基本信息
+    getAgentByUserId(){
+      getAgentByUserId().then(res => {
+        if (res.resultData !== null) { // 当前是座席
+          this.visivle = true
+          this.setAgentData(res.resultData)
+        }
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+    setAgentData(data){
+      this.serverAddress = data.serverAddress
+      this.serverPort = data.serverPort
+      this.agentId = data.agentNumber
+      this.agentPassword = data.agentPassword
+      this.deviceID = data.extensionNumber
+      this.agentUsername = data.userName
+      this.agentAccount = data.userAccount
+      this.initWebSocket()
     }
   },
 
   mounted() {
-    window.addEventListener('beforeunload', () => {
-      this.beforeunloadHandler()
-    })
+    window.addEventListener('beforeunload', this.beforeunloadHandler)
   },
   created(){
     EventBus.$on('onCalling', name => {
@@ -493,12 +515,13 @@ export default {
     })
   },
 
-  beforeDestroy() {
-    window.removeEventListener('beforeunload', () => {
-      this.beforeunloadHandler()
-    })
-    this.$disconnect()
+  async beforeDestroy() {
+    this.lockReconnect = true;
+    this.reconnectCount = 0
+    window.removeEventListener('beforeunload', this.beforeunloadHandler)
     EventBus.$off('onCalling')
+    await this.AgentLogout()
+    this.ws.close()
   },
 }
 </script>
@@ -606,14 +629,6 @@ export default {
       background-image: url(./assets/busy.png) ;
     }
   }
-  // > .toolbar-6 {
-  //   width: 68px;
-  //   height: 32px;
-  //   line-height: 32px;
-  //   background: #020307;
-  //   border-radius: 17px;
-  //   text-align: center;
-  // }
   > .toolbar-7 {
     width: 20px;
     height: 20px;

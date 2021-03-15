@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'MiniToolbar',
+  name: 'mini-toolbar',
   components: {},
   props: {
     agentstatus: { type: String }, // 座席状态

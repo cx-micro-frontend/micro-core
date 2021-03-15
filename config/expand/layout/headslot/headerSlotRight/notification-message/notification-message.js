@@ -3,28 +3,22 @@ import { setMessageRead, setMessageSetting } from './service/service';
 import postDeskTop from './mixins/post-desktop';
 import { Notification } from 'element-ui';
 import './styles/box.scss';
-
-// 消息来源
-const sourceMap = {
-  0: '未知',
-  1: '新闻',
-  2: '邮件',
-  3: '工单',
-  4: '工程',
-  5: '仓储',
-};
-
+import { socketApi } from '../socket/socketApi';
+import { mapGetters } from 'vuex';
 export default {
   name: 'NsNotificationMessage',
   mixins: [postDeskTop],
-  props: {
-    messageData: Object,
-  },
+
   data() {
     return {
       count: '', // 自减少倒计时
       timer: null,
+      messageData: {},
     };
+  },
+
+  computed: {
+    ...mapGetters(['userinfo']),
   },
 
   render(h) {
@@ -58,6 +52,20 @@ export default {
   },
 
   methods: {
+    initWebSocket() {
+      this.$connect(`${socketApi}${this.userinfo.userId}`);
+      this.$socket.onopen = this.wsGetInfo;
+      this.$socket.onmessage = this.wsGetInfo;
+    },
+
+    wsGetInfo(e) {
+      //获取提醒消息
+      console.log('wsGetInfo -> e', e.data);
+      if (e.data) {
+        this.messageData = JSON.parse(e.data);
+      }
+    },
+
     clearTimer() {
       clearInterval(this.timer);
       this.timer = null;
@@ -135,8 +143,14 @@ export default {
       });
     },
   },
-  beforeDestroy() {
-    this.closeNotify();
-    this.clearTimer();
+
+  mounted() {
+    this.initWebSocket();
+    // 添加销毁的钩子函数
+    this.$once('hook:beforeDestroy', () => {
+      this.$disconnect();
+      this.closeNotify();
+      this.clearTimer();
+    });
   },
 };

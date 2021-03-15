@@ -337,48 +337,48 @@ module.exports = [
    */
   {
     module: '工单业务组件库',
-    repositorie: 'work_order_components',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'work_order_components', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
   },
   {
     module: '工单服务概览',
-    repositorie: 'overviewmenu',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'overviewmenu', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
   },
   {
     module: '工单列表',
-    repositorie: 'servicemanage',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'servicemanage', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
   },
   {
     module: '工单设置',
-    repositorie: 'servicesetup',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'servicesetup', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
   },
   {
     module: '工单报表',
-    repositorie: 'servicereport',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'servicereport', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
   },
   {
     module: '呼叫中心',
-    repositorie: 'callcenter',//模块唯一标识key
-    rootRepositorie:'work_order',//根模块唯一标识key
+    repositorie: 'callcenter', //模块唯一标识key
+    rootRepositorie: 'work_order', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_work_order.git',
     isOwner: false,
     disabled: false,
@@ -390,7 +390,7 @@ module.exports = [
    */
   {
     module: '消息提醒',
-    repositorie: 'notice',//模块唯一标识key
+    repositorie: 'notice', //模块唯一标识key
     rootRepositorie: 'message_management', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_message_management.git',
     isOwner: false,

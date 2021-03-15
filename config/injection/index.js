@@ -43,7 +43,7 @@ const _BasicInjection = [
     branch: 'master', //抽取分支
     isOwner: false, //是否为自有模块
     disabled: false,
-  }
+  },
 ];
 
 module.exports = {
