@@ -1,6 +1,6 @@
-import headerSlotLeft from './layout/headslot/headerSlotLeft';
-import headerSlotRight from './layout/headslot/headerSlotRight';
+import headerSlotLeft from './layout/headslot/headerSlotLeft/index';
 import sideMenuSlot from './layout/side-menu/side-menu-slot';
+import headerSlotRight from './layout/headslot/headerSlotRight';
 
 export default {
   /**
@@ -14,8 +14,6 @@ export default {
     theme: () => import('./theme'),
     iconfont: () => import('./iconfont/mixin/index.js'),
   },
-
-  //布局
   layout: {
     //布局厂字框架 - 头部自定义插槽（本项目中为项目选择)
     header: {
@@ -41,48 +39,21 @@ export default {
   //路由相关
   route: {
     cache: true,
-    // cacheExclude: ['portal'],
+    cacheExclude: [
+      // 'carManagement', 'customerManagement', 'houseManagement', 'housekeeperGrid', 'housekeeperManagement'
+    ],
 
-    //自定义路由地址 - 适用于一些特殊界面（概览 / 导航 /任务 等)
+    //自定义路由地址 - 适用于一些特殊界面（单点登录 / 概览 / 导航 /任务 等)
     customRoute: Layout => {
       return [
+        //单点登录
         {
-          path: '',
-          component: Layout,
-          redirect: '/guide',
-          name: 'guide',
-          children: [
-            {
-              path: 'guide',
-              component: () => import(`@ROOT/config/expand/views/guide/guide.vue`),
-              meta: { title: '导航', auth: true, key: 'guide', cache: false, type: 'normal' },
-              name: 'guide',
-            },
-          ],
-        },
-        {
-          path: '',
-          component: Layout,
-          children: [
-            {
-              path: 'cacheDemo',
-              component: () => import(`@ROOT/config/expand/views/cache/cacheDemo2.vue`),
-              meta: {
-                title: '缓存示例',
-                auth: true,
-                key: 'cacheDemo',
-                cache: true,
-                moduleId: 'FIN',
-                type: 'normal',
-              },
-              name: 'cacheDemo',
-            },
-          ],
+          path: '/front/loginTransfer-wx',
+          component: () => import(`@ROOT/config/expand/views/sso/loginTransfer-wx.vue`),
+          name: 'loginTransfer-wx',
+          meta: { title: '企业微信登录中转页', auth: false, key: 'loginTransfer-wx' },
         },
       ];
     },
   },
-
-  //挂载（依赖/示例下全局工具方法等)
-  mount: null,
 };
