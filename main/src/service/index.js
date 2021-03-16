@@ -147,7 +147,7 @@ export function treeNodeUpdate(context, data) {
   dataFilter(data);
   return fetch({
     url: `/nlcpd/${context}/updateNode`,
-    method: 'delete',
+    method: 'post',
     data,
   });
 }
@@ -155,14 +155,14 @@ export function treeNodeUpdate(context, data) {
 /**
  * 删除树节点
  * @param context
- * @param data
+ * @param params
  */
-export function treeNodeDelete(context, data) {
-  dataFilter(data);
+export function treeNodeDelete(context, params) {
+  dataFilter(params);
   return fetch({
     url: `/nlcpd/${context}/deleteNode`,
     method: 'delete',
-    data,
+    params: params,
   });
 }
 
