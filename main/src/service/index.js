@@ -7,22 +7,26 @@ const { formName } = $store.getters.currentPageInfo || {};
 
 /**
  * 获取表单模板 和 其他信息
+ * @param context
  */
-export function getForm() {
+export function getForm(context) {
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: '/nlcpd/base/getFormInfo',
+    url: `/${appCode}/base/getFormInfo`,
     method: 'get',
   });
 }
 
 /**
  * 新增
+ * @param context
  * @param query
  */
-export function addItem(query) {
+export function addItem(context,query) {
   dataFilter(query);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: `/nlcpd/${formName}/add-${formName}`,
+    url: `/${appCode}/${formName}/add-${formName}`,
     method: 'post',
     data: query,
   });
@@ -30,12 +34,14 @@ export function addItem(query) {
 
 /**
  * 编辑
+ * @param context
  * @param query
  */
-export function editItem(query) {
+export function editItem(context,query) {
   dataFilter(query);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: `/nlcpd/${formName}/edit-${formName}`,
+    url: `/${appCode}/${formName}/edit-${formName}`,
     method: 'post',
     data: query,
   });
@@ -43,24 +49,28 @@ export function editItem(query) {
 
 /**
  * 删除
+ * @param context
  * @param id
  */
-export function deleteItem(id) {
+export function deleteItem(context,id) {
   dataFilter(id);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: `/nlcpd/${formName}/delete-${formName}?id=${id}`,
+    url: `/${appCode}/${formName}/delete-${formName}?id=${id}`,
     method: 'delete',
   });
 }
 
 /**
  * 批量删除
+ * @param context
  * @param query
  */
-export function batchDelete(query) {
+export function batchDelete(context,query) {
   dataFilter(query);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: `/nlcpd/${formName}/delete-${formName}-batch`,
+    url: `/${appCode}/${formName}/delete-${formName}-batch`,
     method: 'delete',
     data: query,
   });
@@ -68,12 +78,14 @@ export function batchDelete(query) {
 
 /**
  * 获取详情
+ * @param context
  * @param params
  */
-export function detailItem(params) {
+export function detailItem(context,params) {
   dataFilter(params);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: `/nlcpd/${formName}/detail-${formName}`,
+    url: `/${appCode}/${formName}/detail-${formName}`,
     method: 'get',
     params: params,
   });
@@ -81,12 +93,14 @@ export function detailItem(params) {
 
 /**
  * table data fetch
+ * @param context
  * @param data - url / query / head - funcId
  */
-export const tableDataFetch = data => {
+export const tableDataFetch = (context, data) => {
   dataFilter(data);
+  const { appCode } = context; //appCode:应用编码;
   return fetch({
-    url: data.url || `/nlcpd/${formName}/list-${formName}`,
+    url: data.url || `/${appCode}/${formName}/list-${formName}`,
     method: data.method || 'post',
     headers: {
       funcId: data.funcId,
@@ -104,8 +118,9 @@ export const tableDataFetch = data => {
  * @param context
  */
 export function treeDataFetchAll(context) {
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/getTreeInfo`,
+    url: `/${appCode}/${treeCode}/getTreeInfo`,
     method: 'get',
   });
 }
@@ -117,8 +132,9 @@ export function treeDataFetchAll(context) {
  */
 export function treeDataFetchByLazy(context, params) {
   dataFilter(params);
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/getTreeInfoByLazy`,
+    url: `/${appCode}/${treeCode}/getTreeInfoByLazy`,
     method: 'get',
     params,
   });
@@ -131,8 +147,9 @@ export function treeDataFetchByLazy(context, params) {
  */
 export function treeNodeAdd(context, data) {
   dataFilter(data);
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/addNode`,
+    url: `/${appCode}/${treeCode}/addNode`,
     method: 'post',
     data,
   });
@@ -145,8 +162,9 @@ export function treeNodeAdd(context, data) {
  */
 export function treeNodeUpdate(context, data) {
   dataFilter(data);
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/updateNode`,
+    url: `/${appCode}/${treeCode}/updateNode`,
     method: 'post',
     data,
   });
@@ -159,8 +177,9 @@ export function treeNodeUpdate(context, data) {
  */
 export function treeNodeDelete(context, params) {
   dataFilter(params);
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/deleteNode`,
+    url: `/${appCode}/${treeCode}/deleteNode`,
     method: 'delete',
     params: params,
   });
@@ -173,8 +192,9 @@ export function treeNodeDelete(context, params) {
  */
 export function treeNodeDrag(context, data) {
   dataFilter(data);
+  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
   return fetch({
-    url: `/nlcpd/${context}/dragNode`,
+    url: `/${appCode}/${treeCode}/dragNode`,
     method: 'post',
     data,
   });
