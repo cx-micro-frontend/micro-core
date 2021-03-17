@@ -22,7 +22,7 @@ export function getForm(context) {
  * @param context
  * @param query
  */
-export function addItem(context,query) {
+export function addItem(context, query) {
   dataFilter(query);
   const { appCode } = context; //appCode:应用编码;
   return fetch({
@@ -37,7 +37,7 @@ export function addItem(context,query) {
  * @param context
  * @param query
  */
-export function editItem(context,query) {
+export function editItem(context, query) {
   dataFilter(query);
   const { appCode } = context; //appCode:应用编码;
   return fetch({
@@ -52,7 +52,7 @@ export function editItem(context,query) {
  * @param context
  * @param id
  */
-export function deleteItem(context,id) {
+export function deleteItem(context, id) {
   dataFilter(id);
   const { appCode } = context; //appCode:应用编码;
   return fetch({
@@ -66,7 +66,7 @@ export function deleteItem(context,id) {
  * @param context
  * @param query
  */
-export function batchDelete(context,query) {
+export function batchDelete(context, query) {
   dataFilter(query);
   const { appCode } = context; //appCode:应用编码;
   return fetch({
@@ -81,7 +81,7 @@ export function batchDelete(context,query) {
  * @param context
  * @param params
  */
-export function detailItem(context,params) {
+export function detailItem(context, params) {
   dataFilter(params);
   const { appCode } = context; //appCode:应用编码;
   return fetch({
