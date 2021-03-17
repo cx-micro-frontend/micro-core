@@ -6,11 +6,14 @@ import $store from '../store/index';
 const { formName } = $store.getters.currentPageInfo || {};
 
 /**
- * 获取表单模板 和 其他信息
+ * 获取 表单json渲染模板 和 其他信息（dialog 尺寸） 的接口
  * @param context
  */
 export function getForm(context) {
-  const { appCode } = context; //appCode:应用编码;
+  // const { appCode } = context; //appCode:应用编码;
+
+  const { appCode } = 'nlcpd'; //后续要改成  system
+
   return fetch({
     url: `/${appCode}/base/getFormInfo`,
     method: 'get',
