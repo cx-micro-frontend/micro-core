@@ -12,7 +12,7 @@ const { formName } = $store.getters.currentPageInfo || {};
 export function getForm(context) {
   // const { appCode } = context; //appCode:应用编码;
 
-  const { appCode } = 'nlcpd'; //后续要改成  system
+  const appCode = 'nlcpd'; //后续要改成  system
 
   return fetch({
     url: `/${appCode}/base/getFormInfo`,
