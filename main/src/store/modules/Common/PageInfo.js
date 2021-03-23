@@ -90,7 +90,6 @@ const PageInfo = {
   actions: {
     setPageInfoList({ commit }, data) {
       const _PI = createPageInfo(data);
-
       commit('SET_PAGE_INFO_LIST', _PI);
     },
 
