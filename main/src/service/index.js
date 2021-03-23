@@ -1,98 +1,12 @@
-import fetch from '../utils/fetch/fetch';
+import fnModuleExport from '../utils/core/fnModuleExport';
+
+const libraryFiles = require.context('./lessCode', true, /\.js/);
+
+export default fnModuleExport(libraryFiles);
+
 import { dataFilter } from '../utils/fetch/fetchDataType';
-import $store from '../store/index';
-
-// let formName = null;
-const { formName } = $store.getters.currentPageInfo || {};
-
-/**
- * 获取 表单json渲染模板 和 其他信息（dialog 尺寸） 的接口
- * @param context
- */
-export function getForm(context) {
-  // const { appCode } = context; //appCode:应用编码;
-
-  const appCode = 'nlcpd'; //后续要改成  system
-
-  return fetch({
-    url: `/${appCode}/base/getFormInfo`,
-    method: 'get',
-  });
-}
-
-/**
- * 新增
- * @param context
- * @param query
- */
-export function addItem(context, query) {
-  dataFilter(query);
-  const { appCode } = context; //appCode:应用编码;
-  return fetch({
-    url: `/${appCode}/${formName}/add-${formName}`,
-    method: 'post',
-    data: query,
-  });
-}
-
-/**
- * 编辑
- * @param context
- * @param query
- */
-export function editItem(context, query) {
-  dataFilter(query);
-  const { appCode } = context; //appCode:应用编码;
-  return fetch({
-    url: `/${appCode}/${formName}/edit-${formName}`,
-    method: 'post',
-    data: query,
-  });
-}
-
-/**
- * 删除
- * @param context
- * @param id
- */
-export function deleteItem(context, id) {
-  dataFilter(id);
-  const { appCode } = context; //appCode:应用编码;
-  return fetch({
-    url: `/${appCode}/${formName}/delete-${formName}?id=${id}`,
-    method: 'delete',
-  });
-}
-
-/**
- * 批量删除
- * @param context
- * @param query
- */
-export function batchDelete(context, query) {
-  dataFilter(query);
-  const { appCode } = context; //appCode:应用编码;
-  return fetch({
-    url: `/${appCode}/${formName}/delete-${formName}-batch`,
-    method: 'delete',
-    data: query,
-  });
-}
-
-/**
- * 获取详情
- * @param context
- * @param params
- */
-export function detailItem(context, params) {
-  dataFilter(params);
-  const { appCode } = context; //appCode:应用编码;
-  return fetch({
-    url: `/${appCode}/${formName}/detail-${formName}`,
-    method: 'get',
-    params: params,
-  });
-}
+import fetch from '../utils/fetch/fetch';
+import $store from '../store';
 
 /**
  * table data fetch
@@ -102,6 +16,8 @@ export function detailItem(context, params) {
 export const tableDataFetch = (context, data) => {
   dataFilter(data);
   const { appCode } = context; //appCode:应用编码;
+  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
+
   return fetch({
     url: data.url || `/${appCode}/${formName}/list-${formName}`,
     method: data.method || 'post',
@@ -113,92 +29,3 @@ export const tableDataFetch = (context, data) => {
     params: data.method === 'get' ? data.query : data.params,
   });
 };
-
-//===============================================================
-
-/***
- * 获取树节点，一次性加载
- * @param context
- */
-export function treeDataFetchAll(context) {
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/getTreeInfo`,
-    method: 'get',
-  });
-}
-
-/***
- * 获取树节点，按需加载
- * @param context
- * @param params
- */
-export function treeDataFetchByLazy(context, params) {
-  dataFilter(params);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/getTreeInfoByLazy`,
-    method: 'get',
-    params,
-  });
-}
-
-/**
- * 增加树节点
- * @param context
- * @param data
- */
-export function treeNodeAdd(context, data) {
-  dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/addNode`,
-    method: 'post',
-    data,
-  });
-}
-
-/**
- * 更新树节点
- * @param context
- * @param data
- */
-export function treeNodeUpdate(context, data) {
-  dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/updateNode`,
-    method: 'post',
-    data,
-  });
-}
-
-/**
- * 删除树节点
- * @param context
- * @param params
- */
-export function treeNodeDelete(context, params) {
-  dataFilter(params);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/deleteNode`,
-    method: 'delete',
-    params: params,
-  });
-}
-
-/**
- * 拖拉dragNode
- * @param context
- * @param data
- */
-export function treeNodeDrag(context, data) {
-  dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
-  return fetch({
-    url: `/${appCode}/${treeCode}/dragNode`,
-    method: 'post',
-    data,
-  });
-}
