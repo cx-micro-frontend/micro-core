@@ -13,7 +13,7 @@ module.exports = [
     module: '门户页',
     repositorie: 'portal',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_portal.git',
-    branch: 'v1.0.20210225.portal.standard.RC',
+    branch: 'V1.0.20210325.ARM.RC',
     isOwner: false,
     disabled: false,
   },
@@ -22,7 +22,7 @@ module.exports = [
     module: '门户管理',
     repositorie: 'portalManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -35,7 +35,7 @@ module.exports = [
     module: '驾驶舱管理',
     repositorie: 'datashowManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -49,7 +49,7 @@ module.exports = [
     module: '设计器',
     repositorie: 'micro_bi_designer',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -58,7 +58,7 @@ module.exports = [
     module: '生成器',
     repositorie: 'micro_bi_generator',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -67,7 +67,7 @@ module.exports = [
     module: '设计器物料',
     repositorie: 'micro_bi_packages',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -81,7 +81,7 @@ module.exports = [
     repositorie: 'formDesign', //模块唯一标识key
     rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -94,7 +94,7 @@ module.exports = [
     module: '主题设置',
     repositorie: 'themeDesign',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210302.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -513,6 +513,43 @@ module.exports = [
     rootRepositorie: 'check_house', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_check_house',
     branch: 'v1.0.20201022.basic.RC',
+    isOwner: false,
+    disabled: false,
+  },
+
+  /**
+   * === 收支系统 - finance ===
+   * 目前有具体的分支发布要求
+   */
+  {
+    module: '单据管理',
+    repositorie: 'documentManagement',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '付款管理',
+    repositorie: 'paymentManagement',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '收款管理',
+    repositorie: 'collectionManagement',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
+    isOwner: false,
+    disabled: false,
+  },
+  {
+    module: '系统设置',
+    repositorie: 'systemSettings',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
     isOwner: false,
     disabled: false,
   },
