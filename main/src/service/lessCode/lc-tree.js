@@ -1,5 +1,6 @@
 import fetch from '../../utils/fetch/fetch';
 import { dataFilter } from '../../utils/fetch/fetchDataType';
+import $store from '../../store';
 
 /***
  * 获取树节点，一次性加载
