@@ -1,13 +1,13 @@
 import fetch from '../../utils/fetch/fetch';
 import { dataFilter } from '../../utils/fetch/fetchDataType';
-import $store from '../../store';
+import { codeParame } from './index';
 
 /***
  * 获取树节点，一次性加载
  * @param context
  */
 export function treeDataFetchAll(context) {
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/getTreeInfo`,
     method: 'get',
@@ -21,7 +21,7 @@ export function treeDataFetchAll(context) {
  */
 export function treeDataFetchByLazy(context, params) {
   dataFilter(params);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/getTreeInfoByLazy`,
     method: 'get',
@@ -36,7 +36,7 @@ export function treeDataFetchByLazy(context, params) {
  */
 export function treeNodeAdd(context, data) {
   dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/addNode`,
     method: 'post',
@@ -51,7 +51,7 @@ export function treeNodeAdd(context, data) {
  */
 export function treeNodeUpdate(context, data) {
   dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/updateNode`,
     method: 'post',
@@ -66,7 +66,7 @@ export function treeNodeUpdate(context, data) {
  */
 export function treeNodeDelete(context, params) {
   dataFilter(params);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/deleteNode`,
     method: 'delete',
@@ -81,7 +81,7 @@ export function treeNodeDelete(context, params) {
  */
 export function treeNodeDrag(context, data) {
   dataFilter(data);
-  const { appCode, treeCode } = context; //appCode:应用编码;treeCode:树组件code id
+  const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return fetch({
     url: `/${appCode}/${treeCode}/dragNode`,
     method: 'post',
