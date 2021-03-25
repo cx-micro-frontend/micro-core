@@ -22,7 +22,6 @@ const getters = {
   isLocked: state => state.LockScreen.isLocked, //锁屏状态
   moduleMenu: state => state.NavMenu.moduleMenu, //所有导航菜单数据
   sideMenu: state => state.NavMenu.sideMenu, //当前的侧边栏导航数据
-  sideMenuTheme: state => state.NavMenu.sideMenuTheme, //当前的侧边栏 主题
   initRoute: state => state.NavMenu.initRoute, //系统初始路由
 
   visitedPages: state => state.PageTabs.visitedPages, //操作访问过的页面于tab页显示
