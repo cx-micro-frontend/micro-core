@@ -58,7 +58,7 @@ const getters = {
   sideMenuTheme: state => state.UserThemeSetting.userTheme.sideMenuTheme,
   sideMenuCollapse: state => state.UserThemeSetting.userTheme.sideMenuCollapse,
 
-  logininfo: state => state.User.logininfo,
+  logininfo: state => state.CoverPainting.logininfo,
 
   /**
    * 租户信息 - 个性化配置 - cover painting operatorInfo
