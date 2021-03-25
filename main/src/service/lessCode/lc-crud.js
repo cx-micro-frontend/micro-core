@@ -1,6 +1,6 @@
-import $store from '../../store';
 import fetch from '../../utils/fetch/fetch';
 import { dataFilter } from '../../utils/fetch/fetchDataType';
+import { codeParame } from './index';
 
 /**
  * 获取 表单json渲染模板 和 其他信息（dialog 尺寸） 的接口
@@ -24,8 +24,13 @@ export function getForm(context) {
  */
 export function addItem(context, query) {
   dataFilter(query);
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
-  const { appCode } = context; //appCode:应用编码;
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
+
   return fetch({
     url: `/${appCode}/${formName}/add-${formName}`,
     method: 'post',
@@ -40,8 +45,13 @@ export function addItem(context, query) {
  */
 export function editItem(context, query) {
   dataFilter(query);
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
-  const { appCode } = context; //appCode:应用编码;
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
+
   return fetch({
     url: `/${appCode}/${formName}/edit-${formName}`,
     method: 'post',
@@ -56,8 +66,13 @@ export function editItem(context, query) {
  */
 export function deleteItem(context, id) {
   dataFilter(id);
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
-  const { appCode } = context; //appCode:应用编码;
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
+
   return fetch({
     url: `/${appCode}/${formName}/delete-${formName}?id=${id}`,
     method: 'delete',
@@ -71,8 +86,13 @@ export function deleteItem(context, id) {
  */
 export function batchDelete(context, query) {
   dataFilter(query);
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
-  const { appCode } = context; //appCode:应用编码;
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
+
   return fetch({
     url: `/${appCode}/${formName}/delete-${formName}-batch`,
     method: 'delete',
@@ -87,8 +107,13 @@ export function batchDelete(context, query) {
  */
 export function detailItem(context, params) {
   dataFilter(params);
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
-  const { appCode } = context; //appCode:应用编码;
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
+
   return fetch({
     url: `/${appCode}/${formName}/detail-${formName}`,
     method: 'get',
