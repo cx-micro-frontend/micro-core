@@ -4,6 +4,7 @@ import {
 } from '../../../service/System/Layout/coverPainting';
 import { storageHandle } from '../../../utils/storage/storage';
 import { resourcepath } from '../../../utils/library/resource';
+import { stateAssign } from '../../utils';
 
 /**
  * get some operator info in Storage
@@ -34,6 +35,10 @@ const CoverPainting = {
 
       operatorCopyright:
         _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
+    },
+    logininfo: {
+      source: _getStorage().source || 'NEAP', //PC登录 source 值
+      loginSettingList: [], //第三方登录信息列表
     },
   },
   mutations: {
@@ -67,6 +72,10 @@ const CoverPainting = {
       };
 
       storageHandle('set', 'sign_operator_info', JSON.stringify(state.operatorInfo));
+    },
+    //set login info
+    SET_LOGIN_INFO: (state, data) => {
+      stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
     },
   },
   actions: {
