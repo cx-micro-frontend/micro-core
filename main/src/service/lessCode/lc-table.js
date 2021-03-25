@@ -1,6 +1,6 @@
 import { dataFilter } from '../../utils/fetch/fetchDataType';
 import fetch from '../../utils/fetch/fetch';
-import $store from '../../store';
+import { codeParame } from './index';
 
 /**
  * table data fetch
@@ -9,8 +9,12 @@ import $store from '../../store';
  */
 export const tableDataFetch = (context, data) => {
   dataFilter(data);
-  const { appCode } = context; //appCode:应用编码;
-  const { formName } = $store.getters.currentPageInfo || {}; //菜单 所对应的 数据库表 名称
+  /**
+   * appCode:应用编码;
+   * formName:菜单所对应的数据库表名称
+   *
+   */
+  const { appCode, formName } = codeParame(context);
 
   return fetch({
     url: data.url || `/${appCode}/${formName}/list-${formName}`,
