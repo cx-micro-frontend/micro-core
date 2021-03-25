@@ -76,6 +76,7 @@ const CoverPainting = {
     //set login info
     SET_LOGIN_INFO: (state, data) => {
       stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
+      storageHandle('set', 'sign_operator_info', JSON.stringify(state.logininfo));
     },
   },
   actions: {
