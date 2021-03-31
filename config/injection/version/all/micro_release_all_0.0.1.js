@@ -522,6 +522,14 @@ module.exports = [
    * 目前有具体的分支发布要求
    */
   {
+    module: '系收支系统业务组件',
+    repositorie: 'finance_components',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
+    isOwner: false,
+    disabled: false,
+  },
+  {
     module: '单据管理',
     repositorie: 'documentManagement',
     rootRepositorie: 'finance', //根模块唯一标识key

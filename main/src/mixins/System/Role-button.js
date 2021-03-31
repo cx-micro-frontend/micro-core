@@ -1,16 +1,22 @@
+/**
+ * 权限按钮混入
+ */
 export default {
   data() {
     return {
-      roleButtonList: [],
-      roleButtonAction: [],
-      roleButtonForm: [],
-      roleButtonGrid: [],
+      roleButtonList: [], //权限按钮（总）
+      roleButtonAction: [], //操作权限按钮（总）
+      roleButtonForm: [], //表单权限按钮（总）
+      roleButtonGrid: [], //表格权限按钮（总）
     };
   },
   computed: {
+    //表格权限按钮（经过过滤和处理）
     gridBtns() {
       if (!this.roleButtonGrid || !this.roleButtonGrid.length) return [];
-      return this.roleButtonGrid.map(({ name, code }) => ({ label: name, value: code }));
+      return this.roleButtonGrid
+        .filter(({ hide }) => !hide)
+        .map(({ name, code }) => ({ label: name, value: code }));
     },
   },
   created() {

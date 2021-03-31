@@ -1,6 +1,6 @@
 import { dataFilter } from '../../utils/fetch/fetchDataType';
 import fetch from '../../utils/fetch/fetch';
-import { codeParame } from './index';
+import { basicFetchHeader, codeParame } from './index';
 
 /**
  * table data fetch
@@ -17,6 +17,7 @@ export const tableDataFetch = (context, data) => {
   const { appCode, formName } = codeParame(context);
 
   return fetch({
+    ...basicFetchHeader,
     url: data.url || `/${appCode}/${formName}/list-${formName}`,
     method: data.method || 'post',
     headers: {

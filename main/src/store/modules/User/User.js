@@ -33,10 +33,11 @@ const User = {
       userId: getUserId(),
       userAccount: _deCryptoUserInfo().userAccount,
       userName: _deCryptoUserInfo().userName,
-      avatar: _deCryptoUserInfo().avatar,
       userType: _deCryptoUserInfo().userType,
       userPhone: _deCryptoUserInfo().userPhone,
       userSex: _deCryptoUserInfo().userSex,
+      organizationId: _deCryptoUserInfo().organizationId,
+      avatar: _deCryptoUserInfo().avatar,
       NWExID: _deCryptoUserInfo().NWExID, //v8 需要
       NWESessionId: _deCryptoUserInfo().NWESessionId, //v8 需要
     },
@@ -54,6 +55,7 @@ const User = {
         'userType',
         'userPhone',
         'userSex',
+        'organizationId',
         'NWExID',
         'NWESessionId',
       ]);
