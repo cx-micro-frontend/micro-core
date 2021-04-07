@@ -4,15 +4,14 @@ import { lessCodeBasicFetch, codeParame } from './index';
 /**
  * table data fetch
  * @param context
+     - appCode:应用编码
+     - formName:表单名称编码
+     - funcId：funcId
+     - treeCode:树组件code id
  * @param data - url / query / head - funcId
  */
 export const tableDataFetch = (context, data) => {
   dataFilter(data);
-  /**
-   * appCode:应用编码;
-   * formName:菜单所对应的数据库表名称
-   *
-   */
   const { appCode, formName } = codeParame(context);
 
   return lessCodeBasicFetch(codeParame(context), {

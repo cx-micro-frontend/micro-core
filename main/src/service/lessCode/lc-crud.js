@@ -10,12 +10,8 @@ import { codeParame, lessCodeBasicFetch } from './index';
  - treeCode:树组件code id
  */
 export function getForm(context) {
-  // const { appCode } = context; //appCode:应用编码;
-
-  const appCode = 'nlcpd'; //后续要改成  system
-
   return lessCodeBasicFetch(codeParame(context), {
-    url: `/${appCode}/base/getFormInfo`,
+    url: `/system/base/getFormInfo`,
     method: 'get',
   });
 }
