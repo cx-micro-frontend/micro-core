@@ -38,7 +38,7 @@
       },
       appTag() {
         return `${this.projectName}-${packageJson['neap-tag'] || 'normal'}`;
-      },
+      }
     },
   };
 </script>

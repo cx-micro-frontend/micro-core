@@ -11,7 +11,7 @@ import { codeParame, lessCodeBasicFetch } from './index';
  */
 export function getForm(context) {
   return lessCodeBasicFetch(codeParame(context), {
-    url: `/system/base/getFormInfo`,
+    url: `/system/field/getFormInfo`,
     method: 'get',
   });
 }
