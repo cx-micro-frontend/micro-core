@@ -11,8 +11,8 @@ import { stateAssign } from '../../utils';
  * @returns {{}}
  * @private
  */
-function _getStorage() {
-  return JSON.parse(storageHandle('get', 'sign_operator_info')) || {};
+function _getStorage(key) {
+  return (JSON.parse(storageHandle('get', 'sign_operator_info')) || {})[key];
 }
 
 const CoverPainting = {
@@ -20,24 +20,25 @@ const CoverPainting = {
     operatorInfo: {
       // === title ===
       operatorDesc: '', //登录页 - 左侧标题（sign in box)
-      operatorName: _getStorage().operatorName, //document title / head title
+      operatorName: _getStorage('operatorInfo').operatorName, //document title / head title
 
       // === images ===
-      operatorLogo: _getStorage().operatorLogo, //布局-head 左侧Logo图片 (大)
-      operatorLogoMini: _getStorage().operatorLogoMini, //布局-head 左侧Logo图片 (小)
+      operatorLogo: _getStorage('operatorInfo').operatorLogo, //布局-head 左侧Logo图片 (大)
+      operatorLogoMini: _getStorage('operatorInfo').operatorLogoMini, //布局-head 左侧Logo图片 (小)
 
       operatorPicture: '', //登录页 - 左侧图片（sign in box)
       operatorBackgroudPic: '', //登录页 - 大背景图
 
       qrcodePic: '', //app 下载二维码
 
-      operatorLoginPic: _getStorage().operatorLoginPic, //布局-head 左侧Logo图片 （旧的，即将废弃)
+      operatorLoginPic: _getStorage('operatorInfo').operatorLoginPic, //布局-head 左侧Logo图片 （旧的，即将废弃)
 
       operatorCopyright:
-        _getStorage().operatorCopyright || `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
+        _getStorage('operatorInfo').operatorCopyright ||
+        `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
     },
     logininfo: {
-      source: _getStorage().source || 'NEAP', //PC登录 source 值
+      source: _getStorage('logininfo').source || 'NEAP', //PC登录 source 值
       loginSettingList: [], //第三方登录信息列表
     },
   },
@@ -71,12 +72,12 @@ const CoverPainting = {
         ...o,
       };
 
-      storageHandle('set', 'sign_operator_info', JSON.stringify(state.operatorInfo));
+      storageHandle('set', 'sign_operator_info', JSON.stringify(state));
     },
     //set login info
     SET_LOGIN_INFO: (state, data) => {
       stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
-      storageHandle('set', 'sign_operator_info', JSON.stringify(state.logininfo));
+      storageHandle('set', 'sign_operator_info', JSON.stringify(state));
     },
   },
   actions: {

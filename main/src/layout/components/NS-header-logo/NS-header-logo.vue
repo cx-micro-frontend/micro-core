@@ -16,6 +16,11 @@
     computed: {
       ...mapGetters(['themeColor', 'sideMenuCollapse', 'operatorInfo']),
       logoSrc() {
+        console.log(123123123)
+        console.log(this.operatorInfo)
+        console.log(this.operatorInfo.operatorLogo)
+        console.log(this.operatorInfo.operatorLogoMini)
+        console.log(123123123)
         //是否支持 切换 logo
         if (this.isToggle) {
           return this.sideMenuCollapse ? this.operatorInfo.operatorLogoMini : this.operatorInfo.operatorLogo;

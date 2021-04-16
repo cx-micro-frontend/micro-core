@@ -13,7 +13,7 @@
       </div>
       <ns-biz-organize-object-tree-select
         v-model="organizationId"
-        @change="changePrecincts"
+        @change="changePrecincts"precinctObj
       ></ns-biz-organize-object-tree-select>
     </el-popover>
   </div>
