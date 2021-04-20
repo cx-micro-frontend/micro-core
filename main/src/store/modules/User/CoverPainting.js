@@ -12,7 +12,8 @@ import { stateAssign } from '../../utils';
  * @private
  */
 function _getStorage(key) {
-  return (JSON.parse(storageHandle('get', 'sign_operator_info')) || {})[key];
+  const v = JSON.parse(storageHandle('get', 'sign_operator_info')) || {};
+  return v[key] || {};
 }
 
 const CoverPainting = {
