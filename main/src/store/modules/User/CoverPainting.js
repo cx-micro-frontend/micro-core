@@ -43,7 +43,7 @@ const CoverPainting = {
     },
   },
   mutations: {
-    SET_SCOVER_PAINTING: (state, data) => {
+    SET_COVER_PAINTING: (state, data) => {
       //empty first
       storageHandle('remove', 'sign_operator_info');
 
@@ -74,6 +74,7 @@ const CoverPainting = {
 
       storageHandle('set', 'sign_operator_info', JSON.stringify(state));
     },
+
     //set login info
     SET_LOGIN_INFO: (state, data) => {
       stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
@@ -81,15 +82,25 @@ const CoverPainting = {
     },
   },
   actions: {
-    getCoverPainting({ commit }, data) {
-      getOperatorInfo(data).then(res => {
-        const r = res.resultData;
+    /**
+     * 获取操作员信息（常规）
+     * @param commit
+     * @param query
+     * @returns {Promise<any>}
+     */
+    getCoverPainting({ commit }, query) {
+      return new Promise(resolve => {
+        getOperatorInfo(query).then(res => {
+          const info = res.resultData;
 
-        commit('SET_SCOVER_PAINTING', r);
+          commit('SET_COVER_PAINTING', info);
 
-        commit('SET_LOGIN_INFO', {
-          source: r.source || 'NEAP',
-          loginSettingList: r.loginSettingList || [],
+          commit('SET_LOGIN_INFO', {
+            source: info.source || 'NEAP',
+            loginSettingList: info.loginSettingList || [],
+          });
+
+          resolve(info);
         });
       });
     },
@@ -104,7 +115,7 @@ const CoverPainting = {
       return new Promise(resolve => {
         getOperatorInfoSimple(query).then(res => {
           const info = res.resultData;
-          commit('SET_SCOVER_PAINTING', info);
+          commit('SET_COVER_PAINTING', info);
 
           commit('SET_LOGIN_INFO', {
             source: info.source || 'NEAP',
@@ -122,7 +133,7 @@ const CoverPainting = {
      * @param data
      */
     setCoverPainting({ commit }, data) {
-      commit('SET_SCOVER_PAINTING', data);
+      commit('SET_COVER_PAINTING', data);
     },
   },
 };

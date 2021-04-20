@@ -27,7 +27,8 @@ const dev_env = {
   // BASE_API: '"http://ptcs.nwcloud.cn/elder/api"', //养老
   // BASE_API: '"http://arm-ext.ysservice.com.cn/api"',//永生
 
-  BASE_API: '"http://dmv10.new-see.com/api"', //华为云演示环境
+  // BASE_API: '"http://dmv10.new-see.com/api"', //华为云演示环境
+  BASE_API: '"http://neibuv10.nwcloud.cn/api"', //内部v10 演示环境
 
   // BASE_API: '"http://10.200.254.162/api"',
   // BASE_API: '"http://10.200.254.166/api"',
