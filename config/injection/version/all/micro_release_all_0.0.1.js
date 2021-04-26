@@ -561,4 +561,12 @@ module.exports = [
     isOwner: false,
     disabled: false,
   },
+  {
+    module: '我的审批',
+    repositorie: 'myApproval',
+    rootRepositorie: 'finance', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_finance',
+    isOwner: false,
+    disabled: false,
+  },
 ];
