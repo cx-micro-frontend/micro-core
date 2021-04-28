@@ -154,7 +154,7 @@ module.exports = {
   prod_injection: {
     modules: injection.modules,
     modules_sandbox: injection_sandbox,
-    staticInclude: [], //配置需要抽取拷贝的静态资源名称
+    staticInclude: ['charts'], //配置需要抽取拷贝的静态资源名称
   },
 
   tools: {

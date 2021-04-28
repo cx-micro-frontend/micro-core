@@ -1,5 +1,5 @@
 import { dataFilter } from '../../utils/fetch/fetchDataType';
-import { codeParame, lessCodeBasicFetch } from './index';
+import { codeParame, lessCodeBasicFetch, mockCode } from './index';
 
 /**
  * 获取 表单json渲染模板 和 其他信息（dialog 尺寸） 的接口
@@ -111,6 +111,9 @@ export function detailItem(context, params) {
   return lessCodeBasicFetch(codeParame(context), {
     url: `/${appCode}/${formName}/detail-${formName}`,
     method: 'get',
+    headers: {
+      ...mockCode('DETAIL'),
+    },
     params: params,
   });
 }

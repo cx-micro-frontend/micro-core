@@ -31,3 +31,7 @@ export const lessCodeBasicFetch = (codeParame, option = {}) => {
     )
   );
 };
+
+export const mockCode = code => {
+  return process.env.ENV_KEY === 'mock_cloud_env' ? { MOCK_CODE: `MOCK_CODE_${code}` } : {};
+};
