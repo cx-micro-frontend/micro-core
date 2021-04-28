@@ -1,18 +1,3 @@
-
-import f2 from '@antv/f2/lib/index-all.js';
-
-
-import f2 from '@antv/f2';
-
-
-
-
-
-
-
-
-
-
 import '@babel/polyfill';
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
