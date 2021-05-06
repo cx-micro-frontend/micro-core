@@ -1,5 +1,5 @@
 import { dataFilter } from '../../utils/fetch/fetchDataType';
-import { codeParame, lessCodeBasicFetch } from './index';
+import { codeParame, lessCodeBasicFetch, mockCode } from './index';
 
 /**
  * 导出
@@ -17,5 +17,8 @@ export function downloadExcel(context, query) {
     method: 'post',
     data: query,
     responseType: 'blob',
+    headers: {
+      ...mockCode('EXPORT'),
+    },
   });
 }
