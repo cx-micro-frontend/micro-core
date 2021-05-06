@@ -3,6 +3,8 @@
 
 > core project for micro frontend
 
+> 注意：该分支为（修改登录接口，二维码验证）前的最后一个版本
+
 ## Build Setup
 
 ``` bash
