@@ -4,7 +4,7 @@ import getters from '../getters';
 
 //User
 import User from '../modules/User/User';
-import UserThemeSetting from '../modules/User/UserThemeSetting';
+import UserThemeSetting from '../modules/ThemeInfo/UserThemeSetting';
 import UserBehavior from '../modules/User/UserBehavior';
 
 Vue.use(Vuex);
