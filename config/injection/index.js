@@ -9,8 +9,8 @@
 
 const version = '0.0.1';
 
-const prefix = 'all';
-// const prefix = 'BIDesign';
+// const prefix = 'all';
+const prefix = 'BIDesign';
 
 const _VarInjection = require(`./version/${prefix}/micro_release_${prefix}_${version}`);
 
