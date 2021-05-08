@@ -22,9 +22,9 @@
       return {};
     },
     computed: {
-      ...mapGetters(['operatorInfo', 'logininfo']),
+      ...mapGetters(['operatorInfo', 'loginInfo']),
       thirdPartyLoginList() {
-        return this.logininfo.loginSettingList || [];
+        return this.loginInfo.loginSettingList || [];
       },
     },
     methods: {

@@ -1,6 +1,6 @@
 import { updateUserTheme } from '../../../service/System/User/updateUserTheme';
 import { storageHandle } from '../../../utils/storage/storage';
-import { stateAssign } from '../../utils/index';
+import { stateAssign } from '../../utils';
 
 /**
  * deCrypto user-information data in cookie
@@ -61,6 +61,7 @@ const UserThemeSetting = {
       commit('SET_THEME_DATA', _q);
 
       if (!syncRequest) return;
+      //这里需要整改优化
       switch (prop) {
         case 'themeColor':
           updateUserTheme(_q);

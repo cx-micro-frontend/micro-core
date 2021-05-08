@@ -1,10 +1,5 @@
-import {
-  getOperatorInfo,
-  getOperatorInfoSimple,
-} from '../../../service/System/Layout/coverPainting';
 import { storageHandle } from '../../../utils/storage/storage';
 import { resourcepath } from '../../../utils/library/resource';
-import { stateAssign } from '../../utils';
 
 /**
  * get some operator info in Storage
@@ -37,10 +32,6 @@ const CoverPainting = {
       operatorCopyright:
         _getStorage('operatorInfo').operatorCopyright ||
         `©2022~现在 杭州新视窗信息技术有限公司 版权所有`, //版权信息
-    },
-    logininfo: {
-      source: _getStorage('logininfo').source || 'NEAP', //PC登录 source 值
-      loginSettingList: [], //第三方登录信息列表
     },
   },
   mutations: {
@@ -75,59 +66,8 @@ const CoverPainting = {
 
       storageHandle('set', 'sign_operator_info', JSON.stringify(state));
     },
-
-    //set login info
-    SET_LOGIN_INFO: (state, data) => {
-      stateAssign(state.logininfo, data, ['source', 'loginSettingList']);
-      storageHandle('set', 'sign_operator_info', JSON.stringify(state));
-    },
   },
   actions: {
-    /**
-     * 获取操作员信息（常规）
-     * @param commit
-     * @param query
-     * @returns {Promise<any>}
-     */
-    getCoverPainting({ commit }, query) {
-      return new Promise(resolve => {
-        getOperatorInfo(query).then(res => {
-          const info = res.resultData;
-
-          commit('SET_COVER_PAINTING', info);
-
-          commit('SET_LOGIN_INFO', {
-            source: info.source || 'NEAP',
-            loginSettingList: info.loginSettingList || [],
-          });
-
-          resolve(info);
-        });
-      });
-    },
-
-    /**
-     * 获取操作员信息 - 永生单点 - 获取信息简化，去除背景
-     * @param commit
-     * @param query
-     * @returns {Promise<any>}
-     */
-    getCoverPaintingSimple({ commit }, query) {
-      return new Promise(resolve => {
-        getOperatorInfoSimple(query).then(res => {
-          const info = res.resultData;
-          commit('SET_COVER_PAINTING', info);
-
-          commit('SET_LOGIN_INFO', {
-            source: info.source || 'NEAP',
-            loginSettingList: info.loginSettingList || [],
-          });
-
-          resolve(info);
-        });
-      });
-    },
-
     /**
      * set operator info in vuex  设置操作员（封面)信息
      * @param commit

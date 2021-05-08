@@ -46,6 +46,17 @@ const getters = {
   userinfo: state => state.User.userinfo,
 
   /**
+   *
+   * 设置用户登录相关信息（第三方登录信息列表，用户登录失败次数 - 出现验证码校验等）
+   * source - PC登录 source 值
+   * loginSettingList - 第三方登录信息列表
+   * loginErrorTimes - 用户登录失败次数 - 出现验证码校验
+   * @param state
+   * @returns {*}
+   */
+  loginInfo: state => state.LoginInfo,
+
+  /**
    * userTheme - 用户主题
    * themeColor - 主题色
    * bannerCover -
@@ -57,8 +68,6 @@ const getters = {
   bannerCover: state => state.UserThemeSetting.userTheme.bannerCover,
   sideMenuTheme: state => state.UserThemeSetting.userTheme.sideMenuTheme,
   sideMenuCollapse: state => state.UserThemeSetting.userTheme.sideMenuCollapse,
-
-  logininfo: state => state.CoverPainting.logininfo,
 
   /**
    * 租户信息 - 个性化配置 - cover painting operatorInfo

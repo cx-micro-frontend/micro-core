@@ -15,14 +15,17 @@ import RoleButton from './modules/Role/RoleButton';
 import RequestHeader from './modules/Request/RequestHeader';
 import CancelToken from './modules/Request/CancelToken';
 
-//User
+//User or Operator
 import User from './modules/User/User';
-import UserThemeSetting from './modules/User/UserThemeSetting';
+import UserThemeSetting from './modules/ThemeInfo/UserThemeSetting';
 import UserBehavior from './modules/User/UserBehavior';
+
+import Operator from './modules/User/Operator';
+import LoginInfo from './modules/User/LoginInfo';
 
 //Layout
 import LockScreen from './modules/Layout/LockScreen';
-import CoverPainting from './modules/User/CoverPainting';
+import CoverPainting from './modules/ThemeInfo/CoverPainting';
 import NavMenu from './modules/Layout/NavMenu';
 import PageInfo from './modules/Common/PageInfo';
 import PageTabs from './modules/Layout/PageTabs';
@@ -50,10 +53,12 @@ const store = new Vuex.Store({
     RequestHeader,
     CancelToken,
 
-    //User
+    //User or Operator
     User,
+    LoginInfo,
     UserThemeSetting,
     UserBehavior,
+    Operator,
 
     //Layout
     LockScreen,
