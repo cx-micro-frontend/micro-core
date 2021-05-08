@@ -1,4 +1,12 @@
 export default {
+  sign_login_info: {
+    name: '用户登录相关信息（第三方登录信息列表，用户登录失败次数 - 出现验证码校验等）',
+    storagekey: 'login_info',
+    storageMethod: 'sessionStorage',
+    storageLife: '',
+    partition: false,
+  },
+
   sign_user_info: {
     name: '用户信息',
     storagekey: 'user_info',
