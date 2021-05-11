@@ -10,6 +10,7 @@ import {
 } from '../../../utils/library/auth';
 import { storageHandle } from '../../../utils/storage/storage';
 import {
+  isMultipleEnterprise,
   oauthlogin,
   multipleEnterpriseLogin,
   ssoLogin,
@@ -81,8 +82,23 @@ const User = {
       setUserId(data);
     },
 
-    //empty
-    EMPTY_STORAGE: (state, data) => {
+    /**
+     * 登录前的初始化操作
+     * @param state
+     * @param type - normal/sso 常规和单点
+     * @constructor
+     */
+    INIT_HANDLE_BEFORE_LOGIN: (state, type = 'normal') => {
+      $store.commit('EMPTY_STORAGE'); //清除各类存储信息
+      $store.commit('SET_LOGIN_MODE', type); //登录模式设定
+    },
+
+    /**
+     * 清除各类存储信息
+     * @param state
+     * @constructor
+     */
+    EMPTY_STORAGE: state => {
       console.log('EMPTY_STORAGE-EMPTY_STORAGE-EMPTY_STORAGE');
 
       $store.dispatch('delAllVisitedPages');
@@ -115,8 +131,36 @@ const User = {
   },
 
   actions: {
-    //登录
+    /**
+     * 检测是否是多企业账号
+     * check multiple enterprise :
+     * yes => choice enterprise and login
+     * not => login
+     * @param commit
+     * @param query
+     */
+    isMultipleEnterprise({ commit }, query) {
+      return new Promise((resolve, reject) => {
+        isMultipleEnterprise(query)
+          .then(res => {
+            resolve(res.resultData);
+          })
+          .catch(err => {
+            console.log('检测是否是多企业账号错误');
+            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'add'); //累加错误登录次数
+            reject(err);
+          });
+      });
+    },
+
+    /**
+     * 用户登录（单户）
+     * @param commit
+     * @param query
+     * @returns {Promise<unknown>}
+     */
     oauthlogin({ commit }, query) {
+      commit('INIT_HANDLE_BEFORE_LOGIN'); //登录前的初始化操作
       return new Promise((resolve, reject) => {
         oauthlogin(query)
           .then(res => {
@@ -128,6 +172,8 @@ const User = {
 
             commit('SET_LOGIN_DATA', userinfo);
 
+            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'add'); //重置错误登录次数
+
             resolve(userinfo);
           })
           .catch(err => {
@@ -136,8 +182,15 @@ const User = {
       });
     },
 
-    //多户登录
+    /**
+     * 多户登录
+     * @param commit
+     * @param query
+     * @returns {Promise<unknown>}
+     */
     multipleEnterpriseLogin({ commit }, query) {
+      commit('INIT_HANDLE_BEFORE_LOGIN'); //登录前的初始化操作
+      $store.dispatch('setLoginMode', type); //set login mode
       return new Promise((resolve, reject) => {
         multipleEnterpriseLogin(query)
           .then(res => {
@@ -148,6 +201,8 @@ const User = {
             commit('SET_USER_ID', userinfo.userId);
 
             commit('SET_LOGIN_DATA', userinfo);
+
+            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'add'); //重置错误登录次数
 
             resolve(userinfo);
           })
@@ -164,6 +219,7 @@ const User = {
      * @returns {Promise<any>}
      */
     ssoLogin({ commit }, query) {
+      commit('INIT_HANDLE_BEFORE_LOGIN', 'sso'); //登录前的初始化操作
       return new Promise((resolve, reject) => {
         ssoLogin(query)
           .then(res => {

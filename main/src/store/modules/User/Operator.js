@@ -19,9 +19,6 @@ const Operator = {
 
           $store.commit('SET_COVER_PAINTING', info);
 
-          console.log(343434343434);
-          console.log(343434343434);
-          console.log(343434343434);
           $store.commit('SET_LOGIN_INFO', info);
 
           resolve(info);

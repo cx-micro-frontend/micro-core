@@ -14,7 +14,8 @@ const LoginInfo = {
   state: {
     source: _getStorage().source || 'NEAP', //PC登录 source 值
     loginSettingList: [], //第三方登录信息列表
-    loginErrorTimes: _getStorage().loginErrorTimes || 9999, //用户登录失败次数 - 出现验证码校验
+    loginErrorTimes: _getStorage().loginErrorTimes, //用户登录失败次数 - 出现验证码校验
+    currentLoginErrorTimes: _getStorage().currentLoginErrorTimes || 0, //当前用户登录失败次数
   },
   mutations: {
     /**
@@ -24,19 +25,29 @@ const LoginInfo = {
      * @constructor
      */
     SET_LOGIN_INFO: (state, data) => {
+      //首次刷新加载，剔除'当前用户登录失败次数'字段，存储
       stateAssign(state, {
         source: data.source || 'NEAP', //PC登录 source 值
         loginSettingList: data.loginSettingList || [], //第三方登录信息列表
-        loginErrorTimes: data.loginErrorTimes || 9999, //用户登录失败次数 - 出现验证码校验
+        loginErrorTimes: data.loginErrorTimes || 1, //用户登录失败次数 - 出现验证码校验
       });
-
-      console.log(44444444);
-      console.log(state);
-      console.log(44444444);
 
       storageHandle('set', 'sign_login_info', JSON.stringify(state));
     },
+
+    /**
+     * 更新错误登录次数
+     * @param state
+     * @param type - add(累加) / empty（重置清零）
+     * @constructor
+     */
+    UPDATE_ERROR_LOGIN_TIME: (state, type = 'add') => {
+      //累加或者清零
+      type === 'add' ? state.currentLoginErrorTimes++ : (state.currentLoginErrorTimes = 0);
+
+      //定向存储
+      storageHandle('set', 'sign_login_info', JSON.stringify(state));
+    },
   },
-  actions: {},
 };
 export default LoginInfo;

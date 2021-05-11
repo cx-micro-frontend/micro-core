@@ -86,3 +86,17 @@ export const logout = () => {
     method: 'post',
   });
 };
+
+/**
+ * get captchas - 后去登录验证码图片
+ * @param uuid
+ * @returns {*}
+ */
+export const getCaptchas = uuid => {
+  //fetch out
+  return fetch({
+    // url: `/oauth/oauth/captchas?uuid=${uuid}`,
+    url: `/oauth/oauth/captchas/${uuid}`,
+    method: 'get',
+  });
+};

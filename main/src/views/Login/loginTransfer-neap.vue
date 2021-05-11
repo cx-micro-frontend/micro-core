@@ -7,10 +7,10 @@
 </template>
 <script>
 import { getUrlParam } from '../../utils/library/urlhandle';
-import authLogin from '../../mixins/Login/authLogin';
+import ssoLogin from '../../mixins/Login/ssoLogin';
 
 export default {
-  mixins: [authLogin],
+  mixins: [ssoLogin],
   data() {
     return {};
   },

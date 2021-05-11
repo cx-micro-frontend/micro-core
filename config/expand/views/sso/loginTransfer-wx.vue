@@ -6,7 +6,6 @@
 </template>
 <script>
   import utils from '@NEAP/utils';
-  import { authLogin, getMenu } from '@NEAP/mixins/Login/reqUtils';
   import { jumpToTnitPage } from '@NEAP/utils/behavior';
   export default {
     methods: {
@@ -28,8 +27,8 @@
         };
 
         try {
-          await authLogin(query);
-          await getMenu();
+          await this.$store.dispatch('oauthlogin', query); //直接登录
+          await this.$store.dispatch('generate_nav_menu');//获取菜单数据
           jumpToTnitPage();
         }catch (e) {
           this.$router.push( { path: '/front/login'})

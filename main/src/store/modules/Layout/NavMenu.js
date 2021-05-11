@@ -42,6 +42,25 @@ const NavMenu = {
   },
   actions: {
     /**
+     * 获取菜单数据（总出口）
+     * @param commit
+     */
+    async generate_nav_menu({ commit }) {
+      /**
+       * multiple application mode
+       * 多系统门户模式情况
+       */
+      if (expand.integrationMode === 'mam') {
+        await $store.dispatch('generate_mam_nav_menu');
+      }
+      //single application mode
+      else {
+        //get side bar data
+        await $store.dispatch('generateSideBar');
+      }
+    },
+
+    /**
      * single application mode - nav menu data generate and handle
      * @param commit
      * @returns {Promise<any>}

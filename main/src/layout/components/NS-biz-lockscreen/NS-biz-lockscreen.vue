@@ -46,13 +46,11 @@
   import { mapGetters } from 'vuex';
   import { backIniView } from '../../../utils/behavior/index';
   import cryptoPassWord from '../../../mixins/Login/cryptoPassWord';
-  import authLogin from '../../../mixins/Login/authLogin';
-
   import multipleEnterpriseList from '../../../components/NS-biz-multiple-enterprise-list/NS-biz-multiple-enterprise-list';
 
   export default {
     name: 'NS-biz-lockscreen',
-    mixins: [cryptoPassWord, authLogin],
+    mixins: [cryptoPassWord],
     components: { multipleEnterpriseList },
     data() {
       return {
@@ -68,7 +66,7 @@
       };
     },
     computed: {
-      ...mapGetters(['userinfo', 'isLocked']),
+      ...mapGetters(['userinfo','loginInfo', 'isLocked']),
       userAvatar: function() {
         return this.userinfo.avatar || require('../../../assets/img/empty/empty-avatar.png');
       },
@@ -93,6 +91,7 @@
             this.enterprise = await this.checkByLogin({
               userAccount: this.userinfo.userAccount,
               password: this.cryptoPassWord,
+              source: this.loginInfo.source,//登录验证标识
             });
 
             //单集团情况下 => 关闭锁屏弹窗即可
@@ -115,13 +114,16 @@
        * @returns {Promise<void>}
        */
       async selectHandle(item, i) {
-        const userinfo = await this.multipleAuthLogin({
+
+        const loginParams = {
           userAccount: this.userinfo.userAccount,
           password: this.cryptoPassWord,
           enterpriseId: item.enterpriseId,
-        });
+          source: this.loginInfo.source,//登录验证标识
+        }
+        const callResolve = await this.$store.dispatch('multipleEnterpriseLogin', loginParams);
 
-        if (userinfo) {
+        if (callResolve) {
           this.reLoginSuccess();
         }
       },
