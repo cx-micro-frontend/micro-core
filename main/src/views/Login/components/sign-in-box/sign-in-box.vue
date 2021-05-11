@@ -138,7 +138,8 @@ export default {
 
                 //登录表单入参  - 后续优化删除
                 const loginQuery2 = {
-                  username: this.loginForm.userAccount,
+                  userAccount: this.loginForm.userAccount,
+                  username: this.loginForm.userAccount,//这里后面要删除的，做个兼容，都写上
                   password: this.cryptoPassWord,
                   source: this.loginInfo.source,//登录验证标识
                 };
