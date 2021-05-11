@@ -1,4 +1,25 @@
-// const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
+const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
+const _import = require(`../_import/_import_${process.env.NODE_ENV}`); //获取组件的方法
+
+export default [
+  {
+    path: '/system',
+    component: Layout,
+    name: '系统管理',
+    children: [
+      {
+        path: 'systemRolePermissionV8',
+        component: _import(
+          'system/views/system/systemRolePermissionV8/systemRolePermissionV8',
+          'system'
+        ),
+        meta: { auth: true, key: 'systemRolePermissionV8', title: '角色与权限v8' },
+        name: 'systemRolePermissionV8',
+      },
+    ],
+  },
+];
+
 //
 // export default [
 //   {
