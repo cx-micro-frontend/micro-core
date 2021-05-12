@@ -128,6 +128,8 @@ export default {
           // 获取多集团信息 / 检测是否是多企业账号
           this.$store.dispatch('isMultipleEnterprise', loginQuery).then(async enterprise => {
 
+              this.enterprise = enterprise;
+
               this.hasMultiEnterprise = enterprise.length > 1;
 
               //判断是否为多企业，多企业账号跳转到选择企业界面
@@ -177,6 +179,10 @@ export default {
      * @returns {Promise<void>}
      */
     async selectHandle(item, i) {
+      console.log(1111111)
+      console.log(1111111)
+      console.log(1111111)
+      console.log(1111111)
       this.submitLoading = true;//打开loading
 
       const loginParams = {
