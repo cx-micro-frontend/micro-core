@@ -189,7 +189,6 @@ const User = {
      */
     multipleEnterpriseLogin({ commit }, query) {
       commit('INIT_HANDLE_BEFORE_LOGIN'); //登录前的初始化操作
-      $store.dispatch('setLoginMode', type); //set login mode
       return new Promise((resolve, reject) => {
         multipleEnterpriseLogin(query)
           .then(res => {
