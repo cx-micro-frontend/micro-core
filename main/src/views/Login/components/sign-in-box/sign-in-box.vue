@@ -249,7 +249,7 @@ export default {
       position: relative;
       height: 100%;
       margin: 0 30px;
-      padding-top: 180px;
+      padding-top: 160px;
       box-sizing: border-box;
       overflow: hidden;
 
@@ -264,7 +264,7 @@ export default {
 
         //第三方登录
         .thirdPartyLogin {
-          margin-top: 80px;
+          margin-top: 60px;
         }
 
         .loginForm {
