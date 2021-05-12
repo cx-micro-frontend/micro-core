@@ -4,7 +4,6 @@
  * @param callback
  */
 export const fileFlowDistribute = (response, callback) => {
-  console.log(response);
   const headers = response.headers;
   let blob = new Blob([response.data], { type: headers['content-type'] });
   const fileName = headers['downloadfilename'] ? decodeURI(headers['downloadfilename']) : '';
