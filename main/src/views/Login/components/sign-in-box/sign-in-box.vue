@@ -179,10 +179,6 @@ export default {
      * @returns {Promise<void>}
      */
     async selectHandle(item, i) {
-      console.log(1111111)
-      console.log(1111111)
-      console.log(1111111)
-      console.log(1111111)
       this.submitLoading = true;//打开loading
 
       const loginParams = {
