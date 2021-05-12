@@ -127,6 +127,7 @@ export default {
 
           // 获取多集团信息 / 检测是否是多企业账号
           this.$store.dispatch('isMultipleEnterprise', loginQuery).then(async enterprise => {
+
               this.hasMultiEnterprise = enterprise.length > 1;
 
               //判断是否为多企业，多企业账号跳转到选择企业界面
