@@ -49,7 +49,6 @@ service.interceptors.response.use(
       });
     } else {
       let resData = response.data;
-
       //file blob type
       if (resData.type === 'application/json') {
         let reader = new FileReader();
