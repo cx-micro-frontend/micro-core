@@ -16,7 +16,7 @@
                     leave-active-class='animated slideOutLeft'>
 
           <div class='sign-in-main_container' v-if='!hasMultiEnterprise'>
-            <ns-form class='loginForm' ref='loginForm' :model='loginForm' :rules='rules_login'
+            <ns-form class='loginForm' ref='loginForm' :model='loginForm' :rules='loginRules'
                      label-width='0px' :show-message='false'>
 
               <ns-form-item prop='userAccount'>
@@ -76,14 +76,15 @@ export default {
       submitLoading: false,//请求加载状态
       enterprise: [],//多企业列表
       hasMultiEnterprise: false, //是否为多企业标识
-      validateError: '你输入的密码和账户名不匹配,请重新输入',
+      validateErrorMsg: '你输入的密码和账户名不匹配,请重新输入',
+
       loginForm: {
         userAccount: '',//账号
         password: '',//密码
         captcha: '',//验证码
       },
       captchasInfo: {},//验证码对象信息（验证码验证登录时，需合并进登录入参中）
-      rules_login: {
+      loginRules: {
         userAccount: [{ required: true, message: '请输入用户名', trigger: 'change' }],
         password: [{ required: true, message: '请输入密码', trigger: 'change' }],
       },
@@ -91,6 +92,21 @@ export default {
   },
   computed: {
     ...mapGetters(['operatorInfo', 'loginInfo']),
+    //登录表单入参
+    loginQuery() {
+      const baseQuery = {
+        username: this.loginForm.userAccount,//这里后面要删除的，做个兼容，都写上
+        userAccount: this.loginForm.userAccount,
+        password: this.cryptoPassWord,
+        source: this.loginInfo.source,//登录验证标识
+      };
+      //证码校验时，需合（验证码输入信息和uuid）到登录入参中）
+      if (this.isShowCaptcha) {
+        return Object.assign(baseQuery, this.captchasInfo);
+      } else {
+        return baseQuery;
+      }
+    },
     cryptoPassWord() {
       return this.getCryptoBybase64(this.loginForm.password) || '';
     },
@@ -98,35 +114,29 @@ export default {
       return this.loginInfo.currentLoginErrorTimes >= this.loginInfo.loginErrorTimes;
     },
   },
-
   methods: {
     /**
      * 点击登录按钮
      * @param formName
      */
     submitForm(formName) {
+      //有验证码的情况下先校验验证码
+      if (this.isShowCaptcha) {
+        if (!this.loginQuery.captcha) {
+          this.$message({
+            message: '请输入验证码',
+            type: 'error',
+          });
+          return;
+        }
+      }
       //登录表单校验
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.submitLoading = true;
 
-          //登录表单入参
-          let loginQuery;
-
-          loginQuery = {
-            userAccount: this.loginForm.userAccount,
-            password: this.cryptoPassWord,
-            source: this.loginInfo.source,//登录验证标识
-          };
-
-          //证码校验时，需合（验证码输入信息和uuid）到登录入参中）
-          if (this.isShowCaptcha) {
-            loginQuery = Object.assign(loginQuery, this.captchasInfo);
-          }
-
-
           // 获取多集团信息 / 检测是否是多企业账号
-          this.$store.dispatch('isMultipleEnterprise', loginQuery).then(async enterprise => {
+          this.$store.dispatch('isMultipleEnterprise', this.loginQuery).then(async enterprise => {
 
               this.enterprise = enterprise;
 
@@ -139,16 +149,8 @@ export default {
               //为单企业账号，
               else if (enterprise.length === 1) {
 
-                //登录表单入参  - 后续优化删除
-                const loginQuery2 = {
-                  userAccount: this.loginForm.userAccount,
-                  username: this.loginForm.userAccount,//这里后面要删除的，做个兼容，都写上
-                  password: this.cryptoPassWord,
-                  source: this.loginInfo.source,//登录验证标识
-                };
-
                 //直接登录
-                const userinfo = await this.$store.dispatch('oauthlogin', loginQuery2);
+                const userinfo = await this.$store.dispatch('oauthlogin', this.loginQuery);
                 if (userinfo) {
                   await this.$store.dispatch('generate_nav_menu');//获取菜单数据
                   jumpToTnitPage();//跳转初始化界面
@@ -165,7 +167,7 @@ export default {
           this.submitLoading = false;
           //登录表单校验报错 message
           this.$message({
-            message: this.validateError,
+            message: this.validateErrorMsg,
             type: 'error',
           });
         }
