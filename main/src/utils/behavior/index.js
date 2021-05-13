@@ -27,6 +27,7 @@ export const jumpToTnitPage = () => {
    */
   const initTargetPath = referRoute || initPath; //登录后的初始路径
 
+  $store.commit('UPDATE_ERROR_LOGIN_TIME', 'empty'); //重置清零错误登录次数
   /**
    * two case：
    * single application mode（单系统门户模式情况) - go to target path
