@@ -29,7 +29,7 @@ const LoginInfo = {
       stateAssign(state, {
         source: data.source || 'NEAP', //PC登录 source 值
         loginSettingList: data.loginSettingList || [], //第三方登录信息列表
-        loginErrorTimes: data.loginErrorTimes || 2, //用户登录失败次数 - 出现验证码校验
+        loginErrorTimes: parseInt(data.loginErrorTimes) || 9999, //用户登录失败次数 - 出现验证码校验
       });
 
       storageHandle('set', 'sign_login_info', JSON.stringify(state));
