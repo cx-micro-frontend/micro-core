@@ -143,7 +143,6 @@ const User = {
       return new Promise((resolve, reject) => {
         isMultipleEnterprise(query)
           .then(res => {
-            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'empty'); //重置清零错误登录次数
             resolve(res.resultData);
           })
           .catch(err => {
@@ -176,6 +175,7 @@ const User = {
             resolve(userinfo);
           })
           .catch(err => {
+            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'add'); //累加错误登录次数
             reject(err);
           });
       });
@@ -203,6 +203,7 @@ const User = {
             resolve(userinfo);
           })
           .catch(err => {
+            $store.commit('UPDATE_ERROR_LOGIN_TIME', 'add'); //累加错误登录次数
             reject(err);
           });
       });
