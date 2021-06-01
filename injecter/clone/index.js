@@ -7,14 +7,14 @@ const fs = require('fs');
 const os = require('os');
 const shell = require('shelljs');
 const utils = require('../utils');
-const injectConfigList = require('../injectionList/index');//输出 处理后 的 微前端注入配置项目
 const copy_rename = require('../config').copy_rename;
 const osType = os.type(); // system type
 
 /**
  * clone business repositories
+ * @param injectConfigList - 注入配置清单
  */
-exports.cloneRepositories = () => {
+exports.cloneRepositories = injectConfigList => {
 
   //require clone shell script
   const shell_clone = path.resolve(__dirname, './clone.sh');
