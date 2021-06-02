@@ -1,4 +1,4 @@
-import fetch from '../../../fetch/fetch';
+import fetch from '@FETCH/fetch';
 
 /**
  * table data fetch

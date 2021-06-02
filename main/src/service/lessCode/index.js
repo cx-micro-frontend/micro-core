@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import fetch from '../../fetch/fetch';
+import fetch from '@FETCH/fetch';
 import $store from '../../store';
 
 export const codeParame = context => {

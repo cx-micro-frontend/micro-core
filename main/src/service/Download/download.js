@@ -4,11 +4,8 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2017 Broccoli spring( gcx )
  */
-/*==========================================================================================================================*/
-import fetch from '../../fetch/fetch';
-import { dataFilter } from '../../fetch/fetchDataType';
-
-/*==========================================================================================================================*/
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 
 /**
  * download Excel

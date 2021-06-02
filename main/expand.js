@@ -1,7 +1,6 @@
 import { deepObjectMerge } from './src/utils/library/marge';
 import expand from '@ROOT/config/expand';
 
-
 const e = deepObjectMerge({
     /**
      * sam - single application mode - 单系统模式

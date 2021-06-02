@@ -1,6 +1,6 @@
-import fetch from '../../../fetch/fetch';
 import qs from 'querystring';
-import { dataFilter } from '../../../fetch/fetchDataType';
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 import { getUrlParam } from '../../../utils/library/urlhandle';
 
 /**

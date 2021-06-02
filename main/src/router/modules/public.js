@@ -1,7 +1,6 @@
 import expand from '../../../expand';
 
 // const Layout = resolve => require(['../../layout/Layout.vue'], resolve);
-
 export default [
   { path: '/', redirect: expand.route.redirect['init_view'] },
 
