@@ -4,8 +4,8 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )
  */
-import fetch from '../../../utils/fetch/fetch';
-import { dataFilter } from '../../../utils/fetch/fetchDataType';
+import fetch from '../../../fetch/fetch';
+import { dataFilter } from '../../../fetch/fetchDataType';
 
 /**
  * get authorizer list （ 获取某个组织下的所有员工（授权人）列表 ）

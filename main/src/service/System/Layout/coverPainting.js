@@ -1,5 +1,5 @@
-import fetch from '../../../utils/fetch/fetch';
-import { dataFilter } from '../../../utils/fetch/fetchDataType';
+import fetch from '../../../fetch/fetch';
+import { dataFilter } from '../../../fetch/fetchDataType';
 
 /**
  * get operator info

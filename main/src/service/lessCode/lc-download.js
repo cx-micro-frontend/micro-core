@@ -1,4 +1,4 @@
-import { dataFilter } from '../../utils/fetch/fetchDataType';
+import { dataFilter } from '../../fetch/fetchDataType';
 import { codeParame, lessCodeBasicFetch, mockCode } from './index';
 
 /**

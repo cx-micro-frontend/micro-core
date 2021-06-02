@@ -4,8 +4,8 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )
  */
-import fetch from '../../../utils/fetch/fetch';
-import { dataFilter } from '../../../utils/fetch/fetchDataType';
+import fetch from '../../../fetch/fetch';
+import { dataFilter } from '../../../fetch/fetchDataType';
 
 /**
  * get init role-group-list （ 获取初始化数据，显示初始值所对应的label值 ）
