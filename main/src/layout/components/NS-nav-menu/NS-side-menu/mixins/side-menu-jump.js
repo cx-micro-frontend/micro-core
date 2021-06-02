@@ -1,6 +1,5 @@
 import keyRefer from '../../nav-menu-keyRefer';
 // import { modules } from '../../../../../../dependencies';
-import routefiles from '../../../../../../../injection/config/routefiles';
 import menuNodeProps from '../../utils/menuNodeProps';
 
 export default {
@@ -20,6 +19,14 @@ export default {
       const templatePath = this.currentNode[keyRefer['templatePath']];
       const hasRouteName = !routePath.indexOf('neap_error__routeName') > -1;
       const hasRoutePath = !routePath.indexOf('neap_error__routePath') > -1;
+      let routefiles;
+
+      try {
+        routefiles = require('../../../../../../../injection/config/routefiles').default || [];
+      } catch (e) {
+        routefiles = [];
+      }
+
       const hasViewTemplate =
         menuNodeProps.isInjectPage(this.currentNode) ||
         (routefiles && routefiles.some(m => m.name === routeName));
