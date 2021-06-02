@@ -120,6 +120,7 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
       '@NEAP': path.resolve('main/src'),
+      '@FETCH':  path.resolve('main/src/fetch'),
     },
 
     svgSprite: {
