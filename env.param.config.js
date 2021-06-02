@@ -111,7 +111,7 @@ module.exports = {
   },
   base: {
     mockPath: './main/mock',
-    // sassResources: [path.resolve('./config/expand/theme/test123.scss')],
+    sassResources: [path.resolve('./config/expand/theme/var/index.scss')],
     babel: {
       priority: true,
       include: ['main', 'injection', 'config', 'lib', 'NS_formDesign'],

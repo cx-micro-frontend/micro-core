@@ -1,8 +1,5 @@
 @import '~animate.css/animate.min.css';
 @import 'mixins/index';
-@import 'var/index';
-
-
 
 //---------- 删选器模块 ----------
 $search-top-height: 36px; //删选器顶部高度
@@ -87,15 +84,19 @@ li {
 .el-form {
   .el-form-item {
     line-height: 40px;
+
     &.el-form-item--medium {
       line-height: 32px;
     }
+
     &.el-form-item--small {
       line-height: 32px;
     }
+
     &.el-form-item--mini {
       line-height: 28px;
     }
+
     .el-form-item__content {
       line-height: inherit;
     }

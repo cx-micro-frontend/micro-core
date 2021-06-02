@@ -1,5 +1,4 @@
 @import '../../style/mixins/index';
-@import '../../style/var/index';
 
 //右侧  转换 内容窗口
 .win {
@@ -10,6 +9,7 @@
   & > .ns-container {
     height: 100%;
   }
+
   //container
   .ns-container {
 

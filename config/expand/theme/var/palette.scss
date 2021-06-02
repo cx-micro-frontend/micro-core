@@ -3,7 +3,7 @@ $--color-text-primary: #333; //重要文字
 $--color-text-regular: #666; //主力文字色系
 $--color-text-secondary: #999; //辅助文字颜色
 $--color-text-placeholder: #c8c8c8; //失效文字颜色
- $--color-text-supply: #e3e3e3; //补充色系
+// $--color-text-supply: #e3e3e3; //补充色系
 $--border-color: #d0d4df;
 $--border-color-light: #ededed; //边框颜色-浅
 $--border-color-lighter: #efefef; //边框颜色-更浅
@@ -16,29 +16,36 @@ $--color-black: #000; //纯黑
 $--color-primary: #0a7af8;
 $--color-primary-hover: #3b95f9;
 $--color-primary-link: #409eff;
-$--color-primary-light: #4097f9; //基础主色-浅色
 $--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 input / select
-
+$--color-primary-light: #4097f9; //基础主色-浅色
 
 //---------- theme color ----------
 $--color-success: #16ca37;
 $--color-warning: #ffae00;
 $--color-danger: #ff5131;
-$--color-info: #0a7af8;
+$--color-info: #999;
 
+//---------- dialog - 弹窗  ----------
+$dialog-default_width: 650px; //基础默认宽度
+$dialog-line_height: 24px; //基础默认行高
+$dialog-padding_left: 32px; //左边间距留白
+$dialog-padding_right: 32px; //右边间距留白
+$dialog-padding_top: 10px; //右边间距留白
+$dialog-padding_bottom: 24px; //右边间距留白
+$dialog-body_max_height: 550px; //body内容实际部分最大高度
+$dialog-body_min_height: 350px; //body内容实际部分最小高度
 
 
 
 $--wrapper-background-color: #f0f2f5; //工作台背景色 rgb(247, 248, 251)
 $--tabs-background-color: #EAECF3; //tabs条 背景颜色  --  较深的灰色
-$--tabs-tag-background-color: #EAECF3; //tabs - tag 模块 背景颜色
+$--tabs-tag-background-color: #e6e8ed; //tabs - tag 模块 背景颜色
 
 $--container-left-background-color: #fff; //工作台 - 左边容器 - 背景色
 $--container-right-background-color: #fff; //工作台 - 左边容器 - 背景色
-
 $--container-border-color: #e6e8ee; //工作台 - 容器 - 模块划分边框线
 
 $NEAP-header__color: #505367; //顶部文字/图标颜色 #656882
-$NEAP-tabs__text-color: #636780; //tab页文字颜色
+$NEAP-tabs__text-color: #636780; //tab页标签文字颜色
 
-
+$--table-pagination-background-color: #fff; //表格-分页器-背景色

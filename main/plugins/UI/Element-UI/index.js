@@ -1,9 +1,14 @@
 import ElementUI from 'element-ui';
 
 //base style
-import 'cx-theme/dist/cx-theme.min.css';
+import './assets/iconfont/element-icons.ttf';
+import './assets/iconfont/element-icons.woff';
+
+// import 'cx-theme/dist/cx-theme.min.css';
+import './v10-basic-theme-cover/v10-basic-theme.min.css';
+
 //cover style
-import './theme-cover/index.scss';
+import './v10-basic-theme-cover/index.scss';
 
 export default ElementUI;
 

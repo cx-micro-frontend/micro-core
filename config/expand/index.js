@@ -11,7 +11,8 @@ export default {
 
   //全局样式主题的覆盖引入（业务个性化)，包括图标等一些元素
   UI: {
-    theme: () => import('./theme'),
+    // theme: () => import('./theme'),
+    theme: null,
     iconfont: () => import('./iconfont/mixin/index.js'),
   },
   layout: {

@@ -7,6 +7,7 @@
 
 <template>
   <div id="app" :class="appName" :tag="appTag">
+    <span class='gcxtest'>gcxtest-gcxtest-gcxtest-gcxtest</span>
     <router-view/>
   </div>
 </template>

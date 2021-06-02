@@ -2,11 +2,10 @@
   border: 1px solid #e8e8e8 !important;
   .el-table__header {
     th {
-      border-left: 1px solid #d8dade;
-      background-color: #ebedef;
-      color: #333;
+      border-left: 1px solid $--border-color;
+      background-color: $--background-color-base;
       &:first-child {
-        border-left: none
+        border-left: none;
       }
     }
   }
@@ -15,7 +14,8 @@
     border-right: none;
     border-left: none;
   }
-  td, th {
+  td,
+  th {
     height: 28px;
     max-height: 28px;
     padding: 4px 0;
@@ -30,7 +30,10 @@
       overflow: hidden;
 
       //字体更改
-      .el-dropdown, button, span, p {
+      .el-dropdown,
+      button,
+      span,
+      p {
         font-size: 13px;
       }
 
@@ -44,7 +47,6 @@
           &.descending {
             bottom: 4px;
           }
-
         }
       }
 
@@ -58,11 +60,12 @@
   }
   //表头最右侧滚动槽
   .el-table__fixed-right-patch {
-    background-color: #ebedef;
+    background-color: $--background-color-base;
   }
 
   //去除table 所有外框
-  .el-table__fixed-footer-wrapper, .el-table__footer-wrapper {
+  .el-table__fixed-footer-wrapper,
+  .el-table__footer-wrapper {
     td {
       border-bottom: none;
     }
@@ -73,15 +76,19 @@
     //}
   }
 
-  .el-table--border:after, .el-table--group:after {
+  .el-table--border:after,
+  .el-table--group:after {
     width: 0;
   }
 
-  .el-table--border:after, .el-table--group:after, .el-table:before {
+  .el-table--border:after,
+  .el-table--group:after,
+  .el-table:before {
     background-color: transparent;
   }
 
-  .el-table__fixed-right, .el-table__fixed {
+  .el-table__fixed-right,
+  .el-table__fixed {
     z-index: 999;
     background-color: #fff;
     &:before {
@@ -89,14 +96,21 @@
     }
     .el-table__fixed-body-wrapper {
       .el-table__body {
-        tr:last-child {
-          td {
-            //border-bottom: none !important;
+        .el-table__body tr {
+          //表格行悬停颜色
+          &.hover-row.current-row > td,
+          &.el-table__body tr.hover-row.el-table__row--striped.current-row > td,
+          &.el-table__body tr.hover-row.el-table__row--striped > td,
+          &.el-table__body tr.hover-row > td {
+            background: $--background-color-base;
+          }
+          &:last-child {
+            td {
+              //border-bottom: none !important;
+            }
           }
         }
       }
     }
   }
 }
-
-

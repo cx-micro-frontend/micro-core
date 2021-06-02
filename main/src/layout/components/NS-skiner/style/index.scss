@@ -1,10 +1,9 @@
-@import "../../../../style/var/layout";
-
 $skiner-action-height: 32px;
 $skiner-cycle-height: 20px;
 
 ul.ns-skiner__container {
   height: $skiner-action-height;
+
   li.theme-cycle {
     width: $skiner-cycle-height;
     height: $skiner-cycle-height;
@@ -15,11 +14,13 @@ ul.ns-skiner__container {
     margin-right: $skiner-cycle-height/2;
     text-align: center;
     cursor: pointer;
+
     i {
       color: #fff;
       font-weight: bold;
       padding: 0;
     }
+
     &:last-child {
       margin-right: 0;
     }

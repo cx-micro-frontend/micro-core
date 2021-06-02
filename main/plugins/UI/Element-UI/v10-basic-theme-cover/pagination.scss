@@ -1,11 +1,7 @@
-@import '../../../../src/style/public';
-@import '../../../../src/style/mixins/index';
-
 $pagination__height: 28px;
 /* ===================== 分页 ==================== */
 .el-pagination {
   display: inline-block;
-  color: $--color-text-regular;
   height: $pagination__height;
   line-height: $pagination__height;
   padding-top: 0;
@@ -22,27 +18,41 @@ $pagination__height: 28px;
   //页面数字按钮
   .el-pager {
     li {
-      border-radius: 2px;
+      color: $--color-text-primary;
+      border: 1px solid $--border-color-light;
+      border-radius: 3px;
       margin-left: 6px;
       &:last-child {
         margin-right: 6px;
       }
-      &.active {
-        background-color: $--color-primary;
-        color: #ffffff;
-        border-radius: 2px;
-        border: none;
-      }
+      &.active,
       &:hover {
-        background-color: $--color-primary;
-        color: #ffffff;
-        border-radius: 2px;
-        border: none;
+        color: #fff;
+        background: $--color-primary;
+        border-color: $--color-primary;
+        border-radius: 3px;
       }
+      &.active + li {
+        border-left: 1px solid $--border-color-light;
+      }
+    }
+  }
+  //页码输入框
+  .el-pagination__jump {
+    .el-input__inner {
+      height: 28px;
+      border-radius: 3px;
     }
   }
   //左箭头按钮
   .btn-prev {
     padding-right: 0;
+  }
+  //箭头按钮
+  .btn-prev,
+  .btn-next {
+    padding: 0;
+    border: 1px solid $--border-color-light;
+    border-radius: 6px;
   }
 }

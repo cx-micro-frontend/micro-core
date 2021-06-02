@@ -52,7 +52,6 @@ export default {
 </script>
 
 <style rel='stylesheet/scss' lang='scss' scoped>
-@import "../../../../style/var";
 //验证码
 .captcha_container {
 
@@ -76,6 +75,7 @@ export default {
       cursor: pointer;
     }
   }
+
   //验证码图片
   img {
     height: 100%;

@@ -1,0 +1,33 @@
+.el-select .el-input .el-input__icon,
+.el-input__icon,
+.el-tree-node__expand-icon {
+  color: $--color-text-secondary;
+  border-left-color: $--color-text-secondary;
+}
+
+.el-icon--right {
+  margin-left: 1px;
+}.operate-wrap .el-button,
+
+
+   //抽屉图标颜色
+.ns-drawer__switch i {
+  color: #e8e8e8;
+}
+
+//表格内链接文字和操作栏文字颜色(后续处理)
+.el-table__row .el-button {
+  color: $--color-primary;
+}
+
+//表格操作栏按钮背景色(后续处理)
+.el-table__row .el-button,
+.vxe-table .action-scope .ns-button {
+  background: transparent;
+  border-color: transparent;
+}
+
+//.operate-wrap .el-button{
+//  background: transparent;
+//  border-color: transparent;
+//}

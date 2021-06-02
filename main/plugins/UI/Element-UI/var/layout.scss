@@ -1,0 +1,42 @@
+//---------- layout - 布局  ----------
+$NEAP-window__minWidth: 1280px; //最小窗口宽度
+$NEAP-window__minHeight: 600px; //最小窗口高度
+
+$NEAP-tabs__height: 38px; //tabs模块 高度
+$NEAP-tabs__font-size: 13px; //tab页文字大小
+
+
+$NEAP-side-menu__width--collapse: 50px; //侧边菜单-宽度（折叠)
+$NEAP-side-menu__width--expand: 180px; //侧边菜单-宽度（展开)
+
+
+$NEAP-header__height: 50px; //顶部导航高度
+$NEAP-header__padding--left: 0px; //顶部导航左 padding
+$NEAP-header__padding--right: 0px; //顶部导航右 padding
+$NEAP-module__margin: 5px; //顶部导航各模块外间距
+$NEAP-module__padding: 10px; //顶部导航各模块内间距
+
+
+//head
+$--head-icon-size: 20px;
+
+
+//---- 右侧窗口悬浮显示 上下左右 空隙值 ----
+$container_gapT: 0px;
+$container_gapB: 0px;
+$container_gapL: 0px;
+$container_gapR: 0px;
+
+//---- 右侧窗口悬浮显示 上下左右 空隙值 ----
+$win_gapT: 10px;
+$win_gapB: 0px;
+$win_gapL: 10px;
+$win_gapR: 10px;
+
+//win 内边距
+$win_pt: 10px;
+$win_pb: 0px;
+$win_pl: 10px;
+$win_pr: 10px;
+
+
