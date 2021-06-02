@@ -7,7 +7,7 @@
 > ##### 当前版本时间段2021.5.07 - 2021.5.20
 > 1、fetch 文件路劲发生改变，移至src下，后续引用需要在alias配置@FETCH才能命中
 > 2、injecter中对clone方法进行了扩展，支持传入injectConfigList - 注入配置清单，以便其他项目调用
->
+> 3、样式 var 参数 统一从 sassResources 中获取，并统一整合了cover样式
 ## Build Setup
 
 ``` bash
