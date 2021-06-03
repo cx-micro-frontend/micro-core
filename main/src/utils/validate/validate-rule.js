@@ -1,11 +1,11 @@
 /*
  * regular expression validation
  * you can use this form-validation for this project,as an extension script.
- * created: 2017/6/5.
+ * created: 2021/6/3.
  * author: Broccoli spring( 高仓雄 - gcx )
- * copyright (c) 2017 Broccoli spring( gcx )
+ * copyright (c) 2021 Broccoli spring( gcx )
  */
-import ns from '../../utils/nsQuery/nsQuery';
+import utils from '../index';
 import rulesInfo from './rules-config';
 
 /**
@@ -40,7 +40,7 @@ export default function validateRule(val, type, ruleInfo) {
   simple ? = >  validata value base on reg rule
   -----------------------*/
   let ruleStatus = info.complex
-    ? ns.base.judgeType(REG) === 'function'
+    ? utils.judgeType(REG) === 'function'
       ? REG(val, info)
       : true
     : REG.test(val);

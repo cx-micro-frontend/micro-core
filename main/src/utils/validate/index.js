@@ -1,13 +1,13 @@
 /*
  * distributor-validator for Vue
  * there are so many validator function you can use , by distributor,you can use it more flexible and convenient
- * created: 2017/10/5.
+ * created: 2021/6/3.
  * author: Broccoli spring( 高仓雄 - gcx )
- * copyright (c) 2017 Broccoli spring( gcx )
+ * copyright (c) 2021 Broccoli spring( gcx )
  */
 /*=====================================================================================================================*/
 import check from './validate-check';
-import ns from '../nsQuery/nsQuery';
+import utils from '../index';
 
 /**
  * Array.prototype.[method name] allows you to define/overwrite an objects method
@@ -44,6 +44,6 @@ export function distributor(required, ruleMode, type, trigger, msg) {
       ? { type: type, validator: check[ruleMode], trigger: trigger } //value validate
       : { validator: check[ruleMode], trigger: trigger };
   }
-  const newRules = [arr1, arr2, arr3].filter(item => ns.base.judgeType(item) !== 'undefined');
+  const newRules = [arr1, arr2, arr3].filter(item => utils.judgeType(item) !== 'undefined');
   return newRules;
 }

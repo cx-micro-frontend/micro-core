@@ -1,12 +1,12 @@
 /*=====================================================================================================================*/
 /*
  * error-message for Vue
- * created: 2017/10/01.
+ * created: 2021/6/03.
  * author: Broccoli spring( 高仓雄 - gcx )
- * copyright (c) 2017 Broccoli spring( gcx )
+ * copyright (c) 2021 Broccoli spring( gcx )
  */
 /*=====================================================================================================================*/
-import ns from '../../utils/nsQuery/nsQuery';
+import utils from '../index';
 // import { Message } from 'element-ui';
 
 export default [
@@ -226,7 +226,7 @@ export default [
      * @returns {boolean}
      */
     ruleReg: function(val) {
-      const type = ns.base.judgeType(val);
+      const type = utils.judgeType(val);
       //judge the value of string and digital type
       if (val && (type === 'string' || type === 'number')) {
         const value = val.toString();
@@ -353,7 +353,7 @@ export default [
  * @private
  */
 let _ObjectSingleLayer = val => {
-  if (val && ns.base.judgeType(val) === 'object') {
+  if (val && utils.judgeType(val) === 'object') {
     for (let key in val) {
       if (!val[key] && val[key] !== 0) {
         return false;
@@ -370,7 +370,7 @@ let _ObjectSingleLayer = val => {
  * @private
  */
 let _throwWarmPrompt = (msg, status) => {
-  if (msg && ns.base.judgeType(msg) === 'string') {
+  if (msg && utils.judgeType(msg) === 'string') {
     //vailate resault s right
     if (status) {
     }
