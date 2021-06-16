@@ -10,6 +10,7 @@
 > 3、样式 var 参数 统一从 sassResources 中获取，并统一整合了cover样式
 > 4、在 service 中 fetch 引用路径变更
 > 5、删除utils=>nsQuery=>nsQuery.js 并改变相对应的引用路径
+> 6、登录页，底部备案号，支持返回html格式渲染
 ## Build Setup
 
 ``` bash
