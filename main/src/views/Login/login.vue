@@ -8,7 +8,9 @@
 
     <sign-in-box></sign-in-box>
 
-    <div class='login-footer' id='login-footer'>{{ operatorInfo.operatorCopyright }}</div>
+    <div class='login-footer' id='login-footer'>
+<!--      {{ operatorInfo.operatorCopyright }}-->
+    </div>
 
 
   </div>
@@ -32,7 +34,7 @@ export default {
     this.$store.dispatch('getCoverPainting', { isDefault: this.isDefault });
   },
   mounted() {
-    // document.getElementById('login-footer').innerHTML = this.operatorInfo.operatorCopyright;
+    document.getElementById('login-footer').innerHTML = this.operatorInfo.operatorCopyright;
     // <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" >桂ICP备16008596号</a><br/>©2004~现在 杭州新视窗信息技术有限公司 版权所有
   },
 };
