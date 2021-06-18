@@ -5,13 +5,11 @@
       <!--<img class="login-logo" :src="operatorInfo.operatorLogo" alt="">-->
     </div>
 
-
     <sign-in-box></sign-in-box>
 
-    <div class='login-footer' id='login-footer'>
-<!--      {{ operatorInfo.operatorCopyright }}-->
+    <div class='login-footer' ref='login-footer'>
+      <!--      {{ operatorInfo.operatorCopyright }}-->
     </div>
-
 
   </div>
 </template>
@@ -30,11 +28,12 @@ export default {
   computed: {
     ...mapGetters(['operatorInfo']),
   },
-  created() {
-    this.$store.dispatch('getCoverPainting', { isDefault: this.isDefault });
-  },
   mounted() {
-    document.getElementById('login-footer').innerHTML = this.operatorInfo.operatorCopyright;
+    this.$store.dispatch('getCoverPainting', { isDefault: this.isDefault }).then(_ => {
+      this.$nextTick(() => {
+        this.$refs['login-footer'].innerHTML = this.operatorInfo.operatorCopyright;
+      });
+    });
     // <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" >桂ICP备16008596号</a><br/>©2004~现在 杭州新视窗信息技术有限公司 版权所有
   },
 };

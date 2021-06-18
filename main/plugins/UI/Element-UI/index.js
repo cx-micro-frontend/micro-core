@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import './assets/iconfont/element-icons.ttf';
 import './assets/iconfont/element-icons.woff';
 
+import './reset.scss';
 // import 'cx-theme/dist/cx-theme.min.css';
 import './v10-basic-theme-cover/v10-basic-theme.min.css';
 
