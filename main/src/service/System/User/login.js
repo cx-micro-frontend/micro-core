@@ -13,7 +13,7 @@ export const isMultipleEnterprise = query => {
   // fetch out
   return fetch({
     url: '/oauth/oauth/query-user-enterprise',
-    method: 'get',
+    method: 'get', //改为 post
     params: query,
   });
 };
