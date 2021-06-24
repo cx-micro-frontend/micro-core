@@ -104,10 +104,15 @@ service.redirect = (code, msg) => {
  * @param config
  */
 service.injectHeaders = config => {
-  !config.headers['token'] && (config.headers['token'] = getToken());
-  !config.headers['funcId'] && (config.headers['funcId'] = $store.state.Core.funcId);
-  !config.headers['orgId'] && (config.headers['orgId'] = $store.state.Precinct.organizationId);
+  !config.headers['token'] && getToken() && (config.headers['token'] = getToken());
+  !config.headers['funcId'] &&
+    $store.state.Core.funcId &&
+    (config.headers['funcId'] = $store.state.Core.funcId);
+  !config.headers['orgId'] &&
+    $store.state.Precinct.organizationId &&
+    (config.headers['orgId'] = $store.state.Precinct.organizationId);
   !config.headers['precinctId'] &&
+    $store.state.Precinct.precinctId &&
     (config.headers['precinctId'] = $store.state.Precinct.precinctId);
 };
 
