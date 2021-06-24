@@ -21,7 +21,7 @@ const _BasicInjection = [
     repositorie: 'biz_components', //模块唯一标识key
     rootRepositorie: 'biz_components', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_biz_components', //clone 路径
-    branch: 'v1.0.NEAP.BASIC.DEV',
+    branch: 'v1.0.NEAP.BASIC.RC',
     isOwner: false, //是否为自有模块
     disabled: false, //是否禁用
   },
