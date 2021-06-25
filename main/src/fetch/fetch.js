@@ -104,16 +104,16 @@ service.redirect = (code, msg) => {
  * @param config
  */
 service.injectHeaders = config => {
-  !config.headers['token'] && getToken() && (config.headers['token'] = getToken());
-  !config.headers['funcId'] &&
-    $store.state.Core.funcId &&
-    (config.headers['funcId'] = $store.state.Core.funcId);
-  !config.headers['orgId'] &&
-    $store.state.Precinct.organizationId &&
-    (config.headers['orgId'] = $store.state.Precinct.organizationId);
-  !config.headers['precinctId'] &&
-    $store.state.Precinct.precinctId &&
-    (config.headers['precinctId'] = $store.state.Precinct.precinctId);
+  [
+    { key: 'token', value: getToken() },
+    { key: 'funcId', value: $store.state.Core.funcId },
+    { key: 'precinctId', value: $store.state.Precinct.precinctId },
+    { key: 'orgId', value: $store.state.Precinct.organizationId },
+  ].forEach((item, key) => {
+    !config.headers.hasOwnProperty(item.key) &&
+      item.value &&
+      (config.headers[item.key] = item.value);
+  });
 };
 
 export default service;

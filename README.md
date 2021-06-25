@@ -6,6 +6,7 @@
 #### 版本说明：
 > ##### 当前版本时间段2021.5.07 - 2021.5.20
 > 1、为应对华为云安全监测，/oauth/oauth/query-user-enterprise - 检测是否是多企业账号  接口改为post，参考login接口
+> 2、为应对华为云安全监测，/oauth/oauth/query-user-enterprise - 请求头增加 Cache-Control
 
 ## Build Setup
 

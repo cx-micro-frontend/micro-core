@@ -11,6 +11,9 @@ export function getOperatorInfo(query) {
   // fetch out
   return fetch({
     url: 'soss/operator/get-operatorInfo', //get-operatorInfoById
+    headers: {
+      'cache-control': 'no-cache',
+    },
     method: 'get',
     params: query,
   });
