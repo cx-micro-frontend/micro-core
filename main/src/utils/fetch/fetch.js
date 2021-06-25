@@ -9,12 +9,12 @@
 import axios from 'axios';
 import { fileFlowDistribute, flowTypeList } from './fileFlowDistribute';
 import solveGetCache from './solveGetCache';
-import requestHead from '../store/modules/Request/RequestHeader';
+import requestHead from '../../store/modules/Request/RequestHeader';
 import { elMessage } from './fetch-message';
-import $store from '../store';
+import $store from '../../store';
 
-import { backIniView } from '../utils/behavior';
-import { getToken } from '../utils/library/auth';
+import { backIniView } from '../behavior';
+import { getToken } from '../library/auth';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
