@@ -9,12 +9,12 @@
 import axios from 'axios';
 import { fileFlowDistribute, flowTypeList } from './fileFlowDistribute';
 import solveGetCache from './solveGetCache';
-import requestHead from '../../store/modules/Request/RequestHeader';
+import requestHead from '../store/modules/Request/RequestHeader';
 import { elMessage } from './fetch-message';
-import $store from '../../store';
+import $store from '../store';
 
-import { backIniView } from '../behavior';
-import { getToken } from '../library/auth';
+import { backIniView } from '../utils/behavior';
+import { getToken } from '../utils/library/auth';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -104,11 +104,16 @@ service.redirect = (code, msg) => {
  * @param config
  */
 service.injectHeaders = config => {
-  !config.headers['token'] && (config.headers['token'] = getToken());
-  !config.headers['funcId'] && (config.headers['funcId'] = $store.state.Core.funcId);
-  !config.headers['orgId'] && (config.headers['orgId'] = $store.state.Precinct.organizationId);
-  !config.headers['precinctId'] &&
-    (config.headers['precinctId'] = $store.state.Precinct.precinctId);
+  [
+    { key: 'token', value: getToken() },
+    { key: 'funcId', value: $store.state.Core.funcId },
+    { key: 'precinctId', value: $store.state.Precinct.precinctId },
+    { key: 'orgId', value: $store.state.Precinct.organizationId },
+  ].forEach((item, key) => {
+    !config.headers.hasOwnProperty(item.key) &&
+      item.value &&
+      (config.headers[item.key] = item.value);
+  });
 };
 
 export default service;
