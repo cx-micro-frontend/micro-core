@@ -13,19 +13,22 @@ const dev_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
+
   IFRAME_IP_CONFIG: '"http://new-see.oicp.io:25280"',
 
+  BASE_API: '"http://192.168.4.34/api"',
+  // BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
   // BASE_API: '"http://openapi.new-see.com:3000/mock/130"', //Yapi 环境
 
   // BASE_API: '"http://192.168.1.52/api"',
-  BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
+
   // BASE_API: '"http://192.168.1.20/api"',
   // BASE_API: '"http://new-see.oicp.io:20008/api"', //20 外网地址
 
   // BASE_API: '"http://222.76.48.148:6107/api"', //伯恩物业系统
   // BASE_API: '"http://124.71.162.124:81/api"',//saas 环境
   // BASE_API: '"http://ptcs.nwcloud.cn/elder/api"', //养老
-  // BASE_API: '"http://arm-ext.ysservice.com.cn/api"',//永生
+  // BASE_API: '"http://arm-ext.ysservice.com.cn/api"',//永升
 
   // BASE_API: '"http://dmv10.new-see.com/api"', //华为云演示环境
   // BASE_API: '"http://neibuv10.nwcloud.cn/api"', //内部v10 演示环境
@@ -33,19 +36,6 @@ const dev_env = {
   // BASE_API: '"http://10.200.254.162/api"',
   // BASE_API: '"http://10.200.254.166/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
-
-  // BASE_API: '"http://121.196.31.230/api"',
-
-  // BASE_API: '" http://114.55.145.244/api"',
-
-  // BASE_API: '"http://192.168.4.40:7777"',
-  // BASE_API: '"http://192.168.1.95/api"',
-  // BASE_API: '"http://192.168.1.75/api"',
-  // BASE_API: '"http://192.168.1.20:7777"',
-
-  // BASE_API: '"http://192.168.3.139/api"',
-  // BASE_API: '"http://192.168.3.2/api"',
-  // BASE_API: '"http://192.168.1.78/api"',
 
   // BASE_API: '"/api"',
 };

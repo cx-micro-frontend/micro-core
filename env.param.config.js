@@ -9,7 +9,7 @@ module.exports = {
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
-    // host: '172.16.1.102', //'192.168.6.205','192.168.6.182' /  192.168.0.106
+    host: '192.168.6.177', //'192.168.6.205','192.168.6.182' /  192.168.0.106
     port: 9010,
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
