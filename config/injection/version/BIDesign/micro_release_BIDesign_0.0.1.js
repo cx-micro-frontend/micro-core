@@ -12,16 +12,17 @@ module.exports = [
     module: '门户页',
     repositorie: 'portal',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_portal.git',
-    branch: 'V1.0.20210325.ARM.RC',
+    branch: 'dev-1.0',
     isOwner: false,
     disabled: false,
   },
+
   // 设计中心 - 门户管理
   {
     module: '门户管理',
     repositorie: 'portalManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -34,7 +35,7 @@ module.exports = [
     module: '驾驶舱管理',
     repositorie: 'datashowManagement',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -48,7 +49,7 @@ module.exports = [
     module: '设计器',
     repositorie: 'micro_bi_designer',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -57,7 +58,7 @@ module.exports = [
     module: '生成器',
     repositorie: 'micro_bi_generator',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -66,7 +67,7 @@ module.exports = [
     module: '设计器物料',
     repositorie: 'micro_bi_packages',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -80,7 +81,7 @@ module.exports = [
     repositorie: 'formDesign', //模块唯一标识key
     rootRepositorie: 'design_center', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
     isOwner: false,
     disabled: false,
   },
@@ -93,7 +94,20 @@ module.exports = [
     module: '主题设置',
     repositorie: 'themeDesign',
     path: 'http://47.96.187.51:3001/NW-frontend/micro_design_center.git',
-    branch: 'v1.0.20210315.NEAP.BIDESIGN.RC',
+    branch: 'v1.0.NEAP.BIDESIGN.RC',
+    isOwner: false,
+    disabled: false,
+  },
+
+  /**
+   * === 数据迁移系统 ===
+   * 目前主分支发布
+   */
+  {
+    module: '数据管理',
+    repositorie: 'dataManagement',
+    rootRepositorie: 'data_migration', //根模块唯一标识key
+    path: 'http://47.96.187.51:3001/NW-frontend/micro_data_migration.git',
     isOwner: false,
     disabled: false,
   },

@@ -13,7 +13,7 @@ const dev_env = {
   NODE_ENV: '"development"',
   ENV_CONFIG: '"dev"',
   IP_CONFIG: '"http://192.168.1.20"',
-  IFRAME_IP_CONFIG: '"http://192.168.1.52"',
+  IFRAME_IP_CONFIG: '"http://new-see.oicp.io:25280"',
 
   // BASE_API: '"http://openapi.new-see.com:3000/mock/130"', //Yapi 环境
 

@@ -41,12 +41,15 @@ const _BasicInjection = [
     repositorie: 'neapInject', //模块唯一标识key
     rootRepositorie: 'neapInject', //根模块唯一标识key
     path: 'http://47.96.187.51:3001/NW-frontend/micro_neapInject.git',
-    branch: 'master', //抽取分支
+    branch: 'v1.0.NEAP.BASIC.RC', //抽取分支
     isOwner: false, //是否为自有模块
     disabled: false,
   },
 ];
 
 module.exports = {
-  modules: [..._BasicInjection, ..._VarInjection],
+  modules: [
+    ..._BasicInjection,
+    // ..._VarInjection
+  ],
 };
