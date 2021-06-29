@@ -1,5 +1,4 @@
 // 扩展方法
-import neapService from '@NEAP/service'; //service api
 import { dataFilter } from '@FETCH/fetchDataType';
 import { codeParame, lessCodeBasicFetch } from './index.js';
 
@@ -12,7 +11,7 @@ import { codeParame, lessCodeBasicFetch } from './index.js';
  - treeCode:树组件code id
  * @param context
  */
-neapService.getColHeaders = function(context) {
+export const getColHeaders = context => {
   return lessCodeBasicFetch(codeParame(context), {
     url: `/system/field/getColHeaders`,
     method: 'get',
@@ -28,7 +27,7 @@ neapService.getColHeaders = function(context) {
  - treeCode:树组件code id
  * @param query
  */
-neapService.addItems = function(context, query) {
+export const addItems = (context, query) => {
   dataFilter(query);
   const { appCode, formName } = codeParame(context);
 
@@ -47,7 +46,7 @@ neapService.addItems = function(context, query) {
  - funcId：funcId
  - treeCode:树组件code id
  */
-neapService.getNodesByName = function(context, params) {
+export const getNodesByName = (context, params) => {
   const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return lessCodeBasicFetch(codeParame(context), {
     url: `/${appCode}/${treeCode}/getNodesByName`,
@@ -64,7 +63,7 @@ neapService.getNodesByName = function(context, params) {
  - funcId：funcId
  - treeCode:树组件code id
  */
-neapService.getNodeTreeById = function(context, params) {
+export const getNodeTreeById = (context, params) => {
   const { appCode, treeCode } = codeParame(context); //appCode:应用编码;treeCode:树组件code id
   return lessCodeBasicFetch(codeParame(context), {
     url: `/${appCode}/${treeCode}/getChildNodesById`,
@@ -82,7 +81,7 @@ neapService.getNodeTreeById = function(context, params) {
  - treeCode:树组件code id
  * @param query
  */
-neapService.getDetailByIds = function(context, query) {
+export const getDetailByIds = (context, query) => {
   dataFilter(query);
   const { appCode, formName } = codeParame(context);
 
