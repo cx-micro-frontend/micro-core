@@ -7,6 +7,21 @@ import { getUrlParam } from '../../../utils/library/urlhandle';
  * isMultipleEnterprise 检测是否是多企业账号
  * @param query
  */
+// export const isMultipleEnterprise = query => {
+//   // Filter data
+//   dataFilter(query);
+//   // fetch out
+//   return fetch({
+//     url: '/oauth/oauth/query-user-enterprise',
+//     method: 'get',
+//     params: query,
+//   });
+// };
+
+/**
+ * isMultipleEnterprise 检测是否是多企业账号
+ * @param query
+ */
 export const isMultipleEnterprise = query => {
   // Filter data
   dataFilter(query);
