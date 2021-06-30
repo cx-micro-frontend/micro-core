@@ -13,6 +13,7 @@ export function getOperatorInfo(query) {
     url: 'soss/operator/get-operatorInfo', //get-operatorInfoById
     headers: {
       'cache-control': 'no-cache',
+      noAuth: true,
     },
     method: 'get',
     params: query,

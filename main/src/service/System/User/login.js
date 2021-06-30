@@ -30,6 +30,9 @@ export const isMultipleEnterprise = query => {
     url: '/oauth/oauth/query-user-enterprise',
     method: 'post', //改为 post
     data: query,
+    headers: {
+      noAuth: true,
+    },
     transformRequest: [
       function(data) {
         data = qs.stringify(data);
@@ -49,6 +52,9 @@ export const oauthlogin = query => {
     url: '/oauth/login',
     method: 'post',
     data: query,
+    headers: {
+      noAuth: true,
+    },
     transformRequest: [
       function(data) {
         data = qs.stringify(data);
