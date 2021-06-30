@@ -1,5 +1,5 @@
-import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
-import fetch from '@NEAP/utils/fetch/fetch';
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 import qs from 'querystring';
 
 /**
