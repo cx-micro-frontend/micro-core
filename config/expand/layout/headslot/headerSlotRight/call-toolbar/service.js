@@ -1,5 +1,5 @@
-import fetch from '@NEAP/utils/fetch/fetch';
-import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 
 // 获取坐席基本信息
 export function getAgentByUserId() {

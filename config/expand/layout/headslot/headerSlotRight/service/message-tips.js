@@ -1,5 +1,5 @@
-import fetch from '@NEAP/utils/fetch/fetch';
-import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 
 /**
  * 获取未处理消息数

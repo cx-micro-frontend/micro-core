@@ -7,8 +7,8 @@
  * @FilePath: \micro_work_order\NS_work_order_components\packages\Ns-biz-message-box\service\service.js
  */
 
-import fetch from '@NEAP/utils/fetch/fetch';
-import { dataFilter } from '@NEAP/utils/fetch/fetchDataType';
+import fetch from '@FETCH/fetch';
+import { dataFilter } from '@FETCH/fetchDataType';
 
 /**
  * 设置消息为已读
