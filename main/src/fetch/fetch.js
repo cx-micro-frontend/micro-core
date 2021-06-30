@@ -104,6 +104,8 @@ service.redirect = (code, msg) => {
  * @param config
  */
 service.injectHeaders = config => {
+  //非登录后接口，无需增加请求头属性
+  if (config.headers.noAuth) return;
   [
     { key: 'token', value: getToken() },
     { key: 'funcId', value: $store.state.Core.funcId },
