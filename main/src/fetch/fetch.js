@@ -112,9 +112,7 @@ service.injectHeaders = config => {
     { key: 'precinctId', value: $store.state.Precinct.precinctId },
     { key: 'orgId', value: $store.state.Precinct.organizationId },
   ].forEach((item, key) => {
-    !config.headers.hasOwnProperty(item.key) &&
-      item.value &&
-      (config.headers[item.key] = item.value);
+    !config.headers[item.key] && item.value && (config.headers[item.key] = item.value);
   });
 };
 
