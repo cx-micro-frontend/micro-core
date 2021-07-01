@@ -9,7 +9,7 @@ module.exports = {
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
-    host: '192.168.6.177', //'192.168.6.205','192.168.6.182' /  192.168.0.106
+    // host: '192.168.6.177', //'192.168.6.205','192.168.6.182' /  192.168.0.106
     port: 9010,
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
@@ -23,12 +23,13 @@ module.exports = {
 
     // prescript: ['npm run clean:lib', 'npm run clone'],
 
-    // proxyTable: {
-    //   '/api': {
-    //     target: 'http://192.168.1.20',
-    //     changeOrigin: true
-    //   }
-    // }
+    proxyTable: {
+      '/api': {
+        // target: 'http://192.168.4.34',
+        target: 'http://new-see.oicp.io:25280',
+        changeOrigin: true,
+      },
+    },
   },
   prod: {
     entry: { app: './main/main.js' },

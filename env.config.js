@@ -16,7 +16,7 @@ const dev_env = {
 
   IFRAME_IP_CONFIG: '"http://new-see.oicp.io:25280"',
 
-  BASE_API: '"http://192.168.4.34/api"',
+  // BASE_API: '"http://192.168.4.34/api"',
   // BASE_API: '"http://new-see.oicp.io:25280/api"', //52外网环境
   // BASE_API: '"http://openapi.new-see.com:3000/mock/130"', //Yapi 环境
 
@@ -37,7 +37,7 @@ const dev_env = {
   // BASE_API: '"http://10.200.254.166/api"',
   // BASE_API: '"http://saas.zjlcwg.com/api"',
 
-  // BASE_API: '"/api"',
+  BASE_API: '"/api"',
 };
 
 /**
