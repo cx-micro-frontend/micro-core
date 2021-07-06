@@ -261,7 +261,12 @@ const User = {
              * 再次登录时：需要再次获取和处理异步路由数据
              */
             $store.commit('TOGGLE_ADD_ROUTE_FLAG', true);
-            backIniView();
+
+            if (res.resultMsg.indexOf('http') > -1) {
+              location.href = res.resultMsg;
+            } else {
+              backIniView();
+            }
           }
         })
         .catch(err => console.warn(err));
