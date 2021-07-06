@@ -10,6 +10,7 @@
 > 3、userSetting - service 文件 更改fetch路径为 @NEAP/fetch/
 > 4、fetch.js 中，非登录后接口，无需增加请求头属性（token，funcid等）
 > 5、neap-ui 升级到27，全屏弹窗在ie下存在性能问题，故去掉全屏属性，改由其他方式实现
+> 6、增加登出逻辑处理，若返回resultMsg时http链接则根据返回地址跳转（因用于单点），否则默认跳回登录页
 
 ## Build Setup
 
