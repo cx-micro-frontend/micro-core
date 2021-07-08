@@ -15,9 +15,9 @@ const UserThemeSetting = {
   state: {
     userTheme: {
       themeColor: _deCryptoUserThemeSetting().themeColor || '#0A7AF8', //主题色
-      bannerCover: _deCryptoUserThemeSetting().bannerCover || true, //是否通栏显示
+      bannerCover: _deCryptoUserThemeSetting().bannerCover ?? true, //是否通栏显示
       sideMenuTheme: _deCryptoUserThemeSetting().sideMenuTheme || 'dark', // 侧边栏 主题色 - bright / dark
-      sideMenuCollapse: _deCryptoUserThemeSetting().sideMenuCollapse || true, //当前的侧边栏 伸缩 状态
+      sideMenuCollapse: _deCryptoUserThemeSetting().sideMenuCollapse ?? false, //当前的侧边栏 伸缩 状态
     },
   },
   mutations: {
