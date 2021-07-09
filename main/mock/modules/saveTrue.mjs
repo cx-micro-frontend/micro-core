@@ -9,7 +9,6 @@ const data = (req, res) => {
 };
 
 module.exports = {
-  'POST /jepf/devplatform/sync-original': data,
   'POST /system/user/edit-user': data,
   'GET /system/user/delete-user': data,
   'GET /system/user/modify-user': data,
@@ -24,7 +23,4 @@ module.exports = {
   'POST /system/organization/delete-organization': data,
   'GET /system/dictionary/delete-dictionary': data,
   'POST /system/organization/add-department': data,
-  'POST /o2o/noticeManage/save': data,
-  'POST /o2o/precinct/checkHouse': data,
-  'POST /o2o/precinct/savePrecinct': data,
 };
