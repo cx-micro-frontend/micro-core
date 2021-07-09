@@ -32,12 +32,14 @@ module.exports = {
     }, 'vant'],
 
 
+
     '@babel/plugin-transform-runtime',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-modules-commonjs',
     ['@babel/plugin-proposal-decorators', { legacy: true }],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ["@babel/plugin-proposal-private-methods", { loose: true }],//JS新的私有方法的提案
     '@babel/plugin-syntax-jsx',
     '@vue/babel-plugin-transform-vue-jsx',
     'jsx-v-model',
