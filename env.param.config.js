@@ -5,7 +5,7 @@ const injection_sandbox = require('./config/injection/index.sandbox');
 
 module.exports = {
   dev: {
-    entry: { app: './main/main.js' },
+    entry: { app: './lib/main.tsx' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
@@ -32,7 +32,7 @@ module.exports = {
     },
   },
   prod: {
-    entry: { app: './main/main.js' },
+    entry: { app: './main/main.tsx' },
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
