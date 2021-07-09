@@ -21,7 +21,8 @@
     "nvm": "nvm",
     "fix": "./fix.sh",
     "set-permission-sh": "chmod +x ./fix.sh; chmod +x node_modules/cx-builder/lib/entry.sh",
-    "jekines": "./jekinesShell.sh 'all,portal,design_center,o2o_admin,work_order' 'bill,refund,Meter,report,pay,job' 'a,b,c,d,e,f,g'"
+    "jekines": "./jekinesShell.sh 'all,portal,design_center,o2o_admin,work_order' 'bill,refund,Meter,report,pay,job' 'a,b,c,d,e,f,g'",
+    "compile": "node ./build/src/compile.js  --color"
   },
   "license": "ISC",
   "dependencies": {
