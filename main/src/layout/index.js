@@ -1,4 +1,4 @@
-export { default as nsHeader } from './components/NS-header/index.vue';
+export { default as nsHeader } from './components/NS-header/loader';
 export { default as bizSideMenu } from './components/NS-nav-menu/NS-side-menu/index';
 
 export { default as bizTabsViews } from './components/NS-biz-page-tabs/index';
