@@ -4,7 +4,7 @@ export default (
   return [
     // {
     //   path: '/NEAP_redirect/:path*',
-    //   component: () => import('./redirect.vue'),
+    //   component: () => import('./redirect.js'),
     // }，
     {
       path: '/NEAP_redirect',
@@ -13,7 +13,7 @@ export default (
         {
           name: 'NEAP_redirect',
           path: '/NEAP_redirect/:path*',
-          component: () => import('./redirect.vue'),
+          component: () => import('./redirect.js'),
           meta: { key: 'NEAP_redirect' },
           beforeEnter: (to, from, next) => {
             // console.log(33333333333);
