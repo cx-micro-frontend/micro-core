@@ -1,5 +1,5 @@
 import CacheMixins from './mixins/index';
-import RedirectRoutes from './routes/index';
+import RedirectRoutes from './routes';
 import CacheStore from './store/index';
 import Extends from './extends/index';
 import { optCheck } from './utils/index';
