@@ -70,7 +70,7 @@
     bizUserDropdown,
     headerSlotLeft,
     headerSlotRight,
-  } from './index';
+  } from './loader';
 
   export default {
     name: 'ns-header',
