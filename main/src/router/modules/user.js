@@ -1,4 +1,4 @@
-import Front from '../../views/Front/index.vue';
+import Front from '../../views/Front';
 
 export default [
   // 前台登录
@@ -10,13 +10,13 @@ export default [
     children: [
       {
         path: 'login',
-        component: () => import('../../views/Login/login.vue'),
+        component: () => import('../../views/Login/login'),
         name: 'login',
         meta: { title: '登录页', auth: false, key: 'login', cache: false, type: 'special' },
       },
       {
         path: 'loginTransfer-neap',
-        component: () => import('../../views/Login/loginTransfer-neap.vue'),
+        component: () => import('../../views/Login/loginTransfer-neap'),
         name: 'loginTransfer-neap',
         meta: {
           title: '登录中转页',

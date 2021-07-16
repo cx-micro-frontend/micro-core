@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import BizRoleButtonArea from './NS-biz-role-button-area/Biz-role-button-area.vue'; //权限按钮
+import BizRoleButtonArea from './NS-biz-role-button-area/Biz-role-button-area'; //权限按钮
 
 import QRCodeDownLoad from '../views/Login/components/QRCodeDownLoad/QRCodeDownLoad'; //二维码下载
 
