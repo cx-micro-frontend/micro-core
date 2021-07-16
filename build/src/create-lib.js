@@ -22,7 +22,7 @@ if (fs.existsSync(mainPath)) {
 // shell.cp('-R', `${mainPath}/mock`, `${libPath}/mock`);
 // shell.cp('-R', `${mainPath}/src`, `${libPath}/src`);
 // shell.cp('-R', `${mainPath}/static`, `${libPath}/static`);
-// shell.cp('-R', `${mainPath}/main.tsx`, `${libPath}/main.tsx`);
-// shell.cp('-R', `${mainPath}/expand.tsx`, `${libPath}/expand.tsx`);
-// shell.cp('-R', `${mainPath}/dependencies.tsx`, `${libPath}/dependencies.tsx`);
+// shell.cp('-R', `${mainPath}/main.ts`, `${libPath}/main.ts`);
+// shell.cp('-R', `${mainPath}/expand.ts`, `${libPath}/expand.ts`);
+// shell.cp('-R', `${mainPath}/dependencies.ts`, `${libPath}/dependencies.ts`);
 // shell.cp('-R', `${mainPath}/plugins`, `${libPath}/plugins`);
