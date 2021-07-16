@@ -15,9 +15,9 @@ module.exports = {
     // linting errors and warnings will be shown in the console.
     useEslint: false,
     prescript: [
-      // 'npm run build:lib', //生成lib（包含min，plugins，mock，src，static）
-      // 'npm run build:injecter', //注入工具的编译（生成injecter）
-      // 'npm run inject', //注入业务模块（生成injection）
+      'npm run build:lib', //生成lib（包含min，plugins，mock，src，static）
+      'npm run build:injecter', //注入工具的编译（生成injecter）
+      'npm run inject', //注入业务模块（生成injection）
       // 'npm run fix-memory-limit', //开启内存上限
     ],
 
