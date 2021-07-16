@@ -5,7 +5,7 @@ const injection_sandbox = require('./config/injection/index.sandbox');
 
 module.exports = {
   dev: {
-    entry: { app: './lib/main.tsx' },
+    entry: { app: './main/main.ts' },
     cssExtractPublicPath: './',
     templateSPA: './index.html',
     staticPath: './main/static',
@@ -15,9 +15,9 @@ module.exports = {
     // linting errors and warnings will be shown in the console.
     useEslint: false,
     prescript: [
-      'npm run build:lib', //生成lib（包含min，plugins，mock，src，static）
-      'npm run build:injecter', //注入工具的编译（生成injecter）
-      'npm run inject', //注入业务模块（生成injection）
+      // 'npm run build:lib', //生成lib（包含min，plugins，mock，src，static）
+      // 'npm run build:injecter', //注入工具的编译（生成injecter）
+      // 'npm run inject', //注入业务模块（生成injection）
       // 'npm run fix-memory-limit', //开启内存上限
     ],
 
@@ -32,7 +32,7 @@ module.exports = {
     },
   },
   prod: {
-    entry: { app: './main/main.tsx' },
+    entry: { app: './main/main.ts' },
     assetsPublicPath: './',
     assetsRoot: path.resolve('./dist'),
     cssExtractPublicPath: '../../',
@@ -115,11 +115,19 @@ module.exports = {
     sassResources: [path.resolve('./config/expand/theme/var/index.scss')],
     babel: {
       priority: true,
-      include: ['main', 'injection', 'config', 'lib', 'NS_formDesign'],
+      include: ['main', 'injection', 'config'],
+    },
+    typescript: {
+      enabled:true,//If true, it enables TypeScript checker and use babel to compile typescript .
+      include: [
+        'main',
+        'config'
+      ],
     },
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@ROOT': path.resolve(''),
+      '@CONFIG': path.resolve('config'),
       '@NEAP': path.resolve('main/src'),
       '@FETCH': path.resolve('main/src/fetch'),
     },
@@ -135,14 +143,14 @@ module.exports = {
     prettier: {
       switch: true,
       files: [
+        'main/src/**/*.tsx',
         'main/src/**/*.js',
         'main/mock/**/*.js',
         'main/static/intercept/**/*.js',
-        'clone/**/*.js',
         'config/**/*.js',
         '.postcssrc.js',
-        'env.config.js',
-        'env.param.config.js',
+        'env.config.ts',
+        'env.param.config.ts',
         '.eslintrc.js',
       ],
     },
