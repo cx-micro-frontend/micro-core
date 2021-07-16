@@ -4,7 +4,7 @@ import expand from '../../../../expand';
 export default {
   computed: {
     // hasFile() {
-    //   return hasFile('@ROOT/config/expand', /\config.js/);
+    //   return hasFile('@ROOT/config/expand', /\config.ts/);
     // },
 
     slotKey() {
