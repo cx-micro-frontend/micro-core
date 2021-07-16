@@ -25,8 +25,8 @@ module.exports = {
 
     proxyTable: {
       '/api': {
-        // target: 'http://192.168.4.34',
-        target: 'http://new-see.oicp.io:25280',
+        target: 'http://192.168.4.34',
+        // target: 'http://new-see.oicp.io:25280',
         changeOrigin: true,
       },
     },
