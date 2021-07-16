@@ -22,7 +22,8 @@
     "fix": "./fix.sh",
     "set-permission-sh": "chmod +x ./fix.sh; chmod +x node_modules/cx-builder/lib/entry.sh",
     "jekines": "./jekinesShell.sh 'all,portal,design_center,o2o_admin,work_order' 'bill,refund,Meter,report,pay,job' 'a,b,c,d,e,f,g'",
-    "compile": "node ./build/src/compile.js  --color"
+    "compile": "node ./build/src/compile.js  --color",
+    "check-type": "tsc --watch"
   },
   "license": "ISC",
   "dependencies": {
@@ -59,7 +60,7 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
-    "cx-builder": "0.0.53-54",
+    "cx-builder": "0.0.53-55",
     "mockjs": "^1.0.1-beta3",
     "vue": "2.6.10",
     "vue-template-compiler": "2.6.10"
