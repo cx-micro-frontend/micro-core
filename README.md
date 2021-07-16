@@ -12,6 +12,8 @@
 > 5、neap-ui 升级到27，全屏弹窗在ie下存在性能问题，故去掉全屏属性，改由其他方式实现
 > 6、增加登出逻辑处理，若返回resultMsg时http链接则根据返回地址跳转（因用于单点），否则默认跳回登录页
 > 7、修复 vuex - UserThemeSetting 中 sideMenuCollapse / bannerCover 字段 取值默认值问题，采用？？写法
+> 7、为每个接口头部增加时间戳加密 秘钥指令, 目的：防止伪造信息请求接口,详见fetch封装
+
 ## Build Setup
 
 ``` bash
