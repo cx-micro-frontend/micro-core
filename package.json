@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
-    "cx-builder": "0.0.53-55",
+    "cx-builder": "0.0.53-57",
     "mockjs": "^1.0.1-beta3",
     "vue": "2.6.10",
     "vue-template-compiler": "2.6.10"
