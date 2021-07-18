@@ -15,6 +15,7 @@ import $store from '../store';
 
 import { backIniView } from '../utils/behavior';
 import { getToken } from '../utils/library/auth';
+import { encryptBase64 } from '../utils/library/crypto';
 
 const service = axios.create({
   baseURL: process.env.BASE_API,
@@ -104,6 +105,17 @@ service.redirect = (code, msg) => {
  * @param config
  */
 service.injectHeaders = config => {
+  /**
+   * accessCode：为每个接口头部增加时间戳加密 秘钥指令
+   * 目的：防止伪造信息请求接口
+   * 后端处理流程：
+   * 1、判断accessCode是否一致，一致则报错
+   * 2、判断accessCode解析后的时间戳是否距离服务器时间超出n（10分钟），超时则失效，报错
+   * 每次正常请求 accessCode 均正常生成
+   * 防止人为伪造信息请求接口
+   */
+  config.headers.accessCode = encryptBase64(`${new Date().getTime()}-newsee`, 'newseecryptokey1');
+
   //非登录后接口，无需增加请求头属性
   if (config.headers.noAuth) return;
   [
