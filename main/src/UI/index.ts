@@ -21,7 +21,7 @@ import '../layout/components/index';
 import '../../../injection/entrance/entrance_ui';
 
 //业务组个性化注入
-import './Custom-UI/index';
+import './Custom-UI';
 
 //load framework icon
 import '../icons/framework/iconfont';
