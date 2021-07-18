@@ -1,4 +1,4 @@
-const Layout = resolve => require(['../../layout/Layout'], resolve);
+const Layout = resolve => require(['../../layout/Layout.tsx'], resolve);
 const _import = require(`../_import/_import_${process.env.NODE_ENV}`); //获取组件的方法
 
 export default [
