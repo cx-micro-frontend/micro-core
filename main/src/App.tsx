@@ -13,7 +13,6 @@ import changeDocumentTitle from './mixins/Global/DocumentTitle';
 const packageJson = require('@ROOT/package.json');
 
 @Component({
-  // 所有的组件选项都可以放在这里
   mixins: [changeDocumentTitle],
 })
 export default class App extends Vue {
