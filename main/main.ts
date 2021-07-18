@@ -6,7 +6,7 @@ import Vue from 'vue';
 import App from './src/App';
 
 //load  UI / plugins / style / components
-import './src/UI/index';
+import './src/UI';
 
 //load vuex for data store
 import store from './src/store/index';
@@ -29,7 +29,7 @@ Vue.use(cache, {
   store,
   Layout: resolve => {
     // @ts-ignore
-    return require(['./src/layout/Layout'], resolve);
+    return require(['./src/layout/Layout.tsx'], resolve);
   },
 });
 
